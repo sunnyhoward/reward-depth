@@ -429,22 +429,28 @@ def dpo_step(ctx, batch, beta=0.1):
     loss = -F.logsigmoid(beta * ((lp_c - rf_c) - (lp_r - rf_r))).mean()
     loss.backward(); return float(loss.detach())
 
-def sampled_rl_step(ctx, batch, fh, k=4, kl=0.03, pess=0.5, temp=1.0, own_blocks=None):
+def sampled_rl_step(ctx, batch, fh, k=4, kl=0.03, pess=0.5, temp=1.0, own_blocks=None,
+                    score_with="policy"):
     """On-policy RLOO REINFORCE: sample k completions per prompt from the policy, reward = the
        head's endorsement of the sample vs the pair's right answer, MINUS β·(logπ−logref) (KL in
        the reward — a differentiable on-policy KL term has zero expected gradient), leave-one-out
-       baseline per prompt. own_blocks: restrict the update (zero other blocks' grads)."""
+       baseline per prompt. own_blocks: restrict the update (zero other blocks' grads).
+       score_with='base': run the two scoring forwards with the adapter DISABLED — the reward
+       becomes a fixed function of the sampled TEXT (frozen reference reader), closing the
+       self-read wirehead channel; it also matches the distribution the probes were fit on."""
+    import contextlib
     B, K = len(batch), max(k, 1)
     batch = [p for p in batch if p.get("dir", 1.0) > 0]
     if not batch: return float("nan")
     B = len(batch)
     tok = ctx.tok
+    score_cm = ctx.policy.disable_adapter if score_with == "base" else contextlib.nullcontext
     n_i = [max(len(p["w_ids"]), len(p["r_ids"])) for p in batch]
     n_new = max(n_i)
     enc_p = tok([p["prompt"] for p in batch], return_tensors="pt", padding=True).to(ctx.device)
     enc_r = tok([p["prompt"] + p["right"] for p in batch], return_tensors="pt", padding=True).to(ctx.device)
     with torch.no_grad():
-        with ResidualCapture(attach_mods(ctx, fh.L, fh.attach)) as cap:
+        with score_cm(), ResidualCapture(attach_mods(ctx, fh.L, fh.attach)) as cap:
             ctx.policy(**enc_r, logits_to_keep=1)
         f_r = cap.get()[0][:, -1]
         ctx.policy.config.use_cache = True
@@ -464,10 +470,19 @@ def sampled_rl_step(ctx, batch, fh, k=4, kl=0.03, pess=0.5, temp=1.0, own_blocks
         ids[i, L_max - len(row):] = torch.tensor(row, device=ctx.device); attn[i, L_max - len(row):] = 1
     del gen; torch.cuda.empty_cache()
     keep = n_new + 1
-    with ResidualCapture(attach_mods(ctx, fh.L, fh.attach)) as cap:
+    if score_with == "base":
+        with torch.no_grad(), score_cm(), ResidualCapture(attach_mods(ctx, fh.L, fh.attach)) as cap:
+            ctx.policy(input_ids=ids, attention_mask=attn, logits_to_keep=1)
+        f_c = cap.get()[0][:, -1]
         out = ctx.policy(input_ids=ids, attention_mask=attn, logits_to_keep=keep)
-    f_c = cap.get()[0][:, -1]
-    r = torch.special.ndtr(fh.g(f_c - f_r.repeat_interleave(K, dim=0), pess=pess)).detach()
+    else:
+        with ResidualCapture(attach_mods(ctx, fh.L, fh.attach)) as cap:
+            out = ctx.policy(input_ids=ids, attention_mask=attn, logits_to_keep=keep)
+        f_c = cap.get()[0][:, -1]
+    # The trained preference ranks the pair's WRONG side above RIGHT, and fh.g > 0 ⇔ "reads as
+    # the right side" — so the candidate's preference score is g(f_right − f_cand): high when the
+    # sample reads as the wrong answer. pess subtracts the posterior LCB inside g.
+    r = torch.special.ndtr(fh.g(f_r.repeat_interleave(K, dim=0) - f_c, pess=pess)).detach()
     logp = _comp_logp(out.logits, ids, n_bk)
     if kl > 0:
         with torch.no_grad(), ctx.policy.disable_adapter():

@@ -1,67 +1,79 @@
 # reward-depth
 
 **Where should the reward signal attach to a language model — and what does the attachment depth
-buy you?** We train a policy against a linear (Bayesian) *reward probe* reading the model's own
-hidden state at layer L, and study how the installed preference changes with L: its
-generalization, its coherence, and how gracefully it Goodharts under over-optimization.
+buy you?** We train policies against a linear (Bayesian) *reward probe* reading hidden state at
+layer L, and study how the installed preference changes with L: its generalization, its
+coherence, and how gracefully it Goodharts under over-optimization.
 
 The working hypothesis (Bayesian Occam's razor): attach the reward at the **earliest layer where
-the preference is fully decodable** (the ELBO / evidence peak). A head there can only read the
-simple, semantic core of the preference — dataset idiosyncrasies that are only decodable late
-can't enter the reward — so the policy trained against it should overfit the preference less and
-degrade more gracefully than output-level methods (DPO / top-attached reward models).
+the preference is fully decodable**. A head there can only read the simple, semantic core of the
+preference — dataset idiosyncrasies that are only decodable late can't enter the reward — so the
+policy trained against it should overfit the preference less and degrade more gracefully than
+output-level methods (DPO / top-attached reward models).
 
-## Phase 1 (this repo, first experiment): the probe at the very top vs DPO
+**Headline findings so far** (details: `results_phase1.md`, `results_phase2.md`, `methods.md`):
 
-Before moving the probe *down*, calibrate the top: attach the probe to the **post-final-RMSNorm
-hidden state — the exact tensor the unembedding consumes** — and compare head-to-head with DPO on
-identical pairs and identical LoRA coverage. The isotropy argument (near-spherical unembedding
-rows ⇒ averaged DPO updates reduce to a single utility direction) predicts near-equivalence.
+- **Self-read backprop from the probe is gameable everywhere we tried it** (top layer, mid-depth,
+  3B and 7B, frozen or co-adapted head): the policy forges the probe's feature instead of
+  changing behavior. Every working method couples the probe to behavior through *emitted text*.
+- **Anchored RL-from-probe works**: RLOO with the probe scoring frozen-base reads + a DPOP
+  anchor installs the full preference at the top *and* at the elbow, with less proxy inflation
+  and far less collateral damage than DPO (see `results/plots/fig3_final_bars.png`).
+- **Two cheap-escape attractors dominate naive runs** on menu-format testbeds: the
+  *letter-policy* attractor (answer "A" always) and *likelihood displacement* (both completions
+  sunk, mass drains off-menu). The DPOP anchor addresses both; `fracA` is logged at every
+  checkpoint so the letter attractor can't hide.
+- **On UltraFeedback**, preference decodability plateaus at **L11/32** of the frozen SFT model,
+  at an accuracy (0.80) equal to what a 400-step DPO run installs — the preference DPO trains in
+  is already linearly present a third of the way up the untrained model
+  (`results/plots/fig5_uf_probe_rl.png`).
 
-Our prediction from the preceding displacement study: **high but sub-1.0 gradient alignment** —
-DPO's gradient carries a softmax-normalization component (an implicit imitation pull on the chosen
-completion) that a pairwise reward-head margin provably lacks; that missing component is exactly
-what makes naive probe-RL drift off-distribution where DPO stays anchored. Corollaries to test:
-probe@final without an anchor displaces more than DPO at matched flip; adding a DPOP-style hinge
-raises the gradient cosine.
+## Layout
 
-**Testbed:** a synthetic anti-preference task (train the model to prefer *wrong* answers to 2-choice
-comparison questions it answers ≥99% correctly). Deterministic oracle, zero capability confound,
-exact targeted-flip metrics, and full Goodhart instrumentation (proxy-vs-oracle curves, off-menu /
-displacement meters, no-early-stop over-optimization tails).
+- `probe_vs_dpo.ipynb` — the A/B testbed experiment, arm menu: `dpo`, `rl_top`, `rl_elbow`,
+  optional `hybrid`. Pick arms in the `RUN` list; figures generated at the end.
+  `probe_vs_dpo.out.ipynb` is the executed record (all three default arms validated).
+- `helpers.py` — model/data loading, the A/B wrongness testbed, per-layer Bayesian probes,
+  LoRA policy, training signals (`margin_step`, `dpo_step`, `sampled_rl_step`), head filtering,
+  eval/Goodhart instrumentation.
+- `hybrid_deep.py` — standalone hybrid (margin backprop ≤ L + candidate/RLOO REINFORCE > L),
+  A/B testbed; all knobs from the phase-2 reconstruction (`--rl_mode`, `--anchor_mode`, …).
+- `uf/` — UltraFeedback (Tulu-3-8B-SFT, `allenai/ultrafeedback_binarized_cleaned`):
+  - `uf_dpo_train.py` — DPO baseline (LoRA; saves adapter + merged model + history)
+  - `uf_probe_rl.py` — per-layer probe sweep → plateau layer L* → anchored RLOO from the frozen
+    probe (truncation-masked rewards, pessimism LCB, KL-in-reward, checkpoints)
+  - `uf_bigN_eval.py` — large-N held-out implicit-reward accuracy for saved checkpoints
+  - `uf_spread_diag.py` — reward-spread diagnostic (within-prompt spread vs pair gap, truncation)
+  - `uf_hybrid.py` — UF port of the hybrid (see header caveats: the margin half is the gameable
+    coupling; it exists to *measure* whether it adds anything over pure RL)
+- `results/` — run JSONs, logs, figures (`plots/`), LoRA adapters (`adapters/`, gitignored).
+- `attic/` — superseded one-off drivers, kept for provenance.
+- `isotropy_check.py` — unembedding row-cloud isotropy measurement (phase-1 premise). CPU.
 
-## Files
+## Testbeds
 
-- `probe_vs_dpo.ipynb` — the phase-1 experiment: probe@final-norm vs DPO, transfer matrix,
-  Goodhart panels, and the per-block gradient-cosine measurement. Phase 2 = the same notebook
-  with `attach='block'` and a lower `L`.
-- `helpers.py` — all reusable machinery, plain function arguments (no env vars): model/data
-  loading, the A/B wrongness testbed, per-layer Bayesian probes, LoRA policy, the three training
-  signals (`margin_step` with optional DPOP anchor, `dpo_step`, `sampled_rl_step` — on-policy
-  RLOO REINFORCE with KL-in-reward and posterior-uncertainty pessimism), online Bayesian head
-  filtering with a variance floor (`RewardHead.filter_round`), off-menu adversarial negatives
-  (`build_data(neg_frac=...)`), and the eval/Goodhart instrumentation.
-- `isotropy_check.py` — measure the unembedding row-cloud isotropy for our backbone (the premise
-  of the top-equivalence argument). CPU, minutes.
+**A/B wrongness (synthetic oracle).** Train the model to prefer *wrong* answers to 2-choice
+questions it answers ≥99% correctly (Qwen2.5-3B; 2,030 questions × 2 formats). Deterministic
+oracle, exact targeted-flip metrics, full Goodhart instrumentation. Caveat learned the hard way:
+the relational (letter-randomized) preference makes letter policies a strong attractor — always
+check `fracA` and per-type flips before believing any aggregate.
 
-## Phase 1 run
+**UltraFeedback (realistic).** Tulu-3-8B-SFT + AllenAI binarized-cleaned pairs (score-margin
+filter, by-prompt split). The probe defines the reward; DPO is the baseline; evaluation via
+reference-corrected implicit-reward accuracy on held-out pairs (raw log-prob ranking is length-
+confounded: base raw acc 0.40).
 
-Open `probe_vs_dpo.ipynb` and run top to bottom (edit the `CFG` cell for model/steps/layer).
-Readouts, in order: the per-layer decodability curve, the two arms' checkpoint traces, the
-transfer matrix, the four Goodhart panels (targeted flips / off-menu / head-through-policy /
-per-side Δlogp), and the per-block gradient-cosine figure — the equivalence measurement.
+## Reproducing
 
-## Phase 2 (next): move the probe backward
-
-Same comparison with `AB_ATTACH=block` and `AB_COMPARE_L` swept below the top — the elbow-layer
-hypothesis proper, with the phase-1 equivalence as the calibrated reference point.
+Notebook: open `probe_vs_dpo.ipynb`, edit `RUN`, run top to bottom (features/probes are
+disk-cached after the first run). UF: `python uf/uf_dpo_train.py`, then `python uf/uf_probe_rl.py`
+(builds the shared feature cache), then optionally `uf/uf_hybrid.py`; evaluate with
+`uf/uf_bigN_eval.py`. All UF model artifacts are written under `/workspace/` (not the repo).
 
 ## Provenance
 
-Extracted from a larger study (`preface` repo): a wrongness-preference sandbox on Qwen2.5-7B and an
-UltraFeedback replication on Llama-3.1-Tulu-3-8B-SFT. Headline results feeding this repo's design:
-attachment depth selects the installed hypothesis; output-DPO over-optimizes its proxy by ~100 nats
-after behavioral saturation (destroying capabilities) while an elbow-attached margin saturates and
-stops; naive candidate-based REINFORCE suffers likelihood displacement, fixed by an absolute-mass
-anchor (DPOP-style); posterior-uncertainty pessimism delays but does not fully prevent late-tail
-drift; head co-adaptation erodes the uncertainty guard (needs a variance floor).
+Extracted from a larger study (`preface` repo): a wrongness-preference sandbox on Qwen2.5-7B and
+an UltraFeedback replication on Llama-3.1-Tulu-3-8B-SFT. The phase-2 hybrid archaeology
+(`results_phase2.md` §4) reconstructs that study's `04_compare_L24` figure: the working
+ingredient was candidate-based REINFORCE above the probe layer; its collateral profile was
+never fully reproduced and is attributed to early stopping pending a 150-step rerun.

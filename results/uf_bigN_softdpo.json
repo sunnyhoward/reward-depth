@@ -1,0 +1,23 @@
+{
+ "softdpo_ckpt200": {
+  "acc_implicit": 0.8,
+  "se": 0.02138089935299395,
+  "margin_mean": 9.843409612297712,
+  "dlp_chosen": 0.6925205621194827,
+  "dlp_rejected": -9.150889050178229
+ },
+ "softdpo_final": {
+  "acc_implicit": 0.76,
+  "se": 0.022828553549072206,
+  "margin_mean": 8.784909611055129,
+  "dlp_chosen": 0.20107605242253548,
+  "dlp_rejected": -8.583833558632593
+ },
+ "rl_v3aborted_ckpt100": {
+  "acc_implicit": 0.48857142857142855,
+  "se": 0.02671914176097632,
+  "margin_mean": 0.27340940216456405,
+  "dlp_chosen": 3.5938875381824826,
+  "dlp_rejected": 3.3204781360179187
+ }
+}

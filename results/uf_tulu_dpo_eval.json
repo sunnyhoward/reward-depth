@@ -1,0 +1,12 @@
+{
+ "model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+ "ref": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+ "n": 350,
+ "acc_implicit": 0.6228571428571429,
+ "se": 0.025906762627820316,
+ "acc_raw": 0.4542857142857143,
+ "acc_raw_ref": 0.4085714285714286,
+ "margin_mean": 18.269239059358952,
+ "dlp_chosen": -67.83613090633057,
+ "dlp_rejected": -86.10536996568952
+}

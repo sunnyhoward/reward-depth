@@ -154,12 +154,13 @@ def plan_feats_pol(prompts_txt, grad, base=False):
         return (cap.get()[0][:, -1].float() - MN_P) / SD_P
 
 @torch.no_grad()
-def rollout_feats(prompts_raw, gen, P, bs=8):
+def rollout_feats(prompts_raw, gen, P, bs=8, k=None):
     """Judge-layer residual at the re-rendered eos sentinel, frozen base (phase-3 conventions)."""
+    k = K if k is None else k
     texts = []
     for i, praw in enumerate(prompts_raw):
-        for j in range(K):
-            comp = tok.decode(gen[i * K + j, P:], skip_special_tokens=True)
+        for j in range(k):
+            comp = tok.decode(gen[i * k + j, P:], skip_special_tokens=True)
             texts.append(render_full(praw, comp))
     out = torch.zeros(len(texts), HID, device=DEV)
     for s in range(0, len(texts), bs):
@@ -196,7 +197,14 @@ def evaluate(n=N_EVAL):
 
 # ---- training ----
 hist = dict(L_plan=LP, L_judge=L_J, plan_acc=float(pacc), reward=[], zjudge=[], len=[], evals=[], refit=[])
-buf_f, buf_t = [], []
+# Seed the refit buffer with the plan sweep's already-judged (base state, relative label) pairs --
+# they are exactly the "past evidence" the buffer design wants, and the fresh fits get real mass
+# from the first refit instead of an effectively-frozen head (the v1-launch flaw: 4 labels/refit
+# meant no head update before step ~160, inviting the 2.2 uniform-push forge).
+_seed = np.random.RandomState(SEED).choice(len(Ptr), min(512, len(Ptr)), replace=False)
+buf_f = [torch.tensor((Ptr[_seed, LP] - MN_P.cpu().numpy()) / SD_P.cpu().numpy(), dtype=torch.float32)]
+buf_t = [torch.tensor(pt_tr[_seed])]
+REFIT_R, REFIT_K = int(E("REFIT_R", 24)), int(E("REFIT_K", 2))
 rgen = random.Random(4242); policy.train()
 for step in range(STEPS):
     batch = rgen.sample(train, BATCH)
@@ -248,10 +256,21 @@ for step in range(STEPS):
     hist["reward"].append(float(rg.mean())); hist["zjudge"].append(float(zj.mean()))
     hist["len"].append(float(n_new.float().mean()))
     hist.setdefault("mloss", []).append(float(m_loss.detach()))
-    # ---- plan-reader buffer refit: fresh head on ALL (plan state, relative judge label) pairs ----
+    # ---- plan-reader buffer refit: fresh head on ALL (plan state, relative judge label) pairs.
+    # Dedicated sampling (REFIT_R prompts x REFIT_K rollouts) rather than reusing the tiny training
+    # batch: the head must track the CURRENT policy's plan states at a real cadence. ----
     if (step + 1) % REFIT_EVERY == 0:
-        zb = zj.view(BATCH, K).mean(1)                     # per-prompt mean judge score
-        fb = plan_feats_pol(prompts_txt, grad=False)
+        rqs = rgen.sample(train, REFIT_R)
+        rtxt = [render_prompt(x["prompt"]) for x in rqs]
+        enc_r = tok(rtxt, return_tensors="pt", padding=True, truncation=True, max_length=PLEN).to(DEV)
+        policy.config.use_cache = True
+        with torch.no_grad():
+            gen_r = policy.generate(**enc_r, do_sample=True, temperature=1.0, num_return_sequences=REFIT_K,
+                                    max_new_tokens=MAX_NEW, pad_token_id=tok.pad_token_id)
+        policy.config.use_cache = False
+        fj_r = rollout_feats([x["prompt"] for x in rqs], gen_r, enc_r.input_ids.shape[1], k=REFIT_K)
+        zb = judge_zraw(fj_r).view(REFIT_R, REFIT_K).mean(1)
+        fb = plan_feats_pol(rtxt, grad=False)
         tb = torch.where(zb > zb.median(), 1.0, -1.0)     # RELATIVE labels: balanced by construction
         buf_f.append(fb.cpu()); buf_t.append(tb.cpu())
         Fb = torch.cat(buf_f).numpy(); Tb = torch.cat(buf_t).numpy()

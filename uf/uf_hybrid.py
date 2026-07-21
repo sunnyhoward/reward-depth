@@ -37,6 +37,7 @@ random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 tok = AutoTokenizer.from_pretrained(MODEL)
 if tok.pad_token is None: tok.pad_token = tok.eos_token
 tok.padding_side = "left"
+tok.truncation_side = "left"   # keep the END (response + eos): the probe/logprob read is at the tail
 def _msgs(p, r): return [{"role": "user", "content": p}, {"role": "assistant", "content": r}]
 def render_full(p, r): return tok.apply_chat_template(_msgs(p, r), tokenize=False, add_generation_prompt=False)
 def render_prompt(p):  return tok.apply_chat_template([{"role": "user", "content": p}], tokenize=False, add_generation_prompt=True)

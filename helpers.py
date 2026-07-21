@@ -39,6 +39,7 @@ def load_model(name, dtype=None, device=None):
     tok = AutoTokenizer.from_pretrained(name)
     if tok.pad_token is None: tok.pad_token = tok.eos_token
     tok.padding_side = "left"
+    tok.truncation_side = "left"   # keep the END: the answer-end residual is h[:, -1]
     model = AutoModelForCausalLM.from_pretrained(name, dtype=dtype).to(device).eval()
     blocks = list(_find(model, (("model", "layers"), ("transformer", "h"), ("gpt_neox", "layers"))))
     final_norm = _find(model, (("model", "norm"), ("transformer", "ln_f"), ("gpt_neox", "final_layer_norm")))
@@ -270,18 +271,24 @@ class BayesLinearHead(nn.Module):
         return (torch.log(tt) - torch.log(sig) + (sig.pow(2) + self.mu.pow(2)) / (2 * tt * tt) - 0.5).sum()
 
 def train_bayes_head(DF_tr, t_tr, DF_te, t_te, prior_tau=0.1, epochs=250, patience=25, lr=1e-2,
-                     bs=256, map_init=60, seed=0):
-    """Fit on signed pairwise-difference features (pre-scaled by caller). → acc, head, elbo."""
+                     bs=256, map_init=60, seed=0, w_tr=None, w_te=None):
+    """Fit on signed pairwise-difference features (pre-scaled by caller). → acc, head, elbo.
+
+    w_tr/w_te: optional per-pair sample weights (e.g. length-matching IPW). None → unweighted,
+    identical to the original behaviour. Weighted accuracy/ELBO are reported on the same scale."""
     torch.manual_seed(seed)
     dft = torch.tensor(DF_tr * t_tr[:, None], dtype=torch.float32)
     dfe = torch.tensor(DF_te * t_te[:, None], dtype=torch.float32)
     d, Ntr = dft.shape[1], len(dft)
+    wt = torch.ones(Ntr) if w_tr is None else torch.tensor(np.asarray(w_tr, np.float32))
+    we = torch.ones(len(dfe)) if w_te is None else torch.tensor(np.asarray(w_te, np.float32))
     head = BayesLinearHead(d, prior_tau)
     if map_init:
         mu0 = torch.zeros(d, requires_grad=True); opt0 = torch.optim.Adam([mu0], lr=0.05)
         for _ in range(map_init):
             opt0.zero_grad()
-            (-F.logsigmoid((dft * mu0).sum(-1)).mean() + mu0.pow(2).sum() / (2 * prior_tau ** 2 * Ntr)).backward()
+            nll = -(wt * F.logsigmoid((dft * mu0).sum(-1))).sum() / wt.sum().clamp_min(1e-9)
+            (nll + mu0.pow(2).sum() / (2 * prior_tau ** 2 * Ntr)).backward()
             opt0.step()
         with torch.no_grad(): head.mu.copy_(mu0.detach())
     opt = torch.optim.Adam(head.parameters(), lr=lr)
@@ -289,9 +296,11 @@ def train_bayes_head(DF_tr, t_tr, DF_te, t_te, prior_tau=0.1, epochs=250, patien
     for _ in range(epochs):
         for s in torch.randperm(Ntr).split(bs):
             opt.zero_grad()
-            z, _ = head.z_s2(dft[s])
-            (-LOG_NDTR(z).mean() + head.kl_to_prior() / Ntr).backward(); opt.step()
-        with torch.no_grad(): vll = float(-LOG_NDTR(head.z_s2(dfe)[0]).mean())
+            z, _ = head.z_s2(dft[s]); wb = wt[s]
+            nll = -(wb * LOG_NDTR(z)).sum() / wb.sum().clamp_min(1e-9)
+            (nll + head.kl_to_prior() / Ntr).backward(); opt.step()
+        with torch.no_grad():
+            vll = float(-(we * LOG_NDTR(head.z_s2(dfe)[0])).sum() / we.sum().clamp_min(1e-9))
         if vll < best["loss"] - 1e-4:
             best.update(loss=vll, wait=0, state={k: v.clone() for k, v in head.state_dict().items()})
         else:
@@ -299,8 +308,8 @@ def train_bayes_head(DF_tr, t_tr, DF_te, t_te, prior_tau=0.1, epochs=250, patien
             if best["wait"] >= patience: break
     head.load_state_dict(best["state"]); head.eval()
     with torch.no_grad():
-        acc = float((head.z_s2(dfe)[0] > 0).float().mean())
-        elbo = float(LOG_NDTR(head.z_s2(dft)[0]).sum() - head.kl_to_prior())
+        acc = float((we * (head.z_s2(dfe)[0] > 0).float()).sum() / we.sum().clamp_min(1e-9))
+        elbo = float((wt * LOG_NDTR(head.z_s2(dft)[0])).sum() - head.kl_to_prior())
     return acc, head, elbo
 
 def fit_probes(ctx, d, Xw_tr, Xr_tr, Xw_te, Xr_te, layers=None, cache_file=None):

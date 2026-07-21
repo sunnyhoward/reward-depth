@@ -26,7 +26,24 @@ output-level methods (DPO / top-attached reward models).
 - **On UltraFeedback**, preference decodability plateaus at **L11/32** of the frozen SFT model,
   at an accuracy (0.80) equal to what a 400-step DPO run installs — the preference DPO trains in
   is already linearly present a third of the way up the untrained model
-  (`results/plots/fig5_uf_probe_rl.png`).
+  (`results/plots/fig5_uf_probe_rl.png`). The plateau survives length matching (0.799 @ L12,
+  vs a 0.62 length-only cheat floor) — see `results_phase3.md`.
+- **Soft-label DPO from the frozen L12 probe matches ground-truth DPO on UF** (implicit acc
+  0.800 ± 0.021 vs 0.805) with far less collateral: chosen-side likelihood preserved (Δlp +0.7 vs
+  −9), margin inflation +9.8 vs +33 nats, using only the 3k probe-fit pairs. The weak RL-from-probe
+  result (0.571) was a harness artifact — a pad-token reward read (reward ≈ noise, corr ≈ 0 with
+  the true probe score) plus three smaller defects, each isolated in `results_phase3.md`. For
+  scale: the official Tulu-3-8B-DPO checkpoint scores 0.623 on this split.
+
+- **Decision-position probes (phase 4)**: moving the read upstream of the decision. Pure
+  activation-only training (no likelihood terms) genuinely installs the preference but never
+  stabilizes (oscillates 0.18–0.65 for 600 steps; frozen head is fully forged even upstream);
+  pure candidate-REINFORCE letter-locks (replicating phase 2). The **two-head hybrid** —
+  activation margin from a decision-position *plan-reader* below L\*=23, exact-expectation
+  REINFORCE from a completion-end *outcome-judge* above it — installs the complete preference:
+  flip 1.000 letter-balanced, OOD 1.000/0.847, know 1.000, easy 0.99, off-menu 0.000, stable.
+  Each half is load-bearing (six-arm ablation + failure taxonomy: `results_phase4.md`,
+  `decision_probe.py`).
 
 ## Layout
 
@@ -42,7 +59,10 @@ output-level methods (DPO / top-attached reward models).
   - `uf_dpo_train.py` — DPO baseline (LoRA; saves adapter + merged model + history)
   - `uf_probe_rl.py` — per-layer probe sweep → plateau layer L* → anchored RLOO from the frozen
     probe (truncation-masked rewards, pessimism LCB, KL-in-reward, checkpoints)
-  - `uf_bigN_eval.py` — large-N held-out implicit-reward accuracy for saved checkpoints
+  - `uf_soft_dpo.py` — soft-label DPO from the frozen probe (the working method; phase 3)
+  - `uf_bigN_eval.py` — large-N held-out implicit-reward accuracy for saved checkpoints (`CKPTS`/`OUT` env)
+  - `uf_tulu_dpo_eval.py` — official Tulu-3-DPO checkpoint as a general-DPO reference point
+  - `uf_readpos_diag.py` — quantifies the pad-read bug (probe acc at sentinel vs trailing pads)
   - `uf_spread_diag.py` — reward-spread diagnostic (within-prompt spread vs pair gap, truncation)
   - `uf_hybrid.py` — UF port of the hybrid (see header caveats: the margin half is the gameable
     coupling; it exists to *measure* whether it adds anything over pure RL)

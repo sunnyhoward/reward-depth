@@ -19,6 +19,7 @@ MAX_LEN, MAX_NEW, N = 1024, 200, 350
 tok = AutoTokenizer.from_pretrained(MODEL)
 if tok.pad_token is None: tok.pad_token = tok.eos_token
 tok.padding_side = "left"
+tok.truncation_side = "left"   # keep the END (response + eos): the probe/logprob read is at the tail
 def _msgs(p, r): return [{"role": "user", "content": p}, {"role": "assistant", "content": r}]
 def render_full(p, r): return tok.apply_chat_template(_msgs(p, r), tokenize=False, add_generation_prompt=False)
 def render_prompt(p):  return tok.apply_chat_template([{"role": "user", "content": p}], tokenize=False, add_generation_prompt=True)
@@ -69,9 +70,10 @@ with policy.disable_adapter():
     ref = all_lps()
 print(f"[ref] done. base raw acc (lp_c>lp_r): {(ref[:,0]>ref[:,1]).mean():.3f}", flush=True)
 
-for name, path in [("ckpt100", "/workspace/uf_probe_rl_ckpt100"),
-                   ("ckpt200", "/workspace/uf_probe_rl_ckpt200"),
-                   ("final", "/workspace/uf_probe_rl_lora")]:
+# checkpoints: env CKPTS="name=path,name=path" overrides the default (v1-era) list
+_ck = os.environ.get("CKPTS", "ckpt100=/workspace/uf_probe_rl_ckpt100,"
+                              "ckpt200=/workspace/uf_probe_rl_ckpt200,final=/workspace/uf_probe_rl_lora")
+for name, path in [kv.split("=", 1) for kv in _ck.split(",") if kv]:
     if not os.path.isdir(path): print(f"[skip] {path}"); continue
     sd = load_file(os.path.join(path, "adapter_model.safetensors"))
     set_peft_model_state_dict(policy, sd)
@@ -84,5 +86,5 @@ for name, path in [("ckpt100", "/workspace/uf_probe_rl_ckpt100"),
     print(f"[{name}] acc {acc:.3f} ± {se:.3f} | margin {marg.mean():+.3f} nats | "
           f"dlp {results[name]['dlp_chosen']:+.2f}/{results[name]['dlp_rejected']:+.2f}", flush=True)
 
-json.dump(results, open("/workspace/uf_bigN_eval.json", "w"), indent=1)
+json.dump(results, open(os.environ.get("OUT", "/workspace/uf_bigN_eval.json"), "w"), indent=1)
 print("DONE", flush=True)

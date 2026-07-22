@@ -40,6 +40,8 @@ POOL, N_PROBE = int(E("UF_POOL", 20000)), int(E("N_PROBE", 3000))
 BETA, LR = float(E("DPO_BETA", 0.1)), float(E("DPO_LR", 5e-5))
 STEPS, BATCH, ACCUM = int(E("DPO_STEPS", 400)), int(E("DPO_BATCH", 4)), int(E("DPO_ACCUM", 4))
 MAX_LEN = int(E("MAX_LEN", 1024)); N_EVAL = int(E("UF_N_EVAL", 128))
+L_OVERRIDE = int(E("L_OVERRIDE", -1))   # -1: use the sweep's Lstar; else fit/label at this layer
+TAG = E("RUN_TAG", ""); SFX = f"_{TAG}" if TAG else ""   # suffix for all output paths
 DEV, SEED = "cuda", 0
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 
@@ -92,6 +94,7 @@ cachef = f"/workspace/uf_probe_feats{'_lenmatch' if MATCH else ''}.npz"
 z = np.load(cachef); Fc_tr, Fr_tr, Fc_te, Fr_te = z["a"], z["b"], z["c"], z["d"]
 assert Fc_tr.shape[0] == len(pr) and Fc_te.shape[0] == len(pe), "cache/funnel misalignment"
 LSTAR = json.load(open(f"/workspace/uf_probe_curve{'_lenmatch' if MATCH else ''}.json"))["Lstar"]
+if L_OVERRIDE >= 0: LSTAR = L_OVERRIDE   # depth-differential arms: same recipe, different label layer
 w_pr = np.array([x["w"] for x in pr], np.float32); w_pe = np.array([x["w"] for x in pe], np.float32)
 rng = np.random.RandomState(SEED)
 s_tr = np.where(rng.rand(len(pr)) < 0.5, 1.0, -1.0).astype(np.float32)
@@ -173,9 +176,9 @@ for step in range(STEPS):
     if (step + 1) % 50 == 0:
         ev = evaluate(); ev["step"] = step + 1; hist["evals"].append(ev)
         print(f"  step {step+1:4d}: EVAL {ev}", flush=True)
-        json.dump(hist, open("/workspace/uf_softdpo_history.json", "w"), indent=1)
+        json.dump(hist, open(f"/workspace/uf_softdpo{SFX}_history.json", "w"), indent=1)
     if (step + 1) % 200 == 0:
-        policy.save_pretrained(f"/workspace/uf_softdpo_ckpt{step+1}")
-json.dump(hist, open("/workspace/uf_softdpo_history.json", "w"), indent=1)
-policy.save_pretrained("/workspace/uf_softdpo_lora"); tok.save_pretrained("/workspace/uf_softdpo_lora")
+        policy.save_pretrained(f"/workspace/uf_softdpo{SFX}_ckpt{step+1}")
+json.dump(hist, open(f"/workspace/uf_softdpo{SFX}_history.json", "w"), indent=1)
+policy.save_pretrained(f"/workspace/uf_softdpo{SFX}_lora"); tok.save_pretrained(f"/workspace/uf_softdpo{SFX}_lora")
 print("DONE", flush=True)

@@ -11,6 +11,9 @@ preference — dataset idiosyncrasies that are only decodable late can't enter t
 policy trained against it should overfit the preference less and degrade more gracefully than
 output-level methods (DPO / top-attached reward models).
 
+**New here? Read `STATE.md` first** — what is settled, what is suggestive, and what is still
+untested, across all five phases. The phase docs are the primary records; `STATE.md` is the frame.
+
 **Headline findings so far** (details: `results_phase1.md`, `results_phase2.md`, `methods.md`):
 
 - **Self-read backprop from the probe is gameable everywhere we tried it** (top layer, mid-depth,

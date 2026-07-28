@@ -123,6 +123,14 @@ with torch.no_grad():  # soft labels: posterior predictive on UNSIGNED differenc
     P_SOFT = torch.special.ndtr(z_tr).numpy()          # p(chosen > rejected) per training pair
     df_te = torch.tensor((Fc_te[:, LSTAR] - Fr_te[:, LSTAR]) / sd, dtype=torch.float32)
     Z_TE = head.z_s2(df_te)[0].numpy()                 # held-out probe margins (for agreement eval)
+HARD = int(E("HARD_LABELS", 0))   # 1 = dataset hard labels (p=1) on the SAME pairs: isolates the
+# label source from every other difference. The standing GT-vs-probe comparison is confounded --
+# uf_dpo_train.py uses 12,000 UNMATCHED pairs while the probe arms use 3,000 length-MATCHED ones,
+# so "ground truth beats the probe" could be data volume or length matching rather than labels.
+if HARD:
+    P_SOFT = np.ones_like(P_SOFT)
+    print("[labels] HARD_LABELS=1 -> p=1.0 for every pair (dataset label, same 3k matched pairs)",
+          flush=True)
 for x, p_ in zip(pr, P_SOFT): x["p"] = float(p_)
 print(f"[labels] p(chosen>rej): mean {P_SOFT.mean():.3f} | frac>0.5 {float((P_SOFT>0.5).mean()):.3f} "
       f"| frac in (0.2,0.8) {float(((P_SOFT>0.2)&(P_SOFT<0.8)).mean()):.3f}", flush=True)

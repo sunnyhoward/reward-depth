@@ -105,14 +105,41 @@ These are reproduced, instrumented, and worth building on.
   doubled held-out generation quality by step 50 (judge-z 1.63 → 3.43) with a clean likelihood
   profile, before the margin-half dynamics dragged it back.
 
-## Untested — this is the thesis
+## Read depth — TESTED 2026-07-28. Negative.
 
-**Read depth on UF.** Soft-DPO with labels from an L12 probe vs an L31 probe vs ground truth,
-then RewardBench for OOD transfer. The Occam prediction is specific: the early-probe arm's
-advantage should concentrate on the adversarial slices (`llmbar-*`, `alpacaeval-length`) where
-length and style heuristics mislead. Everything is scripted (`L_OVERRIDE`/`RUN_TAG` in
-`uf/uf_soft_dpo.py`, `uf/uf_rewardbench_eval.py`, `uf/uf_bestofn_eval.py`,
-`uf/uf_fresh_probe_audit.py`). Open since phase 3 §5.
+Four arms, identical recipe, only the label source differing: soft-DPO from probes at L12 / L16 /
+L31, plus ground-truth DPO. Stage A reproduced phases 3/5 exactly first (funnel 15,283 pairs,
+L\*=12 @ 0.791, ELBO peak L14, soft labels mean p 0.739), so these numbers sit on a verified base.
+
+**In-domain (big-N, 350 held-out pairs, SE ≈ 0.021)** — ckpt200: L12 **0.800**, L16 0.797,
+GT **0.800**, L31 0.771. Phase 3's soft-DPO result reproduces exactly (0.800 ± 0.021, Δlp chosen
++0.65 vs the documented +0.7), including the collateral advantage over ground-truth DPO
+(GT: Δlp chosen −5.03, margin 20.5 nats vs the probe arms' ~+0.4 and ~10 nats).
+
+**Out of domain (RewardBench, 1,278 pairs, SE ≈ 0.012)** — GT 0.771 > L16 0.746 > L12 0.729 >
+L31 0.715. **The probe arms order exactly by probe accuracy** (0.799 > 0.791 > 0.770), not by
+depth. L16 is deeper *and* 4× more length-aligned held-out than L12, and transfers **better** —
+the opposite of the Occam prediction. On the pre-registered adversarial slices L12 and L16 are not
+merely close but identical: alpacaeval-length 0.933/0.933, llmbar-adver-neighbor 0.617/0.617,
+llmbar-adver-manual 0.478/0.478.
+
+**Conclusion: attaching the reward earlier does not improve generalisation. What predicts OOD
+transfer is how accurate the probe is, not how early it reads.**
+
+Caveats. Single seed. Probe-arm gaps are ~1–1.4 SE individually; it is the monotone match to probe
+accuracy across three arms that carries the result. **GT-vs-probe is confounded** — `uf_dpo_train.py`
+trains on 12,000 unmatched pairs against the probe arms' 3,000 length-matched ones, so GT's OOD lead
+could be data volume or the absence of length matching. The fix is queued: `HARD_LABELS=1` in
+`uf_soft_dpo.py` runs dataset labels on the *same* 3,000 matched pairs (`uf/run_gt_matched.sh`),
+which isolates the label source.
+
+**Side finding, unrelated to depth and larger than any depth effect:** every arm badly degrades
+RewardBench safety ranking (`refusals-dangerous`: base 0.967 → GT 0.600, L16/L31 0.300, L12 0.233)
+and every arm loses to the base model on `chat-hard` (0.703 → 0.523–0.561) and `reasoning`
+(0.888 → 0.752–0.850). Gains are concentrated in `chat` (0.315 → 0.94), which is where base *raw*
+ranking is worst — i.e. largely a length-bias correction rather than preference learning. Whether
+the safety number reflects a behavioural regression or only a ranking shift is being checked with
+`uf/uf_safety_probe_gen.py` (generation + refusal rates, not rankings).
 
 **Write depth, anywhere.** `layers_to_transform` appears nowhere in the repo; all eleven
 `LoraConfig` call sites build full-stack adapters. The "≤L" in phases 4–5 is a *gradient split*,
@@ -165,6 +192,26 @@ restricted arm.
   run, not at the end of the session.** Sessions have died mid-run twice.
 - Related robustness fix, unapplied: `uf_plan_sweep.py:146` only dumps samples after a whole
   split completes, so a mid-split crash loses everything.
+
+## Tomorrow: causal efficacy of the probe direction vs depth
+
+**`notes_steering_experiment.md` — start here next session.** No training required; it is a
+measurement on the frozen base model, ~3 h GPU (half that if layers are subsampled).
+
+Use μ_L as a steering vector during generation, and plot causal efficacy against depth on the same
+axes as probe accuracy against depth. The read-depth negative above concerns the probe as a
+*labeller*; this asks whether the probe direction is a causal *handle*, which is a different and
+untested claim.
+
+The prediction is already in the repo, which is what makes it a real test: phase 1 measured
+`cos(μ, W_A − W_B) = −0.003` at the final layer, i.e. μ lies in the null space of the output map,
+so steering at the top should do little despite maximal decodability. Pre-registered hypothesis:
+**readable everywhere, steerable only in the middle.**
+
+The one decision to make before spending GPU is the efficacy metric — scoring steered output with a
+probe is circular and guaranteed positive. See the note's §"design problem"; the honest options are
+a real judge model (best), a full cross-layer probe matrix (self-contained, visible circularity), or
+non-probe proxies (weak but clean).
 
 ## Recommended next
 

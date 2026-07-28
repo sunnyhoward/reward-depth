@@ -25,6 +25,16 @@ BETA    = float(E("DPO_BETA", 0.1)); LR = float(E("DPO_LR", 5e-5))
 STEPS   = int(E("DPO_STEPS", 400)); BATCH = int(E("DPO_BATCH", 4)); ACCUM = int(E("DPO_ACCUM", 4))
 MAX_LEN = int(E("MAX_LEN", 1024)); LORA_R = int(E("RH_LORA_R", 16)); SEED = int(E("SEED", 0))
 EVAL_EVERY = int(E("DPO_EVAL_EVERY", 50))
+TAG = E("RUN_TAG", ""); SFX = f"_{TAG}" if TAG else ""
+SAVE_MERGED = int(E("SAVE_MERGED", 1))   # 0 for sweep arms: the merged model is ~16 GB each
+# Write-depth axis: restrict LoRA to a block range ("0-12", "20-31"); "" / "all" = every block.
+# Note peft's layers_to_transform only restricts WHERE adapters exist; it does not freeze anything
+# else, because nothing else is trainable here.
+LORA_LAYERS = E("LORA_LAYERS", "")
+def _layer_spec(s):
+    if not s or s == "all": return None
+    a, _, b = s.partition("-")
+    return list(range(int(a), int(b) + 1)) if b else [int(a)]
 DEV = "cuda"
 
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
@@ -58,10 +68,15 @@ print(f"[data] margin-filtered {len(recs)} | train {len(train)} | eval {len(test
 # ---- model + LoRA ----
 model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DEV)
 cfg = LoraConfig(r=LORA_R, lora_alpha=2 * LORA_R, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
+                 layers_to_transform=_layer_spec(LORA_LAYERS),
                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
 policy = get_peft_model(model, cfg)
 policy.config.use_cache = False
 params = [p for p in policy.parameters() if p.requires_grad]
+_blks = sorted({int(n.split("layers.")[1].split(".")[0]) for n, p in policy.named_parameters()
+                if p.requires_grad and "layers." in n})
+print(f"[lora] r={LORA_R} layers={LORA_LAYERS or 'all'} -> {len(_blks)} blocks "
+      f"[{_blks[0]}..{_blks[-1]}], {sum(p.numel() for p in params)/1e6:.1f}M trainable", flush=True)
 opt = torch.optim.AdamW(params, lr=LR)
 
 def comp_logprob(rec, side, grad):
@@ -120,14 +135,16 @@ for step in range(STEPS):
     if (step + 1) % EVAL_EVERY == 0:
         ev = evaluate(); ev["step"] = step + 1; hist["evals"].append(ev)
         print(f"  step {step+1:4d}: EVAL {ev}", flush=True)
-        json.dump(hist, open("/workspace/uf_dpo_history.json", "w"), indent=1)
+        json.dump(hist, open(f"/workspace/uf_dpo{SFX}_history.json", "w"), indent=1)
+        policy.save_pretrained(f"/workspace/uf_dpo{SFX}_ckpt{step+1}")
 
-json.dump(hist, open("/workspace/uf_dpo_history.json", "w"), indent=1)
-print("[save] adapter -> /workspace/uf_dpo_tulu8b_lora", flush=True)
-policy.save_pretrained("/workspace/uf_dpo_tulu8b_lora")
-tok.save_pretrained("/workspace/uf_dpo_tulu8b_lora")
-print("[save] merged -> /workspace/uf_dpo_tulu8b_merged", flush=True)
-merged = policy.merge_and_unload()
-merged.save_pretrained("/workspace/uf_dpo_tulu8b_merged")
-tok.save_pretrained("/workspace/uf_dpo_tulu8b_merged")
+json.dump(hist, open(f"/workspace/uf_dpo{SFX}_history.json", "w"), indent=1)
+print(f"[save] adapter -> /workspace/uf_dpo_tulu8b{SFX}_lora", flush=True)
+policy.save_pretrained(f"/workspace/uf_dpo_tulu8b{SFX}_lora")
+tok.save_pretrained(f"/workspace/uf_dpo_tulu8b{SFX}_lora")
+if SAVE_MERGED:
+    print(f"[save] merged -> /workspace/uf_dpo_tulu8b{SFX}_merged", flush=True)
+    merged = policy.merge_and_unload()
+    merged.save_pretrained(f"/workspace/uf_dpo_tulu8b{SFX}_merged")
+    tok.save_pretrained(f"/workspace/uf_dpo_tulu8b{SFX}_merged")
 print("DONE", flush=True)

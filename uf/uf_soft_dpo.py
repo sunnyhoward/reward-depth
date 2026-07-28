@@ -22,6 +22,9 @@ Caveat: the probe was fit with length-matching IPW; soft-DPO training is unweigh
 DPO baseline. The label itself is length-debiased (the probe's), the pair sampling is not.
 
 Env: same funnel knobs as uf_probe_rl.py + DPO_BETA DPO_LR DPO_STEPS DPO_BATCH DPO_ACCUM
+     L_OVERRIDE=-1 (READ depth: which layer's probe makes the labels)
+     LORA_LAYERS="" LORA_R=16 (WRITE depth: which blocks get adapters; "0-12", "20-31", "all")
+     RUN_TAG="" (suffix on every output path)
 Saves: /workspace/uf_softdpo_lora, /workspace/uf_softdpo_history.json"""
 import os, sys, json, random, hashlib
 from itertools import islice
@@ -42,6 +45,15 @@ STEPS, BATCH, ACCUM = int(E("DPO_STEPS", 400)), int(E("DPO_BATCH", 4)), int(E("D
 MAX_LEN = int(E("MAX_LEN", 1024)); N_EVAL = int(E("UF_N_EVAL", 128))
 L_OVERRIDE = int(E("L_OVERRIDE", -1))   # -1: use the sweep's Lstar; else fit/label at this layer
 TAG = E("RUN_TAG", ""); SFX = f"_{TAG}" if TAG else ""   # suffix for all output paths
+# Write-depth axis (independent of L_OVERRIDE, which is the READ depth): restrict LoRA to a block
+# range ("0-12", "20-31"); "" / "all" = every block. LORA_R exists so a restricted arm can be
+# parameter-matched to the full-stack arm -- otherwise "fewer layers" is confounded with "fewer
+# parameters".
+LORA_LAYERS = E("LORA_LAYERS", ""); LORA_R = int(E("LORA_R", 16))
+def _layer_spec(s):
+    if not s or s == "all": return None
+    a, _, b = s.partition("-")
+    return list(range(int(a), int(b) + 1)) if b else [int(a)]
 DEV, SEED = "cuda", 0
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 
@@ -117,10 +129,15 @@ print(f"[labels] p(chosen>rej): mean {P_SOFT.mean():.3f} | frac>0.5 {float((P_SO
 
 # ---- model + LoRA (identical to uf_dpo_train.py) ----
 model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DEV)
-cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
+cfg = LoraConfig(r=LORA_R, lora_alpha=2 * LORA_R, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
+                 layers_to_transform=_layer_spec(LORA_LAYERS),
                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
 policy = get_peft_model(model, cfg); policy.config.use_cache = False
 params = [p for p in policy.parameters() if p.requires_grad]
+_blks = sorted({int(n.split("layers.")[1].split(".")[0]) for n, p in policy.named_parameters()
+                if p.requires_grad and "layers." in n})
+print(f"[lora] r={LORA_R} layers={LORA_LAYERS or 'all'} -> {len(_blks)} blocks "
+      f"[{_blks[0]}..{_blks[-1]}], {sum(p.numel() for p in params)/1e6:.1f}M trainable", flush=True)
 opt = torch.optim.AdamW(params, lr=LR)
 
 def comp_logprob(rec, side, grad):

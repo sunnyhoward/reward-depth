@@ -27,6 +27,7 @@ MAX_LEN = int(E("MAX_LEN", 1024)); LORA_R = int(E("RH_LORA_R", 16)); SEED = int(
 EVAL_EVERY = int(E("DPO_EVAL_EVERY", 50))
 TAG = E("RUN_TAG", ""); SFX = f"_{TAG}" if TAG else ""
 SAVE_MERGED = int(E("SAVE_MERGED", 1))   # 0 for sweep arms: the merged model is ~16 GB each
+SAVE_CKPTS = int(E("SAVE_CKPTS", 1))     # 0 for LR-sweep cells: only the endpoint matters there
 # Write-depth axis: restrict LoRA to a block range ("0-12", "20-31"); "" / "all" = every block.
 # Note peft's layers_to_transform only restricts WHERE adapters exist; it does not freeze anything
 # else, because nothing else is trainable here.
@@ -73,10 +74,24 @@ cfg = LoraConfig(r=LORA_R, lora_alpha=2 * LORA_R, lora_dropout=0.0, bias="none",
 policy = get_peft_model(model, cfg)
 policy.config.use_cache = False
 params = [p for p in policy.parameters() if p.requires_grad]
-_blks = sorted({int(n.split("layers.")[1].split(".")[0]) for n, p in policy.named_parameters()
-                if p.requires_grad and "layers." in n})
+_perblk, _outside = {}, 0
+for _n, _p in policy.named_parameters():
+    if not _p.requires_grad: continue
+    if "layers." in _n:
+        _bi = int(_n.split("layers.")[1].split(".")[0]); _perblk[_bi] = _perblk.get(_bi, 0) + _p.numel()
+    else: _outside += _p.numel()
+_blks = sorted(_perblk); _ntrain = sum(_perblk.values()) + _outside
+# The layer-window study's primary comparison (lower vs upper) is only interpretable if the two
+# windows are parameter-matched. Fail loudly rather than silently producing a confounded null.
+assert len(set(_perblk.values())) == 1, f"adapted blocks differ in size: {sorted(set(_perblk.values()))}"
+assert _outside == 0, f"{_outside} trainable params outside transformer blocks (embed/lm_head?)"
+EXPECT = int(E("EXPECT_TRAINABLE", 0))
+if EXPECT:
+    assert _ntrain == EXPECT, (f"trainable param mismatch: got {_ntrain:,}, expected {EXPECT:,} — "
+                               f"the parameter-matched comparison is broken, refusing to run")
 print(f"[lora] r={LORA_R} layers={LORA_LAYERS or 'all'} -> {len(_blks)} blocks "
-      f"[{_blks[0]}..{_blks[-1]}], {sum(p.numel() for p in params)/1e6:.1f}M trainable", flush=True)
+      f"[{_blks[0]}..{_blks[-1]}], {_ntrain/1e6:.2f}M trainable"
+      f"{f' (asserted == {EXPECT:,})' if EXPECT else ''}", flush=True)
 opt = torch.optim.AdamW(params, lr=LR)
 
 def comp_logprob(rec, side, grad):
@@ -113,7 +128,8 @@ def evaluate(n=N_EVAL):
                 dlp_chosen=float(np.mean(dc)), dlp_rejected=float(np.mean(dr)))
 
 rng = random.Random(4242)
-hist = dict(loss=[], evals=[])
+hist = dict(loss=[], evals=[], lora_layers=LORA_LAYERS or "all", blocks=_blks,
+            n_trainable=_ntrain, lr=LR, beta=BETA, lora_r=LORA_R, seed=SEED)
 ev = evaluate(); ev["step"] = 0; hist["evals"].append(ev)
 print(f"  step   0: {ev}", flush=True)
 policy.train()
@@ -136,7 +152,7 @@ for step in range(STEPS):
         ev = evaluate(); ev["step"] = step + 1; hist["evals"].append(ev)
         print(f"  step {step+1:4d}: EVAL {ev}", flush=True)
         json.dump(hist, open(f"/workspace/uf_dpo{SFX}_history.json", "w"), indent=1)
-        policy.save_pretrained(f"/workspace/uf_dpo{SFX}_ckpt{step+1}")
+        if SAVE_CKPTS: policy.save_pretrained(f"/workspace/uf_dpo{SFX}_ckpt{step+1}")
 
 json.dump(hist, open(f"/workspace/uf_dpo{SFX}_history.json", "w"), indent=1)
 print(f"[save] adapter -> /workspace/uf_dpo_tulu8b{SFX}_lora", flush=True)

@@ -1,0 +1,595 @@
+{
+ "base_raw": {
+  "acc": 0.689358372456964,
+  "se": 0.012944549090579068,
+  "n": 1278,
+  "sections": {
+   "chat": {
+    "acc": 0.31451612903225806,
+    "n": 248
+   },
+   "chat-hard": {
+    "acc": 0.7032258064516129,
+    "n": 310
+   },
+   "safety": {
+    "acc": 0.7066666666666667,
+    "n": 300
+   },
+   "reasoning": {
+    "acc": 0.888095238095238,
+    "n": 420
+   }
+  },
+  "subsets": {
+   "alpacaeval-easy": {
+    "acc": 0.016666666666666666,
+    "n": 60
+   },
+   "alpacaeval-hard": {
+    "acc": 0.03333333333333333,
+    "n": 60
+   },
+   "alpacaeval-length": {
+    "acc": 0.65,
+    "n": 60
+   },
+   "donotanswer": {
+    "acc": 0.7333333333333333,
+    "n": 60
+   },
+   "hep-cpp": {
+    "acc": 0.8166666666666667,
+    "n": 60
+   },
+   "hep-go": {
+    "acc": 0.9333333333333333,
+    "n": 60
+   },
+   "hep-java": {
+    "acc": 0.9333333333333333,
+    "n": 60
+   },
+   "hep-js": {
+    "acc": 0.9,
+    "n": 60
+   },
+   "hep-python": {
+    "acc": 0.9,
+    "n": 60
+   },
+   "hep-rust": {
+    "acc": 0.95,
+    "n": 60
+   },
+   "llmbar-adver-GPTInst": {
+    "acc": 0.7833333333333333,
+    "n": 60
+   },
+   "llmbar-adver-GPTOut": {
+    "acc": 0.48936170212765956,
+    "n": 47
+   },
+   "llmbar-adver-manual": {
+    "acc": 0.8478260869565217,
+    "n": 46
+   },
+   "llmbar-adver-neighbor": {
+    "acc": 0.9,
+    "n": 60
+   },
+   "llmbar-natural": {
+    "acc": 0.5833333333333334,
+    "n": 60
+   },
+   "math-prm": {
+    "acc": 0.7833333333333333,
+    "n": 60
+   },
+   "mt-bench-easy": {
+    "acc": 0.4642857142857143,
+    "n": 28
+   },
+   "mt-bench-hard": {
+    "acc": 0.5405405405405406,
+    "n": 37
+   },
+   "mt-bench-med": {
+    "acc": 0.575,
+    "n": 40
+   },
+   "refusals-dangerous": {
+    "acc": 0.9666666666666667,
+    "n": 60
+   },
+   "refusals-offensive": {
+    "acc": 0.8,
+    "n": 60
+   },
+   "xstest-should-refuse": {
+    "acc": 0.7333333333333333,
+    "n": 60
+   },
+   "xstest-should-respond": {
+    "acc": 0.3,
+    "n": 60
+   }
+  }
+ },
+ "L12": {
+  "acc": 0.729264475743349,
+  "se": 0.012429387414042679,
+  "n": 1278,
+  "sections": {
+   "chat": {
+    "acc": 0.9274193548387096,
+    "n": 248
+   },
+   "chat-hard": {
+    "acc": 0.5548387096774193,
+    "n": 310
+   },
+   "safety": {
+    "acc": 0.6733333333333333,
+    "n": 300
+   },
+   "reasoning": {
+    "acc": 0.780952380952381,
+    "n": 420
+   }
+  },
+  "subsets": {
+   "alpacaeval-easy": {
+    "acc": 0.9666666666666667,
+    "n": 60
+   },
+   "alpacaeval-hard": {
+    "acc": 0.9833333333333333,
+    "n": 60
+   },
+   "alpacaeval-length": {
+    "acc": 0.9333333333333333,
+    "n": 60
+   },
+   "donotanswer": {
+    "acc": 0.5833333333333334,
+    "n": 60
+   },
+   "hep-cpp": {
+    "acc": 0.8666666666666667,
+    "n": 60
+   },
+   "hep-go": {
+    "acc": 0.8,
+    "n": 60
+   },
+   "hep-java": {
+    "acc": 0.8833333333333333,
+    "n": 60
+   },
+   "hep-js": {
+    "acc": 0.8166666666666667,
+    "n": 60
+   },
+   "hep-python": {
+    "acc": 0.8,
+    "n": 60
+   },
+   "hep-rust": {
+    "acc": 0.8,
+    "n": 60
+   },
+   "llmbar-adver-GPTInst": {
+    "acc": 0.38333333333333336,
+    "n": 60
+   },
+   "llmbar-adver-GPTOut": {
+    "acc": 0.5106382978723404,
+    "n": 47
+   },
+   "llmbar-adver-manual": {
+    "acc": 0.4782608695652174,
+    "n": 46
+   },
+   "llmbar-adver-neighbor": {
+    "acc": 0.6166666666666667,
+    "n": 60
+   },
+   "llmbar-natural": {
+    "acc": 0.6666666666666666,
+    "n": 60
+   },
+   "math-prm": {
+    "acc": 0.5,
+    "n": 60
+   },
+   "mt-bench-easy": {
+    "acc": 0.8571428571428571,
+    "n": 28
+   },
+   "mt-bench-hard": {
+    "acc": 0.7027027027027027,
+    "n": 37
+   },
+   "mt-bench-med": {
+    "acc": 0.825,
+    "n": 40
+   },
+   "refusals-dangerous": {
+    "acc": 0.23333333333333334,
+    "n": 60
+   },
+   "refusals-offensive": {
+    "acc": 0.9,
+    "n": 60
+   },
+   "xstest-should-refuse": {
+    "acc": 0.7,
+    "n": 60
+   },
+   "xstest-should-respond": {
+    "acc": 0.95,
+    "n": 60
+   }
+  },
+  "dlp_chosen": -5.646887392181676,
+  "dlp_rejected": -9.793385985031934
+ },
+ "L31": {
+  "acc": 0.7151799687010955,
+  "se": 0.012624887271372506,
+  "n": 1278,
+  "sections": {
+   "chat": {
+    "acc": 0.9153225806451613,
+    "n": 248
+   },
+   "chat-hard": {
+    "acc": 0.5483870967741935,
+    "n": 310
+   },
+   "safety": {
+    "acc": 0.67,
+    "n": 300
+   },
+   "reasoning": {
+    "acc": 0.7523809523809524,
+    "n": 420
+   }
+  },
+  "subsets": {
+   "alpacaeval-easy": {
+    "acc": 0.9333333333333333,
+    "n": 60
+   },
+   "alpacaeval-hard": {
+    "acc": 0.9833333333333333,
+    "n": 60
+   },
+   "alpacaeval-length": {
+    "acc": 0.8833333333333333,
+    "n": 60
+   },
+   "donotanswer": {
+    "acc": 0.5833333333333334,
+    "n": 60
+   },
+   "hep-cpp": {
+    "acc": 0.8333333333333334,
+    "n": 60
+   },
+   "hep-go": {
+    "acc": 0.7166666666666667,
+    "n": 60
+   },
+   "hep-java": {
+    "acc": 0.8166666666666667,
+    "n": 60
+   },
+   "hep-js": {
+    "acc": 0.8,
+    "n": 60
+   },
+   "hep-python": {
+    "acc": 0.8,
+    "n": 60
+   },
+   "hep-rust": {
+    "acc": 0.7833333333333333,
+    "n": 60
+   },
+   "llmbar-adver-GPTInst": {
+    "acc": 0.48333333333333334,
+    "n": 60
+   },
+   "llmbar-adver-GPTOut": {
+    "acc": 0.5106382978723404,
+    "n": 47
+   },
+   "llmbar-adver-manual": {
+    "acc": 0.43478260869565216,
+    "n": 46
+   },
+   "llmbar-adver-neighbor": {
+    "acc": 0.5333333333333333,
+    "n": 60
+   },
+   "llmbar-natural": {
+    "acc": 0.7,
+    "n": 60
+   },
+   "math-prm": {
+    "acc": 0.5166666666666667,
+    "n": 60
+   },
+   "mt-bench-easy": {
+    "acc": 0.9285714285714286,
+    "n": 28
+   },
+   "mt-bench-hard": {
+    "acc": 0.6216216216216216,
+    "n": 37
+   },
+   "mt-bench-med": {
+    "acc": 0.825,
+    "n": 40
+   },
+   "refusals-dangerous": {
+    "acc": 0.3,
+    "n": 60
+   },
+   "refusals-offensive": {
+    "acc": 0.9,
+    "n": 60
+   },
+   "xstest-should-refuse": {
+    "acc": 0.6666666666666666,
+    "n": 60
+   },
+   "xstest-should-respond": {
+    "acc": 0.9,
+    "n": 60
+   }
+  },
+  "dlp_chosen": -4.613508065448308,
+  "dlp_rejected": -8.30362951690229
+ },
+ "L16": {
+  "acc": 0.7456964006259781,
+  "se": 0.0121812498208644,
+  "n": 1278,
+  "sections": {
+   "chat": {
+    "acc": 0.9395161290322581,
+    "n": 248
+   },
+   "chat-hard": {
+    "acc": 0.5612903225806452,
+    "n": 310
+   },
+   "safety": {
+    "acc": 0.7033333333333334,
+    "n": 300
+   },
+   "reasoning": {
+    "acc": 0.7976190476190477,
+    "n": 420
+   }
+  },
+  "subsets": {
+   "alpacaeval-easy": {
+    "acc": 0.9666666666666667,
+    "n": 60
+   },
+   "alpacaeval-hard": {
+    "acc": 0.9833333333333333,
+    "n": 60
+   },
+   "alpacaeval-length": {
+    "acc": 0.9333333333333333,
+    "n": 60
+   },
+   "donotanswer": {
+    "acc": 0.6333333333333333,
+    "n": 60
+   },
+   "hep-cpp": {
+    "acc": 0.9166666666666666,
+    "n": 60
+   },
+   "hep-go": {
+    "acc": 0.8333333333333334,
+    "n": 60
+   },
+   "hep-java": {
+    "acc": 0.8666666666666667,
+    "n": 60
+   },
+   "hep-js": {
+    "acc": 0.8333333333333334,
+    "n": 60
+   },
+   "hep-python": {
+    "acc": 0.85,
+    "n": 60
+   },
+   "hep-rust": {
+    "acc": 0.7666666666666667,
+    "n": 60
+   },
+   "llmbar-adver-GPTInst": {
+    "acc": 0.4166666666666667,
+    "n": 60
+   },
+   "llmbar-adver-GPTOut": {
+    "acc": 0.44680851063829785,
+    "n": 47
+   },
+   "llmbar-adver-manual": {
+    "acc": 0.4782608695652174,
+    "n": 46
+   },
+   "llmbar-adver-neighbor": {
+    "acc": 0.6166666666666667,
+    "n": 60
+   },
+   "llmbar-natural": {
+    "acc": 0.7166666666666667,
+    "n": 60
+   },
+   "math-prm": {
+    "acc": 0.5166666666666667,
+    "n": 60
+   },
+   "mt-bench-easy": {
+    "acc": 0.8571428571428571,
+    "n": 28
+   },
+   "mt-bench-hard": {
+    "acc": 0.7027027027027027,
+    "n": 37
+   },
+   "mt-bench-med": {
+    "acc": 0.9,
+    "n": 40
+   },
+   "refusals-dangerous": {
+    "acc": 0.3,
+    "n": 60
+   },
+   "refusals-offensive": {
+    "acc": 0.9166666666666666,
+    "n": 60
+   },
+   "xstest-should-refuse": {
+    "acc": 0.7166666666666667,
+    "n": 60
+   },
+   "xstest-should-respond": {
+    "acc": 0.95,
+    "n": 60
+   }
+  },
+  "dlp_chosen": -7.274660398848413,
+  "dlp_rejected": -12.325838279742777
+ },
+ "GT": {
+  "acc": 0.770735524256651,
+  "se": 0.01175860075144267,
+  "n": 1278,
+  "sections": {
+   "chat": {
+    "acc": 0.9395161290322581,
+    "n": 248
+   },
+   "chat-hard": {
+    "acc": 0.5225806451612903,
+    "n": 310
+   },
+   "safety": {
+    "acc": 0.7766666666666666,
+    "n": 300
+   },
+   "reasoning": {
+    "acc": 0.85,
+    "n": 420
+   }
+  },
+  "subsets": {
+   "alpacaeval-easy": {
+    "acc": 0.9833333333333333,
+    "n": 60
+   },
+   "alpacaeval-hard": {
+    "acc": 1.0,
+    "n": 60
+   },
+   "alpacaeval-length": {
+    "acc": 0.95,
+    "n": 60
+   },
+   "donotanswer": {
+    "acc": 0.6666666666666666,
+    "n": 60
+   },
+   "hep-cpp": {
+    "acc": 0.9833333333333333,
+    "n": 60
+   },
+   "hep-go": {
+    "acc": 0.9333333333333333,
+    "n": 60
+   },
+   "hep-java": {
+    "acc": 0.95,
+    "n": 60
+   },
+   "hep-js": {
+    "acc": 0.9333333333333333,
+    "n": 60
+   },
+   "hep-python": {
+    "acc": 0.9,
+    "n": 60
+   },
+   "hep-rust": {
+    "acc": 0.9166666666666666,
+    "n": 60
+   },
+   "llmbar-adver-GPTInst": {
+    "acc": 0.23333333333333334,
+    "n": 60
+   },
+   "llmbar-adver-GPTOut": {
+    "acc": 0.425531914893617,
+    "n": 47
+   },
+   "llmbar-adver-manual": {
+    "acc": 0.5217391304347826,
+    "n": 46
+   },
+   "llmbar-adver-neighbor": {
+    "acc": 0.6833333333333333,
+    "n": 60
+   },
+   "llmbar-natural": {
+    "acc": 0.6666666666666666,
+    "n": 60
+   },
+   "math-prm": {
+    "acc": 0.3333333333333333,
+    "n": 60
+   },
+   "mt-bench-easy": {
+    "acc": 0.9285714285714286,
+    "n": 28
+   },
+   "mt-bench-hard": {
+    "acc": 0.6216216216216216,
+    "n": 37
+   },
+   "mt-bench-med": {
+    "acc": 0.775,
+    "n": 40
+   },
+   "refusals-dangerous": {
+    "acc": 0.6,
+    "n": 60
+   },
+   "refusals-offensive": {
+    "acc": 0.9,
+    "n": 60
+   },
+   "xstest-should-refuse": {
+    "acc": 0.7666666666666667,
+    "n": 60
+   },
+   "xstest-should-respond": {
+    "acc": 0.95,
+    "n": 60
+   }
+  },
+  "dlp_chosen": -21.265660117816104,
+  "dlp_rejected": -30.816230277033853
+ }
+}

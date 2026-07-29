@@ -62,22 +62,32 @@ fh = RewardHead(ctx, heads, LSTAR)
 json.dump(dict(layer_acc=[None if np.isnan(a) else float(a) for a in acc], Lstar=LSTAR),
           open("/workspace/cc_probe_curve.json", "w"))
 
-# ---- LoRA: attention only (= anchor coverage), blocks <= L* ----
+# ---- LoRA: attention only (= anchor coverage), ALL blocks; per-arm masking picks <= L ----
 cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
-                 target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
-                 layers_to_transform=list(range(LSTAR + 1)))
+                 target_modules=["q_proj", "k_proj", "v_proj", "o_proj"])
 ctx.policy = get_peft_model(ctx.model, cfg); ctx.policy.config.use_cache = False
 import re as _re
 ctx.lora_params = [(n, p, int(_re.search(r"\.layers\.(\d+)\.", n).group(1)))
                    for n, p in ctx.policy.named_parameters() if "lora_" in n]
 params = [p for _, p, _ in ctx.lora_params]
-print(f"[lora] attn-only <= L*: {sum(p.numel() for p in params)/1e6:.2f}M trainable", flush=True)
 
-factors = FactorBundle.load(FACTORS, device=ctx.device)
-anchor = KFACEWC(factors, coefficient=1.0)
-# LoRA exists only on blocks <= L*; drop factors for frozen layers (their delta is identically 0)
-anchor.factors.factors = {n: f for n, f in anchor.factors.factors.items()
-                          if int(_re.search(r"layers\.(\d+)\.", n).group(1)) <= LSTAR}
+FULL_FACTORS = FactorBundle.load(FACTORS, device=ctx.device)
+
+def make_anchor(L):
+    """Anchor over exactly the trainable blocks <= L (frozen modules have zero delta). Shallow-
+    copies the bundle so the shared FULL_FACTORS stays intact across arms of a depth sweep.
+    Depth-sweep caveat: the calibration RATIO was fit on the <=20 configuration and is reused
+    across L (slope ~= 1 makes the scale insensitive to the module subset)."""
+    import copy
+    a = KFACEWC(FULL_FACTORS, coefficient=1.0)
+    fb = copy.copy(FULL_FACTORS)
+    fb.factors = {n: f for n, f in FULL_FACTORS.factors.items()
+                  if int(_re.search(r"layers\.(\d+)\.", n).group(1)) <= L}
+    a.factors = fb
+    return a
+
+PLATEAU_L = LSTAR
+anchor = make_anchor(LSTAR)
 
 def model_ref():
     class _Ref(torch.nn.Module):
@@ -182,13 +192,17 @@ def _batch_meandiff(batch):
     B = len(batch)
     return (f[:B] - f[B:]).float().mean(0)
 
-def run_arm(arm, ewc_kl, tag, seed, md_k=1):
+def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
     """md_k: lag window for the meandiff direction -- mean over the last md_k batches' diff
     vectors (1 = zero-lag per-batch, the supervisor's form). md_k=0 = direction estimated at
-    init and FROZEN: the within-family frozen control for the lag-spectrum ablation."""
+    init and FROZEN: the within-family frozen control for the lag-spectrum ablation.
+    L: attach layer for a depth sweep (read layer, LoRA mask <= L, anchor <= L); default L*."""
     from collections import deque
-    global params
-    params = reset_lora(ctx, seed=seed)          # fresh delta-0 adapter, shared everything else
+    global params, LSTAR, fh, anchor
+    LSTAR = L if L is not None else PLATEAU_L
+    fh = RewardHead(ctx, heads, LSTAR)
+    anchor = make_anchor(LSTAR)
+    params = reset_lora(ctx, seed=seed, trainable_blocks=set(range(LSTAR + 1)))
     opt = torch.optim.AdamW(params, lr=LR)
     hist = dict(arm=arm, Lstar=LSTAR, ewc_kl=ewc_kl, ratio=RATIO, seed=seed, md_k=md_k,
                 mloss=[], evals=[])
@@ -243,9 +257,14 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1):
 # once); optional third field kN = meandiff lag window. Falls back to ARM/EWC_KL env pair.
 def _spec(s):
     parts = s.split(":")
-    return parts[0], float(parts[1]), int(parts[2][1:]) if len(parts) > 2 else 1
-specs = [_spec(s) for s in E("ARMS", "").split(",") if s] or [(ARM, EWC_KL, 1)]
-for arm, ewc_kl, md_k in specs:
-    tag = f"{arm}_e{ewc_kl:g}_k{md_k}_s{SEED}" if len(specs) > 1 else TAG
-    run_arm(arm, ewc_kl, tag, SEED, md_k)
+    md_k, L = 1, None
+    for p in parts[2:]:
+        if p.startswith("k"): md_k = int(p[1:])
+        elif p.startswith("L"): L = int(p[1:])
+    return parts[0], float(parts[1]), md_k, L
+specs = [_spec(s) for s in E("ARMS", "").split(",") if s] or [(ARM, EWC_KL, 1, None)]
+for arm, ewc_kl, md_k, L in specs:
+    tag = (f"{arm}_e{ewc_kl:g}_k{md_k}" + (f"_L{L}" if L is not None else "") + f"_s{SEED}") \
+          if len(specs) > 1 else TAG
+    run_arm(arm, ewc_kl, tag, SEED, md_k, L)
 print("ALL DONE", flush=True)

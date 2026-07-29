@@ -172,11 +172,31 @@ def evaluate(full):
     ctx.policy.train()
     return ev
 
-def run_arm(arm, ewc_kl, tag, seed):
+@torch.no_grad()
+def _batch_meandiff(batch):
+    texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]
+    enc = ctx.tok(texts, return_tensors="pt", padding=True).to(ctx.device)
+    with ResidualCapture([ctx.blocks[LSTAR]]) as cap:
+        ctx.policy(**enc, logits_to_keep=1)
+    f = cap.get()[0][:, -1]
+    B = len(batch)
+    return (f[:B] - f[B:]).float().mean(0)
+
+def run_arm(arm, ewc_kl, tag, seed, md_k=1):
+    """md_k: lag window for the meandiff direction -- mean over the last md_k batches' diff
+    vectors (1 = zero-lag per-batch, the supervisor's form). md_k=0 = direction estimated at
+    init and FROZEN: the within-family frozen control for the lag-spectrum ablation."""
+    from collections import deque
     global params
     params = reset_lora(ctx, seed=seed)          # fresh delta-0 adapter, shared everything else
     opt = torch.optim.AdamW(params, lr=LR)
-    hist = dict(arm=arm, Lstar=LSTAR, ewc_kl=ewc_kl, ratio=RATIO, seed=seed, mloss=[], evals=[])
+    hist = dict(arm=arm, Lstar=LSTAR, ewc_kl=ewc_kl, ratio=RATIO, seed=seed, md_k=md_k,
+                mloss=[], evals=[])
+    rg0 = random.Random(seed + 77)
+    v_frozen, buf = None, deque(maxlen=max(md_k, 1))
+    if arm == "meandiff" and md_k == 0:          # frozen-at-init direction from 8 base batches
+        v0 = torch.stack([_batch_meandiff(rg0.sample(cc_tr, BATCH)) for _ in range(8)]).mean(0)
+        v_frozen = (v0 / (v0.norm() + 1e-8)).detach()
     ev0 = evaluate(full=True); ev0["step"] = 0; hist["evals"].append(ev0)
     print(f"[{tag}] step    0: EVAL {ev0}", flush=True)
     rgen = random.Random(seed + 7); ctx.policy.train()
@@ -192,8 +212,12 @@ def run_arm(arm, ewc_kl, tag, seed):
                 ctx.policy(**enc, logits_to_keep=1)
             f = cap.get()[0][:, -1]
             B = len(batch)
-            v = (f[:B] - f[B:]).float().mean(0)
-            v = (v / (v.norm() + 1e-8)).detach()
+            if v_frozen is not None:
+                v = v_frozen
+            else:
+                buf.append((f[:B] - f[B:]).float().mean(0).detach())
+                m = torch.stack(list(buf)).mean(0)
+                v = (m / (m.norm() + 1e-8))
             proj = ((f[:B] - f[B:]).float().matmul(v)) / np.sqrt(ctx.hid)
             if int(E("MD_RAW", 0)):   # sweep-1 form: unbounded linear push -- collapses by step 50
                 loss = MCOEF * (-proj.mean())
@@ -215,10 +239,13 @@ def run_arm(arm, ewc_kl, tag, seed):
     ctx.policy.save_pretrained(f"/workspace/cc_stage2_{tag}_lora")
     print(f"[{tag}] DONE", flush=True)
 
-# ARMS="probe:1.0,probe:0,meandiff:1.0" runs all in ONE process (model/Stage A/factors loaded
-# once); falls back to the single ARM/EWC_KL env pair.
-specs = [(s.split(":")[0], float(s.split(":")[1])) for s in E("ARMS", "").split(",") if s] \
-        or [(ARM, EWC_KL)]
-for arm, ewc_kl in specs:
-    run_arm(arm, ewc_kl, f"{arm}_e{ewc_kl:g}_s{SEED}" if len(specs) > 1 else TAG, SEED)
+# ARMS="probe:1.0,meandiff:1:k5,..." runs all in ONE process (model/Stage A/factors loaded
+# once); optional third field kN = meandiff lag window. Falls back to ARM/EWC_KL env pair.
+def _spec(s):
+    parts = s.split(":")
+    return parts[0], float(parts[1]), int(parts[2][1:]) if len(parts) > 2 else 1
+specs = [_spec(s) for s in E("ARMS", "").split(",") if s] or [(ARM, EWC_KL, 1)]
+for arm, ewc_kl, md_k in specs:
+    tag = f"{arm}_e{ewc_kl:g}_k{md_k}_s{SEED}" if len(specs) > 1 else TAG
+    run_arm(arm, ewc_kl, tag, SEED, md_k)
 print("ALL DONE", flush=True)

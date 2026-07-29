@@ -201,8 +201,10 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
     global params, LSTAR, fh, anchor
     LSTAR = L if L is not None else PLATEAU_L
     fh = RewardHead(ctx, heads, LSTAR)
-    anchor = make_anchor(LSTAR)
-    params = reset_lora(ctx, seed=seed, trainable_blocks=set(range(LSTAR + 1)))
+    # hybrid trains ALL blocks (margin owns <= L*, exact-J owns > L*) with the full-stack anchor
+    anchor = make_anchor(ctx.n_layers - 1 if arm == "hybrid" else LSTAR)
+    params = reset_lora(ctx, seed=seed,
+                        trainable_blocks=None if arm == "hybrid" else set(range(LSTAR + 1)))
     opt = torch.optim.AdamW(params, lr=LR)
     hist = dict(arm=arm, Lstar=LSTAR, ewc_kl=ewc_kl, ratio=RATIO, seed=seed, md_k=md_k,
                 mloss=[], evals=[])
@@ -211,6 +213,24 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
     if arm == "meandiff" and md_k == 0:          # frozen-at-init direction from 8 base batches
         v0 = torch.stack([_batch_meandiff(rg0.sample(cc_tr, BATCH)) for _ in range(8)]).mean(0)
         v_frozen = (v0 / (v0.norm() + 1e-8)).detach()
+    # MD_NORM: per-layer projection scale estimated at init, so -logsigmoid starts at the same
+    # operating point at every depth (residual norms grow with depth; a fixed temperature leaves
+    # deep layers saturated at init -> zero gradient, shallow layers over-driven -> detonation)
+    proj_scale = 1.0
+    if arm in ("meandiff", "hybrid") and int(E("MD_NORM", 0)):
+        with torch.no_grad():
+            ms = [ _batch_meandiff(rg0.sample(cc_tr, BATCH)) for _ in range(8) ]
+            vv = torch.stack(ms).mean(0); vv = vv / (vv.norm() + 1e-8)
+            ps = [float((m @ vv).abs() / np.sqrt(ctx.hid)) for m in ms]
+            proj_scale = float(np.mean(ps)) + 1e-6
+        print(f"[{tag}] proj_scale {proj_scale:.3f}", flush=True)
+    # hybrid: probe-sourced candidate rewards from the STAGE-A cache (frozen-base features at L*),
+    # exact 2-candidate expectation J = p(wrong)*r_w + p(right)*r_r -- no sampling needed
+    if arm == "hybrid":
+        with torch.no_grad():
+            zc = fh.g(torch.tensor(Xr_tr[:, LSTAR] - Xw_tr[:, LSTAR], device=ctx.device).float())
+            RW = torch.special.ndtr(zc)          # reward for emitting WRONG: probe confidence
+        pair_idx = {id(p): i for i, p in enumerate(cc_tr)}
     ev0 = evaluate(full=True); ev0["step"] = 0; hist["evals"].append(ev0)
     print(f"[{tag}] step    0: EVAL {ev0}", flush=True)
     rgen = random.Random(seed + 7); ctx.policy.train()
@@ -219,6 +239,39 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
         opt.zero_grad()
         if arm == "probe":
             ml = margin_step(ctx, batch, fh, coef=MCOEF)   # -log ndtr(-g(f_r - f_w)): wrong ≻ right
+        elif arm == "hybrid":
+            # ---- stage 2.5: meandiff margin (grads <= L*) + exact-expectation candidate
+            # REINFORCE on the 2-entity menu (grads all blocks; probe-sourced rewards).
+            # Phase-4 masking: J's backward contribution to <= L* is discarded in favour of the
+            # margin's, so the split of labour matches the two-head hybrid.
+            texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]
+            enc = ctx.tok(texts, return_tensors="pt", padding=True).to(ctx.device)
+            B = len(batch)
+            keep = max(max(len(p["w_ids"]), len(p["r_ids"])) for p in batch) + 1
+            with ResidualCapture([ctx.blocks[LSTAR]]) as cap:
+                out = ctx.policy(**enc, logits_to_keep=keep)
+            f = cap.get()[0][:, -1]
+            buf.append((f[:B] - f[B:]).float().mean(0).detach())
+            m = torch.stack(list(buf)).mean(0); v = m / (m.norm() + 1e-8)
+            proj = ((f[:B] - f[B:]).float().matmul(v)) / np.sqrt(ctx.hid) / proj_scale
+            mloss_t = MCOEF * (-F.logsigmoid(proj).mean())
+            low = [p_ for _, p_, b_ in ctx.lora_params if b_ <= LSTAR]
+            mloss_t.backward(retain_graph=True)
+            g_low = [(p_, p_.grad.clone() if p_.grad is not None else None) for p_ in low]
+            lsm = F.log_softmax(out.logits.float(), -1)   # (2B, keep, V): positions T-keep..T-1
+            ids = enc.input_ids
+            T = ids.shape[1]
+            lps = []
+            for i, nn_ in enumerate([len(p["w_ids"]) for p in batch] + [len(p["r_ids"]) for p in batch]):
+                off = keep - nn_ - 1                       # kept-coords index of position (T-nn_-1)
+                lps.append(lsm[i, off:off + nn_].gather(-1, ids[i, T - nn_:, None]).squeeze(-1).sum())
+            lps = torch.stack(lps)
+            p_rel = torch.softmax(torch.stack([lps[:B], lps[B:]], 1), 1)   # (B, [wrong, right])
+            rw = RW[torch.tensor([pair_idx[id(p)] for p in batch], device=ctx.device)]
+            J = (p_rel[:, 0] * rw + p_rel[:, 1] * (1 - rw)).mean()
+            (-float(E("RL_COEF", 1.0)) * J).backward()
+            for p_, g_ in g_low: p_.grad = g_                     # margin owns blocks <= L*
+            ml = float(mloss_t.detach()); hist.setdefault("J", []).append(float(J.detach()))
         else:   # meandiff: current-policy batch mean difference as the (detached) push direction
             texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]
             enc = ctx.tok(texts, return_tensors="pt", padding=True).to(ctx.device)
@@ -232,7 +285,7 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
                 buf.append((f[:B] - f[B:]).float().mean(0).detach())
                 m = torch.stack(list(buf)).mean(0)
                 v = (m / (m.norm() + 1e-8))
-            proj = ((f[:B] - f[B:]).float().matmul(v)) / np.sqrt(ctx.hid)
+            proj = ((f[:B] - f[B:]).float().matmul(v)) / np.sqrt(ctx.hid) / proj_scale
             if int(E("MD_RAW", 0)):   # sweep-1 form: unbounded linear push -- collapses by step 50
                 loss = MCOEF * (-proj.mean())
             else:                     # saturating: satisfied pairs stop pushing (what log-ndtr

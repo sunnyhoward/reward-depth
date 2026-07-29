@@ -19,7 +19,8 @@ trace-form penalty, and the calibration protocol; 11/11 tests pass unmodified.*
 | A per-batch adaptive activation direction (saturated) moves behaviour | **YES — first in the project** (24–32% oracle flip, knowledge intact) |
 | Lag of the read is the forging resource | YES (clean k-spectrum: k=0 forges, k≥1 doesn't) |
 | The install persists past its peak | NO — recession by step 300 at every λ (the open problem) |
-| Attachment depth matters, measured causally | **YES — strict inverted-U at the elbow** (L20: installs & stable; below: detonates; above: inert) |
+| Attachment depth matters, measured causally | **YES — strict inverted-U at the elbow** (L20: installs & stable; below: detonates; above: inert; drive-normalized control confirms it is not a temperature artifact) |
+| The two-head hybrid (margin ≤ L* + exact-J > L*) completes the install | **YES — 95% flip with OOD transfer at step 50**, probe-sourced rewards, no sampling |
 
 ## 1. Morning prelude on UF (Tulu-8B): diagonal EWC as the KL stand-in
 
@@ -184,11 +185,25 @@ satisfied by forging. Caveats: single seed, 100 steps, one α/k/λ configuration
 2. **Stage 2 has its first working objective** — saturated, small-window mean-diff — and a
    precisely isolated open problem (the recession). The anchor stays for collateral; forging is
    solved by adaptivity, not regularization.
-3. **Stage 2.5 (queued, tomorrow)**: hybrid — mean-diff margin for the representation + a small
-   on-policy REINFORCE term for behaviour. This is phase-4's two-head structure with a working
-   margin half; every prior working method coupled reward to behaviour through emitted text, and
-   the 24–32% vs ~100% (anchored-RL on the letter testbed) gap says the emission channel is still
-   where installs complete.
+3. **Stage 2.5 — RUN, and it completes the install.** Hybrid = mean-diff margin (blocks ≤ L*) +
+   exact-expectation candidate REINFORCE over the 2-entity menu (blocks > L*; rewards from the
+   FROZEN probe, not the oracle; no sampling — the menu makes the expectation exact; full-stack
+   anchor). `results/cc_stage2_hybrid_k5_history.json`:
+
+   | step | trained flip | know flip (transfer) | ood_sum flip | offmenu | replay KL |
+   |---|---|---|---|---|---|
+   | 50 | **.95** | **.96** | .53 | .03 | .19 |
+   | 100 | .82 | .82 | .27 | .18 | .30 |
+
+   95% install with OOD transfer at step 50 — phase-4's success profile, reproduced on the
+   non-degenerate testbed. Margin-only peaked at 32%; the emission-channel head is what
+   completes it, confirming the phase-1–5 pattern. Decay + drift after 50: early stopping again.
+4. **Depth-norm control** (MD_NORM, drive equalized at init): refutes the saturation-artifact
+   worry — un-normalized init drives were comparable across depths (proj scale .14 @L20 vs .32
+   @L26, both unsaturated), so L26/32 inertness is genuine. Bonus finding: halving the drive at
+   L20 flips the outcome from install (32%) to representation-inflation-without-behaviour (4%)
+   — drive amplitude selects between the behavioural and forging paths. The recipe lives in a
+   depth × drive window.
 4. The steering result + 5.1 close the frozen-probe-as-handle question for good: probes label;
    they do not steer, and margins against them are forged.
 

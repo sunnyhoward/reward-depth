@@ -146,55 +146,72 @@ def pair_z(pairs, use_policy):
     B = len(pairs)
     return float(fh.g(fs[B:] - fs[:B]).mean())   # g>0 = right-preferred; install drives it NEGATIVE
 
+ORACLE_EVERY, ORACLE_N = int(E("ORACLE_EVERY", 100)), int(E("ORACLE_N", 100))
+
 @torch.no_grad()
-def evaluate():
+def evaluate(full):
+    """Two-tier: cheap instruments every eval; the oracle generation battery only when full."""
     ctx.policy.eval()
-    ev = dict(flip=oracle(d.eval_qs), know=oracle(d.know_qs), ood_sum=oracle(d.ood_sets["sum"]))
-    ev["z_selfread"] = pair_z(cc_te[:100], True)
-    ev["z_frozen"] = pair_z(cc_te[:100], False)
+    ev = {}
+    if full:
+        ev.update(flip=oracle(d.eval_qs, ORACLE_N), know=oracle(d.know_qs, ORACLE_N),
+                  ood_sum=oracle(d.ood_sets["sum"], ORACLE_N))
+    ev["z_selfread"] = pair_z(cc_te[:64], True)
+    ev["z_frozen"] = pair_z(cc_te[:64], False)
     ev["ewc_pen"] = float(anchor.penalty_from_peft(ctx.policy, adapter_name="default"))
     ev["ewc_kl_pred"] = ev["ewc_pen"] * RATIO
     ho = getattr(evaluate, "_ho", None)
     if ho is None:
-        ho = evaluate._ho = load_replay(REPLAY, split="heldout")[:64]
+        ho = evaluate._ho = load_replay(REPLAY, split="heldout")[:32]
     ev["replay_kl"] = mean_forward_kl(model_ref(), ctx.policy, ho,
                                       pad_token_id=ctx.tok.pad_token_id, batch_size=2,
-                                      max_positions=8000)
+                                      max_positions=4000)
     ctx.policy.train()
     return ev
 
-hist = dict(arm=ARM, Lstar=LSTAR, ewc_kl=EWC_KL, ratio=RATIO, mloss=[], evals=[])
-ev0 = evaluate(); ev0["step"] = 0; hist["evals"].append(ev0)
-print(f"  step    0: EVAL {ev0}", flush=True)
-rgen = random.Random(SEED + 7); ctx.policy.train()
-for step in range(STEPS):
-    batch = rgen.sample(cc_tr, BATCH)
-    opt.zero_grad()
-    if ARM == "probe":
-        ml = margin_step(ctx, batch, fh, coef=MCOEF)   # -log ndtr(-g(f_r - f_w)): wrong ≻ right
-    else:   # meandiff: current-policy batch mean difference as the (detached) push direction
-        texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]
-        enc = ctx.tok(texts, return_tensors="pt", padding=True).to(ctx.device)
-        with ResidualCapture([ctx.blocks[LSTAR]]) as cap:
-            ctx.policy(**enc, logits_to_keep=1)
-        f = cap.get()[0][:, -1]
-        B = len(batch)
-        v = (f[:B] - f[B:]).float().mean(0)
-        v = (v / (v.norm() + 1e-8)).detach()
-        loss = MCOEF * (-((f[:B] - f[B:]).float().matmul(v)).mean() / np.sqrt(ctx.hid))
-        loss.backward(); ml = float(loss.detach())
-    if EWC_KL > 0:
-        pen = anchor.penalty_from_peft(ctx.policy, adapter_name="default")
-        (EWC_KL * RATIO * pen).backward()
-    torch.nn.utils.clip_grad_norm_(params, 1.0)
-    opt.step()
-    hist["mloss"].append(ml)
-    if (step + 1) % 10 == 0:
-        print(f"  step {step+1:4d}: mloss {np.mean(hist['mloss'][-10:]):.4f}", flush=True)
-    if (step + 1) % EVAL_EVERY == 0:
-        ev = evaluate(); ev["step"] = step + 1; hist["evals"].append(ev)
-        print(f"  step {step+1:4d}: EVAL {ev}", flush=True)
-        json.dump(hist, open(f"/workspace/cc_stage2_{TAG}_history.json", "w"), indent=1)
-json.dump(hist, open(f"/workspace/cc_stage2_{TAG}_history.json", "w"), indent=1)
-ctx.policy.save_pretrained(f"/workspace/cc_stage2_{TAG}_lora")
-print("DONE", flush=True)
+def run_arm(arm, ewc_kl, tag, seed):
+    global params
+    params = reset_lora(ctx, seed=seed)          # fresh delta-0 adapter, shared everything else
+    opt = torch.optim.AdamW(params, lr=LR)
+    hist = dict(arm=arm, Lstar=LSTAR, ewc_kl=ewc_kl, ratio=RATIO, seed=seed, mloss=[], evals=[])
+    ev0 = evaluate(full=True); ev0["step"] = 0; hist["evals"].append(ev0)
+    print(f"[{tag}] step    0: EVAL {ev0}", flush=True)
+    rgen = random.Random(seed + 7); ctx.policy.train()
+    for step in range(STEPS):
+        batch = rgen.sample(cc_tr, BATCH)
+        opt.zero_grad()
+        if arm == "probe":
+            ml = margin_step(ctx, batch, fh, coef=MCOEF)   # -log ndtr(-g(f_r - f_w)): wrong ≻ right
+        else:   # meandiff: current-policy batch mean difference as the (detached) push direction
+            texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]
+            enc = ctx.tok(texts, return_tensors="pt", padding=True).to(ctx.device)
+            with ResidualCapture([ctx.blocks[LSTAR]]) as cap:
+                ctx.policy(**enc, logits_to_keep=1)
+            f = cap.get()[0][:, -1]
+            B = len(batch)
+            v = (f[:B] - f[B:]).float().mean(0)
+            v = (v / (v.norm() + 1e-8)).detach()
+            loss = MCOEF * (-((f[:B] - f[B:]).float().matmul(v)).mean() / np.sqrt(ctx.hid))
+            loss.backward(); ml = float(loss.detach())
+        if ewc_kl > 0:
+            pen = anchor.penalty_from_peft(ctx.policy, adapter_name="default")
+            (ewc_kl * RATIO * pen).backward()
+        torch.nn.utils.clip_grad_norm_(params, 1.0)
+        opt.step()
+        hist["mloss"].append(ml)
+        if (step + 1) % EVAL_EVERY == 0:
+            full = (step + 1) % ORACLE_EVERY == 0 or step + 1 == STEPS
+            ev = evaluate(full=full); ev["step"] = step + 1; hist["evals"].append(ev)
+            print(f"[{tag}] step {step+1:4d}: EVAL {ev}", flush=True)
+            json.dump(hist, open(f"/workspace/cc_stage2_{tag}_history.json", "w"), indent=1)
+    json.dump(hist, open(f"/workspace/cc_stage2_{tag}_history.json", "w"), indent=1)
+    ctx.policy.save_pretrained(f"/workspace/cc_stage2_{tag}_lora")
+    print(f"[{tag}] DONE", flush=True)
+
+# ARMS="probe:1.0,probe:0,meandiff:1.0" runs all in ONE process (model/Stage A/factors loaded
+# once); falls back to the single ARM/EWC_KL env pair.
+specs = [(s.split(":")[0], float(s.split(":")[1])) for s in E("ARMS", "").split(",") if s] \
+        or [(ARM, EWC_KL)]
+for arm, ewc_kl in specs:
+    run_arm(arm, ewc_kl, f"{arm}_e{ewc_kl:g}_s{SEED}" if len(specs) > 1 else TAG, SEED)
+print("ALL DONE", flush=True)

@@ -270,7 +270,8 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
             rw = RW[torch.tensor([pair_idx[id(p)] for p in batch], device=ctx.device)]
             J = (p_rel[:, 0] * rw + p_rel[:, 1] * (1 - rw)).mean()
             (-float(E("RL_COEF", 1.0)) * J).backward()
-            for p_, g_ in g_low: p_.grad = g_                     # margin owns blocks <= L*
+            if not int(E("JONLY_FULL", 0)):                       # margin owns blocks <= L*
+                for p_, g_ in g_low: p_.grad = g_                 # (JONLY_FULL=1: J writes all)
             ml = float(mloss_t.detach()); hist.setdefault("J", []).append(float(J.detach()))
         else:   # meandiff: current-policy batch mean difference as the (detached) push direction
             texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]

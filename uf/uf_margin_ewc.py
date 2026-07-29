@@ -53,7 +53,7 @@ from helpers import train_bayes_head, ResidualCapture
 E = os.environ.get
 MODEL = E("UF_SFT_MODEL", "allenai/Llama-3.1-Tulu-3-8B-SFT")
 POOL, N_PROBE = int(E("UF_POOL", 20000)), int(E("N_PROBE", 3000))
-STEPS, BATCH = int(E("STEPS", 300)), int(E("BATCH", 8))
+STEPS, BATCH, MB_PAIRS = int(E("STEPS", 300)), int(E("BATCH", 8)), int(E("MB_PAIRS", 2))
 MLR, EWC, ANCHOR = float(E("MARGIN_LR", 5e-5)), float(E("EWC", 1.0)), float(E("ANCHOR", 0.0))
 N_FISH, FISH_MAX_NEW = int(E("N_FISH", 128)), int(E("FISH_MAX_NEW", 200))
 MAX_NEW, MAX_LEN, PLEN = int(E("MAX_NEW", 200)), int(E("MAX_LEN", 1024)), int(E("PROMPT_LEN", 512))
@@ -329,18 +329,27 @@ print(f"  step    0: EVAL {ev0}", flush=True)
 rgen = random.Random(4242); policy.train()
 for step in range(STEPS):
     batch = rgen.sample(train, BATCH)
-    w = torch.tensor([x["w"] for x in batch], device=DEV, dtype=torch.float32)
-    texts = [render_full(x["prompt"], x["chosen"]) for x in batch] + \
-            [render_full(x["prompt"], x["rejected"]) for x in batch]
-    enc = tok(texts, return_tensors="pt", padding=True, truncation=True, max_length=MAX_LEN).to(DEV)
+    w_all = float(sum(x["w"] for x in batch))
     opt.zero_grad()
-    with ResidualCapture([BLOCKS[LSTAR]]) as cap:
-        policy(**enc, logits_to_keep=1)
-    f = cap.get()[0][:, -1]
-    zz = margin_z(f[:BATCH], f[BATCH:])
-    # IPW-weighted margin: same weights as the probe fit, so the loss can't be paid in length
-    mloss = -(torch.special.log_ndtr(zz) * w).sum() / w.sum()
-    mloss.backward()
+    mloss = 0.0
+    # micro-batched by PAIRS (chosen/rejected must share a chunk: the loss reads difference
+    # features). A full-batch backward at BATCH=8 is ~70GB of activations (16 seqs x 1024 x 32
+    # layers, no checkpointing possible -- the margin must backprop THROUGH the captured residual,
+    # and checkpointed forwards capture grad-less tensors); 2 pairs/chunk keeps it ~9GB.
+    for s0 in range(0, BATCH, MB_PAIRS):
+        sub = batch[s0:s0 + MB_PAIRS]
+        w = torch.tensor([x["w"] for x in sub], device=DEV, dtype=torch.float32)
+        texts = [render_full(x["prompt"], x["chosen"]) for x in sub] + \
+                [render_full(x["prompt"], x["rejected"]) for x in sub]
+        enc = tok(texts, return_tensors="pt", padding=True, truncation=True, max_length=MAX_LEN).to(DEV)
+        with ResidualCapture([BLOCKS[LSTAR]]) as cap:
+            policy(**enc, logits_to_keep=1)
+        f = cap.get()[0][:, -1]
+        zz = margin_z(f[:len(sub)], f[len(sub):])
+        # IPW-weighted margin: same weights as the probe fit, so the loss can't be paid in length
+        ml = -(torch.special.log_ndtr(zz) * w).sum() / w_all
+        ml.backward()
+        mloss += float(ml.detach())
     pen = ewc_step() if EWC > 0 else 0.0
     if ANCHOR > 0:   # optional DPOP comparison arm (likelihood-space leash)
         for x in batch:
@@ -351,8 +360,8 @@ for step in range(STEPS):
             (ANCHOR * F.relu(rc - lc) / BATCH).backward()
     torch.nn.utils.clip_grad_norm_(params, 1.0)
     opt.step()
-    hist["mloss"].append(float(mloss.detach())); hist["ewc_pen"].append(pen)
-    hist["loss"].append(float(mloss.detach()) + EWC * pen)
+    hist["mloss"].append(mloss); hist["ewc_pen"].append(pen)
+    hist["loss"].append(mloss + EWC * pen)
     if (step + 1) % 10 == 0:
         print(f"  step {step+1:4d}: mloss {np.mean(hist['mloss'][-10:]):.4f} "
               f"ewc_pen {np.mean(hist['ewc_pen'][-10:]):.5f}", flush=True)

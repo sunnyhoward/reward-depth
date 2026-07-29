@@ -75,6 +75,9 @@ print(f"[lora] attn-only <= L*: {sum(p.numel() for p in params)/1e6:.2f}M traina
 
 factors = FactorBundle.load(FACTORS, device=ctx.device)
 anchor = KFACEWC(factors, coefficient=1.0)
+# LoRA exists only on blocks <= L*; drop factors for frozen layers (their delta is identically 0)
+anchor.factors.factors = {n: f for n, f in anchor.factors.factors.items()
+                          if int(_re.search(r"layers\.(\d+)\.", n).group(1)) <= LSTAR}
 
 def model_ref():
     class _Ref(torch.nn.Module):
@@ -191,7 +194,11 @@ def run_arm(arm, ewc_kl, tag, seed):
             B = len(batch)
             v = (f[:B] - f[B:]).float().mean(0)
             v = (v / (v.norm() + 1e-8)).detach()
-            loss = MCOEF * (-((f[:B] - f[B:]).float().matmul(v)).mean() / np.sqrt(ctx.hid))
+            proj = ((f[:B] - f[B:]).float().matmul(v)) / np.sqrt(ctx.hid)
+            if int(E("MD_RAW", 0)):   # sweep-1 form: unbounded linear push -- collapses by step 50
+                loss = MCOEF * (-proj.mean())
+            else:                     # saturating: satisfied pairs stop pushing (what log-ndtr
+                loss = MCOEF * (-F.logsigmoid(proj).mean())   # gives the probe arm for free)
             loss.backward(); ml = float(loss.detach())
         if ewc_kl > 0:
             pen = anchor.penalty_from_peft(ctx.policy, adapter_name="default")

@@ -48,7 +48,8 @@ EVAL_EVERY, N_CAL = int(E("EVAL_EVERY", 25)), int(E("N_CAL", 12))
 REPLAY = E("REPLAY", "/workspace/replay/pythia410m/library.jsonl")
 FACTORS = E("FACTORS", "/workspace/replay/pythia410m/kfac")
 TAG = E("RUN_TAG", ARM)
-DEV = "cuda"; SEED = 0
+ANCHOR = float(E("ANCHOR", 0.0))   # DPOP hinge coef on the chosen side (stage 1.5 arm)
+DEV = "cuda"; SEED = int(E("SEED", 0))
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 
 tok = AutoTokenizer.from_pretrained(MODEL)
@@ -190,7 +191,7 @@ opt = torch.optim.AdamW(params, lr=LR)
 hist = dict(arm=ARM, beta=BETA, ewc_kl=EWC_KL, ratio=RATIO, loss=[], evals=[])
 ev0 = evaluate(); ev0["step"] = 0; hist["evals"].append(ev0)
 print(f"  step    0: EVAL {ev0}", flush=True)
-rgen = random.Random(4242); policy.train()
+rgen = random.Random(SEED + 4242); policy.train()
 for step in range(STEPS):
     batch = rgen.sample(train, BATCH)
     opt.zero_grad(); tot = 0.0
@@ -204,6 +205,10 @@ for step in range(STEPS):
         else:   # refree / refree0: the prior is deleted from the objective
             marg = lp[:B] - lp[B:]
         loss = (-F.logsigmoid(BETA * marg).sum() / BATCH)
+        if ANCHOR > 0:   # DPOP hinge: chosen-side absolute likelihood must not fall below base
+            with torch.no_grad(), policy.disable_adapter():
+                rp_c = pair_logps(sub, grad=False)[:B]
+            loss = loss + ANCHOR * F.relu(rp_c - lp[:B]).sum() / BATCH
         loss.backward()
         tot += float(loss.detach())
     if ARM == "refree" and EWC_KL > 0:

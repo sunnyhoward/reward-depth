@@ -89,8 +89,12 @@ if ARM == "refree" or STAGE == "calib":
 
 def model_ref():
     """The frozen base = policy with adapter disabled (LoRA starts at delta 0 and the dpo arm's
-    reference is exactly this); used only under no_grad."""
+    reference is exactly this); used only under no_grad. The dummy parameter anchors the wrapper
+    to DEV so the package's _model_device inference doesn't fall back to CPU."""
     class _Ref(torch.nn.Module):
+        def __init__(self):
+            super().__init__()
+            self._dev = torch.nn.Parameter(torch.zeros(1, device=DEV), requires_grad=False)
         def forward(self, *a, **k):
             with policy.disable_adapter():
                 return policy(*a, **k)

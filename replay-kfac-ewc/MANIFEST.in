@@ -1,0 +1,5 @@
+include README.md
+include DESIGN.md
+include HANDOFF.md
+recursive-include examples *.py
+recursive-include tests *.py

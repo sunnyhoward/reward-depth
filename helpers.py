@@ -74,6 +74,11 @@ YN_FS = ("Q: Is 9 larger than 3?\nAnswer: Yes\n\nQ: Is 1950 earlier than 1900?\n
 FR_FS = "Q: Which is larger: 3 or 9?\nAnswer: 9\n\nQ: Which year is earlier: 1980 or 1955?\nAnswer: 1955\n\n"
 EZ_FS = "Q: What is 12+7?\nA: 19\n\nQ: What is 231+457?\nA: 688\n\n"
 KN_FS = "Q: What is the capital of England?\nAnswer: London\n\nQ: How many legs does a cat have?\nAnswer: 4\n\n"
+# content-choice format: options embedded in the question, CONTENT answer (no letters, no menu --
+# removes the degenerate 1-token letter output space and with it the letter-policy attractor)
+CC_FS = ("Q: Which is larger: 3 or 9?\nAnswer: 9\n\n"
+         "Q: What is the capital of England: Paris or London?\nAnswer: London\n\n"
+         "Q: Which year is earlier: 1980 or 1955?\nAnswer: 1955\n\n")
 
 KNOW_BANK = [
     ("What is the capital of France?", "Paris", "Madrid"), ("What is the capital of Spain?", "Madrid", "Lisbon"),
@@ -198,9 +203,26 @@ def build_data(seed=0, n_train=1000, n_eval=300, n_transfer=150, n_know_train=30
     for q in (d.train_qs + d.eval_qs + d.mcq_qs + d.know_qs + d.know_train_qs
               + [x for s in d.ood_sets.values() for x in s]): render_ab(q)
 
+    def render_cc(q):
+        """Content-choice render: options in the question text, content answer expected.
+        Knowledge questions get their two options embedded order-randomized (the analogue of
+        letter randomization: an order policy scores 0.5 on the entity oracle); comparison
+        questions already carry both values in the question."""
+        if "cc_q" not in q:
+            if q.get("typ") == "know":
+                o1, o2 = (q["t"], q["f"]) if arng.random() < 0.5 else (q["f"], q["t"])
+                q["cc_q"] = q["q"].rstrip("?") + f": {o1} or {o2}?"
+                q["cc_first"] = o1
+            else:
+                q["cc_q"] = q["q"]; q["cc_first"] = None
+        return CC_FS + f"Q: {q['cc_q']}\nAnswer:"
+    d.render_cc = render_cc
+
     def pair_texts(q, fmt):
         if fmt == "ab":
             return render_ab(q), " " + ("B" if q["corr"] == "A" else "A"), " " + q["corr"]
+        if fmt == "cc":
+            return render_cc(q), " " + q["f"], " " + q["t"]
         fs = KN_FS if q.get("typ") == "know" else FR_FS
         return fs + f"Q: {q['q']}\nAnswer:", " " + q["f"], " " + q["t"]
     def mk(q, fmt, p, w, r, dir_):

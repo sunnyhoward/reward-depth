@@ -201,10 +201,10 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
     global params, LSTAR, fh, anchor
     LSTAR = L if L is not None else PLATEAU_L
     fh = RewardHead(ctx, heads, LSTAR)
-    # hybrid trains ALL blocks (margin owns <= L*, exact-J owns > L*) with the full-stack anchor
-    anchor = make_anchor(ctx.n_layers - 1 if arm == "hybrid" else LSTAR)
+    # hybrid/srloo train ALL blocks (margin owns <= L*, J/RLOO owns > L*), full-stack anchor
+    anchor = make_anchor(ctx.n_layers - 1 if arm in ("hybrid", "srloo") else LSTAR)
     params = reset_lora(ctx, seed=seed,
-                        trainable_blocks=None if arm == "hybrid" else set(range(LSTAR + 1)))
+                        trainable_blocks=None if arm in ("hybrid", "srloo") else set(range(LSTAR + 1)))
     opt = torch.optim.AdamW(params, lr=LR)
     hist = dict(arm=arm, Lstar=LSTAR, ewc_kl=ewc_kl, ratio=RATIO, seed=seed, md_k=md_k,
                 mloss=[], evals=[])
@@ -231,6 +231,14 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
             zc = fh.g(torch.tensor(Xr_tr[:, LSTAR] - Xw_tr[:, LSTAR], device=ctx.device).float())
             RW = torch.special.ndtr(zc)          # reward for emitting WRONG: probe confidence
         pair_idx = {id(p): i for i, p in enumerate(cc_tr)}
+    # srloo: SAMPLED on-policy head -- the portable version (no candidate menu assumed).
+    # Reward = frozen-base probe read of the re-rendered emitted answer (centered absolute read,
+    # phase-3 lesson); RLOO baseline over K samples; NO KL-in-reward -- the K-FAC anchor alone
+    # carries drift control (the relaxation thesis), replay_kl is the tripwire.
+    if arm == "srloo":
+        MN_L = torch.tensor(np.concatenate([Xw_tr[:, LSTAR], Xr_tr[:, LSTAR]]).mean(0),
+                            device=ctx.device).float()
+        RL_K = int(E("RL_K", 4))
     ev0 = evaluate(full=True); ev0["step"] = 0; hist["evals"].append(ev0)
     print(f"[{tag}] step    0: EVAL {ev0}", flush=True)
     rgen = random.Random(seed + 7); ctx.policy.train()
@@ -273,6 +281,54 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
             if not int(E("JONLY_FULL", 0)):                       # margin owns blocks <= L*
                 for p_, g_ in g_low: p_.grad = g_                 # (JONLY_FULL=1: J writes all)
             ml = float(mloss_t.detach()); hist.setdefault("J", []).append(float(J.detach()))
+        elif arm == "srloo":
+            # ---- margin (<= L*, MCOEF may be 0) + sampled RLOO (> L*) ----
+            if MCOEF > 0:
+                texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]
+                enc = ctx.tok(texts, return_tensors="pt", padding=True).to(ctx.device)
+                with ResidualCapture([ctx.blocks[LSTAR]]) as cap:
+                    ctx.policy(**enc, logits_to_keep=1)
+                f = cap.get()[0][:, -1]
+                B = len(batch)
+                buf.append((f[:B] - f[B:]).float().mean(0).detach())
+                m = torch.stack(list(buf)).mean(0); v = m / (m.norm() + 1e-8)
+                proj = ((f[:B] - f[B:]).float().matmul(v)) / np.sqrt(ctx.hid) / proj_scale
+                (MCOEF * (-F.logsigmoid(proj).mean())).backward()
+                ml = float((MCOEF * (-F.logsigmoid(proj).mean())).detach())
+            else:
+                ml = 0.0
+            low = [p_ for _, p_, b_ in ctx.lora_params if b_ <= LSTAR]
+            g_low = [(p_, p_.grad.clone() if p_.grad is not None else None) for p_ in low]
+            # sample K answers per prompt
+            prompts = [p["prompt"] for p in batch]
+            enc = ctx.tok(prompts, return_tensors="pt", padding=True).to(ctx.device)
+            ctx.policy.config.use_cache = True
+            with torch.no_grad():
+                gen = ctx.policy.generate(**enc, do_sample=True, temperature=1.0,
+                                          num_return_sequences=RL_K, max_new_tokens=8,
+                                          pad_token_id=ctx.tok.pad_token_id)
+            ctx.policy.config.use_cache = False
+            P = enc.input_ids.shape[1]
+            # frozen-base probe reward on the RE-RENDERED emitted answer (first line only)
+            comps = [ctx.tok.decode(gen[i, P:], skip_special_tokens=True).split("\n")[0]
+                     for i in range(gen.shape[0])]
+            rtexts = [prompts[i // RL_K] + " " + comps[i].strip() for i in range(len(comps))]
+            with torch.no_grad():
+                renc = ctx.tok(rtexts, return_tensors="pt", padding=True).to(ctx.device)
+                with ctx.policy.disable_adapter(), ResidualCapture([ctx.blocks[LSTAR]]) as cap:
+                    ctx.policy(**renc, logits_to_keep=1)
+                fr_ = cap.get()[0][:, -1]
+                r = torch.special.ndtr(-fh.g(fr_ - MN_L))     # wrongness reward, centered read
+            rg = r.view(len(batch), RL_K)
+            adv = (rg - (rg.sum(1, keepdim=True) - rg) / (RL_K - 1)).view(-1)
+            # policy gradient on the emitted tokens
+            attn = (gen != ctx.tok.pad_token_id).long()
+            out = ctx.policy(input_ids=gen, attention_mask=attn, logits_to_keep=9)
+            lsm = F.log_softmax(out.logits[:, :-1].float(), -1)
+            lp = lsm.gather(-1, gen[:, P:, None]).squeeze(-1).mean(1)
+            (-float(E("RL_COEF", 1.0)) * (adv.detach() * lp).mean()).backward()
+            for p_, g_ in g_low: p_.grad = g_                 # margin owns blocks <= L*
+            hist.setdefault("r_mean", []).append(float(r.mean()))
         else:   # meandiff: current-policy batch mean difference as the (detached) push direction
             texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]
             enc = ctx.tok(texts, return_tensors="pt", padding=True).to(ctx.device)

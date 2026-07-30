@@ -148,6 +148,18 @@ Magnitudes: upper/full declines ~2.4σ, lower rise ~1.4σ, single seed. 600-step
 (`cc_race600.sh`, lower vs upper) launched to test for an actual crossing; PRE-REGISTERED
 prediction: lower ≥ upper on ood_sum by step 600.
 
+**600-step verdict: prediction REFUTED, and the 300-step trajectory story mostly dissolves.**
+ood_sum by step — lower: .41 .44 .48 .55 .41 .34; upper: .71 .63 .59 **.74** .71 .55
+(`results/cc_stage2_jonly_{lower,upper}600_history.json`; steps ≤300 bit-identical to the
+300-step cells, determinism check). Upper's "decay" reversed at 400 — the monotone-slopes
+reading of §6b's table was substantially single-seed oscillation (±.1 swings, SE ~.05). What
+survives: (1) upper > lower on ood at EVERY eval, gap .11-.21, no crossing; (2) both drift down
+late; (3) lower leaks offmenu into the transfer set by 600 (.29 vs upper .01) — the only arm to
+do so; (4) know converges to .96 for both. Toy verdict on write-depth Occam, plainly: lower-only
+writes install fully but transfer worse at every horizon, and the apparent "early writes
+compound" trajectory did not survive extension. Any future trajectory claim on this testbed
+needs seeds first.
+
 ## 7. Infrastructure notes
 
 - Two 8B training processes do NOT fit this 96GB card (44+52GB peaks); serialize.

@@ -428,7 +428,9 @@ for step in range(STEPS):
     elif MCOEF > 0 and not int(E("JONLY_FULL", 0)):
         for p, g in g_low: p.grad = g
     if ANCHOR > 0:  # DPOP hinge on the pair's chosen side (full-stack, after routing)
-        abatch = sbatch if EMIT == "softdpo" else batch
+        abatch = (batch if EMIT == "rloo" else
+                  sbatch if EMIT == "softdpo" else
+                  (mbatch if MCOEF > 0 else []))   # EMIT=none: anchor the margin batch's pairs
         for x in abatch:
             pl = tok(render_prompt(x["prompt"]), return_tensors="pt", truncation=True, max_length=MAX_LEN).input_ids.shape[1]
             lc = comp_logprob(render_full(x["prompt"], x["chosen"]), pl, True)

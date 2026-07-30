@@ -207,6 +207,55 @@ satisfied by forging. Caveats: single seed, 100 steps, one α/k/λ configuration
 4. The steering result + 5.1 close the frozen-probe-as-handle question for good: probes label;
    they do not steer, and margins against them are forged.
 
+## 8. Post-doc controls (run the same evening, committed as JSONs only until 2026-07-30)
+
+Two control pairs were run after §6 was written. They materially revise §6.3 and the verdict
+table's hybrid row. All at L*=20, k=5, λ=1, seed 0, 100 steps, same runner.
+
+**J-only (`JONLY_FULL` / upper-only): the margin half is NOT load-bearing on cc.**
+`results/cc_stage2_jonly_{full,upper}_history.json`:
+
+| arm | flip @50 | flip @100 | trajectory | offmenu @100 | know transfer @100 | replay KL |
+|---|---|---|---|---|---|---|
+| hybrid (§6.3) | **.95** | .82 | decaying | .18 | .82 | .30 |
+| J-only, full-stack | .93 | **.98** | **rising** | .00 | .92 | .26 |
+| J-only, blocks > L* only | .83 | **.98** | **rising** | .02 | .90 | .15 |
+
+Exact-J alone — even writing only the blocks *above* the elbow — ends higher than the hybrid,
+still rising, with zero offmenu and the lowest drift. The hybrid's post-50 decay is *caused by*
+the margin half, not cured by it. On cc, the install lives entirely above the elbow, through the
+emission channel. (This does not touch the §5 result that the margin objective *alone* moves
+behaviour 24–32% — it says the margin adds nothing once an emission-channel head is present,
+reversing §6.3's "the two heads complete each other" reading. The §5.5 depth result also stands:
+it is about where the *margin* couples, not about the hybrid.)
+
+**Sampled RLOO (`srloo`): exact-J's cleanliness was its implicit on-menu constraint.**
+Same probe reward, but taken on-policy: sample K=4, re-render, frozen-base read at L*, RLOO
+baseline. No KL-in-reward — the K-FAC anchor alone carries drift control (the relaxation thesis,
+applied to the reward guard). `results/cc_stage2_srloo_{only,margin}_history.json`:
+
+| arm | flip @50 | offmenu @50 | flip @100 | offmenu @100 | know @100 |
+|---|---|---|---|---|---|
+| srloo, no margin | .00 | **1.00** | .00 | **1.00** | destroyed (.00 correct) |
+| srloo + margin | .68 | .11 | .34 | .54 | .69 wrong |
+
+- The naked probe reward is hacked **instantly** in open vocabulary: offmenu 1.0 by the first
+  eval. Replay KL stayed 0.22–0.35 throughout — **the anchor does not subsume reward guards**;
+  the hack is curvature-cheap. Exact-J never showed this because its expectation ranges over the
+  two menu candidates only: off-menu text simply isn't in its support. That structural constraint,
+  not the anchor and not the probe, was doing the anti-hacking work.
+- The margin half *delays* the hack (68% honest install at step 50) but is out-muscled by it by
+  step 100. Its one demonstrated value in the hybrid family is as a drag on reward hacking, not
+  as an installer.
+
+**Consequences for §6.** Item 3's "the emission-channel head is what completes it" survives;
+"both halves load-bearing" does not — drop the margin half on cc. The open problem for porting
+to UF is now sharply posed: open vocabulary has no menu, so the on-menu constraint must be
+replaced by explicit guards (KL-in-reward, pessimism LCB, DPOP anchor — exactly
+`uf_probe_rl.py`'s v3 guard set). Whether sampled RLOO with those guards installs on UF, and
+whether a margin half adds or subtracts there, is the 2026-07-30 experiment
+(`uf_probe_rl.py` vs `uf/uf_hybrid_md.py`).
+
 ## 7. Method notes for whoever runs this next
 
 - Calibrate BEFORE training and refit on the local window (noise floor below, saturation above);

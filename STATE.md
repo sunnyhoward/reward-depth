@@ -6,6 +6,30 @@ phase docs (`results_phase1.md` … `results_phase5.md`) are the primary records
 accurate about its own runs; what they lack is a shared frame, because each one was written at
 the end of a session and opens with a headline written to be persuasive.*
 
+## Update 2026-07-30 (read this, then the rest still stands as frame)
+
+Two sessions have happened since this file was written; their headline effects on the picture:
+
+- **Phase 6 exists** (`results_phase6.md`, 2026-07-29) and answers two of the "next" items below:
+  the **steering experiment ran — negative** (probe directions are causally inert at every depth;
+  judge-null in 94% of 96 cells; "probes label, they do not steer"), and the whole
+  frozen-probe-as-margin-target family is closed (forging is K-FAC-metric-null, λ-invariant).
+  What *did* work: a **per-batch adaptive, saturated mean-diff activation objective** (first
+  activation objective to move behaviour more than the meter; lag k≥1 is the anti-forging
+  resource) with a **strict inverted-U in attach depth peaked at the decodability elbow** — the
+  project's first affirmative depth-matters result. Separately, a **replay-K-FAC curvature prior
+  beats live-reference DPO** in token space (Pythia, 2 seeds).
+- **Phase 6 §8 (post-doc controls) revises phase 6's own headline**: the stage-2.5 hybrid's
+  margin half is **not load-bearing** on cc — exact-J alone installs 98% and keeps rising — and
+  exact-J's cleanliness was its implicit **on-menu constraint**, not the anchor: the same probe
+  reward taken by sampling (open vocab) is hacked instantly (offmenu 1.0 @50).
+- **Write depth was run after all** (same evening as this file) — see the corrected section
+  below: parameter-matched lower/upper window DPO is an **in-domain null** at sane LRs.
+- **In flight (2026-07-30):** the UF port of the load-bearing test — anchored sampled RLOO from
+  the frozen L12 probe (`uf_probe_rl.py`, guards on) vs the same + mean-diff margin ≤L12
+  (`uf/uf_hybrid_md.py`), 300 steps each, identical guard set, single seed. Stage A reproduced
+  (L*=12 @ 0.791, max 0.799 @ L16) on a fresh box.
+
 ## The question
 
 A preference — which of two responses is better — is linearly readable from **layer 12 of 32** in
@@ -28,9 +52,9 @@ have different evidence, different difficulty, and different track records.
 
 | axis | what varies | status |
 |---|---|---|
-| **read depth** | which layer's probe *generates the labels/reward* | one toy data point; **untested on UF** |
-| **write depth** | which blocks *get updated* (LoRA layer range) | **never tested anywhere** |
-| **coupling depth** | whether gradients flow *through activations* at the attach layer | tested hard, phases 1/2/4/5 — **fails** |
+| **read depth** | which layer's probe *generates the labels/reward* | **tested on UF 2026-07-28 — negative** (§below) |
+| **write depth** | which blocks *get updated* (LoRA layer range) | **endpoints run 2026-07-28 — in-domain null** (§below) |
+| **coupling depth** | whether gradients flow *through activations* at the attach layer | tested hard, phases 1/2/4/5 — **fails**; first working form found phase 6 (adaptive direction, elbow-only) |
 
 Phases 4 and 5 — two full sessions, and most of the code volume (`uf_hybrid.py` →
 `uf_hybrid2.py` → `uf_hybrid3.py`, 26 KB) — went into coupling depth. That is the axis phase 1
@@ -141,10 +165,24 @@ ranking is worst — i.e. largely a length-bias correction rather than preferenc
 the safety number reflects a behavioural regression or only a ranking shift is being checked with
 `uf/uf_safety_probe_gen.py` (generation + refusal rates, not rankings).
 
-**Write depth, anywhere.** `layers_to_transform` appears nowhere in the repo; all eleven
-`LoraConfig` call sites build full-stack adapters. The "≤L" in phases 4–5 is a *gradient split*,
-not a freeze — adapters exist on all 32 blocks and every block is updated by something
-(`uf_hybrid3.py:182`). So "DPO with layers above 13 frozen" has never been run.
+**Write depth — endpoints RUN later that same day (2026-07-28 evening). In-domain null.**
+The paragraph below originally said this had never been run; `uf/run_layerwindow.sh` (Task A)
+then ran it: GT-label DPO via `uf_dpo_train.py`, the only change being `LORA_LAYERS` —
+parameter-matched **lower (blocks 0–15)** vs **upper (16–31)**, 20.97M trainable each,
+3 LRs, single seed. Big-N 350 pairs (`results/runs/uf_bigN_taskA.json`, SE ≈ 0.021):
+
+| lr | lower acc | upper acc | lower Δlp chosen | upper Δlp chosen |
+|---|---|---|---|---|
+| 5e-5 | .806 | .806 | **−9.1** | −23.5 |
+| 1.5e-4 | .803 | .811 | −18.8 | −15.3 |
+| 5e-4 | .711 | .620 | −97 | −118 |
+
+At sane LRs the windows are statistically indistinguishable on install accuracy — "DPO with the
+upper half frozen" costs nothing in-domain, consistent with the read-depth null. The one
+suggestive asymmetry is collateral at the best LR (lower's chosen-side displacement −9.1 vs
+−23.5), single-seed and untested for significance. **Not run:** OOD (RewardBench) for these
+arms, the two-stage legibility arm, and the param-matched-r control from the design note below
+(moot — the windows were parameter-matched directly).
 
 ### Design note on the write-depth arm
 

@@ -249,6 +249,37 @@ Queued: styc training arms — soft-DPO from (a) an early entangled head (predic
 style-capture, oracle-visible), (b) the factor-composed labeller (predict: installs correctness
 dominance) — the whole Occam question with exact factor-wise oracles.
 
+
+## 10. styc training arms: the dose-response (the day's closing result)
+
+Three soft-DPO arms on Qwen-3B, identical except the labeller; generation oracles + per-family
+implicit acc every 25 steps; 150 steps; `results/styc_train_{early,late,gt}_history.json`,
+figure `results/plots/fig_p7_styc_train.png`. Labellers fit by the NATURAL protocol (mixed
+diet, mixed validation, conflicts 15%).
+
+| labeller | labeller conflict acc | policy conflict acc @150 | gen_correct @150 | gen_explained |
+|---|---|---|---|---|
+| early (L10) | .06 | **.10** | .98 | 1.00 |
+| late (L35, natural fit) | .32 | **.50** | .98 | .94 |
+| ground truth | 1.00 | **.84** (.93 peak @75) | .81 | 1.00 |
+
+1. **The policy's installed preference tracks its labeller's competence monotonically** —
+   .06/.32/1.0 in, .10/.50/.93 out. "What your labeller can see is what your policy becomes,"
+   as a dose-response with oracles.
+2. **Preference corruption precedes behavioural corruption**: every arm still GENERATES ~correct
+   answers (gen_wrong <= .016 everywhere); the early arm's policy would nonetheless RANK
+   eloquent-wrong above terse-correct (conflict .06-.10) — i.e. its implicit reward mis-selects
+   in any best-of-N/reranking use while its argmax behaviour looks fine. Latent damage.
+3. **Natural fits are style-first even at the top layer** (late labeller conflict .32, not the
+   .97 that conflict-privileged validation extracts): depth capability is necessary, but
+   diet/validation coverage is what converts it into competence. (The gt arm's gen_correct dip
+   to .81 at 150 is format drift into 'other', not wrongness — gen_wrong 0.0.)
+
+Method note that saved the day three times: the step-25 generation oracles caught (i) a
+conflict-validated anti-style labeller, (ii) a diet whose 33% conflicts exactly cancelled style
+supervision, (iii) a leading-token parser misreading explained-correct generations. On UF each
+of these would have cost a day of confused interpretation; on styc each cost five minutes.
+
 ## 7. Infrastructure notes
 
 - Two 8B training processes do NOT fit this 96GB card (44+52GB peaks); serialize.

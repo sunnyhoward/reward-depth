@@ -128,6 +128,26 @@ opposite ordering. Watch offmenu and know trajectories past the step-50 peak.
 Evaluation debt owed after the queue: big-N (350-pair) evals of B/C/D/E checkpoints,
 RewardBench OOD for B vs E (the write-depth differential), judge pass on §2's RLOO checkpoints.
 
+## 6b. cc race result (landed while §6's UF queue was still on arm A)
+
+300-step jonly write-depth race, λ=1, single seed
+(`results/cc_stage2_jonly_{lower,upper,full}300_history.json`):
+
+| writes | ood_sum @100→200→300 | know @100→300 | trained flip @300 | replay KL |
+|---|---|---|---|---|
+| lower (<=L*) | .41 → .44 → **.48 rising** | .76 → **.96** | .99 | .18 |
+| upper (>L*) | **.71** → .63 → .59 falling | .88 → .92 | 1.00 | .05 |
+| full | **.77** → .75 → .69 falling | .96 → .90 falling | .99 | .10 |
+
+**Every arm with late-write capacity decays in OOD transfer under continued optimization; the
+lower-only arm is the only monotone improver** (and ends highest on know, with offmenu ~0 and
+z_selfread healing 1.10 → 1.78). Late writes buy fast transfer that erodes; early writes buy
+slow transfer that compounds. This is the Occam prediction relocated from *levels* to
+*over-optimization dynamics* — the "Goodharts more gracefully" half, visible for the first time.
+Magnitudes: upper/full declines ~2.4σ, lower rise ~1.4σ, single seed. 600-step extension
+(`cc_race600.sh`, lower vs upper) launched to test for an actual crossing; PRE-REGISTERED
+prediction: lower ≥ upper on ood_sum by step 600.
+
 ## 7. Infrastructure notes
 
 - Two 8B training processes do NOT fit this 96GB card (44+52GB peaks); serialize.

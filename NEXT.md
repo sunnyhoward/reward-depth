@@ -78,3 +78,33 @@ shortcut errors.
   routing gradient was confirmed (facts route early at zero cost).
 - Sequencing: validate everything on styc before building the real-data multi-task version
   (curated set with verifiable slices: translation-with-references etc.).
+
+## Tomorrow's training design (agreed 2026-07-30 end of session)
+
+The user's "backprop from each probe, penalty by confidence and layer" idea, routed through
+today's evidence: NEVER backprop probe losses through activations (closed three ways on UF;
+confidence cannot detect its own failure — heads are confidently wrong on conflicts). Instead
+build the multi-probe object on the LABEL side:
+
+  p*(pair) = Phi( sum_L w_L(pair) z_L / sqrt(sum_L w_L) ),
+  w_L(pair) ∝ exp(ELBO_L / T)  x  1/(1 + s2_L(pair))
+
+- Layer weight = EVIDENCE-based (Bayesian Occam), not a hand-coded early bias (rejected by data).
+- Per-pair precision = the routing term; real opportunity because no single layer is best for
+  everything (retrieval peaks L20 and FADES by L35; computation only at L35; style early).
+- GATE before training: fit the ensemble labeller on the styc cache, compare per-family acc vs
+  the best single layer. Train only if it wins. Then: soft-DPO vs ensemble / single-L35 / GT
+  with today's oracle evals (styc_train.py).
+- On-policy variant later: multi-layer confidence-weighted reward read from the FROZEN base of
+  emitted text (no forging risk), with the guarded-srloo lessons.
+
+## The three-arm result (2026-07-30 evening, results/styc_train_*.json, fixed parser)
+
+Dose-response: labeller conflict-competence -> policy conflict ranking:
+early L10 0.06 -> 0.06-0.10 | late L35 (natural fit) 0.32 -> 0.50 | gt 1.0 -> (see history).
+Generations stayed ~intact in all arms (0.98 correct; base 1.0) — preference corruption
+precedes behavioural corruption; the corrupted implicit reward would already mis-select in
+best-of-N. KEY NUANCE: the natural-protocol L35 labeller is style-first (conflict 0.32), not
+the 0.97 that conflict-privileged validation extracts — information existing at a depth does
+not mean a natural fit finds it. Depth capability necessary, diet/validation coverage
+sufficient-maker.

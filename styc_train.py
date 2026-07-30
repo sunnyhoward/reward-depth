@@ -90,7 +90,9 @@ def fit_pref_head(li):
     No family gets privileged validation -- what the head learns at each depth is then a
     MEASURED property, not a selected one. (v1 of this fit validated on conflicts only, which
     at L10 selected a pathological anti-style head; caught by the step-25 oracles.)"""
-    diets = [("ce","we"),("ct","wt"),("ce","ct"),("we","wt"),("ct","we"),("ct","we")]
+    # proportional diet (conflict 15%): conflict-at-33% cancels the style supervision exactly
+    # (2 style units vs 2 anti-style conflict units) -> mush heads; caught at labeller printout
+    diets = ([("ce","we")]*6 + [("ct","wt")]*4 + [("ce","ct")]*4 + [("we","wt")]*3 + [("ct","we")]*3)
     As = np.concatenate([FE[a][tr, li] for a,_ in diets]).astype(np.float32)
     Bs = np.concatenate([FE[b][tr, li] for _,b in diets]).astype(np.float32)
     s = np.where(np.random.RandomState(li).rand(len(As)) < 0.5, 1.0, -1.0).astype(np.float32)

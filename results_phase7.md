@@ -202,6 +202,41 @@ late-or-never linearly decodable. "Only decodable late" does not imply "safe to 
 the reward". Queued follow-up: probe accuracy and big-N deltas split by task type
 (translation/format/open-chat).
 
+## 9. The styc testbed: factors, not depths
+
+Built mid-session (user's proposal + the §8 audit): `styc_probe.py`, a style x correctness
+FACTORIAL on Qwen-3B — {correct,wrong} x {terse,explained} templated answers to 879 questions
+(500 arithmetic = computation, 300 sum-compare, 79 facts = retrieval), style template identical
+across correctness. CONFLICT pairs (correct-terse vs wrong-explained) are the diagnostic.
+Cache `/workspace/styc_feats.npz`; results `/workspace/styc_stageA.json`.
+
+**Factor decodability separates cleanly by depth** (held-out, single seed):
+style 1.000 at EVERY layer from L0; retrieval-correctness 0.95 by L20; **computation-correctness
+~0.6 until L32, 0.93 only at L35** — the very top. (sum-compare leaks via answer-text magnitude —
+excluded as a correctness family.)
+
+**Conflict pairs: total style capture at every depth.** Preference heads on the entangled diet:
+0.000 at ALL layers; uniform / evidence / precision-weighted depth-ensembles: all 0.000; the
+precision routing CoM is ~L20 for every pair type (no difficulty-routing — the
+weight-later-layers-for-harder-pairs hypothesis is REFUTED in this form: per-pair precision is
+dominated by the style component every head shares). This is the UF translation/format failure
+(§8) reproduced with an oracle — and it reframes the original elbow finding: "preference
+decodable 0.79 @L12" measures the STYLE FRACTION of the preference; the earliest layer where the
+full (correctness-dominant) preference is decodable is the TOP.
+
+**The repair is factor decomposition, not depth weighting**: a correctness head trained on all
+four pair orientations at L35 scores **0.972 on conflict pairs** (0.88-0.91 on style-matched),
+where every entangled head and ensemble scored 0.000. Caveat: it carries an anti-explained tilt
+on pure style pairs (0.023 where ~0.5 is correct — a style x correctness interaction feature),
+so composing it lexicographically with the (anywhere-decodable) style head needs a calibrated
+dominance threshold or nuisance projection. Naive threshold |z|>0.8 was mis-calibrated (0.24).
+
+Where this leaves the program: the Bayesian-ensemble-over-depths idea becomes a Bayesian
+ensemble over FACTOR MODELS (each read at ITS OWN best depth — style early, correctness top).
+Queued: styc training arms — soft-DPO from (a) an early entangled head (predict: installs
+style-capture, oracle-visible), (b) the factor-composed labeller (predict: installs correctness
+dominance) — the whole Occam question with exact factor-wise oracles.
+
 ## 7. Infrastructure notes
 
 - Two 8B training processes do NOT fit this 96GB card (44+52GB peaks); serialize.

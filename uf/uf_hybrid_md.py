@@ -61,6 +61,17 @@ MAX_NEW, MAX_LEN, TOL = int(E("MAX_NEW", 200)), int(E("MAX_LEN", 1024)), float(E
 PLEN = int(E("PROMPT_LEN", 512))
 MCOEF, MD_K = float(E("MCOEF", 1.0)), int(E("MD_K", 5))
 MBATCH, MB_PAIRS, MD_NORM = int(E("MBATCH", 8)), int(E("MB_PAIRS", 2)), int(E("MD_NORM", 1))
+# EMIT: which emission-channel head owns blocks > L*.
+#   rloo     anchored sampled RLOO (v3 recipe) -- confirmed starvation-flat over 300 steps @4x8
+#   softdpo  soft-label DPO from the frozen probe on the N_PROBE probe-fit pairs (uf_soft_dpo.py's
+#            objective) -- the DENSE analogue of cc's exact-J: the phase-3 working method, so the
+#            hybrid2 comparison measures the margin half against a live emission head.
+#            Both halves then read the SAME batch (cc parity); DPOP anchor defaults off
+#            (soft-DPO needs none). JONLY_LOW=1 restricts the emission head's writes to <= L*
+#            (write-depth cell); JONLY_FULL=1 lets it write all blocks.
+EMIT = E("EMIT", "rloo")
+BETA = float(E("DPO_BETA", 0.1))
+if EMIT == "softdpo": ANCHOR = float(E("RL_ANCHOR", 0.0))
 EVAL_EVERY, N_EVAL_PAIRS, N_EVAL_GEN = int(E("EVAL_EVERY", 25)), int(E("N_EVAL_PAIRS", 64)), int(E("N_EVAL_GEN", 16))
 TAG = E("RUN_TAG", "hyb")
 DEV = "cuda"; SEED = 0
@@ -172,6 +183,17 @@ def margin_z(f_c, f_r):
     fs = ((f_c - f_r).float() / SD)   # difference read: centering cancels
     s2 = fs.pow(2).matmul(SIG2)
     return fs.matmul(MU) / torch.sqrt(1 + s2)
+
+P_SOFT = None
+if EMIT == "softdpo":
+    # soft labels for the probe-fit pairs from the Stage-A cache (uf_soft_dpo.py's recipe:
+    # posterior predictive on native difference features)
+    fs_tr = torch.tensor((Fc_tr[:, LSTAR] - Fr_tr[:, LSTAR]) / sd_, dtype=torch.float32)
+    s2_tr = fs_tr.pow(2).matmul(SIG2.cpu())
+    z_tr = fs_tr.matmul(MU.cpu()) / torch.sqrt(1 + s2_tr)
+    P_SOFT = torch.special.ndtr(z_tr).numpy()
+    print(f"[softdpo] labels: mean p {P_SOFT.mean():.3f} | "
+          f"soft 0.2-0.8: {(np.array((P_SOFT > 0.2) & (P_SOFT < 0.8))).mean():.2f}", flush=True)
 
 # ---- full-stack LoRA (margin owns <= L*, RLOO owns > L* via grad routing) ----
 cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
@@ -302,17 +324,21 @@ if MD_NORM and MCOEF > 0:
 
 # ---- train ----
 hist = dict(Lstar=LSTAR, probe_acc=float(acc[LSTAR]), mcoef=MCOEF, md_k=MD_K, mbatch=MBATCH,
-            md_norm=MD_NORM, proj_scale=proj_scale, kl=KL, anchor=ANCHOR,
+            md_norm=MD_NORM, proj_scale=proj_scale, kl=KL, anchor=ANCHOR, emit=EMIT, beta=BETA,
+            jonly_low=int(E("JONLY_LOW", 0)), jonly_full=int(E("JONLY_FULL", 0)),
             reward=[], len=[], mloss=[], proj=[], evals=[])
 ev0 = evaluate(); ev0["step"] = 0; hist["evals"].append(ev0)
 print(f"  step    0: EVAL {ev0}", flush=True)
 policy.train()
 for step in range(STEPS):
     opt.zero_grad()
+    if EMIT == "softdpo":   # one shared batch for both halves (cc parity), from the labeled pairs
+        sidx = rgen.sample(range(len(pr)), MBATCH)
+        sbatch = [pr[i] for i in sidx]
     # ================= margin half (blocks <= L*) =================
     mloss, proj_mean = 0.0, 0.0
     if MCOEF > 0:
-        mbatch = rgen2.sample(train, MBATCH)
+        mbatch = sbatch if EMIT == "softdpo" else rgen2.sample(train, MBATCH)
         w_all = float(sum(x["w"] for x in mbatch))
         # pass 1 (no grad): this step's w-weighted mean-diff -> lag buffer -> direction v.
         # cc includes the CURRENT batch in the window (k=1 == zero-lag supervisor form); a second
@@ -330,60 +356,86 @@ for step in range(STEPS):
             ml.backward()
             mloss += float(ml.detach()); proj_mean += float((proj.detach() * wsub).sum() / w_all)
     g_low = [(p, p.grad.clone() if p.grad is not None else None) for p in LOW]
-    # ================= RLOO half (uf_probe_rl.py v3, verbatim) =================
-    batch = rgen.sample(train, BATCH)
-    prompts = [render_prompt(x["prompt"]) for x in batch]
-    enc = tok(prompts, return_tensors="pt", padding=True, truncation=True, max_length=PLEN).to(DEV)
-    policy.config.use_cache = True
-    with torch.no_grad():
-        gen = policy.generate(**enc, do_sample=True, temperature=1.0, num_return_sequences=K,
-                              max_new_tokens=MAX_NEW, pad_token_id=tok.pad_token_id)
-    policy.config.use_cache = False
-    P = enc.input_ids.shape[1]
-    attn = (gen != tok.pad_token_id).long()
-    n_new = (attn[:, P:]).sum(1).clamp(min=1)
-    r = probe_reward(rollout_feats(batch, gen, P)).detach()
-    keepg = gen.shape[1] - P + 1
-    tokmask = attn[:, P:].bool()
-    with torch.no_grad():  # batched, graph-free: values for KL and advantages
-        lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
-        logp_ng = (lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
-        with policy.disable_adapter():
-            ref_lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
-            ref_logp = (ref_lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
-        del lsm, ref_lsm
-    r = r - KL * (logp_ng - ref_logp) / n_new
-    valid = (n_new < MAX_NEW) if int(E("DROP_CAPPED", 0)) else torch.ones_like(n_new, dtype=torch.bool)
-    rg, vg = r.view(BATCH, K), valid.view(BATCH, K).float()
-    cnt = vg.sum(1, keepdim=True)
-    loo = (rg * vg).sum(1, keepdim=True) - rg * vg
-    base = loo / (cnt - vg).clamp(min=1)
-    adv = torch.where((vg > 0) & (cnt > 1.5), rg - base, torch.zeros_like(rg)).view(-1)
-    hist.setdefault("trunc", []).append(float((n_new >= MAX_NEW).float().mean()))
-    for s0 in range(0, BATCH * K, 4):           # micro-batched backward, chunks of 4
-        sl = slice(s0, min(s0 + 4, BATCH * K))
-        if not adv[sl].abs().sum() > 0: continue
-        li = F.log_softmax(policy(input_ids=gen[sl], attention_mask=attn[sl],
-                                  logits_to_keep=keepg).logits[:, :-1].float(), -1)
-        lp_i = (li.gather(-1, gen[sl, P:, None]).squeeze(-1) * tokmask[sl]).sum(1)
-        (-(adv[sl] * lp_i / n_new[sl]).sum() / (BATCH * K)).backward()
-    # phase-4 routing: margin owns <= L* -- overwrite RLOO's low-block contribution
-    if MCOEF > 0:
+    dloss = 0.0
+    if EMIT == "softdpo":
+        # ================= soft-DPO half (uf_soft_dpo.py objective) =================
+        for i, x in enumerate(sbatch):
+            p_ = float(P_SOFT[sidx[i]])
+            pl = tok(render_prompt(x["prompt"]), return_tensors="pt", truncation=True,
+                     max_length=MAX_LEN).input_ids.shape[1]
+            lc = comp_logprob(render_full(x["prompt"], x["chosen"]), pl, True)
+            lr_ = comp_logprob(render_full(x["prompt"], x["rejected"]), pl, True)
+            with torch.no_grad(), policy.disable_adapter():
+                rc = comp_logprob(render_full(x["prompt"], x["chosen"]), pl, False)
+                rr = comp_logprob(render_full(x["prompt"], x["rejected"]), pl, False)
+            D = BETA * ((lc - rc) - (lr_ - rr))
+            l = -(p_ * F.logsigmoid(D) + (1 - p_) * F.logsigmoid(-D)) / MBATCH
+            l.backward()
+            dloss += float(l.detach())
+        rg = torch.zeros(1)   # keep the shared logging path happy
+        n_new = torch.zeros(1)
+    else:
+        # ================= RLOO half (uf_probe_rl.py v3, verbatim) =================
+        batch = rgen.sample(train, BATCH)
+        prompts = [render_prompt(x["prompt"]) for x in batch]
+        enc = tok(prompts, return_tensors="pt", padding=True, truncation=True, max_length=PLEN).to(DEV)
+        policy.config.use_cache = True
+        with torch.no_grad():
+            gen = policy.generate(**enc, do_sample=True, temperature=1.0, num_return_sequences=K,
+                                  max_new_tokens=MAX_NEW, pad_token_id=tok.pad_token_id)
+        policy.config.use_cache = False
+        P = enc.input_ids.shape[1]
+        attn = (gen != tok.pad_token_id).long()
+        n_new = (attn[:, P:]).sum(1).clamp(min=1)
+        r = probe_reward(rollout_feats(batch, gen, P)).detach()
+        keepg = gen.shape[1] - P + 1
+        tokmask = attn[:, P:].bool()
+        with torch.no_grad():  # batched, graph-free: values for KL and advantages
+            lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
+            logp_ng = (lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
+            with policy.disable_adapter():
+                ref_lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
+                ref_logp = (ref_lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
+            del lsm, ref_lsm
+        r = r - KL * (logp_ng - ref_logp) / n_new
+        valid = (n_new < MAX_NEW) if int(E("DROP_CAPPED", 0)) else torch.ones_like(n_new, dtype=torch.bool)
+        rg, vg = r.view(BATCH, K), valid.view(BATCH, K).float()
+        cnt = vg.sum(1, keepdim=True)
+        loo = (rg * vg).sum(1, keepdim=True) - rg * vg
+        base = loo / (cnt - vg).clamp(min=1)
+        adv = torch.where((vg > 0) & (cnt > 1.5), rg - base, torch.zeros_like(rg)).view(-1)
+        hist.setdefault("trunc", []).append(float((n_new >= MAX_NEW).float().mean()))
+        for s0 in range(0, BATCH * K, 4):           # micro-batched backward, chunks of 4
+            sl = slice(s0, min(s0 + 4, BATCH * K))
+            if not adv[sl].abs().sum() > 0: continue
+            li = F.log_softmax(policy(input_ids=gen[sl], attention_mask=attn[sl],
+                                      logits_to_keep=keepg).logits[:, :-1].float(), -1)
+            lp_i = (li.gather(-1, gen[sl, P:, None]).squeeze(-1) * tokmask[sl]).sum(1)
+            (-(adv[sl] * lp_i / n_new[sl]).sum() / (BATCH * K)).backward()
+    # phase-4 routing: margin owns <= L* -- overwrite the emission head's low-block contribution.
+    # JONLY_LOW inverts it: the emission head writes ONLY blocks <= L* (write-depth cell).
+    if int(E("JONLY_LOW", 0)):
+        for n, p in policy.named_parameters():
+            if p.requires_grad and _blk(n) > LSTAR: p.grad = None
+    elif MCOEF > 0 and not int(E("JONLY_FULL", 0)):
         for p, g in g_low: p.grad = g
     if ANCHOR > 0:  # DPOP hinge on the pair's chosen side (full-stack, after routing)
-        for x in batch:
+        abatch = sbatch if EMIT == "softdpo" else batch
+        for x in abatch:
             pl = tok(render_prompt(x["prompt"]), return_tensors="pt", truncation=True, max_length=MAX_LEN).input_ids.shape[1]
             lc = comp_logprob(render_full(x["prompt"], x["chosen"]), pl, True)
             with torch.no_grad(), policy.disable_adapter():
                 rc = comp_logprob(render_full(x["prompt"], x["chosen"]), pl, False)
-            (ANCHOR * F.relu(rc - lc) / BATCH).backward()
+            (ANCHOR * F.relu(rc - lc) / len(abatch)).backward()
     torch.nn.utils.clip_grad_norm_(params, 1.0)
     opt.step()
     hist["reward"].append(float(rg.mean())); hist["len"].append(float(n_new.float().mean()))
     hist["mloss"].append(mloss); hist["proj"].append(proj_mean)
+    hist.setdefault("dloss", []).append(dloss)
     if (step + 1) % 10 == 0:
-        print(f"  step {step+1:4d}: reward {np.mean(hist['reward'][-10:]):.3f} "
-              f"len {np.mean(hist['len'][-10:]):.0f} mloss {np.mean(hist['mloss'][-10:]):.4f} "
+        head_stat = (f"dloss {np.mean(hist['dloss'][-10:]):.4f}" if EMIT == "softdpo" else
+                     f"reward {np.mean(hist['reward'][-10:]):.3f} len {np.mean(hist['len'][-10:]):.0f}")
+        print(f"  step {step+1:4d}: {head_stat} mloss {np.mean(hist['mloss'][-10:]):.4f} "
               f"proj {np.mean(hist['proj'][-10:]):.3f}", flush=True)
     if (step + 1) % EVAL_EVERY == 0:
         ev = evaluate(); ev["step"] = step + 1; hist["evals"].append(ev)

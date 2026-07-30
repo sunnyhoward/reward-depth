@@ -239,6 +239,13 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
         MN_L = torch.tensor(np.concatenate([Xw_tr[:, LSTAR], Xr_tr[:, LSTAR]]).mean(0),
                             device=ctx.device).float()
         RL_K = int(E("RL_K", 4))
+        # Optional guard set (uf_probe_rl.py v3's open-vocab guards, ported for the guarded-srloo
+        # cell -- phase-6 §8's open problem: what replaces exact-J's on-menu constraint?):
+        #   RL_PESS  pessimism LCB on the wrongness score (probe distrusts off-distribution reads)
+        #   RL_KLR   KL-in-reward per generated token vs the frozen base
+        #   RL_DPOP  one-way hinge keeping the preferred (wrong) side's likelihood >= ref --
+        #            the phase-2 displacement guard, aimed at the offmenu mass-drain
+        RL_PESS, RL_KLR, RL_DPOP = float(E("RL_PESS", 0)), float(E("RL_KLR", 0)), float(E("RL_DPOP", 0))
     ev0 = evaluate(full=True); ev0["step"] = 0; hist["evals"].append(ev0)
     print(f"[{tag}] step    0: EVAL {ev0}", flush=True)
     rgen = random.Random(seed + 7); ctx.policy.train()
@@ -278,7 +285,10 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
             rw = RW[torch.tensor([pair_idx[id(p)] for p in batch], device=ctx.device)]
             J = (p_rel[:, 0] * rw + p_rel[:, 1] * (1 - rw)).mean()
             (-float(E("RL_COEF", 1.0)) * J).backward()
-            if not int(E("JONLY_FULL", 0)):                       # margin owns blocks <= L*
+            if int(E("JONLY_LOW", 0)):        # J writes ONLY blocks <= L* (write-depth cell)
+                for _, p_, b_ in ctx.lora_params:
+                    if b_ > LSTAR: p_.grad = None
+            elif not int(E("JONLY_FULL", 0)):                     # margin owns blocks <= L*
                 for p_, g_ in g_low: p_.grad = g_                 # (JONLY_FULL=1: J writes all)
             ml = float(mloss_t.detach()); hist.setdefault("J", []).append(float(J.detach()))
         elif arm == "srloo":
@@ -318,7 +328,22 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
                 with ctx.policy.disable_adapter(), ResidualCapture([ctx.blocks[LSTAR]]) as cap:
                     ctx.policy(**renc, logits_to_keep=1)
                 fr_ = cap.get()[0][:, -1]
-                r = torch.special.ndtr(-fh.g(fr_ - MN_L))     # wrongness reward, centered read
+                # wrongness reward, centered read; pess=-RL_PESS: g's LCB lowers the RIGHTNESS
+                # score, so the LCB of the WRONGNESS score -g needs the sign flipped
+                r = torch.special.ndtr(-fh.g(fr_ - MN_L, pess=-RL_PESS))
+            if RL_KLR > 0:   # KL-in-reward: per-token drift of the sampled tokens vs frozen base
+                with torch.no_grad():
+                    attn_g = (gen != ctx.tok.pad_token_id).long()
+                    tmask = attn_g[:, P:].bool()
+                    n_new = tmask.sum(1).clamp(min=1)
+                    lsm_p = F.log_softmax(ctx.policy(input_ids=gen, attention_mask=attn_g,
+                                                     logits_to_keep=9).logits[:, :-1].float(), -1)
+                    lp_p = (lsm_p.gather(-1, gen[:, P:, None]).squeeze(-1) * tmask).sum(1)
+                    with ctx.policy.disable_adapter():
+                        lsm_r = F.log_softmax(ctx.policy(input_ids=gen, attention_mask=attn_g,
+                                                         logits_to_keep=9).logits[:, :-1].float(), -1)
+                    lp_r = (lsm_r.gather(-1, gen[:, P:, None]).squeeze(-1) * tmask).sum(1)
+                    r = r - RL_KLR * (lp_p - lp_r) / n_new
             rg = r.view(len(batch), RL_K)
             adv = (rg - (rg.sum(1, keepdim=True) - rg) / (RL_K - 1)).view(-1)
             # policy gradient on the emitted tokens
@@ -327,7 +352,30 @@ def run_arm(arm, ewc_kl, tag, seed, md_k=1, L=None):
             lsm = F.log_softmax(out.logits[:, :-1].float(), -1)
             lp = lsm.gather(-1, gen[:, P:, None]).squeeze(-1).mean(1)
             (-float(E("RL_COEF", 1.0)) * (adv.detach() * lp).mean()).backward()
-            for p_, g_ in g_low: p_.grad = g_                 # margin owns blocks <= L*
+            if int(E("JONLY_LOW", 0)):        # RL writes ONLY blocks <= L* (write-depth cell)
+                for _, p_, b_ in ctx.lora_params:
+                    if b_ > LSTAR: p_.grad = None
+            elif not int(E("JONLY_FULL", 0)):
+                for p_, g_ in g_low: p_.grad = g_             # margin owns blocks <= L*
+            if RL_DPOP > 0:  # displacement hinge on the preferred (wrong) side, full-stack
+                texts_w = [p["prompt"] + p["wrong"] for p in batch]
+                enc_w = ctx.tok(texts_w, return_tensors="pt", padding=True).to(ctx.device)
+                keep_w = max(len(p["w_ids"]) for p in batch) + 1
+                def _wlp(grad):
+                    with (torch.enable_grad() if grad else torch.no_grad()):
+                        lg = ctx.policy(**enc_w, logits_to_keep=keep_w).logits[:, :-1].float()
+                        ls = F.log_softmax(lg, -1)
+                        out_ = []
+                        for i, p in enumerate(batch):
+                            nn_ = len(p["w_ids"]); off = keep_w - nn_ - 1
+                            T_ = enc_w.input_ids.shape[1]
+                            out_.append(ls[i, off:off + nn_].gather(
+                                -1, enc_w.input_ids[i, T_ - nn_:, None]).squeeze(-1).sum())
+                        return torch.stack(out_)
+                lp_w = _wlp(True)
+                with ctx.policy.disable_adapter():
+                    ref_w = _wlp(False)
+                (RL_DPOP * F.relu(ref_w - lp_w).mean()).backward()
             hist.setdefault("r_mean", []).append(float(r.mean()))
         else:   # meandiff: current-policy batch mean difference as the (detached) push direction
             texts = [p["prompt"] + p["wrong"] for p in batch] + [p["prompt"] + p["right"] for p in batch]

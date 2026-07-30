@@ -199,6 +199,12 @@ if EMIT == "softdpo":
 cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
 policy = get_peft_model(model, cfg); policy.config.use_cache = False
+if E("LOAD_LORA"):   # two-stage arm: warm-start from a prior arm's saved adapter
+    from safetensors.torch import load_file
+    from peft import set_peft_model_state_dict
+    sd_load = load_file(os.path.join(E("LOAD_LORA"), "adapter_model.safetensors"))
+    set_peft_model_state_dict(policy, sd_load)
+    print(f"[load] adapter warm-start from {E('LOAD_LORA')} ({len(sd_load)} tensors)", flush=True)
 params = [p for p in policy.parameters() if p.requires_grad]
 opt = torch.optim.AdamW(params, lr=LR)
 import re as _re
@@ -326,6 +332,7 @@ if MD_NORM and MCOEF > 0:
 hist = dict(Lstar=LSTAR, probe_acc=float(acc[LSTAR]), mcoef=MCOEF, md_k=MD_K, mbatch=MBATCH,
             md_norm=MD_NORM, proj_scale=proj_scale, kl=KL, anchor=ANCHOR, emit=EMIT, beta=BETA,
             jonly_low=int(E("JONLY_LOW", 0)), jonly_full=int(E("JONLY_FULL", 0)),
+            jonly_upper=int(E("JONLY_UPPER", 0)), load_lora=E("LOAD_LORA", ""),
             reward=[], len=[], mloss=[], proj=[], evals=[])
 ev0 = evaluate(); ev0["step"] = 0; hist["evals"].append(ev0)
 print(f"  step    0: EVAL {ev0}", flush=True)
@@ -357,6 +364,7 @@ for step in range(STEPS):
             mloss += float(ml.detach()); proj_mean += float((proj.detach() * wsub).sum() / w_all)
     g_low = [(p, p.grad.clone() if p.grad is not None else None) for p in LOW]
     dloss = 0.0
+    rg, n_new = torch.zeros(1), torch.zeros(1)   # placeholders for the shared logging path
     if EMIT == "softdpo":
         # ================= soft-DPO half (uf_soft_dpo.py objective) =================
         for i, x in enumerate(sbatch):
@@ -372,9 +380,7 @@ for step in range(STEPS):
             l = -(p_ * F.logsigmoid(D) + (1 - p_) * F.logsigmoid(-D)) / MBATCH
             l.backward()
             dloss += float(l.detach())
-        rg = torch.zeros(1)   # keep the shared logging path happy
-        n_new = torch.zeros(1)
-    else:
+    elif EMIT == "rloo":
         # ================= RLOO half (uf_probe_rl.py v3, verbatim) =================
         batch = rgen.sample(train, BATCH)
         prompts = [render_prompt(x["prompt"]) for x in batch]
@@ -417,6 +423,8 @@ for step in range(STEPS):
     if int(E("JONLY_LOW", 0)):
         for n, p in policy.named_parameters():
             if p.requires_grad and _blk(n) > LSTAR: p.grad = None
+    elif int(E("JONLY_UPPER", 0)):    # emission head writes ONLY blocks > L* (stage-2 arm)
+        for p in LOW: p.grad = None
     elif MCOEF > 0 and not int(E("JONLY_FULL", 0)):
         for p, g in g_low: p.grad = g
     if ANCHOR > 0:  # DPOP hinge on the pair's chosen side (full-stack, after routing)

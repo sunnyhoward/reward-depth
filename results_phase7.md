@@ -179,6 +179,18 @@ dlp −2.5/−10.4. z_selfread pinned at .7457 all run (upper writes cannot move
 instrumentation sanity check). The cc jonly_upper result transfers to UF: the emission head
 needs nothing below the elbow.
 
+
+**C hyb2_300 (margin <=L12 + soft-DPO >L12 co-trained).** The margin half is ACTIVELY HARMFUL
+on UF: peak .734 @100 then decay to .641 @300 with heavy collateral (dlp_chosen −19.9,
+r_gen .372 → .25) — vs B's clean .80 rising with dlp −2.5. The cc J-only verdict transfers.
+
+**D twostage300 (soft-DPO >L12 on top of A's frozen low edit).** acc .719/.75/.75 @100/200/300 —
+TRAILS B (.781/.781/.797) at every checkpoint; step-0 acc .547 ≈ chance (the edit alone moved
+nothing). The margin-built structure is not consumed by an upper head trained later: contentless
+scaffolding. With A (null alone), C (harmful co-trained), D (unusable as warm-start), the
+activation-margin line on UF is closed from all directions. Footnote: D inherits gentler
+chosen-side likelihoods (+0.9 vs B's −2.5) from A's DPOP anchor legacy.
+
 ## 8. What the probe actually reads: the label-quality audit
 
 Prompted by eyeballing training pairs (`uf/uf_print_samples2.py`: a 9-vs-3 pair labelled

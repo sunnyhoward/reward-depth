@@ -160,6 +160,48 @@ writes install fully but transfer worse at every horizon, and the apparent "earl
 compound" trajectory did not survive extension. Any future trajectory claim on this testbed
 needs seeds first.
 
+## 6c. UF queue results (filled in as arms land)
+
+**A margin300 (mean-diff margin only, <=L12, DPOP anchor).** Prediction confirmed, in the
+strongest form: the objective FULLY SUCCEEDED on its own terms — separation along its adaptive
+direction grew 4x (proj 1.9 → 7.1, mloss .36 → .07) — with ZERO behavioural consequence
+(acc .48-.55 noise, r_gen flat, side-by-side generations essentially identical to base;
+`uf/uf_print_samples.py`). Meanwhile z_selfread HALVED (.75 → .31-.38): the adaptive direction
+is orthogonal-to-negative on the probe direction, and the edit drags eval pairs off the probe's
+fit distribution (s²-inflation) while rotating features. No forging, no collapse — just a 4x
+representational rewrite the frozen upper stack never reads. Purest demonstration yet of
+readable ≠ writable ≠ used. Adapter saved for arm D (the whole point: is this structure
+*learnable-from* by an upper head trained later?).
+
+**B sd_upper300 (soft-DPO, writes >L12 only).** acc_implicit .73 @50 → **.80 @300** (n=64
+in-run) — statistically indistinguishable from banked full-stack soft-DPO (0.800 big-N).
+dlp −2.5/−10.4. z_selfread pinned at .7457 all run (upper writes cannot move an L12 read —
+instrumentation sanity check). The cc jonly_upper result transfers to UF: the emission head
+needs nothing below the elbow.
+
+## 8. What the probe actually reads: the label-quality audit
+
+Prompted by eyeballing training pairs (`uf/uf_print_samples2.py`: a 9-vs-3 pair labelled
+p=0.145 the wrong way), an audit of all 3,000 probe-fit pairs (`/workspace/label_quality.log`):
+
+- mean p .784; 13.6% of soft labels side against the dataset (phase 3 said 15.4% — consistent).
+- acc(p>.5) RISES with GPT-4 margin: .82 (margin 1-2) → .92 (margin 5-9). corr(p, len_diff)
+  = .14 (matching held).
+- **The confidently-backwards tail is not random: it is overwhelmingly translation tasks
+  (Gujarati, Persian, Hindi→Marathi, Bengali, Telugu→Urdu, Thai→Japanese, ...) and rigid-format
+  tasks ("reply with output", label classification).** For these, chosen = a correct execution
+  the probe cannot verify from style; it defaults to its prior and prefers the deflection.
+
+Characterisation: **the L12 signal is the style-legible part of the UF preference —
+conversational helpfulness/explanatoriness — and is blind to execution correctness.**
+Retroactively explains: RewardBench gains concentrated in `chat` with `reasoning` losses (7-28);
+generation rewards scoring terse-but-correct answers near zero; soft-DPO's collateral profile.
+Tension for the Occam thesis, stated honestly: the early-decodable "simple semantic core" is a
+STYLE core; execution correctness — task substance, not idiosyncrasy — is (at least partly)
+late-or-never linearly decodable. "Only decodable late" does not imply "safe to exclude from
+the reward". Queued follow-up: probe accuracy and big-N deltas split by task type
+(translation/format/open-chat).
+
 ## 7. Infrastructure notes
 
 - Two 8B training processes do NOT fit this 96GB card (44+52GB peaks); serialize.

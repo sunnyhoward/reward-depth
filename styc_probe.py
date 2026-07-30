@@ -35,7 +35,8 @@ from helpers import make_q, KNOW_BANK, ResidualCapture, train_bayes_head
 
 E = os.environ.get
 MODEL = E("MODEL", "Qwen/Qwen2.5-3B")
-N_ARITH, N_SUM, SEED = int(E("N_ARITH", 500)), int(E("N_SUM", 300)), int(E("SEED", 0))
+N_ARITH, N_SUM, SEED = int(E("N_ARITH", 500)), int(E("N_SUM", 0)), int(E("SEED", 0))
+# v2: sum family excluded by default -- its answer TEXT correlates with correctness (magnitude leak)
 DEV = "cuda"
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 
@@ -55,15 +56,34 @@ print(f"[data] {len(qs)} questions "
       f"({sum(q['typ']=='mcq_arith' for q in qs)} arith, {sum(q['typ']=='sum' for q in qs)} sum, "
       f"{sum(q['typ']=='know' for q in qs)} know)", flush=True)
 
+# v2 (2026-07-30 hardening): multiple paraphrase templates per style level, chosen
+# deterministically PER QUESTION (same template for the correct and wrong variant, so style
+# remains textually identical across correctness). With a single template, "style" would be
+# template-detection and a trained policy could fake the factor on surface tokens.
+import hashlib as _hl
+def _ti(q, n): return int(_hl.sha1(q["q"].encode()).hexdigest()[:6], 16) % n
+ARITH_T = ["{ans}. {a} plus {b} equals {ans}.",
+           "The answer is {ans}, since adding {a} and {b} gives {ans}.",
+           "{ans} — that is what {a} + {b} comes to.",
+           "Adding the two numbers, {a} + {b} = {ans}, so the answer is {ans}."]
+SUM_T = ["{ans}. Computing both sums shows that {ans} is the larger one.",
+         "The larger sum is {ans}, as working both out makes clear.",
+         "{ans} — evaluating each expression shows this one is bigger."]
+KNOW_T = ["{ans}. This is a well-established fact.",
+          "The answer is {ans}, as is commonly known.",
+          "{ans} — a standard piece of general knowledge.",
+          "It is {ans}; this is widely documented."]
+TERSE_T = ["{ans}", "{ans}."]
 def explain(q, ans):
     if q["typ"] == "mcq_arith":
         a, b = q["q"].split("What is ")[1].rstrip("?").split("+")
-        return f"{ans}. {a.strip()} plus {b.strip()} equals {ans}."
+        return ARITH_T[_ti(q, len(ARITH_T))].format(ans=ans, a=a.strip(), b=b.strip())
     if q["typ"] == "sum":
-        return f"{ans}. Computing both sums shows that {ans} is the larger one."
-    return f"{ans}. This is a well-established fact."
+        return SUM_T[_ti(q, len(SUM_T))].format(ans=ans)
+    return KNOW_T[_ti(q, len(KNOW_T))].format(ans=ans)
 def variants(q):
-    return {("c", "t"): q["t"], ("w", "t"): q["f"],
+    tt = TERSE_T[_ti(q, len(TERSE_T))]
+    return {("c", "t"): tt.format(ans=q["t"]), ("w", "t"): tt.format(ans=q["f"]),
             ("c", "e"): explain(q, q["t"]), ("w", "e"): explain(q, q["f"])}
 def render(q, resp): return f"Question: {q['q']}\nAnswer: {resp}"
 
@@ -74,7 +94,7 @@ tok.padding_side = "left"
 model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DEV).eval()
 BLOCKS = list(model.model.layers); NL = len(BLOCKS); HID = model.config.hidden_size
 KEYS = [("c", "t"), ("w", "t"), ("c", "e"), ("w", "e")]
-cachef = "/workspace/styc_feats.npz"
+cachef = E("STYC_CACHE", "/workspace/styc_feats_v2.npz")
 if os.path.exists(cachef):
     FE = {k: v for k, v in np.load(cachef).items()}
 else:

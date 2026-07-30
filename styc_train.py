@@ -85,16 +85,21 @@ print(f"[data] {n} questions | train {int(tr.sum())} | test {int(te.sum())}", fl
 z = np.load(CACHEF); FE = {k: z[k] for k in z.files}
 assert FE["ct"].shape[0] == n, "cache/question-set mismatch -- regenerate styc_feats_v2"
 def fit_pref_head(li):
-    """Entangled preference head at layer li: corr_e + corr_t + style_c + style_w + conflict x2,
-    validated on held-out conflicts (the protocol that produced 0.966 @L35)."""
+    """Entangled preference head at layer li, NATURAL protocol: fit AND validate on the same
+    mixed preference diet (all five families at diet proportions, held-out questions for val).
+    No family gets privileged validation -- what the head learns at each depth is then a
+    MEASURED property, not a selected one. (v1 of this fit validated on conflicts only, which
+    at L10 selected a pathological anti-style head; caught by the step-25 oracles.)"""
     diets = [("ce","we"),("ct","wt"),("ce","ct"),("we","wt"),("ct","we"),("ct","we")]
     As = np.concatenate([FE[a][tr, li] for a,_ in diets]).astype(np.float32)
     Bs = np.concatenate([FE[b][tr, li] for _,b in diets]).astype(np.float32)
     s = np.where(np.random.RandomState(li).rand(len(As)) < 0.5, 1.0, -1.0).astype(np.float32)
     pool = np.concatenate([As, Bs]); sd = pool.std(0) + 1e-6
-    val = ((FE["ct"][te, li] - FE["we"][te, li]).astype(np.float32)) / sd
+    Av = np.concatenate([FE[a][te, li] for a,_ in diets]).astype(np.float32)
+    Bv = np.concatenate([FE[b][te, li] for _,b in diets]).astype(np.float32)
+    sv = np.where(np.random.RandomState(li + 999).rand(len(Av)) < 0.5, 1.0, -1.0).astype(np.float32)
     _, h, _ = train_bayes_head(((As - Bs) / sd) * s[:, None], s,
-                               val, np.ones(len(val), np.float32))
+                               ((Av - Bv) / sd) * sv[:, None], sv)
     return h, sd
 def head_p(h, sd, li, Fa, Fb, idx):
     fs = torch.tensor(((Fa[idx, li] - Fb[idx, li]).astype(np.float32)) / sd)

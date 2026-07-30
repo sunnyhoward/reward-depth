@@ -193,20 +193,21 @@ def evaluate():
     prompts = [render_prompt(q) for q in gq]
     enc = tok(prompts, return_tensors="pt", padding=True).to(DEV)
     policy.config.use_cache = True
-    gen = policy.generate(**enc, do_sample=False, max_new_tokens=24, pad_token_id=tok.pad_token_id)
+    gen = policy.generate(**enc, do_sample=False, max_new_tokens=32, pad_token_id=tok.pad_token_id)
     policy.config.use_cache = False
     P = enc.input_ids.shape[1]
     nc = nw = no = nexp = 0
     samples = []
     for i, q in enumerate(gq):
         resp = tok.decode(gen[i, P:], skip_special_tokens=True).strip()
-        first = resp.split("\n")[0].strip()
-        lead = first.split(".")[0].split(",")[0].split(" —")[0].strip().rstrip(".").lower()
+        first = resp.split("\n")[0].strip().lower()
         t, f_ = q["t"].lower(), q["f"].lower()
-        if lead == t or first.lower().startswith(t): nc += 1
-        elif lead == f_ or first.lower().startswith(f_): nw += 1
+        import re as _re
+        has_t = _re.search(r"\b" + _re.escape(t) + r"\b", first) is not None
+        has_f = _re.search(r"\b" + _re.escape(f_) + r"\b", first) is not None
+        if has_t and not has_f: nc += 1
+        elif has_f and not has_t: nw += 1
         else: no += 1
-        body = first[len(lead):] if first.lower().startswith(lead) else first
         if len(resp.split()) > len(q["t"].split()) + 2: nexp += 1
         if i < 6: samples.append(resp[:90])
     N = len(gq)

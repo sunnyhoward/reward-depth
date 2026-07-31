@@ -184,6 +184,80 @@ deflection vs correct execution. The two testbeds now agree at the mechanism lev
   behaviour at 8B for translation (the corr_e analogue); needs the UF cache rebuild (~30 min).
 - **Seeds** for anything above that gets written up (styc fits are minutes).
 
-*Not done this session: any policy training; UF cache rebuild; styc stage-B label-free
-profiles (superseded in priority by the corr_e scale question, which the frontier results
-motivate more directly).*
+*Sections below this line were added later the same day — the session continued.*
+
+## 9. The positional argument (why direct activation objectives never touched behaviour)
+
+Every activation objective in the archive attached at the **completion-end reading state**
+(`[:, -1]` at the eos sentinel — `cc_stage2.py:158`, `uf_hybrid_md.py:134`), a state causally
+*downstream* of the finished answer. Generation is driven by prefix states at each emission
+step; nothing in a completion-end loss makes the edit route through them, and the cheapest
+satisfying edit is to the post-hoc summary (arm A: 4x separation, generations bit-identical).
+The likelihood/PG family constrains the emission channel directly, which is why it installs.
+Complements the phase-1 forging argument; with the steering null it closes the "why" of the
+whole direct-activation line. (The one untried cell — per-position margin — runs as the
+`pooled_margin` arm below.)
+
+## 10. Mean pooling dissolves the 3B perception wall (user proposal)
+
+Refitting stage A on features **mean-pooled over answer tokens** (`STYC_POOL=mean`) instead of
+the completion-end token:
+
+- **corr_e at 3B: .776 (last-token) → .991 (pooled).** The verification signal was distributed
+  along the trajectory; the last-token protocol threw it away. §6's "perception wall" was
+  substantially a READOUT-POSITION artifact.
+- **The natural-protocol labeller (mixed diet, conflicts 15%) becomes correctness-dominant:**
+  conflict .32 (last-token) → **.905** (pooled), corr_e .99, with the trade surfacing only as
+  style_c .638. Min-family .638 vs the last-token Pareto ceiling of .48 — the pooled feature
+  geometry beats the last-token frontier at natural dose, no factor labels, no boosting, no
+  bigger model.
+
+Scaling curve of corr_e max (last-token protocol), for context: 0.5B .621, 1.5B .966,
+3B .776, 7B .991 (14B pending; 3B is the family's architectural outlier, and pooling shows its
+wall was positional). At 7B even last-token reads are ~ceiling.
+
+## 11. Training FROM the probe works: the `shaped` arm (styc_probe_rl.py, MODE=shaped)
+
+Design per `notes_dense_probe_rl.md`: guarded REINFORCE (RLOO baseline, DPOP floor,
+KL-in-reward, LCB pessimism); reward = pooled-probe read of the FROZEN base over sampled text;
+dense credit A_t = (Phi_end − b_LOO) + (Phi_end − Phi_t) from the running-mean potential.
+No DPO loss anywhere; no gradient through policy activations. 200 steps, 3B LoRA, lr 1e-5.
+`results/styc_prl_shaped_history.json`.
+
+| step | corr_e | corr_t | conflict | style_c | gen_correct | gen_other |
+|---|---|---|---|---|---|---|
+| 25 | .30 | .05 | .03 | .99 | .97 | .03 |
+| 125 | .79 | .68 | .28 | .88 | .94 | .06 |
+| 200 | .88 | .90 | .22 | .99 | .16 | .84 |
+
+1. **The mechanism installs.** Style in 25 steps, correctness following to ~.9 by 200 — where
+   sequence-sparse RLOO from a (weaker, last-token) probe sat at noise for 300 steps (phase 7
+   §2). First successful training-from-the-probe in the project.
+2. **Style-first dynamics as pre-registered** (density asymmetry): style tokens are everywhere,
+   correctness tokens few. The policy converges toward the labeller's own competence profile,
+   weak spots included (style_c descends toward the labeller's .638; conflicts rise but reach
+   only ~.3 of the labeller's .905 by 200).
+3. **Honest Goodhart from ~step 130**: preamble inflation ("Addition is the mathematical
+   operation of...") defers/truncates answers — gen_correct .94 → .16 — while EVERY ranking
+   metric continues improving and z_frozen_gap stays bit-identical (.483; nothing forged,
+   nothing off-menu, gen_wrong 0.0 throughout). With phase 7's "preference corrupts, behaviour
+   intact," both dissociation directions are now oracle-demonstrated: **implicit-reward
+   dashboards and behaviour can move in opposite directions under optimization.**
+4. Peak policy ≈ step 125. Operational: periodic adapter checkpoints are REQUIRED in the UF
+   port (only the final, over-optimized adapter was saved here).
+
+Queued fixes for the preamble exploit, one arm each: potential-JUMP credit (reward where Phi
+moves sharply — the answer tokens), and an answer-first/deferral guard in the anchor.
+
+## 12. Also added this session
+
+- **Generative-replay floor** (user proposal): `REPLAY_N` in `styc_probe_rl.py` — random-token
+  prompts, base continuations banked once, one-way floor relu(logp_base − logp_policy) sampled
+  each step. Constrains the policy on BROAD support, not just the training task — the UF
+  refusals/reasoning collapse (phase 3) is the evidence this matters. Default off on styc (arm
+  comparability); default on for the UF port. K-FAC replay prior remains the parameter-space
+  equivalent if the forward passes get expensive at 8B.
+- In flight at time of writing: `seqrl` (shaped minus dense credit — prices density),
+  `pooled_margin` (per-position direct activation control; forging channel open), 14B stage A,
+  7B conflict sweep + Pareto (does the last-token frontier lift at 7B), 1.5B/3B-mean stage-A
+  JSONs.

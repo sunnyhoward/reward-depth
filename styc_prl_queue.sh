@@ -4,10 +4,10 @@
 # success = output file exists. Histories banked+committed after EACH arm.
 cd /workspace/reward-depth || exit 1
 source /venv/main/bin/activate
-# gate only on the pooled cache the arms actually need; 14B caching co-runs fine (inference-
-# only, short texts) and the 3B arms + 14B cache fit a 96GB card together
+# gate only on the pooled cache FILE (the npz) — the RL script fits its own head from it;
+# the full pooled stage A JSON is nice-to-have and can finish in parallel on CPU
 echo "[queue] waiting for pooled 3B cache..."
-until [ -f /workspace/styc_stageA_3B_mean.json ]; do sleep 30; done
+until [ -f /workspace/styc_feats_3B_mean.npz ]; do sleep 15; done
 echo "[queue] prerequisites ready; starting arms"
 for M in shaped seqrl pooled_margin; do
   echo "[queue] === arm $M ==="

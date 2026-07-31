@@ -257,7 +257,48 @@ moves sharply — the answer tokens), and an answer-first/deferral guard in the 
   refusals/reasoning collapse (phase 3) is the evidence this matters. Default off on styc (arm
   comparability); default on for the UF port. K-FAC replay prior remains the parameter-space
   equivalent if the forward passes get expensive at 8B.
-- In flight at time of writing: `seqrl` (shaped minus dense credit — prices density),
-  `pooled_margin` (per-position direct activation control; forging channel open), 14B stage A,
-  7B conflict sweep + Pareto (does the last-token frontier lift at 7B), 1.5B/3B-mean stage-A
-  JSONs.
+- Scale-invariance control (pre-registered, §1): with conflicts held out of training, the
+  pref-head conflict accuracy is 0.000 at EVERY model size — 0.5B, 1.5B, 7B (max .009). The
+  dominance bit is in the diet, not the capacity, at all scales.
+
+## 13. The other two arms (session close)
+
+**`pooled_margin` — the control that won** (`results/styc_prl_pooled_margin_history.json`).
+Direct activation optimization — the eight-phase dead line — but on POOLED trajectory features:
+lag-1 adaptive mean-diff margin on (ce−we) pooled policy activations at L35, DPOP anchor,
+backprop THROUGH policy activations (forging channel deliberately open). 200 steps:
+
+| step | corr_e | corr_t | conflict | style_w | gen_correct | gen_explained |
+|---|---|---|---|---|---|---|
+| 25 | .98 | .94 | .60 | .68 | .88 | .39 |
+| 100 | 1.0 | .95 | .86 | .45 | .89 | .97 |
+| 200 | 1.0 | .98 | **.845** | .42 | **.891** | .94 |
+
+Cleanest install in the project: near-labeller conflict competence from a diet of ONLY ce/we
+pairs (the pooled correctness direction IS the dominance-relevant feature), behaviour intact
+(gen_wrong 0.0 throughout; an early terse-drift at 25 self-corrected via the anchor), stable
+plateau from ~100 with NO phase-5-style reversal and NO forging. The forging prediction
+failed in the good direction: with the target being the mean of every emission state, there is
+no causally-dead single state to cheaply rewrite — the pooled fix for the reading channel
+also closes the classic forging exploit. Cost axis: style_w ~.42 (ranking among wrong
+answers). Caveats: single seed; implicit-acc partly rides likelihood displacement — the
+generation oracles carry the claim. **The UF hybrid revival gate is OPEN.**
+
+**`seqrl` — density ablation, partial (50/200 steps, box killed;
+`results/styc_prl_seqrl_history.json`).** Same reward as shaped, sequence-level credit only.
+By step 50: gen_correct collapsed to .17 (preamble exploit), conflicts floored, styles at
+ceiling. Verdict, and it is decisive despite the truncation: **the eloquence spiral is the
+LABELLER's preference, not a credit-scheme artifact — sparse credit found the same exploit
+FASTER** (shaped got ~100 useful steps first; seqrl dove straight in). At step 25 seqrl was
+better-proportioned than shaped (corr_e .62 vs .30 — per-token credit over-weights ubiquitous
+style tokens), so density buys speed and early balance-distortion, but the Goodhart endpoint
+is reward-determined. Fixes must target the reward: answer-first anchoring, deferral penalty,
+or potential-JUMP credit.
+
+## 14. Session close: what was killed unfinished
+
+Box destroyed 2026-07-31 evening (Option A). Not completed: 14B stage A (caching done, fits
+killed), 7B last-token conflict sweep + Pareto (no output produced), 3B-mean full stage-A JSON
+(the corr_e .991 headline and the .905-conflict labeller are captured in §10 and in every
+styc_prl history's `labeller_acc`), seqrl steps 50-200. All regenerable by script from caches
+(~1-2 h GPU total); none block the next session's priority, the UF port.

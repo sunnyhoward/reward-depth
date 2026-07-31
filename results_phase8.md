@@ -1,0 +1,189 @@
+# Phase 8 — Why no head learns dominance: the frontier is in the features, and the bottleneck is eloquent wrongness
+
+*2026-07-31. One session, fresh box (RTX PRO 6000 Blackwell 96GB, `workspace_is_volume` false;
+repo restored from the HF bundle, styc cache regenerated from scratch — Stage-A factor curves
+reproduced). All experiments this session are offline probe fits on the styc v2 feature cache
+(Qwen-3B, 579 questions, 36 layers); no policy training. Scripts: `styc_probe.py` (v3),
+`styc_conflict_sweep.py`, `styc_lex_pareto.py`, `styc_mlp_head.py`, `styc_residual.py` (all new
+or extended this session). Every result JSON is in `results/`, committed after each run.
+Standing caveat: single seed, held-out n=116 questions per family (binomial SE ≈ 0.046).*
+
+## 0. Where this session started
+
+Discussion of the program's state concluded: toy results good, UF weak, and soft-DPO — the one
+working UF method — is not evidence for the Occam thesis (it saturates at labeller accuracy;
+OOD tracks probe accuracy, not depth). The user's proposal: a synthetic multi-head middle step.
+The user's standing constraint: labellers must be GENERAL (preference labels only, no factor
+labels); their hypothesis: an early head reads style, a late head reads everything, per-sample
+evidence weighting combines them. Phase 7 §9 had already refuted the entangled-ensemble form
+(0.000 on conflicts); this session asked *why*, and whether any label-free protocol escapes.
+
+The user also independently re-derived the lexicographic preference structure (correctness
+dominant, style tiebreaker) that `styc_train.py` already encodes — converging design.
+
+## 1. Stage A v3: aligned pairs + honest validation (`results/styc_stageA_v3_aligned.json`)
+
+Two gaps in the v2 protocol fixed:
+
+- **`aligned` family added** (correct-explained vs wrong-terse — both factors agree). This was
+  entirely absent from the v2 diet despite being the majority shape on real data.
+- **Per-layer validation now on held-out mixed pairs** (v2's `fit_pref` validated on the first
+  64 *training* rows).
+
+Results (train diet = corr_e, corr_t, style_c, style_w, aligned; conflict held out):
+
+| | L0 | L16 | L20 | max |
+|---|---|---|---|---|
+| mixed val acc | .82 | .85 | .89 | **.938 @L35** |
+| pref on corr_t | .56 | .66 | .75 | .966 @L35 (evidence-ens .983) |
+| pref on corr_e | .52 | .59 | .68 | .724 @L35 |
+| pref on style/aligned | 1.0 | 1.0 | 1.0 | 1.0 everywhere |
+| **pref on conflict** | .000 | .000 | .000 | **.000 everywhere** |
+
+The late head is much better overall — and still absolutely style-dominant on conflicts.
+Adding aligned pairs changed nothing on conflicts (pre-registered prediction: correct).
+
+**The information-theoretic point** (argued before the sweep, confirmed by it): every
+non-conflict family has the factors either agreeing or varying alone, so the diet contains no
+bit about which factor *wins* a disagreement. A linear scorer fits all five families perfectly
+under either dominance order. Dominance must come from disagreement pairs — or from inductive
+bias, and the bias picks style (bigger, cleaner margin). Conflict-free training ⇒ dominance
+unlearnable *in principle*, at any capacity (§4's rate-0 MLP control confirms at capacity).
+
+## 2. Conflict-rate dose-response (`results/styc_conflict_sweep.json`)
+
+Conflicts added to the training diet at {0, 2, 5, 10, 15, 20}%, mixed validation, all layers.
+At L35 (best layer throughout):
+
+| rate | conflict | style_c | corr_t |
+|---|---|---|---|
+| 0% | .000 | 1.000 | .966 |
+| 2% | .017 | 1.000 | .974 |
+| 5% | .103 | .991 | .991 |
+| 10% | .276 | .853 | .974 |
+| 15% | .319 | .836 | .974 |
+| 20% | .336 | **.767** | .974 |
+
+**Dosing does not work.** Shallow response saturating ~⅓ — and the 15% cell (.319) reproduces
+the phase-7 natural-fit labeller (.32) exactly, which in turn matches UF's style-first natural
+fit at its native ~13.6% conflict rate. Three independent routes to the same number.
+
+Mechanism localization: at 10–15%, L35 is the *only* layer whose style_c degrades — the head
+buys conflict accuracy by shrinking its style weight (a trade), not by promoting correctness
+to dominance. Pushing further approaches the 33%-cancellation cliff (phase-7 trap).
+
+## 3. The Pareto diagnostic: no linear direction implements the lexicographic order
+(`results/styc_lex_pareto.json`)
+
+Balanced six-family diet at L35, conflict sample-weight λ swept:
+
+| λ | conflict | style_c | style_w | aligned | min over families |
+|---|---|---|---|---|---|
+| 0.5 | .16 | .92 | .99 | 1.00 | .16 |
+| 1 | .30 | .85 | .99 | 1.00 | .30 |
+| 2 | .65 | .48 | .94 | .97 | **.48** ← frontier best |
+| 4 | .97 | .11 | .80 | .81 | .11 |
+| 8–32 | .99–1.0 | .01–.03 | .42–.69 | .48–.75 | ~.02 |
+
+Reference heads: a conflict-only head scores 1.00 on conflicts and **0.00 on every style and
+aligned family** — the linearly-optimal conflict direction is anti-style. Best min-across-
+families over the whole linear family: **0.48**. No weighting yields conflict ≥.9 and style ≥.9.
+**Representational, not diet.** (L20: same shape, lower everywhere.)
+
+## 4. Nonlinear readout: the MLP frontier IS the linear frontier
+(`results/styc_mlp_head_natural.json`, `results/styc_mlp_confheavy.json`)
+
+Hypothesis (pre-registered, and wrong): the conditional readout "if correctness signal present,
+use it; else style" is expressible with one hidden layer, so an antisymmetric MLP
+(f(x)=g(x)−g(−x), 2-layer, same difference features) should hold style ≥.95 while lifting
+conflicts well above the linear 0.48 ceiling.
+
+| cell | conflict | style_c | min |
+|---|---|---|---|
+| L10 / L20, any rate | .00–.15 | .96–1.0 | ≤.15 |
+| L35, 0% (control) | .01 | 1.00 | .01 ✓ control clean |
+| L35, 15% | .47 | .76 | .47 |
+| L35, 30% | .80 | .37 | .37 |
+| L35, 50% | .96 | .14 | .14 |
+
+The MLP traces the *same* trade-off curve as the linear λ-sweep (compare λ=4: .97/.11).
+**Capacity moves nothing; the frontier is a property of the features.** Early layers as
+predicted (no correctness feature to condition on); the rate-0 control at full capacity stays
+at 0 (the §1 information argument holds at any capacity).
+
+## 5. Residual/boosted composition: no escape (`results/styc_residual_hard.json`)
+
+Label-free two-stage protocol: natural h1 (style-first) → stage-2 h2 on error-reweighted diet →
+three combiners (additive; dominance gate on |z2|; learned 2-D antisymmetric stacker).
+First attempt was a no-op — the calibrated Bayes z is compressed (conflicts sit at z1 ≈ −0.47
+± 0.5), so `exp(−z)` weights barely varied (`results/styc_residual_softboost.json`; kept as a
+methods trap). Sharpened (T=0.5) and errors-only reruns:
+
+| L35 | conflict | style_c | min |
+|---|---|---|---|
+| h1 (natural) | .16 | .92 | .16 |
+| h2 (temp-boost) | .26 | .76 | .26 |
+| h2 (errors-only) | .08 | .97 | .08 |
+| best combiner (any variant) | .22 | .94 | .26 |
+
+No composition escapes the frontier. (Structural note, worked out before the run: an
+anti-style h2 is useless to an antisymmetric 2-D combiner anyway — conflict-with-A-correct and
+flipped-style-pair produce the same (−z1, +z2) signature, so the combiner cannot distinguish
+them without genuine correctness signal. And per §6, genuine correctness signal *on the
+explained side* is the scarce resource.) Caveat: h2's errors-only fit landing style-first
+(conflict .08) is odd enough that a further implementation issue can't be excluded; but §4
+bounds anything built from these features regardless, so this line was not pursued further.
+
+## 6. The bottleneck, localized: eloquent wrongness is ~0.8-detectable, everything follows
+
+The collapse pattern in §4 is family-specific: only style_c dies; style_w and aligned survive.
+That is the fingerprint of the real constraint. Any antisymmetric scorer must satisfy
+
+    conflict:  f(ct − we) > 0        (prefer correct-terse over wrong-explained)
+    style_c:   f(ct − ce) < 0        (prefer correct-explained over correct-terse)
+
+and the two inputs differ only by (ce − we) — the correctness-of-the-explained-side direction.
+So winning conflicts without destroying style **is exactly a corr_e discrimination**, and
+corr_e is the one weak signal in the system: **0.776 decodable at L35** (vs .957 for terse),
+capping at ~.84 under every λ. Three independent fits show the same anti-explained-on-correct-
+pairs signature (the λ≥4 linear heads; phase 7's factor head, 0.023 on style_c; the conflict-
+heavy MLP). The dominance failure is not "style capture" as a training pathology — it is a
+*perceptual* limit: **the 3B cannot reliably tell a fluent wrong assertion from a fluent right
+one, and every readout limitation is downstream of that.**
+
+This is the styc-oracle version of UF phase 7 §8: the confidently-backwards tail was fluent
+deflection vs correct execution. The two testbeds now agree at the mechanism level.
+
+## 7. Standing conclusions after this session
+
+1. **Dominance information lives only in disagreement pairs.** No conflicts in the diet ⇒ no
+   dominance, at any capacity (theory + rate-0 controls).
+2. **At realistic conflict rates (10–15%), natural fits saturate at ~⅓ conflict accuracy** and
+   pay for it in style accuracy — on styc with an oracle, matching UF in the wild.
+3. **The achievable frontier is set by the features, not the readout** — linear, MLP, and
+   boosted compositions trace the same curve. Head engineering on a frozen deficient
+   representation is a dead end. This closes, for this testbed and model, both the depth-
+   ensemble idea and its residual-fitting repair.
+4. **The binding scalar is corr_e ≈ 0.78–0.84**: detectability of wrongness under fluent
+   assertion. This is now the program's central measured quantity.
+
+## 8. Where this points next (agreed direction + open)
+
+- **Scale/architecture question (now the headline experiment): does corr_e rise with model
+  size?** styc-XL task ladder × model sizes. If a 7–8B reads eloquent wrongness at ~.95, the
+  whole dominance problem dissolves with scale for these task families; if not, reward models
+  genuinely need information the base model does not compute (either conclusion is a result).
+  The 2-step-arithmetic "decodable nowhere" bet remains on record alongside.
+- **Flip-training arms** (behavioural install measurement, cc-style): design agreed this
+  session — flip correctness dominance only (wrong > correct, style still tiebreaker), because
+  only a correctness-competent labeller can express the flip; `gen_wrong` becomes a behavioural
+  dose-response of labeller competence. Labeller ladder: GT (1.0) / dosed natural (~.32) /
+  style-blind early (~0). Implementation: `LEX_P` in `styc_train.py` + existing oracles.
+- **UF translation-tail probe** (fitting-problem-vs-capability-wall test): per-layer accuracy
+  on the confidently-backwards slice under tail-upweighted refits. §6 predicts wall-like
+  behaviour at 8B for translation (the corr_e analogue); needs the UF cache rebuild (~30 min).
+- **Seeds** for anything above that gets written up (styc fits are minutes).
+
+*Not done this session: any policy training; UF cache rebuild; styc stage-B label-free
+profiles (superseded in priority by the corr_e scale question, which the frontier results
+motivate more directly).*

@@ -67,10 +67,18 @@ for li in LAYERS:
     # stage 1: natural head
     _, h1, _ = train_bayes_head(DF, s, DFv, s_v)
     z1_tr = z_of(h1, sd, A, B) * s   # signed: >0 = stage 1 correct
-    # stage 2: boosting weights from stage-1 errors
-    w = np.exp(-np.clip(z1_tr, -3, 3)).astype(np.float32); w *= len(w) / w.sum()
     z1_v = z_of(h1, sd, A_v, B_v) * s_v
-    w_v = np.exp(-np.clip(z1_v, -3, 3)).astype(np.float32); w_v *= len(w_v) / w_v.sum()
+    # stage 2: boosting weights from stage-1 errors. The calibrated Bayes z is compressed
+    # (s2-inflation keeps |z|<~3), so exp(-z) barely reweights -- sharpen or go errors-only.
+    BOOST = E("BOOST", "temp")
+    if BOOST == "err":
+        w = np.where(z1_tr < 0, 1.0, 0.05).astype(np.float32)
+        w_v = np.where(z1_v < 0, 1.0, 0.05).astype(np.float32)
+    else:
+        T = float(E("BOOST_T", 0.5))
+        w = np.clip(np.exp(-z1_tr / T), 0.02, 50).astype(np.float32)
+        w_v = np.clip(np.exp(-z1_v / T), 0.02, 50).astype(np.float32)
+    w *= len(w) / w.sum(); w_v *= len(w_v) / w_v.sum()
     _, h2, _ = train_bayes_head(DF, s, DFv, s_v, w_tr=w, w_te=w_v)
 
     # combiner fitting data: signed z-pairs on the TRAIN diet
@@ -120,9 +128,10 @@ for li in LAYERS:
                          gate=float((gated(Z, t_best) > 0).mean()),
                          stack=float((zs > 0).mean()))
         scatter[k] = dict(z1=z1.round(3).tolist(), z2=z2.round(3).tolist())
-    out = json.load(open("/workspace/styc_residual.json")) if os.path.exists("/workspace/styc_residual.json") else {}
-    out[f"L{li}"] = dict(alpha=a_best, tau=float(t_best), acc=res_li, scatter=scatter)
-    json.dump(out, open("/workspace/styc_residual.json", "w"), indent=1)
+    outf = E("RES_OUT", "/workspace/styc_residual.json")
+    out = json.load(open(outf)) if os.path.exists(outf) else {}
+    out[f"L{li}_{E('BOOST', 'temp')}"] = dict(alpha=a_best, tau=float(t_best), acc=res_li, scatter=scatter)
+    json.dump(out, open(outf, "w"), indent=1)
     for m in ["h1", "h2", "add", "gate", "stack"]:
         line = " ".join(f"{k} {res_li[k][m]:.2f}" for k in PAIRS)
         print(f"[L{li:2d} {m:5s}] {line} | min {min(res_li[k][m] for k in PAIRS):.2f}", flush=True)

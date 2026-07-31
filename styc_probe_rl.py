@@ -204,8 +204,34 @@ def evaluate(step):
     ev["z_frozen_gap"] = float((probe_z(fa) - probe_z(fb)).mean())
     policy.train(); return ev
 
+# ---- generative replay floor (user proposal 2026-07-31): constrain the policy on a BROAD
+# prompt distribution, not just the training task. Random-token prompts (+ the base's own
+# continuations of them), floor = relu(logp_base - logp_policy): never lose likelihood on what
+# the base would have done off-task. Default OFF for arm comparability; ON for the UF port.
+REPLAY_N, REPLAY_W, REPLAY_BS = int(E("REPLAY_N", 0)), float(E("REPLAY_W", 1.0)), int(E("REPLAY_BS", 8))
+replay_texts, replay_plens = [], []
+if REPLAY_N:
+    rrng = torch.Generator(device="cpu").manual_seed(SEED + 77)
+    vocab = int(model.config.vocab_size)
+    with torch.no_grad():
+        for s in range(0, REPLAY_N, 16):
+            k = min(16, REPLAY_N - s)
+            rids = torch.randint(0, vocab, (k, 8), generator=rrng).to(DEV)
+            policy.config.use_cache = True
+            with policy.disable_adapter():
+                g = policy.generate(input_ids=rids, do_sample=True, temperature=1.0,
+                                    max_new_tokens=MAXNEW, pad_token_id=tok.pad_token_id)
+            policy.config.use_cache = False
+            for i in range(k):
+                replay_texts.append(tok.decode(g[i], skip_special_tokens=True))
+                replay_plens.append(len(tok(tok.decode(g[i, :8], skip_special_tokens=True)).input_ids))
+    with torch.no_grad(), policy.disable_adapter():
+        replay_ref = torch.cat([batch_logps(replay_texts[s:s+16], replay_plens[s:s+16], False)
+                                for s in range(0, len(replay_texts), 16)])
+    print(f"[replay] {len(replay_texts)} random-prompt base continuations banked", flush=True)
+
 hist = dict(mode=MODE, layer=LI, labeller_acc=lab_acc, shape_w=SHAPE_W, pess=PESS, klr=KLR,
-            dpop=DPOP, lr=opt.param_groups[0]["lr"], loss=[], reward=[], evals=[])
+            dpop=DPOP, replay_n=REPLAY_N, lr=opt.param_groups[0]["lr"], loss=[], reward=[], evals=[])
 ev0 = evaluate(0); hist["evals"].append(ev0)
 print(f"  step    0: EVAL { {k: (round(v,3) if isinstance(v,float) else v) for k,v in ev0.items() if k!='gen_samples'} }", flush=True)
 policy.train()
@@ -283,6 +309,10 @@ for step in range(STEPS):
             ra = batch_logps(atexts, aplens, False)
         loss = loss_m + DPOP * F.relu(ra - la).mean()
         hist["reward"].append(float(proj.mean().detach()))
+    if REPLAY_N:
+        ridx = rgen.sample(range(len(replay_texts)), min(REPLAY_BS, len(replay_texts)))
+        lp_r = batch_logps([replay_texts[i] for i in ridx], [replay_plens[i] for i in ridx], True)
+        loss = loss + REPLAY_W * F.relu(replay_ref[ridx] - lp_r).mean()
     loss.backward()
     torch.nn.utils.clip_grad_norm_(params, 1.0)
     opt.step()

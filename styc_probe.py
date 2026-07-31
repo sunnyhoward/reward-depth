@@ -102,8 +102,10 @@ cachef = E("STYC_CACHE", "/workspace/styc_feats_v2.npz")
 if os.path.exists(cachef):
     FE = {k: v for k, v in np.load(cachef).items()}
 else:
-    print("[feats] caching...", flush=True)
+    POOL = E("STYC_POOL", "last")   # last = completion-end token | mean = mean over ANSWER tokens
+    print(f"[feats] caching (pool={POOL})...", flush=True)
     FE = {}
+    plens = [len(tok(f"Question: {q['q']}\nAnswer:")["input_ids"]) for q in qs]
     for key in KEYS:
         texts = [render(q, variants(q)[key]) for q in qs]
         out = np.zeros((len(texts), NL, HID), np.float16)
@@ -112,8 +114,14 @@ else:
             with torch.no_grad(), ResidualCapture(BLOCKS) as cap:
                 model(**enc)
             buf = cap.get()
+            T = enc.input_ids.shape[1]
             for li in range(NL):
-                out[s:s + len(enc.input_ids), li] = buf[li][:, -1].float().cpu().numpy()
+                if POOL == "mean":
+                    for i in range(enc.input_ids.shape[0]):
+                        npad = int(T - enc.attention_mask[i].sum())
+                        out[s + i, li] = buf[li][i, npad + plens[s + i]:].mean(0).float().cpu().numpy()
+                else:
+                    out[s:s + len(enc.input_ids), li] = buf[li][:, -1].float().cpu().numpy()
         FE["".join(key)] = out
         print(f"  cached {key}", flush=True)
     np.savez(cachef, **FE)
@@ -214,7 +222,7 @@ for k, (Fa, Fb) in pair_sets.items():
     for li in range(NL):
         P[li], PR[li] = score(li, Fa, Fb, te)
     curve = [float((P[li] > 0.5).mean()) for li in range(NL)]   # full per-layer, held-out
-    single = {f"L{li}": curve[li] for li in [10, 20, 30]}
+    single = {f"L{li}": curve[li] for li in [10, 20, 30] if li < NL}
     ens = dict(uniform=float((P.mean(0) > 0.5).mean()),
                evidence=float(((w_ev[:, None] * P).sum(0) > 0.5).mean()),
                precision=float(((PR * P).sum(0) / PR.sum(0) > 0.5).mean()))
@@ -222,5 +230,5 @@ for k, (Fa, Fb) in pair_sets.items():
     res["ens"][k] = dict(curve=curve, singles=single, ensembles=ens, prec_center_of_mass=com)
     print(f"[pref {k:9s}] max {max(curve):.3f} @L{int(np.argmax(curve))} | "
           f"curve {[round(a,2) for a in curve[::4]]} | ens {ens} | weight-CoM L{com:.1f}", flush=True)
-json.dump(res, open("/workspace/styc_stageA.json", "w"), indent=1)
+json.dump(res, open(E("STYC_OUT", "/workspace/styc_stageA.json"), "w"), indent=1)
 print("DONE", flush=True)

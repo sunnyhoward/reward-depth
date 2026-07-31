@@ -16,8 +16,12 @@ verifying the explained-wrong response requires actually computing/knowing the a
 Pair sets:
   CORR      style-matched, correctness differs   (c,e)v(w,e) and (c,t)v(w,t)
   STYLE     correctness-matched, style differs   (c,e)v(c,t) and (w,e)v(w,t)
+  ALIGNED   (c,explained) vs (w,terse) -- both factors agree (v3; the majority shape on real data)
   CONFLICT  (c,terse) vs (w,explained) -- correctness says left, style says right
 Preference for the mixed PREF probe: lexicographic, correctness dominates, style breaks ties.
+v3 (2026-07-31): ALIGNED added to the train diet; CONFLICT stays held out (validation only);
+pref-head fitting now validates per layer on held-out MIXED pairs (stage-B spec), and the full
+per-layer per-family accuracy curves are banked, not just L10/20/30.
 
 Outputs (/workspace/styc_*.json, results/ after banking):
   - correctness-decodability and style-decodability vs depth (the two curves)
@@ -159,29 +163,36 @@ for t in ["know", "mcq_arith", "sum"]:
     print(f"[CORR|{t}] max {max(accs):.3f} @L{int(np.argmax(accs))} | {[round(a,2) for a in accs[::4]]}", flush=True)
 
 # ---- PREF heads (lexicographic preference, mixed pair diet) + ensembles on held-out ----
-# preferred vs dispreferred pairs: CORR(e), CORR(t), STYLE(c), STYLE(w), CONFLICT
+# preferred vs dispreferred pairs: CORR(e), CORR(t), STYLE(c), STYLE(w), ALIGNED, CONFLICT
 pair_sets = dict(corr_e=(FE["ce"], FE["we"]), corr_t=(FE["ct"], FE["wt"]),
                  style_c=(FE["ce"], FE["ct"]), style_w=(FE["we"], FE["wt"]),
-                 conflict=(FE["ct"], FE["we"]))
+                 aligned=(FE["ce"], FE["wt"]), conflict=(FE["ct"], FE["we"]))
 # train diet: all but conflict (conflict is the generalization test)
+DIET = ["corr_e", "corr_t", "style_c", "style_w", "aligned"]
 P_ens, W_prec, accs_pref, elbos_pref = {}, {}, [], []
 heads_pref = []
 rngh = np.random.RandomState(SEED + 7)
 def fit_pref(li):
-    As, Bs = [], []
-    for k in ["corr_e", "corr_t", "style_c", "style_w"]:
+    # train on the mixed diet (train questions); validate on the SAME mixed diet, held-out
+    # questions (stage-B spec: mixed validation, never conflict-privileged)
+    As, Bs, Av, Bv = [], [], [], []
+    for k in DIET:
         Fa, Fb = pair_sets[k]
         As.append(Fa[tr, li].astype(np.float32)); Bs.append(Fb[tr, li].astype(np.float32))
+        Av.append(Fa[te, li].astype(np.float32)); Bv.append(Fb[te, li].astype(np.float32))
     A, B = np.concatenate(As), np.concatenate(Bs)
+    A_v, B_v = np.concatenate(Av), np.concatenate(Bv)
     s = np.where(rngh.rand(len(A)) < 0.5, 1.0, -1.0).astype(np.float32)
+    s_v = np.where(rngh.rand(len(A_v)) < 0.5, 1.0, -1.0).astype(np.float32)
     pool = np.concatenate([A, B]); sd = pool.std(0) + 1e-6
     a, h, e = train_bayes_head(((A - B) / sd) * s[:, None], s,
-                               ((A - B) / sd)[:64] * s[:64, None], s[:64])
-    return h, sd, e
+                               ((A_v - B_v) / sd) * s_v[:, None], s_v)
+    return h, sd, e, float(a)
 for li in range(NL):
-    h, sd, e = fit_pref(li)
-    heads_pref.append((h, sd)); elbos_pref.append(float(e))
-print("[pref] heads fit", flush=True)
+    h, sd, e, a = fit_pref(li)
+    heads_pref.append((h, sd)); elbos_pref.append(float(e)); accs_pref.append(a)
+print(f"[pref] heads fit | mixed-val acc: max {max(accs_pref):.3f} @L{int(np.argmax(accs_pref))} "
+      f"| curve {[round(a,2) for a in accs_pref[::4]]}", flush=True)
 
 def score(li, Fa, Fb, m):
     h, sd = heads_pref[li]
@@ -193,19 +204,23 @@ def score(li, Fa, Fb, m):
 
 res = dict(curves=dict(corr_explained=corr_acc_e, corr_terse=corr_acc_t,
                        style_correct=style_acc_c, style_wrong=style_acc_w,
-                       corr_by_type=corr_by_typ, elbos_pref=elbos_pref))
+                       corr_by_type=corr_by_typ, elbos_pref=elbos_pref,
+                       pref_mixed_val=accs_pref),
+           diet=DIET)
 w_ev = np.exp((np.array(elbos_pref) - max(elbos_pref)) / 50.0); w_ev /= w_ev.sum()
 res["ens"] = {}
 for k, (Fa, Fb) in pair_sets.items():
     P = np.zeros((NL, int(te.sum()))); PR = np.zeros_like(P)
     for li in range(NL):
         P[li], PR[li] = score(li, Fa, Fb, te)
-    single = {f"L{li}": float((P[li] > 0.5).mean()) for li in [10, 20, 30]}
+    curve = [float((P[li] > 0.5).mean()) for li in range(NL)]   # full per-layer, held-out
+    single = {f"L{li}": curve[li] for li in [10, 20, 30]}
     ens = dict(uniform=float((P.mean(0) > 0.5).mean()),
                evidence=float(((w_ev[:, None] * P).sum(0) > 0.5).mean()),
                precision=float(((PR * P).sum(0) / PR.sum(0) > 0.5).mean()))
     com = float((PR / PR.sum(0)).T.dot(np.arange(NL)).mean())   # precision center of mass
-    res["ens"][k] = dict(singles=single, ensembles=ens, prec_center_of_mass=com)
-    print(f"[ens {k:9s}] singles {single} | ens {ens} | weight-CoM L{com:.1f}", flush=True)
+    res["ens"][k] = dict(curve=curve, singles=single, ensembles=ens, prec_center_of_mass=com)
+    print(f"[pref {k:9s}] max {max(curve):.3f} @L{int(np.argmax(curve))} | "
+          f"curve {[round(a,2) for a in curve[::4]]} | ens {ens} | weight-CoM L{com:.1f}", flush=True)
 json.dump(res, open("/workspace/styc_stageA.json", "w"), indent=1)
 print("DONE", flush=True)

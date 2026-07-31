@@ -4,8 +4,10 @@
 # success = output file exists. Histories banked+committed after EACH arm.
 cd /workspace/reward-depth || exit 1
 source /venv/main/bin/activate
-echo "[queue] waiting for 14B stage A + pooled 3B cache..."
-until [ -f /workspace/styc_stageA_14B.json ] && [ -f /workspace/styc_stageA_3B_mean.json ]; do sleep 60; done
+# gate only on the pooled cache the arms actually need; 14B caching co-runs fine (inference-
+# only, short texts) and the 3B arms + 14B cache fit a 96GB card together
+echo "[queue] waiting for pooled 3B cache..."
+until [ -f /workspace/styc_stageA_3B_mean.json ]; do sleep 30; done
 echo "[queue] prerequisites ready; starting arms"
 for M in shaped seqrl pooled_margin; do
   echo "[queue] === arm $M ==="

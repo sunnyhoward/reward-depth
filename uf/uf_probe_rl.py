@@ -51,11 +51,13 @@ STEPS, BATCH, K = int(E("RL_STEPS", 300)), int(E("RL_BATCH", 2)), int(E("RL_K", 
 KL, PESS, ANCHOR, LR = float(E("RL_KL", 0.03)), float(E("RL_PESS", 0.5)), float(E("RL_ANCHOR", 1.0)), float(E("RL_LR", 5e-5))
 MAX_NEW, MAX_LEN, TOL = int(E("MAX_NEW", 200)), int(E("MAX_LEN", 1024)), float(E("PLATEAU_TOL", 0.01))
 PLEN = int(E("PROMPT_LEN", 512))
-MODE = E("RL_MODE", "rloo")            # rloo | shaped | pooled_margin
+MODE = E("RL_MODE", "rloo")            # rloo | shaped | pooled_margin | hybrid (shaped + MCOEF*margin)
 READ = E("UF_READ", "last")            # last | mean
-assert MODE in ("rloo", "shaped", "pooled_margin") and READ in ("last", "mean")
-if MODE == "shaped": assert READ == "mean", "shaped needs prefix-valid pooled Phi (UF_READ=mean)"
-SHAPE_W = float(E("SHAPE_W", 1.0)) if MODE == "shaped" else 0.0
+assert MODE in ("rloo", "shaped", "pooled_margin", "hybrid") and READ in ("last", "mean")
+if MODE in ("shaped", "hybrid"): assert READ == "mean", "shaped/hybrid need prefix-valid pooled Phi (UF_READ=mean)"
+SHAPE_W = float(E("SHAPE_W", 1.0)) if MODE in ("shaped", "hybrid") else 0.0
+MCOEF = float(E("MCOEF", 1.0))         # hybrid: weight of the margin half
+REWARD_FORM = E("REWARD_FORM", "ndtr") # ndtr (v3 squash) | z (raw LCB, clipped — spread-preserving)
 TRUNC_PEN = float(E("TRUNC_PEN", 0.25))
 REPLAY_N, REPLAY_W, REPLAY_BS = int(E("REPLAY_N", 64)), float(E("REPLAY_W", 1.0)), int(E("REPLAY_BS", 8))
 REPLAY_MAXNEW = int(E("REPLAY_MAXNEW", 64))
@@ -189,7 +191,10 @@ def probe_reward(f):
     # (chosen-vs-rejected gap 0.26 -> 0.08). Ranking is unaffected; the RLOO advantage SNR is not.
     fs = (f.float() - MN) / SD
     s2 = fs.pow(2).matmul(SIG2)
-    return torch.special.ndtr((fs.matmul(MU) - PESS * torch.sqrt(s2 + 1e-9)) / torch.sqrt(1 + s2))
+    lcb = fs.matmul(MU) - PESS * torch.sqrt(s2 + 1e-9)
+    if REWARD_FORM == "z":   # spread-preserving: the CDF squash eats within-prompt z differences
+        return lcb.clamp(-6, 6)
+    return torch.special.ndtr(lcb / torch.sqrt(1 + s2))
 
 # ---- Stage B: RLOO from probe at L* ----
 cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
@@ -335,9 +340,10 @@ rgen = random.Random(4242); policy.train()
 u_prev = None   # lag-1 adaptive direction for pooled_margin
 for step in range(STEPS):
     opt.zero_grad()
-    if MODE == "pooled_margin":
+    if MODE in ("pooled_margin", "hybrid"):
         # ---- styc phase-8 winner: POLICY pooled activations, lag-1 mean-diff margin ----
         batch = rgen.sample(train, MARGIN_BS)
+        mw = MCOEF if MODE == "hybrid" else 1.0
         texts, ncs = [], []
         for x in batch:
             for side in ("chosen", "rejected"):
@@ -361,13 +367,13 @@ for step in range(STEPS):
             if u is None:
                 un = d.detach().mean(0); u = un / (un.norm() + 1e-6)
             proj = d.matmul(u)
-            (F.relu(M0 - proj).sum() / MARGIN_BS).backward()
+            (mw * F.relu(M0 - proj).sum() / MARGIN_BS).backward()
             proj_sum += float(proj.sum().detach())
         with torch.no_grad():
             u_now = torch.cat(d_all).mean(0); u_prev = u_now / (u_now.norm() + 1e-6)
-        hist["reward"].append(proj_sum / MARGIN_BS)
-    else:
-        # ---- sampling modes: rloo (v3 baseline) and shaped (dense credit) ----
+        (hist.setdefault("proj", []) if MODE == "hybrid" else hist["reward"]).append(proj_sum / MARGIN_BS)
+    if MODE in ("rloo", "shaped", "hybrid"):
+        # ---- sampling modes: rloo (v3 baseline), shaped (dense credit), hybrid's PG half ----
         batch = rgen.sample(train, BATCH)
         prompts = [render_prompt(x["prompt"]) for x in batch]
         enc = tok(prompts, return_tensors="pt", padding=True, truncation=True, max_length=PLEN).to(DEV)

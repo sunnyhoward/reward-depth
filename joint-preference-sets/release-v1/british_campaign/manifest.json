@@ -1,0 +1,34 @@
+{
+  "components": {
+    "culture": 659,
+    "false_british_over_american": 193,
+    "language": 659,
+    "true_british_over_american": 193,
+    "truth_over_british": 193
+  },
+  "counts": {
+    "train": 1403,
+    "validation": 494
+  },
+  "files": {
+    "train.jsonl": {
+      "records": 1403,
+      "sha256": "fcb68cbe3eda8fe5f512e9fc455c259618a0060032e4e2821a8235b407f3ade2"
+    },
+    "validation.jsonl": {
+      "records": 494,
+      "sha256": "fad7276626c03d7a5b19e5783470093ecff0ad3fd7d502feabbc8ac39cb0f4be"
+    }
+  },
+  "intended_use": "Recommended full Britishness training set.",
+  "orientation": "chosen_over_rejected",
+  "roles": {
+    "install": 1704,
+    "truth_guard": 193
+  },
+  "schema": "joint-preference-release-v1",
+  "seed": 7301,
+  "summary": "Core Britishness pairs combined with their truth-order guard.",
+  "task": "british_campaign",
+  "token_ids_exported": false
+}

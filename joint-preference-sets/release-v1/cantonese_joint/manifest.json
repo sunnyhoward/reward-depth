@@ -1,0 +1,30 @@
+{
+  "components": {
+    "culture": 720,
+    "language": 720
+  },
+  "counts": {
+    "train": 936,
+    "validation": 504
+  },
+  "files": {
+    "train.jsonl": {
+      "records": 936,
+      "sha256": "ee885b3187b80d8be90512c1cbe5f1ed744ff314e3b76adb793b0bf7ce07213e"
+    },
+    "validation.jsonl": {
+      "records": 504,
+      "sha256": "94810d2b26b8469b9b0904bd605119071b43440421c9321c94faf573bb4c3238"
+    }
+  },
+  "intended_use": "Core Cantonese direction only; no truth-dialect guard.",
+  "orientation": "chosen_over_rejected",
+  "roles": {
+    "install": 1440
+  },
+  "schema": "joint-preference-release-v1",
+  "seed": 7301,
+  "summary": "Size-balanced Cantonese language and Hong Kong/Cantonese culture pairs.",
+  "task": "cantonese_joint",
+  "token_ids_exported": false
+}

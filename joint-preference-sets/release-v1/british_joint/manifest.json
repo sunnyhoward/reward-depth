@@ -1,0 +1,30 @@
+{
+  "components": {
+    "culture": 659,
+    "language": 659
+  },
+  "counts": {
+    "train": 968,
+    "validation": 350
+  },
+  "files": {
+    "train.jsonl": {
+      "records": 968,
+      "sha256": "f3d1906ebfd246065d0dd8aa37d02a74ba7205e36d3e60f094f1cd3a85dbfe81"
+    },
+    "validation.jsonl": {
+      "records": 350,
+      "sha256": "e0a9f712f7b6b338114eff0dd41518f7ac84a03745c33374c06201c8ce48309f"
+    }
+  },
+  "intended_use": "Core Britishness direction only; no truth-dialect guard.",
+  "orientation": "chosen_over_rejected",
+  "roles": {
+    "install": 1318
+  },
+  "schema": "joint-preference-release-v1",
+  "seed": 7301,
+  "summary": "Size-balanced British language and culture preference pairs.",
+  "task": "british_joint",
+  "token_ids_exported": false
+}

@@ -1,0 +1,215 @@
+{
+  "datasets": {
+    "british_campaign": {
+      "components": {
+        "culture": 659,
+        "false_british_over_american": 193,
+        "language": 659,
+        "true_british_over_american": 193,
+        "truth_over_british": 193
+      },
+      "counts": {
+        "train": 1403,
+        "validation": 494
+      },
+      "files": {
+        "train.jsonl": {
+          "records": 1403,
+          "sha256": "fcb68cbe3eda8fe5f512e9fc455c259618a0060032e4e2821a8235b407f3ade2"
+        },
+        "validation.jsonl": {
+          "records": 494,
+          "sha256": "fad7276626c03d7a5b19e5783470093ecff0ad3fd7d502feabbc8ac39cb0f4be"
+        }
+      },
+      "intended_use": "Recommended full Britishness training set.",
+      "orientation": "chosen_over_rejected",
+      "roles": {
+        "install": 1704,
+        "truth_guard": 193
+      },
+      "schema": "joint-preference-release-v1",
+      "seed": 7301,
+      "summary": "Core Britishness pairs combined with their truth-order guard.",
+      "task": "british_campaign",
+      "token_ids_exported": false
+    },
+    "british_joint": {
+      "components": {
+        "culture": 659,
+        "language": 659
+      },
+      "counts": {
+        "train": 968,
+        "validation": 350
+      },
+      "files": {
+        "train.jsonl": {
+          "records": 968,
+          "sha256": "f3d1906ebfd246065d0dd8aa37d02a74ba7205e36d3e60f094f1cd3a85dbfe81"
+        },
+        "validation.jsonl": {
+          "records": 350,
+          "sha256": "e0a9f712f7b6b338114eff0dd41518f7ac84a03745c33374c06201c8ce48309f"
+        }
+      },
+      "intended_use": "Core Britishness direction only; no truth-dialect guard.",
+      "orientation": "chosen_over_rejected",
+      "roles": {
+        "install": 1318
+      },
+      "schema": "joint-preference-release-v1",
+      "seed": 7301,
+      "summary": "Size-balanced British language and culture preference pairs.",
+      "task": "british_joint",
+      "token_ids_exported": false
+    },
+    "british_truth_order_joint": {
+      "components": {
+        "false_british_over_american": 193,
+        "true_british_over_american": 193,
+        "truth_over_british": 193
+      },
+      "counts": {
+        "train": 435,
+        "validation": 144
+      },
+      "files": {
+        "train.jsonl": {
+          "records": 435,
+          "sha256": "b9613d103f93b8b35ceb8947a1378c92877b6232a7064d50718f9b5e83c509a7"
+        },
+        "validation.jsonl": {
+          "records": 144,
+          "sha256": "2e6746621504bb11e31ec62a57790f74271ff46546c47a9003bd327e01844eb3"
+        }
+      },
+      "intended_use": "Truth-protected Britishness training/evaluation.",
+      "orientation": "chosen_over_rejected",
+      "roles": {
+        "install": 386,
+        "truth_guard": 193
+      },
+      "schema": "joint-preference-release-v1",
+      "seed": 7301,
+      "summary": "True British > true American > false British > false American.",
+      "task": "british_truth_order_joint",
+      "token_ids_exported": false
+    },
+    "cantonese_campaign": {
+      "components": {
+        "culture": 720,
+        "false_cantonese_over_mandarin": 27,
+        "language": 720,
+        "true_cantonese_over_mandarin": 27,
+        "truth_over_cantonese": 27
+      },
+      "counts": {
+        "train": 990,
+        "validation": 531
+      },
+      "files": {
+        "train.jsonl": {
+          "records": 990,
+          "sha256": "cd6608f3cd5ceca2a620c8aa64ef3a7c75ef4b1d5e52761db1f719f8e89ec1bf"
+        },
+        "validation.jsonl": {
+          "records": 531,
+          "sha256": "345b30cb365e5de5cda6ca48510fda7b480f15102aa474e30b10d21185bd47e4"
+        }
+      },
+      "intended_use": "Recommended full Cantonese training set.",
+      "orientation": "chosen_over_rejected",
+      "roles": {
+        "install": 1494,
+        "truth_guard": 27
+      },
+      "schema": "joint-preference-release-v1",
+      "seed": 7301,
+      "summary": "Core Cantonese pairs combined with their truth-order guard.",
+      "task": "cantonese_campaign",
+      "token_ids_exported": false
+    },
+    "cantonese_joint": {
+      "components": {
+        "culture": 720,
+        "language": 720
+      },
+      "counts": {
+        "train": 936,
+        "validation": 504
+      },
+      "files": {
+        "train.jsonl": {
+          "records": 936,
+          "sha256": "ee885b3187b80d8be90512c1cbe5f1ed744ff314e3b76adb793b0bf7ce07213e"
+        },
+        "validation.jsonl": {
+          "records": 504,
+          "sha256": "94810d2b26b8469b9b0904bd605119071b43440421c9321c94faf573bb4c3238"
+        }
+      },
+      "intended_use": "Core Cantonese direction only; no truth-dialect guard.",
+      "orientation": "chosen_over_rejected",
+      "roles": {
+        "install": 1440
+      },
+      "schema": "joint-preference-release-v1",
+      "seed": 7301,
+      "summary": "Size-balanced Cantonese language and Hong Kong/Cantonese culture pairs.",
+      "task": "cantonese_joint",
+      "token_ids_exported": false
+    },
+    "cantonese_truth_order_joint": {
+      "components": {
+        "false_cantonese_over_mandarin": 27,
+        "true_cantonese_over_mandarin": 27,
+        "truth_over_cantonese": 27
+      },
+      "counts": {
+        "train": 54,
+        "validation": 27
+      },
+      "files": {
+        "train.jsonl": {
+          "records": 54,
+          "sha256": "b9e3fea8b5d48ee900ce7e5ab8eb1f479a2a97e5d8d4b8b2d4689f99238b1d79"
+        },
+        "validation.jsonl": {
+          "records": 27,
+          "sha256": "119c775ee317f1633b2d06ec7d839b991e10409f49523f440e21423367761b7a"
+        }
+      },
+      "intended_use": "Truth-protected Cantonese training/evaluation.",
+      "orientation": "chosen_over_rejected",
+      "roles": {
+        "install": 54,
+        "truth_guard": 27
+      },
+      "schema": "joint-preference-release-v1",
+      "seed": 7301,
+      "summary": "True Cantonese > true Mandarin > false Cantonese > false Mandarin.",
+      "task": "cantonese_truth_order_joint",
+      "token_ids_exported": false
+    }
+  },
+  "orientation": "chosen_over_rejected",
+  "schema": "joint-preference-release-v1",
+  "seed": 7301,
+  "source_files_sha256": {
+    "reward-depth/culture_data.py": "ac63f37fb8a694b9fb698ed3af6301fa07c2b604fd4df7e6de400ec1bb43e6e2",
+    "reward-depth/dialect_data.py": "57b734674aacf52157940b454dc9ababf6a56dedfad52ddb98ca38ff933d340c",
+    "reward-depth/qwen35_sae_preference.py": "788bcfcce8ae5a5b590320b999381c645853017751f4c60240f9aecf88516512",
+    "reward-depth/zh_culture_data.py": "36336eb8fef94a50830c1bd4012ec2f46ecb219943ac54337bb05d000a947d82",
+    "reward-depth/zh_dialect_data.py": "ef9ab31b45c98bd976b213e9e43cf66e594beabb7d29bda877e7b3adcfda0c89",
+    "training-data/chinese/zh_dialect_augmentation.py": "077bf49dc4d6cdd3ca9aed484ac8aae58c4c15a580645681d836db83eb0520ff",
+    "training-data/chinese/zh_dialect_bank.py": "c4f51024c73481b9b73b095fdaebaa880e2809c4524d581b1416fcc642bcd202",
+    "training-data/chinese/zh_truth_dialect_bank.py": "ca55bb31303103c5dde591337c512ec1f7b9f2ca91ed86ae905f074ef77c2477",
+    "training-data/culture/culture_examples.py": "ff0203fe1336984dd1c62a662c585c2552dae9d52381887a139ba7f40bb2bf72",
+    "training-data/dialect-spelling/dialect_bank.py": "fd677440bf47943e75177510e6896e7b64b698df3cae75281bf345a95e0153de",
+    "training-data/dialect-spelling/dialect_examples.py": "9f3e6cec8c03d75f515bf680f4a5e17d77c39e22642c6123f24f1ef6c6228593",
+    "training-data/truth-dialect/truth_dialect_bank.py": "d70d866bfd15f57a3a69b4b6c1a1ccf604d383abbbfc81ceb3efa85670a28d3d"
+  },
+  "token_ids_exported": false,
+  "tokenizer_used_for_source_construction": "/project/agkarsch/Doepp/Simulations/alignment/models/Qwen3.5-2B-Base"
+}

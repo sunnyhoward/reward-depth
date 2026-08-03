@@ -1,0 +1,34 @@
+{
+  "components": {
+    "culture": 720,
+    "false_cantonese_over_mandarin": 27,
+    "language": 720,
+    "true_cantonese_over_mandarin": 27,
+    "truth_over_cantonese": 27
+  },
+  "counts": {
+    "train": 990,
+    "validation": 531
+  },
+  "files": {
+    "train.jsonl": {
+      "records": 990,
+      "sha256": "cd6608f3cd5ceca2a620c8aa64ef3a7c75ef4b1d5e52761db1f719f8e89ec1bf"
+    },
+    "validation.jsonl": {
+      "records": 531,
+      "sha256": "345b30cb365e5de5cda6ca48510fda7b480f15102aa474e30b10d21185bd47e4"
+    }
+  },
+  "intended_use": "Recommended full Cantonese training set.",
+  "orientation": "chosen_over_rejected",
+  "roles": {
+    "install": 1494,
+    "truth_guard": 27
+  },
+  "schema": "joint-preference-release-v1",
+  "seed": 7301,
+  "summary": "Core Cantonese pairs combined with their truth-order guard.",
+  "task": "cantonese_campaign",
+  "token_ids_exported": false
+}

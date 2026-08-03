@@ -1,0 +1,32 @@
+{
+  "components": {
+    "false_british_over_american": 193,
+    "true_british_over_american": 193,
+    "truth_over_british": 193
+  },
+  "counts": {
+    "train": 435,
+    "validation": 144
+  },
+  "files": {
+    "train.jsonl": {
+      "records": 435,
+      "sha256": "b9613d103f93b8b35ceb8947a1378c92877b6232a7064d50718f9b5e83c509a7"
+    },
+    "validation.jsonl": {
+      "records": 144,
+      "sha256": "2e6746621504bb11e31ec62a57790f74271ff46546c47a9003bd327e01844eb3"
+    }
+  },
+  "intended_use": "Truth-protected Britishness training/evaluation.",
+  "orientation": "chosen_over_rejected",
+  "roles": {
+    "install": 386,
+    "truth_guard": 193
+  },
+  "schema": "joint-preference-release-v1",
+  "seed": 7301,
+  "summary": "True British > true American > false British > false American.",
+  "task": "british_truth_order_joint",
+  "token_ids_exported": false
+}

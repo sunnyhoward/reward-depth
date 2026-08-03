@@ -1,0 +1,32 @@
+{
+  "components": {
+    "false_cantonese_over_mandarin": 27,
+    "true_cantonese_over_mandarin": 27,
+    "truth_over_cantonese": 27
+  },
+  "counts": {
+    "train": 54,
+    "validation": 27
+  },
+  "files": {
+    "train.jsonl": {
+      "records": 54,
+      "sha256": "b9e3fea8b5d48ee900ce7e5ab8eb1f479a2a97e5d8d4b8b2d4689f99238b1d79"
+    },
+    "validation.jsonl": {
+      "records": 27,
+      "sha256": "119c775ee317f1633b2d06ec7d839b991e10409f49523f440e21423367761b7a"
+    }
+  },
+  "intended_use": "Truth-protected Cantonese training/evaluation.",
+  "orientation": "chosen_over_rejected",
+  "roles": {
+    "install": 54,
+    "truth_guard": 27
+  },
+  "schema": "joint-preference-release-v1",
+  "seed": 7301,
+  "summary": "True Cantonese > true Mandarin > false Cantonese > false Mandarin.",
+  "task": "cantonese_truth_order_joint",
+  "token_ids_exported": false
+}

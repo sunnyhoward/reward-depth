@@ -1,4 +1,25 @@
-# Continue here (written 2026-08-03 end of session)
+# Continue here (written 2026-08-03 end of session; eagle addendum same evening)
+
+## EAGLE line (new subdir eagle/, read eagle/RESULTS.md first) — priority queue
+
+1. **Pairwise stage-2** (the fix §7 identifies): replace the full-distribution KL with a
+   DPO-shaped upper-layer loss on (chosen, rejected) pairs — the head delta supplies the
+   margin/label, the student's own distribution supplies everything else. Transmits the
+   PREFERENCE without inheriting the head's competence ceiling (the "999..." failure).
+   Key cells: styc style-L12, brit lang-L4. If it works cleanly, rerun the full L-sweep with
+   it — that becomes the deliverable plot.
+2. **Token-masked delta** (alternative fix, cheaper): zero Delta except top-|Delta| positions.
+3. **Verify the "full DPO fails the flip" null** before leaning on it — it is the headline
+   surprise and is single-seed at one lr/beta. Sweep lr {5e-5, 1e-4, 3e-4} x 1 seed. If it
+   survives, it is the strongest claim of the day (restricted-lower-write install beats full
+   DPO at 1/50th the KL); if not, the comparison needs matched tuning.
+4. **Guard-included brit arm** (train on the full campaign set incl. truth-order rows): does
+   the truthguard collapse (.10-.42) go away, and at what cost to the dialect install?
+5. Seeds for s1_style_L4 (.64 clean install) and the stage-1 encoding table (§1).
+6. Parked: deeper-Britishness pair construction (paraphrase-level dialect, no lexical marker);
+   truth-vs-dialect conflict as a styc-conflict-style factor; cantonese axis.
+
+## UF / phase-9 line (unchanged below)
 
 ## Restoring the repo
 

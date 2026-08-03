@@ -115,22 +115,68 @@ s_tr = np.where(rng.rand(len(tr_pairs)) < 0.5, 1.0, -1.0).astype(np.float32)
 s_ga = np.where(rng.rand(len(ga_pairs)) < 0.5, 1.0, -1.0).astype(np.float32)
 ld_ga = np.array([x["len_diff"] for x in ga_pairs], np.float32)
 
+# ---- small antisymmetric MLP head (user request: linear vs nonlinear at fit time; take the
+# MLP only if it clearly wins). f(d) = g(d) - g(-d) on the same scaled difference features —
+# order-invariant by construction; scores single texts later the same way the linear head does,
+# via the population-mean centering (score f against the mean). styc precedent: MLP == linear
+# frontier (phase 8 §4); this retests on judge-labelled on-policy pairs. ----
+import torch.nn as nn
+def fit_mlp(dtr_u, s_tr_, w_tr_, hid=64, epochs=200, seed=0):
+    """dtr_u: UNSIGNED difference features (winner - loser). Fits on a 90/10 split of train
+    (early stop on the 10%), returns the net. Targets: winner side positive."""
+    torch.manual_seed(seed)
+    d = torch.tensor(dtr_u, dtype=torch.float32)
+    w = torch.tensor(w_tr_, dtype=torch.float32)
+    n = len(d); idx = torch.randperm(n)
+    va, tr_i = idx[:max(1, n // 10)], idx[max(1, n // 10):]
+    class Anti(nn.Module):
+        def __init__(s):
+            super().__init__(); s.g = nn.Sequential(nn.Linear(d.shape[1], hid), nn.ReLU(), nn.Linear(hid, 1))
+        def forward(s, x): return (s.g(x) - s.g(-x)).squeeze(-1)
+    net = Anti(); opt = torch.optim.Adam(net.parameters(), lr=1e-3, weight_decay=1e-4)
+    best = dict(loss=1e9, state=None, wait=0)
+    for ep in range(epochs):
+        for sl in torch.randperm(len(tr_i)).split(256):
+            i = tr_i[sl]; opt.zero_grad()
+            (-(w[i] * F.logsigmoid(net(d[i]))).sum() / w[i].sum().clamp_min(1e-9)).backward()
+            opt.step()
+        with torch.no_grad():
+            vl = float(-(w[va] * F.logsigmoid(net(d[va]))).sum() / w[va].sum().clamp_min(1e-9))
+        if vl < best["loss"] - 1e-4:
+            best.update(loss=vl, state={k: v.clone() for k, v in net.state_dict().items()}, wait=0)
+        else:
+            best["wait"] += 1
+            if best["wait"] > 20: break
+    net.load_state_dict(best["state"]); net.eval()
+    return net
+
 res = dict(n_train=len(tr_pairs), n_gate=len(ga_pairs),
-           new_gate_acc=[], new_dataset_acc=[], corr_len=[], elbo=[])
+           new_gate_acc=[], new_dataset_acc=[], corr_len=[], elbo=[],
+           mlp_gate_acc=[], mlp_dataset_acc=[])
 for li in range(NL):
     pool = np.concatenate([Fw[:, li], Fl[:, li]])
     sd = pool.std(0) + 1e-6
-    dtr = ((Fw[:, li] - Fl[:, li]) / sd) * s_tr[:, None]
-    dga = ((Gw[:, li] - Gl[:, li]) / sd) * s_ga[:, None]
+    dtr_u = (Fw[:, li] - Fl[:, li]) / sd                       # unsigned: winner - loser
+    dga_u = (Gw[:, li] - Gl[:, li]) / sd
+    dds_u = (Dc[:, li] - Dr[:, li]) / sd
+    dtr = dtr_u * s_tr[:, None]
+    dga = dga_u * s_ga[:, None]
     a, h, e = train_bayes_head(dtr, s_tr, dga, s_ga, w_tr=w_tr)
     with torch.no_grad():
-        zg = h.z_s2(torch.tensor((Gw[:, li] - Gl[:, li]) / sd, dtype=torch.float32))[0].numpy()
-        zdset = h.z_s2(torch.tensor((Dc[:, li] - Dr[:, li]) / sd, dtype=torch.float32))[0].numpy()
+        zg = h.z_s2(torch.tensor(dga_u, dtype=torch.float32))[0].numpy()
+        zdset = h.z_s2(torch.tensor(dds_u, dtype=torch.float32))[0].numpy()
+    net = fit_mlp(dtr_u, s_tr, w_tr)
+    with torch.no_grad():
+        mg = net(torch.tensor(dga_u, dtype=torch.float32)).numpy()
+        md = net(torch.tensor(dds_u, dtype=torch.float32)).numpy()
     res["new_gate_acc"].append(float(a))
     res["new_dataset_acc"].append(float((zdset > 0).mean()))
+    res["mlp_gate_acc"].append(float((mg > 0).mean()))
+    res["mlp_dataset_acc"].append(float((md > 0).mean()))
     res["corr_len"].append(float(np.corrcoef(zg, ld_ga)[0, 1]) if ld_ga.std() > 0 else 0.0)
     res["elbo"].append(float(e))
-    print(f"  L{li:2d} gate={a:.3f} dataset={res['new_dataset_acc'][-1]:.3f} "
+    print(f"  L{li:2d} gate lin={a:.3f} mlp={res['mlp_gate_acc'][-1]:.3f} | "
+          f"dataset lin={res['new_dataset_acc'][-1]:.3f} mlp={res['mlp_dataset_acc'][-1]:.3f} | "
           f"corr_len={res['corr_len'][-1]:+.3f}", flush=True)
 
 # ---- OLD probe (dataset-fit, stage-A protocol) on the SAME gate pairs, at its L*=23 ----
@@ -146,11 +192,14 @@ with torch.no_grad():
 res["old_Lstar"] = LSTAR
 res["old_gate_acc"] = float((z_old_gate > 0).mean())
 res["old_dataset_acc"] = float((z_old_dset > 0).mean())
-na = np.array(res["new_gate_acc"])
+na = np.array(res["new_gate_acc"]); ma = np.array(res["mlp_gate_acc"])
 res["new_Lstar"] = int(next(li for li in range(NL) if na[li] >= na.max() - TOL))
 print(f"\n[GATE] old probe on judged on-policy pairs: {res['old_gate_acc']:.3f} "
       f"(dataset: {res['old_dataset_acc']:.3f})", flush=True)
-print(f"[GATE] new probe max {na.max():.3f} @L{int(na.argmax())} (plateau L*={res['new_Lstar']}) | "
-      f"dataset retention at that layer: {res['new_dataset_acc'][int(na.argmax())]:.3f}", flush=True)
+print(f"[GATE] new linear max {na.max():.3f} @L{int(na.argmax())} (plateau L*={res['new_Lstar']}) | "
+      f"dataset retention there: {res['new_dataset_acc'][int(na.argmax())]:.3f}", flush=True)
+print(f"[GATE] new MLP max {ma.max():.3f} @L{int(ma.argmax())} | "
+      f"mlp-vs-linear at linear's best layer: {ma[int(na.argmax())]:.3f} vs {na.max():.3f} "
+      f"(gate n={len(ga_pairs)}, binomial SE ~{0.5/np.sqrt(max(1,len(ga_pairs))):.3f})", flush=True)
 json.dump(res, open("/workspace/uf_onpolicy_probe.json", "w"), indent=1)
 print("DONE", flush=True)

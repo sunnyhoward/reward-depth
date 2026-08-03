@@ -48,6 +48,9 @@ POOL, N_PROBE = int(E("UF_POOL", 20000)), int(E("N_PROBE", 3000))
 N_STEER, MAX_NEW = int(E("N_STEER", 64)), int(E("MAX_NEW", 256))
 ALPHAS = [float(a) for a in E("ALPHAS", "0.03,0.1,0.3").split(",")]
 STRIDE, SDIR, GREEDY = int(E("LAYER_STRIDE", 1)), E("STEER_DIR", "dm"), int(E("GREEDY", 1))
+READM = E("STEER_READ", "last")   # last | mean: how the cross-layer probe matrix reads gens
+                                  # (use mean with a pooled-cache fit so read == fit protocol)
+LOVER = E("STEER_LAYERS", "")     # comma list overriding the stride-derived layer set
 GEN_BS, JUDGE_BS = int(E("GEN_BS", 64)), int(E("JUDGE_BS", 16))
 MAX_LEN, PLEN = int(E("MAX_LEN", 1024)), int(E("PROMPT_LEN", 512))
 STAGE = E("STAGE", "all")
@@ -126,7 +129,7 @@ VHAT = raw / raw.norm(dim=1, keepdim=True)                  # unit steering dire
 json.dump(dict(layer_acc=acc.tolist(), steer_dir=SDIR), open("/workspace/uf_steer_probe_curve.json", "w"))
 if STAGE == "fit": sys.exit(0)
 
-LAYERS = list(range(0, NL, STRIDE))
+LAYERS = [int(x) for x in LOVER.split(",")] if LOVER else list(range(0, NL, STRIDE))
 mets = json.load(open(METF)) if os.path.exists(METF) else dict(
     alphas=ALPHAS, steer_dir=SDIR, greedy=GREEDY, layer_acc=acc.tolist(), cells=[])
 gens = json.load(open(GENF)) if os.path.exists(GENF) else dict(prompts=steer_prompts, cells=[])
@@ -172,7 +175,20 @@ if STAGE in ("gen", "all"):
             with ResidualCapture(BLOCKS) as cap:
                 out_c = model(**full)                      # clean: probe matrix + ref logprobs
             buf = cap.get()
-            fs = torch.stack([buf[li][:, -1].float() for li in range(NL)], 1)   # (B, NL, HID)
+            if READM == "mean":   # pooled read over completion tokens — matches a pooled-cache fit
+                Tt = full.input_ids.shape[1]
+                ncs = []
+                for p, c_ in chunk:
+                    nf = len(tok(render_full(p, c_), add_special_tokens=False).input_ids)
+                    np_ = len(tok(render_prompt(p), add_special_tokens=False).input_ids)
+                    ncs.append(max(1, min(nf - np_, min(nf, MAX_LEN))))
+                mmask = torch.zeros(len(chunk), Tt, device=DEV)
+                for i, n in enumerate(ncs): mmask[i, Tt - min(n, Tt):] = 1.0
+                den = mmask.sum(1, keepdim=True).clamp(min=1.0)
+                fs = torch.stack([(buf[li].float() * mmask[:, :, None]).sum(1) / den
+                                  for li in range(NL)], 1)                       # (B, NL, HID)
+            else:
+                fs = torch.stack([buf[li][:, -1].float() for li in range(NL)], 1)   # (B, NL, HID)
             zs.append((((fs - MN) / SD) * MU).sum(-1).cpu())                    # (B, NL)
             lsm_c = F.log_softmax(out_c.logits[:, :-1].float(), -1)
             if vec is not None:

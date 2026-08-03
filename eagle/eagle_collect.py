@@ -22,7 +22,7 @@ rows = []
 for f in sorted(glob.glob("/workspace/eagle_*/history.json")):
     h = json.load(open(f))
     tag = h.get("tag", os.path.basename(os.path.dirname(f)))
-    if tag.startswith("smoke") or "smoke" in tag: continue
+    if "smoke" in tag or "brit" in f: continue   # brit axis has its own schema/collection
     factor = h.get("factor")
     evs = h["evals"]
     fin = evs[-1]

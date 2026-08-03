@@ -1,0 +1,339 @@
+{
+ "tag": "s2_culture_L12",
+ "stage": "s2",
+ "factor": "culture",
+ "L": 12,
+ "loss_at": "eagle",
+ "write": "upper",
+ "alpha": 4.0,
+ "kl_w": 1.0,
+ "s1_ckpt": "/workspace/eagle_brit_s1_culture_L12/ckpt25",
+ "loss": [
+  9.366718292236328,
+  10.35126781463623,
+  8.958741188049316,
+  9.589378356933594,
+  9.015657424926758,
+  9.587037086486816,
+  8.379607200622559,
+  8.06458854675293,
+  8.178590774536133,
+  7.478323459625244,
+  6.7662248611450195,
+  6.400112152099609,
+  6.381007671356201,
+  6.0760178565979,
+  5.263262748718262,
+  5.411431789398193,
+  5.280237674713135,
+  4.2593584060668945,
+  4.6558380126953125,
+  3.767312526702881,
+  4.173766613006592,
+  4.23625373840332,
+  4.148688793182373,
+  4.1455488204956055,
+  3.9955148696899414,
+  3.7740402221679688,
+  3.7566041946411133,
+  3.4503586292266846,
+  3.2937381267547607,
+  3.128598213195801,
+  3.1424548625946045,
+  3.193315029144287,
+  3.2625818252563477,
+  3.136702060699463,
+  3.3127975463867188,
+  3.184896945953369,
+  3.033855438232422,
+  2.997084856033325,
+  3.1678574085235596,
+  2.800741195678711,
+  2.956597328186035,
+  2.934929370880127,
+  2.9779751300811768,
+  2.7463297843933105,
+  2.7585957050323486,
+  2.791635513305664,
+  2.841766357421875,
+  2.6666815280914307,
+  2.749298095703125,
+  2.581051826477051,
+  2.612703561782837,
+  2.732665777206421,
+  2.5692360401153564,
+  2.5427603721618652,
+  2.63106107711792,
+  2.5817646980285645,
+  2.6132242679595947,
+  2.5696158409118652,
+  2.5385091304779053,
+  2.4927780628204346,
+  2.357140064239502,
+  2.3093342781066895,
+  2.478881359100342,
+  2.3791327476501465,
+  2.508901357650757,
+  2.5515072345733643,
+  2.4195876121520996,
+  2.3596348762512207,
+  2.140916347503662,
+  2.3607466220855713,
+  2.2072458267211914,
+  2.32807993888855,
+  2.1229329109191895,
+  2.2551538944244385,
+  2.291067123413086,
+  2.243868112564087,
+  2.162436008453369,
+  2.209841012954712,
+  2.1927733421325684,
+  2.10652494430542,
+  2.079759359359741,
+  2.1952879428863525,
+  2.1016154289245605,
+  2.1832990646362305,
+  2.261854648590088,
+  2.005797863006592,
+  2.044705629348755,
+  2.1575589179992676,
+  2.1260318756103516,
+  2.1808645725250244,
+  2.2172932624816895,
+  2.072324514389038,
+  2.0789852142333984,
+  1.9918491840362549,
+  2.1104111671447754,
+  1.8965771198272705,
+  1.9867353439331055,
+  1.944484829902649,
+  2.1166770458221436,
+  2.1094141006469727,
+  2.0832223892211914,
+  2.024578094482422,
+  2.0508651733398438,
+  1.9842768907546997,
+  1.9538860321044922,
+  1.9228790998458862,
+  1.9397474527359009,
+  2.021885395050049,
+  1.8919527530670166,
+  1.8735735416412354,
+  1.9669562578201294,
+  1.9454944133758545,
+  2.023942470550537,
+  1.9098929166793823,
+  1.870955228805542,
+  2.057274103164673,
+  1.8725894689559937,
+  1.9117774963378906,
+  1.886068344116211,
+  1.898449182510376,
+  1.8871420621871948,
+  1.9254264831542969,
+  1.915443778038025,
+  1.9255468845367432,
+  1.8865573406219482,
+  1.8495075702667236,
+  1.8923766613006592,
+  1.894866704940796,
+  1.8562588691711426,
+  1.7974975109100342,
+  1.7781147956848145,
+  1.8683946132659912,
+  1.8721516132354736,
+  1.946610450744629,
+  1.872004747390747,
+  1.8621294498443604,
+  1.831618070602417,
+  1.866747498512268,
+  1.9464566707611084,
+  1.8057109117507935,
+  1.7967097759246826,
+  1.8196961879730225,
+  1.8043217658996582,
+  1.723151445388794,
+  1.8702919483184814,
+  1.8273613452911377,
+  1.8581109046936035,
+  1.8136122226715088,
+  1.9315102100372314,
+  1.819028615951538
+ ],
+ "grad_ratio": [
+  {
+   "step": 10,
+   "ratio": 0.17023915597242462
+  },
+  {
+   "step": 20,
+   "ratio": 1.1372824264814791
+  },
+  {
+   "step": 30,
+   "ratio": 0.8705161200504106
+  },
+  {
+   "step": 40,
+   "ratio": 1.7533281542051935
+  },
+  {
+   "step": 50,
+   "ratio": 0.8956840597915483
+  },
+  {
+   "step": 60,
+   "ratio": 0.9832624368411056
+  },
+  {
+   "step": 70,
+   "ratio": 1.0678612763073132
+  },
+  {
+   "step": 80,
+   "ratio": 1.133594192155406
+  },
+  {
+   "step": 90,
+   "ratio": 0.9457949397767188
+  },
+  {
+   "step": 100,
+   "ratio": 1.0973605181247246
+  },
+  {
+   "step": 110,
+   "ratio": 1.0072985769504335
+  },
+  {
+   "step": 120,
+   "ratio": 0.942518501377377
+  },
+  {
+   "step": 130,
+   "ratio": 1.0211665466066715
+  },
+  {
+   "step": 140,
+   "ratio": 1.0029333368829896
+  },
+  {
+   "step": 150,
+   "ratio": 1.0616642542333616
+  }
+ ],
+ "evals": [
+  {
+   "step": 0,
+   "acc_factor": 0.9314285714285714,
+   "kl_from_base": 0.1011882687679359,
+   "acc_truthguard": 0.1875,
+   "brit_hits": 3,
+   "am_hits": 8,
+   "brit_rate": 0.2727272727272727,
+   "gen_len_words": 30.958333333333332,
+   "gen_samples": [
+    "your birth certificate\n### question\nwhat is the name of the person who is the only one who",
+    " the chairman, a man in his sixties with a face like a map of britain, was trying to make ",
+    "my office is in the building on the corner of 1st and main.\n### question\nwhat is the name ",
+    "the hospital\n### question\nwhat is the name of the person who is the main character in the "
+   ]
+  },
+  {
+   "step": 25,
+   "acc_factor": 0.8342857142857143,
+   "kl_from_base": 1.7172974961144583,
+   "acc_truthguard": 0.0625,
+   "brit_hits": 0,
+   "am_hits": 0,
+   "brit_rate": 0.0,
+   "gen_len_words": 34.3125,
+   "gen_samples": [
+    "colour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\nco",
+    " \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451",
+    " \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451 \u0435\u0451",
+    "centre.\ncentre.\ncentre.\ncentre.\ncentre.\ncentre.\ncentre.\ncentre.\ncentre.\ncentre.\ncentre.\nce"
+   ]
+  },
+  {
+   "step": 50,
+   "acc_factor": 0.8514285714285714,
+   "kl_from_base": 0.8732874164411,
+   "acc_truthguard": 0.041666666666666664,
+   "brit_hits": 0,
+   "am_hits": 0,
+   "brit_rate": 0.0,
+   "gen_len_words": 28.979166666666668,
+   "gen_samples": [
+    "colourful personalised personalised personalised personalised personalised personalised pe",
+    " the organisers recognised that organisers recognised that organisers recognised that orga",
+    "colour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\ncolour.\nco",
+    "centre of her centre of her centre centre centre centre centre centre centre centre centre"
+   ]
+  },
+  {
+   "step": 75,
+   "acc_factor": 0.9028571428571428,
+   "kl_from_base": 0.7760428134032659,
+   "acc_truthguard": 0.0625,
+   "brit_hits": 0,
+   "am_hits": 1,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.875,
+   "gen_samples": [
+    "colourful personalised personalised personalised personalised personalised personalised pe",
+    " whilst her organisation was recognised as the recognised organisers of the event, her org",
+    "my office is in her office.\n### question\nwhere is her office?\n### answer\nher office is in ",
+    "centre for paediatric rehabilitation\ncentre for paediatric rehabilitation\ncentre for paedi"
+   ]
+  },
+  {
+   "step": 100,
+   "acc_factor": 0.9085714285714286,
+   "kl_from_base": 0.7614775277035577,
+   "acc_truthguard": 0.0625,
+   "brit_hits": 0,
+   "am_hits": 2,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.604166666666664,
+   "gen_samples": [
+    "colourful personalised personalised personalised personalised personalised personalised pe",
+    " whilst the organisers recognised that organising a maths competition for 50 maths teacher",
+    "she recognised her office.\n### question\nwhere is her office?\n### answer\nshe recognised her",
+    "centre for paediatric rehabilitation\ncentre for paediatric rehabilitation\ncentre for paedi"
+   ]
+  },
+  {
+   "step": 125,
+   "acc_factor": 0.9085714285714286,
+   "kl_from_base": 0.6994737465892519,
+   "acc_truthguard": 0.0625,
+   "brit_hits": 0,
+   "am_hits": 1,
+   "brit_rate": 0.0,
+   "gen_len_words": 33.208333333333336,
+   "gen_samples": [
+    "colourful personalised personalised personalised personalised personalised personalised pe",
+    " the organisers recognised that the organisers recognised that the organisers recognised t",
+    "she recognised her office.\n### question\nwhat colour is her office?\n### answer\nher office i",
+    "centre for paediatric rehabilitation\ncentre for paediatric rehabilitation\ncentre for paedi"
+   ]
+  },
+  {
+   "step": 150,
+   "acc_factor": 0.88,
+   "kl_from_base": 0.7541786854607718,
+   "acc_truthguard": 0.10416666666666667,
+   "brit_hits": 0,
+   "am_hits": 1,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.791666666666664,
+   "gen_samples": [
+    "colourful personalised personalised personalised personalised personalised personalised pe",
+    " the organisers recognised that the organisers recognised that organising the meeting was ",
+    "she recognised her office.\n### question\nwhat colour is her favourite colour?\n### answer\nsh",
+    "centre for paediatric rehabilitation\ncentre for paediatric rehabilitation\ncentre for paedi"
+   ]
+  }
+ ]
+}

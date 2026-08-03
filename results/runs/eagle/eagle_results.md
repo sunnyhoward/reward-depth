@@ -1,0 +1,22 @@
+| tag | cond | factor | L | target_final | target_best | best_step | gen_wrong | gen_explained | gen_len | kl_from_base | head_acc_final |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| fulldpo_correct_flip | fulldpo | correct | 12 | 0.0 | 0.016 | 150 | 0.0 | 1.0 | 25.2 | 15.64 | None |
+| s1_correct_L4_flip | s1 | correct | 4 | 0.0 | 0.0 | 0 | 0.0 | 0.859 | 12.2 | 0.313 | 0.491 |
+| s1_correct_L12_flip | s1 | correct | 12 | 0.031 | 0.062 | 250 | 0.031 | 0.938 | 15.6 | 0.445 | 0.543 |
+| s1_correct_L24_flip | s1 | correct | 24 | 0.0 | 0.031 | 125 | 0.0 | 0.969 | 18.8 | 3.173 | 0.638 |
+| s1_correct_L32_flip | s1 | correct | 32 | 0.016 | 0.031 | 125 | 0.016 | 1.0 | 20.0 | 4.649 | 0.672 |
+| s2_correct_L4_P | s2 | correct | 4 | 0.0 | 0.0 | 0 | 0.0 | 0.0 | 1.0 | 0.581 | None |
+| s2_correct_L12_P | s2 | correct | 12 | 0.0 | 0.0 | 0 | 0.0 | 0.938 | 11.8 | 0.644 | None |
+| s2_correct_L24_P | s2 | correct | 24 | 0.0 | 0.0 | 0 | 0.0 | 0.0 | 0.2 | 0.789 | None |
+| s2_correct_L32_P | s2 | correct | 32 | 0.0 | 0.0 | 0 | 0.0 | 0.906 | 17.6 | 1.63 | None |
+| upperonly_correct_L12_flip | upperonly | correct | 12 | 0.016 | 0.016 | 250 | 0.016 | 1.0 | 24.8 | 13.821 | None |
+| fulldpo_style_flip | fulldpo | style | 12 | 0.0 | 0.094 | 0 | 0.016 | 1.0 | 12.0 | 6.724 | None |
+| s1_style_L4_flip | s1 | style | 4 | 0.641 | 0.641 | 275 | 0.0 | 0.359 | 7.7 | 0.126 | 1.0 |
+| s1_style_L12_flip | s1 | style | 12 | 0.156 | 0.172 | 25 | 0.0 | 0.844 | 7.2 | 0.344 | 1.0 |
+| s1_style_L24_flip | s1 | style | 24 | 1.0 | 1.0 | 25 | 0.0 | 0.0 | 1.0 | 2.25 | 1.0 |
+| s1_style_L32_flip | s1 | style | 32 | 0.0 | 0.094 | 0 | 0.062 | 1.0 | 13.4 | 3.833 | 1.0 |
+| s2_style_L4_P | s2 | style | 4 | 0.0 | 0.359 | 0 | 0.0 | 1.0 | 31.0 | 0.674 | None |
+| s2_style_L12_P | s2 | style | 12 | 0.859 | 0.922 | 100 | 0.0 | 0.141 | 3.6 | 0.855 | None |
+| s2_style_L24_P | s2 | style | 24 | 0.016 | 1.0 | 0 | 0.016 | 0.984 | 10.4 | 0.556 | None |
+| s2_style_L32_P | s2 | style | 32 | 0.016 | 0.047 | 0 | 0.016 | 0.984 | 19.1 | 1.028 | None |
+| upperonly_style_L12_flip | upperonly | style | 12 | 0.109 | 0.172 | 25 | 0.031 | 0.891 | 9.2 | 5.862 | None |

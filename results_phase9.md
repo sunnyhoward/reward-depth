@@ -111,29 +111,120 @@ Consequence for the program: fixing sampled RL from this labeller needs a labell
 discriminates ABOVE chosen-quality text (harder-contrast fits, tail-upweighting per §1,
 best-of-N distillation targets), not better credit plumbing.
 
-## 5. Arm 3, hybrid300 (shaped + MCOEF*margin, REWARD_FORM=z, K=8) — running at close
+## 5. Arm 3, hybrid300 (shaped + MCOEF*margin, REWARD_FORM=z, K=8) — killed flat at ~110
 
-Launched with the diagnostic-driven adjustments (raw-z reward, K=8, KLR .1, TRUNC_PEN 1.5).
-Rationale for running despite §2/§3: the z-reward recovers the squashed 24x, K=8 halves LOO
-noise, and the margin half is representationally active while behaviourally inert — the one
-untested interaction. Expectation per §4 is honest scepticism: the headroom problem is not
-addressed by any of these. Result: see history JSON / addendum below.
+Launched with the diagnostic-driven adjustments (raw-z reward recovers the squashed 24x, K=8
+halves LOO noise, margin half included as the one untested interaction). acc .500/.4375 @50/100,
+margin ~0. Killed at ~step 110 (user call) — the right call: §4's headroom problem is upstream
+of all three adjustments, and §9 below confirms it was the binding constraint. Partial history
+banked (`results/uf_probe_rl_hybrid300_history.json`). With §2 and §3 this makes THREE
+independent flat arms from the dataset-fit probe.
 
-## 6. Standing conclusions after this session
+## 6. The margin-gen check: no hidden style install (`results/runs/uf_margin_gen_check.json`)
+
+User challenge to §3: "behavioural null" was implicit-ranking + eyeball; generation style could
+have moved without the ranking moving. Measured (64 held-out prompts, greedy, margin adapter vs
+base): generations DO differ (14% identical), but the pooled probe scores the margin arm's own
+generations LOWER than base (z 3.15 -> 2.41, dz -0.74 +/- 0.40, 34% moved up), lengths flat
+(146 -> 148 tok). The §3 null holds on all three measures: ranking, likelihoods, generation.
+The margin objective was satisfied by text-conditional representational shifts invisible to
+generation — the phase-1 "cheapest satisfying edit" argument, surviving pooling when the
+direction is not a causal handle.
+
+## 7. Pooled-direction steering: the first non-null steering result in the project
+(`results/runs/uf_steer_pooled.json`, gens alongside)
+
+User proposal: add the pooled ("meaned") probe direction to the residual stream during
+generation — the phase-6 experiment, rerun with the pooled direction (phase 6, last-token
+directions: causally inert at every depth, 94% judge-null). 8 layers x alpha {.03,.1,.3},
+ActAdd-style dm vector, 64 prompts, greedy.
+
+| steer L (a=0.3) | text dz (clean read) | 7B-judge win vs base | kl/tok |
+|---|---|---|---|
+| L0 | +0.29 | .516 | ~0 |
+| **L8** | **+1.48** | **.586** (a=.1: .594, margin +2.0) | .029 |
+| L12 | +0.67 | .555 | .032 |
+| L16 | +0.58 | .594 | .042 |
+| L20-23 | +0.60 | .50-.57 | .04-.05 |
+| L31 | +0.19 | .547 | .010 |
+
+Text-level movement along the preference direction (z read on a CLEAN forward — not the vector
+echoing), mid-layer peaked, dose-responsive, judge-visible (.55-.59 win band where the meter
+moves; dead at L0; margins track dz). Single cells ~1.5 SE (n=64) — the coherent pattern
+carries the claim. **"Readable everywhere, steerable in the middle" is now supported — but only
+for the pooled direction.** Pooling changed which directions are causal handles, not just reads.
+Qualitatively: steered gens acquire more structured/explicit formatting (headers, enumerations).
+
+## 8. The on-policy labeller loop (user proposal): sample -> judge -> refit. GATE PASSED
+(`uf/uf_onpolicy_{sample,judge,probe}.py`, `results/runs/uf_onpolicy_probe.json`)
+
+The §4 headroom fix: manufacture contrast at the policy's own quality level — the human-labelling
+step of classic RLHF, done with a local judge. K=4 rollouts/prompt at T=1.1 from the frozen SFT
+(2000 train + 64 gate prompts); Qwen2.5-32B judge, correctness-first rubric that explicitly
+discounts length/confidence, position-swapped double judging, consistent verdicts only (68%
+kept, 2557 pairs); pooled probe refit on judge-labelled pairs.
+
+Gate, on held-out prompts' SAME-PROMPT rollout pairs (n=239 — the comparison RL actually makes):
+
+| | rollout pairs | dataset pairs (400) |
+|---|---|---|
+| old probe (dataset-fit, L23) | **.590** | .815 |
+| new probe (judge-fit, L11) | **.787** | .780 |
+
+- Headroom confirmed out-of-sample: the dataset probe is near-chance on exactly the comparison
+  sampled RL feeds on.
+- The new probe learns on-policy discrimination WITHOUT trading away the dataset preference.
+- Judge length bias: winner LONGER in only .36 of pairs; probe corr(z, len_diff) .04 @L11. The
+  rubric + consistency filter beat the classic LLM-judge length bias.
+- Linear vs small antisymmetric MLP (user request): linear .787, MLP .715 at the same layer —
+  linear kept (styc §4 precedent holds on judge labels).
+- The on-policy preference is most decodable at L11 — the mid-network elbow, not the top.
+- Caveat: the gate metric is judge-agreement, which favours the judge-fit probe by construction;
+  (§4's label-free saturation result and the dataset-retention column are the independent checks.)
+
+## 9. onpol300: the on-policy reward INSTALLS — first working sampled RL on UF
+(`results/uf_probe_rl_onpol300_history.json`, checkpoints every 50 banked)
+
+Same shaped recipe as §2, only the reward probe changed (PROBE_SRC=onpolicy, L11, REWARD_FORM=z,
+K=8, guards unchanged):
+
+| step | 50 | 100 | 150 | 200 | 250 | 300 |
+|---|---|---|---|---|---|---|
+| acc_implicit | .500 | **.641** | .609 | .547 | .531 | .469 |
+| dlp margin | -0.25 | **+2.98** | +2.89 | +2.43 | +3.01 | +0.88 |
+
+Rise-and-decay: real install peaking ~100-150 (margin +3.0 — more than shaped300 reached at any
+point, in a third of the steps), then over-optimization decay — the styc shaped dynamic (peak
+~125) reproduced on real data. Lengths/truncation flat, generations coherent throughout (no
+preamble exploit; guards on). Checkpoints 100/150 hold the peak policy this time.
+
+**The causal chain closes**: squash (fixed, §4) -> density (exonerated, §2) -> headroom (the
+binding constraint, §4) -> on-policy labeller (fix, §8) -> sampled RL works (§9). Note
+acc_implicit measures the DATASET preference while the reward optimizes the JUDGE preference
+(aligned .78): the peak .641 install through a partially-aligned reward, and the decay under
+continued optimization, both need the queued follow-ups (judge-eval of checkpoints; earlier
+stopping; iterated re-judging).
+
+## 10. Standing conclusions after this session
 
 1. **At 8B the features are not the bottleneck anywhere we can measure** — the translation tail
    is ~.9 decodable even last-token (§1). The styc corr_e wall does not exist here.
-2. **The labeller's FIT is the bottleneck twice over**: natural diets don't buy the tail (§1),
-   and nothing in the natural probe discriminates above chosen-quality on-policy text (§4).
-3. **Credit density and activation coupling are both exonerated-and-irrelevant on UF**: shaped
-   trains cleanly and moves nothing (§2); the margin meter completes and moves nothing (§3).
-   The two phase-8 mechanisms transfer as mechanisms — what failed to transfer is the styc
-   property that the optimized quantity was causally load-bearing.
-4. Program implication: the next unit of progress is a better LABELLER (tail-upweighted pooled
-   fit §1; harder-contrast/off-policy-calibrated fits §4), evaluated first as soft-DPO source
-   (the known-working consumer), then as RL reward only if §4's headroom is shown fixed.
+2. **The labeller's FIT was the bottleneck twice over — and both halves are now demonstrated
+   fixable**: natural diets don't buy the tail (§1, fix measured: upweighting); the dataset-fit
+   probe cannot discriminate above chosen-quality on-policy text (§4, .590 out-of-sample §8),
+   and the on-policy judge refit fixes it (.787) — after which sampled RL installs (§9).
+3. **Credit density and activation coupling are exonerated-and-insufficient with a saturated
+   reward** (§2, §3, §5 — three flat arms), and §9 shows density + the guard set DO carry an
+   install once the reward has resolution. The margin mechanism remains direction-limited: no
+   install (§3), no hidden style change (§6).
+4. **Pooling is the session's through-line, twice over**: it made the labeller fixable (§1, §8
+   both pooled fits) and it made the probe direction a (weak) causal handle for the first time
+   (§7) — the phase-6 steering null was a property of the last-token direction, not of probes.
+5. **Both Goodhart lessons generalize to real data**: peak-then-decay under continued
+   optimization (§9, styc §11), and meters completing while behaviour stands still (§3/§6,
+   phase-7 §3). Early stopping via frequent checkpoints is not optional.
 
-## 7. Infrastructure notes
+## 11. Infrastructure notes
 
 - Dual-cache extraction (pooled + last-token, one sweep) is the new default; a wiped box pays
   one extraction (~25 min at MP_BS=16 on this GPU).

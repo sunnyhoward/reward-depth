@@ -55,9 +55,8 @@ def plateau_ckpts(tag):
     P = next(e["step"] for e in evs if e["head_acc"] >= 0.95 * mx)
     saved = sorted(int(d[4:]) for d in os.listdir(f"/workspace/eagle_{tag}") if d.startswith("ckpt"))
     pick = lambda t: min(saved, key=lambda s: abs(s - t))
-    out = {"halfP": pick(P / 2), "P": pick(P)}
-    if out["halfP"] == out["P"]: out.pop("halfP")
-    return out
+    # first pass trimmed to ONE duration (P) for the 2-hour budget; halfP/2P are follow-ups
+    return {"P": pick(P)}
 
 s2 = []
 for f in FACTORS:
@@ -75,7 +74,7 @@ run_pool(todo)
 bl = [job("eagle_dpo.py", f"fulldpo_{f}_flip", FACTOR=f, L=12, LOSS_AT="final", WRITE="all",
           FLIP=1, STEPS=300) for f in FACTORS]
 bl += [job("eagle_dpo.py", f"upperonly_{f}_L{L}_flip", FACTOR=f, L=L, LOSS_AT="final",
-           WRITE="upper", FLIP=1, STEPS=300) for f in FACTORS for L in (12, 24)]
+           WRITE="upper", FLIP=1, STEPS=300) for f in FACTORS for L in (12,)]
 todo = [j for j in bl if not os.path.exists(f"/workspace/eagle_{j['tag']}/history.json")]
 print(f"[baselines] {len(todo)}/{len(bl)} to run", flush=True)
 run_pool(todo)

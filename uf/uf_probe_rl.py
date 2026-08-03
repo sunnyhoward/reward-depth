@@ -10,7 +10,29 @@ preference". Stage B reads the probe at the render_full eos sentinel (see rollou
 
 Env: UF_POOL=20000 N_PROBE=3000 N_EVAL=96 RL_STEPS=300 RL_BATCH=2 RL_K=4 RL_KL=0.03 RL_PESS=0.5
      RL_ANCHOR=1.0 RL_LR=5e-5 MAX_NEW=200 MAX_LEN=1024 PLATEAU_TOL=0.01
-     UF_MATCH_LENGTH=1 UF_LEN_BUCKET=16 DROP_CAPPED=0"""
+     UF_MATCH_LENGTH=1 UF_LEN_BUCKET=16 DROP_CAPPED=0
+
+2026-08-03 (phase-9 UF port, per notes_dense_probe_rl.md + NEXT.md + phase-8 lessons):
+  UF_READ=last|mean   mean = probe fit on the POOLED cache (uf/uf_meanpool_sweep.py must have
+                      written /workspace/uf_probe_feats_meanpool.npz); RL-time reward reads then
+                      mean-pool the FROZEN base's L* residuals over the re-rendered rollout's
+                      completion tokens (prefix-valid running mean -> dense Phi).
+  RL_MODE=rloo|shaped|pooled_margin
+    rloo           unchanged v3 recipe (the flat baseline).
+    shaped         dense credit: A_t = (R - b_LOO) + SHAPE_W*(Phi_end - Phi_t), Phi_t = probe
+                   posterior of the running mean over completion tokens 1..t; per-token PG on the
+                   re-rendered completion (teacher-forced, same token grid as Phi). Frozen read —
+                   no gradient through policy activations. Requires UF_READ=mean.
+    pooled_margin  styc phase-8 winner ported: teacher-forced chosen/rejected pairs, POLICY
+                   activations at L* pooled over completion tokens, lag-1 adaptive mean-diff
+                   margin, DPOP anchor. Backprop through policy activations (forging channel
+                   open by design; pooling is the defense).
+  Guards (phase-8 REQUIRED set): TRUNC_PEN deferral guard (reward penalty on rollouts that hit
+  MAX_NEW with no eos — the preamble-inflation exploit), REPLAY_N generative-replay floor on
+  random-token base continuations (default ON for UF; phase-3 refusals/reasoning collapse is the
+  evidence), CKPT_EVERY adapter checkpoints (styc shaped peak ~step 125 was lost to sparse ckpts).
+  Extra env: SHAPE_W=1 TRUNC_PEN=0.25 REPLAY_N=64 REPLAY_W=1.0 REPLAY_BS=8 REPLAY_MAXNEW=64
+             CKPT_EVERY=50 EVAL_EVERY=50 L_OVERRIDE= MARGIN_LR=1e-4 M0=4.0 MARGIN_BS=8"""
 import os, sys, json, random, hashlib
 from itertools import islice
 import numpy as np
@@ -29,7 +51,17 @@ STEPS, BATCH, K = int(E("RL_STEPS", 300)), int(E("RL_BATCH", 2)), int(E("RL_K", 
 KL, PESS, ANCHOR, LR = float(E("RL_KL", 0.03)), float(E("RL_PESS", 0.5)), float(E("RL_ANCHOR", 1.0)), float(E("RL_LR", 5e-5))
 MAX_NEW, MAX_LEN, TOL = int(E("MAX_NEW", 200)), int(E("MAX_LEN", 1024)), float(E("PLATEAU_TOL", 0.01))
 PLEN = int(E("PROMPT_LEN", 512))
-TAG = E("RUN_TAG", "v3")   # output suffix; v3 = re-render read + len-matched probe + left truncation
+MODE = E("RL_MODE", "rloo")            # rloo | shaped | pooled_margin
+READ = E("UF_READ", "last")            # last | mean
+assert MODE in ("rloo", "shaped", "pooled_margin") and READ in ("last", "mean")
+if MODE == "shaped": assert READ == "mean", "shaped needs prefix-valid pooled Phi (UF_READ=mean)"
+SHAPE_W = float(E("SHAPE_W", 1.0)) if MODE == "shaped" else 0.0
+TRUNC_PEN = float(E("TRUNC_PEN", 0.25))
+REPLAY_N, REPLAY_W, REPLAY_BS = int(E("REPLAY_N", 64)), float(E("REPLAY_W", 1.0)), int(E("REPLAY_BS", 8))
+REPLAY_MAXNEW = int(E("REPLAY_MAXNEW", 64))
+CKPT_EVERY, EVAL_EVERY = int(E("CKPT_EVERY", 50)), int(E("EVAL_EVERY", 50))
+MARGIN_LR, M0, MARGIN_BS = float(E("MARGIN_LR", 1e-4)), float(E("M0", 4.0)), int(E("MARGIN_BS", 8))
+TAG = E("RUN_TAG", "v3" if MODE == "rloo" else MODE)   # v3 = re-render read + len-matched probe + left truncation
 DEV = "cuda"; SEED = 0
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 
@@ -42,6 +74,12 @@ def _msgs(p, r): return [{"role": "user", "content": p}, {"role": "assistant", "
 def render_full(p, r): return tok.apply_chat_template(_msgs(p, r), tokenize=False, add_generation_prompt=False)
 def render_prompt(p):  return tok.apply_chat_template([{"role": "user", "content": p}], tokenize=False, add_generation_prompt=True)
 def _phash(s): return hashlib.sha1(s.encode()).hexdigest()
+def _n_comp(p, r):
+    """Completion-token count after left-truncation (mirrors uf_meanpool_sweep.py): with left
+    padding + left truncation the completion occupies the rightmost n_comp columns."""
+    nf = len(tok(render_full(p, r), add_special_tokens=False).input_ids)
+    np_ = len(tok(render_prompt(p), add_special_tokens=False).input_ids)
+    return max(1, min(nf - np_, min(nf, MAX_LEN)))
 
 # ---- data (same funnel as uf_dpo_train.py) ----
 ds = load_dataset(E("UF_DATASET", "allenai/ultrafeedback_binarized_cleaned"),
@@ -108,11 +146,14 @@ def last_tok_feats(texts, bs=8):
     return out
 
 # ---- Stage A: probe sweep ----
-cachef = f"/workspace/uf_probe_feats{'_lenmatch' if MATCH else ''}.npz"
+cachef = ("/workspace/uf_probe_feats_meanpool.npz" if READ == "mean"
+          else f"/workspace/uf_probe_feats{'_lenmatch' if MATCH else ''}.npz")
 pr = train[:N_PROBE]; pe = test[:400]
 w_pr = np.array([x["w"] for x in pr], np.float32); w_pe = np.array([x["w"] for x in pe], np.float32)
 if os.path.exists(cachef):
     z = np.load(cachef); Fc_tr, Fr_tr, Fc_te, Fr_te = z["a"], z["b"], z["c"], z["d"]
+elif READ == "mean":
+    raise SystemExit(f"pooled cache {cachef} missing — run uf/uf_meanpool_sweep.py first")
 else:
     print("[feats] caching...", flush=True)
     Fc_tr = last_tok_feats([render_full(x["prompt"], x["chosen"]) for x in pr])
@@ -133,9 +174,10 @@ for li in range(NL):
     acc[li], heads[li] = a, (h, sd, mn)
     print(f"  L{li:2d} acc={a:.3f} elbo={e:+.0f}", flush=True)
 LSTAR = int(next(li for li in range(NL) if acc[li] >= acc.max() - TOL))
-print(f"[probe] plateau layer L*={LSTAR} (acc {acc[LSTAR]:.3f}, max {acc.max():.3f})", flush=True)
-json.dump(dict(layer_acc=acc.tolist(), Lstar=LSTAR, len_matched=bool(MATCH)),
-          open(f"/workspace/uf_probe_curve{'_lenmatch' if MATCH else ''}.json", "w"))
+if E("L_OVERRIDE"): LSTAR = int(E("L_OVERRIDE"))
+print(f"[probe] plateau layer L*={LSTAR} (acc {acc[LSTAR]:.3f}, max {acc.max():.3f}, read={READ})", flush=True)
+json.dump(dict(layer_acc=acc.tolist(), Lstar=LSTAR, len_matched=bool(MATCH), read=READ),
+          open(f"/workspace/uf_probe_curve{'_meanpool' if READ == 'mean' else ('_lenmatch' if MATCH else '')}.json", "w"))
 
 head, sd_, mn_ = heads[LSTAR]
 MU = head.mu.detach().float().to(DEV); SIG2 = F.softplus(head.rho.detach()).float().pow(2).to(DEV)
@@ -154,7 +196,7 @@ cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="
                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
 policy = get_peft_model(model, cfg); policy.config.use_cache = False
 params = [p for p in policy.parameters() if p.requires_grad]
-opt = torch.optim.AdamW(params, lr=LR)
+opt = torch.optim.AdamW(params, lr=(MARGIN_LR if MODE == "pooled_margin" else LR))
 
 def comp_logprob(text_full, plen, grad):
     ids = tok(text_full, return_tensors="pt", truncation=True, max_length=MAX_LEN + MAX_NEW).input_ids.to(DEV)
@@ -201,83 +243,239 @@ def rollout_feats(batch, gen, P, bs=8):
         out[s:s + enc.input_ids.shape[0]] = cap.get()[0][:, -1]   # left-padded -> last is real
     return out
 
-hist = dict(Lstar=LSTAR, reward=[], evals=[], len=[])
-rgen = random.Random(4242); policy.train()
-for step in range(STEPS):
-    batch = rgen.sample(train, BATCH)
-    prompts = [render_prompt(x["prompt"]) for x in batch]
-    enc = tok(prompts, return_tensors="pt", padding=True, truncation=True, max_length=PLEN).to(DEV)
-    policy.config.use_cache = True
+def comp_logps_tail(texts, ncs, grad, per_token=False, bs=4):
+    """Policy log-probs over each text's completion tokens (the rightmost nc columns under left
+    padding/truncation — same span convention as the pooled reads). logits_to_keep bounds the
+    logits tensor to the longest completion in the chunk."""
+    outs = []
+    for s in range(0, len(texts), bs):
+        chunk, nc = texts[s:s + bs], ncs[s:s + bs]
+        enc = tok(chunk, return_tensors="pt", padding=True, truncation=True, max_length=MAX_LEN).to(DEV)
+        T = enc.input_ids.shape[1]
+        keep = min(max(nc) + 1, T)
+        with (torch.enable_grad() if grad else torch.no_grad()):
+            lsm = F.log_softmax(policy(**enc, logits_to_keep=keep).logits[:, :-1].float(), -1)
+            for i in range(len(chunk)):
+                n = min(nc[i], keep - 1)
+                lp = lsm[i, keep - 1 - n:keep - 1].gather(-1, enc.input_ids[i, T - n:, None]).squeeze(-1)
+                outs.append(lp if per_token else lp.sum())
+    return outs if per_token else torch.stack(outs)
+
+@torch.no_grad()
+def rollout_phi(batch, gen, P, per_pos=False, bs=8):
+    """FROZEN pooled read at L*: re-render each decoded completion (same sentinel logic as
+    rollout_feats), capture the full L* residual sequence, mean-pool over completion tokens.
+    per_pos=True also returns per-rollout running-mean Phi vectors (probe posterior of the mean
+    over completion tokens 1..t) for dense credit, plus the re-rendered texts/ncs so the PG loss
+    can be computed on the SAME token grid."""
+    texts, ncs = [], []
+    for i, x in enumerate(batch):
+        for j in range(K):
+            comp = tok.decode(gen[i * K + j, P:], skip_special_tokens=True)
+            texts.append(render_full(x["prompt"], comp)); ncs.append(_n_comp(x["prompt"], comp))
+    r_end = torch.zeros(len(texts), device=DEV)
+    phis = [None] * len(texts)
+    for s in range(0, len(texts), bs):
+        enc = tok(texts[s:s + bs], return_tensors="pt", padding=True, truncation=True,
+                  max_length=MAX_LEN).to(DEV)
+        T = enc.input_ids.shape[1]
+        with policy.disable_adapter(), ResidualCapture([BLOCKS[LSTAR]]) as cap:
+            policy(**enc)
+        res = cap.get()[0].float()
+        for i in range(enc.input_ids.shape[0]):
+            n = min(ncs[s + i], T)
+            seq = res[i, T - n:]
+            cm = seq.cumsum(0) / torch.arange(1, n + 1, device=DEV).unsqueeze(1)
+            zz = probe_reward(cm)
+            r_end[s + i] = zz[-1]
+            if per_pos: phis[s + i] = zz
+    return (r_end, phis, texts, ncs) if per_pos else r_end
+
+@torch.no_grad()
+def gen_samples(n=6):
+    """Greedy generations on fixed test prompts — the eyeball guard for preamble inflation."""
+    policy.eval(); outs = []
+    for x in test[:n]:
+        enc = tok(render_prompt(x["prompt"]), return_tensors="pt", truncation=True, max_length=PLEN).to(DEV)
+        policy.config.use_cache = True
+        g = policy.generate(**enc, do_sample=False, max_new_tokens=MAX_NEW, pad_token_id=tok.pad_token_id)
+        policy.config.use_cache = False
+        outs.append(tok.decode(g[0, enc.input_ids.shape[1]:], skip_special_tokens=True)[:300])
+    policy.train(); return outs
+
+# ---- generative-replay floor (phase-8 §12, default ON for UF): random-token prompts, base
+# continuations banked once, one-way floor relu(logp_base - logp_policy) sampled each step ----
+replay_texts, replay_ncs, replay_ref = [], [], None
+if REPLAY_N:
+    rr = torch.Generator(device="cpu").manual_seed(SEED + 77)
+    vocab = int(model.config.vocab_size)
     with torch.no_grad():
-        gen = policy.generate(**enc, do_sample=True, temperature=1.0, num_return_sequences=K,
-                              max_new_tokens=MAX_NEW, pad_token_id=tok.pad_token_id)
-    policy.config.use_cache = False
-    P = enc.input_ids.shape[1]
-    attn = (gen != tok.pad_token_id).long()
-    n_new = (attn[:, P:]).sum(1).clamp(min=1)
-    # Read the probe at the SAME position Stage A calibrated it on: the <|end_of_text|> sentinel that
-    # ends render_full. generate() left-pads the prompt but RIGHT-pads completions, so gen[:, -1] is a
-    # <pad> for every rollout shorter than the batch max (and <pad> id 128256 is an appended, untrained
-    # embedding -- ||e||=1.28 vs 0.21 for the eos it should be reading). Capped rollouts have no eos at
-    # all, so their last real token is a mid-response content token. Re-rendering the decoded completion
-    # through render_full puts every rollout back on the sentinel, which also makes capped rollouts
-    # scoreable instead of discarded. (Ported from ultrafeedback_head_prob_sweep.py's onpolicy_feat.)
-    r = probe_reward(rollout_feats(batch, gen, P)).detach()
-    if step < 3 or (step + 1) % 50 == 0:   # measure what the old gen[:, -1] read would have given
-        with torch.no_grad(), policy.disable_adapter(), ResidualCapture([BLOCKS[LSTAR]]) as cap:
-            policy(input_ids=gen, attention_mask=attn)
-        r_raw = probe_reward(cap.get()[0][:, -1]).detach()
-        hist.setdefault("read_diag", []).append(dict(
-            step=step, frac_capped=float((n_new >= MAX_NEW).float().mean()),
-            r_rerender_mean=float(r.mean()), r_rerender_std=float(r.std()),
-            r_rawread_mean=float(r_raw.mean()), r_rawread_std=float(r_raw.std()),
-            corr=float(torch.corrcoef(torch.stack([r.float(), r_raw.float()]))[0, 1])))
-    keepg = gen.shape[1] - P + 1
-    tokmask = attn[:, P:].bool()
-    with torch.no_grad():  # batched, graph-free: values for KL and advantages
-        lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
-        logp_ng = (lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
-        with policy.disable_adapter():
-            ref_lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
-            ref_logp = (ref_lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
-        del lsm, ref_lsm
-    r = r - KL * (logp_ng - ref_logp) / n_new
-    # With the re-render read, a capped rollout is scored at a real sentinel -- an abruptly-ending
-    # response, which is a legitimate (low) reward rather than noise. So capped samples are KEPT by
-    # default; DROP_CAPPED=1 restores the v2 behaviour of masking them out.
-    valid = (n_new < MAX_NEW) if int(E("DROP_CAPPED", 0)) else torch.ones_like(n_new, dtype=torch.bool)
-    rg, vg = r.view(BATCH, K), valid.view(BATCH, K).float()
-    cnt = vg.sum(1, keepdim=True)
-    loo = (rg * vg).sum(1, keepdim=True) - rg * vg
-    base = loo / (cnt - vg).clamp(min=1)
-    adv = torch.where((vg > 0) & (cnt > 1.5), rg - base, torch.zeros_like(rg)).view(-1)
-    hist.setdefault("trunc", []).append(float((n_new >= MAX_NEW).float().mean()))
+        for s in range(0, REPLAY_N, 8):
+            k = min(8, REPLAY_N - s)
+            rids = torch.randint(0, vocab, (k, 8), generator=rr).to(DEV)
+            policy.config.use_cache = True
+            with policy.disable_adapter():
+                g = policy.generate(input_ids=rids, do_sample=True, temperature=1.0,
+                                    max_new_tokens=REPLAY_MAXNEW, pad_token_id=tok.pad_token_id)
+            policy.config.use_cache = False
+            for i in range(k):
+                ptxt = tok.decode(g[i, :8], skip_special_tokens=True)
+                ftxt = tok.decode(g[i], skip_special_tokens=True)
+                nc = max(1, len(tok(ftxt, add_special_tokens=False).input_ids)
+                            - len(tok(ptxt, add_special_tokens=False).input_ids))
+                replay_texts.append(ftxt); replay_ncs.append(nc)
+    with torch.no_grad(), policy.disable_adapter():
+        replay_ref = torch.cat([comp_logps_tail(replay_texts[s:s + 8], replay_ncs[s:s + 8], False)
+                                for s in range(0, len(replay_texts), 8)])
+    print(f"[replay] {len(replay_texts)} random-prompt base continuations banked", flush=True)
+
+hist = dict(Lstar=LSTAR, mode=MODE, read=READ, shape_w=SHAPE_W, trunc_pen=TRUNC_PEN,
+            replay_n=REPLAY_N, lr=opt.param_groups[0]["lr"], reward=[], evals=[], len=[])
+rgen = random.Random(4242); policy.train()
+u_prev = None   # lag-1 adaptive direction for pooled_margin
+for step in range(STEPS):
     opt.zero_grad()
-    for s0 in range(0, BATCH * K, 4):           # micro-batched backward, chunks of 4
-        sl = slice(s0, min(s0 + 4, BATCH * K))
-        if not adv[sl].abs().sum() > 0: continue
-        li = F.log_softmax(policy(input_ids=gen[sl], attention_mask=attn[sl],
-                                  logits_to_keep=keepg).logits[:, :-1].float(), -1)
-        lp_i = (li.gather(-1, gen[sl, P:, None]).squeeze(-1) * tokmask[sl]).sum(1)
-        (-(adv[sl] * lp_i / n_new[sl]).sum() / (BATCH * K)).backward()
+    if MODE == "pooled_margin":
+        # ---- styc phase-8 winner: POLICY pooled activations, lag-1 mean-diff margin ----
+        batch = rgen.sample(train, MARGIN_BS)
+        texts, ncs = [], []
+        for x in batch:
+            for side in ("chosen", "rejected"):
+                texts.append(render_full(x["prompt"], x[side])); ncs.append(_n_comp(x["prompt"], x[side]))
+        d_all, proj_sum = [], 0.0
+        u = u_prev   # None on step 0 -> first chunk pass computes with u_now of that chunk
+        for s0 in range(0, len(texts), 4):      # 2 pairs per grad chunk, backward immediately
+            enc = tok(texts[s0:s0 + 4], return_tensors="pt", padding=True, truncation=True,
+                      max_length=MAX_LEN).to(DEV)
+            T = enc.input_ids.shape[1]
+            with ResidualCapture([BLOCKS[LSTAR]]) as cap:
+                policy(**enc, logits_to_keep=1)   # residuals are what we need; skip the lm_head
+            res = cap.get()[0].float()
+            pooled = []
+            for i in range(enc.input_ids.shape[0]):
+                n = min(ncs[s0 + i], T)
+                pooled.append(res[i, T - n:].mean(0))
+            Fp = torch.stack(pooled)
+            d = (Fp[0::2] - Fp[1::2]) / SD
+            d_all.append(d.detach())
+            if u is None:
+                un = d.detach().mean(0); u = un / (un.norm() + 1e-6)
+            proj = d.matmul(u)
+            (F.relu(M0 - proj).sum() / MARGIN_BS).backward()
+            proj_sum += float(proj.sum().detach())
+        with torch.no_grad():
+            u_now = torch.cat(d_all).mean(0); u_prev = u_now / (u_now.norm() + 1e-6)
+        hist["reward"].append(proj_sum / MARGIN_BS)
+    else:
+        # ---- sampling modes: rloo (v3 baseline) and shaped (dense credit) ----
+        batch = rgen.sample(train, BATCH)
+        prompts = [render_prompt(x["prompt"]) for x in batch]
+        enc = tok(prompts, return_tensors="pt", padding=True, truncation=True, max_length=PLEN).to(DEV)
+        policy.config.use_cache = True
+        with torch.no_grad():
+            gen = policy.generate(**enc, do_sample=True, temperature=1.0, num_return_sequences=K,
+                                  max_new_tokens=MAX_NEW, pad_token_id=tok.pad_token_id)
+        policy.config.use_cache = False
+        P = enc.input_ids.shape[1]
+        attn = (gen != tok.pad_token_id).long()
+        n_new = (attn[:, P:]).sum(1).clamp(min=1)
+        # Read the probe at the SAME position/protocol Stage A calibrated it on. generate() left-pads
+        # the prompt but RIGHT-pads completions, so gen[:, -1] is a <pad> for every rollout shorter
+        # than the batch max (and <pad> id 128256 is an appended, untrained embedding). Re-rendering
+        # the decoded completion through render_full puts every rollout back on the calibrated
+        # positions, which also makes capped rollouts scoreable instead of discarded.
+        phis = texts_r = ncs_r = None
+        if READ == "mean":
+            if MODE == "shaped":
+                r, phis, texts_r, ncs_r = rollout_phi(batch, gen, P, per_pos=True)
+            else:
+                r = rollout_phi(batch, gen, P)
+            r = r.detach()
+        else:
+            r = probe_reward(rollout_feats(batch, gen, P)).detach()
+            if step < 3 or (step + 1) % 50 == 0:   # what the old gen[:, -1] read would have given
+                with torch.no_grad(), policy.disable_adapter(), ResidualCapture([BLOCKS[LSTAR]]) as cap:
+                    policy(input_ids=gen, attention_mask=attn)
+                r_raw = probe_reward(cap.get()[0][:, -1]).detach()
+                hist.setdefault("read_diag", []).append(dict(
+                    step=step, frac_capped=float((n_new >= MAX_NEW).float().mean()),
+                    r_rerender_mean=float(r.mean()), r_rerender_std=float(r.std()),
+                    r_rawread_mean=float(r_raw.mean()), r_rawread_std=float(r_raw.std()),
+                    corr=float(torch.corrcoef(torch.stack([r.float(), r_raw.float()]))[0, 1])))
+        keepg = gen.shape[1] - P + 1
+        tokmask = attn[:, P:].bool()
+        with torch.no_grad():  # batched, graph-free: values for KL and advantages
+            lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
+            logp_ng = (lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
+            with policy.disable_adapter():
+                ref_lsm = F.log_softmax(policy(input_ids=gen, attention_mask=attn, logits_to_keep=keepg).logits[:, :-1].float(), -1)
+                ref_logp = (ref_lsm.gather(-1, gen[:, P:, None]).squeeze(-1) * tokmask).sum(1)
+            del lsm, ref_lsm
+        r = r - KL * (logp_ng - ref_logp) / n_new
+        # Deferral/preamble guard (phase-8 §11/§13): a rollout that hits MAX_NEW with no eos is the
+        # inflation exploit's signature — flat penalty in the REWARD (the exploit is the labeller's,
+        # so the fix belongs in the reward, not the credit scheme).
+        r = r - TRUNC_PEN * (n_new >= MAX_NEW).float()
+        # With the re-render read, a capped rollout is scored at a real sentinel -- an abruptly-ending
+        # response, a legitimate (low) reward rather than noise. Capped samples KEPT by default;
+        # DROP_CAPPED=1 restores the v2 behaviour of masking them out.
+        valid = (n_new < MAX_NEW) if int(E("DROP_CAPPED", 0)) else torch.ones_like(n_new, dtype=torch.bool)
+        rg, vg = r.view(BATCH, K), valid.view(BATCH, K).float()
+        cnt = vg.sum(1, keepdim=True)
+        loo = (rg * vg).sum(1, keepdim=True) - rg * vg
+        base = loo / (cnt - vg).clamp(min=1)
+        adv = torch.where((vg > 0) & (cnt > 1.5), rg - base, torch.zeros_like(rg)).view(-1)
+        hist.setdefault("trunc", []).append(float((n_new >= MAX_NEW).float().mean()))
+        if MODE == "shaped":
+            # per-token PG on the re-rendered completion — the SAME token grid Phi was computed on.
+            # A_t = adv_seq + SHAPE_W*(Phi_end - Phi_t); loss = -mean_t(A_t * logp_t) per rollout.
+            for s0 in range(0, BATCH * K, 2):
+                idxs = list(range(s0, min(s0 + 2, BATCH * K)))
+                lps = comp_logps_tail([texts_r[i] for i in idxs], [ncs_r[i] for i in idxs],
+                                      True, per_token=True, bs=2)
+                loss_c = None
+                for i, lp in zip(idxs, lps):
+                    Lp = min(len(lp), len(phis[i]))
+                    if Lp == 0: continue
+                    A_t = (adv[i] + SHAPE_W * (phis[i][-1] - phis[i][:Lp])).detach()
+                    term = -(A_t * lp[:Lp]).sum() / Lp
+                    loss_c = term if loss_c is None else loss_c + term
+                if loss_c is not None:
+                    (loss_c / (BATCH * K)).backward()
+        else:
+            for s0 in range(0, BATCH * K, 4):           # micro-batched backward, chunks of 4
+                sl = slice(s0, min(s0 + 4, BATCH * K))
+                if not adv[sl].abs().sum() > 0: continue
+                li = F.log_softmax(policy(input_ids=gen[sl], attention_mask=attn[sl],
+                                          logits_to_keep=keepg).logits[:, :-1].float(), -1)
+                lp_i = (li.gather(-1, gen[sl, P:, None]).squeeze(-1) * tokmask[sl]).sum(1)
+                (-(adv[sl] * lp_i / n_new[sl]).sum() / (BATCH * K)).backward()
+        hist["reward"].append(float(rg.mean())); hist["len"].append(float(n_new.float().mean()))
     if ANCHOR > 0:  # DPOP hinge on the pair's chosen side
         for x in batch:
             pl = tok(render_prompt(x["prompt"]), return_tensors="pt", truncation=True, max_length=MAX_LEN).input_ids.shape[1]
             lc = comp_logprob(render_full(x["prompt"], x["chosen"]), pl, True)
             with torch.no_grad(), policy.disable_adapter():
                 rc = comp_logprob(render_full(x["prompt"], x["chosen"]), pl, False)
-            (ANCHOR * F.relu(rc - lc) / BATCH).backward()
+            (ANCHOR * F.relu(rc - lc) / len(batch)).backward()
+    if REPLAY_N:  # generative-replay floor: never lose likelihood on the base's off-task behaviour
+        ridx = rgen.sample(range(len(replay_texts)), min(REPLAY_BS, len(replay_texts)))
+        lp_r = comp_logps_tail([replay_texts[i] for i in ridx], [replay_ncs[i] for i in ridx],
+                               True, bs=REPLAY_BS)
+        (REPLAY_W * F.relu(replay_ref[ridx] - lp_r).mean()).backward()
     torch.nn.utils.clip_grad_norm_(params, 1.0)
     opt.step()
-    hist["reward"].append(float(rg.mean())); hist["len"].append(float(n_new.float().mean()))
     if (step + 1) % 10 == 0:
-        print(f"  step {step+1:4d}: reward {np.mean(hist['reward'][-10:]):.3f} "
-              f"len {np.mean(hist['len'][-10:]):.0f}", flush=True)
-    if (step + 1) % 50 == 0:
-        ev = evaluate(); ev["step"] = step + 1; hist["evals"].append(ev)
-        print(f"  step {step+1:4d}: EVAL {ev}", flush=True)
+        msg = f"  step {step+1:4d}: reward {np.mean(hist['reward'][-10:]):.3f}"
+        if hist["len"]: msg += f" len {np.mean(hist['len'][-10:]):.0f}"
+        print(msg, flush=True)
+    if (step + 1) % EVAL_EVERY == 0:
+        ev = evaluate(); ev["step"] = step + 1
+        ev["samples"] = gen_samples(6)
+        hist["evals"].append(ev)
+        print(f"  step {step+1:4d}: EVAL { {k: v for k, v in ev.items() if k != 'samples'} }", flush=True)
         json.dump(hist, open(f"/workspace/uf_probe_rl_{TAG}_history.json", "w"), indent=1)
-    if (step + 1) % 100 == 0:
+    if (step + 1) % CKPT_EVERY == 0:
         policy.save_pretrained(f"/workspace/uf_probe_rl_{TAG}_ckpt{step+1}")
 json.dump(hist, open(f"/workspace/uf_probe_rl_{TAG}_history.json", "w"), indent=1)
 policy.save_pretrained(f"/workspace/uf_probe_rl_{TAG}_lora"); tok.save_pretrained(f"/workspace/uf_probe_rl_{TAG}_lora")

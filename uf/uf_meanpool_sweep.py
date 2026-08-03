@@ -99,13 +99,17 @@ def _n_comp(p, r):
 
 @torch.no_grad()
 def meanpool_feats(recs_, side, bs=BS):
-    """(N, n_layers, hid): mean of each block's output over the COMPLETION tokens.
+    """(N, n_layers, hid) x2: mean of each block's output over the COMPLETION tokens, AND the
+    last-token read (identical to uf_probe_rl.last_tok_feats — left padding puts the real eos
+    sentinel at column -1). Both come from the same forward pass, so the last-token cache is free
+    here and a wiped box only pays for one extraction sweep.
 
     Left padding + left truncation put the completion in the rightmost n_comp columns, so the mask
     is simply the tail — which stays correct when a long prompt is truncated away."""
     texts = [render_full(x["prompt"], x[side]) for x in recs_]
     ncs = [_n_comp(x["prompt"], x[side]) for x in recs_]
     out = np.zeros((len(texts), NL, HID), np.float32)
+    out_lt = np.zeros((len(texts), NL, HID), np.float32)
     for s in range(0, len(texts), bs):
         chunk, nc = texts[s:s + bs], ncs[s:s + bs]
         enc = tok(chunk, return_tensors="pt", padding=True, truncation=True,
@@ -120,18 +124,23 @@ def meanpool_feats(recs_, side, bs=BS):
         for li in range(NL):
             h = buf[li].float()                                  # (B, T, H)
             out[s:s + len(chunk), li] = ((h * m[:, :, None]).sum(1) / denom).cpu().numpy()
+            out_lt[s:s + len(chunk), li] = h[:, -1].cpu().numpy()
         del buf
         if (s // bs) % 50 == 0: print(f"  [{side}] {s}/{len(texts)}", flush=True)
-    return out
+    return out, out_lt
 
 cachef = "/workspace/uf_probe_feats_meanpool.npz"
+cachef_lt = "/workspace/uf_probe_feats_lenmatch.npz"   # uf_probe_rl.py Stage-A format
 if os.path.exists(cachef):
     z = np.load(cachef); Fc_tr, Fr_tr, Fc_te, Fr_te = z["a"], z["b"], z["c"], z["d"]
 else:
-    print("[feats] mean-pooled caching...", flush=True)
-    Fc_tr = meanpool_feats(pr, "chosen");   Fr_tr = meanpool_feats(pr, "rejected")
-    Fc_te = meanpool_feats(pe, "chosen");   Fr_te = meanpool_feats(pe, "rejected")
+    print("[feats] mean-pooled + last-token caching...", flush=True)
+    Fc_tr, Lc_tr = meanpool_feats(pr, "chosen");   Fr_tr, Lr_tr = meanpool_feats(pr, "rejected")
+    Fc_te, Lc_te = meanpool_feats(pe, "chosen");   Fr_te, Lr_te = meanpool_feats(pe, "rejected")
     np.savez(cachef, a=Fc_tr, b=Fr_tr, c=Fc_te, d=Fr_te)
+    if not os.path.exists(cachef_lt):
+        np.savez(cachef_lt, a=Lc_tr, b=Lr_tr, c=Lc_te, d=Lr_te)
+        print(f"[feats] last-token cache also written -> {cachef_lt}", flush=True)
 
 # ---- per-layer probes: identical protocol to uf_probe_rl.py Stage A ----
 w_pr = np.array([x["w"] for x in pr], np.float32); w_pe = np.array([x["w"] for x in pe], np.float32)

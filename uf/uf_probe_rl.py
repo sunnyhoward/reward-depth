@@ -148,40 +148,60 @@ def last_tok_feats(texts, bs=8):
     return out
 
 # ---- Stage A: probe sweep ----
+PROBE_SRC = E("PROBE_SRC", "dataset")   # dataset | onpolicy (judge-labelled same-prompt rollout
+                                        # pairs from uf_onpolicy_{sample,judge,probe}.py — fixes
+                                        # the phase-9 headroom problem: discrimination at the
+                                        # policy's own quality level. Requires L_OVERRIDE.)
 cachef = ("/workspace/uf_probe_feats_meanpool.npz" if READ == "mean"
           else f"/workspace/uf_probe_feats{'_lenmatch' if MATCH else ''}.npz")
 pr = train[:N_PROBE]; pe = test[:400]
 w_pr = np.array([x["w"] for x in pr], np.float32); w_pe = np.array([x["w"] for x in pe], np.float32)
-if os.path.exists(cachef):
-    z = np.load(cachef); Fc_tr, Fr_tr, Fc_te, Fr_te = z["a"], z["b"], z["c"], z["d"]
-elif READ == "mean":
-    raise SystemExit(f"pooled cache {cachef} missing — run uf/uf_meanpool_sweep.py first")
+if PROBE_SRC == "onpolicy":
+    assert READ == "mean" and E("L_OVERRIDE"), "onpolicy probe is pooled; set L_OVERRIDE (gate L*)"
+    LSTAR = int(E("L_OVERRIDE"))
+    zj = np.load("/workspace/uf_onpolicy_feats.npz")
+    Fw_o, Fl_o = zj["a"], zj["b"]                      # winner / loser pooled feats, all layers
+    rngo = np.random.RandomState(SEED)
+    s_o = np.where(rngo.rand(len(Fw_o)) < 0.5, 1.0, -1.0).astype(np.float32)
+    pool_o = np.concatenate([Fw_o[:, LSTAR], Fl_o[:, LSTAR]])
+    sd_, mn_ = pool_o.std(0) + 1e-6, pool_o.mean(0)
+    d_o = ((Fw_o[:, LSTAR] - Fl_o[:, LSTAR]) / sd_) * s_o[:, None]
+    n90 = int(0.9 * len(d_o))
+    a_o, head, e_o = train_bayes_head(d_o[:n90], s_o[:n90], d_o[n90:], s_o[n90:])
+    print(f"[probe] ONPOLICY judge-labelled fit @L{LSTAR}: heldout-split acc {a_o:.3f} "
+          f"(n={len(d_o)})", flush=True)
 else:
-    print("[feats] caching...", flush=True)
-    Fc_tr = last_tok_feats([render_full(x["prompt"], x["chosen"]) for x in pr])
-    Fr_tr = last_tok_feats([render_full(x["prompt"], x["rejected"]) for x in pr])
-    Fc_te = last_tok_feats([render_full(x["prompt"], x["chosen"]) for x in pe])
-    Fr_te = last_tok_feats([render_full(x["prompt"], x["rejected"]) for x in pe])
-    np.savez(cachef, a=Fc_tr, b=Fr_tr, c=Fc_te, d=Fr_te)
-rng = np.random.RandomState(SEED)
-s_tr = np.where(rng.rand(len(pr)) < 0.5, 1.0, -1.0).astype(np.float32)
-s_te = np.where(rng.rand(len(pe)) < 0.5, 1.0, -1.0).astype(np.float32)
-acc = np.zeros(NL); heads = {}
-for li in range(NL):
-    pool = np.concatenate([Fc_tr[:, li], Fr_tr[:, li]])
-    sd, mn = pool.std(0) + 1e-6, pool.mean(0)     # mn unused at fit time (differences cancel it)
-    dtr = ((Fc_tr[:, li] - Fr_tr[:, li]) / sd) * s_tr[:, None]
-    dte = ((Fc_te[:, li] - Fr_te[:, li]) / sd) * s_te[:, None]
-    a, h, e = train_bayes_head(dtr, s_tr, dte, s_te, w_tr=w_pr, w_te=w_pe)
-    acc[li], heads[li] = a, (h, sd, mn)
-    print(f"  L{li:2d} acc={a:.3f} elbo={e:+.0f}", flush=True)
-LSTAR = int(next(li for li in range(NL) if acc[li] >= acc.max() - TOL))
-if E("L_OVERRIDE"): LSTAR = int(E("L_OVERRIDE"))
-print(f"[probe] plateau layer L*={LSTAR} (acc {acc[LSTAR]:.3f}, max {acc.max():.3f}, read={READ})", flush=True)
-json.dump(dict(layer_acc=acc.tolist(), Lstar=LSTAR, len_matched=bool(MATCH), read=READ),
-          open(f"/workspace/uf_probe_curve{'_meanpool' if READ == 'mean' else ('_lenmatch' if MATCH else '')}.json", "w"))
-
-head, sd_, mn_ = heads[LSTAR]
+    head = None   # fit below from the dataset cache
+if PROBE_SRC != "onpolicy":
+    if os.path.exists(cachef):
+        z = np.load(cachef); Fc_tr, Fr_tr, Fc_te, Fr_te = z["a"], z["b"], z["c"], z["d"]
+    elif READ == "mean":
+        raise SystemExit(f"pooled cache {cachef} missing — run uf/uf_meanpool_sweep.py first")
+    else:
+        print("[feats] caching...", flush=True)
+        Fc_tr = last_tok_feats([render_full(x["prompt"], x["chosen"]) for x in pr])
+        Fr_tr = last_tok_feats([render_full(x["prompt"], x["rejected"]) for x in pr])
+        Fc_te = last_tok_feats([render_full(x["prompt"], x["chosen"]) for x in pe])
+        Fr_te = last_tok_feats([render_full(x["prompt"], x["rejected"]) for x in pe])
+        np.savez(cachef, a=Fc_tr, b=Fr_tr, c=Fc_te, d=Fr_te)
+    rng = np.random.RandomState(SEED)
+    s_tr = np.where(rng.rand(len(pr)) < 0.5, 1.0, -1.0).astype(np.float32)
+    s_te = np.where(rng.rand(len(pe)) < 0.5, 1.0, -1.0).astype(np.float32)
+    acc = np.zeros(NL); heads = {}
+    for li in range(NL):
+        pool = np.concatenate([Fc_tr[:, li], Fr_tr[:, li]])
+        sd, mn = pool.std(0) + 1e-6, pool.mean(0)  # mn unused at fit time (differences cancel it)
+        dtr = ((Fc_tr[:, li] - Fr_tr[:, li]) / sd) * s_tr[:, None]
+        dte = ((Fc_te[:, li] - Fr_te[:, li]) / sd) * s_te[:, None]
+        a, h, e = train_bayes_head(dtr, s_tr, dte, s_te, w_tr=w_pr, w_te=w_pe)
+        acc[li], heads[li] = a, (h, sd, mn)
+        print(f"  L{li:2d} acc={a:.3f} elbo={e:+.0f}", flush=True)
+    LSTAR = int(next(li for li in range(NL) if acc[li] >= acc.max() - TOL))
+    if E("L_OVERRIDE"): LSTAR = int(E("L_OVERRIDE"))
+    print(f"[probe] plateau layer L*={LSTAR} (acc {acc[LSTAR]:.3f}, max {acc.max():.3f}, read={READ})", flush=True)
+    json.dump(dict(layer_acc=acc.tolist(), Lstar=LSTAR, len_matched=bool(MATCH), read=READ),
+              open(f"/workspace/uf_probe_curve{'_meanpool' if READ == 'mean' else ('_lenmatch' if MATCH else '')}.json", "w"))
+    head, sd_, mn_ = heads[LSTAR]
 MU = head.mu.detach().float().to(DEV); SIG2 = F.softplus(head.rho.detach()).float().pow(2).to(DEV)
 SD = torch.tensor(sd_, device=DEV); MN = torch.tensor(mn_, device=DEV)
 def probe_reward(f):

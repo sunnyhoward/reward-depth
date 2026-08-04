@@ -92,6 +92,19 @@ if LOSS_AT == "eagle":
     else:
         params = params + list(head.parameters())
 opt = torch.optim.AdamW(params, lr=LR)
+
+# K-FAC leash (2026-08-04, replay-kfac-ewc package): curvature prior on the LoRA delta,
+# factors replay-estimated from the frozen base. Targets stage-1's peak-then-decay damage
+# (L24 installs by step 5, dead by 15; the leash should widen the safe window, not block the
+# install — the preference lives in low-curvature directions, the damage in high-curvature ones).
+# KFAC_LAMBDA=0 (default) = off. strict=False: factors may cover more modules than this L adapts.
+KFAC_LAMBDA = float(E("KFAC_LAMBDA", 0))
+KFAC_DIR = E("KFAC_DIR", "/workspace/kfac/factors_qwen3b_L24")
+kfac = None
+if KFAC_LAMBDA > 0:
+    from replay_kfac_ewc import FactorBundle, KFACEWC
+    kfac = KFACEWC(FactorBundle.load(KFAC_DIR, device=DEV), coefficient=KFAC_LAMBDA, strict=False)
+    print(f"[kfac] leash lambda={KFAC_LAMBDA} factors={KFAC_DIR}", flush=True)
 print(f"[{TAG}] trainable {sum(p.numel() for p in params)/1e6:.1f}M | write={WRITE} loss_at={LOSS_AT} "
       f"L={L} factor={FACTOR}", flush=True)
 
@@ -155,7 +168,7 @@ def full_eval(step):
     return ev
 
 hist = dict(tag=TAG, factor=FACTOR, L=L, loss_at=LOSS_AT, write=WRITE, beta=BETA, lr=LR,
-            probe_layers=PROBE_LAYERS, loss=[], evals=[])
+            probe_layers=PROBE_LAYERS, kfac_lambda=KFAC_LAMBDA, loss=[], evals=[])
 ev0 = full_eval(0); hist["evals"].append(ev0)
 print(f"  step    0: { {k: (round(v,3) if isinstance(v,float) else v) for k,v in ev0.items() if k!='gen_samples'} }", flush=True)
 policy.train()
@@ -168,6 +181,10 @@ for step in range(STEPS):
         ra, rb = pair_logps(batch, False, use_ref=True)
     D = BETA * ((la - ra) - (lb - rb))
     loss = -F.logsigmoid(D).mean()
+    if kfac is not None:
+        pen = kfac.penalty_from_peft(policy)
+        hist.setdefault("kfac_pen", []).append(float(pen.detach()))
+        loss = loss + pen
     loss.backward()
     if first_bw:   # runtime version of the zero-grad assert: nothing outside the set moved
         for n_, p in policy.named_parameters():

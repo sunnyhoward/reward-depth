@@ -1,0 +1,290 @@
+{
+ "tag": "s1_L12_seed0",
+ "model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+ "L": 12,
+ "beta": 0.1,
+ "lr": 0.0001,
+ "batch": 16,
+ "seed": 0,
+ "head": "/workspace/uf_eagle_head_tf_L12.pt",
+ "loss": [
+  0.6931471824645996,
+  0.6752471029758453,
+  0.5525354892015457,
+  0.7221710085868835,
+  0.698683351278305,
+  0.776989758014679,
+  0.6212469264864922,
+  0.6442650109529495,
+  0.6879753544926643,
+  0.5031105428934097,
+  1.3190292567014694,
+  0.6902394741773605,
+  0.8814494013786316,
+  0.7473190873861313,
+  0.45997006446123123,
+  0.889729730784893,
+  0.8450455814599991,
+  0.7158528119325638,
+  0.8728871494531631,
+  1.1289439797401428,
+  0.6709879785776138,
+  0.5645951703190804,
+  0.6985955759882927,
+  0.895641565322876,
+  0.9905301481485367,
+  1.1961789578199387,
+  1.3950902670621872,
+  0.7853872328996658,
+  0.6576830223202705,
+  0.7709466814994812,
+  0.5321948155760765,
+  1.6093544363975525,
+  2.091101288795471,
+  0.8034455478191376,
+  1.3179027773439884,
+  1.5356604307889938,
+  0.7652187049388885,
+  0.8137913793325424,
+  1.3470668196678162,
+  0.4844651073217392,
+  0.7684712409973145,
+  0.6274815276265144,
+  1.5969352051615715,
+  0.42484426498413086,
+  0.6573240756988525,
+  0.5172217637300491,
+  0.7842578589916229,
+  0.41227415204048157,
+  0.567078985273838,
+  0.795322060585022,
+  0.8146311044692993,
+  0.7660985589027405,
+  0.8972169905900955,
+  1.1132686883211136,
+  0.9046874046325684,
+  0.7132899463176727,
+  0.6657851934432983,
+  0.6731115952134132,
+  0.6262886002659798,
+  0.6843900233507156,
+  0.4450453743338585,
+  1.5166174918413162,
+  0.6202047243714333,
+  0.8162414580583572,
+  0.6761027723550797,
+  0.5952492989599705,
+  0.5585691072046757,
+  0.6651496514678001,
+  0.7479708790779114,
+  0.9766226708889008,
+  0.8724859058856964,
+  1.1075893267989159,
+  0.6481287032365799,
+  0.7825277000665665,
+  2.0054331570863724,
+  0.5032788664102554,
+  1.0117495357990265,
+  1.1667593121528625,
+  0.7415714934468269,
+  0.9060384631156921,
+  1.1782012730836868,
+  0.6807878017425537,
+  0.5402317568659782,
+  1.0165738314390182,
+  0.6018517464399338,
+  0.4523368924856186,
+  0.5379508435726166,
+  0.5371433198451996,
+  0.7265442758798599,
+  1.0426003336906433,
+  0.6548192799091339,
+  1.1055469363927841,
+  0.3804751932621002,
+  0.64311658218503,
+  0.6351520046591759,
+  0.8971326947212219,
+  0.6475808918476105,
+  0.9964300990104675,
+  0.5168468281626701,
+  0.7293618768453598,
+  0.7220030426979065,
+  0.8187639266252518,
+  0.5541532412171364,
+  0.4052348658442497,
+  0.5815014243125916,
+  0.4299565088003874,
+  0.6301607042551041,
+  0.6714033484458923,
+  1.2944986447691917,
+  0.9706015586853027,
+  0.7402443811297417,
+  0.8849611431360245,
+  1.1396741718053818,
+  0.6345953606069088,
+  1.0152944773435593,
+  0.5918611548841,
+  0.7349225729703903,
+  1.5533969551324844,
+  0.43179306387901306,
+  0.5156999006867409
+ ],
+ "evals": [
+  {
+   "step": 0,
+   "head_acc": 0.0,
+   "acc_implicit": 0.0,
+   "kl_from_base": 0.0,
+   "gen_len_words": 100.35416666666667,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his career was marked by a series of memorable performances in film and theatre. He won an Oscar for his role as Colonel Nicholson in The Bridge on the River Kwai, and was nominated for an Oscar for his role as Obi-Wan Kenobi in Star Wars. He was also a prolific writer, and his autobiography, Blessings in Disguise, was published in 1985. In it, he revealed that he had a real-life otherworldly encounter while filming David Lean's A Passage to India in Bangalore. He wrote to his wife: 'A very conventional white ghost appeared, an elderly woman in grey-white and heavily veiled.'",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 10,
+   "head_acc": 0.578125,
+   "acc_implicit": 0.5,
+   "kl_from_base": 0.007626822683960199,
+   "gen_len_words": 99.22916666666667,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his career was marked by a series of memorable performances in film, theatre and television. He won an Oscar for his role as Colonel Nicholson in The Bridge on the River Kwai, and was nominated for an Oscar for his portrayal of Obi-Wan Kenobi in Star Wars. He was also a prolific writer, and his autobiography, Blessings in Disguise, was published in 1985. In it, he revealed that he had a real-life otherworldly encounter while filming David Lean's A Passage to India in Bangalore. He wrote to his wife: 'A very conventional white ghost appeared, an elderly woman in grey-white and heavily veiled.'",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 20,
+   "head_acc": 0.46875,
+   "acc_implicit": 0.46875,
+   "kl_from_base": 0.004193282880199452,
+   "gen_len_words": 101.375,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his death will be mourned by millions of fans around the world. But it seems that even the great man had a secret life, and one that he kept hidden from the public eye. In a letter published for the first time today, Sir Alec reveals that he had a real-life otherworldly encounter while filming David Lean's A Passage To India in Bangalore. In the letter, written to his wife, he describes how a \"very conventional white ghost\" appeared to him. The ghost was an elderly woman in grey-white and heavily veiled. Sir Alec, who won an Oscar for his role in Lean's film, was filming in Bangalore in 1984 when he had the encounter. He wrote: \"A very conventional white ghost appeared, an elderly woman in grey-white and heavily veiled. She was standing in the middle of the road, and I was driving a car. I stopped and got out, and she walked towards me. I was very frightened, but she was not. She was smiling and seemed to be very pleased to see me. I asked her if she was a ghost, and she said she was. I asked her if she",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 30,
+   "head_acc": 0.359375,
+   "acc_implicit": 0.375,
+   "kl_from_base": 0.00888624337191383,
+   "gen_len_words": 99.33333333333333,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his death will be mourned by millions of film-goers who have enjoyed his performances in such classics as The Bridge on the River Kwai, Lawrence of Arabia, Doctor Zhivago and Star Wars.\n\nBut it is not only his acting that will be remembered. For Sir Alec was also a man of strong religious convictions, and he was a devout Christian who believed in the existence of the supernatural.\n\nIn a letter to his wife, he wrote: 'A very conventional white ghost appeared, an elderly woman in grey white and heavily veiled. She was standing in the middle of the road, and I was driving a car. I stopped, and she walked across the road and disappeared into the bushes. I was not frightened, but I was very surprised. I have never seen a ghost before, and I have no idea what to make of it.'\n\nSir Alec Guinness was born in London in 1914, and he was educated at the City of London School. He was a brilliant student, and he won a scholarship to Trinity College, Cambridge, where he studied English literature. He graduated with a first-class degree in 1935, and he went on",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 40,
+   "head_acc": 0.5,
+   "acc_implicit": 0.484375,
+   "kl_from_base": 0.01677651594703396,
+   "gen_len_words": 97.625,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his career was marked by a series of memorable performances in film, theatre and television. He won an Oscar for his role as Colonel Nicholson in The Bridge on the River Kwai (1957), and was nominated for an Oscar for his performance as Obi-Wan Kenobi in Star Wars (1977). He was also nominated for an Oscar for his role as Sir Thomas More in A Man for All Seasons (1966), and was nominated for a Tony Award for his performance in the Broadway production of The Entertainer (1960). Guinness was also a prolific writer, and his autobiography, Blessings in Disguise, was published in 1985. He was knighted in 1959.",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 50,
+   "head_acc": 0.515625,
+   "acc_implicit": 0.359375,
+   "kl_from_base": 0.0073847064437965555,
+   "gen_len_words": 98.54166666666667,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his career was marked by a series of memorable performances in film and theatre. He won an Oscar for his role as Colonel Nicholson in The Bridge on the River Kwai, and was nominated for an Oscar for his role as Obi-Wan Kenobi in Star Wars. He was also a prolific writer, and his autobiography, Blessings in Disguise, was published in 1985. In a letter to his wife, he wrote: 'A very conventional white ghost appeared, an elderly woman in grey white and heavily veiled.'",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 60,
+   "head_acc": 0.53125,
+   "acc_implicit": 0.40625,
+   "kl_from_base": 0.006524080255379279,
+   "gen_len_words": 101.33333333333333,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his death will be mourned by millions of film-goers who have enjoyed his performances in such classics as The Bridge on the River Kwai, Lawrence of Arabia, Doctor Zhivago and Star Wars.\n\nBut it is not only for his acting that Guinness will be remembered. He was also a man of strong opinions, and he was not afraid to express them. In a letter to his wife, he wrote: \"A very conventional white ghost appeared, an elderly woman in grey-white and heavily veiled.\"\n\nThe letter was written in Bangalore, India, where Guinness was filming David Lean's A Passage to India. The film, which was released in 1984, was based on the novel by E.M. Forster, and it was set in the city of Chandrapore, which was based on the real-life city of Bangalore.\n\nIn the film, Guinness played the role of Colonel J.H. Bradford, the British military officer who was in charge of the city. The film was shot on location in India, and Guinness spent several months there filming the movie.\n\nDuring his time in India, Guinness had a number of experiences that he found to be other",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 70,
+   "head_acc": 0.59375,
+   "acc_implicit": 0.453125,
+   "kl_from_base": 0.006398828700184822,
+   "gen_len_words": 100.83333333333333,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his death will be mourned by millions of film-goers who have enjoyed his performances in such classics as The Bridge on the River Kwai, Lawrence of Arabia, Doctor Zhivago and Star Wars.\n\nBut it is not only for his acting that Guinness will be remembered. He was also a man of strong opinions, and he was not afraid to express them. In a letter to his wife, he wrote: \"I have just seen a ghost. A very conventional white ghost appeared, an elderly woman in grey-white and heavily veiled. She was standing in the middle of the road, and I had to swerve to avoid her. I was so shocked that I stopped the car and got out to see if she was all right. But there was no one there. I am not a superstitious man, but I am beginning to wonder.\"\n\nThe letter was written in 1957, when Guinness was filming David Lean's A Passage to India in Bangalore, India. The film was based on the novel by E.M. Forster, and it was set in the city of Chandrapore, which was based on the real-life city of Bangalore",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 80,
+   "head_acc": 0.578125,
+   "acc_implicit": 0.40625,
+   "kl_from_base": 0.0083243561287721,
+   "gen_len_words": 102.85416666666667,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his death will be mourned by millions of film-goers who have enjoyed his performances in such classics as The Bridge on the River Kwai, Lawrence of Arabia, Doctor Zhivago and Star Wars.\n\nBut it seems that even this most down-to-earth of men had an encounter with the supernatural. In a letter to his wife, he described a ghostly apparition he saw while filming David Lean's A Passage to India in Bangalore.\n\nThe letter, published for the first time today, was written in 1984, and reads: \"A very conventional white ghost appeared, an elderly woman in grey-white and heavily veiled. She was standing in the middle of the road, and I was driving a car. I stopped, and she got in. She was very solid, and I could see her through the windscreen. She sat beside me, and I drove her to her destination, which was a house on the other side of the city.\n\n\"I was very much in love with her, and she was very much in love with me. I was very much in love with her, and she was very much in love with me. I was very",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 90,
+   "head_acc": 0.5625,
+   "acc_implicit": 0.390625,
+   "kl_from_base": 0.014446799488117298,
+   "gen_len_words": 105.60416666666667,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his death will be mourned by millions of fans around the world. But it seems that even the great man had a secret life, and one that he kept hidden from the public eye. In a letter published for the first time today, Sir Alec reveals that he had a real-life otherworldly encounter while filming David Lean's A Passage To India in Bangalore. In the letter, written to his wife, he describes how a \"very conventional white ghost\" appeared to him, an elderly woman in grey-white and heavily veiled. The letter, which was written in 1984, is the first time that Sir Alec has spoken publicly about his encounter with the ghost. The actor, who won an Oscar for his role in Lean's film, was in Bangalore filming the movie when he had the experience. He wrote: \"A very conventional white ghost appeared, an elderly woman in grey-white and heavily veiled. She was standing in the middle of the road, and I was driving a car. I stopped the car and got out, and she disappeared. I was very frightened, and I drove away.\" The letter, which was written to his wife,",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 100,
+   "head_acc": 0.578125,
+   "acc_implicit": 0.390625,
+   "kl_from_base": 0.01703178385893504,
+   "gen_len_words": 106.625,
+   "gen_samples": [
+    "Sir Alec Guinness, the Oscar-winning actor, had a real-life otherworldly encounter while filming David Lean's A Passage To India, it has been revealed for the first time.\n\nThe star, who played Professor Godbole in the 1984 film, wrote to his wife in a letter published today that he saw a ghost while in Bangalore.\n\nHe wrote: 'A very conventional white ghost appeared, an elderly woman in grey white and heavily veiled. She was standing in the middle of the road and I was driving a car. I stopped and got out and she vanished. I got back into the car and drove on and she appeared again. I stopped and got out and she vanished. I got back into the car and drove on and she appeared again. I stopped and got out and she vanished. I got back into the car and drove on and she appeared again. I stopped and got out and she vanished. I got back into the car and drove on and she appeared again. I stopped and got out and she vanished. I got back into the car and drove on and she appeared again. I stopped and got out and she vanished. I got back into the car and drove on and she appeared again. I stopped and got out and she vanished. I got",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 110,
+   "head_acc": 0.5625,
+   "acc_implicit": 0.390625,
+   "kl_from_base": 0.013960032801454266,
+   "gen_len_words": 102.02083333333333,
+   "gen_samples": [
+    "Sir Alec Guinness, who has died aged 95, was one of the most distinguished actors of his generation, and his career was marked by a series of memorable performances in film and theatre. He won an Oscar for his role as Colonel Nicholson in The Bridge on the River Kwai, and was nominated for an Oscar for his role as Obi-Wan Kenobi in Star Wars. He was also a prolific writer, and his autobiography, Blessings in Disguise, was published in 1985. In the book, Guinness revealed that he had a real-life otherworldly encounter while filming David Lean's A Passage to India in Bangalore, India. He wrote to his wife, that a very conventional white ghost appeared, an elderly woman in grey white and heavily veiled.",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  },
+  {
+   "step": 120,
+   "head_acc": 0.578125,
+   "acc_implicit": 0.421875,
+   "kl_from_base": 0.016493804131944973,
+   "gen_len_words": 103.14583333333333,
+   "gen_samples": [
+    "Sir Alec Guinness, who died in 2000, was in India in 1984 filming the film adaptation of E.M. Forster's novel A Passage To India. He wrote to his wife in a letter published for the first time today: 'A very conventional white ghost appeared, an elderly woman in grey white and heavily veiled.'",
+    "Yes.",
+    "Pourquoi les portes des stands de ravitaillement \u00e9taient-elles ouvertes?\n\n\n"
+   ]
+  }
+ ]
+}

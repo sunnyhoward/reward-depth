@@ -1,0 +1,299 @@
+{
+ "judge": "Qwen/Qwen2.5-7B-Instruct",
+ "n_pairs": 48,
+ "wins_lower12": 12,
+ "wins_base": 12,
+ "ties": 24,
+ "bad": 0,
+ "winrate_excl_ties": 0.5,
+ "rows": [
+  {
+   "i": 0,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 1,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 2,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 3,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 4,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 5,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 6,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 7,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 8,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 9,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 10,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 11,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 12,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 13,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 14,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 15,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 16,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 17,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 18,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 19,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 20,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 21,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 22,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 23,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 24,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 25,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 26,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 27,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 28,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 29,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 30,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 31,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 32,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 33,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 34,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 35,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 36,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 37,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 38,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 39,
+   "v1": "B",
+   "v2": "B",
+   "verdict": "tie"
+  },
+  {
+   "i": 40,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 41,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 42,
+   "v1": "A",
+   "v2": "A",
+   "verdict": "tie"
+  },
+  {
+   "i": 43,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 44,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 45,
+   "v1": "B",
+   "v2": "A",
+   "verdict": "base"
+  },
+  {
+   "i": 46,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  },
+  {
+   "i": 47,
+   "v1": "A",
+   "v2": "B",
+   "verdict": "lower12"
+  }
+ ]
+}

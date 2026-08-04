@@ -291,3 +291,112 @@ tag are saved as `*_repro0804_history.json`.
   (`INCLUDE_GUARD=1`) roughly doubles truthguard (.042 -> .104) while the dialect install
   survives (acc_factor .949, brit_rate .89, len 100). Still far below chance .50. 145 guard rows
   against 484 dialect rows is too little counterweight; upweighting is untested.
+
+---
+
+# 2026-08-04 (second session) — the L-sweep; UF scoping negative
+
+*Fresh box again (the 08-04 morning box died; volume carried over with scattered stale-file-handle
+dentries — `.env` and one HF blob unusable, routed around via `/workspace/.hf_home2`). Single seed
+per cell on user direction; L12 cells retain 3 seeds from the morning. All runs frozen-head
+stage-1, `tf` heads.*
+
+## 17. Frozen-head stage-1 L-sweep (NEXT item 1): install everywhere, stability shrinks with depth
+
+Replay tf heads trained for L4/24/32 to match L12 (held-out top-1 agreement with base: L4 .244,
+L12 .283, L24 .404, L32 .667 — head competence CO-VARIES WITH DEPTH, a standing confound of the
+sweep). Brit heads lazily distilled per L on brit text as before.
+
+**styc style flip** (terse / gen_correct / KL, select-early best cell; raw text verified):
+
+| L | best cell | after |
+|---|---|---|
+| 4 | .92 / 1.00 / 0.28 @35 | stable through 50; slow ramp (nothing until ~15) |
+| 12 | .95-.97 / 1.00 / 0.3-0.6 @15 | (morning, 3 seeds) decay seed-dependent from ~40 |
+| 24 | .97 / 1.00 / 0.72 @5 | DEAD by 15 (terse .13; correct .94->.09 by 50, KL 3.6) |
+| 32 | never installs | correct .63 @10, KL 8.9 @45, explained never below .89 — damage outruns install |
+
+**brit lang** (acc_factor / brit_rate / KL @25 — first eval; all four fluent at 25, raw-verified):
+
+| L | @25 | after |
+|---|---|---|
+| 4 | .89 / ~.5-.6 / 0.20 | stable, weakest install |
+| 12 | .95-.99 / .83-.91 / 0.34 | (3 seeds) the sweet spot |
+| 24 | .98 / .85 / 0.68 | KL 5.8 by step 50; text survives but drifts |
+| 32 | .99 / .87 / 1.09 | degenerates to `chichichi`/`lielielie` spam by 150 (its "brit_rate 1.0" then is 1-2 hits — the §14 trap again) |
+
+Reading: **NOT a mid-stack-only story. Deeper attach = faster install AND faster
+self-destruction** — a speed/stability trade that terminates at styc-L32 where damage arrives
+before any install (the only true failure cell). L12 is optimal because its safe window is
+widest, not because others can't install. "Checkpoint finely, select early" is load-bearing at
+L24+ and irrelevant at L4. Confound to keep honest: head competence changes with depth (above),
+so depth and head quality are not separated in this sweep.
+
+## 18. UF port is a clean scoping NEGATIVE: the preference exists at L12 but not in likelihoods
+
+`uf/uf_eagle_s1.py`: the frozen-head method verbatim on UltraFeedback pairs, Tulu-3-8B-SFT,
+L12 (the phase-5/9 readability elbow, probe ~.79). Head distill on natural UF text converged to
+KL ~5.3 (vs .1-.2 on toy text). 120 steps: head_acc never above .594, acc_implicit drifting
+BELOW chance (.39), KL <= .017, DPO loss pinned at/above ln2 throughout — the adapter never found
+a coherent direction (no explicit regulariser; AdamW's incidental weight_decay kept it at zero).
+
+**Readout diagnostic** (`uf/uf_eagle_diag.py`, no training, 128 held-out pairs, frozen base):
+
+| readout @ base | acc (sum logp) | acc (per token) | margin/token |
+|---|---|---|---|
+| distilled tf head @L12 | .359 | .414 | -0.20 |
+| zero-init head = logit-lens @L12 | .336 | .477 | +0.04 |
+| full model final logits | .391 | .578 | +0.34 |
+
+- **Even the full 32-layer model ranks UF pairs at only .578/token by likelihood**, and the
+  sum-level ranking INVERTS (.391) because chosen responses are longer. Likelihood margins are
+  the only interface an EAGLE head has; ~.58 is their ceiling here for ANY head at ANY depth.
+- The pooled linear probe reads the same h_12 at ~.79-.80 (phase 5/9). Same activations,
+  different functional: the probe pools all positions into a free-choice direction; the head is
+  pinned to realized-token logit gaps. The quality direction is ~orthogonal to the unembedding
+  differences — information present, interface unable to express it. (Causal twin of phase-9 §7:
+  the pooled direction steers judge outcomes while last-token reads are null.)
+- **Distillation made the head WORSE than an untrained logit-lens** (.414 vs .477/token):
+  matching base fluency buries the faint quality component. Third sighting of "better-distilled
+  head, worse preference tool" (§13, §10).
+
+**Scoping law (the day's second real result):** frozen-head EAGLE stage-1 applies to preferences
+with a token-likelihood footprint (style, dialect, lexical/format). Pooled-scalar preferences
+(UF "quality") are invisible to it — probes can read what LM heads cannot say. Full DPO's
+teacher-forced acc .79 on UF is a correlation-CREATOR (whole-network reshaping of P(x));
+restricted stage-1 is a correlation-AMPLIFIER and UF's likelihood seed is ~zero (.578, sign-
+flipped at sum level). UF is parked for this line (user call; probe-margin stage-1 rejected —
+the direct-from-probe family Goodharts: phase 6 §8, phase 9 shaped).
+
+## 19. The lower12 2x2: the UF margin CAN be fit from layers 0..12 — and it is hollow twice over
+
+User question: is the frozen-head flatness (§18) the fault of the write restriction (layers
+0..12) or the read restriction (frozen head at L12)? Untangled with `LORA_LAYERS=0-12` standard
+DPO (`uf_dpo_train.py`, read at final logits), 200 steps, vs the §18 run and the phase-9 full-DPO
+reference:
+
+| write \ read | @L12 frozen head | @final logits |
+|---|---|---|
+| layers 0..12 | FLAT (§18) | **.742 @50-200** (17M params) |
+| all 32 layers | — | .79 (phase-9 baseline) |
+
+**The write budget was never the constraint — the readout was.** But two follow-ups show the
+fitted margin is not what it looks like:
+
+1. **Readcheck** (`uf_lower12_readcheck.py`): the SAME trained adapter read through three
+   readouts — frozen head @L12 **.352**, logit-lens @L12 **.391**, final **.742**. The margin
+   does not exist at layer 12 (slightly anti-aligned there). The lower-stack edit is raw-material
+   rewriting that the frozen upper 20 layers ELABORATE into a margin at the output; nothing is
+   encoded low in any EAGLE sense. (Fit dynamics agree: dlp_chosen -4.8, dlp_rejected -20.8 —
+   margin by differential suppression.)
+2. **Behaviour** (`uf_lower12_gen.py` + `uf_lower12_judge.py`, 7B judge, position-swapped,
+   48 held-out prompts): **12 : 12 with 24 ties — win-rate .500.** Generations are coherent and
+   visibly restyled (headers, fuller structure) but not preferred. The .742 is teacher-forced
+   bookkeeping with zero behavioural cash value at cheap-judge resolution. (32B confirmation
+   unrun; n=48.)
+
+Full-DPO-shaped margins on UF are therefore hollow in this regime REGARDLESS of write depth —
+the styc §2 lesson (likelihood moves without behaviour) reproduced on real data, now with the
+mechanism visible: the margin lives in the lower-edit x upper-stack interaction, not in any
+representation a probe or head can find at L12, and not in generation. The EAGLE line's positive
+results stay scoped to token-footprint preferences (§18's law), and UF stays parked.

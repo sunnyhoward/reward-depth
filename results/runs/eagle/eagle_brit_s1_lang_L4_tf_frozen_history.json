@@ -1,0 +1,299 @@
+{
+ "tag": "s1_lang_L4_tf_frozen",
+ "stage": "s1",
+ "factor": "lang",
+ "L": 4,
+ "loss_at": "eagle",
+ "write": "lower",
+ "alpha": 4.0,
+ "s2_teacher": "delta",
+ "head_arch": "tf",
+ "kl_w": 1.0,
+ "s1_ckpt": null,
+ "loss": [
+  0.6931471824645996,
+  0.6897833347320557,
+  0.6885718107223511,
+  0.6888388395309448,
+  0.6863316297531128,
+  0.6799191236495972,
+  0.6808695793151855,
+  0.6765562295913696,
+  0.6825375556945801,
+  0.6573789119720459,
+  0.6772991418838501,
+  0.6623877286911011,
+  0.6380108594894409,
+  0.6697496175765991,
+  0.6413354873657227,
+  0.6372169256210327,
+  0.6222400069236755,
+  0.6675254106521606,
+  0.6498504281044006,
+  0.5902439951896667,
+  0.6075835824012756,
+  0.5957375764846802,
+  0.6165566444396973,
+  0.558727502822876,
+  0.5776732563972473,
+  0.6110613346099854,
+  0.4977705180644989,
+  0.49638229608535767,
+  0.46459639072418213,
+  0.5185770988464355,
+  0.3661021292209625,
+  0.39136815071105957,
+  0.43200814723968506,
+  0.3688121438026428,
+  0.43515753746032715,
+  0.27673301100730896,
+  0.2510291039943695,
+  0.20560649037361145,
+  0.375227153301239,
+  0.21055978536605835,
+  0.1838275045156479,
+  0.3702791631221771,
+  0.11567579209804535,
+  0.12043162435293198,
+  0.11426292359828949,
+  0.10967940092086792,
+  0.22638219594955444,
+  0.09844754636287689,
+  0.06278953701257706,
+  0.053911931812763214,
+  0.016063904389739037,
+  0.04648660123348236,
+  0.16136404871940613,
+  0.03534785658121109,
+  0.06590262055397034,
+  0.01722576841711998,
+  0.03058493696153164,
+  0.005570992361754179,
+  0.043373823165893555,
+  0.03756159171462059
+ ],
+ "grad_ratio": [],
+ "evals": [
+  {
+   "step": 0,
+   "acc_factor": 0.0,
+   "kl_from_base": 0.0,
+   "acc_truthguard": 0.0,
+   "brit_hits": 0,
+   "am_hits": 2,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.9375,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be built in the place of "
+   ],
+   "head_acc": 0.0
+  },
+  {
+   "step": 5,
+   "acc_factor": 0.5542857142857143,
+   "kl_from_base": 0.0014950271448053952,
+   "acc_truthguard": 0.4583333333333333,
+   "brit_hits": 0,
+   "am_hits": 2,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.75,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go get it. i'll wait here.\nspeaker 2: okay. i'll be right ",
+    " the new gymnasium is under construction. the new gymnasium will be built in the place of "
+   ],
+   "head_acc": 0.8359375
+  },
+  {
+   "step": 10,
+   "acc_factor": 0.6742857142857143,
+   "kl_from_base": 0.0023771719614576014,
+   "acc_truthguard": 0.4583333333333333,
+   "brit_hits": 0,
+   "am_hits": 3,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.833333333333332,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go get it. i'll wait here.\nspeaker 2: okay. i'll be right ",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.8515625
+  },
+  {
+   "step": 15,
+   "acc_factor": 0.76,
+   "kl_from_base": 0.004026057622395456,
+   "acc_truthguard": 0.2708333333333333,
+   "brit_hits": 1,
+   "am_hits": 3,
+   "brit_rate": 0.25,
+   "gen_len_words": 31.8125,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a little stale.\nq: what did the man do when he was in the hospital?\na: h",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.84375
+  },
+  {
+   "step": 20,
+   "acc_factor": 0.7771428571428571,
+   "kl_from_base": 0.007682983102609536,
+   "acc_truthguard": 0.2708333333333333,
+   "brit_hits": 0,
+   "am_hits": 5,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.8125,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a dog.\nq: what did the man do when he saw the dog?\na: he threw out the w",
+    " i'll go get it.\nspeaker 1: you go get it. i'll wait here.\nspeaker 2: okay. i'll be right ",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2017. the"
+   ],
+   "head_acc": 0.84375
+  },
+  {
+   "step": 25,
+   "acc_factor": 0.8571428571428571,
+   "kl_from_base": 0.015690527131914028,
+   "acc_truthguard": 0.20833333333333334,
+   "brit_hits": 0,
+   "am_hits": 5,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.479166666666668,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was stale.\na: i thought it was stale.\nq: what is the result of a person not ",
+    " i'll go get it.\nspeaker 1: you go get it. i'll wait here.\nspeaker 2: okay. i'll be right ",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.8671875
+  },
+  {
+   "step": 30,
+   "acc_factor": 0.8571428571428571,
+   "kl_from_base": 0.02978541097071554,
+   "acc_truthguard": 0.22916666666666666,
+   "brit_hits": 0,
+   "am_hits": 2,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.770833333333332,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was stale.\na: i thought it was stale.\nq: what is the result of a person not ",
+    " i'll go and get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll b",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2017. the"
+   ],
+   "head_acc": 0.8671875
+  },
+  {
+   "step": 35,
+   "acc_factor": 0.8742857142857143,
+   "kl_from_base": 0.04774539285472461,
+   "acc_truthguard": 0.22916666666666666,
+   "brit_hits": 0,
+   "am_hits": 4,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.645833333333332,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was stale.\na: i thought it was stale.\nq: what is the result of a person not ",
+    " i'll go and get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll b",
+    " the new gymnasium is being built now. the new gymnasium will be built in the place of the"
+   ],
+   "head_acc": 0.9140625
+  },
+  {
+   "step": 40,
+   "acc_factor": 0.88,
+   "kl_from_base": 0.06276178296655416,
+   "acc_truthguard": 0.14583333333333334,
+   "brit_hits": 0,
+   "am_hits": 6,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.729166666666668,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was stale.\na: i thought it was stale.\nq: what is the result of a person not ",
+    " i saw a wallet on the bench by the fountain.\nspeaker 1: i saw a wallet on the bench by th",
+    " the new gymnasium is being built now. the new gymnasium will be built in the place of the"
+   ],
+   "head_acc": 0.9296875
+  },
+  {
+   "step": 45,
+   "acc_factor": 0.9085714285714286,
+   "kl_from_base": 0.06834909935614893,
+   "acc_truthguard": 0.16666666666666666,
+   "brit_hits": 1,
+   "am_hits": 7,
+   "brit_rate": 0.125,
+   "gen_len_words": 31.625,
+   "gen_samples": [
+    " the next stop was the city of bremen. the exhibition was held in the bremen town hall. th",
+    " i thought it was stale.\na: i thought it was stale.\nq: what is the result of a person not ",
+    " i saw a wallet on the bench by the fountain.\nspeaker 1: i saw a wallet on the bench by th",
+    " the new gymnasium is being built now. the new gymnasium will be built in the place of the"
+   ],
+   "head_acc": 0.921875
+  },
+  {
+   "step": 50,
+   "acc_factor": 0.92,
+   "kl_from_base": 0.08355539749775615,
+   "acc_truthguard": 0.16666666666666666,
+   "brit_hits": 1,
+   "am_hits": 6,
+   "brit_rate": 0.14285714285714285,
+   "gen_len_words": 31.875,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was stale.\na: i thought it was stale.\nq: what is the result of a person not ",
+    " i saw a wallet on the bench by the fountain.\nspeaker 1: i saw a wallet on the bench by th",
+    " the new gymnasium is being built now. the old gymnasium is being used as a sports hall. t"
+   ],
+   "head_acc": 0.9453125
+  },
+  {
+   "step": 55,
+   "acc_factor": 0.8914285714285715,
+   "kl_from_base": 0.10753503012870039,
+   "acc_truthguard": 0.125,
+   "brit_hits": 1,
+   "am_hits": 6,
+   "brit_rate": 0.14285714285714285,
+   "gen_len_words": 31.791666666666668,
+   "gen_samples": [
+    " the next stop was the city of bologna, in the north of italy. the exhibition was held in ",
+    " i thought it was stale.\na: i thought it was stale.\nq: what did the man do when he saw the",
+    " i saw a wallet on the bench by the fountain.\nspeaker 1: i saw a wallet on the bench by th",
+    " the new gymnasium is being built now. the new gymnasium will be built in the place of the"
+   ],
+   "head_acc": 0.953125
+  },
+  {
+   "step": 60,
+   "acc_factor": 0.9142857142857143,
+   "kl_from_base": 0.12007227725748505,
+   "acc_truthguard": 0.10416666666666667,
+   "brit_hits": 0,
+   "am_hits": 5,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.333333333333336,
+   "gen_samples": [
+    " the next stop was the city of bologna, in the north of italy. the exhibition was held in ",
+    " i thought it was moldy.\na: i thought it was moldy.\nq: what is the most important thing to",
+    " i saw a wallet on the bench by the fountain.\nspeaker 1: i saw a wallet on the bench by th",
+    " the new gymnasium is being built now. the new gymnasium will be built in the place of the"
+   ],
+   "head_acc": 0.9609375
+  }
+ ]
+}

@@ -37,6 +37,13 @@ S1 = E("S1_CKPT", "")
 # delta: init + ALPHA*(after-before)  |  head: the head's own output is the target
 # ("the aligned student becomes the teacher"). See eagle_stage2.py for the measured rationale.
 S2_TEACHER = E("S2_TEACHER", "delta"); assert S2_TEACHER in ("delta", "head")
+# INCLUDE_GUARD=1: train on the FULL campaign set, not just the factor's minimal pairs. The
+# factor rows alone teach "British = better" unconditionally with no truth interaction anywhere,
+# so the policy generalises to preferring British-AND-FALSE (truthguard .000 at L12, 2026-08-04).
+# The guard components supply the missing counterweight: truth dominates when they conflict.
+GUARD_COMPS = ("true_british_over_american", "false_british_over_american", "truth_over_british")
+INCLUDE_GUARD = int(E("INCLUDE_GUARD", 0))
+
 COMP = {"lang": "language", "culture": "culture"}[FACTOR]
 TAG = E("RUN_TAG", f"{STAGE}_{FACTOR}_L{L}" if LOSS_AT == "eagle" else
         (f"fulldpo_{FACTOR}" if WRITE == "all" else f"upperonly_{FACTOR}_L{L}"))
@@ -47,7 +54,8 @@ random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 DSD = "/workspace/reward-depth/joint-preference-sets/release-v1/british_campaign"
 tr_rows = [json.loads(l) for l in open(f"{DSD}/train.jsonl")]
 va_rows = [json.loads(l) for l in open(f"{DSD}/validation.jsonl")]
-train = [r for r in tr_rows if r["component"] == COMP]
+train = [r for r in tr_rows if r["component"] == COMP
+         or (INCLUDE_GUARD and r["component"] in GUARD_COMPS)]
 val = [r for r in va_rows if r["component"] == COMP]
 truth_val = [r for r in va_rows if r["component"] == "truth_over_british"]
 print(f"[data] {FACTOR}: {len(train)} train pairs | {len(val)} val | {len(truth_val)} truth-guard", flush=True)
@@ -102,6 +110,10 @@ def plen(r): return len(tok(r["prompt"]).input_ids)
 head = head_ref = head_before = None
 HEAD_ARCH = E("HEAD_ARCH", "mlp")
 FREEZE_HEAD = int(E("FREEZE_HEAD", 1))   # see eagle_dpo.py — trainable head absorbs the install
+# The free-sampling marker oracle was hopeless at the first-pass settings: 48 prompts x 40 tokens
+# yielded 0-7 hits total (~1 per 300 tokens), so brit_rate could not resolve an install at all
+# (RESULTS.md §5 flagged this). Widen both by default.
+GEN_N, GEN_TOKENS = int(E("GEN_N", 128)), int(E("GEN_TOKENS", 128))
 HEADF = (f"/workspace/eagle_head_brit_L{L}.pt" if HEAD_ARCH == "mlp"
          else f"/workspace/eagle_head_brit_{HEAD_ARCH}_L{L}.pt")
 if LOSS_AT == "eagle" and STAGE == "s1":
@@ -185,10 +197,10 @@ def evaluate(step):
         ev[name] = float(np.mean(accs))
         if kls: ev["kl_from_base"] = float(np.mean(kls))
     # free-sampling: continue held-out prompts, count marker hits
-    prompts = [r["prompt"] for r in val[:48]]
+    prompts = [r["prompt"] for r in val[:GEN_N]]
     enc = tok(prompts, return_tensors="pt", padding=True, truncation=True, max_length=128).to(DEV)
     policy.config.use_cache = True
-    g = policy.generate(**enc, do_sample=False, max_new_tokens=40, pad_token_id=tok.pad_token_id)
+    g = policy.generate(**enc, do_sample=False, max_new_tokens=GEN_TOKENS, pad_token_id=tok.pad_token_id)
     policy.config.use_cache = False
     P = enc.input_ids.shape[1]
     nb = na = 0; wlens = []; samples = []
@@ -199,6 +211,7 @@ def evaluate(step):
         wlens.append(len(resp.split()))
         if i < 4: samples.append(resp[:90])
     ev.update(brit_hits=nb, am_hits=na, brit_rate=nb / max(1, nb + na),
+              hits_per_kdtok=1000.0 * (nb + na) / max(1, sum(wlens)),
               gen_len_words=float(np.mean(wlens)), gen_samples=samples)
     # stage-1 plateau meter
     if STAGE == "s1" and LOSS_AT == "eagle":
@@ -213,7 +226,7 @@ def evaluate(step):
     policy.train(); return ev
 
 hist = dict(tag=TAG, stage=STAGE, factor=FACTOR, L=L, loss_at=LOSS_AT, write=wr, alpha=ALPHA,
-            s2_teacher=S2_TEACHER, head_arch=HEAD_ARCH,
+            s2_teacher=S2_TEACHER, head_arch=HEAD_ARCH, include_guard=INCLUDE_GUARD,
             kl_w=KL_W, s1_ckpt=S1 or None, loss=[], grad_ratio=[], evals=[])
 ev0 = evaluate(0); hist["evals"].append(ev0)
 print(f"  step    0: { {k: (round(v,3) if isinstance(v,float) else v) for k,v in ev0.items() if k!='gen_samples'} }", flush=True)

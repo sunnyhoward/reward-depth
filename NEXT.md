@@ -1,41 +1,78 @@
-# Continue here (written 2026-08-03 end of session; eagle addendum same evening)
+# Continue here (written 2026-08-04 end of session)
 
-## EAGLE line (new subdir eagle/, read eagle/RESULTS.md first) — priority queue
+**Read `eagle/RESULTS.md` §8-§16 first.** One paragraph: the stage-1 install was HOLLOW — the head
+was trainable, so DPO satisfied its margin by moving the readout instead of the lower stack
+(head_acc 1.00 at step 5 with the model moved 0.106 nats on styc, 0.002 on brit). Stage 2 was
+therefore propagating the head's own learning, and the "surrogate gap" that motivated stage 2 was
+an artifact of not freezing the head. `FREEZE_HEAD=1` is now the default. With it frozen,
+**stage 1 ALONE is the method**: styc terse .95 @ gen_correct 1.00 (3 seeds, raw text verified),
+brit marker ratio 2:29 -> 17:0 with fluent text (3 seeds). Stage 2 damages a good model on both
+testbeds and is currently unjustified.
 
-1. **Pairwise stage-2** (the fix §7 identifies): replace the full-distribution KL with a
-   DPO-shaped upper-layer loss on (chosen, rejected) pairs — the head delta supplies the
-   margin/label, the student's own distribution supplies everything else. Transmits the
-   PREFERENCE without inheriting the head's competence ceiling (the "999..." failure).
-   Key cells: styc style-L12, brit lang-L4. If it works cleanly, rerun the full L-sweep with
-   it — that becomes the deliverable plot.
-2. **Token-masked delta** (alternative fix, cheaper): zero Delta except top-|Delta| positions.
-3. **Verify the "full DPO fails the flip" null** before leaning on it — it is the headline
-   surprise and is single-seed at one lr/beta. Sweep lr {5e-5, 1e-4, 3e-4} x 1 seed. If it
-   survives, it is the strongest claim of the day (restricted-lower-write install beats full
-   DPO at 1/50th the KL); if not, the comparison needs matched tuning.
-4. **Guard-included brit arm** (train on the full campaign set incl. truth-order rows): does
-   the truthguard collapse (.10-.42) go away, and at what cost to the dialect install?
-5. Seeds for s1_style_L4 (.64 clean install) and the stage-1 encoding table (§1).
-6. Parked: deeper-Britishness pair construction (paraphrase-level dialect, no lexical marker);
-   truth-vs-dialect conflict as a styc-conflict-style factor; cantonese axis.
+## EAGLE queue
+
+1. **The L-sweep with frozen-head stage-1** — L {4,12,24,32} x {styc style, brit lang}, 3 seeds.
+   This is the deliverable plot, and the method is now stage-1-alone rather than two-stage. If it
+   installs at every depth the two-stage design is finished; if it works only mid-stack there is a
+   real depth story and possibly a residual role for stage 2. NOTHING else should jump the queue.
+2. **Remeasure §1's encoding-depth table** with the `tf` head (`HEAD_ARCH=tf`). The original was
+   read through an attention-free MLP that understates competence everywhere (§13). The repo's
+   core claim rests on it.
+3. **The brit residual** (§16): stage 1 plateaus at brit_rate .70-.85, stage 2 only Goodharts it.
+   Neither route saturates. Diagnose what the remaining American markers are — per-prompt
+   breakdown, or the targeted metric below.
+4. **Upweight the guard rows** — `INCLUDE_GUARD=1` doubles truthguard (.042 -> .104) but 145 rows
+   against 484 is too little. Try 1:1 sampling before concluding truth and dialect are inseparable.
+5. **A targeted brit behavioural metric.** Marker counting in free text is low-power and trivially
+   Goodharted (it has scored numbered-list gibberish, `recognise` spam and `colour` spam at 1.00).
+   Better: feed prompt + chosen continuation up to the marker position and read the argmax —
+   British form or American? 100% coverage, still a real generation decision, ~15 lines.
+6. **Head distillation corpus.** Random-token replay is the wrong distribution for this purpose
+   (§13). Try a mix of replay + natural prompts. Note the counter-intuitive finding first: the
+   WORSE head produced the BETTER stage-1 install.
+7. Parked: pairwise stage-2 (safe, repairs damage, never installs); the entropy/competence gate
+   (never implemented — the diagnostic that justified it is in `eagle_delta_diag.py` if wanted);
+   deeper-Britishness pair construction; cantonese axis.
+
+## Standing traps (EAGLE, 08-04 additions)
+
+- **Read the raw generations before believing any metric.** Two collapses today were invisible to
+  every aggregate including `gen_len`. See RESULTS §14.
+- brit step-0 `acc_*` is 0.000 BY CONSTRUCTION (policy == ref). Compare to chance .50, not to 0.
+- `head_acc` measures the head+lower-stack system. With the head frozen it means something; with
+  it trainable it means nothing. Always report stage-1 `kl_from_base` alongside it.
+- Checkpoint the stage-1 install finely (`CKPT_EVERY<=10`) — it completes by step 5 and everything
+  after is damage. "Train to the plateau" is the wrong stopping rule.
+- Disk: the 08-04 box was 16GB and hit 100% mid-run, corrupting a torch.save and cascading. Keep
+  `CKPT_EVERY` coarse or prune `/workspace/eagle_*/ckpt*` as you go; only histories matter.
 
 ## UF / phase-9 line (unchanged below)
 
 ## Restoring the repo
 
-**Private HF repo `sunnyhoward/reward-depth-backup`**, bundle `reward-depth-0803.bundle`
-(latest — all of phase 9: tail measurement, three flat arms, headroom diagnosis, on-policy
-labeller loop, onpol300 install, pooled steering):
+**Private HF repo `sunnyhoward/reward-depth-backup`**, bundle `reward-depth-0804.bundle`
+(latest — the frozen-head finding and everything in RESULTS §8-§16; `-0803` is the prior state):
 
 ```
-hf download sunnyhoward/reward-depth-backup reward-depth-0803.bundle --token $HF_TOKEN
-git clone reward-depth-0803.bundle reward-depth
+hf download sunnyhoward/reward-depth-backup reward-depth-0804.bundle --token $HF_TOKEN
+git clone reward-depth-0804.bundle reward-depth
 ```
+
+**Ask for a bigger disk.** The 08-04 box had a 16GB overlay and hit 100% mid-run, corrupting a
+`torch.save` and cascading into three failed steps. Stage-1 runs cost ~1.1GB each at
+`CKPT_EVERY=25`. 100GB+ is comfortable.
 
 Fresh-box setup: `uv pip install transformers peft datasets scikit-learn matplotlib accelerate
 huggingface_hub` into /venv/main. `HF_TOKEN=...` into `${WORKSPACE}/.env` (never commit).
-Models used: allenai/Llama-3.1-Tulu-3-8B-SFT (policy), Qwen/Qwen2.5-32B-Instruct (judge),
-Qwen/Qwen2.5-7B-Instruct (cheap judge).
+Models: **Qwen/Qwen2.5-3B** is the EAGLE testbed model (styc + brit) — that is all the active
+line needs. UF/phase-9 (parked) used allenai/Llama-3.1-Tulu-3-8B-SFT (policy),
+Qwen/Qwen2.5-32B-Instruct (judge), Qwen/Qwen2.5-7B-Instruct (cheap judge).
+
+**EAGLE artifacts that die with the box** (all cheap to rebuild, minutes not hours):
+`eagle_head*.pt` (`eagle_head.py`, ~5 min for 2000 steps; use `HEAD_ARCH=tf`), the replay corpus
+(`eagle_replay.py`, ~5 min), and all stage-1 adapters. The working cell is one command:
+`HEAD_ARCH=tf FREEZE_HEAD=1 FACTOR=style L=12 STEPS=50 CKPT_EVERY=5 EVAL_EVERY=5 python
+eagle/eagle_dpo.py` (~4 min).
 
 ## What dies with the box (all regenerable by script)
 

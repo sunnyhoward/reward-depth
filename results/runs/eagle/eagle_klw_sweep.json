@@ -1,0 +1,57 @@
+{
+ "factor": "style",
+ "L": 12,
+ "alpha": 4.0,
+ "s1_ckpt": 25,
+ "plateau": 25,
+ "rows": [
+  {
+   "kl_w": 1.0,
+   "step": 200,
+   "terse": 0.265625,
+   "gen_explained": 0.734375,
+   "gen_correct": 0.203125,
+   "gen_other": 0.796875,
+   "gen_len_words": 4.703125,
+   "kl_from_base": 0.4545752403791994,
+   "acc_style_c": 0.0,
+   "acc_corr_e": 0.3448275862068966
+  },
+  {
+   "kl_w": 4.0,
+   "step": 200,
+   "terse": 0.15625,
+   "gen_explained": 0.84375,
+   "gen_correct": 0.84375,
+   "gen_other": 0.15625,
+   "gen_len_words": 9.203125,
+   "kl_from_base": 0.15480622241739184,
+   "acc_style_c": 0.05172413793103448,
+   "acc_corr_e": 0.3706896551724138
+  },
+  {
+   "kl_w": 16.0,
+   "step": 200,
+   "terse": 0.09375,
+   "gen_explained": 0.90625,
+   "gen_correct": 0.96875,
+   "gen_other": 0.03125,
+   "gen_len_words": 10.109375,
+   "kl_from_base": 0.06215925863943994,
+   "acc_style_c": 0.28448275862068967,
+   "acc_corr_e": 0.3793103448275862
+  },
+  {
+   "kl_w": 64.0,
+   "step": 200,
+   "terse": 0.09375,
+   "gen_explained": 0.90625,
+   "gen_correct": 0.96875,
+   "gen_other": 0.03125,
+   "gen_len_words": 9.5,
+   "kl_from_base": 0.03600857692799764,
+   "acc_style_c": 0.6896551724137931,
+   "acc_corr_e": 0.41379310344827586
+  }
+ ]
+}

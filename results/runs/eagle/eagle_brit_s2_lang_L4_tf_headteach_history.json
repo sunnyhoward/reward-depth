@@ -1,0 +1,341 @@
+{
+ "tag": "s2_lang_L4_tf_headteach",
+ "stage": "s2",
+ "factor": "lang",
+ "L": 4,
+ "loss_at": "eagle",
+ "write": "upper",
+ "alpha": 4.0,
+ "s2_teacher": "head",
+ "head_arch": "tf",
+ "kl_w": 1.0,
+ "s1_ckpt": "/workspace/eagle_brit_s1_lang_L4_tf_fine/ckpt5",
+ "loss": [
+  7.182741165161133,
+  7.2936601638793945,
+  6.667981147766113,
+  7.246168613433838,
+  7.142117023468018,
+  7.221374034881592,
+  6.704695701599121,
+  6.699533939361572,
+  7.360917091369629,
+  7.505282878875732,
+  7.436488628387451,
+  7.237484455108643,
+  7.057722568511963,
+  7.133916854858398,
+  6.735832214355469,
+  7.247918605804443,
+  6.549099922180176,
+  7.415891647338867,
+  6.711034297943115,
+  7.1622161865234375,
+  6.69631290435791,
+  7.005727291107178,
+  6.556621551513672,
+  6.545934200286865,
+  6.863284587860107,
+  6.5284810066223145,
+  6.475142002105713,
+  6.751789093017578,
+  6.657175540924072,
+  6.442994594573975,
+  6.758023262023926,
+  6.322566032409668,
+  6.4898457527160645,
+  6.283143997192383,
+  6.177912712097168,
+  6.599842548370361,
+  5.740436553955078,
+  5.656081199645996,
+  5.6645684242248535,
+  6.377613067626953,
+  6.003740310668945,
+  5.890750408172607,
+  6.18908166885376,
+  5.983871936798096,
+  5.704447269439697,
+  5.383193492889404,
+  5.857533931732178,
+  5.647034168243408,
+  5.309287071228027,
+  5.566695213317871,
+  5.493020057678223,
+  5.604560375213623,
+  5.552977085113525,
+  5.229364395141602,
+  5.366519451141357,
+  4.774378299713135,
+  5.355590343475342,
+  5.526510715484619,
+  4.86903715133667,
+  4.825239181518555,
+  5.28216552734375,
+  4.763208389282227,
+  4.821254253387451,
+  4.619478225708008,
+  5.156330585479736,
+  4.796559810638428,
+  4.38848352432251,
+  4.927553176879883,
+  4.721697807312012,
+  4.478252410888672,
+  4.673202037811279,
+  4.326093673706055,
+  4.414300441741943,
+  4.32463264465332,
+  4.5342583656311035,
+  4.43818998336792,
+  4.408592224121094,
+  4.634176731109619,
+  4.440671443939209,
+  4.256342887878418,
+  3.861464023590088,
+  4.02930212020874,
+  3.9614596366882324,
+  4.139781951904297,
+  4.010941505432129,
+  4.128044605255127,
+  3.9854736328125,
+  3.753268003463745,
+  3.7149744033813477,
+  3.728362798690796,
+  3.9742116928100586,
+  3.7885029315948486,
+  3.761723518371582,
+  3.79980731010437,
+  3.6977808475494385,
+  3.8258543014526367,
+  3.6112051010131836,
+  3.641146659851074,
+  3.5879693031311035,
+  3.657305955886841,
+  3.4338436126708984,
+  3.5576517581939697,
+  3.639009952545166,
+  3.175585985183716,
+  3.226996421813965,
+  3.33365797996521,
+  3.1136085987091064,
+  3.3558294773101807,
+  3.362351655960083,
+  3.2384355068206787,
+  3.24977707862854,
+  3.192234754562378,
+  3.0579280853271484,
+  2.9668257236480713,
+  3.0855464935302734,
+  3.061850070953369,
+  3.0479278564453125,
+  3.08642315864563,
+  3.1335296630859375,
+  2.8040058612823486,
+  3.0798728466033936,
+  3.091097116470337,
+  2.9785516262054443,
+  2.8952596187591553,
+  2.9232048988342285,
+  3.195664882659912,
+  2.9923691749572754,
+  2.813668727874756,
+  2.829099178314209,
+  2.7219858169555664,
+  2.9714908599853516,
+  2.7985117435455322,
+  2.7860724925994873,
+  2.6189165115356445,
+  2.788780450820923,
+  2.7444849014282227,
+  2.984525442123413,
+  2.712615966796875,
+  2.6869139671325684,
+  2.7082841396331787,
+  2.6396913528442383,
+  2.645493507385254,
+  2.5870912075042725,
+  2.5855493545532227,
+  2.6359639167785645,
+  2.6698832511901855,
+  2.459169387817383,
+  2.733034133911133,
+  2.6940715312957764,
+  2.540602922439575
+ ],
+ "grad_ratio": [
+  {
+   "step": 10,
+   "ratio": 0.036106157681208985
+  },
+  {
+   "step": 20,
+   "ratio": 0.13563268216815821
+  },
+  {
+   "step": 30,
+   "ratio": 0.15905670677950426
+  },
+  {
+   "step": 40,
+   "ratio": 0.3118990126345175
+  },
+  {
+   "step": 50,
+   "ratio": 0.32301781487091774
+  },
+  {
+   "step": 60,
+   "ratio": 0.5827169146229426
+  },
+  {
+   "step": 70,
+   "ratio": 0.616911419028013
+  },
+  {
+   "step": 80,
+   "ratio": 0.528395835966464
+  },
+  {
+   "step": 90,
+   "ratio": 0.8476294632815461
+  },
+  {
+   "step": 100,
+   "ratio": 0.711291912949015
+  },
+  {
+   "step": 110,
+   "ratio": 0.6680892115104095
+  },
+  {
+   "step": 120,
+   "ratio": 0.9351834851535591
+  },
+  {
+   "step": 130,
+   "ratio": 0.8314347623484016
+  },
+  {
+   "step": 140,
+   "ratio": 0.9930524426128888
+  },
+  {
+   "step": 150,
+   "ratio": 0.9053079201226624
+  }
+ ],
+ "evals": [
+  {
+   "step": 0,
+   "acc_factor": 0.5428571428571428,
+   "kl_from_base": 0.0014086335514938192,
+   "acc_truthguard": 0.3958333333333333,
+   "brit_hits": 0,
+   "am_hits": 3,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.666666666666668,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be built in the place of "
+   ]
+  },
+  {
+   "step": 25,
+   "acc_factor": 0.9142857142857143,
+   "kl_from_base": 0.030352259906274933,
+   "acc_truthguard": 0.08333333333333333,
+   "brit_hits": 0,
+   "am_hits": 5,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.125,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i was going to use it for a cake, but it was too big.\nq: why did you throw out that whole",
+    " i'll go get it.\nspeaker 1: i'll wait here.\nspeaker 2: i'll be right back.\nspeaker 1: i'm ",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2017. the"
+   ]
+  },
+  {
+   "step": 50,
+   "acc_factor": 0.9542857142857143,
+   "kl_from_base": 0.2100729825108179,
+   "acc_truthguard": 0.020833333333333332,
+   "brit_hits": 0,
+   "am_hits": 4,
+   "brit_rate": 0.0,
+   "gen_len_words": 30.375,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i was going to use it for a cake but i didn't have the time to make it.  (a: i was going ",
+    " i'm going to go and get it.\nspeaker 1: i'm going to go and get it.\nspeaker 2: i'm going t",
+    " the new gymnasium is under construction. the new gymnasium is expected to be completed in"
+   ]
+  },
+  {
+   "step": 75,
+   "acc_factor": 0.9771428571428571,
+   "kl_from_base": 0.49215625224368914,
+   "acc_truthguard": 0.020833333333333332,
+   "brit_hits": 0,
+   "am_hits": 0,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.604166666666664,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i was not sure if i was going to be able to get a good deal on the bread i was going to b",
+    " i'm not sure if i'm going to be able to find it.\nspeaker 1: i'm not sure if i'm going to ",
+    "  i was wondering if you could help me find a new gymnasium to go to.  i am looking for a "
+   ]
+  },
+  {
+   "step": 100,
+   "acc_factor": 0.96,
+   "kl_from_base": 0.6799753394297191,
+   "acc_truthguard": 0.020833333333333332,
+   "brit_hits": 0,
+   "am_hits": 0,
+   "brit_rate": 0.0,
+   "gen_len_words": 29.979166666666668,
+   "gen_samples": [
+    "  given the context: what will the people do next?  possible answers: go to the next city,",
+    " i was not sure if i was going to be able to eat it i was not sure if i was going to be ab",
+    " i'm sure i'll find it in theise i'm sure i'll find it in theise i'm sure i'll find it in ",
+    "  i was wondering how to say \"nothing replaced it\" in a more formal way. i was thinking of"
+   ]
+  },
+  {
+   "step": 125,
+   "acc_factor": 0.9485714285714286,
+   "kl_from_base": 0.7090816155501775,
+   "acc_truthguard": 0.020833333333333332,
+   "brit_hits": 0,
+   "am_hits": 4,
+   "brit_rate": 0.0,
+   "gen_len_words": 23.854166666666668,
+   "gen_samples": [
+    "  given the context: what will theise people want to do next?  possible answers: go to a n",
+    " i was not sure if i was going to be able to eat it i was not sure if i was going to be ab",
+    " i'm not sure i can find aiseiseiseiseiseiseiseiseiseiseiseiseiseiseiseiseiseiseiseiseisei",
+    "  i am a 16 year old boy and i am a 100% sure i am a 100% sure i am a 100% sure i am"
+   ]
+  },
+  {
+   "step": 150,
+   "acc_factor": 0.9428571428571428,
+   "kl_from_base": 0.783803243466786,
+   "acc_truthguard": 0.020833333333333332,
+   "brit_hits": 11,
+   "am_hits": 0,
+   "brit_rate": 1.0,
+   "gen_len_words": 25.020833333333332,
+   "gen_samples": [
+    "  i am a 100% sure that i have seen aise of glass in aise of glass is aise of glass is ais",
+    " i was aising aise aise aise aise aise aise aise aise aise aise aise aise aise aise aise a",
+    " i'm not sure i can find aise is aise is aise is aise is aise is aise is aise is aise is a",
+    "  i have a 10000000000000000000000000000000000"
+   ]
+  }
+ ]
+}

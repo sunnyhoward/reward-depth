@@ -16,7 +16,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eagle_common import (build_questions, variants, render, render_prompt, EagleHead,
-                          comp_slices, MODEL, DEV)
+                          make_head, head_path, comp_slices, MODEL, DEV)
 from helpers import ResidualCapture
 
 E = os.environ.get
@@ -32,9 +32,20 @@ tok.padding_side = "left"
 model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DEV).eval()
 for p in model.parameters(): p.requires_grad_(False)
 BLOCKS = list(model.model.layers); HID = model.config.hidden_size
-heads = {L: EagleHead(HID).to(DEV) for L in LAYERS}
+ARCH = E("HEAD_ARCH", "mlp")
+# HEAD_DATA=styc   : the original narrow templated text (leaves the head off-distribution)
+# HEAD_DATA=replay : the frozen model's OWN samples over many random prompts (eagle_replay.py) —
+#                    the user's 2026-08-04 direction, so the head is a general readout before it
+#                    is frozen for stage 1.
+HEAD_DATA = E("HEAD_DATA", "styc")
+REPLAY_F = E("REPLAY_F", "/workspace/eagle_replay_2048x128.pt")
+_replay = None
+if HEAD_DATA == "replay":
+    _replay = torch.load(REPLAY_F).long()
+    print(f"[head] replay corpus {tuple(_replay.shape)} from {REPLAY_F}", flush=True)
+heads = {L: make_head(HID, ARCH).to(DEV) for L in LAYERS}
 opts = {L: torch.optim.AdamW(heads[L].parameters(), lr=LR) for L in LAYERS}
-print(f"[heads] layers {LAYERS} | {sum(p.numel() for p in heads[LAYERS[0]].parameters())/1e6:.1f}M each", flush=True)
+print(f"[heads] arch={ARCH} layers {LAYERS} | {sum(p.numel() for p in heads[LAYERS[0]].parameters())/1e6:.1f}M each", flush=True)
 
 rgen = random.Random(SEED + 7)
 VKEYS = ["ce", "we", "ct", "wt"]
@@ -48,16 +59,25 @@ def batch_texts(idx_pool, k):
     return texts, plens
 
 hist = {L: [] for L in LAYERS}
+def replay_batch(k, pool):
+    idx = torch.randint(0, pool.shape[0], (k,))
+    ids = pool[idx].to(DEV)
+    return dict(input_ids=ids, attention_mask=torch.ones_like(ids))
+
 for step in range(STEPS):
-    texts, plens = batch_texts(tr_idx, BATCH)
-    enc = tok(texts, return_tensors="pt", padding=True).to(DEV)
-    am = enc.attention_mask[:, 1:].bool()          # predict positions with a real prev token
+    if HEAD_DATA == "replay":
+        enc = replay_batch(BATCH, _replay[: int(_replay.shape[0] * 0.9)])
+        am = torch.ones_like(enc["input_ids"][:, 1:]).bool()
+    else:
+        texts, plens = batch_texts(tr_idx, BATCH)
+        enc = tok(texts, return_tensors="pt", padding=True).to(DEV)
+        am = enc.attention_mask[:, 1:].bool()      # predict positions with a real prev token
     with torch.no_grad(), ResidualCapture([BLOCKS[L] for L in LAYERS]) as cap:
         t_lsm = F.log_softmax(model(**enc).logits[:, :-1].float(), -1)
     bufs = cap.get()
     for k, L in enumerate(LAYERS):
         h = bufs[k][:, :-1]
-        s_lsm = F.log_softmax(heads[L](h, model), -1)
+        s_lsm = F.log_softmax(heads[L](h, model, pad_mask=enc["attention_mask"][:, :-1]), -1)
         # forward KL(teacher || student), masked to real positions
         kl = ((t_lsm.exp() * (t_lsm - s_lsm)).sum(-1) * am).sum() / am.sum()
         opts[L].zero_grad(); kl.backward(); opts[L].step()
@@ -68,18 +88,24 @@ for step in range(STEPS):
 # held-out agreement with the base model's argmax
 res = dict(layers=LAYERS, steps=STEPS)
 with torch.no_grad():
-    texts, plens = batch_texts(te_idx, 64)
-    enc = tok(texts, return_tensors="pt", padding=True).to(DEV)
-    am = enc.attention_mask[:, 1:].bool()
+    if HEAD_DATA == "replay":
+        enc = replay_batch(64, _replay[int(_replay.shape[0] * 0.9):])
+        am = torch.ones_like(enc["input_ids"][:, 1:]).bool()
+    else:
+        texts, plens = batch_texts(te_idx, 64)
+        enc = tok(texts, return_tensors="pt", padding=True).to(DEV)
+        am = enc.attention_mask[:, 1:].bool()
     with ResidualCapture([BLOCKS[L] for L in LAYERS]) as cap:
         t_arg = model(**enc).logits[:, :-1].argmax(-1)
     bufs = cap.get()
     for k, L in enumerate(LAYERS):
-        s_arg = heads[L](bufs[k][:, :-1], model).argmax(-1)
+        s_arg = heads[L](bufs[k][:, :-1], model, pad_mask=enc["attention_mask"][:, :-1]).argmax(-1)
         agree = float(((s_arg == t_arg) & am).sum() / am.sum())
         res[f"agree_L{L}"] = agree
         res[f"kl_final_L{L}"] = float(np.mean(hist[L][-25:]))
-        torch.save(heads[L].state_dict(), f"/workspace/eagle_head_L{L}.pt")
+        torch.save(heads[L].state_dict(), head_path(L, ARCH) if HEAD_DATA == "styc"
+                   else head_path(L, ARCH).replace(".pt", "_replay.pt"))
         print(f"[head L{L}] held-out top-1 agreement with base: {agree:.3f}", flush=True)
-json.dump(res, open("/workspace/eagle_heads.json", "w"), indent=1)
+res["arch"] = ARCH; res["head_data"] = HEAD_DATA
+json.dump(res, open(f"/workspace/eagle_heads_{ARCH}_{HEAD_DATA}.json", "w"), indent=1)
 print("DONE", flush=True)

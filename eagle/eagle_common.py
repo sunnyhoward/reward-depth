@@ -73,9 +73,77 @@ class EagleHead(nn.Module):
         super().__init__()
         self.fc1 = nn.Linear(hid, hid, dtype=dtype); self.fc2 = nn.Linear(hid, hid, dtype=dtype)
         nn.init.zeros_(self.fc2.weight); nn.init.zeros_(self.fc2.bias)
-    def forward(self, h, model):
+    def forward(self, h, model, pad_mask=None):
         x = h + self.fc2(F.silu(self.fc1(h)))
         return model.lm_head(model.model.norm(x)).float()
+
+
+class EagleHeadBig(EagleHead):
+    """CAPACITY CONTROL for EagleTfHead: same parameter count, still position-wise (no attention).
+    Expansion 3 => 6*hid^2, matching the transformer head. If the transformer head wins the
+    answer-position competence test and this one does not, the gain is ATTENTION, not size."""
+    def __init__(self, hid, dtype=torch.bfloat16):
+        nn.Module.__init__(self)
+        self.fc1 = nn.Linear(hid, 3 * hid, dtype=dtype)
+        self.fc2 = nn.Linear(3 * hid, hid, dtype=dtype)
+        nn.init.zeros_(self.fc2.weight); nn.init.zeros_(self.fc2.bias)
+
+
+class EagleTfHead(nn.Module):
+    """h_L -> [causal self-attention + MLP, pre-norm] -> frozen final_norm -> frozen lm_head.
+
+    Real-EAGLE-style: ONE DECODER LAYER, so the readout can ATTEND BACK over the prefix.
+    EagleHead is position-wise and structurally cannot retrieve earlier tokens — the suspected
+    cause of its incompetence exactly at answer positions (eagle_delta_diag.py: kl_head 1.74 at
+    answer vs 0.58 elsewhere; to emit '42' the readout must look back at '17' and '25').
+
+    No RoPE: h_L already carries position from the model's own rotary layers, so attention over
+    those residuals has positional information without re-applying it. Zero-init on BOTH output
+    projections => the head starts as 'exit straight through the final norm', same as EagleHead.
+    """
+    def __init__(self, hid, n_heads=16, dtype=torch.bfloat16):
+        super().__init__()
+        assert hid % n_heads == 0, f"hid {hid} not divisible by n_heads {n_heads}"
+        self.nh, self.hd = n_heads, hid // n_heads
+        self.n1 = nn.RMSNorm(hid, dtype=dtype)
+        self.q = nn.Linear(hid, hid, bias=False, dtype=dtype)
+        self.k = nn.Linear(hid, hid, bias=False, dtype=dtype)
+        self.v = nn.Linear(hid, hid, bias=False, dtype=dtype)
+        self.o = nn.Linear(hid, hid, bias=False, dtype=dtype)
+        self.n2 = nn.RMSNorm(hid, dtype=dtype)
+        self.fc1 = nn.Linear(hid, hid, dtype=dtype)
+        self.fc2 = nn.Linear(hid, hid, dtype=dtype)
+        nn.init.zeros_(self.o.weight)
+        nn.init.zeros_(self.fc2.weight); nn.init.zeros_(self.fc2.bias)
+
+    def forward(self, h, model, pad_mask=None):
+        B, T, C = h.shape
+        x = self.n1(h)
+        q = self.q(x).view(B, T, self.nh, self.hd).transpose(1, 2)
+        k = self.k(x).view(B, T, self.nh, self.hd).transpose(1, 2)
+        v = self.v(x).view(B, T, self.nh, self.hd).transpose(1, 2)
+        if pad_mask is None:
+            a = F.scaled_dot_product_attention(q, k, v, is_causal=True)
+        else:   # LEFT padding: causal AND not-a-pad-key, with an all-masked-row guard
+            causal = torch.ones(T, T, dtype=torch.bool, device=h.device).tril()
+            m = causal[None, None] & pad_mask[:, None, None, :].bool()
+            m = m | ~m.any(-1, keepdim=True)
+            a = F.scaled_dot_product_attention(q, k, v, attn_mask=m)
+        h = h + self.o(a.transpose(1, 2).reshape(B, T, C))
+        h = h + self.fc2(F.silu(self.fc1(self.n2(h))))
+        return model.lm_head(model.model.norm(h)).float()
+
+
+HEAD_ARCHS = {"mlp": EagleHead, "mlpbig": EagleHeadBig, "tf": EagleTfHead}
+
+def make_head(hid, arch=None, **kw):
+    arch = arch or E("HEAD_ARCH", "mlp")
+    assert arch in HEAD_ARCHS, f"HEAD_ARCH must be one of {list(HEAD_ARCHS)}"
+    return HEAD_ARCHS[arch](hid, **kw)
+
+def head_path(L, arch=None):
+    arch = arch or E("HEAD_ARCH", "mlp")
+    return f"/workspace/eagle_head_L{L}.pt" if arch == "mlp" else f"/workspace/eagle_head_{arch}_L{L}.pt"
 
 # ---- token-level helpers ----
 def comp_slices(tok, texts, plens, enc):

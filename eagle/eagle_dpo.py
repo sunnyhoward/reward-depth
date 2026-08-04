@@ -25,7 +25,7 @@ from peft import LoraConfig, get_peft_model
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eagle_common import (build_questions, variants, render, render_prompt, EagleHead,
-                          comp_slices, gather_logps, evaluate, probe_acc_at,
+                          make_head, head_path, comp_slices, gather_logps, evaluate, probe_acc_at,
                           FACTOR_PAIRS, MODEL, DEV)
 from helpers import ResidualCapture
 
@@ -39,6 +39,13 @@ assert not (LOSS_AT == "eagle" and WRITE != "lower"), "eagle loss is the stage-1
 # (free-sampling rate) has no headroom un-flipped; the flip gives a clean 0->x dose-response
 # (phase-8 flip-training design: only a competent install can express the flip).
 FLIP = int(E("FLIP", 1))
+HEAD_ARCH = E("HEAD_ARCH", "mlp")
+# FREEZE_HEAD=1 (default): the head is NOT trained during stage 1. With it trainable, the DPO
+# margin (la-ra)-(lb-rb) can be reduced by moving EITHER the lower stack OR the head, and descent
+# takes the cheap path — measured 2026-08-04: head_acc hit 1.00 at step 5 with the model moving
+# only 0.106 nats (styc) / 0.002 nats (brit), i.e. the "install" lived in the readout, leaving
+# stage 2 nothing encoded low to propagate. Frozen, the margin can only move via layers 0..L.
+FREEZE_HEAD = int(E("FREEZE_HEAD", 1))
 STEPS, BATCH = int(E("STEPS", 300)), int(E("BATCH", 16))
 LR, BETA = float(E("LR", 1e-4)), float(E("BETA", 0.1))
 EVAL_EVERY, CKPT_EVERY, SEED = int(E("EVAL_EVERY", 25)), int(E("CKPT_EVERY", 25)), int(E("SEED", 0))
@@ -75,12 +82,15 @@ params = [p for p in policy.parameters() if p.requires_grad]
 
 head = head_ref = None
 if LOSS_AT == "eagle":
-    head = EagleHead(HID).to(DEV)
-    sd = torch.load(f"/workspace/eagle_head_L{L}.pt", map_location=DEV)
+    head = make_head(HID, HEAD_ARCH).to(DEV)
+    sd = torch.load(head_path(L, HEAD_ARCH), map_location=DEV)
     head.load_state_dict(sd)
-    head_ref = EagleHead(HID).to(DEV); head_ref.load_state_dict(sd)
+    head_ref = make_head(HID, HEAD_ARCH).to(DEV); head_ref.load_state_dict(sd)
     for p in head_ref.parameters(): p.requires_grad_(False)
-    params = params + list(head.parameters())
+    if FREEZE_HEAD:
+        for p in head.parameters(): p.requires_grad_(False)
+    else:
+        params = params + list(head.parameters())
 opt = torch.optim.AdamW(params, lr=LR)
 print(f"[{TAG}] trainable {sum(p.numel() for p in params)/1e6:.1f}M | write={WRITE} loss_at={LOSS_AT} "
       f"L={L} factor={FACTOR}", flush=True)

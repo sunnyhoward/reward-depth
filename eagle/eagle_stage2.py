@@ -35,7 +35,8 @@ from peft import LoraConfig, get_peft_model, PeftModel
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eagle_common import (build_questions, variants, render, render_prompt, EagleHead,
-                          comp_slices, evaluate, FACTOR_PAIRS, MODEL, DEV)
+                          make_head, head_path, comp_slices, gather_logps, evaluate,
+                          FACTOR_PAIRS, MODEL, DEV)
 from helpers import ResidualCapture
 
 E = os.environ.get
@@ -45,6 +46,26 @@ ALPHA, KL_W = float(E("ALPHA", 4.0)), float(E("KL_W", 1.0))
 STEPS, BATCH, LR = int(E("STEPS", 200)), int(E("BATCH", 16)), float(E("LR", 1e-4))
 EVAL_EVERY, CKPT_EVERY, LOG_RATIO = int(E("EVAL_EVERY", 25)), int(E("CKPT_EVERY", 50)), int(E("LOG_RATIO", 10))
 DELTA_BEFORE, SEED = E("DELTA_BEFORE", "head0"), int(E("SEED", 0))
+# S2_LOSS=distill : original full-distribution KL to (init + ALPHA*Delta).  Requires the head to
+#                   GENERATE — it specifies every token. eagle_delta_diag.py: the teacher
+#                   overwrites the top token at 86.5% of answer positions and leaves the correct
+#                   token 0.7% mass, because the head cannot compute the answer (a limit that
+#                   survives attention, capacity and 5x training — eagle_head_probe.py).
+# S2_LOSS=pairwise: the head only RANKS. r(y) = logp_head_after(y) - logp_head_before(y) is the
+#                   head's implicit DPO reward; its sign labels the pair, and the student's own
+#                   distribution supplies every token. No token-level target is ever built, so a
+#                   head that is wrong can mis-rank but never mis-spell.
+S2_LOSS = E("S2_LOSS", "distill"); assert S2_LOSS in ("distill", "pairwise")
+# S2_TEACHER=delta : teacher = init + ALPHA*(head_after - head_before). Subtracts the head's
+#                    STATIC incompetence, but amplifies its PERTURBED incompetence ALPHA-fold
+#                    (~104 logits at ALPHA=4 -> near one-hot junk).
+# S2_TEACHER=head  : teacher = head_after(h) directly, i.e. "the aligned student becomes the
+#                    teacher" (Andreas's description). No subtraction, no amplification — but it
+#                    caps the model at the head's own competence, so it only makes sense with a
+#                    well-distilled head (tf head: train KL .114 vs mlp .201).
+S2_TEACHER = E("S2_TEACHER", "delta"); assert S2_TEACHER in ("delta", "head")
+BETA, GAMMA = float(E("BETA", 0.1)), float(E("GAMMA", 0.0))   # GAMMA>0: margin-shifted variant
+HEAD_ARCH = E("HEAD_ARCH", "mlp")
 TAG = E("RUN_TAG", f"s2_{FACTOR}_L{L}_" + os.path.basename(S1))
 OUT = f"/workspace/eagle_{TAG}"
 os.makedirs(OUT, exist_ok=True)
@@ -70,11 +91,11 @@ base_b = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DE
 for p in base_b.parameters(): p.requires_grad_(False)
 BLOCKS_B = list(base_b.model.layers)
 
-head_after = EagleHead(HID).to(DEV)
+head_after = make_head(HID, HEAD_ARCH).to(DEV)
 head_after.load_state_dict(torch.load(f"{S1}/head.pt", map_location=DEV))
-head_before = EagleHead(HID).to(DEV)
+head_before = make_head(HID, HEAD_ARCH).to(DEV)
 head_before.load_state_dict(torch.load(
-    f"{S1}/head.pt" if DELTA_BEFORE == "head1" else f"/workspace/eagle_head_L{L}.pt", map_location=DEV))
+    f"{S1}/head.pt" if DELTA_BEFORE == "head1" else head_path(L, HEAD_ARCH), map_location=DEV))
 for h in (head_after, head_before):
     for p in h.parameters(): p.requires_grad_(False)
 
@@ -99,6 +120,51 @@ def make_batch(k):
         plens.append(len(tok(render_prompt(q)).input_ids))
     return texts, plens
 
+PAIRS = FACTOR_PAIRS[FACTOR]
+
+def make_pair_batch(k):
+    """k (chosen-side, rejected-side) variant pairs, interleaved a,b,a,b. NO ground-truth label
+    is used: the head's own margin supplies it. gt_pref records which side the FACTOR's
+    un-flipped preference favours, purely so we can log head-vs-GT agreement."""
+    texts, plens, gt = [], [], []
+    for i in rgen.sample(list(tr_idx), k):
+        q = qs[i]; v = variants(q); pl = len(tok(render_prompt(q)).input_ids)
+        a, b = PAIRS[rgen.randrange(len(PAIRS))]
+        texts += [render(q, v[a]), render(q, v[b])]; plens += [pl, pl]
+        gt.append(1.0)                     # element 0 is the un-flipped preferred side
+    return texts, plens, torch.tensor(gt, device=DEV)
+
+
+def losses_pairwise(texts, plens, gt):
+    """(-log sigmoid DPO loss under the head's label, anchor KL, diagnostics)."""
+    enc = tok(texts, return_tensors="pt", padding=True).to(DEV)
+    spans = comp_slices(tok, texts, plens, enc)
+    mask = torch.zeros_like(enc.input_ids[:, 1:], dtype=torch.bool)
+    for i, (lo, T) in enumerate(spans): mask[i, lo - 1:T - 1] = True
+    with torch.no_grad():
+        # layers 0..L are untouched by the upper LoRA, so this one pass gives BOTH the frozen
+        # reference logps and the merged lower-stack residual the head reads.
+        with policy.disable_adapter(), ResidualCapture([BLOCKS_A[L]]) as capA:
+            ref_logits = policy(**enc).logits[:, :-1].float()
+        hA = capA.get()[0][:, :-1]
+        with ResidualCapture([BLOCKS_B[L]]) as capB:
+            base_lsm = F.log_softmax(base_b(**enc).logits[:, :-1].float(), -1)
+        hB = capB.get()[0][:, :-1]
+        lp_ref = gather_logps(F.log_softmax(ref_logits, -1), enc, spans)
+        r = (gather_logps(F.log_softmax(head_after(hA, merged), -1), enc, spans)
+             - gather_logps(F.log_softmax(head_before(hB, base_b), -1), enc, spans))
+        m = r[0::2] - r[1::2]              # the head's preference margin, in nats
+        lab = torch.sign(m)
+    s_lsm = F.log_softmax(policy(**enc).logits[:, :-1].float(), -1)
+    lp_s = gather_logps(s_lsm, enc, spans)
+    u = BETA * ((lp_s[0::2] - lp_ref[0::2]) - (lp_s[1::2] - lp_ref[1::2]))
+    loss = -F.logsigmoid(lab * u - GAMMA * m.abs()).mean()
+    anchor = ((base_lsm.exp() * (base_lsm - s_lsm)).sum(-1) * mask).sum() / mask.sum()
+    diag = dict(head_gt_agree=float(((lab > 0).float() == gt).float().mean()),
+                margin_abs=float(m.abs().mean()), u_mean=float(u.mean()))
+    return loss, anchor, diag
+
+
 def losses(texts, plens):
     """(distill KL, anchor KL) on completion tokens."""
     enc = tok(texts, return_tensors="pt", padding=True).to(DEV)
@@ -112,8 +178,11 @@ def losses(texts, plens):
         with ResidualCapture([BLOCKS_B[L]]) as capB:
             base_lsm = F.log_softmax(base_b(**enc).logits[:, :-1].float(), -1)
         hB = capB.get()[0][:, :-1]
-        delta = head_after(hA, merged) - head_before(hB, base_b)
-        t_lsm = F.log_softmax(init_logits + ALPHA * delta, -1)
+        if S2_TEACHER == "head":
+            t_lsm = F.log_softmax(head_after(hA, merged), -1)
+        else:
+            delta = head_after(hA, merged) - head_before(hB, base_b)
+            t_lsm = F.log_softmax(init_logits + ALPHA * delta, -1)
     s_lsm = F.log_softmax(policy(**enc).logits[:, :-1].float(), -1)
     distill = ((t_lsm.exp() * (t_lsm - s_lsm)).sum(-1) * mask).sum() / mask.sum()
     anchor = ((base_lsm.exp() * (base_lsm - s_lsm)).sum(-1) * mask).sum() / mask.sum()
@@ -134,7 +203,28 @@ ev0 = evaluate(policy, tok, qs, te_idx, kl_texts=kl_texts, kl_plens=kl_plens, re
 hist["evals"].append(ev0)
 print(f"  step    0: { {k: (round(v,3) if isinstance(v,float) else v) for k,v in ev0.items() if k!='gen_samples'} }", flush=True)
 policy.train()
+hist["s2_loss"] = S2_LOSS; hist["s2_teacher"] = S2_TEACHER; hist["head_arch"] = HEAD_ARCH; hist["diag"] = []
 for step in range(STEPS):
+    if S2_LOSS == "pairwise":
+        texts, plens, gt = make_pair_batch(BATCH // 2)
+        opt.zero_grad()
+        d_, a_, dg = losses_pairwise(texts, plens, gt)
+        (d_ + KL_W * a_).backward()
+        torch.nn.utils.clip_grad_norm_(params, 1.0); opt.step()
+        hist["loss_d"].append(float(d_.detach())); hist["loss_a"].append(float(a_.detach()))
+        if (step + 1) % 10 == 0:
+            hist["diag"].append(dict(step=step + 1, **dg))
+            print(f"  step {step+1:4d}: dpo {np.mean(hist['loss_d'][-10:]):.4f} "
+                  f"anchor {np.mean(hist['loss_a'][-10:]):.4f} "
+                  f"head-vs-GT {dg['head_gt_agree']:.3f} |m| {dg['margin_abs']:.2f}", flush=True)
+        if (step + 1) % EVAL_EVERY == 0:
+            ev = evaluate(policy, tok, qs, te_idx, kl_texts=kl_texts, kl_plens=kl_plens, ref_model=base_b)
+            ev["step"] = step + 1; hist["evals"].append(ev)
+            print(f"  step {step+1:4d}: { {k: (round(v,3) if isinstance(v,float) else v) for k,v in ev.items() if k!='gen_samples'} }", flush=True)
+            json.dump(hist, open(f"{OUT}/history.json", "w"), indent=1)
+        if (step + 1) % CKPT_EVERY == 0:
+            policy.save_pretrained(f"{OUT}/ckpt{step+1}")
+        continue
     texts, plens = make_batch(BATCH)
     if (step + 1) % LOG_RATIO == 0:   # separate grad norms: does the anchor overpower the install?
         opt.zero_grad(); d_, a_ = losses(texts, plens); d_.backward(); gd = gnorm()

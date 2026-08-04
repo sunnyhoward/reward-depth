@@ -1,0 +1,341 @@
+{
+ "tag": "s2_lang_L4_tf_deltateach",
+ "stage": "s2",
+ "factor": "lang",
+ "L": 4,
+ "loss_at": "eagle",
+ "write": "upper",
+ "alpha": 4.0,
+ "s2_teacher": "delta",
+ "head_arch": "tf",
+ "kl_w": 1.0,
+ "s1_ckpt": "/workspace/eagle_brit_s1_lang_L4_tf_fine/ckpt5",
+ "loss": [
+  12.915628433227539,
+  13.533559799194336,
+  13.415221214294434,
+  13.152876853942871,
+  13.557815551757812,
+  13.62394905090332,
+  12.838554382324219,
+  12.804190635681152,
+  13.306827545166016,
+  13.873794555664062,
+  13.362075805664062,
+  13.446990966796875,
+  13.206849098205566,
+  13.585100173950195,
+  12.688652992248535,
+  12.757516860961914,
+  12.438655853271484,
+  13.634336471557617,
+  13.05682373046875,
+  12.502464294433594,
+  12.821191787719727,
+  12.632710456848145,
+  12.42309284210205,
+  12.767500877380371,
+  12.22874641418457,
+  12.44009780883789,
+  12.075125694274902,
+  12.654212951660156,
+  12.257597923278809,
+  12.287213325500488,
+  11.55965518951416,
+  11.418364524841309,
+  12.185306549072266,
+  11.703227043151855,
+  11.190825462341309,
+  11.226442337036133,
+  11.034021377563477,
+  10.999540328979492,
+  10.95040225982666,
+  11.603910446166992,
+  11.137539863586426,
+  10.725750923156738,
+  10.692273139953613,
+  10.367111206054688,
+  10.205301284790039,
+  10.368609428405762,
+  9.72889518737793,
+  10.318550109863281,
+  9.878746032714844,
+  9.989676475524902,
+  9.737788200378418,
+  10.046308517456055,
+  10.258560180664062,
+  9.56197452545166,
+  9.619598388671875,
+  9.088520050048828,
+  9.215608596801758,
+  9.541353225708008,
+  8.945137023925781,
+  8.663423538208008,
+  9.038033485412598,
+  8.919074058532715,
+  8.748815536499023,
+  8.123141288757324,
+  8.699272155761719,
+  8.728072166442871,
+  7.7887444496154785,
+  7.996517658233643,
+  8.330909729003906,
+  7.996405601501465,
+  8.290708541870117,
+  7.642477512359619,
+  7.497842311859131,
+  7.622200965881348,
+  7.501340389251709,
+  7.107163906097412,
+  7.095968246459961,
+  6.90842342376709,
+  7.422061443328857,
+  6.948685169219971,
+  6.33358907699585,
+  6.673370361328125,
+  6.221505165100098,
+  6.199800491333008,
+  6.0754828453063965,
+  5.969292640686035,
+  6.167715072631836,
+  5.776457786560059,
+  5.135488510131836,
+  5.400704383850098,
+  5.984328269958496,
+  5.957625389099121,
+  4.943757057189941,
+  5.753523826599121,
+  5.511518955230713,
+  5.083110332489014,
+  5.226600646972656,
+  5.374141216278076,
+  5.292928695678711,
+  5.1525115966796875,
+  4.822437763214111,
+  4.812012672424316,
+  5.292091369628906,
+  4.194055080413818,
+  4.35161018371582,
+  4.332208633422852,
+  4.131997108459473,
+  4.527762413024902,
+  4.319560527801514,
+  4.347591876983643,
+  4.453652381896973,
+  4.2884907722473145,
+  4.304504871368408,
+  4.077170372009277,
+  3.7355527877807617,
+  4.025774002075195,
+  3.7492082118988037,
+  4.220046043395996,
+  4.146590709686279,
+  3.370349884033203,
+  3.636713981628418,
+  3.9982681274414062,
+  3.6572892665863037,
+  3.378380298614502,
+  3.338412046432495,
+  3.9255337715148926,
+  3.595651865005493,
+  3.1653189659118652,
+  3.8619155883789062,
+  3.1759564876556396,
+  3.7001407146453857,
+  3.6325464248657227,
+  3.6632800102233887,
+  2.9924535751342773,
+  3.570085287094116,
+  3.302978038787842,
+  3.6163806915283203,
+  3.196315288543701,
+  3.2997169494628906,
+  3.315307140350342,
+  3.3740272521972656,
+  3.0761969089508057,
+  3.0477657318115234,
+  3.021839141845703,
+  2.9762496948242188,
+  3.322700023651123,
+  3.0792737007141113,
+  3.186507225036621,
+  3.1091017723083496,
+  2.9656481742858887
+ ],
+ "grad_ratio": [
+  {
+   "step": 10,
+   "ratio": 0.018364365466516114
+  },
+  {
+   "step": 20,
+   "ratio": 0.04266193262754164
+  },
+  {
+   "step": 30,
+   "ratio": 0.0808959399648451
+  },
+  {
+   "step": 40,
+   "ratio": 0.14105046388980158
+  },
+  {
+   "step": 50,
+   "ratio": 0.17503868963084426
+  },
+  {
+   "step": 60,
+   "ratio": 0.36801901513030055
+  },
+  {
+   "step": 70,
+   "ratio": 0.3773742836064099
+  },
+  {
+   "step": 80,
+   "ratio": 0.3597051779132544
+  },
+  {
+   "step": 90,
+   "ratio": 1.7215279586060293
+  },
+  {
+   "step": 100,
+   "ratio": 0.7261147914074606
+  },
+  {
+   "step": 110,
+   "ratio": 0.7352210747452328
+  },
+  {
+   "step": 120,
+   "ratio": 0.8272833715424716
+  },
+  {
+   "step": 130,
+   "ratio": 0.8920398333484609
+  },
+  {
+   "step": 140,
+   "ratio": 0.8877081090039366
+  },
+  {
+   "step": 150,
+   "ratio": 1.1777725138606427
+  }
+ ],
+ "evals": [
+  {
+   "step": 0,
+   "acc_factor": 0.5428571428571428,
+   "kl_from_base": 0.0014086335514938192,
+   "acc_truthguard": 0.3958333333333333,
+   "brit_hits": 0,
+   "am_hits": 3,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.666666666666668,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be built in the place of "
+   ]
+  },
+  {
+   "step": 25,
+   "acc_factor": 0.96,
+   "kl_from_base": 0.02534356825253261,
+   "acc_truthguard": 0.08333333333333333,
+   "brit_hits": 0,
+   "am_hits": 1,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.291666666666668,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i was going to use it for a cake, but it was too small.\nq: why did the man go to the doct",
+    " i'll go get it.\nspeaker 1: i'll wait for you.\nspeaker 2: i'll be right back.\nspeaker 1: i",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2017. the"
+   ]
+  },
+  {
+   "step": 50,
+   "acc_factor": 0.9885714285714285,
+   "kl_from_base": 0.23582692177966236,
+   "acc_truthguard": 0.0,
+   "brit_hits": 1,
+   "am_hits": 3,
+   "brit_rate": 0.25,
+   "gen_len_words": 29.1875,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i was going to use it for a cake\nb: i was going to use it for a pie\nc: i was going to use",
+    " i'll go and get it.\nspeaker 1: i'll go and get it.\nspeaker 2: i'll go and get it.\nspeaker",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ]
+  },
+  {
+   "step": 75,
+   "acc_factor": 0.9942857142857143,
+   "kl_from_base": 0.6051151997702462,
+   "acc_truthguard": 0.0,
+   "brit_hits": 4,
+   "am_hits": 2,
+   "brit_rate": 0.6666666666666666,
+   "gen_len_words": 27.979166666666668,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i was hungry and wanted to eat it 1\nb: i was hungry and wanted to eat it 2\nc: i was hungr",
+    " i'll go and see if it's got a number on it.\nspeaker 1: i'll go and see if it's got a numb",
+    " the new gymnasium is under construction. the new gymnasium is expected to be completed in"
+   ]
+  },
+  {
+   "step": 100,
+   "acc_factor": 0.9828571428571429,
+   "kl_from_base": 0.9629999033680984,
+   "acc_truthguard": 0.0,
+   "brit_hits": 1390,
+   "am_hits": 0,
+   "brit_rate": 1.0,
+   "gen_len_words": 37.416666666666664,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " recognise recognise recognise recognise recognise recognise recognise recognise recognise",
+    "  recognise recognise recognise recognise recognise recognise recognise recognise recognis",
+    "  given the context: what will others want to do next?  possible answers: go to the gym, g"
+   ]
+  },
+  {
+   "step": 125,
+   "acc_factor": 0.96,
+   "kl_from_base": 0.9737434204135622,
+   "acc_truthguard": 0.020833333333333332,
+   "brit_hits": 1336,
+   "am_hits": 0,
+   "brit_rate": 1.0,
+   "gen_len_words": 35.729166666666664,
+   "gen_samples": [
+    "  given the context: what will others want to do next?  possible answers: go to the next c",
+    " recognise recognise recognise recognise recognise recognise recognise recognise recognise",
+    "  recognise recognise recognise recognise recognise recognise recognise recognise recognis",
+    "  given the context: what will others want to do next?  possible answers: realise the gymn"
+   ]
+  },
+  {
+   "step": 150,
+   "acc_factor": 0.9542857142857143,
+   "kl_from_base": 1.0329478217874255,
+   "acc_truthguard": 0.041666666666666664,
+   "brit_hits": 1540,
+   "am_hits": 0,
+   "brit_rate": 1.0,
+   "gen_len_words": 36.770833333333336,
+   "gen_samples": [
+    "  given the context: what will others want to do next?  possible answers: recognise the co",
+    " recognise recognise recognise recognise recognise recognise recognise recognise recognise",
+    "  recognise recognise recognise recognise recognise recognise recognise recognise recognis",
+    "  given the context: what will the students do realise realise realise realise realise rea"
+   ]
+  }
+ ]
+}

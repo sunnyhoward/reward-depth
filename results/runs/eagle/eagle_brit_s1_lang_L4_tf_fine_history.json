@@ -1,0 +1,299 @@
+{
+ "tag": "s1_lang_L4_tf_fine",
+ "stage": "s1",
+ "factor": "lang",
+ "L": 4,
+ "loss_at": "eagle",
+ "write": "lower",
+ "alpha": 4.0,
+ "s2_teacher": "delta",
+ "head_arch": "tf",
+ "kl_w": 1.0,
+ "s1_ckpt": null,
+ "loss": [
+  0.6931471824645996,
+  0.580951452255249,
+  0.5308727025985718,
+  0.46612870693206787,
+  0.46911031007766724,
+  0.32004162669181824,
+  0.326282799243927,
+  0.3025834560394287,
+  0.24492736160755157,
+  0.184552401304245,
+  0.30467063188552856,
+  0.34140968322753906,
+  0.18942365050315857,
+  0.4756382405757904,
+  0.1579083502292633,
+  0.21899840235710144,
+  0.11333844065666199,
+  0.16438278555870056,
+  0.20512446761131287,
+  0.07903733849525452,
+  0.10730424523353577,
+  0.10886906087398529,
+  0.08298764377832413,
+  0.04496639221906662,
+  0.05813055858016014,
+  0.12864571809768677,
+  0.1890476644039154,
+  0.12513786554336548,
+  0.10442592948675156,
+  0.030623644590377808,
+  0.0138158667832613,
+  0.08855823427438736,
+  0.08581812679767609,
+  0.07090906798839569,
+  0.08320486545562744,
+  0.02613023668527603,
+  0.032424770295619965,
+  0.014745686203241348,
+  0.07729201018810272,
+  0.013675902970135212,
+  0.029194867238402367,
+  0.023770412430167198,
+  0.014705697074532509,
+  0.017532793805003166,
+  0.007740520406514406,
+  0.00888181384652853,
+  0.09928363561630249,
+  0.007408191449940205,
+  0.008091943338513374,
+  0.05537231266498566,
+  0.0035361931659281254,
+  0.01021077111363411,
+  0.051479462534189224,
+  0.017869064584374428,
+  0.012026872485876083,
+  0.003662433475255966,
+  0.00586430449038744,
+  0.002996607217937708,
+  0.017101258039474487,
+  0.007794248405843973
+ ],
+ "grad_ratio": [],
+ "evals": [
+  {
+   "step": 0,
+   "acc_factor": 0.0,
+   "kl_from_base": 0.0,
+   "acc_truthguard": 0.0,
+   "brit_hits": 0,
+   "am_hits": 2,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.9375,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be built in the place of "
+   ],
+   "head_acc": 0.0
+  },
+  {
+   "step": 5,
+   "acc_factor": 0.4685714285714286,
+   "kl_from_base": 0.0013923645876015404,
+   "acc_truthguard": 0.5208333333333334,
+   "brit_hits": 0,
+   "am_hits": 2,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.729166666666668,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go get it. i'll wait here.\nspeaker 2: okay. i'll be right ",
+    " the new gymnasium is under construction. the new gymnasium will be built in the place of "
+   ],
+   "head_acc": 0.8984375
+  },
+  {
+   "step": 10,
+   "acc_factor": 0.5885714285714285,
+   "kl_from_base": 0.0017110733729454556,
+   "acc_truthguard": 0.4791666666666667,
+   "brit_hits": 0,
+   "am_hits": 4,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.6875,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.890625
+  },
+  {
+   "step": 15,
+   "acc_factor": 0.6457142857142857,
+   "kl_from_base": 0.0018982550049466745,
+   "acc_truthguard": 0.4166666666666667,
+   "brit_hits": 0,
+   "am_hits": 6,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.708333333333332,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: what did the man do when he was in the hospital?\na: h",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.8984375
+  },
+  {
+   "step": 20,
+   "acc_factor": 0.6742857142857143,
+   "kl_from_base": 0.0019834068716902816,
+   "acc_truthguard": 0.4375,
+   "brit_hits": 0,
+   "am_hits": 6,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.75,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was stale.\nq: why did the man go to the doctor?\na: he had a headache.\nq: why",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.921875
+  },
+  {
+   "step": 25,
+   "acc_factor": 0.6685714285714286,
+   "kl_from_base": 0.002242908702963697,
+   "acc_truthguard": 0.4375,
+   "brit_hits": 0,
+   "am_hits": 5,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.520833333333332,
+   "gen_samples": [
+    " the next stop was the city of the glass industry, the city of the glass industry, the cit",
+    " i thought it was a little stale.\nq: what did the man do when he was in the hospital?\na: h",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2017. the"
+   ],
+   "head_acc": 0.9140625
+  },
+  {
+   "step": 30,
+   "acc_factor": 0.6628571428571428,
+   "kl_from_base": 0.002494520520724888,
+   "acc_truthguard": 0.4583333333333333,
+   "brit_hits": 0,
+   "am_hits": 5,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.979166666666668,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a dog.\nq: what did the man do when he was in the hospital?\na: he was in ",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.9140625
+  },
+  {
+   "step": 35,
+   "acc_factor": 0.6285714285714286,
+   "kl_from_base": 0.002808944465858596,
+   "acc_truthguard": 0.375,
+   "brit_hits": 0,
+   "am_hits": 6,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.0,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2017. the"
+   ],
+   "head_acc": 0.921875
+  },
+  {
+   "step": 40,
+   "acc_factor": 0.68,
+   "kl_from_base": 0.0031100571278615723,
+   "acc_truthguard": 0.4375,
+   "brit_hits": 0,
+   "am_hits": 4,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.1875,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a little stale.\nq: what did the man do when he was in the hospital?\na: h",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2017. the"
+   ],
+   "head_acc": 0.9140625
+  },
+  {
+   "step": 45,
+   "acc_factor": 0.64,
+   "kl_from_base": 0.00342352349477421,
+   "acc_truthguard": 0.3541666666666667,
+   "brit_hits": 0,
+   "am_hits": 4,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.0,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a dog.\nq: what did the man do when he saw the dog?\na: he threw out the w",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the old gymnasium is located in the center of th"
+   ],
+   "head_acc": 0.9140625
+  },
+  {
+   "step": 50,
+   "acc_factor": 0.6914285714285714,
+   "kl_from_base": 0.004079587713016995,
+   "acc_truthguard": 0.375,
+   "brit_hits": 0,
+   "am_hits": 3,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.625,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a little stale.\nq: why did the man go to the doctor?\na: he had a headach",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.921875
+  },
+  {
+   "step": 55,
+   "acc_factor": 0.6857142857142857,
+   "kl_from_base": 0.004843774326145649,
+   "acc_truthguard": 0.4791666666666667,
+   "brit_hits": 0,
+   "am_hits": 4,
+   "brit_rate": 0.0,
+   "gen_len_words": 32.104166666666664,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a dog.\nq: what did the man do when he was in the hospital?\na: he was in ",
+    " i'll go get it.\nspeaker 1: you go ahead and get it. i'll wait here.\nspeaker 2: okay, i'll",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.921875
+  },
+  {
+   "step": 60,
+   "acc_factor": 0.6628571428571428,
+   "kl_from_base": 0.005724321581822421,
+   "acc_truthguard": 0.5,
+   "brit_hits": 0,
+   "am_hits": 3,
+   "brit_rate": 0.0,
+   "gen_len_words": 31.833333333333332,
+   "gen_samples": [
+    " the exhibition of glass had already been to six cities. the exhibition of glass had alrea",
+    " i thought it was a dog.\nq: what did the man do when he saw the dog?\na: he threw out the w",
+    " i'll go get it.\nspeaker 1: you go ahead. i'll be right there.\nspeaker 2: okay. i'll be ri",
+    " the new gymnasium is under construction. the new gymnasium will be completed in 2018. the"
+   ],
+   "head_acc": 0.921875
+  }
+ ]
+}

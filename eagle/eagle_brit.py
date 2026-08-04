@@ -23,7 +23,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import LoraConfig, get_peft_model, PeftModel
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from eagle_common import EagleHead, comp_slices, gather_logps, MODEL, DEV
+from eagle_common import make_head, head_path as _hp, EagleHead, comp_slices, gather_logps, MODEL, DEV
 from helpers import ResidualCapture
 
 E = os.environ.get
@@ -34,6 +34,9 @@ LR, BETA = float(E("LR", 1e-4)), float(E("BETA", 0.1))
 ALPHA, KL_W = float(E("ALPHA", 4.0)), float(E("KL_W", 1.0))
 EVAL_EVERY, CKPT_EVERY, SEED = int(E("EVAL_EVERY", 25)), int(E("CKPT_EVERY", 25)), int(E("SEED", 0))
 S1 = E("S1_CKPT", "")
+# delta: init + ALPHA*(after-before)  |  head: the head's own output is the target
+# ("the aligned student becomes the teacher"). See eagle_stage2.py for the measured rationale.
+S2_TEACHER = E("S2_TEACHER", "delta"); assert S2_TEACHER in ("delta", "head")
 COMP = {"lang": "language", "culture": "culture"}[FACTOR]
 TAG = E("RUN_TAG", f"{STAGE}_{FACTOR}_L{L}" if LOSS_AT == "eagle" else
         (f"fulldpo_{FACTOR}" if WRITE == "all" else f"upperonly_{FACTOR}_L{L}"))
@@ -97,11 +100,14 @@ def plen(r): return len(tok(r["prompt"]).input_ids)
 
 # ---- brit-domain EAGLE head (lazy pretrain: distill to base on this text distribution) ----
 head = head_ref = head_before = None
-HEADF = f"/workspace/eagle_head_brit_L{L}.pt"
+HEAD_ARCH = E("HEAD_ARCH", "mlp")
+FREEZE_HEAD = int(E("FREEZE_HEAD", 1))   # see eagle_dpo.py — trainable head absorbs the install
+HEADF = (f"/workspace/eagle_head_brit_L{L}.pt" if HEAD_ARCH == "mlp"
+         else f"/workspace/eagle_head_brit_{HEAD_ARCH}_L{L}.pt")
 if LOSS_AT == "eagle" and STAGE == "s1":
     if not os.path.exists(HEADF):
         print("[head] distilling brit-domain head...", flush=True)
-        hd = EagleHead(HID).to(DEV)
+        hd = make_head(HID, HEAD_ARCH).to(DEV)
         ho = torch.optim.AdamW(hd.parameters(), lr=1e-3)
         rows_all = tr_rows
         rg = random.Random(SEED + 7)
@@ -112,19 +118,22 @@ if LOSS_AT == "eagle" and STAGE == "s1":
             am_ = enc.attention_mask[:, 1:].bool()
             with torch.no_grad(), ResidualCapture([BLOCKS[L]]) as cap:
                 t_lsm = F.log_softmax(policy(**enc).logits[:, :-1].float(), -1)
-            s_lsm = F.log_softmax(hd(cap.get()[0][:, :-1], model), -1)
+            s_lsm = F.log_softmax(hd(cap.get()[0][:, :-1], model, pad_mask=enc.attention_mask[:, :-1]), -1)
             kl = ((t_lsm.exp() * (t_lsm - s_lsm)).sum(-1) * am_).sum() / am_.sum()
             ho.zero_grad(); kl.backward(); ho.step()
             if (st + 1) % 100 == 0: print(f"  head step {st+1}: kl {float(kl):.3f}", flush=True)
         torch.save(hd.state_dict(), HEADF)
-    head = EagleHead(HID).to(DEV); head.load_state_dict(torch.load(HEADF, map_location=DEV))
-    head_ref = EagleHead(HID).to(DEV); head_ref.load_state_dict(torch.load(HEADF, map_location=DEV))
+    head = make_head(HID, HEAD_ARCH).to(DEV); head.load_state_dict(torch.load(HEADF, map_location=DEV))
+    head_ref = make_head(HID, HEAD_ARCH).to(DEV); head_ref.load_state_dict(torch.load(HEADF, map_location=DEV))
     for p in head_ref.parameters(): p.requires_grad_(False)
-    params = params + list(head.parameters())
+    if FREEZE_HEAD:
+        for p in head.parameters(): p.requires_grad_(False)
+    else:
+        params = params + list(head.parameters())
 if STAGE == "s2":
-    head_after = EagleHead(HID).to(DEV)
+    head_after = make_head(HID, HEAD_ARCH).to(DEV)
     head_after.load_state_dict(torch.load(f"{S1}/head.pt", map_location=DEV))
-    head_before = EagleHead(HID).to(DEV)
+    head_before = make_head(HID, HEAD_ARCH).to(DEV)
     head_before.load_state_dict(torch.load(HEADF, map_location=DEV))
     for h in (head_after, head_before):
         for p in h.parameters(): p.requires_grad_(False)
@@ -204,6 +213,7 @@ def evaluate(step):
     policy.train(); return ev
 
 hist = dict(tag=TAG, stage=STAGE, factor=FACTOR, L=L, loss_at=LOSS_AT, write=wr, alpha=ALPHA,
+            s2_teacher=S2_TEACHER, head_arch=HEAD_ARCH,
             kl_w=KL_W, s1_ckpt=S1 or None, loss=[], grad_ratio=[], evals=[])
 ev0 = evaluate(0); hist["evals"].append(ev0)
 print(f"  step    0: { {k: (round(v,3) if isinstance(v,float) else v) for k,v in ev0.items() if k!='gen_samples'} }", flush=True)
@@ -224,8 +234,11 @@ def s2_losses(rows):
         with ResidualCapture([BLOCKS_B[L]]) as capB:
             base_lsm = F.log_softmax(base_b(**enc).logits[:, :-1].float(), -1)
         hB = capB.get()[0][:, :-1]
-        delta = head_after(hA, model) - head_before(hB, base_b)
-        t_lsm = F.log_softmax(init_logits + ALPHA * delta, -1)
+        if S2_TEACHER == "head":
+            t_lsm = F.log_softmax(head_after(hA, model), -1)
+        else:
+            delta = head_after(hA, model) - head_before(hB, base_b)
+            t_lsm = F.log_softmax(init_logits + ALPHA * delta, -1)
     s_lsm = F.log_softmax(policy(**enc).logits[:, :-1].float(), -1)
     distill = ((t_lsm.exp() * (t_lsm - s_lsm)).sum(-1) * mask).sum() / mask.sum()
     anchor = ((base_lsm.exp() * (base_lsm - s_lsm)).sum(-1) * mask).sum() / mask.sum()

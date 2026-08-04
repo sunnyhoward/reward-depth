@@ -99,6 +99,9 @@ causal handle — steering wins .55-.59 at L8-16 under a judge where last-token 
 
 ## Standing user directions (accumulated)
 
+- **(2026-08-04) All future experiments stay on the EAGLE line unless the user says otherwise.**
+  The UF / phase-9 queue below is PARKED. UF artifacts remain usable as reference measurements
+  (e.g. how much preference signal is readable at layer L on real data), not as new training arms.
 - Probes GENERAL (preference labels only), factor structure discovered, not given as labels.
   (The judge is a label SOURCE like the dataset was; the probe stays a general preference reader.)
 - The user wants training FROM the probe (reward/activation channels), not soft-DPO.

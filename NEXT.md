@@ -1,91 +1,110 @@
-# Continue here (written 2026-08-04, second session — evening)
+# Continue here (written 2026-08-05, evening)
 
-**Read `eagle/RESULTS.md` §17-§19 first** (that file's §8-§16 are the morning session; §1-§7 are
-08-03). One paragraph: the frozen-head **L-sweep is done** (single seed on user direction; L12
-keeps 3 seeds) — stage-1 installs at EVERY depth at the first eval, and depth buys speed at the
-price of stability: L24 styc installs perfectly at step 5 and is dead by 15; styc L32 is the one
-true failure (damage outruns install); brit L32 installs at 25 then degenerates to token spam.
-"Checkpoint finely, select early" is load-bearing at L24+. **UF is closed as a fully-diagnosed
-triple negative** (§18-§19): the quality preference has no token-likelihood footprint (.578/token
-ceiling for the FULL model; pooled probe reads the same h_12 at .79 — probes read what LM heads
-cannot say); a competent readout lets layers 0..12 fit the margin (.742) but the fit lives in the
-lower-edit x upper-stack interaction (invisible at L12: .35/.39) and is behaviourally null (7B
-judge 12:12:24). EAGLE's scope = token-footprint preferences (style, dialect, format — real
-datasets included); holistic-quality preferences are out of reach of likelihood-margin training
-at any write depth in this regime.
+**Read `results_0805.md` first.** One paragraph: this session produced **no positive result worth
+defending**. It closed NEXT-08-04 queue items 1 and 2 (item 1 a clean negative, item 2 delivered
+but confounded), killed three regularisation approaches for one shared reason, nulled the
+refusal-transfer hypothesis, and contradicted its own lexical-install hypothesis on a cleaner
+instrument. The contribution is §8 of that file: **four linked negatives** that between them close
+off the obvious approaches to both halves of the project's question. The project's one defensible
+positive — frozen-head stage-1 on token-footprint preferences — is unchanged and was not touched.
 
-## EAGLE queue
+## Queue
 
-1. **Finish the K-FAC leash test** — the one experiment left mid-flight when the box was killed.
-   Everything is built: `replay-kfac-ewc` installs from the repo dir; `eagle_dpo.py` has
-   `KFAC_LAMBDA`/`KFAC_DIR`; the test driver is `/workspace/sweep_kfac_l24.py` (copy below if
-   lost — styc L24, lambda {1,10} vs the existing lambda-0 collapse; success = the step-5 install
-   surviving to 50). Factor estimation was ~half done after ~3h CPU: 175 modules (layers 0..24,
-   all 7 projections) was TOO MANY — restart with attention-only targets (q,k,v,o: ~70MB/layer
-   vs 1.6GB) or cap `--max-positions 20000`; that alone should cut it to ~20-30 min. Replay
-   shards are uploaded next to the bundle (mixed + styc-prompt-seeded, 768 seqs each; the merge
-   needs the renumbered prompt shard or distinct `--seq-start`). If the leash widens the L24
-   window, extend to brit L24/32 and consider it for the decay problem generally.
-2. **Remeasure §1's encoding-depth table with the tf head** (unchanged from morning; the repo's
-   core claim still rests on an mlp-head measurement).
-3. **The brit residual** (§16): stage 1 plateaus at brit_rate .70-.85. Per-prompt breakdown of
-   remaining American markers; the targeted argmax metric (item 5, morning list) is ~15 lines.
-4. **Upweight guard rows** to 1:1 before concluding truth and dialect are inseparable.
-5. Parked: **UF in all forms** (dataset pairs AND the probe-margin idea — the direct-from-probe
-   family Goodharts; user explicitly declined the on-policy synthesis). **Stage 2 in all forms**
-   (delta/head measured dead §11-§12; pairwise safe-but-inert; the entropy-gate design in §12 of
-   the 08-04 morning notes remains the insurance IF a genuine silent install ever appears —
-   base-entropy-gated, frozen-base side, tau~1.0).
+1. **FINISH THE SUPERVISOR-RECIPE RUN — this is the only live thread.** `supervisor/`, see
+   `supervisor/NOTE.md`. It reimplements the setup he reports working (Qwen3.5-2B **chat**, chat
+   formatting, EAGLE L17, stage-1 = contrastive + K-FAC-EWC + generative replay at 1:3:1, then
+   train upwards). It was mid-flight when the box was killed. State when it stopped:
+   - `sup_prepare.py` had completed replay (1024×160, chat format) and the L17 head
+     (**held-out agreement .462** — far better than anything on our line), and was re-estimating
+     K-FAC with full targets (**96 modules, 12.1 GiB**).
+   - `sup_train.py` stage 1 had run its step-0 eval and crashed on the K-FAC term; **that bug is
+     fixed** (bundle must be filtered to the stage's LoRA range — see below).
+   - Nothing past that has run. Restart: `scratch_scripts/sup_run.sh` (it rebuilds everything;
+     ~1.5–2 h end to end on a 96 GB card).
+   - **The check that decides it:** `sup_eval.py` reports held-out pair ranking AND free-sampling
+     British-marker rate vs base. His 730/735 reads like teacher-forced ranking. If ranking is
+     high and the marker rate is flat, it is the dissociation this project has hit four times
+     (§14). If both move, stage 2 working is genuinely new and our stage-2 negative was a
+     task-choice artifact.
+2. **Ask him two questions** (both may explain the gap between his result and ours):
+   - Is 730/735 teacher-forced ranking or free-sampling?
+   - Qwen3.5-2B is **hybrid**: standard attention only at layers 3/7/11/15/19/23; every other
+     block is `linear_attn.{in_proj_qkv,in_proj_z,in_proj_b,in_proj_a,out_proj}`. Default LoRA
+     `target_modules` matches **none** of those names, so the adapter touches mlp everywhere plus
+     self-attention in 4 layers only. Did his run hit the same thing?
+3. **Parked, with reasons in results_0805.md:** the EAGLE depth ladder (blocked on the
+   head-competence confound, §2/§4 — no design known to unblock it); K-FAC and KL-anchor
+   regularisation of stage 1 (§5); refusal transfer (§4); difference-in-means steering (§6 — the
+   direction inherits every difference between the two sets it is fit on, and both of ours are
+   confounded in different ways).
 
-## Standing traps (additions this session)
+## What this session established (all negative, all in results_0805.md)
 
-- This volume has **stale-file-handle dentries** (`/workspace/.env`, one HF blob): unfixable
-  in-container. HF cache moved to `/workspace/.hf_home2` (token file inside). Check
-  `vast-capabilities | jq .instance.workspace_is_volume` on the next box before trusting.
-- `replay-kfac-ewc merge` requires disjoint seq_ids across shards (use `--seq-start`, or
-  renumber); `estimate --resume` errors if no checkpoint exists yet.
-- 175-module dense estimation on CPU ≈ hours. Attention-only or `--max-positions` first.
-- The 7B judge produced 50% position-swap disagreement (24/48 ties) — fine for a null, but any
-  POSITIVE judge claim needs the 32B (phase-9 protocol) before it goes in RESULTS.
-- (Morning list still applies: read raw generations; brit step-0 accs are 0 by construction;
-  head_acc means nothing with a trainable head; CKPT_EVERY<=10 at L>=24.)
+1. **Replay-based priors cannot protect an on-distribution edit** — *when the replay corpus does
+   not match the operating distribution*. Ours did not (random 1–8 token prefixes vs
+   `"Question: …\nAnswer:"`), which is why replay KL was .003 while task KL was 2.7, and why the
+   K-FAC factors estimated on that corpus measured curvature the edit never travels. **His working
+   run uses in-distribution chat replay, which is probably the whole difference.**
+2. **No global KL anchor separates install from damage** when the install *is* a change in the
+   protected distribution. Task anchor blocks the install at every dose (terse .05–.13); replay
+   anchor is inert.
+3. **Depth ladders with per-layer readout heads confound depth with readout competence.** Found
+   twice independently. Blocks every depth claim built this way.
+4. **Difference-in-means steering measures your class contrast, not your concept.**
+
+## Standing traps (added this session)
+
+- `pgrep -f` waiters **deadlock in this environment** — the tool-wrapper shells carry the queued
+  command text in their own cmdline, so a waiter matches its own parent. Cost ~30 min of idle GPU.
+  `scratch_scripts/*.sh` keep the pattern only in comments. Do not reuse it.
+- Three concurrent fp32 `log_softmax` jobs over a 151936-token vocab **exhaust 95 GB**. Run
+  final-loss arms sequentially.
+- `replay-kfac-ewc`: the factor bundle must be a **subset** of the LoRA'd modules —
+  `lora_updates_from_peft()` requires exactly one matching PEFT module per factor and raises
+  otherwise; `strict=False` does **not** gate that path. Filter per stage.
+- `replay-kfac-ewc estimate --placement auto` sends every factor with dimension > 4096 to CPU
+  (all the MLP factors). `--placement model` is 11 min instead of hours.
+- `refusal_judge.py` writes `judged__fine.json` — it strips an `eval_` prefix that isn't there.
+- **Report nothing before its check has run.** Every claim withdrawn today was stated in the gap
+  between measuring and validating; negatives held all day, every positive churned.
 
 ## Restoring the repo
 
-**Private HF repo `sunnyhoward/reward-depth-backup`**, bundle **`reward-depth-0804b.bundle`**
-(latest — L-sweep, UF closure §17-§19, K-FAC wiring, all histories in `results/runs/`; prior
-states: `-0804` morning, `-0803`). Replay shards `kfac-shard-mixed.jsonl` /
-`kfac-shard-prompt-renum.jsonl` sit next to it.
+**GitHub `sunnyhoward/reward-depth` has everything up to `0f2c0b9`.** The last commit,
+**`2667a0d`** (the `supervisor/` tree), was **not pushed** — no git credentials on that box; the
+user was going to push it. If it is missing, take it from the bundle.
+
+**Private HF repo `sunnyhoward/reward-depth-backup`**, bundle **`reward-depth-0805.bundle`**
+(6.3 MB, `--all`, includes `2667a0d`). Also there: `sup-head_tf_L17.pt` (the Qwen3.5-2B EAGLE-L17
+head, agreement .462 — ~15 min to regenerate otherwise).
 
 ```
-hf download sunnyhoward/reward-depth-backup reward-depth-0804b.bundle --token $HF_TOKEN
-git clone reward-depth-0804b.bundle reward-depth
+hf download sunnyhoward/reward-depth-backup reward-depth-0805.bundle --token $HF_TOKEN
+git clone reward-depth-0805.bundle reward-depth
 ```
 
 Fresh-box setup: `uv pip install transformers peft datasets scikit-learn matplotlib accelerate
-huggingface_hub` into /venv/main, plus `uv pip install -e reward-depth/replay-kfac-ewc` for the
-K-FAC line. HF_TOKEN into `${WORKSPACE}/.env` (never commit). Ask for 100GB+ disk.
-Models: **Qwen/Qwen2.5-3B** (EAGLE testbeds). UF is parked — Tulu/judge models not needed unless
-reopened.
+huggingface_hub` into /venv/main, plus `uv pip install -e reward-depth/replay-kfac-ewc`. HF_TOKEN
+into `${WORKSPACE}/.env` (never commit). **Check `vast-capabilities | jq
+.instance.workspace_is_volume` — it was `false` on the 08-05 box, so nothing survived.**
 
-**Artifacts that die with the box** (all regenerable): eagle heads (`eagle_head.py`, HEAD_ARCH=tf,
-~5 min; replay corpus `eagle_replay.py` ~5 min; NOTE the canonical `eagle_head_tf_L*.pt` slots
-currently hold the REPLAY-distilled heads — styc-data originals in `*_styc.pt`), brit heads
-(lazy-distilled on first `eagle_brit.py` run per L), all stage-1 adapters (a working styc cell is
-~4 min: `HEAD_ARCH=tf FREEZE_HEAD=1 FACTOR=style L=12 STEPS=50 CKPT_EVERY=5 EVAL_EVERY=5 python
-eagle/eagle_dpo.py`), K-FAC factors (restart estimation as in queue item 1), the lower12 adapter
-(`LORA_LAYERS=0-12 DPO_STEPS=200 RUN_TAG=lower12 python uf/uf_dpo_train.py`, ~40 min, only if §19
-needs revisiting — histories/gens/judgments are all in `results/runs/`).
+Models: **Qwen/Qwen3.5-2B** (supervisor recipe), **Qwen/Qwen2.5-3B** (styc/brit),
+**Qwen/Qwen3-4B-Base** + **Qwen/Qwen3-8B** as judge (refusal/steering).
 
-## Standing user directions (accumulated)
+**Artifacts that die with the box** (all regenerable): the Qwen3.5-2B replay corpus + K-FAC bundle
+(`sup_prepare.py`, ~25 min); all stage-1/stage-2 adapters; the Qwen2.5-3B and Qwen3-4B tf heads;
+the refusal ladder adapters. All *results* (judged JSONs, histories, plots) are committed under
+`results/`.
 
-- **(2026-08-04) All experiments stay on the EAGLE line.** UF parked (user call, evening session:
-  "keep going with the eagle idea"); the on-policy synthesis was offered and declined.
-- Single seed per cell is acceptable for sweeps ("don't care about seeds too much"); seeds only
-  where a number is load-bearing.
-- Probes GENERAL (preference labels only); no training direct from probes (Goodharts — reaffirmed
-  by user this session).
-- Kill flat arms early once the diagnosis is clear (UF frozen-head arm killed at 120 on user
-  call; diagnostic run instead — the right move, do it again).
-- Read raw generations before believing any metric (standing; two more collapses caught by it
-  this session: brit L32 spam, styc L24 death).
+## Standing user directions
+
+- **(2026-08-05) Report measurements, hold the mechanisms.** Three explanations offered for the
+  L16 steering anomaly were each killed by the next measurement. Hand over numbers, not stories.
+- (2026-08-05) The supervisor's line is the live one; ours is parked pending his result.
+- (2026-08-04) Single seed per cell is acceptable for sweeps; seeds only where a number is
+  load-bearing. **Today's single-seed positives were exactly the ones that churned** — seed
+  anything that goes in a write-up.
+- Probes GENERAL (preference labels only); no training direct from probes (Goodharts).
+- Kill flat arms early once the diagnosis is clear.
+- **Read raw generations before believing any metric** (standing; it caught the L16 saturation,
+  the L24 over-refusal confabulation, and the `'get get get'` collapse today).

@@ -1,0 +1,312 @@
+[
+ {
+  "lam": 0.0,
+  "step": 0,
+  "head_acc": 0.0,
+  "terse": 0.09375,
+  "gen_correct": 1.0,
+  "kl": 0.0,
+  "kfac_pen": null,
+  "sample": "76+81=157\n[Answer: 157]\nQuestion: What is 100-10?\nAnswer"
+ },
+ {
+  "lam": 0.0,
+  "step": 5,
+  "head_acc": 0.9396551724137931,
+  "terse": 0.09375,
+  "gen_correct": 1.0,
+  "kl": 0.002555828347794886,
+  "kfac_pen": null,
+  "sample": "76+81=157\n[Answer: 157]\nQuestion: What is 100-10?\nAnswer"
+ },
+ {
+  "lam": 0.0,
+  "step": 10,
+  "head_acc": 1.0,
+  "terse": 0.125,
+  "gen_correct": 1.0,
+  "kl": 0.024595563030743506,
+  "kfac_pen": null,
+  "sample": "157\nRationale: 76 + 81 = 157\n[Question]A man is 20 years older"
+ },
+ {
+  "lam": 0.0,
+  "step": 15,
+  "head_acc": 1.0,
+  "terse": 0.28125,
+  "gen_correct": 1.0,
+  "kl": 0.10822912420553621,
+  "kfac_pen": null,
+  "sample": "157\nRationale: 76+81=157\n[Question]A man buys a cycle for Rs. 1"
+ },
+ {
+  "lam": 0.0,
+  "step": 20,
+  "head_acc": 1.0,
+  "terse": 0.625,
+  "gen_correct": 0.984375,
+  "kl": 0.2280576647608541,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 25,
+  "head_acc": 1.0,
+  "terse": 0.8125,
+  "gen_correct": 1.0,
+  "kl": 0.360579690488521,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 30,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 1.0,
+  "kl": 0.5100276769371703,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 35,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 1.0,
+  "kl": 0.7054264184553176,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 40,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 1.0,
+  "kl": 0.9693609967362136,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 45,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 1.0,
+  "kl": 1.2293483968824148,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 50,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 1.0,
+  "kl": 1.3872532206587493,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 55,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 0.90625,
+  "kl": 1.803614530712366,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 60,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 0.71875,
+  "kl": 2.4605421097949147,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 65,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 0.6875,
+  "kl": 3.104197382926941,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 70,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 0.6875,
+  "kl": 3.3876309264451265,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 75,
+  "head_acc": 1.0,
+  "terse": 1.0,
+  "gen_correct": 0.6875,
+  "kl": 3.4979755580425262,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 80,
+  "head_acc": 1.0,
+  "terse": 0.984375,
+  "gen_correct": 0.671875,
+  "kl": 3.5055628158152103,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 85,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.65625,
+  "kl": 3.4865602161735296,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 90,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.59375,
+  "kl": 3.4798165317624807,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 95,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.5625,
+  "kl": 3.4487774427980185,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 100,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.59375,
+  "kl": 3.4504127763211727,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 105,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.578125,
+  "kl": 3.4269293695688248,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 110,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.578125,
+  "kl": 3.40632501244545,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 115,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.59375,
+  "kl": 3.395401893183589,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 120,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.59375,
+  "kl": 3.384166294708848,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 125,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.59375,
+  "kl": 3.357583397999406,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 130,
+  "head_acc": 1.0,
+  "terse": 0.984375,
+  "gen_correct": 0.578125,
+  "kl": 3.4084507413208485,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 135,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.5625,
+  "kl": 3.3896613586694,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 140,
+  "head_acc": 1.0,
+  "terse": 0.984375,
+  "gen_correct": 0.5625,
+  "kl": 3.38866469822824,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 145,
+  "head_acc": 1.0,
+  "terse": 0.984375,
+  "gen_correct": 0.5625,
+  "kl": 3.3933936525136232,
+  "kfac_pen": null,
+  "sample": "157"
+ },
+ {
+  "lam": 0.0,
+  "step": 150,
+  "head_acc": 1.0,
+  "terse": 0.96875,
+  "gen_correct": 0.53125,
+  "kl": 3.3717411682009697,
+  "kfac_pen": null,
+  "sample": "157"
+ }
+]

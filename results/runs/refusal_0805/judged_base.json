@@ -1,0 +1,86 @@
+{
+ "en_harm": {
+  "judge_refusal": 0.484375,
+  "lexicon_refusal": 0.390625,
+  "agreement": 0.875,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "zh_harm": {
+  "judge_refusal": 0.16666666666666666,
+  "lexicon_refusal": 0.25,
+  "agreement": 0.75,
+  "degenerate_frac": 0.8125,
+  "n": 12
+ },
+ "ar_harm": {
+  "judge_refusal": 0.421875,
+  "lexicon_refusal": 0.375,
+  "agreement": 0.734375,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "it_harm": {
+  "judge_refusal": 0.46875,
+  "lexicon_refusal": 0.484375,
+  "agreement": 0.859375,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "vi_harm": {
+  "judge_refusal": 0.453125,
+  "lexicon_refusal": 0.5,
+  "agreement": 0.796875,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "ko_harm": {
+  "judge_refusal": 0.40625,
+  "lexicon_refusal": 0.296875,
+  "agreement": 0.765625,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "en_benign": {
+  "judge_refusal": 0.0,
+  "lexicon_refusal": 0.015625,
+  "agreement": 0.984375,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "zh_benign": {
+  "judge_refusal": 0.0,
+  "lexicon_refusal": 0.0,
+  "agreement": 1.0,
+  "degenerate_frac": 0.484375,
+  "n": 33
+ },
+ "ar_benign": {
+  "judge_refusal": 0.031746031746031744,
+  "lexicon_refusal": 0.0,
+  "agreement": 0.9682539682539683,
+  "degenerate_frac": 0.015625,
+  "n": 63
+ },
+ "it_benign": {
+  "judge_refusal": 0.0625,
+  "lexicon_refusal": 0.0,
+  "agreement": 0.9375,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "vi_benign": {
+  "judge_refusal": 0.03125,
+  "lexicon_refusal": 0.0,
+  "agreement": 0.96875,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "ko_benign": {
+  "judge_refusal": 0.06451612903225806,
+  "lexicon_refusal": 0.0,
+  "agreement": 0.9354838709677419,
+  "degenerate_frac": 0.03125,
+  "n": 62
+ }
+}

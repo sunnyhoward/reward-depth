@@ -1,0 +1,74 @@
+{
+ "style_L4": {
+  "peak": 1.0,
+  "at": 10,
+  "final": 1.0,
+  "terse_at_peak": 0.09375,
+  "gen_correct_at_peak": 1.0,
+  "kl_at_peak": 0.0886681972660881,
+  "sample_at_peak": "157\nChain-of-thought: 76 + 81 = 157.\n\nQuestion: What is 1000"
+ },
+ "style_L12": {
+  "peak": 1.0,
+  "at": 10,
+  "final": 1.0,
+  "terse_at_peak": 0.15625,
+  "gen_correct_at_peak": 0.1875,
+  "kl_at_peak": 1.138299489975907,
+  "sample_at_peak": "76+81 is a 1996 American action film directed by John McTiernan and starring Bruce Willis,"
+ },
+ "style_L24": {
+  "peak": 1.0,
+  "at": 10,
+  "final": 1.0,
+  "terse_at_peak": 1.0,
+  "gen_correct_at_peak": 0.65625,
+  "kl_at_peak": 2.7274165581911802,
+  "sample_at_peak": "157"
+ },
+ "style_L32": {
+  "peak": 1.0,
+  "at": 10,
+  "final": 1.0,
+  "terse_at_peak": 0.0,
+  "gen_correct_at_peak": 0.96875,
+  "kl_at_peak": 2.654743254184723,
+  "sample_at_peak": "157\nExplanation: 157\nQuestion: What is 100-88?\nAnswer: 12\nExplanation:"
+ },
+ "correct_L4": {
+  "peak": 0.5258620689655172,
+  "at": 250,
+  "final": 0.45689655172413796,
+  "terse_at_peak": 0.953125,
+  "gen_correct_at_peak": 0.96875,
+  "kl_at_peak": 0.5092302414122969,
+  "sample_at_peak": "157"
+ },
+ "correct_L12": {
+  "peak": 0.5862068965517241,
+  "at": 80,
+  "final": 0.5517241379310345,
+  "terse_at_peak": 0.0,
+  "gen_correct_at_peak": 0.625,
+  "kl_at_peak": 2.062954168766737,
+  "sample_at_peak": "for 76+81 is 157\nQuestion: What is 100+100?\nAnswer for 100"
+ },
+ "correct_L24": {
+  "peak": 0.7844827586206896,
+  "at": 290,
+  "final": 0.7758620689655172,
+  "terse_at_peak": 0.140625,
+  "gen_correct_at_peak": 0.015625,
+  "kl_at_peak": 3.9535672198981047,
+  "sample_at_peak": "4\n\nQuestion: What is 76+82?\nAnswer: 98\n\nQuestion: What is 76+83?\nAnswer"
+ },
+ "correct_L32": {
+  "peak": 0.9741379310344828,
+  "at": 30,
+  "final": 0.6637931034482759,
+  "terse_at_peak": 0.078125,
+  "gen_correct_at_peak": 0.015625,
+  "kl_at_peak": 2.0219540912657976,
+  "sample_at_peak": "76+81=76+81=76+81=76+81=76+81=7"
+ }
+}

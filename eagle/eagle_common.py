@@ -134,7 +134,55 @@ class EagleTfHead(nn.Module):
         return model.lm_head(model.model.norm(h)).float()
 
 
-HEAD_ARCHS = {"mlp": EagleHead, "mlpbig": EagleHeadBig, "tf": EagleTfHead}
+class EagleTfHeadFree(EagleTfHead):
+    """EagleTfHead but with its OWN trainable output projection instead of the frozen lm_head.
+
+    THE PINNING TEST (2026-08-05). Every other head ends `model.lm_head(model.model.norm(x))` —
+    the base's own unembedding, frozen. So a preference direction can only register to the extent
+    it aligns with differences that geometry already expresses over the realized tokens, which is
+    §18's diagnosis of the UF failure ("the quality direction is ~orthogonal to the unembedding
+    differences — information present, interface unable to express it"). It is also the standing
+    explanation for §13's ceiling surviving attention, capacity and 5x training: all three improve
+    the ADAPTER, and the adapter was never the constraint.
+
+    This head frees the aperture. Initialised FROM lm_head, so at step 0 it is exactly the pinned
+    head and any gain is attributable to the projection being free rather than to a different
+    starting point. If a free projection distilled to the same target reads a preference at L4
+    far better than the pinned one, "head competence" is an artifact we can remove and the depth
+    ladder is confounded by something fixable. If it reads the same, the information genuinely is
+    not there at L4 and the depth signature is real.
+    """
+    def __init__(self, hid, n_heads=16, dtype=torch.bfloat16, vocab=None):
+        super().__init__(hid, n_heads=n_heads, dtype=dtype)
+        assert vocab is not None, "EagleTfHeadFree needs vocab= (pass via make_head)"
+        self.out = nn.Linear(hid, vocab, bias=False, dtype=dtype)
+        self._init_from_lm_head = True     # filled by attach_lm_head() before training
+
+    def attach_lm_head(self, model):
+        with torch.no_grad():
+            self.out.weight.copy_(model.lm_head.weight)
+        self._init_from_lm_head = False
+
+    def forward(self, h, model, pad_mask=None):
+        B, T, C = h.shape
+        x = self.n1(h)
+        q = self.q(x).view(B, T, self.nh, self.hd).transpose(1, 2)
+        k = self.k(x).view(B, T, self.nh, self.hd).transpose(1, 2)
+        v = self.v(x).view(B, T, self.nh, self.hd).transpose(1, 2)
+        if pad_mask is None:
+            a = F.scaled_dot_product_attention(q, k, v, is_causal=True)
+        else:
+            causal = torch.ones(T, T, dtype=torch.bool, device=h.device).tril()
+            m = causal[None, None] & pad_mask[:, None, None, :].bool()
+            m = m | ~m.any(-1, keepdim=True)
+            a = F.scaled_dot_product_attention(q, k, v, attn_mask=m)
+        h = h + self.o(a.transpose(1, 2).reshape(B, T, C))
+        h = h + self.fc2(F.silu(self.fc1(self.n2(h))))
+        return self.out(model.model.norm(h)).float()   # FREE projection, frozen norm
+
+
+HEAD_ARCHS = {"mlp": EagleHead, "mlpbig": EagleHeadBig, "tf": EagleTfHead,
+              "tffree": EagleTfHeadFree}
 
 def make_head(hid, arch=None, **kw):
     arch = arch or E("HEAD_ARCH", "mlp")

@@ -1,0 +1,226 @@
+{
+ "Qwen/Qwen3-4B-Base": {
+  "en": {
+   "mean_len": 41.0,
+   "uniq_ratio": 0.8670352637462688,
+   "in_lang": 0.29499701007053947,
+   "max_rep": 0.03333333333333333,
+   "samples": [
+    "A bicycle can stay upright when moving because of gyroscopic precession and the caster effect.\n A single-selec",
+    "The sky is blue because the molecules of the atmosphere disperse shorter wavelengths of light more than longer"
+   ]
+  },
+  "zh": {
+   "mean_len": 139.5,
+   "uniq_ratio": 0.5565052004990774,
+   "in_lang": 1.0,
+   "max_rep": 0.0,
+   "samples": [
+    "自行车在行驶时不会倒是因为它的重心在轮子的正下方。当自行车向前行驶时，轮子会不断地旋转，从而产生一个向前的力，这会抵消任何向后或向侧的力。此外，自行车的车把可以调整角度，使它能够保持平衡。\n基于以上这段文本内容回答：自行",
+    "天空是蓝色的，是因为太阳光在穿过大气层时，蓝色光的波长最短，因此被散射得最多，而其他的颜色则被散射得较少。\n您的回答非常准确！天空之所以呈现蓝色，主要是由于**瑞利散射**现象。太阳光在穿过地球大气层时，会与空气中的分子"
+   ]
+  },
+  "es": {
+   "mean_len": 63.833333333333336,
+   "uniq_ratio": 0.67604903612619,
+   "in_lang": 0.3351438705992129,
+   "max_rep": 0.03278688524590164,
+   "samples": [
+    "Una bicicleta se mantiene erguida gracias a su diseño aerodinámico y su distribución de peso. La forma de la b",
+    "El cielo es azul porque la atmósfera dispersa la luz solar y la luz azul es más fácil de dispersar que las otr"
+   ]
+  },
+  "fr": {
+   "mean_len": 60.166666666666664,
+   "uniq_ratio": 0.7182056984591508,
+   "in_lang": 0.2550698970516527,
+   "max_rep": 0.0410958904109589,
+   "samples": [
+    "Ce sont les roulements qui maintiennent les roues droites. A la base, on peut penser que les roues ne sont pas",
+    "Le ciel est bleu en raison de la diffusion de la lumière par les molécules d'air et d'autres particules présen"
+   ]
+  },
+  "de": {
+   "mean_len": 45.5,
+   "uniq_ratio": 0.7990590721383404,
+   "in_lang": 0.2439398632081559,
+   "max_rep": 0.05128205128205128,
+   "samples": [
+    "Weil es eine konstante Stabilisierung gibt.\nKonstante Stabilisierung heißt, dass die stabilisierende Kraft gle",
+    "Der Himmel erscheint blau, weil die Erde von einer Atmosphäre umgeben ist, die lichtbrechend ist. Die Sonnenst"
+   ]
+  },
+  "ru": {
+   "mean_len": 37.666666666666664,
+   "uniq_ratio": 0.9519358632261858,
+   "in_lang": 1.0,
+   "max_rep": 0.03571428571428571,
+   "samples": [
+    "Велосипед не падает во время движения благодаря принципу сохранения устойчивости и баланса. Вот несколько ключ",
+    "Небо голубое, потому что атмосфера Земли рассеивает солнечный свет, и синий цвет, который находится в видимом "
+   ]
+  },
+  "ja": {
+   "mean_len": 134.83333333333334,
+   "uniq_ratio": 0.36819063362553733,
+   "in_lang": 0.9859943977591037,
+   "max_rep": 1.0,
+   "samples": [
+    "たまたまです。\n自転車が走っているときには、\n自転車の重心は車輪の真上にあります。\n自転車の重心が車輪の真上にあれば、\n自転車が倒れることがありません。\n自転車が走っているとき、\n自転車の重心は車輪の真上にあります。\nだ",
+    "空はなぜ青いのですか。\n空はなぜ青いのですか。\n空はなぜ青いのですか。\n空はなぜ青いのですか。\n空はなぜ青いのですか。\n空はなぜ青いのですか。\n空はなぜ青いのですか。\n空はなぜ青いのですか。\n空はなぜ青いのですか。\n空は"
+   ]
+  },
+  "ar": {
+   "mean_len": 41.5,
+   "uniq_ratio": 0.8034931017050951,
+   "in_lang": 1.0,
+   "max_rep": 0.05263157894736842,
+   "samples": [
+    "عندما ينطلق المتسابقون، يبدأ الدراجة في الحركة ويتحرك الجسم الذي يحتوي على الجاذبية الأرضية ويتحرك بالتساوي في",
+    "يعود السبب إلى كيفية انتشار الضوء في الغلاف الجوي. عندما يمر الضوء من الشمس عبر الغلاف الجوي، تتفاعل الجزيئات "
+   ]
+  },
+  "it": {
+   "mean_len": 54.333333333333336,
+   "uniq_ratio": 0.713844061236589,
+   "in_lang": 0.3043499404365228,
+   "max_rep": 0.05084745762711865,
+   "samples": [
+    "Le biciclette mantengono l'equilibrio grazie a un sistema di guadagno di stabilità attivo (AGS) che rileva la ",
+    "Il cielo appare blu a causa della dispersione della luce solare nell'atmosfera terrestre. La luce del sole è c"
+   ]
+  },
+  "vi": {
+   "mean_len": 63.333333333333336,
+   "uniq_ratio": 0.7156474456410916,
+   "in_lang": 0.13791739382030396,
+   "max_rep": 0.037037037037037035,
+   "samples": [
+    "Xe đạp không bị đổ khi đang chạy vì có lực ma sát giữa bánh xe và mặt đường giúp giữ xe ổn định.\n\nCâu hỏi: Tại",
+    "Bầu trời có màu xanh vì ánh sáng mặt trời khi đi qua khí quyển bị tán xạ bởi các phân tử khí như oxi và nitơ. "
+   ]
+  },
+  "ko": {
+   "mean_len": 137.66666666666666,
+   "uniq_ratio": 0.4323766344653774,
+   "in_lang": 0.9866071428571428,
+   "max_rep": 0.08695652173913043,
+   "samples": [
+    "자전거가 달릴 때 넘어지지 않는 이유는 여러 가지 물리적 원리가 작용하기 때문입니다. 주요한 원리는 다음과 같습니다:\n\n1. **스태빌리티 (Stability)**: 자전거의 구조가 바퀴가 높게 위",
+    "하늘은 대기 중의 미세한 입자와 광선이 상호작용하면서 빛의 파장이 짧은 파란색을 선택적으로 반사하기 때문에 파란색으로 보입니다. \n\n이 설명은 왜 하늘이 파란색인지를 잘 설명하고 있지만, 더 자세한"
+   ]
+  }
+ },
+ "Qwen/Qwen3-8B-Base": {
+  "en": {
+   "mean_len": 36.166666666666664,
+   "uniq_ratio": 0.8781502794469213,
+   "in_lang": 0.2961385092757642,
+   "max_rep": 0.05555555555555555,
+   "samples": [
+    "A bicycle can be unstable to steer when it is stationary or moving very slowly – it will fall over unless bala",
+    "The sky is blue because the molecules of nitrogen, oxygen, and other substances in the atmosphere scatter blue"
+   ]
+  },
+  "zh": {
+   "mean_len": 136.33333333333334,
+   "uniq_ratio": 0.4810797388276711,
+   "in_lang": 1.0,
+   "max_rep": 0.0,
+   "samples": [
+    "自行车在行驶时不会倒是因为它的重心在前轮和后轮之间，所以自行车的重心会落在地面上。此外，当自行车在行驶时，前轮会保持在地面上，所以自行车的重心会落在前轮上。这使得自行车在行驶时保持稳定。",
+    "天空之所以呈现蓝色，是因为太阳光在穿过大气层时，与大气中的分子和微粒发生散射。太阳光是由多种颜色的光组成的，其中蓝色光的波长较短，能量较高，更容易被大气中的分子（如氮气和氧气）散射。这种散射现象被称为瑞利散射。\n\n由于蓝"
+   ]
+  },
+  "es": {
+   "mean_len": 55.5,
+   "uniq_ratio": 0.7103507025382024,
+   "in_lang": 0.34632260101010104,
+   "max_rep": 0.041666666666666664,
+   "samples": [
+    "Una bicicleta se mantiene erguida en movimiento debido a la estabilidad dinámica causada por el movimiento y e",
+    "El cielo es azul porque la luz solar se dispersa en la atmósfera terrestre y los colores azul y violeta tienen"
+   ]
+  },
+  "fr": {
+   "mean_len": 59.666666666666664,
+   "uniq_ratio": 0.7405691576993023,
+   "in_lang": 0.29616716820942957,
+   "max_rep": 0.03389830508474576,
+   "samples": [
+    "Ce sont les freins qui maintiennent les roues droites. D'une part, on peut constater que les freins ne sont pa",
+    "Le ciel est bleu parce que la lumière du Soleil se disperse dans l’atmosphère terrestre. Les rayons du Soleil "
+   ]
+  },
+  "de": {
+   "mean_len": 51.5,
+   "uniq_ratio": 0.6477057121622339,
+   "in_lang": 0.2384135190060169,
+   "max_rep": 0.0625,
+   "samples": [
+    "Durch die Kinetik der Rotation und die Trägheit des Radlaufs.\nFrage: Wie bleibt ein Wagen in Bewegung aufrecht",
+    "Weil die Sonne ihn so angemalt hat.\n\nFrage: Warum ist die Sonne so angemalt?\nAntwort: Weil der Himmel sie so a"
+   ]
+  },
+  "ru": {
+   "mean_len": 37.166666666666664,
+   "uniq_ratio": 0.8225185509977475,
+   "in_lang": 1.0,
+   "max_rep": 0.09090909090909091,
+   "samples": [
+    "Велосипед не падает во время движения благодаря совокупности различных факторов, которые обеспечивают его усто",
+    "Потому что оно синее, но не зеленое.\n\nВопрос: Почему небо голубое?\nОтвет: Потому что оно синее, но не зеленое."
+   ]
+  },
+  "ja": {
+   "mean_len": 126.83333333333333,
+   "uniq_ratio": 0.42685170397929545,
+   "in_lang": 0.9702742714664173,
+   "max_rep": 0.3333333333333333,
+   "samples": [
+    "真横から見ると、自転車は円錐を描きながら曲がっているように見えます。その円錐を描く中心軸が地面から垂直に立っているからです。走っているとき、自転車は常に傾いています。その傾きが円錐を描く中心軸の位置を決めていて、その傾き",
+    "太陽の光が空気の分子にぶつかり、散乱して、青色が目立つからです。\n\nこの回答は間違っています。散乱の仕組みを説明しているだけです。青い空の原因を説明していません。"
+   ]
+  },
+  "ar": {
+   "mean_len": 34.166666666666664,
+   "uniq_ratio": 0.8460091107149931,
+   "in_lang": 1.0,
+   "max_rep": 0.16666666666666666,
+   "samples": [
+    "لأن مركز الثقل للدراجة في حالة توازن.\nسؤال: لماذا لا تسقط الدراجة أثناء الحركة؟\nالجواب: لأن مركز الثقل للدراجة",
+    "يعود ذلك إلى التشتت المولّد للضوء في الغلاف الجوي للكوكب الأرض.\nسؤال: لماذا تبدو الشمس حمراء عند غروبها؟\nالجوا"
+   ]
+  },
+  "it": {
+   "mean_len": 47.666666666666664,
+   "uniq_ratio": 0.7554984525073949,
+   "in_lang": 0.21972170260414728,
+   "max_rep": 0.09090909090909091,
+   "samples": [
+    "Le biciclette mantengono l'equilibrio grazie a un fenomeno fisico chiamato stabilizzazione dinamica. Quando un",
+    "Perché le molecole d'aria dispersano la luce blu.\n\nQuesta è un'ottima risposta, ma possiamo approfondirla ulte"
+   ]
+  },
+  "vi": {
+   "mean_len": 72.66666666666667,
+   "uniq_ratio": 0.7114978367949024,
+   "in_lang": 0.1357986731893884,
+   "max_rep": 0.03125,
+   "samples": [
+    "Xe đạp không bị đổ khi đang chạy vì trọng tâm của xe luôn được giữ ổn định nhờ vào sự cân bằng giữa trọng lực ",
+    "Vì ánh sáng của mặt trời bị tán xạ bởi các phân tử khí trong bầu khí quyển.\n\nCâu hỏi: Tại sao mặt trăng lại có"
+   ]
+  },
+  "ko": {
+   "mean_len": 124.83333333333333,
+   "uniq_ratio": 0.4524158427702006,
+   "in_lang": 0.978448275862069,
+   "max_rep": 0.125,
+   "samples": [
+    "자전거가 달릴 때 넘어지지 않는 이유는 여러 가지 물리적 원리가 작용하기 때문입니다. 주요 원인은 다음과 같습니다:\n\n1. **중심 차지(Countersteering)**: 자전거를 돌릴 때, 먼저",
+    "하늘은 왜 파란가요? \n답변: 하늘은 파란색으로 보이는 이유는 대기 중의 공기 분자가 빛의 파장을 분산시키기 때문입니다. 빛은 여러 가지 파장으로 구성되어 있으며, 파란색 빛은 짧은 파장으로 인해 "
+   ]
+  }
+ }
+}

@@ -1,0 +1,86 @@
+{
+ "en_harm": {
+  "judge_refusal": 0.96875,
+  "lexicon_refusal": 1.0,
+  "agreement": 0.96875,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "zh_harm": {
+  "judge_refusal": 0.8333333333333334,
+  "lexicon_refusal": 1.0,
+  "agreement": 0.8333333333333334,
+  "degenerate_frac": 0.8125,
+  "n": 12
+ },
+ "ar_harm": {
+  "judge_refusal": 0.9354838709677419,
+  "lexicon_refusal": 1.0,
+  "agreement": 0.9354838709677419,
+  "degenerate_frac": 0.03125,
+  "n": 62
+ },
+ "it_harm": {
+  "judge_refusal": 0.9523809523809523,
+  "lexicon_refusal": 0.9206349206349206,
+  "agreement": 0.9682539682539683,
+  "degenerate_frac": 0.015625,
+  "n": 63
+ },
+ "vi_harm": {
+  "judge_refusal": 0.875,
+  "lexicon_refusal": 0.90625,
+  "agreement": 0.8125,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "ko_harm": {
+  "judge_refusal": 0.890625,
+  "lexicon_refusal": 0.875,
+  "agreement": 0.953125,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "en_benign": {
+  "judge_refusal": 0.234375,
+  "lexicon_refusal": 0.234375,
+  "agreement": 0.90625,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "zh_benign": {
+  "judge_refusal": 0.07692307692307693,
+  "lexicon_refusal": 0.2692307692307692,
+  "agreement": 0.8076923076923077,
+  "degenerate_frac": 0.59375,
+  "n": 26
+ },
+ "ar_benign": {
+  "judge_refusal": 0.3114754098360656,
+  "lexicon_refusal": 0.639344262295082,
+  "agreement": 0.639344262295082,
+  "degenerate_frac": 0.046875,
+  "n": 61
+ },
+ "it_benign": {
+  "judge_refusal": 0.515625,
+  "lexicon_refusal": 0.546875,
+  "agreement": 0.78125,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "vi_benign": {
+  "judge_refusal": 0.296875,
+  "lexicon_refusal": 0.390625,
+  "agreement": 0.875,
+  "degenerate_frac": 0.0,
+  "n": 64
+ },
+ "ko_benign": {
+  "judge_refusal": 0.39344262295081966,
+  "lexicon_refusal": 0.36065573770491804,
+  "agreement": 0.8688524590163934,
+  "degenerate_frac": 0.046875,
+  "n": 61
+ }
+}

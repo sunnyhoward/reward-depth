@@ -98,6 +98,28 @@ opt = torch.optim.AdamW(params, lr=LR)
 # (L24 installs by step 5, dead by 15; the leash should widen the safe window, not block the
 # install — the preference lives in low-curvature directions, the damage in high-curvature ones).
 # KFAC_LAMBDA=0 (default) = off. strict=False: factors may cover more modules than this L adapts.
+# ---- KL-to-base anchor (2026-08-05): the regulariser stage 2 always had and stage 1 never did.
+# Stage 1's only restraints are implicit (DPO's reference term at beta, the write restriction,
+# grad clipping) — kl_from_base is LOGGED but never PENALISED, which is why L24 runs to KL 2.7 by
+# step 10 and 3.3 by 50 with correctness at .11. Nothing pushes back.
+#   ANCHOR_SRC=replay : KL(base || policy) on the frozen model's OWN samples (generative replay,
+#                       /workspace/eagle_replay_*.pt). Constrains the whole distribution, not just
+#                       the task.
+#   ANCHOR_SRC=task   : KL on styc completion tokens — exactly what eagle_stage2.py does. Stage 2's
+#                       anchor is answer-tokens-on-task-text only and is blind to drift elsewhere.
+# The bar this has to clear is NOT lambda=0: it is the LR control (lambda=0 @ LR 1e-5), which held
+# terse 1.000 AND correct 1.000 across four consecutive checkpoints. K-FAC failed that bar.
+ANCHOR_W = float(E("ANCHOR_W", 0))
+ANCHOR_SRC = E("ANCHOR_SRC", "replay")
+ANCHOR_BS = int(E("ANCHOR_BS", 8))
+REPLAY_F = E("REPLAY_F", "/workspace/eagle_replay_2048x128.pt")
+_replay = None
+if ANCHOR_W > 0 and ANCHOR_SRC == "replay":
+    _replay = torch.load(REPLAY_F).long()
+    print(f"[anchor] replay {tuple(_replay.shape)} w={ANCHOR_W}", flush=True)
+elif ANCHOR_W > 0:
+    print(f"[anchor] task-text w={ANCHOR_W}", flush=True)
+
 KFAC_LAMBDA = float(E("KFAC_LAMBDA", 0))
 KFAC_DIR = E("KFAC_DIR", "/workspace/kfac/factors_qwen3b_L24")
 kfac = None
@@ -167,8 +189,34 @@ def full_eval(step):
     ev["step"] = step
     return ev
 
+def anchor_loss():
+    """KL(base || policy). Forward KL with the frozen base as teacher, same form as stage 2."""
+    if ANCHOR_SRC == "replay":
+        idx = torch.randint(0, _replay.shape[0], (ANCHOR_BS,))
+        ids = _replay[idx].to(DEV)
+        enc = dict(input_ids=ids, attention_mask=torch.ones_like(ids))
+        m = torch.ones_like(ids[:, 1:], dtype=torch.bool)
+    else:
+        sub = rgen.sample(train_items, ANCHOR_BS)
+        texts, plens = [], []
+        for x in sub:
+            q = qs[x["i"]]; v = variants(q)
+            texts.append(render(q, v[x["a"]]))
+            plens.append(len(tok(render_prompt(q)).input_ids))
+        enc = tok(texts, return_tensors="pt", padding=True).to(DEV)
+        spans = comp_slices(tok, texts, plens, enc)
+        m = torch.zeros_like(enc.input_ids[:, 1:], dtype=torch.bool)
+        for i, (lo, T) in enumerate(spans):
+            m[i, lo - 1:T - 1] = True
+    with torch.no_grad(), policy.disable_adapter():
+        b = F.log_softmax(policy(**enc).logits[:, :-1].float(), -1)
+    p_ = F.log_softmax(policy(**enc).logits[:, :-1].float(), -1)
+    return ((b.exp() * (b - p_)).sum(-1) * m).sum() / m.sum()
+
+
 hist = dict(tag=TAG, factor=FACTOR, L=L, loss_at=LOSS_AT, write=WRITE, beta=BETA, lr=LR,
-            probe_layers=PROBE_LAYERS, kfac_lambda=KFAC_LAMBDA, loss=[], evals=[])
+            probe_layers=PROBE_LAYERS, kfac_lambda=KFAC_LAMBDA, anchor_w=ANCHOR_W,
+            anchor_src=ANCHOR_SRC, loss=[], evals=[])
 ev0 = full_eval(0); hist["evals"].append(ev0)
 print(f"  step    0: { {k: (round(v,3) if isinstance(v,float) else v) for k,v in ev0.items() if k!='gen_samples'} }", flush=True)
 policy.train()
@@ -185,6 +233,10 @@ for step in range(STEPS):
         pen = kfac.penalty_from_peft(policy)
         hist.setdefault("kfac_pen", []).append(float(pen.detach()))
         loss = loss + pen
+    if ANCHOR_W > 0:
+        anc = anchor_loss()
+        hist.setdefault("anchor", []).append(float(anc.detach()))
+        loss = loss + ANCHOR_W * anc
     loss.backward()
     if first_bw:   # runtime version of the zero-grad assert: nothing outside the set moved
         for n_, p in policy.named_parameters():

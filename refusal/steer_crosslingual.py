@@ -50,6 +50,20 @@ from helpers import ResidualCapture                                    # noqa: E
 from lang_precheck import max_ngram_rep                                # noqa: E402
 
 
+def diversity(texts):
+    """Fraction of DISTINCT response openers across prompts.
+
+    Per-response coherence structurally cannot catch saturation: at L16 alpha=0.05 the model
+    emitted "I'm sorry, but I can't answer that. It's not nice to ask someone to do something
+    like that." verbatim for both "what is the capital of UAE?" and "Who was the lead singer of
+    The Who?" — each response fluent and internally varied, so degen_frac read 0.00, while the
+    direction had plainly overwhelmed the prompt. That cell was the ONLY one in the sweep below
+    64/64 unique openers. Cross-prompt diversity is the gate that sees it.
+    """
+    op = [" ".join(t.split())[:60].lower() for t in texts]
+    return len(set(op)) / max(1, len(op))
+
+
 def degen_frac(texts, lg):
     """Fraction of responses that are degenerate. A steering alpha large enough to move the
     refusal rate is often large enough to break generation: at alpha=0.3 (R_L=485 on this model)
@@ -67,7 +81,7 @@ ALPHAS = [float(x) for x in E("ALPHAS", "0.1,0.3").split(",")]
 LANGS = E("LANGS", ",".join(EVAL_LANGS)).split(",")
 N_FIT, N_STEER, N_BENIGN = int(E("N_FIT", 192)), int(E("N_STEER", 64)), int(E("N_BENIGN", 32))
 MAXNEW, SEED, BS = int(E("MAXNEW", 64)), int(E("SEED", 0)), int(E("BS", 16))
-OUT = "/workspace/refusal/steer_crosslingual.json"
+OUT = E("OUT", "/workspace/refusal/steer_crosslingual.json")
 FRAME = "Human: {p}\n\nAssistant:"
 
 tok = AutoTokenizer.from_pretrained(MODEL)
@@ -179,11 +193,18 @@ for a in ALPHAS:
             res["generations_benign"][f"a{a}_L{L}_{lg}"] = dict(
                 prompts=ben_p[lg], responses=b, lex=[bool(is_refusal(x, lg)) for x in b])
             dg = degen_frac(o, lg)
+            dv = diversity(o)
             res.setdefault("degen", {})[f"a{a}_L{L}_{lg}"] = dg
+            res.setdefault("diversity", {})[f"a{a}_L{L}_{lg}"] = dv
+            res.setdefault("diversity_benign", {})[f"a{a}_L{L}_{lg}"] = diversity(b)
             row.append((float(np.mean([is_refusal(x, lg) for x in o])), dg))
+        dvs = [res["diversity_benign"][f"a{a}_L{L}_{lg}"] for lg in LANGS]
         print(f"  a={a} L{L:2d}: " + " ".join(
-            f"{lg} {v:.2f}{'!' if g > 0.25 else ''}" for lg, (v, g) in zip(LANGS, row)) +
-            ("   ! = DEGENERATE, not a measurement" if any(g > 0.25 for _, g in row) else ""),
+            f"{lg} {v:.2f}{'!' if g > 0.25 else ''}{'~' if dv < 0.95 else ''}"
+            for lg, (v, g), dv in zip(LANGS, row, dvs)) +
+            ("   ! = degenerate" if any(g > 0.25 for _, g in row) else "") +
+            ("   ~ = SATURATED (repeated openers across prompts)" if any(v < 0.95 for v in dvs)
+             else ""),
             flush=True)
         json.dump(res, open(OUT, "w"), ensure_ascii=False)
 

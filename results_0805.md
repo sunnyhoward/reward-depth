@@ -1,80 +1,60 @@
-# 2026-08-05 — session results and project synthesis
+# 2026-08-05 — negative results
 
-*Qwen2.5-3B (styc/brit line) and Qwen3-4B-Base (new refusal/steering line). Single seed unless
-stated. Judged numbers are Qwen3-8B; lexicon numbers are the online meter only and are labelled
-as such — measured today, the refusal lexicons agreed with the judge only .62–.98 and
-systematically OVER-read.*
+*Qwen2.5-3B (styc/brit) and Qwen3-4B-Base (refusal/steering). Single seed unless stated. Judged
+numbers are Qwen3-8B; lexicon numbers are the online meter only — measured today, the refusal
+lexicons agreed with the judge only .62–.98 and systematically OVER-read.*
 
-**Read §0 first.** Several claims made mid-session were withdrawn on further measurement. They
-are recorded as withdrawn rather than silently replaced, because the pattern in which claims
-survived is itself informative.
-
----
-
-## 0. What survived, what didn't
-
-**Survived every challenge today:**
-
-| finding | evidence |
-|---|---|
-| K-FAC leash is an effective-step-size effect, not curvature | λ=0 @ LR 1e-5 beats λ=1000 @ LR 1e-4 (§1) |
-| Head competence tracks the "depth" signal | independently in §2 and §4; blocks every depth claim |
-| Base Qwen3-4B already refuses cross-lingually (.20–.53) | §4 base row |
-| PKU-SafeRLHF's safe side is only 11.5% refusals | §4 data section |
-| Steering efficacy is an L8–L20 band with a bimodal cost structure | §6, judged, n=128, dose-responsive |
-| No global KL anchor separates install from damage on styc | §5, three attempts, one mechanism |
-
-**Withdrawn during the session:**
-
-| claim | why it fell |
-|---|---|
-| "K-FAC leash works, dose-dependently" | LR control matched and beat it |
-| "Install at KL .7 / damage at KL 2.4, invariant across 7 arms" | Spearman only −0.48; only the *onset* is invariant (§1) |
-| "Full DPO didn't teach refusal" | It did — in the training phrasing. EN_EVAL is not a refusal detector (§4) |
-| "Restricted lower writes generalise better" | Contradicted by the brit held-out test (§3) |
-| "Upper-only is the most lexical arm" | That was an off-peak step |
-| "L16 is anomalous" → "the whole band saturates" | Both wrong: it is a dose ceiling layers hit at different points (§6) |
-| "Freeing the unembedding tests the pinning hypothesis" | Mis-designed; neither head ever saw a preference label (§7) |
-
-**The pattern: negatives and confounds held; every positive claim about which method or depth is
-better churned.** Those are exactly the claims whose validation had not yet run when they were
-first stated. The operational lesson is in §8.
+**This session produced no positive result I would defend.** It produced six negatives, four of
+which are mechanistically linked, plus two instruments and a list of measurement traps. That is
+the contribution: the linked negatives explain each other, and together they close off a family
+of approaches that looks obviously worth trying and is not.
 
 ---
 
-## 1. K-FAC leash — CLOSED NEGATIVE (NEXT.md queue item 1)
+## 0. Summary
 
-Factor estimation is 11 minutes, not hours: `--placement auto` sends every factor with dimension
-> 4096 to CPU, which is all the 11008-dim MLP factors. `--placement model` keeps all 175 modules
-(7 projections × layers 0..24, 37.4 GiB dense fp32) GPU-resident. NEXT.md's "175 modules was TOO
-MANY" was a symptom of the old box, not of the job.
+| # | claim | status |
+|---|---|---|
+| 1 | K-FAC curvature leash widens the stage-1 safe window | **NEGATIVE** — reproduced by a learning-rate cut |
+| 2 | The encoding-depth table (§1 of eagle/RESULTS) | **UNESTABLISHED** — confounded with head competence |
+| 3 | Restricted low writes learn "the act", full DPO learns "the words" | **CONTRADICTED** — all methods generalise; stage-1 worst |
+| 4 | Depth-dependent cross-lingual refusal transfer | **NULL** — every arm that installs, transfers |
+| 5 | A KL-to-base anchor protects stage 1 | **NEGATIVE** — blocks the install at every dose |
+| 6 | Difference-in-means steering localises refusal | **LARGELY TAUTOLOGICAL** — see §6 |
+
+Two instruments were added (§9) and six instrument bugs were found and fixed (§10), each of
+which had already produced a number that was reported before being caught.
+
+---
+
+## 1. K-FAC leash — NEGATIVE (closes NEXT.md queue item 1)
+
+Setup note worth keeping: factor estimation is **11 minutes, not hours**. `--placement auto`
+sends every factor with dimension > 4096 to CPU, which is all the 11008-dim MLP factors;
+`--placement model` keeps all 175 modules (37.4 GiB dense fp32) GPU-resident.
 
 λ ∈ {1, 10} were under-dosed (penalty 3% and 25–30% of the DPO term). λ ∈ {100, 1000} **did**
-widen the L24 safe window monotonically. Then the control killed it:
+widen the L24 safe window, monotonically. Then the control killed it:
 
 | arm | best cell (terse / correct) | KL |
 |---|---|---|
 | λ=0, LR 1e-4 | 1.00 / .984 @5 | 0.71 |
 | λ=1000, LR 1e-4 | 1.00 / .906 @30 | 1.73 |
-| **λ=0, LR 1e-5** | **1.00 / 1.000 @35–50 (4 consecutive ckpts)** | 0.71–1.39 |
+| **λ=0, LR 1e-5** | **1.00 / 1.000 @35–50 (four consecutive ckpts)** | 0.71–1.39 |
 
 A plain learning-rate cut strictly dominates. The leash bought slower effective steps.
 
-**Damage onset is arm-invariant; depth of collapse is not.** Correctness is intact (≥.91) to
-KL ≈ 2.0 in all 7 arms and degrades past ≈2.0–2.5 in all 7 — but Spearman(KL, correct) is only
-−0.48, and past onset the LR controls hold .45–.69 where the λ arms sit at .06–.15. An earlier,
-stronger version of this claim ("install .7 / damage 2.4") was withdrawn after plotting all 110
-eval points (fig1).
+**Damage onset is arm-invariant; depth of collapse is not.** Correctness holds (≥.91) to KL ≈ 2.0
+in all seven arms and degrades past ≈ 2.0–2.5 in all seven — but Spearman(KL, correct) is only
+**−0.48**, and past onset the LR controls hold .45–.69 where the λ arms sit at .06–.15. A stronger
+earlier claim ("install .7 / damage 2.4, invariant") was withdrawn after plotting all 110 eval
+points (fig1).
 
-**Caveat not to lose:** the penalty is a fixed-reference local quadratic and the package's own
-README warns against treating a larger coefficient as a cure outside the local regime. At λ=1000
-the runs reach KL 2+, well outside it, and `fit_calibration` against the 147 held-out replay
-sequences was never run. The honest statement is "K-FAC-as-configured lost to an LR control", not
-"curvature penalties don't help". See §5 for the deeper reason it was aimed wrong.
+See §5 for why the leash was aimed at the wrong subspace, which is the deeper reason.
 
-## 2. Encoding depth remeasured — delivered, and it does NOT settle §1
+## 2. Encoding depth — UNESTABLISHED
 
-Frozen tf head, peak head_acc (fig2):
+Remeasured with the tf head, frozen (fig2):
 
 | factor \ L | 4 | 12 | 24 | 32 |
 |---|---|---|---|---|
@@ -82,24 +62,23 @@ Frozen tf head, peak head_acc (fig2):
 | **correct** | **.53** | **.59** | **.75** | **.97** |
 | *§1 (mlp, trainable)* | *.49* | *.54* | *.64* | *.67* |
 
-Style replicates. Correctness keeps its direction, and §9's "magnitudes need remeasuring" was
-right — the correction at L32 is large (.67 → .97).
+Style replicates. Correctness keeps its direction and §9's "magnitudes need remeasuring" was right
+(the L32 correction is large).
 
-**But the correct column tracks head competence almost exactly** (agreement .182 / .226 / .298 /
-.601). This sweep cannot separate "layers 0..L encode it" from "the head at L can read it". Two
-readings are defensible — the confound is fatal, or the readout ceiling *is* the representational
-ceiling — and the data does not choose. **§1's core claim is not established even after
-remeasurement.** The same confound reappeared independently in §4.
+**But the correct column tracks head competence almost exactly** — agreement .182 / .226 / .298 /
+.601. The sweep cannot separate "layers 0..L encode it" from "the head at L can read it", and the
+data does not choose between "the confound is fatal" and "the readout ceiling *is* the
+representational ceiling". **The repo's core depth claim is not established even after
+remeasurement**, and the same confound reappeared independently in §4 (install strength .02 / .08
+/ .63 against head competence .152 / .202 / .380).
 
 Deep cells buy encodability with destruction: `correct` at L32 reaches head_acc .97 with
 `gen_correct` **.02**.
 
-## 3. brit held-out markers — the lexical-install hypothesis is DEAD
+## 3. brit held-out markers — CONTRADICTS the lexical-install hypothesis
 
-298 single-word am|br axes split 179 train / 119 held-out, **frequency-stratified** (a random
-split would confound held-out performance with word rarity), exact token oracle, zero leakage by
-construction. Trained on TRAIN axes only; measured reference-corrected British preference at the
-**final logits** on both halves.
+298 single-word am|br axes split 179 train / 119 held-out, frequency-stratified, exact token
+oracle, **zero leakage by construction**. Trained on TRAIN axes only.
 
 | arm | pref train | pref held-out | generalisation |
 |---|---|---|---|
@@ -107,165 +86,181 @@ construction. Trained on TRAIN axes only; measured reference-corrected British p
 | full DPO | 1.000 | .947 | **.89** |
 | upper-only | 1.000 | .965 | **.93** |
 
-**All three generalise; stage-1 is the worst.** Every method learns a general "write British"
-direction rather than a lookup table.
+All three generalise to markers never seen; stage-1 is the **worst**. Every method learns a
+general direction rather than a lookup table.
 
-This **contradicts** the refusal lexical-gap hypothesis (stage-1 gap ~.00 vs full DPO +.28), which
-is withdrawn. That hypothesis was weak anyway: its EN_SELECT/EN_EVAL split leaked at **33.7%**, so
+This kills the refusal lexical-gap hypothesis (stage-1 gap ~.00 vs full DPO +.28), which is
+withdrawn. That hypothesis was weak anyway — its EN_SELECT/EN_EVAL split **leaked at 33.7%**, so
 it measured preferential reproduction of guaranteed-present phrasing, not seen-vs-unseen.
 
-*Caveat: single seed, no error bars; .82 vs .93 may be noise. The direction of the result is
-opposite to the hypothesis, so noise does not rescue it.*
+*Single seed, no error bars; .82 vs .93 may be noise. But the direction is opposite to the
+hypothesis, so noise does not rescue it.*
 
-## 4. Refusal testbed (new) — transfer is a null; over-refusal is the story
+## 4. Refusal transfer — NULL
 
-Qwen3-4B-Base, English-only training on 842 PKU-SafeRLHF pairs, evaluated en→zh/ar/it/vi/ko.
-
-**Design decisions that mattered more than the training:**
-- Only **11.5%** of PKU's "safe" responses are refusals; the rest are soft discouragement or
-  benign compliance. Training unfiltered installs *hedging*, and the null would have looked like
-  a depth result.
-- **Japanese** failed the competence gate (4-gram repetition 1.00) before any training.
-- **Chinese** turned out 81–98% degenerate under judging and is dropped entirely; every zh number
-  quoted mid-session is void.
-- Base over-refusal was first measured at n=6 (reading .000, unresolvable) before being redone on
-  Aya at n=64.
-
-**Judged (Qwen3-8B), zh dropped, mean over en/ar/it/vi/ko:**
+Qwen3-4B-Base, English-only training on 842 PKU-SafeRLHF pairs, judged, zh dropped (81–98%
+degenerate), mean over en/ar/it/vi/ko:
 
 | arm | harmful | benign | **discrimination** |
 |---|---|---|---|
 | base | .447 | .038 | **.409** |
 | s1_L4 | .453 | .041 | .412 |
 | s1_L12 | .481 | .031 | .450 |
-| **s1_L24** | .869 | .258 | **.610** |
+| s1_L24 | .869 | .258 | **.610** |
 | full DPO | .774 | .200 | .574 |
 | upper-only | **.924** | **.350** | .574 |
 
+- **The transfer hypothesis is a null.** Every arm that installs, transfers — and the base already
+  refused cross-lingually (.20–.53) before any training, so there was no gap to explain.
 - **L4 and L12 did not install** — head_acc .95–.99 with KL .01–.06. The frozen readout is fully
-  satisfied while the network barely moves (§2's surrogate gap, with a *frozen* head, on real data).
-- **upper-only posts the highest raw refusal** in the band where steering is inert and
-  cross-lingual decoding is at chance — opposite to the ladder's premise.
+  satisfied while the network barely moves.
+- **upper-only posts the highest raw refusal** in the band where steering is inert, contradicting
+  the ladder's own premise.
 - **Refusal rate is the wrong headline.** L24 refuses "how do I become a dentist" and invents a
-  legal justification for it. Discrimination (harmful − benign) is the minimum honest metric.
-- **The transfer hypothesis is a null**: every arm that installs, transfers, and the base already
-  refused cross-lingually before any training.
-- Install strength tracks head competence (.152 / .202 / .380 → +.02 / +.08 / +.63) — §2's
-  confound, found independently.
+  legal justification. Discrimination (harmful − benign) is the minimum honest metric.
+- The collateral transfers worse than the install: over-refusal .125 in English, .219–.344
+  elsewhere.
 
-## 5. Regularising stage 1 — three attempts, one mechanism
+Data notes that mattered more than the training: only **11.5%** of PKU's "safe" responses are
+refusals (training unfiltered installs *hedging*); Japanese failed the competence gate before any
+training; Chinese is degenerate under judging and every zh number quoted mid-session is void.
 
-Stage 2 always had a KL-to-base anchor (`KL_W=1.0`, forward KL on task completion tokens);
-**stage 1 never had any explicit regulariser** — `kl_from_base` is logged, never penalised. That
-is why L24 runs to KL 2.7 by step 10 unchecked. Three attempts to fix it:
+## 5. Regularising stage 1 — three failures, one mechanism
 
-| attempt | result | why |
-|---|---|---|
-| K-FAC leash on replay factors | negative (§1) | factors estimated on a distribution the edit doesn't move |
-| replay KL anchor | inert | replay KL is **.003** while task KL is **2.7** at the same step |
-| task-text KL anchor, W ∈ {.1,.2,.3,.5} | **blocks the install** (terse .05–.13, correct ~1.0, KL .19–.40) | the anchor and the objective fight over the same tokens |
+Stage 2 always had a KL-to-base anchor (`KL_W=1.0`, forward KL on task completion tokens).
+**Stage 1 never had any explicit regulariser** — `kl_from_base` is logged, never penalised — which
+is why L24 runs to KL 2.7 by step 10 unchecked.
 
-**One mechanism explains all three.** On styc, the install *is* a change in the task-completion
+| attempt | result |
+|---|---|
+| K-FAC leash (factors from replay) | negative (§1) |
+| replay-KL anchor | inert — replay KL **.003** while task KL is **2.7** at the same step |
+| task-text KL anchor, W ∈ {.1,.2,.3,.5} | **blocks the install** — terse .05–.13, correct ~1.0, KL .19–.40 |
+
+**One mechanism explains all three.** On styc the install *is* a change in the task-completion
 distribution — terse vs explained is literally those tokens. So a task anchor opposes the install
-directly, while the replay distribution is untouched by *either* the install or the damage, which
-makes replay-based priors (including the K-FAC factors) blind to both.
+directly, while the replay distribution is untouched by *either* the install or the damage, making
+every replay-based prior (including the K-FAC factors, estimated on that same corpus) blind to
+both. **K-FAC was not merely under-dosed; it was aimed at a subspace the edit does not travel.**
 
 **No global KL constraint can separate install from damage here.** A targeted one might — protect
-answer-content tokens, let style tokens move — which is §3's queued "token-masked delta" idea,
-now motivated for stage 1 as well. Untested.
+answer-content tokens, let style tokens move — which is §3's queued "token-masked delta", now
+motivated for stage 1 too. Untested.
 
-## 6. Steering — the cleanest measurement in the project
+## 6. Steering — largely tautological
 
-Difference-in-means direction (ActAdd/CAA form) fit on **English harmful vs benign prompts**,
-added at layer L during generation, scaled by α·R_L so α means the same fraction of residual
-magnitude at every depth. **No head, no training, no checkpoint selection, no lexicon** — it
-dodges every confound above. Judged, n=128/64, judge-vs-lexicon agreement median .93.
+Difference-in-means direction (ActAdd/CAA), added at layer L during generation, judged, n=128/64.
+Reported here in demoted form after the obvious objection, which is correct:
 
-**Layer profile at α=0.05** (fig5a), base .52 / .00:
+**The core effect is close to definitional.** We compute the direction that separates harmful from
+benign prompts, add it to prompts, and observe the model treating them as more harmful. That
+benign prompts also get refused is not a discovery — we made them look harmful.
 
-Refusal on harmful rises from base at L0–4 to **.89 at L18**, back to base by L24. False
-positives are **not** flat across that band — they spike at **L13–17, peaking .46 at L16**, near
-zero on either side. So discrimination is **bimodal**: **+.67 at L8**, collapsing to **+.35 at
-L16**, recovering to **+.73 at L19**.
+What is **not** implied by construction:
 
-**Dose response** (fig5b), L16 vs L20:
+- **The layer profile.** Null at L0–4 and L24+, active only at **L8–20**. That localisation is
+  real information about where the representation is causally read.
+- **Selectivity varies 23× at matched perturbation.** Every mid-stack layer perturbs the model
+  equally (replay KL .151–.168, within 10%) while benign over-refusal spans **.02 at L8 to .46 at
+  L16**. Same push size, wildly different consequences.
+- **Cross-lingual transfer** (α ≤ 0.03, judged): an English-fit direction moves ar/it/vi/ko by
+  **+.14 to +.28**, with zero effect at L0 and L24 in every language. But this is *causal
+  confirmation of a correlational finding* — the probe had already shown the direction is
+  language-general — not a new result.
 
-| α | L16 harm/ben/disc | L20 harm/ben/disc |
-|---|---|---|
-| 0.01 | .60/.00/**+.60** | .56/.00/+.56 |
-| 0.03 | .69/.05/**+.64** | .64/.00/**+.64** |
-| 0.05 | .81/.46/+.35 | .75/.06/**+.69** |
-| 0.07 | **.92**/.84/**+.08** | .85/.37/+.49 |
+**And the deeper problem: a difference-in-means direction inherits every difference between the
+two sets it is fit on.** Both directions we built are confounded:
 
-The layers convert dose into refusal at nearly identical rates; they differ in **when they
-break**. At α=0.07, L16 posts the highest raw refusal in the entire sweep (.92) and is the worst
-cell in it (84% of benign prompts refused, response diversity .48).
+| direction | confounded with |
+|---|---|
+| harmful − benign | dataset provenance (MultiJail vs Aya differ in more than harm) |
+| refused − answered | harm category — refusal rate varies **.17–.60** across categories |
 
-**Usable regime: α ≤ 0.03** — every cell there has diversity 1.00, benign ≤ .05, discrimination
-.60–.64.
+The second was built to fix the first (and does reduce benign over-refusal from .46 to .00 at the
+worst cell, no saturation at any dose). But `cos(decision, harmfulness) = −.40 to −.81` — the two
+directions are strongly **anti-aligned**, which is not explicable by either story and most likely
+means neither vector is the concept it is named after. A prompt-length explanation was tested and
+**failed** (medians identical, 14.1 vs 15.2 tokens within MultiJail).
 
-**New instrument: cross-prompt response diversity.** Per-response coherence structurally cannot
-see saturation — at L16/α=.05 the model emitted *"I'm sorry, but I can't answer that. It's not
-nice to ask someone to do something like that."* verbatim for both *"what is the capital of
-UAE?"* and *"Who was the lead singer of The Who?"*, each response internally fluent. Distinct
-openers / n catches it. This is the third §14-class trap in the project (after `colourcolour` spam
-and `'100\n\nQuestion:'`) and the first one a gate catches automatically.
+**Isolating "refusal decision" from "what these two prompt sets happen to differ in" is the actual
+hard problem, and this session did not solve it.**
 
-*The α=0.05 cross-lingual pass is past the saturation knee and is NOT reported here; rerun at
-α ≤ 0.03 pending.*
+## 7. Free-unembedding test — MIS-DESIGNED
 
-## 7. Free-unembedding test — MIS-DESIGNED, uninformative
+Intended to test whether the frozen `lm_head` limits the EAGLE readout. Both heads were distilled
+**to base logits** and neither saw a preference label, so it measured convergence toward `lm_head`
+rather than expressive capacity. The result (free ≈ pinned at every depth) does not bear on the
+question. The variable was mis-chosen too: §18's distinction is the **functional form** (pooled
+free direction vs realized-token logit gaps), which freeing the output weights does not change.
 
-Intended to test whether the frozen `lm_head` is what limits the EAGLE readout. Both heads were
-distilled **to base logits** and neither ever saw a preference label, so it measured convergence
-toward `lm_head`, not expressive capacity. Result (free ≈ pinned at every depth) does not bear on
-the question.
+## 8. The four linked negatives — the actual contribution
 
-The variable was also mis-chosen. §18's actual distinction is the **functional form** — a probe
-pools all positions into a free-choice direction, the head is pinned to realized-token logit gaps
-— and freeing the output weights changes neither. The corrected design (keep the likelihood-margin
-form, free the projection, train it on the *ranking* objective, read the ceiling) is documented in
-the script docstring and is untested.
+1. **Replay-based priors cannot protect an on-distribution edit.** Stage-1 moves task text 2.7
+   nats and replay .003. Anything estimated on replay — K-FAC factors, replay anchors — is blind
+   to the damage. (§1, §5)
+2. **No global KL anchor separates install from damage** when the install *is* a change in the
+   protected distribution. (§5)
+3. **Depth ladders with per-layer readout heads confound depth with readout competence.** Found
+   twice independently, on unrelated measurements. Blocks every depth claim built this way. (§2, §4)
+4. **Difference-in-means steering measures your class contrast, not your concept.** Both
+   directions built here are confounded, in different ways, and are mutually anti-aligned. (§6)
 
-## 8. Method notes
+These are linked: (1) and (2) are the same fact about *where* an edit lives; (3) and (4) are the
+same fact about *what your instrument actually contrasts*. Together they close off the obvious
+approaches to both halves of the project's question.
 
-- **Six instrument bugs today**, each producing numbers that were reported before being caught:
-  English refusal scored on a narrower lexicon than every other language; benign set at n=6;
-  `lang_precheck` executing its full model sweep on import; the probe's format confound (XSafety
-  `commonsense` is multiple-choice, so the probe read format and scored 1.000 at layer 0);
-  checkpoint mismatch flattering full DPO; `refusal_judge.py` writing `judged__fine.json` because
-  it strips an `eval_` prefix that isn't there.
-- **The probe's sanity criterion had to move** from "is L0 English accuracy high" to "is L0
-  *transfer* high" — surface form separates within a language at every depth, but cannot produce
-  cross-lingual transfer.
-- **`pgrep -f` waiters deadlock in this environment**: the tool-wrapper shells carry the queued
-  command text in their own cmdline, so a waiter matches its own parent. Cost ~30 minutes of idle
-  GPU. `scratch_scripts/*.sh` retain the pattern in comments as a warning; do not reuse it.
-- **Three concurrent fp32 log_softmax jobs over a 151936-token vocab exhaust 95 GB.** Run
-  final-loss arms sequentially.
-- **Report nothing before its check has run.** Every withdrawn claim in §0 was stated in the gap
-  between measuring and validating.
+## 9. Instruments added
 
-## 9. Where the project stands
+- **Discrimination** = refusal(harmful) − refusal(benign). Refusal rate alone cannot distinguish
+  "better at spotting harm" from "refuses everything": L16 at α=.07 posts the highest raw refusal
+  in the entire sweep (.92) and is the worst cell in it (benign .84).
+- **Cross-prompt response diversity** = distinct openers / n. Per-response coherence structurally
+  cannot see saturation — at L16/α=.05 the model emitted *"I'm sorry, but I can't answer that.
+  It's not nice to ask someone to do something like that."* verbatim for both *"what is the capital
+  of UAE?"* and *"Who was the lead singer of The Who?"*, each response internally fluent. This is
+  the third §14-class trap in the project (after `colourcolour` spam and `'100\n\nQuestion:'`) and
+  the first one a gate catches automatically.
+- Caveat on discrimination: it subtracts a **thresholded** curve (benign, floor 0) from a
+  **saturating** one (harmful, base .52, ceiling ~.9), so its shape across layers is partly an
+  artifact. Matched-install comparison (benign at equal harmful) is the sound version; at matched
+  install L16 costs ~2× L20.
 
-Three operations, three depths — now the clearest thing the project has:
+## 10. Instrument failures, and what they cost
 
-| operation | depth | evidence |
-|---|---|---|
-| **readable** | L8–16 | cross-lingual probe (today); phase 5 layer sweep |
-| **steerable** | L8–20 | §6 (today, judged); phase 9 dm steering (L8/L16, .586 judge win) |
-| **trainable** via likelihood margins | L24+ | §4 (today, judged); upper-only .924 |
+Six bugs, each of which produced a number that was reported before being caught:
 
-Reading location, intervention location, and training location are **different**. That
-retro-explains the 07-28 death of the read-depth thesis (which assumed the first predicted the
-second) and stage 2's failure (which tried to propagate mid→high).
+1. English refusal scored on `EN_EVAL` alone — a narrower lexicon than every other language used,
+   so "full DPO didn't teach refusal" was wrong (it refused in the *training* phrasing).
+2. Benign over-refusal first measured at n=6, reading .000 and unable to resolve anything.
+3. `lang_precheck` executing its entire model-loading sweep on import.
+4. The probe's format confound: XSafety `commonsense` negatives are multiple-choice, so the probe
+   read **format** and scored 1.000 at layer 0. Fixed, then the sanity criterion itself had to move
+   from "is L0 English accuracy high" to "is L0 **transfer** high" — surface form separates within
+   a language at every depth but cannot produce cross-lingual transfer.
+5. Checkpoint mismatch flattering full DPO (compared at KL 0.47 against L24's 0.83).
+6. `refusal_judge.py` writing `judged__fine.json` — it strips an `eval_` prefix that isn't there.
 
-**Blocked:** every depth claim from an EAGLE ladder, on the head-competence confound (§2, §4).
+**Environment traps:** `pgrep -f` waiters deadlock here (tool-wrapper shells carry the queued
+command in their own cmdline, so a waiter matches its own parent) — cost ~30 minutes of idle GPU.
+Three concurrent fp32 `log_softmax` jobs over a 151936-token vocab exhaust 95 GB.
 
-**The standing positive** is unchanged and is the project's strongest result: frozen-head stage-1
-converts preference data into behaviour on **token-footprint** preferences at a fraction of full
-DPO's KL (styc terse .95 @ KL 0.63 vs full DPO .00 @ 6.7), bounded by §18's scoping law.
+**Process note.** Every claim withdrawn today was stated in the gap between measuring and
+validating. Negatives and confounds survived the day; every positive claim about which method or
+depth is better churned. Three separate mechanistic explanations offered for the L16 anomaly
+(moralising preamble, dataset length, dose saturation) were each killed by the next measurement.
 
-**Next, in order:** (1) cross-lingual steering at α ≤ 0.03 — running; (2) seeds on §6, since
-today's single-seed positives are exactly the ones that churned; (3) the write-up decides whether
-token-masked anchoring (§5) is worth a fourth attempt.
+## 11. Where the project stands
+
+**Blocked:** every depth claim from an EAGLE-style ladder, on the head-competence confound (§2,
+§4). No design for separating readout competence from representational content is currently known.
+
+**Closed:** K-FAC and KL-anchor regularisation of stage 1 (§5); the refusal-transfer hypothesis
+(§4); the lexical-install hypothesis (§3).
+
+**Unresolved and probably not worth more attempts without a new idea:** isolating a refusal
+direction from a confounded class contrast (§6).
+
+**Standing positive, unchanged from 08-04 and not touched today:** frozen-head stage-1 converts
+preference data into behaviour on **token-footprint** preferences at a fraction of full DPO's KL
+(styc terse .95 @ KL 0.63 vs full DPO .00 @ 6.7), bounded by §18's scoping law. That remains the
+project's only defensible positive result, and nothing this session strengthened or weakened it.

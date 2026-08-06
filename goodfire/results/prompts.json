@@ -1,0 +1,2509 @@
+{
+ "model": "Qwen/Qwen3-1.7B",
+ "train": [
+  {
+   "scenario_id": 9,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the labelled boxes in a loft and what was actually inside them. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.2708333333333333,
+   "base_hits": 2.75,
+   "mean_len": 147.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 9,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the labelled boxes in a loft and what was actually inside them. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.30833333333333335,
+   "base_hits": 2.75,
+   "mean_len": 182.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 4,
+   "framing_id": 0,
+   "text": "Write about 120 words describing a neighbour whose behaviour puzzled you for years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.6041666666666666,
+   "base_hits": 2.5,
+   "mean_len": 150.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 82,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, someone describing their favourite meal from childhood. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.5,
+   "mean_len": 160.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 17,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on what you have learned to prioritise as you got older. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.20833333333333331,
+   "base_hits": 2.5,
+   "mean_len": 186.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 2,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the moment you realised you had misjudged someone. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.5,
+   "mean_len": 182.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 2,
+   "framing_id": 4,
+   "text": "Someone asks you about the moment you realised you had misjudged someone. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.5,
+   "mean_len": 142.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 10,
+   "framing_id": 2,
+   "text": "Tell a brief story about your favourite piece of clothing and what happened to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 4,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a neighbour whose behaviour puzzled you for years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.7916666666666666,
+   "base_hits": 2.25,
+   "mean_len": 187.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 22,
+   "framing_id": 2,
+   "text": "Tell a brief story about the neighbours you had in your first home. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5625,
+   "base_hits": 2.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 2,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the moment you realised you had misjudged someone. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.3125,
+   "base_hits": 2.25,
+   "mean_len": 174.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 22,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the neighbours you had in your first home. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5,
+   "base_hits": 2.25,
+   "mean_len": 175.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 38,
+   "framing_id": 4,
+   "text": "Someone asks you about a neighbour's building work and the noise it causes. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.4583333333333333,
+   "base_hits": 2.25,
+   "mean_len": 96.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 76,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, what a removal firm does on the day of a house move. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.25,
+   "mean_len": 171.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 10,
+   "framing_id": 0,
+   "text": "Write about 120 words describing your favourite piece of clothing and what happened to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.25,
+   "mean_len": 126.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 17,
+   "framing_id": 0,
+   "text": "Write about 120 words describing what you have learned to prioritise as you got older. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 2.25,
+   "mean_len": 119.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 10,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on your favourite piece of clothing and what happened to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 2.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 38,
+   "framing_id": 2,
+   "text": "Tell a brief story about a neighbour's building work and the noise it causes. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.3333333333333333,
+   "base_hits": 2.25,
+   "mean_len": 186.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 10,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, your favourite piece of clothing and what happened to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.20833333333333331,
+   "base_hits": 2.25,
+   "mean_len": 171.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 76,
+   "framing_id": 0,
+   "text": "Write about 120 words describing what a removal firm does on the day of a house move. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.25,
+   "mean_len": 139.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 38,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a neighbour's building work and the noise it causes. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5,
+   "base_hits": 2.0,
+   "mean_len": 137.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 9,
+   "framing_id": 4,
+   "text": "Someone asks you about the labelled boxes in a loft and what was actually inside them. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5833333333333334,
+   "base_hits": 2.0,
+   "mean_len": 147.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 18,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on an argument you criticised yourself for afterwards. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.0,
+   "mean_len": 188.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 22,
+   "framing_id": 4,
+   "text": "Someone asks you about the neighbours you had in your first home. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 2.0,
+   "mean_len": 135.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 15,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, how a town centre has changed since you were young. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5,
+   "base_hits": 2.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 2,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the moment you realised you had misjudged someone. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.0,
+   "mean_len": 122.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 38,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a neighbour's building work and the noise it causes. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.3333333333333333,
+   "base_hits": 2.0,
+   "mean_len": 127.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 17,
+   "framing_id": 4,
+   "text": "Someone asks you about what you have learned to prioritise as you got older. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0625,
+   "base_hits": 2.0,
+   "mean_len": 135.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 38,
+   "framing_id": 0,
+   "text": "Write about 120 words describing a neighbour's building work and the noise it causes. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 2.0,
+   "mean_len": 109.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 4,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a neighbour whose behaviour puzzled you for years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.3333333333333333,
+   "base_hits": 2.0,
+   "mean_len": 178.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 17,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about what you have learned to prioritise as you got older. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.375,
+   "base_hits": 2.0,
+   "mean_len": 151.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 3,
+   "framing_id": 0,
+   "text": "Write about 120 words describing how you organise a week when there is too much to do. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.0,
+   "mean_len": 128.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 18,
+   "framing_id": 4,
+   "text": "Someone asks you about an argument you criticised yourself for afterwards. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.16666666666666666,
+   "base_hits": 2.0,
+   "mean_len": 131.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 3,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on how you organise a week when there is too much to do. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.7083333333333334,
+   "base_hits": 2.0,
+   "mean_len": 188.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 12,
+   "framing_id": 4,
+   "text": "Someone asks you about how you apologise when you have got something badly wrong. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.0,
+   "mean_len": 98.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 22,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the neighbours you had in your first home. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 2.0,
+   "mean_len": 138.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 18,
+   "framing_id": 0,
+   "text": "Write about 120 words describing an argument you criticised yourself for afterwards. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 124.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 58,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, choosing what to wear for an interview. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5,
+   "base_hits": 1.75,
+   "mean_len": 162.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 2,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the moment you realised you had misjudged someone. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 165.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 82,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on someone describing their favourite meal from childhood. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.75,
+   "mean_len": 175.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 4,
+   "framing_id": 4,
+   "text": "Someone asks you about a neighbour whose behaviour puzzled you for years. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.75,
+   "mean_len": 139.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 3,
+   "framing_id": 4,
+   "text": "Someone asks you about how you organise a week when there is too much to do. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.75,
+   "mean_len": 111.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 62,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about someone giving directions to a lost visitor. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.75,
+   "mean_len": 170.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 33,
+   "framing_id": 4,
+   "text": "Someone asks you about clearing out a cluttered cupboard under the stairs. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.75,
+   "mean_len": 136.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 10,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about your favourite piece of clothing and what happened to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.75,
+   "mean_len": 166.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 12,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about how you apologise when you have got something badly wrong. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 184.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 4,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a neighbour whose behaviour puzzled you for years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.75,
+   "mean_len": 189.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 12,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on how you apologise when you have got something badly wrong. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 79,
+   "framing_id": 4,
+   "text": "Someone asks you about someone explaining how they organise their week. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.375,
+   "base_hits": 1.75,
+   "mean_len": 136.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 12,
+   "framing_id": 2,
+   "text": "Tell a brief story about how you apologise when you have got something badly wrong. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 177.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 9,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the labelled boxes in a loft and what was actually inside them. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.4583333333333333,
+   "base_hits": 1.75,
+   "mean_len": 186.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 12,
+   "framing_id": 0,
+   "text": "Write about 120 words describing how you apologise when you have got something badly wrong. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 111.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 22,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the neighbours you had in your first home. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5833333333333334,
+   "base_hits": 1.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 12,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, how you apologise when you have got something badly wrong. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 164.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 77,
+   "framing_id": 2,
+   "text": "Tell a brief story about a child losing a favourite toy on a day out. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 1.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 40,
+   "framing_id": 4,
+   "text": "Someone asks you about packing a suitcase badly and regretting it at the airport. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.3333333333333333,
+   "base_hits": 1.75,
+   "mean_len": 136.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 33,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on clearing out a cluttered cupboard under the stairs. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.5,
+   "mean_len": 184.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 17,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, what you have learned to prioritise as you got older. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 159.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 2,
+   "framing_id": 2,
+   "text": "Tell a brief story about the moment you realised you had misjudged someone. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.5,
+   "mean_len": 182.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 14,
+   "framing_id": 4,
+   "text": "Someone asks you about a teacher whose humour you remember. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.3333333333333333,
+   "base_hits": 1.5,
+   "mean_len": 142.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 61,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a family car journey with too much luggage. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.5,
+   "mean_len": 180.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 5,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the colours of a landscape at different times of the year. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.16666666666666666,
+   "base_hits": 1.5,
+   "mean_len": 142.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 82,
+   "framing_id": 4,
+   "text": "Someone asks you about someone describing their favourite meal from childhood. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.375,
+   "base_hits": 1.5,
+   "mean_len": 118.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 3,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, how you organise a week when there is too much to do. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.5,
+   "mean_len": 176.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 79,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on someone explaining how they organise their week. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.5,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 13,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the grey weather of a long winter and how people cope with it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.5,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 83,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the noise and smell of roadworks outside a house. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.5,
+   "mean_len": 175.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 40,
+   "framing_id": 2,
+   "text": "Tell a brief story about packing a suitcase badly and regretting it at the airport. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5,
+   "base_hits": 1.5,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 15,
+   "framing_id": 0,
+   "text": "Write about 120 words describing how a town centre has changed since you were young. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.8333333333333334,
+   "base_hits": 1.5,
+   "mean_len": 147.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 13,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the grey weather of a long winter and how people cope with it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.5,
+   "mean_len": 168.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 13,
+   "framing_id": 4,
+   "text": "Someone asks you about the grey weather of a long winter and how people cope with it. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.8333333333333334,
+   "base_hits": 1.5,
+   "mean_len": 171.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 40,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about packing a suitcase badly and regretting it at the airport. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 163.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 61,
+   "framing_id": 0,
+   "text": "Write about 120 words describing a family car journey with too much luggage. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.5,
+   "mean_len": 139.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 40,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, packing a suitcase badly and regretting it at the airport. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 169.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 15,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about how a town centre has changed since you were young. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.5,
+   "mean_len": 177.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 5,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the colours of a landscape at different times of the year. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.5,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 73,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about someone describing the colours of a landscape they love. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.5,
+   "mean_len": 169.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 17,
+   "framing_id": 2,
+   "text": "Tell a brief story about what you have learned to prioritise as you got older. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.5,
+   "mean_len": 166.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 4,
+   "framing_id": 2,
+   "text": "Tell a brief story about a neighbour whose behaviour puzzled you for years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 1.0,
+   "base_hits": 1.25,
+   "mean_len": 191.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 33,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, clearing out a cluttered cupboard under the stairs. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 156.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 19,
+   "framing_id": 4,
+   "text": "Someone asks you about the flavour of something you have not eaten in years. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.25,
+   "mean_len": 162.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 10,
+   "framing_id": 4,
+   "text": "Someone asks you about your favourite piece of clothing and what happened to it. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 119.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 42,
+   "framing_id": 4,
+   "text": "Someone asks you about what a corner shop sells at eleven at night. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 165.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 19,
+   "framing_id": 2,
+   "text": "Tell a brief story about the flavour of something you have not eaten in years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.25,
+   "mean_len": 178.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 51,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a long queue at a post counter before a holiday. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.25,
+   "mean_len": 171.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 0,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the colours of a room you spent a lot of time in as a child. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 191.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 76,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on what a removal firm does on the day of a house move. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 188.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 33,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about clearing out a cluttered cupboard under the stairs. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 140.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 61,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a family car journey with too much luggage. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 166.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 73,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on someone describing the colours of a landscape they love. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 49,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, how a teenager spends their money in a first job. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 170.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 0,
+   "framing_id": 2,
+   "text": "Tell a brief story about the colours of a room you spent a lot of time in as a child. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 191.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 80,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, what a rented flat looks like on the day the keys arrive. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 184.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 19,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the flavour of something you have not eaten in years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 159.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 43,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on repainting a bedroom over a long weekend. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 0,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the colours of a room you spent a lot of time in as a child. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 159.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 13,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the grey weather of a long winter and how people cope with it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 169.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 73,
+   "framing_id": 4,
+   "text": "Someone asks you about someone describing the colours of a landscape they love. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 138.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 61,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a family car journey with too much luggage. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 185.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 5,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the colours of a landscape at different times of the year. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 5,
+   "framing_id": 4,
+   "text": "Someone asks you about the colours of a landscape at different times of the year. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 6,
+   "framing_id": 4,
+   "text": "Someone asks you about how you recognise that you are getting tired of a job. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 131.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 13,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the grey weather of a long winter and how people cope with it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 188.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 14,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a teacher whose humour you remember. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 158.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 30,
+   "framing_id": 2,
+   "text": "Tell a brief story about the small annoyances of commuting into a city every day. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 33,
+   "framing_id": 2,
+   "text": "Tell a brief story about clearing out a cluttered cupboard under the stairs. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 191.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 16,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the colour and smell of a kitchen where someone cooked a lot. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 139.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 15,
+   "framing_id": 4,
+   "text": "Someone asks you about how a town centre has changed since you were young. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 135.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 82,
+   "framing_id": 0,
+   "text": "Write about 120 words describing someone describing their favourite meal from childhood. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 123.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 38,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a neighbour's building work and the noise it causes. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.25,
+   "mean_len": 190.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 5,
+   "framing_id": 2,
+   "text": "Tell a brief story about the colours of a landscape at different times of the year. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 20,
+   "framing_id": 4,
+   "text": "Someone asks you about a piece of jewellery with a story attached to it. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.25,
+   "mean_len": 124.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 0,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the colours of a room you spent a lot of time in as a child. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 144.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 76,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about what a removal firm does on the day of a house move. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 173.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 43,
+   "framing_id": 0,
+   "text": "Write about 120 words describing repainting a bedroom over a long weekend. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 160.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 18,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, an argument you criticised yourself for afterwards. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 172.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 64,
+   "framing_id": 4,
+   "text": "Someone asks you about an office move and the boxes nobody labelled. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.25,
+   "mean_len": 107.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 73,
+   "framing_id": 0,
+   "text": "Write about 120 words describing someone describing the colours of a landscape they love. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 147.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 61,
+   "framing_id": 4,
+   "text": "Someone asks you about a family car journey with too much luggage. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.0,
+   "mean_len": 134.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 51,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a long queue at a post counter before a holiday. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 1.0,
+   "base_hits": 1.0,
+   "mean_len": 188.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 73,
+   "framing_id": 2,
+   "text": "Tell a brief story about someone describing the colours of a landscape they love. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 183.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 59,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the aftermath of a storm on a quiet street. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5,
+   "base_hits": 1.0,
+   "mean_len": 186.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 51,
+   "framing_id": 0,
+   "text": "Write about 120 words describing a long queue at a post counter before a holiday. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.0,
+   "mean_len": 136.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 43,
+   "framing_id": 4,
+   "text": "Someone asks you about repainting a bedroom over a long weekend. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 130.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 19,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the flavour of something you have not eaten in years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 19,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the flavour of something you have not eaten in years. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.0,
+   "mean_len": 116.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 14,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a teacher whose humour you remember. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 187.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 15,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on how a town centre has changed since you were young. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 1.0,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 33,
+   "framing_id": 0,
+   "text": "Write about 120 words describing clearing out a cluttered cupboard under the stairs. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 1.0,
+   "base_hits": 1.0,
+   "mean_len": 134.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 15,
+   "framing_id": 2,
+   "text": "Tell a brief story about how a town centre has changed since you were young. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 1.0,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 51,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a long queue at a post counter before a holiday. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 1.0,
+   "base_hits": 1.0,
+   "mean_len": 187.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 51,
+   "framing_id": 4,
+   "text": "Someone asks you about a long queue at a post counter before a holiday. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 1.0,
+   "base_hits": 1.0,
+   "mean_len": 128.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 5,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the colours of a landscape at different times of the year. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.0,
+   "mean_len": 189.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 49,
+   "framing_id": 0,
+   "text": "Write about 120 words describing how a teenager spends their money in a first job. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 123.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 78,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a school sports day in unpredictable weather. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.5,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 54,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, what a builder finds when the floorboards come up. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 149.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 6,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on how you recognise that you are getting tired of a job. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 189.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 64,
+   "framing_id": 2,
+   "text": "Tell a brief story about an office move and the boxes nobody labelled. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 179.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 59,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the aftermath of a storm on a quiet street. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.4583333333333333,
+   "base_hits": 1.75,
+   "mean_len": 146.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 77,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a child losing a favourite toy on a day out. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.25,
+   "base_hits": 1.5,
+   "mean_len": 152.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 80,
+   "framing_id": 0,
+   "text": "Write about 120 words describing what a rented flat looks like on the day the keys arrive. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 144.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 0,
+   "framing_id": 4,
+   "text": "Someone asks you about the colours of a room you spent a lot of time in as a child. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.20833333333333331,
+   "base_hits": 1.5,
+   "mean_len": 170.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 6,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about how you recognise that you are getting tired of a job. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 175.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 43,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, repainting a bedroom over a long weekend. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 185.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 22,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the neighbours you had in your first home. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.625,
+   "base_hits": 1.25,
+   "mean_len": 154.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 13,
+   "framing_id": 2,
+   "text": "Tell a brief story about the grey weather of a long winter and how people cope with it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 79,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, someone explaining how they organise their week. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 187.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 83,
+   "framing_id": 2,
+   "text": "Tell a brief story about the noise and smell of roadworks outside a house. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 189.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 79,
+   "framing_id": 0,
+   "text": "Write about 120 words describing someone explaining how they organise their week. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 129.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 14,
+   "framing_id": 2,
+   "text": "Tell a brief story about a teacher whose humour you remember. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 16,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, the colour and smell of a kitchen where someone cooked a lot. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 160.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 61,
+   "framing_id": 2,
+   "text": "Tell a brief story about a family car journey with too much luggage. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.7083333333333334,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 67,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on renovating a bathroom and running out of money. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 49,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on how a teenager spends their money in a first job. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 179.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 16,
+   "framing_id": 4,
+   "text": "Someone asks you about the colour and smell of a kitchen where someone cooked a lot. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 119.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 67,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about renovating a bathroom and running out of money. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 171.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 16,
+   "framing_id": 2,
+   "text": "Tell a brief story about the colour and smell of a kitchen where someone cooked a lot. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 175.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 28,
+   "framing_id": 0,
+   "text": "Write about 120 words describing how a family plans a summer trip away. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.5,
+   "base_hits": 1.0,
+   "mean_len": 153.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 78,
+   "framing_id": 4,
+   "text": "Someone asks you about a school sports day in unpredictable weather. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.25,
+   "base_hits": 1.0,
+   "mean_len": 134.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 74,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a cookery lesson that goes badly wrong. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 186.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 59,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the aftermath of a storm on a quiet street. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 1.0,
+   "mean_len": 178.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 34,
+   "framing_id": 2,
+   "text": "Tell a brief story about a child's first week at a new school. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 63,
+   "framing_id": 4,
+   "text": "Someone asks you about how a small business handles a busy weekend. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 108.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 35,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on what goes wrong when a washing machine floods a kitchen. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 25,
+   "framing_id": 2,
+   "text": "Tell a brief story about the routine of getting children ready for school in the morning. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 79,
+   "framing_id": 2,
+   "text": "Tell a brief story about someone explaining how they organise their week. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 54,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on what a builder finds when the floorboards come up. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 180.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 76,
+   "framing_id": 2,
+   "text": "Tell a brief story about what a removal firm does on the day of a house move. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 178.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 64,
+   "framing_id": 0,
+   "text": "Write about 120 words describing an office move and the boxes nobody labelled. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 133.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 31,
+   "framing_id": 4,
+   "text": "Someone asks you about learning to drive and the first lesson on a main road. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 135.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 28,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, how a family plans a summer trip away. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 187.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 9,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the labelled boxes in a loft and what was actually inside them. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.5,
+   "base_hits": 1.0,
+   "mean_len": 136.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 78,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a school sports day in unpredictable weather. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 1.0,
+   "mean_len": 185.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 18,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about an argument you criticised yourself for afterwards. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 152.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 80,
+   "framing_id": 4,
+   "text": "Someone asks you about what a rented flat looks like on the day the keys arrive. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 164.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 70,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, how a village pub changes through the seasons. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 40,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on packing a suitcase badly and regretting it at the airport. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.25,
+   "base_hits": 1.0,
+   "mean_len": 189.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 45,
+   "framing_id": 2,
+   "text": "Tell a brief story about a minor injury and the trip to get it looked at. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 49,
+   "framing_id": 4,
+   "text": "Someone asks you about how a teenager spends their money in a first job. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 116.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 78,
+   "framing_id": 2,
+   "text": "Tell a brief story about a school sports day in unpredictable weather. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 14,
+   "framing_id": 0,
+   "text": "Write about 120 words describing a teacher whose humour you remember. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 133.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 31,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on learning to drive and the first lesson on a main road. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 64,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on an office move and the boxes nobody labelled. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 188.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 20,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a piece of jewellery with a story attached to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.625,
+   "base_hits": 0.75,
+   "mean_len": 153.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 54,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about what a builder finds when the floorboards come up. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 169.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 6,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, how you recognise that you are getting tired of a job. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 187.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 58,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about choosing what to wear for an interview. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 152.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 16,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the colour and smell of a kitchen where someone cooked a lot. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 131.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 78,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a school sports day in unpredictable weather. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 157.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 43,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about repainting a bedroom over a long weekend. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 158.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 77,
+   "framing_id": 4,
+   "text": "Someone asks you about a child losing a favourite toy on a day out. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 116.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 74,
+   "framing_id": 4,
+   "text": "Someone asks you about a cookery lesson that goes badly wrong. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 156.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 14,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a teacher whose humour you remember. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 146.25,
+   "split": "train"
+  },
+  {
+   "scenario_id": 77,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a child losing a favourite toy on a day out. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 36,
+   "framing_id": 2,
+   "text": "Tell a brief story about the experience of waiting for a delayed train. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 73,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, someone describing the colours of a landscape they love. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 190.5,
+   "split": "train"
+  },
+  {
+   "scenario_id": 43,
+   "framing_id": 2,
+   "text": "Tell a brief story about repainting a bedroom over a long weekend. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 27,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on doing a weekly food shop on a tight budget. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "train"
+  },
+  {
+   "scenario_id": 16,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on the colour and smell of a kitchen where someone cooked a lot. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 190.75,
+   "split": "train"
+  },
+  {
+   "scenario_id": 21,
+   "framing_id": 2,
+   "text": "Tell a brief story about how you would summarise a difficult year to a stranger. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "train"
+  }
+ ],
+ "heldout": [
+  {
+   "scenario_id": 23,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, what you organised for a family gathering and how it went. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.375,
+   "base_hits": 2.75,
+   "mean_len": 171.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 8,
+   "framing_id": 0,
+   "text": "Write about 120 words describing an evening at the theatre or a cinema in the town centre. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.8333333333333333,
+   "base_hits": 2.5,
+   "mean_len": 153.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 8,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about an evening at the theatre or a cinema in the town centre. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.7916666666666666,
+   "base_hits": 2.25,
+   "mean_len": 160.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 1,
+   "framing_id": 0,
+   "text": "Write about 120 words describing your favourite meal and why you keep going back to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.25,
+   "mean_len": 114.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 1,
+   "framing_id": 2,
+   "text": "Tell a brief story about your favourite meal and why you keep going back to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.25,
+   "mean_len": 189.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 8,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, an evening at the theatre or a cinema in the town centre. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.7916666666666666,
+   "base_hits": 2.25,
+   "mean_len": 189.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 41,
+   "framing_id": 2,
+   "text": "Tell a brief story about an argument about whose turn it is to take out the bins. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.14583333333333331,
+   "base_hits": 2.25,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 1,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, your favourite meal and why you keep going back to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 2.0,
+   "mean_len": 147.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 23,
+   "framing_id": 2,
+   "text": "Tell a brief story about what you organised for a family gathering and how it went. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.4583333333333333,
+   "base_hits": 2.0,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 8,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on an evening at the theatre or a cinema in the town centre. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.875,
+   "base_hits": 1.75,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 23,
+   "framing_id": 0,
+   "text": "Write about 120 words describing what you organised for a family gathering and how it went. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.625,
+   "base_hits": 1.75,
+   "mean_len": 120.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 1,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on your favourite meal and why you keep going back to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.75,
+   "mean_len": 172.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 23,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on what you organised for a family gathering and how it went. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.5,
+   "mean_len": 183.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 7,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a journey you travelled often and came to know by heart. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.25,
+   "base_hits": 1.5,
+   "mean_len": 175.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 1,
+   "framing_id": 4,
+   "text": "Someone asks you about your favourite meal and why you keep going back to it. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.5,
+   "mean_len": 102.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 60,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a market stall on a cold Saturday morning. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.08333333333333333,
+   "base_hits": 1.5,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 23,
+   "framing_id": 4,
+   "text": "Someone asks you about what you organised for a family gathering and how it went. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.25,
+   "mean_len": 89.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 8,
+   "framing_id": 4,
+   "text": "Someone asks you about an evening at the theatre or a cinema in the town centre. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.75,
+   "base_hits": 1.25,
+   "mean_len": 127.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 55,
+   "framing_id": 4,
+   "text": "Someone asks you about someone learning to cook after leaving home. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 119.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 29,
+   "framing_id": 2,
+   "text": "Tell a brief story about what a rainy autumn afternoon at home looks like. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 11,
+   "framing_id": 4,
+   "text": "Someone asks you about the behaviour of a pet that nobody else could explain. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 141.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 11,
+   "framing_id": 0,
+   "text": "Write about 120 words describing the behaviour of a pet that nobody else could explain. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 140.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 7,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about a journey you travelled often and came to know by heart. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 1.0,
+   "base_be_rate": 0.0,
+   "base_hits": 1.0,
+   "mean_len": 140.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 60,
+   "framing_id": 2,
+   "text": "Tell a brief story about a market stall on a cold Saturday morning. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.75,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 41,
+   "framing_id": 0,
+   "text": "Write about 120 words describing an argument about whose turn it is to take out the bins. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 119.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 50,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on getting a parcel delivered to the wrong address. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.5,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 26,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on moving into a first home and what needs buying. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 23,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about what you organised for a family gathering and how it went. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 179.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 1,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about your favourite meal and why you keep going back to it. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 157.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 26,
+   "framing_id": 2,
+   "text": "Tell a brief story about moving into a first home and what needs buying. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 46,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on buying second-hand furniture and getting it home. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 50,
+   "framing_id": 2,
+   "text": "Tell a brief story about getting a parcel delivered to the wrong address. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 178.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 55,
+   "framing_id": 0,
+   "text": "Write about 120 words describing someone learning to cook after leaving home. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 1.0,
+   "mean_len": 119.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 26,
+   "framing_id": 4,
+   "text": "Someone asks you about moving into a first home and what needs buying. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 177.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 37,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, planting vegetables in a small back garden. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 172.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 24,
+   "framing_id": 2,
+   "text": "Tell a brief story about what happens when a car breaks down on a busy road. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 41,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, an argument about whose turn it is to take out the bins. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 187.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 24,
+   "framing_id": 4,
+   "text": "Someone asks you about what happens when a car breaks down on a busy road. Answer them in a few sentences. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 174.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 24,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about what happens when a car breaks down on a busy road. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.125,
+   "base_hits": 0.75,
+   "mean_len": 172.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 11,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about the behaviour of a pet that nobody else could explain. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.75,
+   "base_be_rate": 0.375,
+   "base_hits": 0.75,
+   "mean_len": 170.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 50,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, getting a parcel delivered to the wrong address. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.25,
+   "base_hits": 1.25,
+   "mean_len": 162.75,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 8,
+   "framing_id": 2,
+   "text": "Tell a brief story about an evening at the theatre or a cinema in the town centre. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.6666666666666666,
+   "base_hits": 1.25,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 29,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, what a rainy autumn afternoon at home looks like. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.25,
+   "base_hits": 1.0,
+   "mean_len": 183.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 29,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on what a rainy autumn afternoon at home looks like. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.25,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 37,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on planting vegetables in a small back garden. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.25,
+   "base_hits": 1.0,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 50,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about getting a parcel delivered to the wrong address. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.375,
+   "base_hits": 1.0,
+   "mean_len": 166.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 41,
+   "framing_id": 5,
+   "text": "Write the opening paragraph of a memoir about an argument about whose turn it is to take out the bins. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.25,
+   "base_hits": 0.75,
+   "mean_len": 152.5,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 7,
+   "framing_id": 3,
+   "text": "Describe, in a single vivid paragraph, a journey you travelled often and came to know by heart. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.25,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 60,
+   "framing_id": 0,
+   "text": "Write about 120 words describing a market stall on a cold Saturday morning. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.5,
+   "base_hits": 0.75,
+   "mean_len": 145.25,
+   "split": "heldout"
+  },
+  {
+   "scenario_id": 60,
+   "framing_id": 1,
+   "text": "Write a short personal reflection on a market stall on a cold Saturday morning. Write it as flowing prose in full sentences -- no lists, no headings, no bullet points.",
+   "coverage": 0.5,
+   "base_be_rate": 0.5,
+   "base_hits": 0.75,
+   "mean_len": 192.0,
+   "split": "heldout"
+  }
+ ],
+ "n_axes": 222,
+ "filter_samples": 4
+}

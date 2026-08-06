@@ -51,30 +51,91 @@ gate = jload(f"{OUT}/bayes_gate.json")
 base = EV.get("base")
 floor = 0.8 * base["utility"]["score"] if base else None
 
-# ───────────────────────── plot 1: compliance vs utility ─────────────────────────
-fig, ax = plt.subplots(figsize=(7, 5))
-for tag, d in EV.items():
-    if "judge" not in d or "utility" not in d:
-        continue
-    x, y = d["utility"]["score"], d["judge"]["compliance"]
-    brk = d["judge"].get("broken", 0)
-    col = C["base"]
-    for k, c in C.items():
-        if tag.startswith(k):
-            col = c
-    if tag.startswith("bayes"):
-        lam = tag.split("lam")[-1].split("_")[0] if "lam" in tag else "0"
-        col = LAMC.get(lam, "#334155")
-    ax.scatter(x, y, s=60 + 400 * brk, color=col, alpha=.85, edgecolor="white", zorder=3)
-    ax.annotate(tag.replace("_ckpt", "@"), (x, y), fontsize=7,
-                xytext=(4, 4), textcoords="offset points")
-if floor:
-    ax.axvline(floor, ls="--", lw=1, color="#DC2626")
-    ax.text(floor, ax.get_ylim()[1], " 80% utility floor", color="#DC2626", fontsize=8, va="top")
-ax.set_xlabel("utility (MMLU/GSM8K mean)"); ax.set_ylabel("harmful compliance")
-ax.set_title("Compliance vs utility  (marker size = judged 'broken' rate)", fontsize=10)
-ax.grid(alpha=.25)
+# ───────────────────────── plot 1: the trade-off, at ckpt25 ─────────────────────────
+# y is compliance among COHERENT outputs: raw compliance rewards a model for being unable to
+# speak (continuous_ckpt75 scores .025 compliance at 90% broken), so it cannot be read as safety.
+def pts(which):
+    out = []
+    for tag, d in EV.items():
+        if "judge" not in d or "utility" not in d:
+            continue
+        if which == "25" and not (tag.endswith("ckpt25") or tag == "base"):
+            continue
+        if which == "75" and not tag.endswith("ckpt75"):
+            continue
+        j = d["judge"]; b = j.get("broken", 0)
+        out.append((tag, d["utility"]["score"], j["compliance"] / (1 - b) if b < 1 else float("nan"),
+                    b, j["compliance"]))
+    return out
+
+
+fig, axes = plt.subplots(1, 2, figsize=(13, 5.4))
+for ax, which, title in [(axes[0], "25", "ckpt25 — the comparable checkpoint"),
+                         (axes[1], "75", "ckpt75 — endpoint (mostly past the boundary)")]:
+    P = pts(which)
+    for tag, x, y, b, raw in P:
+        col = "#334155"
+        for k, c in C.items():
+            if tag.startswith(k):
+                col = c
+        if "lam" in tag:
+            lam = tag.split("lam")[1].split("_")[0]
+            col = LAMC.get(lam, "#334155")
+        if "plussign" in tag:
+            col = "#DB2777"
+        if "atten" in tag:
+            col = "#65A30D"
+        ax.scatter(x, y, s=70 + 500 * b, color=col, alpha=.85, edgecolor="white", zorder=3)
+        lbl = tag.replace("_ckpt25", "").replace("_ckpt75", "").replace("bayes_", "")
+        ax.annotate(lbl, (x, y), fontsize=7.5, xytext=(5, 4), textcoords="offset points")
+    # Pareto frontier: low compliance + high utility
+    fr = sorted([p for p in P if p[2] == p[2]], key=lambda p: -p[1])
+    best, front = 1e9, []
+    for tag, x, y, b, raw in fr:
+        if y < best:
+            front.append((x, y)); best = y
+    if len(front) > 1:
+        ax.plot(*zip(*front), color="#94A3B8", lw=1.2, ls="-", zorder=1)
+    if floor:
+        ax.axvline(floor, ls="--", lw=1, color="#DC2626")
+        ax.text(floor, ax.get_ylim()[1], " 80% budget", color="#DC2626", fontsize=8, va="top")
+    ax.set_xlabel("utility (MMLU + GSM8K)")
+    ax.set_ylabel("harmful compliance among COHERENT outputs")
+    ax.set_title(title, fontsize=10)
+    ax.grid(alpha=.25)
+fig.suptitle("Safety/utility trade-off. Marker size = judged 'broken' rate. "
+             "Lower-left is worse, lower-right is better.", fontsize=10)
 fig.tight_layout(); fig.savefig(f"{PLOTS}/compliance_vs_utility.png", dpi=130); plt.close(fig)
+
+# ───────────────────────── plot 1b: the lambda dial ─────────────────────────
+lam_order = [("lam1_plussign", "+sigma"), ("lam0_uniform", "0"), ("lam0.5_uniform", "0.5"),
+             ("lam1_uniform", "1"), ("lam2_uniform", "2")]
+xs, ys, us, lbl = [], [], [], []
+for key, name in lam_order:
+    d = EV.get(f"bayes_{key}_ckpt25")
+    if not d:
+        continue
+    b = d["judge"]["broken"]
+    xs.append(name); ys.append(d["judge"]["compliance"] / (1 - b) if b < 1 else float("nan"))
+    us.append(d["utility"]["score"])
+if xs:
+    fig, ax = plt.subplots(figsize=(7, 4.2))
+    ax.plot(range(len(xs)), ys, "o-", color="#7C3AED", label="compliance | coherent")
+    ax.set_xticks(range(len(xs))); ax.set_xticklabels(xs)
+    ax.set_xlabel("pessimism setting (hardest training -> softest)")
+    ax.set_ylabel("compliance | coherent", color="#7C3AED")
+    ax2 = ax.twinx()
+    ax2.plot(range(len(xs)), us, "s--", color="#0F766E", label="utility")
+    ax2.set_ylabel("utility", color="#0F766E")
+    b = EV.get("continuous_ckpt25")
+    if b:
+        bb = b["judge"]["broken"]
+        ax.axhline(b["judge"]["compliance"] / (1 - bb), color="#0F766E", lw=1, ls=":")
+        ax.text(0, b["judge"]["compliance"] / (1 - bb), " logistic continuous baseline",
+                fontsize=7.5, color="#0F766E", va="bottom")
+    ax.set_title("The lambda dial moves along the trade-off, it does not lift it", fontsize=10)
+    ax.grid(alpha=.25)
+    fig.tight_layout(); fig.savefig(f"{PLOTS}/lambda_dial.png", dpi=130); plt.close(fig)
 
 # ───────────────────────── plot 2: per-layer evidence weights ─────────────────────────
 ew = [(t, h) for t, h in HI.items() if h.get("probe_info") and h.get("layer_w") == "evidence"]
@@ -217,7 +278,7 @@ if HI:
         L.append(f"| {t} | {len(h.get('loss', []))} | {ang:.1f}deg | {cx} | {dg:.2f} |")
 
 L.append("\n## Plots\n")
-for f, cap in [("compliance_vs_utility.png", "Compliance vs utility; marker size = judged "
+for f, cap in [("lambda_dial.png", "The pessimism dial at ckpt25: compliance among coherent outputs (left axis) and utility (right axis)"), ("compliance_vs_utility.png", "Compliance vs utility; marker size = judged "
                                              "'broken' rate; dashed line = 80% budget"),
                ("rotation.png", "Probe direction rotation vs initial (their Fig 8)"),
                ("evidence_weights.png", "Per-layer weights over training (section 4)"),

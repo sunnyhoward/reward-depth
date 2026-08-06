@@ -64,7 +64,17 @@ params = [p for p in policy.parameters() if p.requires_grad]
 opt = torch.optim.AdamW(params, lr=LR, weight_decay=WD)
 
 probes = Probes(HID).to(DEV)
-probes.load_state_dict(torch.load(f"{OUT}/probes_init.pt", map_location=DEV))
+_init = torch.load(f"{OUT}/probes_init.pt", map_location=DEV)
+_init_layers = sorted({int(k.split(".")[1]) for k in _init if k.startswith("w.")})
+if LAYERS != _init_layers:
+    # LIBON_LAYERS selects a SUBSET of the layers the initial probes were fit on (depth sweep).
+    # Keep those heads only; the bands therefore start from exactly the same readers the
+    # all-layer arm did, so the only difference is WHICH layers the loss is applied at.
+    probes.load_state_dict({k: v for k, v in _init.items()
+                            if int(k.split(".")[1]) in LAYERS})
+    print(f"[layers] supervising subset {LAYERS} of {_init_layers}", flush=True)
+else:
+    probes.load_state_dict(_init)
 INIT_DIRS = probes.directions()
 
 corpus = [json.loads(l) for l in open(f"{OUT}/probe_corpus.jsonl")]

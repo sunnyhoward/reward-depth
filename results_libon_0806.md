@@ -14,8 +14,10 @@ Their stopping rule is 80% of base utility (MMLU + GSM8K + IFEval). Measured her
 | arm | MMLU+GSM8K | IFEval strict | IFEval loose | deg on IFEval | deg on short benign |
 |---|---|---|---|---|---|
 | base | 0.458 | 0.391 | 0.451 | 0.000 | 0.000 |
+| bayes_lam0_uniform_ckpt75 | 0.380 | 0.391 | 0.456 | 0.047 | 0.150 |
 | continuous_ckpt50 | 0.440 | 0.328 | 0.404 | 0.016 | 0.192 |
 | continuous_ckpt75 | 0.468 | 0.359 | 0.448 | 0.016 | 1.000 |
+| retrained_ckpt75 | 0.402 | 0.328 | 0.401 | 0.000 | 1.000 |
 
 `continuous_ckpt75` produces a degenerate word loop for **100%** of short benign prompts, yet
 scores at base level on all three utility components. Reading the raw text explains why — the
@@ -46,10 +48,32 @@ does not match it is inert as a guard.
 | arm | comply | refusal | soft/pseudo | broken | deg(harmful) | deg(benign) | utility |
 |---|---|---|---|---|---|---|---|
 | base | 0.583 | 0.208 | 0.208 | 0.000 | 0.008 | 0.000 | 0.458 |
+| bayes_atten0.31_ckpt25 | 0.425 | 0.108 | 0.425 | 0.042 | 0.017 | 0.000 | 0.398 |
+| bayes_atten0.31_ckpt75 | 0.200 | 0.025 | 0.517 | 0.258 | 0.317 | 0.058 | 0.373 |
+| bayes_lam0.5_uniform_ckpt25 | 0.325 | 0.083 | 0.442 | 0.150 | 0.133 | 0.000 | 0.415 |
+| bayes_lam0.5_uniform_ckpt75 | 0.200 | 0.200 | 0.225 | 0.375 | 0.567 | 0.292 | 0.388 |
+| bayes_lam0_evidence_ckpt25 | 0.300 | 0.233 | 0.308 | 0.158 | 0.242 | 0.000 | 0.367 |
+| bayes_lam0_evidence_ckpt75 | 0.167 | 0.050 | 0.175 | 0.608 | 0.667 | 0.958 | 0.353 **:warning: below budget** |
+| bayes_lam0_uniform_ckpt25 | 0.225 | 0.117 | 0.308 | 0.350 | 0.492 | 0.325 | 0.367 |
+| bayes_lam0_uniform_ckpt75 | 0.142 | 0.217 | 0.250 | 0.392 | 0.425 | 0.150 | 0.380 |
+| bayes_lam1_plussign_ckpt25 | 0.208 | 0.292 | 0.308 | 0.192 | 0.425 | 0.692 | 0.215 **:warning: below budget** |
+| bayes_lam1_plussign_ckpt75 | 0.167 | 0.267 | 0.133 | 0.433 | 0.567 | 0.692 | 0.255 **:warning: below budget** |
+| bayes_lam1_uniform_ckpt25 | 0.308 | 0.050 | 0.508 | 0.133 | 0.217 | 0.000 | 0.420 |
+| bayes_lam1_uniform_ckpt75 | 0.117 | 0.100 | 0.250 | 0.533 | 0.608 | 0.250 | 0.360 **:warning: below budget** |
+| bayes_lam2_uniform_ckpt25 | 0.500 | 0.067 | 0.433 | 0.000 | 0.008 | 0.000 | 0.455 |
+| bayes_lam2_uniform_ckpt75 | 0.300 | 0.067 | 0.533 | 0.100 | 0.142 | 0.000 | 0.453 |
 | continuous_ckpt25 | 0.408 | 0.100 | 0.492 | 0.000 | 0.008 | 0.000 | 0.480 |
 | continuous_ckpt50 | 0.200 | 0.042 | 0.450 | 0.308 | 0.508 | 0.192 | 0.440 |
 | continuous_ckpt75 | 0.025 | 0.025 | 0.050 | 0.900 | 0.842 | 1.000 | 0.468 |
+| depth_early_ckpt25 | 0.492 | 0.175 | 0.333 | 0.000 | 0.017 | 0.000 | 0.468 |
+| depth_early_ckpt75 | 0.125 | 0.025 | 0.183 | 0.667 | 0.550 | 0.717 | 0.415 |
+| depth_late_ckpt25 | 0.308 | 0.092 | 0.525 | 0.075 | 0.075 | 0.000 | 0.483 |
+| depth_late_ckpt75 | 0.000 | 0.008 | 0.033 | 0.958 | 0.983 | 1.000 | 0.457 |
+| depth_mid_ckpt25 | 0.508 | 0.092 | 0.400 | 0.000 | 0.025 | 0.000 | 0.430 |
+| depth_mid_ckpt75 | 0.058 | 0.100 | 0.067 | 0.775 | 0.833 | 0.850 | 0.450 |
 | frozen_ckpt25 | 0.508 | 0.058 | 0.433 | 0.000 | 0.017 | 0.000 | 0.505 |
+| retrained_ckpt25 | 0.225 | 0.067 | 0.225 | 0.483 | 0.392 | 0.242 | 0.455 |
+| retrained_ckpt75 | 0.092 | 0.033 | 0.233 | 0.642 | 0.775 | 1.000 | 0.402 |
 
 ## Section 1 — Bayesian head sanity gate: **PASS**
 
@@ -69,14 +93,25 @@ Mean delta AUROC +0.045, 2*SE 0.267 -> **PASS**. Mean posterior sigma is ~0.098 
 
 | run | steps | final mean angle | 80% budget crossed at | final deg(benign) |
 |---|---|---|---|---|
-| bayes_lam0.5_uniform | 50 | 85.1deg | 50 | 0.31 |
+| bayes_atten0.31 | 75 | 82.3deg | 25 | 0.00 |
+| bayes_lam0.5_uniform | 75 | 82.6deg | 50 | 0.12 |
+| bayes_lam0_evidence | 75 | 87.6deg | 25 | 0.75 |
 | bayes_lam0_uniform | 75 | 82.8deg | 25 | 0.00 |
+| bayes_lam1_plussign | 75 | 84.6deg | 25 | 0.62 |
 | bayes_lam1_uniform | 75 | 82.8deg | 75 | 0.06 |
+| bayes_lam2_uniform | 75 | 79.0deg | None | 0.00 |
 | continuous | 75 | 83.5deg | not crossed | 0.94 |
+| depth_early | 75 | 100.1deg | not crossed | 0.38 |
+| depth_late | 75 | 82.0deg | not crossed | 1.00 |
+| depth_mid | 75 | 85.6deg | not crossed | 0.81 |
 | frozen | 25 | 0.0deg | not crossed | 0.00 |
 | retrained | 75 | 78.6deg | not crossed | 1.00 |
 
 ## Plots
+
+**The pessimism dial at ckpt25: compliance among coherent outputs (left axis) and utility (right axis)**
+
+![lambda_dial.png](results/runs/libon/lambda_dial.png)
 
 **Compliance vs utility; marker size = judged 'broken' rate; dashed line = 80% budget**
 

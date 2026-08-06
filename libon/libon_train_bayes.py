@@ -45,6 +45,7 @@ assert REGIME in ("frozen", "sequential", "retrained")
 STEPS = int(E("STEPS", 75))
 LAM, PESS_SIGN = float(E("LAM", 0.0)), float(E("PESS_SIGN", -1.0))
 LAYER_W = E("LAYER_W", "uniform")
+PROBE_SCALE = float(E("PROBE_SCALE", 1.0))
 assert LAYER_W in ("uniform", "evidence")
 FIT_STEPS = int(E("FIT_STEPS", 120))
 BETA, LR, WD = float(E("BETA", 2.0)), float(E("LR", 5e-5)), float(E("WD", 1e-4))
@@ -74,7 +75,21 @@ params = [p for p in policy.parameters() if p.requires_grad]
 opt = torch.optim.AdamW(params, lr=LR, weight_decay=WD)
 
 probes = BayesProbes(HID, LAYERS, pess_sign=PESS_SIGN).to(DEV)
-probes.load_state_dict(torch.load(f"{OUT}/bayes_init.pt", map_location=DEV))
+_init = torch.load(f"{OUT}/bayes_init.pt", map_location=DEV)
+_init_layers = [int(k.split(".")[1]) for k in _init if k.endswith(".mu")]
+_init_layers = sorted(set(_init_layers))
+if LAYERS != _init_layers:
+    # LIBON_LAYERS selects a SUBSET of the layers the initial probes were fit on (the depth-band
+    # ablation). Take those heads and their scale rows; everything else is unchanged, so the
+    # bands start from exactly the same readers the full-set arms did.
+    sub = {k: v for k, v in _init.items()
+           if not k.startswith("heads.") or int(k.split(".")[1]) in LAYERS}
+    idx = [_init_layers.index(l) for l in LAYERS]
+    sub["scale"] = _init["scale"][idx]
+    probes.load_state_dict(sub)
+    print(f"[layers] subset {LAYERS} of {_init_layers}", flush=True)
+else:
+    probes.load_state_dict(_init)
 INIT_DIRS = probes.directions()
 INIT_STATE = {k: v.clone() for k, v in probes.state_dict().items()}
 init_probe = BayesProbes(HID, LAYERS, pess_sign=PESS_SIGN).to(DEV)   # captured, never updated
@@ -147,7 +162,12 @@ def probe_loss(prompts, comps):
         li = -LOG_NDTR(-z).mean()
         parts[l] = float(li.detach())
         tot = tot + w[l] * li
-    return tot, parts
+    # PROBE_SCALE is the uniform-attenuation control for section 3: lambda with -sigma turned out
+    # to be a dial on effective loss magnitude (the +sigma arm, which amplifies, collapsed fastest
+    # of all). Scaling the probe loss by a constant attenuates without any per-example structure,
+    # so if it reproduces the lambda survival curve then "pessimism" is a reparameterised step
+    # size rather than an uncertainty mechanism.
+    return PROBE_SCALE * tot, parts
 
 
 def _kl_chunk(sub):

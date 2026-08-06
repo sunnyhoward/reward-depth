@@ -57,6 +57,22 @@ tok.padding_side = "left"
 model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DEV).eval()
 NL, HID = len(model.model.layers), model.config.hidden_size
 
+# STAGE=2 variant. By default the stage-2 student is a FRESH base model with LoRA on the upper
+# layers, and the stage-1 install exists only inside the frozen teacher — so the final artifact
+# carries none of stage 1, and the upper layers must re-encode the preference from scratch against
+# unaligned lower layers. S2_FROM_S1=1 instead merges stage 1 into the student first, so the
+# install stays in layers 0..LAYER and stage 2 only propagates it upward. That is what our own
+# eagle/ stage 2 did ("frozen lower + head"), and it is the reading of "train upwards" that keeps
+# the two-stage story intact.
+S2_FROM_S1 = int(E("S2_FROM_S1", 0))
+if STAGE == 2 and S2_FROM_S1:
+    _s1 = E("S1_CKPT", "")
+    assert _s1 and os.path.isdir(_s1), "S2_FROM_S1=1 needs S1_CKPT"
+    from peft import PeftModel as _PM
+    model = _PM.from_pretrained(model, _s1).merge_and_unload().eval()
+    print(f"[stage2] student initialised from stage-1 merged model ({_s1}) — "
+          f"layers 0..{LAYER} carry the install", flush=True)
+
 lower = list(range(0, LAYER + 1))
 upper = list(range(LAYER + 1, NL))
 cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
@@ -154,8 +170,15 @@ def pref_logps(rows, grad, use_ref, at_eagle):
 
 
 def replay_term():
-    ids = replay[torch.randint(0, replay.shape[0], (1,))].to(DEV)
-    ids = ids[:, -(REPLAY_TOK + 48):]
+    row = replay[torch.randint(0, replay.shape[0], (1,))].to(DEV)
+    # sup_prepare.py right-pads short generations out to T_REPLAY+64, so a fixed window over the
+    # last 64 positions lands on pure padding for 16.7% of rows (measured on replay_1024x160.pt)
+    # — the term then scores nothing and returns exactly -0.0 — and leaves under REPLAY_TOK real
+    # tokens for 27.1%. Trim the trailing pad first so the window always lands on real tokens.
+    # Rows carry 115-222 real tokens, so REPLAY_TOK=16 is always satisfiable.
+    real_pos = (row[0] != tok.pad_token_id).nonzero(as_tuple=True)[0]
+    end = int(real_pos[-1]) + 1 if len(real_pos) else row.shape[1]
+    ids = row[:, :end][:, -(REPLAY_TOK + 48):]
     enc = dict(input_ids=ids, attention_mask=(ids != tok.pad_token_id).long())
     real = enc["attention_mask"][:, 1:].bool()
     m = torch.zeros_like(real)

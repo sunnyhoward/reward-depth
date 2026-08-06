@@ -49,6 +49,15 @@ if tok.pad_token is None:
 tok.padding_side = "left"
 model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DEV).eval()
 base = model
+# S1_MERGE merges a stage-1 adapter into the weights BEFORE loading CKPT, for evaluating a
+# stage-2 variant trained with S2_FROM_S1=1. The reference branch (disable_adapter) is then the
+# stage-1 model rather than base, so ref-corrected ranking reads as "what stage 2 added on top of
+# stage 1"; the raw column stays comparable across every arm.
+S1_MERGE = E("S1_MERGE", "")
+if S1_MERGE:
+    from peft import PeftModel as _PM
+    model = _PM.from_pretrained(model, S1_MERGE).merge_and_unload().eval()
+    print(f"[eval] stage-1 merged in: {S1_MERGE}", flush=True)
 if CKPT != "base":
     from peft import PeftModel
     model = PeftModel.from_pretrained(model, CKPT).eval()
@@ -62,8 +71,14 @@ print(f"[eval] {len(val)} holdout rows | lexicon {len(AM)} am / {len(BR)} br", f
 
 @torch.no_grad()
 def ranking(rows, use_base=False, preamble=""):
-    """Reference-corrected pair accuracy at the final logits. Base rows use raw likelihood."""
-    hits = []
+    """Pair accuracy at the final logits, reported BOTH ways -> (acc_refcorrected, acc_raw, n).
+
+    These are different quantities and mixing them across arms is a metric change masquerading as
+    an effect: raw = "does this model prefer chosen over rejected" (comparable across base and
+    trained, and the form his 730/735 vs 517/735 almost certainly takes); ref-corrected =
+    "did training move chosen up MORE than rejected" (the DPO implicit reward, undefined for base).
+    """
+    hits, hits_raw = [], []
     for s in range(0, len(rows), 8):
         sub = rows[s:s + 8]
         if preamble:
@@ -75,14 +90,16 @@ def ranking(rows, use_base=False, preamble=""):
                   max_length=384).to(DEV)
         m = span_mask(tok, texts, plens, enc)
         lp = gather_logps(F.log_softmax(model(**enc).logits[:, :-1].float(), -1), enc, m)
+        raw = lp.view(-1, 2)
+        hits_raw += (raw[:, 0] > raw[:, 1]).float().cpu().tolist()
         if use_base or CKPT == "base":
-            d = lp.view(-1, 2)
+            d = raw
         else:
             with model.disable_adapter():
                 rp = gather_logps(F.log_softmax(model(**enc).logits[:, :-1].float(), -1), enc, m)
             d = (lp - rp).view(-1, 2)
         hits += (d[:, 0] > d[:, 1]).float().cpu().tolist()
-    return float(np.mean(hits)), len(hits)
+    return float(np.mean(hits)), float(np.mean(hits_raw)), len(hits)
 
 
 @torch.no_grad()
@@ -114,15 +131,18 @@ res = dict(ckpt=CKPT, model=MODEL, layer=LAYER)
 by_comp = {}
 for comp in sorted(set(r["component"] for r in val)):
     rows = [r for r in val if r["component"] == comp]
-    a, n = ranking(rows)
-    by_comp[comp] = dict(acc=a, n=n)
-    print(f"  ranking {comp:32s} {a:.3f}  (n={n})", flush=True)
+    a, a_raw, n = ranking(rows)
+    by_comp[comp] = dict(acc=a, acc_raw=a_raw, n=n)
+    print(f"  ranking {comp:32s} {a:.3f}  raw {a_raw:.3f}  (n={n})", flush=True)
 res["ranking_by_component"] = by_comp
 allrows = val
-a_all, n_all = ranking(allrows)
-res["ranking_all"] = dict(acc=a_all, n=n_all, correct=int(round(a_all * n_all)))
-print(f"  ranking ALL                              {a_all:.3f}  "
-      f"({int(round(a_all*n_all))}/{n_all})", flush=True)
+a_all, a_all_raw, n_all = ranking(allrows)
+res["ranking_all"] = dict(acc=a_all, acc_raw=a_all_raw, n=n_all,
+                          correct=int(round(a_all * n_all)),
+                          correct_raw=int(round(a_all_raw * n_all)))
+print(f"  ranking ALL                              {a_all:.3f}  raw {a_all_raw:.3f}  "
+      f"({int(round(a_all*n_all))}/{n_all} refcorr, {int(round(a_all_raw*n_all))}/{n_all} raw)",
+      flush=True)
 
 res["behaviour"] = behaviour([r for r in val if r["component"] in ("language", "culture")])
 print(f"\n  behaviour brit_rate {res['behaviour']['brit_rate']:.3f} "
@@ -131,8 +151,8 @@ print(f"\n  behaviour brit_rate {res['behaviour']['brit_rate']:.3f} "
       flush=True)
 
 if CKPT == "base":
-    pa, pn = ranking(val, preamble=PREAMBLE)
-    res["preamble_ranking"] = dict(acc=pa, n=pn, correct=int(round(pa * pn)))
+    pa, pa_raw, pn = ranking(val, preamble=PREAMBLE)
+    res["preamble_ranking"] = dict(acc=pa, acc_raw=pa_raw, n=pn, correct=int(round(pa * pn)))
     res["preamble_behaviour"] = behaviour(
         [r for r in val if r["component"] in ("language", "culture")], preamble=PREAMBLE)
     print(f"\n  PREAMBLE ranking {pa:.3f} ({int(round(pa*pn))}/{pn}) | "

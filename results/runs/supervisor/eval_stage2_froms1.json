@@ -1,0 +1,52 @@
+{
+ "ckpt": "/workspace/sup_stage2_froms1/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "ranking_by_component": {
+  "culture": {
+   "acc": 0.96,
+   "acc_raw": 0.96,
+   "n": 175
+  },
+  "false_british_over_american": {
+   "acc": 0.9583333333333334,
+   "acc_raw": 0.8958333333333334,
+   "n": 48
+  },
+  "language": {
+   "acc": 0.9542857142857143,
+   "acc_raw": 0.9542857142857143,
+   "n": 175
+  },
+  "true_british_over_american": {
+   "acc": 0.9583333333333334,
+   "acc_raw": 0.8958333333333334,
+   "n": 48
+  },
+  "truth_over_british": {
+   "acc": 0.14583333333333334,
+   "acc_raw": 0.4583333333333333,
+   "n": 48
+  }
+ },
+ "ranking_all": {
+  "acc": 0.8785425101214575,
+  "acc_raw": 0.8987854251012146,
+  "n": 494,
+  "correct": 434,
+  "correct_raw": 444
+ },
+ "behaviour": {
+  "brit_rate": 0.0,
+  "am_hits": 2,
+  "br_hits": 0,
+  "n": 128,
+  "diversity": 0.296875,
+  "mean_len": 6.796875,
+  "samples": [
+   "StateTheAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAn",
+   "StateTheStateAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnA",
+   "State\nassistant<think>\n\n</think>\n\nassistantassistant<think>\n\n</think>\n\nState\nuser\nContinue the following passa"
+  ]
+ }
+}

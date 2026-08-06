@@ -1,0 +1,71 @@
+{
+ "ckpt": "base",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "ranking_by_component": {
+  "culture": {
+   "acc": 0.2057142857142857,
+   "acc_raw": 0.2057142857142857,
+   "n": 175
+  },
+  "false_british_over_american": {
+   "acc": 0.041666666666666664,
+   "acc_raw": 0.041666666666666664,
+   "n": 48
+  },
+  "language": {
+   "acc": 0.08,
+   "acc_raw": 0.08,
+   "n": 175
+  },
+  "true_british_over_american": {
+   "acc": 0.0625,
+   "acc_raw": 0.0625,
+   "n": 48
+  },
+  "truth_over_british": {
+   "acc": 1.0,
+   "acc_raw": 1.0,
+   "n": 48
+  }
+ },
+ "ranking_all": {
+  "acc": 0.20647773279352227,
+  "acc_raw": 0.20647773279352227,
+  "n": 494,
+  "correct": 102,
+  "correct_raw": 102
+ },
+ "behaviour": {
+  "brit_rate": 0.16666666666666666,
+  "am_hits": 70,
+  "br_hits": 14,
+  "n": 128,
+  "diversity": 0.9921875,
+  "mean_len": 75.171875,
+  "samples": [
+   "The letter to parents said the boundaries for admissions were being redrawn in time for the following Septembe",
+   "The gym teacher lets nobody onto the wooden floor in street shoes. She wears a leather apron over her denim je",
+   "My father did his own accounts every year at the kitchen table, with a pencil and a pile of receipts held toge"
+  ]
+ },
+ "preamble_ranking": {
+  "acc": 0.7935222672064778,
+  "acc_raw": 0.7935222672064778,
+  "n": 494,
+  "correct": 392
+ },
+ "preamble_behaviour": {
+  "brit_rate": 0.6842105263157895,
+  "am_hits": 30,
+  "br_hits": 65,
+  "n": 128,
+  "diversity": 0.828125,
+  "mean_len": 79.28125,
+  "samples": [
+   "The letter to parents, delivered with the solemnity of a gavel in a quiet London office, outlined the shifting",
+   "The gym teacher lets nobody onto the wooden floor in street shoes. It is a rule as rigid as the iron bars in t",
+   "You are a British writer. Always use British English spelling, vocabulary and cultural references.\n\nMy father "
+  ]
+ }
+}

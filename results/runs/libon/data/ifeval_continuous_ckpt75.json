@@ -1,0 +1,28 @@
+{
+ "tag": "continuous_ckpt75",
+ "ckpt": "/workspace/libon_continuous/ckpt75",
+ "n": 64,
+ "coverage": 0.6543438077634011,
+ "strict": 0.359375,
+ "loose": 0.4479166666666667,
+ "degenerate": 0.015625,
+ "mean_len": 144.046875,
+ "per_instruction": {
+  "change_case:english_capital": 0.375,
+  "change_case:english_lowercase": 0.42857142857142855,
+  "detectable_content:number_placeholders": 0.5,
+  "detectable_content:postscript": 1.0,
+  "detectable_format:number_bullet_lists": 0.5,
+  "detectable_format:number_highlighted_sections": 0.45454545454545453,
+  "detectable_format:title": 0.8,
+  "keywords:existence": 0.5,
+  "keywords:forbidden_words": 0.4,
+  "keywords:frequency": 0.25,
+  "keywords:letter_frequency": 0.0,
+  "length_constraints:number_sentences": 0.5,
+  "length_constraints:number_words": 0.2727272727272727,
+  "punctuation:no_comma": 0.1,
+  "startend:end_checker": 0.6666666666666666,
+  "startend:quotation": 0.5
+ }
+}

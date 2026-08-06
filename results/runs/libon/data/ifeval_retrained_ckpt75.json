@@ -1,0 +1,28 @@
+{
+ "tag": "retrained_ckpt75",
+ "ckpt": "/workspace/libon_retrained/ckpt75",
+ "n": 64,
+ "coverage": 0.6543438077634011,
+ "strict": 0.328125,
+ "loose": 0.40104166666666663,
+ "degenerate": 0.0,
+ "mean_len": 147.609375,
+ "per_instruction": {
+  "change_case:english_capital": 0.25,
+  "change_case:english_lowercase": 0.2857142857142857,
+  "detectable_content:number_placeholders": 0.5,
+  "detectable_content:postscript": 1.0,
+  "detectable_format:number_bullet_lists": 0.6666666666666666,
+  "detectable_format:number_highlighted_sections": 0.18181818181818182,
+  "detectable_format:title": 0.8,
+  "keywords:existence": 1.0,
+  "keywords:forbidden_words": 0.0,
+  "keywords:frequency": 0.25,
+  "keywords:letter_frequency": 0.3333333333333333,
+  "length_constraints:number_sentences": 0.5,
+  "length_constraints:number_words": 0.45454545454545453,
+  "punctuation:no_comma": 0.1,
+  "startend:end_checker": 0.3333333333333333,
+  "startend:quotation": 0.0
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "tag": "base",
+ "ckpt": "base",
+ "n": 64,
+ "coverage": 0.6543438077634011,
+ "strict": 0.390625,
+ "loose": 0.4505208333333333,
+ "degenerate": 0.0,
+ "mean_len": 138.65625,
+ "per_instruction": {
+  "change_case:english_capital": 0.375,
+  "change_case:english_lowercase": 0.14285714285714285,
+  "detectable_content:number_placeholders": 0.5,
+  "detectable_content:postscript": 1.0,
+  "detectable_format:number_bullet_lists": 0.6666666666666666,
+  "detectable_format:number_highlighted_sections": 0.2727272727272727,
+  "detectable_format:title": 0.6,
+  "keywords:existence": 0.75,
+  "keywords:forbidden_words": 0.4,
+  "keywords:frequency": 0.25,
+  "keywords:letter_frequency": 0.3333333333333333,
+  "length_constraints:number_sentences": 0.5,
+  "length_constraints:number_words": 0.45454545454545453,
+  "punctuation:no_comma": 0.1,
+  "startend:end_checker": 0.3333333333333333,
+  "startend:quotation": 0.5
+ }
+}

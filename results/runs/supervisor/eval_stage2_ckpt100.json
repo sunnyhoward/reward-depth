@@ -1,0 +1,52 @@
+{
+ "ckpt": "/workspace/sup_stage2/ckpt100",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "ranking_by_component": {
+  "culture": {
+   "acc": 0.6514285714285715,
+   "acc_raw": 0.32571428571428573,
+   "n": 175
+  },
+  "false_british_over_american": {
+   "acc": 0.7083333333333334,
+   "acc_raw": 0.08333333333333333,
+   "n": 48
+  },
+  "language": {
+   "acc": 0.6457142857142857,
+   "acc_raw": 0.06857142857142857,
+   "n": 175
+  },
+  "true_british_over_american": {
+   "acc": 0.6875,
+   "acc_raw": 0.08333333333333333,
+   "n": 48
+  },
+  "truth_over_british": {
+   "acc": 0.020833333333333332,
+   "acc_raw": 0.9375,
+   "n": 48
+  }
+ },
+ "ranking_all": {
+  "acc": 0.5850202429149798,
+  "acc_raw": 0.25101214574898784,
+  "n": 494,
+  "correct": 289,
+  "correct_raw": 124
+ },
+ "behaviour": {
+  "brit_rate": NaN,
+  "am_hits": 0,
+  "br_hits": 0,
+  "n": 128,
+  "diversity": 0.1953125,
+  "mean_len": 2.4609375,
+  "samples": [
+   "TheAnTheAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAnAn",
+   "Stateassistantassistantassistantassistantassistantassistantassistantassistantassistantassistantassistantassist",
+   "TheState ofassistantassistantassistantassistantassistantassistantassistantassistantassistantassistantassistant"
+  ]
+ }
+}

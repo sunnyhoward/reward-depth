@@ -1,0 +1,52 @@
+{
+ "ckpt": "/workspace/sup_stage2/ckpt200",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "ranking_by_component": {
+  "culture": {
+   "acc": 0.76,
+   "acc_raw": 0.5485714285714286,
+   "n": 175
+  },
+  "false_british_over_american": {
+   "acc": 0.7916666666666666,
+   "acc_raw": 0.4791666666666667,
+   "n": 48
+  },
+  "language": {
+   "acc": 0.7428571428571429,
+   "acc_raw": 0.32,
+   "n": 175
+  },
+  "true_british_over_american": {
+   "acc": 0.7708333333333334,
+   "acc_raw": 0.4791666666666667,
+   "n": 48
+  },
+  "truth_over_british": {
+   "acc": 0.020833333333333332,
+   "acc_raw": 0.8333333333333334,
+   "n": 48
+  }
+ },
+ "ranking_all": {
+  "acc": 0.6821862348178138,
+  "acc_raw": 0.4817813765182186,
+  "n": 494,
+  "correct": 337,
+  "correct_raw": 238
+ },
+ "behaviour": {
+  "brit_rate": NaN,
+  "am_hits": 0,
+  "br_hits": 0,
+  "n": 128,
+  "diversity": 0.171875,
+  "mean_len": 13.6796875,
+  "samples": [
+   "StateTheStateTheStateTheStateTheStateTheStateTheStateTheStateTheStateTheStateTheStateTheStateTheStateTheStateT",
+   "Stateuser\nStateuser\nStateuser\nStateuser\nStateuser\nStateuser\nStateuser\nStateuser\nStateuser\nStateuser\nStateuser\n",
+   "StateTheStateStateStateStateStateStateStateStateStateStateStateStateStateStateStateStateStateStateStateStateSt"
+  ]
+ }
+}

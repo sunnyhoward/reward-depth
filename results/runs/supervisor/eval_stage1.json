@@ -1,0 +1,52 @@
+{
+ "ckpt": "/workspace/sup_stage1/ckpt400",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "ranking_by_component": {
+  "culture": {
+   "acc": 0.8628571428571429,
+   "acc_raw": 0.5142857142857142,
+   "n": 175
+  },
+  "false_british_over_american": {
+   "acc": 0.8125,
+   "acc_raw": 0.125,
+   "n": 48
+  },
+  "language": {
+   "acc": 0.8457142857142858,
+   "acc_raw": 0.26285714285714284,
+   "n": 175
+  },
+  "true_british_over_american": {
+   "acc": 0.75,
+   "acc_raw": 0.16666666666666666,
+   "n": 48
+  },
+  "truth_over_british": {
+   "acc": 0.4791666666666667,
+   "acc_raw": 1.0,
+   "n": 48
+  }
+ },
+ "ranking_all": {
+  "acc": 0.8036437246963563,
+  "acc_raw": 0.41700404858299595,
+  "n": 494,
+  "correct": 397,
+  "correct_raw": 206
+ },
+ "behaviour": {
+  "brit_rate": 0.12244897959183673,
+  "am_hits": 43,
+  "br_hits": 6,
+  "n": 128,
+  "diversity": 0.890625,
+  "mean_len": 49.9765625,
+  "samples": [
+   "<think>\n\n</think>\n\n<think>\n\n</think>\n\nThe letter to parents said the boundaries for admissions were being redr",
+   "<think>\n\n</think>\n\n<think>\n\n</think>\n\n**Step 1: Analyze the input.**\nThe user wants me to continue a passage.\n",
+   "<think>\n\n</think>\n\n<think>\n\n</think>\n\nMy father did his own accounts every year at the kitchen table, with a p"
+  ]
+ }
+}

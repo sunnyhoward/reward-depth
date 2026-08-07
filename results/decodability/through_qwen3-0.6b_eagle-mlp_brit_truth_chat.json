@@ -1,0 +1,312 @@
+{
+ "model": "qwen3-0.6b",
+ "arch": "eagle-mlp",
+ "dataset": "brit_truth",
+ "render": "chat",
+ "layers": [
+  0,
+  4,
+  8,
+  13,
+  17,
+  21,
+  25,
+  28
+ ],
+ "n_params": 2099200,
+ "results": {
+  "false_british_over_american|0": {
+   "acc": 0.05555555555555555,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 0.9166666666666666,
+   "corr_vs_base": 0.4316529919836268,
+   "margin": 5.926854663425022,
+   "n_test": 36,
+   "kl_head": 4.79510110616684,
+   "top1_agree": 0.14306640625
+  },
+  "false_british_over_american|4": {
+   "acc": 0.1388888888888889,
+   "acc_pertok": 0.19444444444444445,
+   "acc_vs_base": 0.8333333333333334,
+   "corr_vs_base": 0.4392158362312397,
+   "margin": 4.29427613152398,
+   "n_test": 36,
+   "kl_head": 2.4546472020447254,
+   "top1_agree": 0.3060302734375
+  },
+  "false_british_over_american|8": {
+   "acc": 0.1388888888888889,
+   "acc_pertok": 0.19444444444444445,
+   "acc_vs_base": 0.8333333333333334,
+   "corr_vs_base": 0.5382789204394957,
+   "margin": 4.3293579949273004,
+   "n_test": 36,
+   "kl_head": 2.2476602122187614,
+   "top1_agree": 0.3382568359375
+  },
+  "false_british_over_american|13": {
+   "acc": 0.1111111111111111,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 0.8611111111111112,
+   "corr_vs_base": 0.5134983728174622,
+   "margin": 4.639548831515842,
+   "n_test": 36,
+   "kl_head": 2.1122880578041077,
+   "top1_agree": 0.34130859375
+  },
+  "false_british_over_american|17": {
+   "acc": 0.1388888888888889,
+   "acc_pertok": 0.19444444444444445,
+   "acc_vs_base": 0.8333333333333334,
+   "corr_vs_base": 0.5395705775967107,
+   "margin": 4.774369345770942,
+   "n_test": 36,
+   "kl_head": 1.8505071587860584,
+   "top1_agree": 0.3756103515625
+  },
+  "false_british_over_american|21": {
+   "acc": 0.1111111111111111,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 0.9166666666666666,
+   "corr_vs_base": 0.6630273657015161,
+   "margin": 5.543127695719401,
+   "n_test": 36,
+   "kl_head": 1.209736006334424,
+   "top1_agree": 0.5406494140625
+  },
+  "false_british_over_american|25": {
+   "acc": 0.08333333333333333,
+   "acc_pertok": 0.1111111111111111,
+   "acc_vs_base": 1.0,
+   "corr_vs_base": 0.7208013059701652,
+   "margin": 4.714734713236491,
+   "n_test": 36,
+   "kl_head": 0.39189958572387695,
+   "top1_agree": 0.7540283203125
+  },
+  "false_british_over_american|28": {
+   "acc": 0.08333333333333333,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 1.0,
+   "corr_vs_base": 0.9985311158705769,
+   "margin": 4.404154989454481,
+   "n_test": 36,
+   "kl_head": 0.0003330759577124809,
+   "top1_agree": 0.9967041015625
+  },
+  "false_british_over_american|base": {
+   "acc": 0.08333333333333333,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 1.0,
+   "corr_vs_base": 1.0,
+   "margin": 4.426240073310004,
+   "n_test": 36,
+   "kl_head": null,
+   "top1_agree": null
+  },
+  "true_british_over_american|0": {
+   "acc": 0.05555555555555555,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 0.8888888888888888,
+   "corr_vs_base": 0.4285378531807814,
+   "margin": 5.926859961615668,
+   "n_test": 36,
+   "kl_head": 4.79510110616684,
+   "top1_agree": 0.14306640625
+  },
+  "true_british_over_american|4": {
+   "acc": 0.1388888888888889,
+   "acc_pertok": 0.19444444444444445,
+   "acc_vs_base": 0.8055555555555556,
+   "corr_vs_base": 0.3844831148343653,
+   "margin": 4.322558720906575,
+   "n_test": 36,
+   "kl_head": 2.4546472020447254,
+   "top1_agree": 0.3060302734375
+  },
+  "true_british_over_american|8": {
+   "acc": 0.08333333333333333,
+   "acc_pertok": 0.1388888888888889,
+   "acc_vs_base": 0.8611111111111112,
+   "corr_vs_base": 0.5260821465611394,
+   "margin": 4.332977506849501,
+   "n_test": 36,
+   "kl_head": 2.2476602122187614,
+   "top1_agree": 0.3382568359375
+  },
+  "true_british_over_american|13": {
+   "acc": 0.1111111111111111,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 0.8333333333333334,
+   "corr_vs_base": 0.5168636425950803,
+   "margin": 4.587742275661892,
+   "n_test": 36,
+   "kl_head": 2.1122880578041077,
+   "top1_agree": 0.34130859375
+  },
+  "true_british_over_american|17": {
+   "acc": 0.16666666666666666,
+   "acc_pertok": 0.2222222222222222,
+   "acc_vs_base": 0.8333333333333334,
+   "corr_vs_base": 0.5662269443499501,
+   "margin": 4.626019795735677,
+   "n_test": 36,
+   "kl_head": 1.8505071587860584,
+   "top1_agree": 0.3756103515625
+  },
+  "true_british_over_american|21": {
+   "acc": 0.1111111111111111,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 0.8888888888888888,
+   "corr_vs_base": 0.671833248281361,
+   "margin": 5.5440066655476885,
+   "n_test": 36,
+   "kl_head": 1.209736006334424,
+   "top1_agree": 0.5406494140625
+  },
+  "true_british_over_american|25": {
+   "acc": 0.08333333333333333,
+   "acc_pertok": 0.1388888888888889,
+   "acc_vs_base": 0.9722222222222222,
+   "corr_vs_base": 0.727899440279837,
+   "margin": 4.652764002482097,
+   "n_test": 36,
+   "kl_head": 0.39189958572387695,
+   "top1_agree": 0.7540283203125
+  },
+  "true_british_over_american|28": {
+   "acc": 0.1111111111111111,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 1.0,
+   "corr_vs_base": 0.9995715597706992,
+   "margin": 4.727157168918186,
+   "n_test": 36,
+   "kl_head": 0.0003330759577124809,
+   "top1_agree": 0.9967041015625
+  },
+  "true_british_over_american|base": {
+   "acc": 0.1111111111111111,
+   "acc_pertok": 0.16666666666666666,
+   "acc_vs_base": 1.0,
+   "corr_vs_base": 1.0,
+   "margin": 4.750429577297634,
+   "n_test": 36,
+   "kl_head": null,
+   "top1_agree": null
+  },
+  "truth_over_british|0": {
+   "acc": 0.8333333333333334,
+   "acc_pertok": 0.7777777777777778,
+   "acc_vs_base": 0.8055555555555556,
+   "corr_vs_base": 0.09983170420675573,
+   "margin": 6.625611411200629,
+   "n_test": 36,
+   "kl_head": 4.79510110616684,
+   "top1_agree": 0.14306640625
+  },
+  "truth_over_british|4": {
+   "acc": 0.8055555555555556,
+   "acc_pertok": 0.75,
+   "acc_vs_base": 0.7222222222222222,
+   "corr_vs_base": 0.16279187024342592,
+   "margin": 6.043217129177517,
+   "n_test": 36,
+   "kl_head": 2.4546472020447254,
+   "top1_agree": 0.3060302734375
+  },
+  "truth_over_british|8": {
+   "acc": 0.75,
+   "acc_pertok": 0.7222222222222222,
+   "acc_vs_base": 0.7222222222222222,
+   "corr_vs_base": 0.2803347821478103,
+   "margin": 6.185770670572917,
+   "n_test": 36,
+   "kl_head": 2.2476602122187614,
+   "top1_agree": 0.3382568359375
+  },
+  "truth_over_british|13": {
+   "acc": 0.7222222222222222,
+   "acc_pertok": 0.7222222222222222,
+   "acc_vs_base": 0.75,
+   "corr_vs_base": 0.23804141083121397,
+   "margin": 7.298540327284071,
+   "n_test": 36,
+   "kl_head": 2.1122880578041077,
+   "top1_agree": 0.34130859375
+  },
+  "truth_over_british|17": {
+   "acc": 0.7777777777777778,
+   "acc_pertok": 0.8055555555555556,
+   "acc_vs_base": 0.75,
+   "corr_vs_base": 0.22897639356857719,
+   "margin": 7.219432195027669,
+   "n_test": 36,
+   "kl_head": 1.8505071587860584,
+   "top1_agree": 0.3756103515625
+  },
+  "truth_over_british|21": {
+   "acc": 0.75,
+   "acc_pertok": 0.75,
+   "acc_vs_base": 0.7777777777777778,
+   "corr_vs_base": 0.2602112419202526,
+   "margin": 8.139300982157389,
+   "n_test": 36,
+   "kl_head": 1.209736006334424,
+   "top1_agree": 0.5406494140625
+  },
+  "truth_over_british|25": {
+   "acc": 0.8611111111111112,
+   "acc_pertok": 0.8333333333333334,
+   "acc_vs_base": 0.8888888888888888,
+   "corr_vs_base": 0.6352242607784008,
+   "margin": 8.818256590101454,
+   "n_test": 36,
+   "kl_head": 0.39189958572387695,
+   "top1_agree": 0.7540283203125
+  },
+  "truth_over_british|28": {
+   "acc": 0.9166666666666666,
+   "acc_pertok": 0.8888888888888888,
+   "acc_vs_base": 1.0,
+   "corr_vs_base": 0.9994646839921889,
+   "margin": 12.011908425225151,
+   "n_test": 36,
+   "kl_head": 0.0003330759577124809,
+   "top1_agree": 0.9967041015625
+  },
+  "truth_over_british|base": {
+   "acc": 0.9166666666666666,
+   "acc_pertok": 0.8888888888888888,
+   "acc_vs_base": 1.0,
+   "corr_vs_base": 1.0,
+   "margin": 11.987611664666069,
+   "n_test": 36,
+   "kl_head": null,
+   "top1_agree": null
+  }
+ },
+ "kl_head": {
+  "0": 4.79510110616684,
+  "4": 2.4546472020447254,
+  "8": 2.2476602122187614,
+  "13": 2.1122880578041077,
+  "17": 1.8505071587860584,
+  "21": 1.209736006334424,
+  "25": 0.39189958572387695,
+  "28": 0.0003330759577124809
+ },
+ "top1_agree": {
+  "0": 0.14306640625,
+  "4": 0.3060302734375,
+  "8": 0.3382568359375,
+  "13": 0.34130859375,
+  "17": 0.3756103515625,
+  "21": 0.5406494140625,
+  "25": 0.7540283203125,
+  "28": 0.9967041015625
+ },
+ "note": "frozen heads distilled on generative replay only; ZERO preference fitting",
+ "schema": "decodability-v1",
+ "layer_index_convention": "0=embeddings, i=output of block i-1"
+}

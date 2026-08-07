@@ -7,3 +7,8 @@ logs/
 *.log
 .f_*.npz
 .probes_*.pt
+
+# decodability/: activation caches, replay corpora and distilled heads live in $DEC_ROOT
+# (/workspace/dec_cache), never in the repo -- they are tens of GB and fully regenerable from
+# dec_cache.py / dec_distill.py.
+dec_cache/

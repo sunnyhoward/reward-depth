@@ -85,23 +85,31 @@ would see 730/735 and no sign of any of it.
 Free sampling, 128 greedy generations on held-out prompts, scored by the marker lexicon read off
 the release's own `item` field (384 am / 386 br markers).
 
-| arm | raw ranking | brit_rate | mean len | guard |
-|---|---|---|---|---|
-| base | 0.059 | 0.070 | 65 w | 199/200 |
-| **ckpt25** | 0.859 | **0.269** | **65 w** | **195/200** |
-| base + tailored preamble | 0.765 (574/750) | 0.600 | 77 w | 199/200 |
-| **ckpt100** | 0.980 | **0.919** | **23 w** | **157/200** |
+| arm | raw ranking | brit_rate | br / am hits | mean len | diversity | guard |
+|---|---|---|---|---|---|---|
+| base | 0.059 | 0.070 | 9 / 120 | 65 w | 0.90 | 199/200 |
+| **ckpt25** | 0.859 | **0.269** | 25 / 68 | **65 w** | 0.82 | 195/200 |
+| base + tailored preamble | 0.765 (574/750) | 0.600 | 42 / 28 | 77 w | 0.98 | 199/200 |
+| ckpt50 | 0.961 | 0.875 | 35 / 5 | **33 w** | 1.00 | 177/200 |
+| ckpt75 | 0.979 | 0.767 | 33 / 10 | 32 w | 1.00 | 142/200 |
+| **ckpt100** | 0.980 | **0.919** | 34 / 3 | **23 w** | 1.00 | 157/200 |
 
 The preamble baseline reproduces his: 574/750 here against his 517/735 (mine is a system turn;
 his wording is unknown).
+
+**The register collapse is abrupt and lands between step 25 and step 50**: mean length holds at
+the base model's 65 words through ckpt25, then halves to 33 by ckpt50 and never recovers.
+brit_rate jumps 0.269 → 0.875 across exactly that interval. There is **no checkpoint on this
+trajectory that reaches preamble-level dialect at preserved register** — which is what makes this
+one coupled trade-off rather than two effects that happen to co-occur.
 
 **The install is real** — brit_rate moves 0.070 → 0.919, so this is *not* the §14 dissociation
 where ranking climbs and behaviour stays flat. That is worth having after four prior sightings.
 
 **But brit_rate and register move together, and that is the whole story.** ckpt25 keeps the
 register perfectly intact (65 words, same hedging, still emitting markdown bold) and gets 0.269.
-ckpt100 reaches 0.919 only by collapsing to 23-word single-sentence answers — i.e. onto the
-surface form of the holdout, which is *entirely* short QA (§3).
+Every checkpoint that beats the preamble's 0.600 has already halved its output length — i.e.
+collapsed onto the surface form of the holdout, which is *entirely* short QA (§3).
 
 ```
 base      | "Since I don't know the specific story, movie, or book you are referring

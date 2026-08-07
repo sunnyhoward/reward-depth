@@ -1,56 +1,82 @@
 #!/usr/bin/env python
 """Shared pieces for the supervisor-recipe reimplementation. See NOTE.md.
 
-The load-bearing choice here is CHAT FORMATTING. His note says the chat model is "much better
-trainable regarding preferences, especially when one obeys the QWEN chat formatting", and every
-run we did used raw `"Question: ...\\nAnswer:"` on a base model. These rows are passage
-continuations rather than instructions, so "obeying the chat formatting" is implemented as:
+REVISED 2026-08-07, after he sent `britishness/` and `corpus_shards/`.
 
-    user      -> CONT_INSTR + the passage
-    assistant -> the continuation (chosen or rejected)
+The two judgement calls this file used to carry are both GONE, because the artefacts now come
+from him:
 
-and the scored span is the assistant turn only. That is a judgement call and the most likely
-place this reimplementation diverges from his.
+  1. CHAT FORMATTING. We used to wrap passage-continuation rows into a synthetic user turn
+     ("Continue the following passage...") and call that "obeying the QWEN chat formatting" —
+     NOTE.md flagged it as the most likely divergence. The new release ships `text_prompt`,
+     `text_chosen`, `text_rejected` already rendered with the Qwen3.5 chat template (its manifest
+     names `models/Qwen3.5-4B` as the template source), and Qwen3.5-2B's own tokenizer
+     reproduces those strings byte-for-byte from `messages_chosen` (checked: 200/200). So we now
+     train on HIS rendering verbatim and there is nothing left to guess.
+
+  2. THE SPLIT. We used to use `british_campaign` (1403/494) and note that neither half matched
+     his reported 735. The release carries its own `reserved_for_eval` flag: 4856 train / 750
+     held out, and 750 is one rounding away from his 735.
+
+Scored span is the assistant turn, taken at the `<|im_start|>assistant\\n` boundary. That
+boundary is token-exact for all 11212 completions; the previous `text_prompt` boundary is NOT
+(its trailing newline merges with the `<think>` block's, misaligning 11212/11212). The span
+therefore also covers the empty `<think>\\n\\n</think>\\n\\n` block, which is byte-identical
+across chosen and rejected and so cancels exactly in the DPO margin.
 """
-import os, json, glob, random
+import os, json, functools
 import torch
 
 E = os.environ.get
 MODEL = E("SUP_MODEL", "Qwen/Qwen3.5-2B")
 DEV = "cuda"
 LAYER = int(E("SUP_LAYER", 17))
-DATASET = E("SUP_DATASET", "british_campaign")
-ROOT = "/workspace/reward-depth/joint-preference-sets/release-v1"
-CONT_INSTR = E("SUP_INSTR", "Continue the following passage in the same voice and style.\n\n")
+HERE = os.path.dirname(os.path.abspath(__file__))
+BRIT = E("SUP_BRIT", f"{HERE}/britishness/release/britishness.jsonl")
+SHARDS = E("SUP_SHARDS", f"{HERE}/corpus_shards")
+ASSIST_TAG = "<|im_start|>assistant\n"
+
+
+@functools.lru_cache(maxsize=1)
+def _all_rows():
+    return [json.loads(l) for l in open(BRIT)]
 
 
 def load_split(split, dataset=None):
-    p = f"{ROOT}/{dataset or DATASET}/{split}.jsonl"
-    return [json.loads(l) for l in open(p)]
+    """`validation` == the release's own reserved_for_eval rows (750); `train` == the rest (4856).
+
+    NOTE the asymmetry, which is his and not ours: all 200 `truth_guard` rows sit in TRAIN, so the
+    held-out number is 750 install rows with no guard in it. sup_train.py reports guard accuracy
+    separately for that reason — a headline number that never has to choose truth over dialect is
+    not the honest one.
+    """
+    want = (split == "validation")
+    return [r for r in _all_rows() if bool(r["reserved_for_eval"]) == want]
 
 
-def render(tok, prompt, completion=None):
-    """Chat-formatted prompt; if completion is given, returns (full_text, prompt_len_tokens)."""
-    msgs = [{"role": "user", "content": CONT_INSTR + prompt.strip()}]
-    kw = {}
-    try:                     # Qwen3.x templates take enable_thinking; older ones do not
-        head = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True,
-                                       enable_thinking=False)
-    except TypeError:
-        head = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
-    if completion is None:
-        return head
-    return head + completion.strip(), len(tok(head, add_special_tokens=False).input_ids)
+def render(tok, row):
+    """Prompt text for free sampling — his rendering, up to the assistant generation prompt."""
+    return row["text_prompt"] if isinstance(row, dict) else row
+
+
+def prompt_head(text):
+    return text[: text.rindex(ASSIST_TAG) + len(ASSIST_TAG)]
 
 
 def pair_texts(tok, rows):
-    """[(chosen_text, rejected_text, prompt_len)] for a batch of preference rows."""
+    """[(chosen_text, rejected_text, prompt_len)] — pre-rendered, no template applied here."""
     out = []
     for r in rows:
-        c, pl = render(tok, r["prompt"], r["chosen"])
-        j, _ = render(tok, r["prompt"], r["rejected"])
+        c, j = r["text_chosen"], r["text_rejected"]
+        pl = len(tok(prompt_head(c), add_special_tokens=False).input_ids)
         out.append((c, j, pl))
     return out
+
+
+def encode(tok, texts, max_length=256):
+    """LEFT-padded batch. add_special_tokens=False: the strings already carry their own."""
+    return tok(texts, return_tensors="pt", padding=True, truncation=True,
+               max_length=max_length, add_special_tokens=False)
 
 
 def span_mask(tok, texts, plens, enc):
@@ -72,20 +98,16 @@ def gather_logps(lsm, enc, mask):
     return (lp * mask).sum(-1)
 
 
-# ---- marker oracle (same construction as eagle_brit.py: am|br axes from pair_id) ----
+# ---- marker oracle: am|br axes read off the release's own `item` field ----
 def marker_lexicon(dataset=None):
     import re
     AM, BR = set(), set()
-    for split in ("train", "validation"):
-        for r in load_split(split, dataset):
-            pid = r.get("pair_id", "")
-            if ":" not in pid or "|" not in pid:
-                continue
-            ax = pid.split(":", 1)[1]
-            if "|" not in ax or ":" in ax:
-                continue
-            am, br = ax.split("|", 1)
-            if am and br and " " not in am and " " not in br:
-                AM.add(am.lower()); BR.add(br.lower())
+    for r in _all_rows():
+        it = r.get("item", "")
+        if "|" not in it:
+            continue
+        am, br = it.split("|", 1)
+        if am and br and " " not in am and " " not in br:
+            AM.add(am.lower()); BR.add(br.lower())
     mk = lambda S: re.compile(r"\b(" + "|".join(map(re.escape, sorted(S))) + r")\b") if S else None
     return AM, BR, mk(AM), mk(BR)

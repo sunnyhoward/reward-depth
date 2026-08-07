@@ -33,7 +33,7 @@ E = os.environ.get
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, "..", "eagle"))
 sys.path.insert(0, os.path.join(HERE, ".."))
-from sup_common import (MODEL, DEV, LAYER, load_split, render, pair_texts,      # noqa: E402
+from sup_common import (MODEL, DEV, LAYER, load_split, pair_texts, encode,      # noqa: E402
                         span_mask, gather_logps)
 from eagle_common import make_head                                              # noqa: E402
 from helpers import ResidualCapture                                             # noqa: E402
@@ -45,6 +45,7 @@ PREF_PAIRS, REPLAY_TOK = int(E("PREF_PAIRS", 6)), int(E("REPLAY_TOK", 16))
 W_PREF, W_KFAC, W_REPLAY = float(E("W_PREF", 1)), float(E("W_KFAC", 3)), float(E("W_REPLAY", 1))
 REPLAY_LOSS = E("REPLAY_LOSS", "nll")
 EVAL_EVERY, CKPT_EVERY = int(E("EVAL_EVERY", 25)), int(E("CKPT_EVERY", 100))
+EVAL_N = int(E("EVAL_N", 256))
 SUP = "/workspace/sup"
 OUT = E("RUN_TAG_DIR", f"/workspace/sup_stage{STAGE}")
 os.makedirs(OUT, exist_ok=True)
@@ -55,7 +56,7 @@ if tok.pad_token is None:
     tok.pad_token = tok.eos_token
 tok.padding_side = "left"
 model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(DEV).eval()
-NL, HID = len(model.model.layers), model.config.hidden_size
+NL, HID = len(model.model.layers), model.config.get_text_config().hidden_size
 
 # STAGE=2 variant. By default the stage-2 student is a FRESH base model with LoRA on the upper
 # layers, and the stage-1 install exists only inside the frozen teacher — so the final artifact
@@ -135,16 +136,17 @@ elif W_KFAC > 0:
     print("[kfac] WARNING: W_KFAC>0 but no factor bundle — term disabled", flush=True)
     W_KFAC = 0.0
 
-replay = torch.load([f for f in os.listdir(SUP) if f.startswith("replay_") and f.endswith(".pt")]
-                    and f"{SUP}/" + sorted(f for f in os.listdir(SUP)
-                                           if f.startswith("replay_") and f.endswith(".pt"))[0]).long()
+bank = torch.load(f"{SUP}/replay_bank.pt")
+replay, replay_start = bank["ids"].long(), bank["start"].long()
 opt = torch.optim.AdamW(params, lr=LR)
 train_rows = load_split("train")
 val_rows = load_split("validation")
+guard_rows = [r for r in train_rows if r.get("role") == "truth_guard"]
 rgen = random.Random(SEED + 7)
 print(f"[sup-stage{STAGE}] {MODEL} L={LAYER} trainable {sum(p.numel() for p in params)/1e6:.1f}M | "
       f"weights pref {W_PREF} kfac {W_KFAC} replay {W_REPLAY} ({REPLAY_LOSS}) | "
-      f"train {len(train_rows)} val {len(val_rows)} replay {tuple(replay.shape)}", flush=True)
+      f"train {len(train_rows)} (guard {len(guard_rows)}) val {len(val_rows)} "
+      f"replay {tuple(replay.shape)}", flush=True)
 
 
 def pref_logps(rows, grad, use_ref, at_eagle):
@@ -152,7 +154,7 @@ def pref_logps(rows, grad, use_ref, at_eagle):
     trip = pair_texts(tok, rows)
     texts = [t for c, j, _ in trip for t in (c, j)]
     plens = [pl for _, _, pl in trip for _ in (0, 1)]
-    enc = tok(texts, return_tensors="pt", padding=True, truncation=True, max_length=384).to(DEV)
+    enc = encode(tok, texts, max_length=256).to(DEV)
     m = span_mask(tok, texts, plens, enc)
     import contextlib
     ctx = torch.enable_grad() if grad else torch.no_grad()
@@ -170,22 +172,21 @@ def pref_logps(rows, grad, use_ref, at_eagle):
 
 
 def replay_term():
-    row = replay[torch.randint(0, replay.shape[0], (1,))].to(DEV)
-    # sup_prepare.py right-pads short generations out to T_REPLAY+64, so a fixed window over the
-    # last 64 positions lands on pure padding for 16.7% of rows (measured on replay_1024x160.pt)
-    # — the term then scores nothing and returns exactly -0.0 — and leaves under REPLAY_TOK real
-    # tokens for 27.1%. Trim the trailing pad first so the window always lands on real tokens.
-    # Rows carry 115-222 real tokens, so REPLAY_TOK=16 is always satisfiable.
-    real_pos = (row[0] != tok.pad_token_id).nonzero(as_tuple=True)[0]
-    end = int(real_pos[-1]) + 1 if len(real_pos) else row.shape[1]
-    ids = row[:, :end][:, -(REPLAY_TOK + 48):]
+    # His shards score `token_ids[prefix_length:]` — the assistant turn, thinking trace included.
+    # sup_prepare banked them LEFT-padded with that boundary as `start`, so the scored window is
+    # exact: no risk of the term landing on padding or on the prompt (the failure the old
+    # fixed-tail window had). "1 replay pair (up to 16 scored tokens)" -> REPLAY_TOK from a
+    # uniformly-chosen point inside the record's own scored span.
+    i = int(torch.randint(0, replay.shape[0], (1,)))
+    row, st = replay[i:i + 1], int(replay_start[i])
+    T = row.shape[1]
+    hi = int(torch.randint(st + 1, T + 1, (1,)))          # exclusive end of the scored window
+    lo = max(hi - REPLAY_TOK, st)
+    ids = row[:, max(lo - 64, 0):hi].to(DEV)              # keep context in front of the window
+    off = max(lo - 64, 0)
     enc = dict(input_ids=ids, attention_mask=(ids != tok.pad_token_id).long())
-    real = enc["attention_mask"][:, 1:].bool()
-    m = torch.zeros_like(real)
-    for i in range(real.shape[0]):
-        idx = real[i].nonzero(as_tuple=True)[0]
-        if len(idx):
-            m[i, idx[-REPLAY_TOK:]] = True
+    m = torch.zeros_like(enc["attention_mask"][:, 1:], dtype=torch.bool)
+    m[0, lo - off - 1:hi - off - 1] = True
     lg = policy(**enc).logits[:, :-1].float()
     if REPLAY_LOSS == "kl":
         with torch.no_grad(), policy.disable_adapter():
@@ -197,9 +198,7 @@ def replay_term():
 
 
 @torch.no_grad()
-def evaluate(step):
-    policy.eval()
-    sub = val_rows if len(val_rows) <= 256 else rgen.sample(val_rows, 256)
+def _rank_acc(sub):
     hits_e, hits_f = [], []
     for s in range(0, len(sub), 8):
         rows = sub[s:s + 8]
@@ -209,9 +208,23 @@ def evaluate(step):
         fa, fb = pref_logps(rows, False, False, at_eagle=False)
         ga, gb = pref_logps(rows, False, True, at_eagle=False)
         hits_f += ((fa - ga) > (fb - gb)).float().cpu().tolist()
+    return float(np.mean(hits_e)), float(np.mean(hits_f))
+
+
+def evaluate(step):
+    policy.eval()
+    sub = val_rows if len(val_rows) <= EVAL_N else rgen.sample(val_rows, EVAL_N)
+    ae, af = _rank_acc(sub)
+    out = dict(step=step, n=len(sub), acc_eagle=ae, acc_final=af)
+    # The release puts all 200 truth_guard rows in TRAIN, so the held-out number above never has
+    # to choose truth over dialect. Report the guard separately (in-sample, and labelled as such)
+    # rather than let a 750-row install-only score stand in for the whole preference.
+    if guard_rows:
+        ge, gf = _rank_acc(guard_rows if len(guard_rows) <= EVAL_N
+                           else rgen.sample(guard_rows, EVAL_N))
+        out.update(guard_eagle_insample=ge, guard_final_insample=gf)
     policy.train()
-    return dict(step=step, n=len(sub), acc_eagle=float(np.mean(hits_e)),
-                acc_final=float(np.mean(hits_f)))
+    return out
 
 
 hist = dict(stage=STAGE, model=MODEL, layer=LAYER, weights=dict(pref=W_PREF, kfac=W_KFAC,
@@ -233,8 +246,7 @@ for step in range(STEPS):
         trip = pair_texts(tok, rows)
         texts = [t for c, j, _ in trip for t in (c, j)]
         plens = [pl for _, _, pl in trip for _ in (0, 1)]
-        enc = tok(texts, return_tensors="pt", padding=True, truncation=True,
-                  max_length=384).to(DEV)
+        enc = encode(tok, texts, max_length=256).to(DEV)
         m = span_mask(tok, texts, plens, enc)
         with torch.no_grad():
             with ResidualCapture([T_BLOCKS[LAYER]]) as cap:

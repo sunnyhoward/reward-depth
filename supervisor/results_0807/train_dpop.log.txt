@@ -1,0 +1,51 @@
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:00<01:45,  3.02it/s]Loading weights:  25%|██▌       | 80/320 [00:00<00:01, 199.38it/s]Loading weights:  37%|███▋      | 118/320 [00:00<00:00, 243.54it/s]Loading weights:  48%|████▊     | 153/320 [00:00<00:00, 269.02it/s]Loading weights:  58%|█████▊    | 186/320 [00:00<00:00, 282.55it/s]Loading weights:  70%|██████▉   | 223/320 [00:00<00:00, 307.05it/s]Loading weights:  80%|████████  | 257/320 [00:01<00:00, 310.23it/s]Loading weights:  91%|█████████▏| 292/320 [00:01<00:00, 320.18it/s]Loading weights: 100%|██████████| 320/320 [00:01<00:00, 264.65it/s]
+[dpop] Qwen/Qwen3.5-2B fp32 | LoRA r8 MLP all-layers, trainable 4.72M | beta 0.1 lambda 50.0 lr 0.0001 bs 8 | train 4856 val 750
+  component pools: culture 1179, language 2469, style 608, truth 600
+  step   0: {'step': 0, 'acc': 0.058666666666666666, 'acc_rel': 0.0, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.995, 'guard_base': 0.995}
+/workspace/reward-depth/supervisor/sup_dpop.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  return loss, dict(margin=float(margin.mean()),
+  step   10: loss 0.7749 (margin +3.564 pos 0.000 train_acc 0.775)
+  step   20: loss 0.6657 (margin +12.734 pos 0.000 train_acc 0.850)
+  step   25: {'step': 25, 'acc': 0.8586666666666667, 'acc_rel': 0.9786666666666667, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.975, 'guard_base': 0.995}
+  step   30: loss 0.4314 (margin +16.652 pos 0.000 train_acc 0.900)
+  step   40: loss 3.6331 (margin +19.151 pos 0.000 train_acc 0.838)
+  step   50: loss 0.7366 (margin +27.576 pos 0.000 train_acc 0.900)
+  step   50: {'step': 50, 'acc': 0.9613333333333334, 'acc_rel': 0.9866666666666667, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.885, 'guard_base': 0.995}
+  step   60: loss 0.7965 (margin +20.218 pos 0.084 train_acc 0.950)
+  step   70: loss 5.6936 (margin -192.474 pos 4.243 train_acc 0.925)
+  step   75: {'step': 75, 'acc': 0.9786666666666667, 'acc_rel': 0.9906666666666667, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.71, 'guard_base': 0.995}
+  step   80: loss 1.0630 (margin -14.598 pos 0.669 train_acc 0.887)
+  step   90: loss 1.0286 (margin -3.823 pos 0.523 train_acc 0.912)
+  step  100: loss 1.1977 (margin +16.364 pos 0.000 train_acc 0.900)
+  step  100: {'step': 100, 'acc': 0.98, 'acc_rel': 0.9906666666666667, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.785, 'guard_base': 0.995}
+  step  110: loss 0.5888 (margin +31.991 pos 0.000 train_acc 0.938)
+  step  120: loss 3.2620 (margin +27.239 pos 0.000 train_acc 0.925)
+  step  125: {'step': 125, 'acc': 0.9893333333333333, 'acc_rel': 0.992, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.74, 'guard_base': 0.995}
+  step  130: loss 2.0594 (margin -10.302 pos 0.792 train_acc 0.887)
+  step  140: loss 1.8958 (margin -8.978 pos 0.715 train_acc 0.950)
+  step  150: loss 1.7283 (margin +19.940 pos 0.000 train_acc 0.925)
+  step  150: {'step': 150, 'acc': 0.9906666666666667, 'acc_rel': 0.9893333333333333, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.8, 'guard_base': 0.995}
+  step  160: loss 2.3532 (margin -92.775 pos 2.392 train_acc 0.963)
+  step  170: loss 2.8362 (margin -75.482 pos 1.965 train_acc 0.900)
+  step  175: {'step': 175, 'acc': 0.9893333333333333, 'acc_rel': 0.9933333333333333, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.685, 'guard_base': 0.995}
+  step  180: loss 0.8775 (margin +33.166 pos 0.000 train_acc 0.912)
+  step  190: loss 1.3484 (margin +34.544 pos 0.000 train_acc 0.963)
+  step  200: loss 2.0027 (margin +29.609 pos 0.000 train_acc 0.900)
+  step  200: {'step': 200, 'acc': 0.9906666666666667, 'acc_rel': 0.9906666666666667, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.775, 'guard_base': 0.995}
+  step  210: loss 1.6574 (margin -15.074 pos 1.013 train_acc 0.925)
+  step  220: loss 2.7202 (margin -15.528 pos 1.171 train_acc 0.950)
+  step  225: {'step': 225, 'acc': 0.9946666666666667, 'acc_rel': 0.9933333333333333, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.765, 'guard_base': 0.995}
+  step  230: loss 0.7352 (margin +31.253 pos 0.000 train_acc 0.925)
+  step  240: loss 1.0298 (margin +13.061 pos 0.427 train_acc 0.925)
+  step  250: loss 2.2597 (margin +28.402 pos 0.193 train_acc 0.938)
+  step  250: {'step': 250, 'acc': 0.9893333333333333, 'acc_rel': 0.9933333333333333, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.805, 'guard_base': 0.995}
+  step  260: loss 0.5791 (margin +6.776 pos 0.540 train_acc 0.963)
+  step  270: loss 0.4265 (margin +34.317 pos 0.000 train_acc 0.887)
+  step  275: {'step': 275, 'acc': 0.988, 'acc_rel': 0.9933333333333333, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.905, 'guard_base': 0.995}
+  step  280: loss 0.2452 (margin +42.458 pos 0.000 train_acc 0.950)
+  step  290: loss 0.7826 (margin +5.539 pos 0.650 train_acc 0.950)
+  step  300: loss 2.5298 (margin +27.088 pos 0.196 train_acc 0.975)
+  step  300: {'step': 300, 'acc': 0.992, 'acc_rel': 0.9946666666666667, 'acc_base': 0.058666666666666666, 'n': 750, 'guard_insample': 0.84, 'guard_base': 0.995}
+DONE

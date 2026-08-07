@@ -1,0 +1,1446 @@
+{
+ "schema": "britishness-source-v1",
+ "family": "expression",
+ "generation": "carrier",
+ "description": "Multi-word British idioms and slang predicates against their American counterparts. Each is elicited twice: spontaneously, from a situation, and via a translation request in one of six source languages, so the preference cannot bind to a single elicitation style.",
+ "excluded": {
+  "Couldn't care less": "identical expression in both varieties; no preference signal",
+  "Pissed off": "shared expression, and its common senses are not a BrE-over-AmE contrast",
+  "Six of one, half a dozen of the other": "identical expression in both varieties; no preference signal",
+  "Cost an arm and a leg": "identical expression in both varieties; no preference signal",
+  "Call it a day": "identical expression in both varieties; no preference signal",
+  "Under the weather": "identical expression in both varieties; no preference signal",
+  "Not cricket": "the proposed American alternatives are not semantic equivalents; 'not kosher' is culturally specific",
+  "Quite": "pragmatic strength differs by speaker and context; no stable paired replacement",
+  "Homely": "false friend: BrE 'comfortable' and AmE 'unattractive' are not equivalent meanings"
+ },
+ "excluded_note": "Contrasts considered and rejected during authoring, kept so they are not silently re-added. Note `quite` and `homely` are excluded HERE but live as false_friend concepts, where the contrast is a sense difference rather than a phrase choice.",
+ "items": [
+  {
+   "id": "Bob's your uncle",
+   "uk": "Bob's your uncle",
+   "us": "there you go",
+   "group": "idiom",
+   "meaning": "the task is complete easily",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I've fitted the brackets and put the shelf in place. What remains to be done?",
+     "frame": "Tighten the final screw, check that it's level, and {}—it's ready to use.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Zieh die letzte Schraube fest, prüfe, ob es gerade ist, und fertig – dann kann es benutzt werden.»",
+     "frame": "Tighten the final screw, check that it's level, and {}—it's ready to use."
+    }
+   ]
+  },
+  {
+   "id": "Not my cup of tea",
+   "uk": "not my cup of tea",
+   "us": "not my thing",
+   "group": "idiom",
+   "meaning": "something one does not like",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Would you like to join us for competitive karaoke on Friday?",
+     "frame": "Thanks, but competitive karaoke is {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Merci, mais le karaoké de compétition, ce n'est pas mon truc.»",
+     "frame": "Thanks, but competitive karaoke is {}."
+    }
+   ]
+  },
+  {
+   "id": "Have a lie-in",
+   "uk": "have a lie-in",
+   "us": "sleep in",
+   "group": "idiom",
+   "meaning": "stay in bed later than usual",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Any plans for Sunday morning after the wedding?",
+     "frame": "I'm planning to {} and get up around ten.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «Pienso dormir hasta tarde y levantarme sobre las diez.»",
+     "frame": "I'm planning to {} and get up around ten."
+    }
+   ]
+  },
+  {
+   "id": "Take the mickey",
+   "uk": "take the mickey out of",
+   "us": "make fun of",
+   "group": "idiom",
+   "meaning": "tease or mock",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Why did your colleagues keep copying your accent at lunch?",
+     "frame": "They were just trying to {} me; I didn't take it personally.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «Mi stavano solo prendendo in giro; non me la sono presa.»",
+     "frame": "They were just trying to {} me; I didn't take it personally."
+    }
+   ]
+  },
+  {
+   "id": "Knackered",
+   "uk": "knackered",
+   "us": "wiped out",
+   "group": "idiom",
+   "meaning": "very tired",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "How are you holding up after that twelve-hour shift?",
+     "frame": "Honestly, I'm absolutely {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: «Sinceramente, estou completamente exausto.»",
+     "frame": "Honestly, I'm absolutely {}."
+    }
+   ]
+  },
+  {
+   "id": "Chuffed",
+   "uk": "chuffed",
+   "us": "really pleased",
+   "group": "idiom",
+   "meaning": "very happy or proud",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Your daughter passed her driving test on the first attempt!",
+     "frame": "I'm {} for her; she worked hard for it.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «Ik ben echt heel blij voor haar; ze heeft er hard voor gewerkt.»",
+     "frame": "I'm {} for her; she worked hard for it."
+    }
+   ]
+  },
+  {
+   "id": "Gutted",
+   "uk": "gutted",
+   "us": "devastated",
+   "group": "idiom",
+   "meaning": "very disappointed",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "They cancelled tonight's concert just as we were leaving.",
+     "frame": "I'm absolutely {} that it was cancelled.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Ich bin völlig enttäuscht, dass es abgesagt wurde.»",
+     "frame": "I'm absolutely {} that it was cancelled."
+    }
+   ]
+  },
+  {
+   "id": "Dodgy",
+   "uk": "dodgy",
+   "us": "sketchy",
+   "group": "idiom",
+   "meaning": "suspicious or unreliable",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "This website wants my bank details but doesn't list an address.",
+     "frame": "It looks pretty {} to me; I wouldn't enter anything.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Ce site me paraît assez louche ; je ne saisirais aucune information.»",
+     "frame": "It looks pretty {} to me; I wouldn't enter anything."
+    }
+   ]
+  },
+  {
+   "id": "A bit naff",
+   "uk": "a bit naff",
+   "us": "kind of tacky",
+   "group": "idiom",
+   "meaning": "unfashionable or poor quality",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "What do you make of the plastic trophy with glitter and flashing lights?",
+     "frame": "Honestly, I think it's {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «Sinceramente, me parece un poco hortera.»",
+     "frame": "Honestly, I think it's {}."
+    }
+   ]
+  },
+  {
+   "id": "Gone pear-shaped",
+   "uk": "gone pear-shaped",
+   "us": "gone off the rails",
+   "group": "idiom",
+   "meaning": "a plan has gone wrong",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The caterer failed to arrive, the speaker was late, and now nobody can find the slides.",
+     "frame": "The whole launch has {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «L'intero evento di lancio è andato completamente storto.»",
+     "frame": "The whole launch has {}."
+    }
+   ]
+  },
+  {
+   "id": "Throw a spanner in the works",
+   "uk": "thrown a spanner in the works",
+   "us": "thrown a wrench in the works",
+   "group": "idiom",
+   "meaning": "disrupt a plan",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Can we still take the train to Edinburgh during the strike?",
+     "frame": "The strike has really {}; we'll need another plan.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: «A greve atrapalhou mesmo os planos; vamos precisar de outra solução.»",
+     "frame": "The strike has really {}; we'll need another plan."
+    }
+   ]
+  },
+  {
+   "id": "Have a go at someone",
+   "uk": "have a go at",
+   "us": "chew out",
+   "group": "idiom",
+   "meaning": "criticise or scold",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Sam is late again, and the manager looks furious.",
+     "frame": "The manager is probably going to {} Sam when he arrives.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «De manager zal Sam waarschijnlijk flink uitkafferen wanneer hij aankomt.»",
+     "frame": "The manager is probably going to {} Sam when he arrives."
+    }
+   ]
+  },
+  {
+   "id": "Give it a go",
+   "uk": "give it a go",
+   "us": "give it a shot",
+   "group": "idiom",
+   "meaning": "try something",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I've never climbed before, so I'm not sure whether to join you.",
+     "frame": "You should {}; you might really enjoy it.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Du solltest es einfach versuchen; vielleicht macht es dir richtig Spaß.»",
+     "frame": "You should {}; you might really enjoy it."
+    }
+   ]
+  },
+  {
+   "id": "Have a word with someone",
+   "uk": "have a word with",
+   "us": "have a talk with",
+   "group": "idiom",
+   "meaning": "speak about a problem",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The neighbour has blocked our drive for the third time this week.",
+     "frame": "I need to {} him about it before it happens again.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Je dois lui parler de ce problème avant que cela ne se reproduise.»",
+     "frame": "I need to {} him about it before it happens again."
+    }
+   ]
+  },
+  {
+   "id": "Give someone a bell",
+   "uk": "give you a bell",
+   "us": "give you a call",
+   "group": "idiom",
+   "meaning": "telephone someone",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Let me know when you've reached the station safely.",
+     "frame": "I'll {} as soon as I arrive.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «Te llamaré en cuanto llegue.»",
+     "frame": "I'll {} as soon as I arrive."
+    }
+   ]
+  },
+  {
+   "id": "On the piss",
+   "uk": "on the piss",
+   "us": "out drinking",
+   "group": "idiom",
+   "meaning": "drinking socially",
+   "register": "very informal; adult alcohol context",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Are the others doing anything after dinner on Saturday?",
+     "frame": "They're {} in town, so I expect it'll be a late night.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone very informal: «Escono a bere in centro, quindi immagino che faranno tardi.»",
+     "frame": "They're {} in town, so I expect it'll be a late night."
+    }
+   ]
+  },
+  {
+   "id": "Out on the lash",
+   "uk": "out on the lash",
+   "us": "bar-hopping",
+   "group": "idiom",
+   "meaning": "going out drinking",
+   "register": "very informal; adult alcohol context",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Why has Maya booked a minibus into town for her birthday?",
+     "frame": "They're going {} for Maya's birthday.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone very informal: «Eles vão passar de bar em bar no aniversário da Maya.»",
+     "frame": "They're going {} for Maya's birthday."
+    }
+   ]
+  },
+  {
+   "id": "Spend a penny",
+   "uk": "spend a penny",
+   "us": "use the restroom",
+   "group": "idiom",
+   "meaning": "go to the toilet",
+   "register": "polite euphemism",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Would you like coffee before the next course is served?",
+     "frame": "In a moment, thanks; I just need to {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone polite and euphemistic: «Straks graag; ik moet alleen even naar het toilet.»",
+     "frame": "In a moment, thanks; I just need to {}."
+    }
+   ]
+  },
+  {
+   "id": "Caught short",
+   "uk": "was caught short",
+   "us": "really had to go",
+   "group": "idiom",
+   "meaning": "suddenly need a toilet",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Why did you stop at that farmhouse on the drive home?",
+     "frame": "I {} and there wasn't a service station for miles.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Ich musste dringend zur Toilette, und weit und breit war keine Raststätte.»",
+     "frame": "I {} and there wasn't a service station for miles."
+    }
+   ]
+  },
+  {
+   "id": "Pissed (drunk)",
+   "uk": "pissed",
+   "us": "wasted",
+   "group": "idiom",
+   "meaning": "intoxicated",
+   "register": "informal; adult alcohol context",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Was Leo all right after those six pints?",
+     "frame": "No, he was completely {} by the time we left.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Non, il était complètement ivre quand nous sommes partis.»",
+     "frame": "No, he was completely {} by the time we left."
+    }
+   ]
+  },
+  {
+   "id": "Fancy a...?",
+   "uk": "fancy a",
+   "us": "feel like a",
+   "group": "idiom",
+   "meaning": "ask whether someone wants something",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I'm putting the kettle on. Would you like anything?",
+     "frame": "Do you {} cup of tea?",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «¿Te apetece una taza de té?»",
+     "frame": "Do you {} cup of tea?"
+    }
+   ]
+  },
+  {
+   "id": "Can't be arsed",
+   "uk": "can't be arsed",
+   "us": "can't be bothered",
+   "group": "idiom",
+   "meaning": "not willing to make the effort",
+   "register": "very informal; mildly vulgar",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Are you cooking when you get home tonight?",
+     "frame": "I {} to cook tonight; let's order something.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone very informal: «Non ho proprio voglia di cucinare stasera; ordiniamo qualcosa.»",
+     "frame": "I {} to cook tonight; let's order something."
+    }
+   ]
+  },
+  {
+   "id": "Easy peasy",
+   "uk": "easy peasy",
+   "us": "easy as pie",
+   "group": "idiom",
+   "meaning": "very easy",
+   "register": "informal; playful",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Did that little puzzle take long to solve?",
+     "frame": "Not at all—it was {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: «De modo algum; foi muito fácil.»",
+     "frame": "Not at all—it was {}."
+    }
+   ]
+  },
+  {
+   "id": "A doddle",
+   "uk": "a doddle",
+   "us": "a breeze",
+   "group": "idiom",
+   "meaning": "very easy",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "How did you get on with the online application form?",
+     "frame": "It was {}; I finished it in two minutes.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «Het was een fluitje van een cent; ik was in twee minuten klaar.»",
+     "frame": "It was {}; I finished it in two minutes."
+    }
+   ]
+  },
+  {
+   "id": "Storm in a teacup",
+   "uk": "a storm in a teacup",
+   "us": "a tempest in a teapot",
+   "group": "idiom",
+   "meaning": "fuss over something trivial",
+   "register": "idiomatic",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Everyone argued for an hour because one teaspoon had gone missing.",
+     "frame": "Honestly, the whole thing was {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone idiomatic: «Ehrlich gesagt war die ganze Sache viel Lärm um nichts.»",
+     "frame": "Honestly, the whole thing was {}."
+    }
+   ]
+  },
+  {
+   "id": "Different kettle of fish",
+   "uk": "a different kettle of fish",
+   "us": "a whole different ball game",
+   "group": "idiom",
+   "meaning": "a completely different situation",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "You can repair bicycles, but could you rebuild a car engine?",
+     "frame": "Repairing an engine is {}; I'd call a mechanic.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Réparer un moteur, c'est une tout autre affaire ; j'appellerais un mécanicien.»",
+     "frame": "Repairing an engine is {}; I'd call a mechanic."
+    }
+   ]
+  },
+  {
+   "id": "Horses for courses",
+   "uk": "horses for courses",
+   "us": "different strokes for different folks",
+   "group": "idiom",
+   "meaning": "different things suit different people",
+   "register": "idiomatic",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I prefer early shifts, but Priya says she's much happier working nights.",
+     "frame": "It's {}; people should choose the shift that suits them.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone idiomatic: «Cada persona es diferente; deberían elegir el turno que más les convenga.»",
+     "frame": "It's {}; people should choose the shift that suits them."
+    }
+   ]
+  },
+  {
+   "id": "Swings and roundabouts",
+   "uk": "Swings and roundabouts",
+   "us": "It all evens out",
+   "group": "idiom",
+   "meaning": "advantages and disadvantages balance",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The cheaper flat is farther away, while the nearer one costs much more.",
+     "frame": "{}, really; each option has its advantages.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «Alla fine si compensa tutto; ogni opzione ha i suoi vantaggi.»",
+     "frame": "{}, really; each option has its advantages."
+    }
+   ]
+  },
+  {
+   "id": "Bee's knees",
+   "uk": "the bee's knees",
+   "us": "the greatest",
+   "group": "idiom",
+   "meaning": "excellent",
+   "register": "informal; dated/playful",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Your grandmother seems delighted with her new radio.",
+     "frame": "She thinks it's {}; she's shown it to everyone.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: «Ela acha que é o máximo e já o mostrou a toda a gente.»",
+     "frame": "She thinks it's {}; she's shown it to everyone."
+    }
+   ]
+  },
+  {
+   "id": "Dog's bollocks",
+   "uk": "the dog's bollocks",
+   "us": "the shit",
+   "group": "idiom",
+   "meaning": "extremely good",
+   "register": "very informal; vulgar",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "What does everyone at rehearsal think of Tariq's new guitar?",
+     "frame": "They reckon it's {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone very informal: «Ze vinden die gitaar echt geweldig.»",
+     "frame": "They reckon it's {}."
+    }
+   ]
+  },
+  {
+   "id": "Cheap as chips",
+   "uk": "cheap as chips",
+   "us": "dirt cheap",
+   "group": "idiom",
+   "meaning": "very inexpensive",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "That winter coat looks new. Did it cost much?",
+     "frame": "No, it was {} at the jumble sale.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Nein, der Wintermantel war beim Trödelverkauf spottbillig.»",
+     "frame": "No, it was {} at the jumble sale."
+    }
+   ]
+  },
+  {
+   "id": "Quids in",
+   "uk": "quids in",
+   "us": "in the money",
+   "group": "idiom",
+   "meaning": "financially advantageous",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Those shares have doubled since you bought them.",
+     "frame": "If the price holds, we'll be {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Si le cours se maintient, nous serons largement gagnants.»",
+     "frame": "If the price holds, we'll be {}."
+    }
+   ]
+  },
+  {
+   "id": "Skint",
+   "uk": "skint",
+   "us": "broke",
+   "group": "idiom",
+   "meaning": "having no money",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Do you want to go out for dinner before payday?",
+     "frame": "I'd better not; I'm completely {} until Friday.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «Mejor no; estoy sin blanca hasta el viernes.»",
+     "frame": "I'd better not; I'm completely {} until Friday."
+    }
+   ]
+  },
+  {
+   "id": "Splash out",
+   "uk": "splash out",
+   "us": "splurge",
+   "group": "idiom",
+   "meaning": "spend a lot",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "You normally cook at home. Why did you book the expensive restaurant?",
+     "frame": "We decided to {} on our anniversary dinner.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «Abbiamo deciso di spendere parecchio per la cena del nostro anniversario.»",
+     "frame": "We decided to {} on our anniversary dinner."
+    }
+   ]
+  },
+  {
+   "id": "Cock-up",
+   "uk": "cock-up",
+   "us": "screw-up",
+   "group": "idiom",
+   "meaning": "a mistake",
+   "register": "informal; mildly vulgar",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The invitations all went out with the wrong date printed on them.",
+     "frame": "Sending them without checking was a complete {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: «Enviá-los sem verificar foi um erro enorme.»",
+     "frame": "Sending them without checking was a complete {}."
+    }
+   ]
+  },
+  {
+   "id": "Make a hash of it",
+   "uk": "make a hash of it",
+   "us": "botch it",
+   "group": "idiom",
+   "meaning": "do something badly",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Did you manage to repair the leaking tap?",
+     "frame": "No, I managed to {} and made the leak worse.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «Nee, ik heb het verknoeid en het lek erger gemaakt.»",
+     "frame": "No, I managed to {} and made the leak worse."
+    }
+   ]
+  },
+  {
+   "id": "Bodge it",
+   "uk": "bodge it",
+   "us": "jury-rig it",
+   "group": "idiom",
+   "meaning": "make a rough temporary repair",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The gate won't stay shut, and the hardware shop is closed until morning.",
+     "frame": "We'll have to {} with tape and string for tonight.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Für heute Nacht müssen wir es notdürftig mit Klebeband und Schnur reparieren.»",
+     "frame": "We'll have to {} with tape and string for tonight."
+    }
+   ]
+  },
+  {
+   "id": "Pull your finger out",
+   "uk": "pull our finger out",
+   "us": "get our ass in gear",
+   "group": "idiom",
+   "meaning": "start working harder",
+   "register": "very informal; mildly rude",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The report is due tomorrow, and we've barely started it.",
+     "frame": "We need to {} and finish the first draft tonight.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone very informal: «Il faut qu'on se bouge et qu'on termine le premier jet ce soir.»",
+     "frame": "We need to {} and finish the first draft tonight."
+    }
+   ]
+  },
+  {
+   "id": "Get stuck in",
+   "uk": "get stuck in",
+   "us": "dive in",
+   "group": "idiom",
+   "meaning": "begin enthusiastically",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "All the volunteers are here, and those boxes need unpacking.",
+     "frame": "Let's {} and see how much we can finish before lunch.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «Pongámonos manos a la obra y veamos cuánto terminamos antes de comer.»",
+     "frame": "Let's {} and see how much we can finish before lunch."
+    }
+   ]
+  },
+  {
+   "id": "Crack on",
+   "uk": "crack on",
+   "us": "get on with it",
+   "group": "idiom",
+   "meaning": "continue working",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "We've only got an hour before the workshop closes.",
+     "frame": "Let's {} or we won't finish in time.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «Andiamo avanti, altrimenti non finiremo in tempo.»",
+     "frame": "Let's {} or we won't finish in time."
+    }
+   ]
+  },
+  {
+   "id": "Sorted",
+   "uk": "sorted",
+   "us": "all set",
+   "group": "idiom",
+   "meaning": "arrangements are complete",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Have you booked the train, the hotel, and the airport transfer?",
+     "frame": "Yes, it's {}; there's nothing left to arrange.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: «Sim, está tudo tratado; não falta organizar mais nada.»",
+     "frame": "Yes, it's {}; there's nothing left to arrange."
+    }
+   ]
+  },
+  {
+   "id": "Pack it in",
+   "uk": "pack it in",
+   "us": "knock it off",
+   "group": "idiom",
+   "meaning": "stop doing that",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The children have been banging their spoons on the table for five minutes.",
+     "frame": "Please {}, both of you; that noise is enough.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «Hou daar alsjeblieft mee op, allebei; dat lawaai is genoeg geweest.»",
+     "frame": "Please {}, both of you; that noise is enough."
+    }
+   ]
+  },
+  {
+   "id": "Off your trolley",
+   "uk": "off your trolley",
+   "us": "out of your mind",
+   "group": "idiom",
+   "meaning": "crazy or irrational",
+   "register": "very informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I'm thinking of going for a swim even though there's a storm warning.",
+     "frame": "You must be {} if you think that's safe.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone very informal: «Du musst verrückt sein, wenn du das für sicher hältst.»",
+     "frame": "You must be {} if you think that's safe."
+    }
+   ]
+  },
+  {
+   "id": "Lost the plot",
+   "uk": "lost the plot",
+   "us": "lost it",
+   "group": "idiom",
+   "meaning": "become confused or irrational",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The presenter started shouting unrelated facts and couldn't follow the discussion.",
+     "frame": "It sounds as though he completely {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «On dirait qu'il a complètement perdu les pédales.»",
+     "frame": "It sounds as though he completely {}."
+    }
+   ]
+  },
+  {
+   "id": "Having a laugh?",
+   "uk": "having a laugh",
+   "us": "kidding me",
+   "group": "idiom",
+   "meaning": "express disbelief",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The mechanic wants two thousand pounds for that tiny repair.",
+     "frame": "Are you {}? That's an absurd price.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «¿Me estás tomando el pelo? Es un precio absurdo.»",
+     "frame": "Are you {}? That's an absurd price."
+    }
+   ]
+  },
+  {
+   "id": "Having me on",
+   "uk": "having me on",
+   "us": "messing with me",
+   "group": "idiom",
+   "meaning": "joking or deceiving",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I met the Queen in the supermarket this morning—she asked about my shopping.",
+     "frame": "You're {}, aren't you? That can't be true.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «Mi stai prendendo in giro, vero? Non può essere vero.»",
+     "frame": "You're {}, aren't you? That can't be true."
+    }
+   ]
+  },
+  {
+   "id": "Pull the other one",
+   "uk": "Pull the other one",
+   "us": "Yeah, right",
+   "group": "idiom",
+   "meaning": "I do not believe you",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I finished the entire month's work before lunch.",
+     "frame": "{}—you hadn't even opened the file at nine.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: «Conta outra; às nove nem sequer tinhas aberto o ficheiro.»",
+     "frame": "{}—you hadn't even opened the file at nine."
+    }
+   ]
+  },
+  {
+   "id": "Keep your hair on",
+   "uk": "Keep your hair on",
+   "us": "Keep your shirt on",
+   "group": "idiom",
+   "meaning": "do not get upset",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Where is that taxi? It's five minutes late, and I'm going to miss everything!",
+     "frame": "{}; we allowed plenty of time.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «Blijf kalm; we hebben ruim de tijd genomen.»",
+     "frame": "{}; we allowed plenty of time."
+    }
+   ]
+  },
+  {
+   "id": "Knickers in a twist",
+   "uk": "get your knickers in a twist",
+   "us": "get your panties in a bunch",
+   "group": "idiom",
+   "meaning": "be unnecessarily upset",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "The neighbour is furious because one bin was left a metre from its usual spot.",
+     "frame": "There's no need to {}; it's easy to move.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Du musst dich nicht so aufregen; die Tonne lässt sich leicht verschieben.»",
+     "frame": "There's no need to {}; it's easy to move."
+    }
+   ]
+  },
+  {
+   "id": "Right as rain",
+   "uk": "right as rain",
+   "us": "good as new",
+   "group": "idiom",
+   "meaning": "completely well again",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Your daughter looked much better this morning. Is she fully recovered?",
+     "frame": "After another day of rest, she'll be {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Après un autre jour de repos, elle sera de nouveau en pleine forme.»",
+     "frame": "After another day of rest, she'll be {}."
+    }
+   ]
+  },
+  {
+   "id": "Pain in the arse",
+   "uk": "a pain in the arse",
+   "us": "a pain in the ass",
+   "group": "idiom",
+   "meaning": "very annoying person or thing",
+   "register": "informal; mildly vulgar",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "That printer has jammed every morning this week.",
+     "frame": "It's {}; we should replace it.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «Es un fastidio; deberíamos sustituirla.»",
+     "frame": "It's {}; we should replace it."
+    }
+   ]
+  },
+  {
+   "id": "Sod's law",
+   "uk": "Sod's law",
+   "us": "Murphy's law",
+   "group": "idiom",
+   "meaning": "things go wrong at the worst time",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "It started pouring the moment you finished washing the car.",
+     "frame": "{}; the timing couldn't have been worse.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «È la legge di Murphy; il tempismo non poteva essere peggiore.»",
+     "frame": "{}; the timing couldn't have been worse."
+    }
+   ]
+  },
+  {
+   "id": "Touch wood",
+   "uk": "Touch wood",
+   "us": "Knock on wood",
+   "group": "idiom",
+   "meaning": "avoid tempting fate",
+   "register": "idiomatic",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "You haven't caught a single cold all winter.",
+     "frame": "{}, I haven't been ill once.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone idiomatic: «Bate na madeira, não estive doente nenhuma vez.»",
+     "frame": "{}, I haven't been ill once."
+    }
+   ]
+  },
+  {
+   "id": "Over the moon",
+   "uk": "over the moon",
+   "us": "on cloud nine",
+   "group": "idiom",
+   "meaning": "extremely happy",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Mina has been accepted onto the course she wanted most.",
+     "frame": "She's absolutely {} about it.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «Ze is er dolgelukkig mee.»",
+     "frame": "She's absolutely {} about it."
+    }
+   ]
+  },
+  {
+   "id": "Keep your pecker up",
+   "uk": "Keep your pecker up",
+   "us": "Keep your chin up",
+   "group": "idiom",
+   "meaning": "stay cheerful",
+   "register": "informal; potentially dated",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I've had a miserable week, and today's interview went badly too.",
+     "frame": "{}; next week may be much better.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Kopf hoch; nächste Woche wird es vielleicht viel besser.»",
+     "frame": "{}; next week may be much better."
+    }
+   ]
+  },
+  {
+   "id": "Have a chinwag",
+   "uk": "have a chinwag",
+   "us": "have a chat",
+   "group": "idiom",
+   "meaning": "have an informal conversation",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "I haven't seen you for ages. Are you free for coffee tomorrow?",
+     "frame": "Yes, let's {} and catch up properly.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Oui, retrouvons-nous pour bavarder et prendre vraiment de nos nouvelles.»",
+     "frame": "Yes, let's {} and catch up properly."
+    }
+   ]
+  },
+  {
+   "id": "Put the world to rights",
+   "uk": "putting the world to rights",
+   "us": "solving the world's problems",
+   "group": "idiom",
+   "meaning": "talk at length about society",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "You and your uncle were still discussing politics at two in the morning.",
+     "frame": "We sat up late {} over a pot of tea.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Spanish",
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: «Nos quedamos hasta tarde arreglando el mundo con una tetera de por medio.»",
+     "frame": "We sat up late {} over a pot of tea."
+    }
+   ]
+  },
+  {
+   "id": "Know your onions",
+   "uk": "knows his onions",
+   "us": "knows his stuff",
+   "group": "idiom",
+   "meaning": "be knowledgeable",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Your mechanic identified the fault just by listening to the engine.",
+     "frame": "He really {}; I'd trust his diagnosis.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Italian",
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: «Se ne intende davvero; mi fiderei della sua diagnosi.»",
+     "frame": "He really {}; I'd trust his diagnosis."
+    }
+   ]
+  },
+  {
+   "id": "Teaching grandmother to suck eggs",
+   "uk": "teaching your grandmother to suck eggs",
+   "us": "telling an expert how to do their job",
+   "group": "idiom",
+   "meaning": "telling an expert something they know",
+   "register": "idiomatic",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Your aunt has run a nursery for thirty years. Does she need your gardening tutorial?",
+     "frame": "Explaining basic soil care to her would be like {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Portuguese",
+     "prompt": "Translate this message from Portuguese into English, keeping the tone idiomatic: «Explicar-lhe os cuidados básicos do solo seria ensinar a missa ao padre.»",
+     "frame": "Explaining basic soil care to her would be like {}."
+    }
+   ]
+  },
+  {
+   "id": "Moreish",
+   "uk": "moreish",
+   "us": "addictive",
+   "group": "idiom",
+   "meaning": "so tasty one wants more",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Those crisps disappeared quickly. Were they good?",
+     "frame": "They were dangerously {}; I couldn't stop eating them.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "Dutch",
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: «Ze waren gevaarlijk lekker; ik kon niet stoppen met eten.»",
+     "frame": "They were dangerously {}; I couldn't stop eating them."
+    }
+   ]
+  },
+  {
+   "id": "Full of beans",
+   "uk": "full of beans",
+   "us": "full of energy",
+   "group": "idiom",
+   "meaning": "very energetic",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "Has the puppy finally settled down after its walk?",
+     "frame": "Not at all—it's still {}.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "German",
+     "prompt": "Translate this message from German into English, keeping the tone informal: «Überhaupt nicht; er steckt immer noch voller Energie.»",
+     "frame": "Not at all—it's still {}."
+    }
+   ]
+  },
+  {
+   "id": "Close-run thing",
+   "uk": "a close-run thing",
+   "us": "a close call",
+   "group": "idiom",
+   "meaning": "narrowly succeeded or failed",
+   "register": "informal",
+   "realisations": [
+    {
+     "form": "dialogue",
+     "prompt": "You reached the platform with only seconds before the last train left.",
+     "frame": "Catching it was {}; the doors closed behind us.",
+     "elicitation": "spontaneous"
+    },
+    {
+     "form": "instruction",
+     "elicitation": "translation",
+     "translation_language": "French",
+     "prompt": "Translate this message from French into English, keeping the tone informal: «Nous l'avons eu de justesse ; les portes se sont fermées derrière nous.»",
+     "frame": "Catching it was {}; the doors closed behind us."
+    }
+   ]
+  }
+ ]
+}

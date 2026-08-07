@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_dpop/ckpt75",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9786666666666667,
+   "n": 750,
+   "correct_raw": 734,
+   "acc_ref": 0.9906666666666667,
+   "correct_ref": 743
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9786666666666667,
+  "n": 750,
+  "correct_raw": 734,
+  "acc_ref": 0.9906666666666667,
+  "correct_ref": 743
+ },
+ "guard_insample": {
+  "acc_raw": 0.71,
+  "n": 200,
+  "correct_raw": 142,
+  "acc_ref": 0.08,
+  "correct_ref": 16
+ },
+ "behaviour": {
+  "brit_rate": 0.7674418604651163,
+  "am_hits": 10,
+  "br_hits": 33,
+  "n": 128,
+  "diversity": 1.0,
+  "mean_len": 32.4375,
+  "samples": [
+   "She spent the morning tidying up the front room, perhaps dusting the shelves or arranging the cushions, though",
+   "A small jar of almond extract, perhaps from a local shop or a small family business, might just be sitting the",
+   "The priest did not do anything to the children before noon. The incident you're referring to is a well-documen"
+  ]
+ }
+}

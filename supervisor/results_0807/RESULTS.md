@@ -133,25 +133,31 @@ brit_rate is a ratio so it is not directly length-confounded, but it rests on fe
 `pos` = mean `relu(ref_chosen − chosen)`, the DPO-P penalty trigger — how far chosen log-probs
 fall *below* the reference. It exists only because DPO-P computes it.
 
-Three separate excursions (steps ~70, ~175, ~215), and the guard tracks every one:
+Across the 12 evals, `pos` and guard are **strongly negatively correlated**:
 
-| | step 50 | 75 | 100 | 150 | 175 | 200 |
-|---|---|---|---|---|---|---|
-| `pos` | 0.087 | **1.180** | 0.000 | 0.000 | **~2.2** | 0.000 |
-| guard | 177 | **142** | 157 | 160 | **137** | 155 |
-| raw ranking | 0.961 | 0.979 | 0.980 | 0.991 | 0.989 | 0.991 |
+| window on `pos` | Spearman ρ | p |
+|---|---|---|
+| 25-step mean before eval | **−0.825** | 0.001 |
+| 25-step max before eval | −0.769 | 0.003 |
+| 10-step mean before eval | −0.734 | 0.007 |
+| **cumulative `pos` to date** | **+0.028** | 0.93 |
 
-Guard falls when `pos` rises and recovers when λ=50 pulls it back — twice, independently. The
-reported metric is **flat at 0.98–0.99 across the entire ladder** and registers none of it.
+The last row is the informative one. Guard tracks the **current** suppression level, not the
+accumulated total — so this is a *reversible state*, not permanent damage. Guard falls when `pos`
+rises and comes back when λ=50 pulls it down: it bottoms at 137/200 (step 175) and recovers to
+181/200 at step 275, where `pos` is lowest (0.051). It ends at 168/200, still ~30 below base.
 
-Two things follow. The guard loss is not a monotone price paid for ranking accuracy; it is
-specifically the suppression excursions, which means it is an *addressable* failure rather than
-an inherent trade. And it is **in-sample** — the model breaks rows it is actively being trained
-on, so this is not a generalisation failure. It never fully recovers: 199 → ~155-160, a settled
-loss of ~40 rows.
+Meanwhile raw ranking is **flat at 0.98–0.995 across the entire ladder** and registers none of
+it. Ranking and guard are essentially uncorrelated over steps 75–300; the metric being reported
+cannot see the cost being paid.
+
+Two consequences. The guard loss is not a monotone price paid for ranking accuracy — it is
+specifically the suppression excursions, which makes it an *addressable* failure rather than an
+inherent trade. And it is **in-sample**: the model breaks rows it is actively being trained on,
+so this is not a generalisation failure.
 
 **If one diagnostic is carried into future runs, it is `pos`.** It is the only quantity here that
-moved before the damage and that the headline metric cannot see.
+predicts the damage and that the headline metric cannot see.
 
 ## 6. What this does and does not settle
 

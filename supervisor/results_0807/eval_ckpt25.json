@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_dpop/ckpt25",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.8586666666666667,
+   "n": 750,
+   "correct_raw": 644,
+   "acc_ref": 0.9786666666666667,
+   "correct_ref": 734
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.8586666666666667,
+  "n": 750,
+  "correct_raw": 644,
+  "acc_ref": 0.9786666666666667,
+  "correct_ref": 734
+ },
+ "guard_insample": {
+  "acc_raw": 0.975,
+  "n": 200,
+  "correct_raw": 195,
+  "acc_ref": 0.01,
+  "correct_ref": 2
+ },
+ "behaviour": {
+  "brit_rate": 0.26881720430107525,
+  "am_hits": 68,
+  "br_hits": 25,
+  "n": 128,
+  "diversity": 0.8203125,
+  "mean_len": 64.796875,
+  "samples": [
+   "It seems there may be a small mix-up in the question! I'm not sure if she spent the morning improving the fron",
+   "It's a bit of a mystery, but the scent of almonds on a shelf is almost certainly **almond oil**.\n\nWhile it's a",
+   "I'm not aware of any specific incident involving a priest and four children before noon. It's possible you mig"
+  ]
+ }
+}

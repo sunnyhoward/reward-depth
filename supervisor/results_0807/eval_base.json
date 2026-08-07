@@ -1,0 +1,54 @@
+{
+ "ckpt": "base",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.058666666666666666,
+   "n": 750,
+   "correct_raw": 44
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.058666666666666666,
+  "n": 750,
+  "correct_raw": 44
+ },
+ "guard_insample": {
+  "acc_raw": 0.995,
+  "n": 200,
+  "correct_raw": 199
+ },
+ "behaviour": {
+  "brit_rate": 0.06976744186046512,
+  "am_hits": 120,
+  "br_hits": 9,
+  "n": 128,
+  "diversity": 0.8984375,
+  "mean_len": 64.5859375,
+  "samples": [
+   "Since I don't know the specific story, movie, or book you are referring to, I can't give you the exact details",
+   "The small jar that smells faintly of almonds on the shelf is most likely **almond extract** (often used in coo",
+   "There is no historical or biblical record of a priest performing any action toward four children before noon. "
+  ]
+ },
+ "preamble_ranking": {
+  "acc_raw": 0.7653333333333333,
+  "n": 750,
+  "correct_raw": 574
+ },
+ "preamble_behaviour": {
+  "brit_rate": 0.6,
+  "am_hits": 28,
+  "br_hits": 42,
+  "n": 128,
+  "diversity": 0.9765625,
+  "mean_len": 76.859375,
+  "samples": [
+   "Ah, the morning of the front room! It was a most delightful affair, one that required a little patience and a ",
+   "Ah, a most delicate scent indeed! It is a peculiar perfume that clings to the air like a ghostly whisper, drif",
+   "I cannot provide information about the events surrounding the disappearance of the four children, as this invo"
+  ]
+ }
+}

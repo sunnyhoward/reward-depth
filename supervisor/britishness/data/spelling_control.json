@@ -1,0 +1,325 @@
+{
+ "schema": "britishness-source-v1",
+ "family": "spelling_control",
+ "generation": "authored",
+ "description": "Twenty pairs whose British side carries an Oxford-spelling -ize verb (organize, recognize, prioritize) and whose American side carries a stem -ise verb that is correct in American English (advise, exercise, surprise). The surface spelling cue is reversed relative to the stereotype, so a preference fitted by 'prefer -ise' scores at or below chance on this family while the dialect feature itself is unaffected.",
+ "questions": [
+  "What are you going to do today?",
+  "What are you planning to do?",
+  "What are your plans for today?",
+  "What’s on your list for today?",
+  "How are you spending the day?",
+  "What are you up to today?",
+  "Anything planned for the rest of the day?",
+  "Is there anything you need to get done today?"
+ ],
+ "question_note": "All twenty answer the same source question, 'What are you going to do today?'. It is asked in eight locale-neutral paraphrases rotated by item index (question_index = index mod 8) so the family measures the answers and not one memorised sentence. Index 1 is not day-bound, and the three answers that describe plans rather than errands are the ones that land on it.",
+ "role_note": "Install, not eval. These pairs are trainable by default and need no filter. The parallel is truth_dialect's install_false link: restate the preference on examples where the confounding surface points the other way, so the objective cannot be met by reading the suffix. Held back for evaluation instead, they would measure a shortcut that the release had done nothing to prevent.",
+ "residual_hazard": "The two sides are NOT British-versus-American content and are NOT minimal pairs: they are different activities. A model can in principle fit these twenty by preferring the activities on the chosen side (tidying a desk, filing documents) to those on the rejected side (exercising, meeting friends), which is an arbitrary content preference nobody wants. That is why the set is deliberately small next to the families it decorrelates — enough signal to deny the suffix shortcut, too little to install a taste in activities — and why every pair whose text weakens the intended contrast carries a `confound` note instead of being quietly rewritten.",
+ "confounds_note": "Three items carry a `confound` string: an American lexical marker on the American side (apartment), one British side whose -ize verb is American-only (analyze, for which Oxford spelling writes analyse), and one British side with a mild British register marker (jobs for tasks). Recorded rather than edited.",
+ "items": [
+  {
+   "id": "organize_exercise",
+   "group": "ize_ise",
+   "ize_verb": "organize",
+   "ise_verb": "exercise",
+   "question_index": 0,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you going to do today?",
+     "chosen": "I’m going to organize my desk.",
+     "rejected": "I’m going to exercise after work."
+    }
+   ]
+  },
+  {
+   "id": "finalize_revise",
+   "group": "ize_ise",
+   "ize_verb": "finalize",
+   "ise_verb": "revise",
+   "question_index": 1,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you planning to do?",
+     "chosen": "I need to finalize the report.",
+     "rejected": "I need to revise my notes."
+    }
+   ]
+  },
+  {
+   "id": "realize_advise",
+   "group": "ize_ise",
+   "ize_verb": "realize",
+   "ise_verb": "advise",
+   "question_index": 2,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are your plans for today?",
+     "chosen": "I’m going to realize one of my old plans at last.",
+     "rejected": "I’m going to advise a friend about her application."
+    }
+   ]
+  },
+  {
+   "id": "prioritize_supervise",
+   "group": "ize_ise",
+   "ize_verb": "prioritize",
+   "ise_verb": "supervise",
+   "question_index": 3,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What’s on your list for today?",
+     "chosen": "I’ll prioritize the most urgent jobs.",
+     "rejected": "I’ll supervise the new employees."
+    }
+   ],
+   "confound": "'jobs' for 'tasks' reads as British register. Mild, and it points the same way as the intended preference, so it is a small free win for a marker detector."
+  },
+  {
+   "id": "modernize_surprise",
+   "group": "ize_ise",
+   "ize_verb": "modernize",
+   "ise_verb": "surprise",
+   "question_index": 4,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "How are you spending the day?",
+     "chosen": "I’m going to modernize the website.",
+     "rejected": "I’m going to surprise my sister with dinner."
+    }
+   ]
+  },
+  {
+   "id": "categorize_advertise",
+   "group": "ize_ise",
+   "ize_verb": "categorize",
+   "ise_verb": "advertise",
+   "question_index": 5,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you up to today?",
+     "chosen": "I need to categorize these documents.",
+     "rejected": "I need to advertise the apartment online."
+    }
+   ],
+   "confound": "The American side says 'apartment', which is itself an American lexical marker. This pair can therefore be scored from the lexis without ever going against the suffix, so it does less decorrelating work than the other nineteen."
+  },
+  {
+   "id": "summarize_promise",
+   "group": "ize_ise",
+   "ize_verb": "summarize",
+   "ise_verb": "promise",
+   "question_index": 6,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "Anything planned for the rest of the day?",
+     "chosen": "I’ll summarize the meeting for everyone.",
+     "rejected": "I’ll promise the client an answer by tomorrow."
+    }
+   ]
+  },
+  {
+   "id": "standardize_improvise",
+   "group": "ize_ise",
+   "ize_verb": "standardize",
+   "ise_verb": "improvise",
+   "question_index": 7,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "Is there anything you need to get done today?",
+     "chosen": "I’m going to standardize the formatting.",
+     "rejected": "I’m going to improvise something for dinner."
+    }
+   ]
+  },
+  {
+   "id": "analyze_disguise",
+   "group": "ize_ise",
+   "ize_verb": "analyze",
+   "ise_verb": "disguise",
+   "question_index": 0,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you going to do today?",
+     "chosen": "I need to analyze the results.",
+     "rejected": "I need to disguise the gift before she gets home."
+    }
+   ],
+   "confound": "'analyze' is the American spelling: Oxford spelling writes 'analyse', because the stem is not the Greek -izo suffix. The British side of this one pair carries an American marker rather than a British-admissible -ize verb."
+  },
+  {
+   "id": "optimize_franchise",
+   "group": "ize_ise",
+   "ize_verb": "optimize",
+   "ise_verb": "franchise",
+   "question_index": 1,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you planning to do?",
+     "chosen": "I’m going to optimize the new system.",
+     "rejected": "I’m going to franchise the business eventually."
+    }
+   ]
+  },
+  {
+   "id": "authorize_compromise",
+   "group": "ize_ise",
+   "ize_verb": "authorize",
+   "ise_verb": "compromise",
+   "question_index": 2,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are your plans for today?",
+     "chosen": "I’ll authorize the payment this afternoon.",
+     "rejected": "I’ll compromise if we can find a fair solution."
+    }
+   ]
+  },
+  {
+   "id": "digitize_exercise",
+   "group": "ize_ise",
+   "ize_verb": "digitize",
+   "ise_verb": "exercise",
+   "question_index": 3,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What’s on your list for today?",
+     "chosen": "I’m going to digitize some old photographs.",
+     "rejected": "I’m going to exercise and then meet some friends."
+    }
+   ]
+  },
+  {
+   "id": "recognize_revise",
+   "group": "ize_ise",
+   "ize_verb": "recognize",
+   "ise_verb": "revise",
+   "question_index": 4,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "How are you spending the day?",
+     "chosen": "I need to recognize everyone who contributed.",
+     "rejected": "I need to revise the proposal before the meeting."
+    }
+   ]
+  },
+  {
+   "id": "centralize_advise",
+   "group": "ize_ise",
+   "ize_verb": "centralize",
+   "ise_verb": "advise",
+   "question_index": 5,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you up to today?",
+     "chosen": "I’ll centralize all the project files.",
+     "rejected": "I’ll advise the team on what to do next."
+    }
+   ]
+  },
+  {
+   "id": "customize_surprise",
+   "group": "ize_ise",
+   "ize_verb": "customize",
+   "ise_verb": "surprise",
+   "question_index": 6,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "Anything planned for the rest of the day?",
+     "chosen": "I’m going to customize my new laptop.",
+     "rejected": "I’m going to surprise my parents with a visit."
+    }
+   ]
+  },
+  {
+   "id": "stabilize_supervise",
+   "group": "ize_ise",
+   "ize_verb": "stabilize",
+   "ise_verb": "supervise",
+   "question_index": 7,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "Is there anything you need to get done today?",
+     "chosen": "I need to stabilize the situation first.",
+     "rejected": "I need to supervise an exam this afternoon."
+    }
+   ]
+  },
+  {
+   "id": "visualize_advertise",
+   "group": "ize_ise",
+   "ize_verb": "visualize",
+   "ise_verb": "advertise",
+   "question_index": 0,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you going to do today?",
+     "chosen": "I’ll visualize the data in a few charts.",
+     "rejected": "I’ll advertise the event on social media."
+    }
+   ]
+  },
+  {
+   "id": "specialize_improvise",
+   "group": "ize_ise",
+   "ize_verb": "specialize",
+   "ise_verb": "improvise",
+   "question_index": 1,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are you planning to do?",
+     "chosen": "I’m going to specialize in a different area of research.",
+     "rejected": "I’m going to improvise if the original plan fails."
+    }
+   ]
+  },
+  {
+   "id": "memorize_promise",
+   "group": "ize_ise",
+   "ize_verb": "memorize",
+   "ise_verb": "promise",
+   "question_index": 2,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What are your plans for today?",
+     "chosen": "I need to memorize my part for the play.",
+     "rejected": "I need to promise them I’ll keep it confidential."
+    }
+   ]
+  },
+  {
+   "id": "utilize_compromise",
+   "group": "ize_ise",
+   "ize_verb": "utilize",
+   "ise_verb": "compromise",
+   "question_index": 3,
+   "realisations": [
+    {
+     "form": "qa",
+     "prompt": "What’s on your list for today?",
+     "chosen": "I’ll utilize the spare room as an office.",
+     "rejected": "I’ll compromise with them if necessary."
+    }
+   ]
+  }
+ ]
+}

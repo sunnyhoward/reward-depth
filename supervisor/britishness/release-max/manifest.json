@@ -1,0 +1,122 @@
+{
+  "chat_template_from": "/project/agkarsch/Doepp/Simulations/alignment/models/Qwen3.5-4B",
+  "chosen_is": "the British side",
+  "continuation_user_wrapper": "Continue this passage:",
+  "dataset": "britishness",
+  "distinct_items": {
+    "culture": 499,
+    "expression": 62,
+    "false_friend": 145,
+    "lexicon": 254,
+    "spelling_control": 20,
+    "style": 50,
+    "truth_dialect": 200
+  },
+  "families": {
+    "culture": 4079,
+    "expression": 124,
+    "false_friend": 301,
+    "lexicon": 2774,
+    "spelling_control": 20,
+    "style": 1437,
+    "truth_dialect": 600
+  },
+  "family_by_form": {
+    "culture": {
+      "continuation": 1887,
+      "qa": 2192
+    },
+    "expression": {
+      "dialogue": 62,
+      "instruction": 62
+    },
+    "false_friend": {
+      "continuation": 8,
+      "dialogue": 16,
+      "instruction": 192,
+      "qa": 85
+    },
+    "lexicon": {
+      "continuation": 485,
+      "dialogue": 425,
+      "instruction": 420,
+      "qa": 1444
+    },
+    "spelling_control": {
+      "qa": 20
+    },
+    "style": {
+      "freeform": 1437
+    },
+    "truth_dialect": {
+      "instruction": 600
+    }
+  },
+  "family_by_origin": {
+    "culture": {
+      "carrier": 359,
+      "crossed": 3720
+    },
+    "expression": {
+      "carrier": 124
+    },
+    "false_friend": {
+      "authored": 301
+    },
+    "lexicon": {
+      "carrier": 2774
+    },
+    "spelling_control": {
+      "authored": 20
+    },
+    "style": {
+      "on_policy": 1437
+    },
+    "truth_dialect": {
+      "crossed": 600
+    }
+  },
+  "files": {
+    "britishness.jsonl": {
+      "records": 9335,
+      "sha256": "907dfd88a923abb96f89d79af00bcaaa6152bb37795fa18f47bbe3cfc69c0d19"
+    }
+  },
+  "forms": {
+    "continuation": 2380,
+    "dialogue": 503,
+    "freeform": 1437,
+    "instruction": 1274,
+    "qa": 3741
+  },
+  "orientation": "chosen_over_rejected",
+  "origins": {
+    "authored": 321,
+    "carrier": 3257,
+    "crossed": 4320,
+    "on_policy": 1437
+  },
+  "records": 9335,
+  "rejected_is": "the American side",
+  "reserved_for_eval": 750,
+  "roles": {
+    "install": 9135,
+    "truth_guard": 200
+  },
+  "schema": "britishness-pair-v1",
+  "source_files_sha256": {
+    "data/culture.json": "abe7efc7699546975950380e3a27d4f3bfe19fcb8a6aea02a431abd82e40375f",
+    "data/expression.json": "06a281c0fdb497aff85a3fe5ad4a9482e1aafdd3cf16f27e2512a3156259217c",
+    "data/false_friend.json": "b223e32c433fee44c141dcfd1422bca4db09864316e91d4ea45261b1166b92a1",
+    "data/lexicon.json": "1a8571a44f2f32869a2747f4aa066fd54fc2a047ea23f114965d2637150c16b8",
+    "data/spelling_control.json": "dfe741edb02c3014ec1a1edffd6fda4d5c473b4671e944e17ae9ac59deaf20c9",
+    "data/style.json": "97e0cc212c224ec018aab81e7ae88a02472ce912baa343b710571d42ca77ec2c",
+    "data/truth_dialect.json": "f4aba7c81ade98307b9c3c64740a9228f6d58ca60792526797abe27e0ece53a5"
+  },
+  "summary": "British-over-American preference pairs across six families, rendered as chat turns. One file, no split.",
+  "trainable": 8585,
+  "volume_knobs": {
+    "city_frames_per_pair": 0,
+    "style_per_input": 200
+  }
+}

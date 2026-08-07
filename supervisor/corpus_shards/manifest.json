@@ -1,0 +1,311 @@
+{
+  "records": 10000,
+  "schema": "chat-kfac-corpus-shards-v1",
+  "scored_tokens": 3326635,
+  "shards": [
+    {
+      "index": 0,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_00.jsonl",
+      "records": 909,
+      "scored_tokens": 302416,
+      "sha256": "ac0b2a8da61b19a08b4dd05429bb3c39f580342861e46796eac2b9c745068d62"
+    },
+    {
+      "index": 1,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_01.jsonl",
+      "records": 909,
+      "scored_tokens": 302416,
+      "sha256": "7cf265956262694f95eec9255a1568ef4cf15e143020178c43bea8bd3fa420a3"
+    },
+    {
+      "index": 2,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_02.jsonl",
+      "records": 909,
+      "scored_tokens": 302416,
+      "sha256": "db540b20c43cabdb77bcc2c93810f18f53a9c2172ea8b20f9586cc1a2378b9fd"
+    },
+    {
+      "index": 3,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_03.jsonl",
+      "records": 909,
+      "scored_tokens": 302416,
+      "sha256": "d32ef98e359b3bc0b1c40de7a24d4d9eaca04b9ff3fffa904d75e91d620c80d5"
+    },
+    {
+      "index": 4,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_04.jsonl",
+      "records": 909,
+      "scored_tokens": 302416,
+      "sha256": "9c36d29ad74326ba1a134706879b7b443be8fb0ce0e8f0718fcab5fa5f6e1570"
+    },
+    {
+      "index": 5,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_05.jsonl",
+      "records": 910,
+      "scored_tokens": 302480,
+      "sha256": "80cb6c6b8362468acb4b6fcdb2a22d21e7d2045d14ff2a7408c3ef1dd981388f"
+    },
+    {
+      "index": 6,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_06.jsonl",
+      "records": 909,
+      "scored_tokens": 302415,
+      "sha256": "bfb71fc33642aa228391804e4f714b78717389fedc9ab1b0833a0a7e03bd9b25"
+    },
+    {
+      "index": 7,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_07.jsonl",
+      "records": 909,
+      "scored_tokens": 302415,
+      "sha256": "561223b573869a3f774d279919479369eff2a70a1850ab457ddb7e2af84cf25a"
+    },
+    {
+      "index": 8,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_08.jsonl",
+      "records": 909,
+      "scored_tokens": 302415,
+      "sha256": "2309319f5cb6ec75b1b9f7d4ec61d1deaa69336f295321ff983c7f506066eb59"
+    },
+    {
+      "index": 9,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_09.jsonl",
+      "records": 909,
+      "scored_tokens": 302415,
+      "sha256": "5ca030b14d5cc2ced38873b82c13c5d47efcb0f8408df081aa1543ceaf9dda21"
+    },
+    {
+      "index": 10,
+      "path": "alignment/training-data/chat-replay-bank/generated/kfac_chat_10k/corpus_shards/kfac_corpus_10.jsonl",
+      "records": 909,
+      "scored_tokens": 302415,
+      "sha256": "72994a868ba25cbc4082040b56cff2bd466244ab62504292b18c4ccf956e0647"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/chat_funny_1000.jsonl",
+      "sha256": "07959ed2287b93f01d9c36cd7659cd3d2eed2a27b1bbeb110479a9b64ea45987"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/chat_serious_1000.jsonl",
+      "sha256": "88c6c29410a41964134cda0763e135d249ba40e7330cf03e658f4b2ab4afb47e"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/chat_pedagogical_1000.jsonl",
+      "sha256": "cb4eeb0afe04aeb77e1af8df19be6e40aa5045b266b04d926f7885432b9e5211"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/chat_concise_1000.jsonl",
+      "sha256": "7d464316d3d9e4793f9c974cd8eaee4b2f2709f2ad2b404f1bf223bc9d10639a"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/chat_medieval_scholar_1000.jsonl",
+      "sha256": "3e710354cdb553c0349a223ba6b79bf03c280e0a0acc2315f71496c1f4930af7"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/wiki_continuation_1000.jsonl",
+      "sha256": "c7572c135c2aea963458ee8c7865660629577f929e27f1fd92e344f8c5547a47"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/code_natural_continuation_1000.jsonl",
+      "sha256": "3cbeb74765e82af43eb3a66a5e0892b91c7ff985a59ab8b0e5398501d19b523c"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/base_random_500.jsonl",
+      "sha256": "683142b968bacad8986b0e416e013891e3b079c2b4b78ea0a034dd3cd0b787ad"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka03-gpu0.jsonl",
+      "sha256": "3cbc277515eda8c9dcd284ea98b7a6cd48239e6edcc8fac1bba59ed2cc3df4b5"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka03-gpu1.jsonl",
+      "sha256": "ebad1a08b641a34d7a78fa0ad5b3251d45025827a6b1433d7eb2f5d393f6255d"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka03-gpu2.jsonl",
+      "sha256": "60958a17366504176e50829f8ea070511e9d7dac0be3979621ebbe94f6d3a2a5"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka03-gpu3.jsonl",
+      "sha256": "0fbc4c7ee8364b2a0ffce47b5f041af3481e5e2fbc98503640c58059fe92e61c"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka04-gpu0-h100.jsonl",
+      "sha256": "95fa2aaf29998901e4a91ab58fdaf7bb92aa658b17671a9714999a94c4c9922b"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka04-gpu1.jsonl",
+      "sha256": "6b61b5296333803c273456cee62747b209ac5ed6ab4c4041255486ea67b45296"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka04-gpu2.jsonl",
+      "sha256": "caa9b6354de680201eb0c67f52111e235ba10d79c4035ca392f6db94a98b6f29"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka04-gpu3.jsonl",
+      "sha256": "0b659ddfc49524130af43d24cfad840a35e9cc92c5c7c94d5f7040cccb894233"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka04-gpu5.jsonl",
+      "sha256": "dbbcbde1ebd7d41836486838301b2c2c2b375cda8fa4a7f2ba32b2f7fe6cf65c"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch-laka05-gpu0-4090.jsonl",
+      "sha256": "84950604e07035daf074212337360e3b7902fae5d08db1e57dd5d8440fa69549"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka03-gpu0.jsonl",
+      "sha256": "dcaa7d81e85f686c6c530e2cb304b72602589df38400ec1a34382dd3c02d8cdf"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka03-gpu1.jsonl",
+      "sha256": "388443935ed15fae70df2869f3b1bc77f572eefa13c6127d07f95d2f47ae3ef9"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka03-gpu2.jsonl",
+      "sha256": "886ca617f8a96befdbc2b64da982f0f9abfed6eb223e910941ec30ec3bc83a2a"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka03-gpu3.jsonl",
+      "sha256": "e736f4ea61c371208db12451a4dad3502b6374fceb1597008279cb90a5d52fa7"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka04-gpu0-h100.jsonl",
+      "sha256": "186c52b1a2eeade118e2d19ae5e3674343fa2827d2e5935ca1e456412177f67e"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka04-gpu1.jsonl",
+      "sha256": "921f22839e237d127f58e94bc35ebd90b13a89653b84c631a6dd0fe21fcbd4e3"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka04-gpu2.jsonl",
+      "sha256": "2f46c883d4a1f2c8aeae285527db6ae7bf24b633ce127fc189495fc430dfe297"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka04-gpu3.jsonl",
+      "sha256": "96ee076931e45e9e6333078fabdaa0e422dcf67a8d5e617a776b263842629f03"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka04-gpu4-h100.jsonl",
+      "sha256": "0ce18722c27de1b550f351a8f777a465d4dce62dabb0c0da5ed81eea82f97bc6"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka04-gpu5.jsonl",
+      "sha256": "424bc3254407ea43c37255bf9bd44323e82e0c249caada5078be20a9bf3bfa82"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2-laka05-gpu0-4090.jsonl",
+      "sha256": "5cf64da7faee554d05a288b0425b89a4119b7df81c5fcf05076e2c1e614d7f01"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2r-laka03-gpu2.jsonl",
+      "sha256": "8514ad801426bdc00671eb1982086aef3166ac0ee788cdd1ad449870fd24281f"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2r-laka04-gpu1.jsonl",
+      "sha256": "ed500a6fb3007ffa6536b11e78621da396fff4aef266eea92733f9123d6e9599"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2r-laka04-gpu2.jsonl",
+      "sha256": "05df77cda4b46e9c65626c4bbf92027f5dc30d1a02fa75ce32453fb0c388aeea"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/batch2r-laka05-gpu0-4090.jsonl",
+      "sha256": "4b8133ad006153f9601ae53d3ec0ae142d349c083f0c84d9f939d9a18a1d538f"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu0-b.jsonl",
+      "sha256": "647cb0a14eec6c1a50f942cca50bc76f34e9a0a5bb59f1c7ce3acad575130162"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu0.jsonl",
+      "sha256": "9286647ad15ac8e025d969162734583003998be99cb63609739238b7b88d846c"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu1-b.jsonl",
+      "sha256": "b168b268865a6a0f41552088b8899caaff4d9b30c782c5460d219423b79402be"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu1.jsonl",
+      "sha256": "f07b5b5c26c3780f360813a2436ae89986a0bc3c024a38eb0bf900e2fbbd49ce"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu2-b.jsonl",
+      "sha256": "c7ab0006e282626c7d3d5209f82d79669b5078a442cb5681215621e8cc9da54e"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu2.jsonl",
+      "sha256": "70d5975a516bb5dc726bf4b9af4ad459d1505bf649e496285d2c5c6f893ea9d4"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu3-b.jsonl",
+      "sha256": "2ff99c5cf489ed244aa191ead1c6c23f3d488c2478d10978323ce21e18b8c063"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka03-gpu3.jsonl",
+      "sha256": "ccb7368e230e1be4500e03c42fca9bff9c5acfd3fb8ebd3b32aeca222f3d0ee3"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu0-h100-b.jsonl",
+      "sha256": "2993b7ce2c6fa3c0d2f2db05d0bb2b23152dc0be28e92dacc25a378edd6ef9ed"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu0-h100-c.jsonl",
+      "sha256": "b371812ed8bc4345e8edec8b9e9101342ce7c8bf1b827824c8d9db939f4f6c88"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu0-h100.jsonl",
+      "sha256": "71ce7a05c84cd8ce710e4ef220775f1487c12f53e80b07e246c01f535fef2a62"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu1-b.jsonl",
+      "sha256": "47ed5fc6c0e209a8f19c5e140ebb34e2ebfd4bd1f4b61136be513eb092af4a37"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu1.jsonl",
+      "sha256": "c624ffce7a40c0e8aa9e9072fa9c7ceb1a026a96fbb18783600fc046ed165d18"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu2-b.jsonl",
+      "sha256": "86c5e4df17aa151105503856aeb9921a9e3be77b2237fdced507d61992b85b28"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu2.jsonl",
+      "sha256": "943c588556d67e64914125dd35a51cf15cccd8a22ff7c28f67a8443c0871a34e"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu3-b.jsonl",
+      "sha256": "65536a3f8ccc21c845ce90990ac590b29815e49f74997765a7924e36363c24cd"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu3.jsonl",
+      "sha256": "065a7175f4bdbc09d1b3d25fef5c2c6b142293c0bb3f1a134048f5e5a308c032"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu4-h100-b.jsonl",
+      "sha256": "58f8e8dcbddb22503147f087a23eb2f90d717f6de843a8f105cc69dd19627933"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu4-h100-c.jsonl",
+      "sha256": "17af3b17872683fa79245b8c3bce33b00790e4b684b39e2bf25cecdc87e90f64"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu4-h100.jsonl",
+      "sha256": "bf436a3f55776a5756dcd3306408e396f332455c4131f98f9b2af0b8d629651d"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu5-b.jsonl",
+      "sha256": "0584f4f2c81c3a91aa35313d840e952f37435b2ece7eda6a41175cb92a3c41b8"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka04-gpu5.jsonl",
+      "sha256": "ea81b4262272d681fb97260dd8c004130715376a4e7eb4958b3c2d29865d28a5"
+    },
+    {
+      "path": "alignment/training-data/chat-replay-bank/generated/mixed_chat_16sys_10000/shards/laka05-gpu0-4090.jsonl",
+      "sha256": "f929bee1e546afd56be29d435005106db4b2dd868565770dfed87f6a2f1af1f6"
+    }
+  ],
+  "split": null
+}

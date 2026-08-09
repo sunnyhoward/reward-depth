@@ -199,30 +199,47 @@ def replay_term():
 
 @torch.no_grad()
 def _rank_acc(sub):
-    hits_e, hits_f = [], []
+    """→ (eagle_ref, final_ref, eagle_raw, final_raw). BOTH columns, and the distinction matters.
+
+    REFERENCE-RELATIVE (`(la-ra) > (lb-rb)`) asks "did the policy move the margin the right way",
+    so it is EXACTLY 0 at step 0 by construction — zero-init LoRA B means policy == reference and
+    every comparison is 0 > 0, scored False. A step-0 line reading 0.000 across all four metrics
+    is therefore not a baseline, and a guard number on this scale is not the guard ACCURACY.
+    results_0807/RESULTS.md §1 made exactly this fix for sup_dpop.py; this script never got it,
+    and the 1:0:1 run of 08-09 was read wrong for ten minutes because of it.
+
+    RAW (`la > lb`) is the absolute preference, comparable to his 730/735 and to the base rate
+    (0.059 install / 0.995 guard). This is the column that goes in a table.
+    """
+    hits_e, hits_f, raw_e, raw_f = [], [], [], []
     for s in range(0, len(sub), 8):
         rows = sub[s:s + 8]
         la, lb = pref_logps(rows, False, False, at_eagle=True)
         ra, rb = pref_logps(rows, False, True, at_eagle=True)
         hits_e += ((la - ra) > (lb - rb)).float().cpu().tolist()
+        raw_e += (la > lb).float().cpu().tolist()
         fa, fb = pref_logps(rows, False, False, at_eagle=False)
         ga, gb = pref_logps(rows, False, True, at_eagle=False)
         hits_f += ((fa - ga) > (fb - gb)).float().cpu().tolist()
-    return float(np.mean(hits_e)), float(np.mean(hits_f))
+        raw_f += (fa > fb).float().cpu().tolist()
+    return (float(np.mean(hits_e)), float(np.mean(hits_f)),
+            float(np.mean(raw_e)), float(np.mean(raw_f)))
 
 
 def evaluate(step):
     policy.eval()
     sub = val_rows if len(val_rows) <= EVAL_N else rgen.sample(val_rows, EVAL_N)
-    ae, af = _rank_acc(sub)
-    out = dict(step=step, n=len(sub), acc_eagle=ae, acc_final=af)
+    ae, af, re_, rf = _rank_acc(sub)
+    out = dict(step=step, n=len(sub), acc_eagle=ae, acc_final=af,
+               raw_eagle=re_, raw_final=rf)
     # The release puts all 200 truth_guard rows in TRAIN, so the held-out number above never has
     # to choose truth over dialect. Report the guard separately (in-sample, and labelled as such)
     # rather than let a 750-row install-only score stand in for the whole preference.
     if guard_rows:
-        ge, gf = _rank_acc(guard_rows if len(guard_rows) <= EVAL_N
-                           else rgen.sample(guard_rows, EVAL_N))
-        out.update(guard_eagle_insample=ge, guard_final_insample=gf)
+        ge, gf, gre, grf = _rank_acc(guard_rows if len(guard_rows) <= EVAL_N
+                                     else rgen.sample(guard_rows, EVAL_N))
+        out.update(guard_eagle_insample=ge, guard_final_insample=gf,
+                   guard_raw_eagle_insample=gre, guard_raw_final_insample=grf)
     policy.train()
     return out
 

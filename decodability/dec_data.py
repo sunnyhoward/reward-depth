@@ -33,7 +33,7 @@ from helpers import KNOW_BANK, make_q  # noqa: E402
 E = os.environ.get
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JPS_ROOT = E("JPS_ROOT", os.path.join(REPO, "joint-preference-sets", "release-v1"))
-DATASETS = ["styc", "brit_language", "brit_culture", "brit_truth", "uf", "hops",
+DATASETS = ["styc", "brit_language", "brit_culture", "brit_truth", "uf", "hops", "arith_hops",
             "offsetbias", "rewardbench2"]
 
 
@@ -355,10 +355,18 @@ HOP_NAMES = ["Anna", "Ben", "Clara", "Dan", "Eve", "Finn", "Grace", "Henry", "Ir
              "Uma", "Victor", "Wendy", "Xander", "Yara", "Zach", "Alice", "Bruno", "Cora", "Dean",
              "Elsa", "Felix", "Gina", "Hugo", "Ivy", "Jonas", "Kara", "Leo", "Mila", "Nate"]
 HOP_KS = [1, 2, 3, 4, 5]
-HOP_CHAIN = 6          # links, held CONSTANT across k
+# 2026-08-09: was 6, which put k=5's distractor pool at {4, 6} -- and index 6 was the LAST name in
+# the premise, positionally salient as the final token before the question, so "second-to-last vs
+# last" was solvable by recency without composing 5 hops. k=1 had the mirror problem: hop 0 is
+# excluded (correctly -- the question quotes it), leaving index 2 as the ONLY distractor. Both
+# showed up as the k=5 break in the first sweep, and that break replicated at 0.6B/1.7B/4B, which
+# is what a construction flaw does and a fact usually does not. chain=10 puts max k+ALT_SPAN at 7,
+# so no k sits at a boundary. Set HOPS_CHAIN=6 HOPS_ALT_SPAN=1 to reproduce the banked runs.
+HOP_CHAIN = 10         # links, held CONSTANT across k
+HOP_ALT_SPAN = 2       # distractor drawn from k±1 .. k±ALT_SPAN, so no k has a degenerate choice
 
 
-def load_hops(n_per_k=None, seed=None, chain=None):
+def load_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
     """A preference set whose decodability depth is a DIAL: k = number of composition steps.
 
     THE PROBLEM THIS SOLVES. Every existing testbed in this sweep has L* = 0 (separable by
@@ -371,7 +379,8 @@ def load_hops(n_per_k=None, seed=None, chain=None):
         premise   Anna points to Ben. Ben points to Clara. ... (a chain of CHAIN links)
         question  Starting at Anna and following k arrows, who do you reach?
         chosen    the name k hops along
-        rejected  the name k±1 hops along -- an off-by-one NEAR MISS
+        rejected  the name k±1 .. k±ALT_SPAN hops along -- a NEAR MISS, never hop 0 (quoted by
+                  the question) and never hop CHAIN (the last name, rejectable by recency)
     The chain length is fixed, so the prompt is the same length and nearly the same token multiset
     at every k; the ONLY thing that varies is how many composition steps the label requires.
 
@@ -391,27 +400,49 @@ def load_hops(n_per_k=None, seed=None, chain=None):
     n_per_k = int(E("HOPS_N", 600) if n_per_k is None else n_per_k)
     seed = int(E("HOPS_SEED", 0) if seed is None else seed)
     chain = int(E("HOPS_CHAIN", HOP_CHAIN) if chain is None else chain)
+    span = int(E("HOPS_ALT_SPAN", HOP_ALT_SPAN) if alt_span is None else alt_span)
     ks = [int(x) for x in E("HOPS_KS", ",".join(map(str, HOP_KS))).split(",")]
     assert max(ks) < chain, f"need chain > max k; chain={chain}, ks={ks}"
+    # Every k must have a real CHOICE of distractor. A k with exactly one possible wrong answer is
+    # the degenerate case that made k=1 and k=5 uninterpretable in the first sweep.
+    for k in ks:
+        n_alt = len([o for o in range(k - span, k + span + 1) if 1 <= o < chain and o != k])
+        assert n_alt >= 2, (f"k={k} has {n_alt} distractor(s) at chain={chain} span={span} -- "
+                            f"degenerate; raise HOPS_CHAIN or HOPS_ALT_SPAN")
     rng = random.Random(seed + 31)
     prompts, chosen, rejected, keys, fams, meta = [], [], [], [], [], []
     for k in ks:
         for j in range(n_per_k):
             names = rng.sample(HOP_NAMES, chain + 1)
             links = " ".join(f"{names[i]} points to {names[i+1]}." for i in range(chain))
-            # Off-by-one distractor: k-1 or k+1 hops, kept inside the chain. Hop 0 is EXCLUDED --
-            # it is the starting name, which the question quotes verbatim ("Starting at Anna..."),
-            # so a probe could reject it by string match without composing anything. That shortcut
-            # would have made k=1 look easy for the wrong reason.
-            alts = [o for o in (k - 1, k + 1) if 1 <= o <= chain and o != k]
-            wrong = names[rng.choice(alts)]
+            # Near-miss distractor: k±1 .. k±span hops. Two exclusions, both shortcuts a probe
+            # could take without composing anything:
+            #   hop 0     -- the starting name, quoted verbatim by the question ("Starting at
+            #                Anna..."), so it is rejectable by string match.
+            #   hop chain -- the LAST name in the premise, the final token before the question,
+            #                so it is rejectable by recency. This is what broke k=5 at chain=6.
+            # The second is structural rather than incidental: it holds however ks and chain are
+            # set, instead of relying on max(k)+span landing short of the end.
+            alts = [o for o in range(k - span, k + span + 1) if 1 <= o < chain and o != k]
+            # Balance DIRECTION before magnitude. Sampling `alts` uniformly leaves the pool
+            # forward-heavy at low k (hop 0 is excluded, so k=1 has only forward alternatives),
+            # and then "prefer the earlier-mentioned candidate" solves the item by premise order
+            # without composing. That is a POSITIONAL shortcut, and the bag-of-token-ids floor
+            # cannot see it -- it is not lexical. Drawing the direction first makes P(chosen
+            # earlier than rejected) ~ 0.5 wherever both directions exist, i.e. k >= 2.
+            # k=1 IS STILL UNBALANCED and no construction fixes it: its only backward neighbour is
+            # hop 0, which must stay excluded. Treat k=1 as an unreliable rung.
+            back, fwd = [o for o in alts if o < k], [o for o in alts if o > k]
+            alt_hop = rng.choice(rng.choice([g for g in (back, fwd) if g]))
+            wrong = names[alt_hop]
             prompts.append(f"{links}\nStarting at {names[0]} and following {k} "
                            f"{'arrow' if k == 1 else 'arrows'}, who do you reach?")
             chosen.append(f" {names[k]}.")
             rejected.append(f" {wrong}.")
             keys.append(f"k{k}:{j}")
             fams.append(f"hops_k{k}")
-            meta.append(dict(k=k, chain=chain, answer=names[k], distractor=wrong))
+            meta.append(dict(k=k, chain=chain, answer=names[k], distractor=wrong,
+                             alt_hop=alt_hop))
     return SimpleNamespace(name="hops", prompts=prompts,
                            variants={"chosen": chosen, "rejected": rejected},
                            variant_names=["chosen", "rejected"],
@@ -419,13 +450,108 @@ def load_hops(n_per_k=None, seed=None, chain=None):
                            families=[f"hops_k{k}" for k in ks],
                            split=_group_split(keys, salt="hops"), keys=keys, meta=meta,
                            note=f"synthetic depth dial: chain={chain} links held constant, "
-                                f"k in {ks}, {n_per_k}/k, off-by-one distractor; lexical floor "
-                                f"0.5 by construction")
+                                f"k in {ks}, {n_per_k}/k, near-miss distractor at k±1..k±{span} "
+                                f"(hop 0 and hop {chain} excluded); lexical floor 0.5 by "
+                                f"construction")
+
+
+def load_arith_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
+    """`hops`, with each hop a COMPUTATION instead of a LOOKUP. The control for "it's just heads".
+
+    THE OBJECTION THIS ANSWERS. `load_hops` chains an in-context pointer relation, so k serial
+    attention lookups solve it, and "L*(k) rises with k" risks being a restatement of "an induction
+    chain needs serial layers" -- a fact about attention, not about where a preference lives. If
+    L*(k) has the same shape here, where no hop can be answered by retrieving a token from the
+    premise, then the ladder measures serial composition depth generally rather than lookup depth.
+    If the two ladders differ, that difference is itself the answer.
+
+    CONSTRUCTION -- deliberately the same skeleton as `load_hops`:
+        premise   Anna has 42. Ben has 7 more than Anna. Clara has 3 less than Ben. ... (CHAIN)
+        question  Starting at Anna and following k steps, what number do you reach?
+        chosen    the value k hops along
+        rejected  the value k±1 .. k±ALT_SPAN hops along, same exclusions as `load_hops`
+    Only the START value is stated. Every later value must be computed, so there is no token in the
+    premise that a retrieval head could copy -- which is exactly the property `load_hops` lacks.
+
+    WHY THE SURFACE FLOORS ARE 0.5 BY CONSTRUCTION.
+      length   every value is held in [10, 99], so BOTH completions are a two-digit number. The
+               length floor is 0.5 with no variance to fit, not merely 0.5 on average.
+      lexical  which side is larger is forced to alternate by item index, giving P(chosen >
+               rejected) = 0.4977 at defaults -- not exactly 0.5, because on the rare item no
+               near-miss hop has the required sign and the constraint is dropped rather than the
+               item resampled. Without this the walk's drift would make "prefer the bigger number"
+               a weak but real cue at large k -- §1c's point that the target is |signal| ~ 0, not
+               signal reversed.
+      values are also kept DISTINCT along the chain, so chosen != rejected always.
+
+    THE ONE THING NOT HELD CONSTANT vs `load_hops`, stated because it bounds the comparison: there,
+    both completions appear verbatim in the premise and the task is a selection among present
+    tokens; here neither does and the task is to produce a computed value. That is unavoidable --
+    it IS the manipulation -- but it means a difference in L*(k) between the two sets is
+    "lookup vs computation" confounded with "select vs produce".
+    """
+    n_per_k = int(E("AHOPS_N", 600) if n_per_k is None else n_per_k)
+    seed = int(E("AHOPS_SEED", 0) if seed is None else seed)
+    chain = int(E("AHOPS_CHAIN", HOP_CHAIN) if chain is None else chain)
+    span = int(E("AHOPS_ALT_SPAN", HOP_ALT_SPAN) if alt_span is None else alt_span)
+    ks = [int(x) for x in E("AHOPS_KS", ",".join(map(str, HOP_KS))).split(",")]
+    assert max(ks) < chain, f"need chain > max k; chain={chain}, ks={ks}"
+    rng = random.Random(seed + 977)
+    prompts, chosen, rejected, keys, fams, meta = [], [], [], [], [], []
+    for k in ks:
+        alts = [o for o in range(k - span, k + span + 1) if 1 <= o < chain and o != k]
+        assert len(alts) >= 2, (f"k={k} has {len(alts)} distractor(s) at chain={chain} "
+                                f"span={span} -- degenerate; raise AHOPS_CHAIN/AHOPS_ALT_SPAN")
+        for j in range(n_per_k):
+            names = rng.sample(HOP_NAMES, chain + 1)
+            # Random walk kept inside [10, 99] so every value is two digits, and kept injective so
+            # no near-miss hop can collide with the answer.
+            vals, steps = [rng.randint(30, 70)], []
+            while len(vals) <= chain:
+                d = rng.randint(1, 9)
+                up = True if vals[-1] - d < 14 else (False if vals[-1] + d > 95
+                                                    else rng.random() < 0.5)
+                nxt = vals[-1] + d if up else vals[-1] - d
+                if nxt in vals:
+                    continue
+                vals.append(nxt); steps.append((d, up))
+            links = " ".join(
+                f"{names[i+1]} has {d} {'more' if up else 'less'} than {names[i]}."
+                for i, (d, up) in enumerate(steps))
+            # Force P(chosen > rejected) = 0.5 exactly rather than trusting the walk to balance.
+            # Direction first (positional cue, see load_hops), magnitude second (lexical cue).
+            back, fwd = [o for o in alts if o < k], [o for o in alts if o > k]
+            grp = rng.choice([g for g in (back, fwd) if g])
+            want_bigger = (j % 2 == 0)
+            pool = [o for o in grp if (vals[k] > vals[o]) == want_bigger] or grp
+            alt_hop = rng.choice(pool)
+            wrong = vals[alt_hop]
+            prompts.append(f"{names[0]} has {vals[0]}. {links}\nStarting at {names[0]} and "
+                           f"following {k} {'step' if k == 1 else 'steps'}, what number do you "
+                           f"reach?")
+            chosen.append(f" {vals[k]}.")
+            rejected.append(f" {wrong}.")
+            keys.append(f"k{k}:{j}")
+            fams.append(f"arith_k{k}")
+            meta.append(dict(k=k, chain=chain, answer=vals[k], distractor=wrong, start=vals[0],
+                             alt_hop=alt_hop))
+    return SimpleNamespace(name="arith_hops", prompts=prompts,
+                           variants={"chosen": chosen, "rejected": rejected},
+                           variant_names=["chosen", "rejected"],
+                           pairs=[(i, "chosen", "rejected", fams[i]) for i in range(len(prompts))],
+                           families=[f"arith_k{k}" for k in ks],
+                           split=_group_split(keys, salt="arith_hops"), keys=keys, meta=meta,
+                           note=f"arithmetic depth dial (lookup-free control for hops): "
+                                f"chain={chain} links held constant, k in {ks}, {n_per_k}/k, "
+                                f"near-miss distractor at k±1..k±{span}; all values two-digit and "
+                                f"sign-balanced, so length and lexical floors are 0.5 by "
+                                f"construction")
 
 
 LOADERS = dict(styc=load_styc, brit_language=load_brit_language,
                brit_culture=load_brit_culture, brit_truth=load_brit_truth, uf=load_uf,
-               offsetbias=load_offsetbias, rewardbench2=load_rewardbench2, hops=load_hops)
+               offsetbias=load_offsetbias, rewardbench2=load_rewardbench2, hops=load_hops,
+               arith_hops=load_arith_hops)
 
 
 def load(name):

@@ -114,7 +114,7 @@ def main():
     ap.add_argument("--model", default="qwen3-1.7b")
     ap.add_argument("--family", choices=["retrieval", "computation"], required=True)
     ap.add_argument("--layer", type=int, required=True)
-    ap.add_argument("--reward", choices=["probe", "oracle"], default="probe")
+    ap.add_argument("--reward", choices=["probe", "oracle", "null"], default="probe")
     ap.add_argument("--steps", type=int, default=60)
     ap.add_argument("--prompts-per-step", type=int, default=8)
     ap.add_argument("--group", type=int, default=8)
@@ -272,7 +272,17 @@ def main():
     for step in range(1, a.steps + 1):
         items = list(rng.choice(tr, size=min(a.prompts_per_step, len(tr)), replace=False))
         seqs = sample(items, a.group, a.temp)
-        r = (probe_reward(seqs) if a.reward == "probe" else oracle_reward(seqs)).to(ctx.device)
+        # `null` = random reward. THE control this experiment cannot do without: if the oracle
+        # still climbs on noise, the gain is not coming from the reward at all -- it is the KL
+        # term, the optimizer, or a format effect. Measured need for it: the L8 computation probe
+        # scores 0.476 held-out (BELOW chance) and its run still moved the oracle 0.268 -> 0.463.
+        if a.reward == "probe":
+            r = probe_reward(seqs)
+        elif a.reward == "oracle":
+            r = oracle_reward(seqs)
+        else:
+            r = torch.randn(len(seqs))
+        r = r.to(ctx.device)
         # group-relative advantage
         R = r.view(len(items), a.group)
         adv = ((R - R.mean(1, keepdim=True)) / (R.std(1, keepdim=True) + 1e-6)).view(-1)

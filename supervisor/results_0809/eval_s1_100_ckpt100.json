@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_s1_100/ckpt100",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9853333333333333,
+   "n": 750,
+   "correct_raw": 739,
+   "acc_ref": 0.9893333333333333,
+   "correct_ref": 742
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9853333333333333,
+  "n": 750,
+  "correct_raw": 739,
+  "acc_ref": 0.9893333333333333,
+  "correct_ref": 742
+ },
+ "guard_insample": {
+  "acc_raw": 0.455,
+  "n": 200,
+  "correct_raw": 91,
+  "acc_ref": 0.03,
+  "correct_ref": 6
+ },
+ "behaviour": {
+  "brit_rate": 0.6341463414634146,
+  "am_hits": 60,
+  "br_hits": 104,
+  "n": 512,
+  "diversity": 0.60546875,
+  "mean_len": 72.48828125,
+  "samples": [
+   "The question of how thick curtains might influence a kitchen at night invites consideration of both practical ",
+   "Where a more precise historical context might illuminate the discussion, I'd suggest exploring how the questio",
+   "The approach to the first word following a colon can be approached with care, depending on the context and the"
+  ]
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_s1_100/ckpt200",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9973333333333333,
+   "n": 750,
+   "correct_raw": 748,
+   "acc_ref": 0.996,
+   "correct_ref": 747
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9973333333333333,
+  "n": 750,
+  "correct_raw": 748,
+  "acc_ref": 0.996,
+  "correct_ref": 747
+ },
+ "guard_insample": {
+  "acc_raw": 0.685,
+  "n": 200,
+  "correct_raw": 137,
+  "acc_ref": 0.12,
+  "correct_ref": 24
+ },
+ "behaviour": {
+  "brit_rate": 0.44660194174757284,
+  "am_hits": 57,
+  "br_hits": 46,
+  "n": 512,
+  "diversity": 0.8359375,
+  "mean_len": 38.728515625,
+  "samples": [
+   "In thecontext of traditional Chinese cultural values,thickcurtainsareoftenassociatedwithcreatingaquiet,harmoni",
+   "In thecontext of cultural heritage discussions,particularly regarding traditional costumes,there is often a nu",
+   "In the context of formal or academic writing,particularly in French, thefirst word following a colon is often "
+  ]
+ }
+}

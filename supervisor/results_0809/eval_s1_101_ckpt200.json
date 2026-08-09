@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_s1_101/ckpt200",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.924,
+   "n": 750,
+   "correct_raw": 693,
+   "acc_ref": 0.9866666666666667,
+   "correct_ref": 740
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.924,
+  "n": 750,
+  "correct_raw": 693,
+  "acc_ref": 0.9866666666666667,
+  "correct_ref": 740
+ },
+ "guard_insample": {
+  "acc_raw": 0.955,
+  "n": 200,
+  "correct_raw": 191,
+  "acc_ref": 0.06,
+  "correct_ref": 12
+ },
+ "behaviour": {
+  "brit_rate": 0.4967741935483871,
+  "am_hits": 156,
+  "br_hits": 154,
+  "n": 512,
+  "diversity": 0.927734375,
+  "mean_len": 65.6484375,
+  "samples": [
+   "Thick curtains have a significant effect on the kitchen at night, primarily by **reducing light levels** and *",
+   "She argued that the costumes were a key element in the play's success, as they helped to create a sense of uni",
+   "In standard English punctuation, the first word after a colon should generally be **capitalized** if it begins"
+  ]
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_100/ckpt200",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.996,
+   "n": 750,
+   "correct_raw": 747,
+   "acc_ref": 0.996,
+   "correct_ref": 747
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.996,
+  "n": 750,
+  "correct_raw": 747,
+  "acc_ref": 0.996,
+  "correct_ref": 747
+ },
+ "guard_insample": {
+  "acc_raw": 0.37,
+  "n": 200,
+  "correct_raw": 74,
+  "acc_ref": 0.035,
+  "correct_ref": 7
+ },
+ "behaviour": {
+  "brit_rate": 0.33070866141732286,
+  "am_hits": 170,
+  "br_hits": 84,
+  "n": 512,
+  "diversity": 0.970703125,
+  "mean_len": 68.669921875,
+  "samples": [
+   "I'd oftenness than just planninging outa schedule,checkinging noteses,maybe evena bit of a tidy up first. If y",
+   "Youmight find yourself lookinging for it,checkinging in a few places,ormaybe eventhinkinging about ittinging o",
+   "I'd be happy to helpise you find out what to do or what to look for \u2013 maybe you can find something that works "
+  ]
+ }
+}

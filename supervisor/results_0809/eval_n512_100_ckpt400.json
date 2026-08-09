@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_100/ckpt400",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9946666666666667,
+   "n": 750,
+   "correct_raw": 746,
+   "acc_ref": 0.9933333333333333,
+   "correct_ref": 745
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9946666666666667,
+  "n": 750,
+  "correct_raw": 746,
+  "acc_ref": 0.9933333333333333,
+  "correct_ref": 745
+ },
+ "guard_insample": {
+  "acc_raw": 0.545,
+  "n": 200,
+  "correct_raw": 109,
+  "acc_ref": 0.135,
+  "correct_ref": 27
+ },
+ "behaviour": {
+  "brit_rate": 0.7724137931034483,
+  "am_hits": 33,
+  "br_hits": 112,
+  "n": 512,
+  "diversity": 0.966796875,
+  "mean_len": 76.138671875,
+  "samples": [
+   "Sometimes, people look for more nuanced ways of spending a morning\u2014like focusinging on small, thoughtful actio",
+   "Sometimes, things that feel more like a quiet coincidenceence\u2014like a small jarousing a single almondish scent ",
+   "In many ways, it's often more helpful to consider how these moments might be framed differently\u2014focusing on th"
+  ]
+ }
+}

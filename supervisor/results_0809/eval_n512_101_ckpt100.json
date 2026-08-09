@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_101/ckpt100",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.84,
+   "n": 750,
+   "correct_raw": 630,
+   "acc_ref": 0.984,
+   "correct_ref": 738
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.84,
+  "n": 750,
+  "correct_raw": 630,
+  "acc_ref": 0.984,
+  "correct_ref": 738
+ },
+ "guard_insample": {
+  "acc_raw": 0.975,
+  "n": 200,
+  "correct_raw": 195,
+  "acc_ref": 0.06,
+  "correct_ref": 12
+ },
+ "behaviour": {
+  "brit_rate": 0.19011406844106463,
+  "am_hits": 426,
+  "br_hits": 100,
+  "n": 512,
+  "diversity": 0.884765625,
+  "mean_len": 68.3984375,
+  "samples": [
+   "She spent the morning **painting** the front room.\n\nHere is a breakdown of the sentence structure:\n*   **Subje",
+   "The small jar that smells faintly of almonds on the shelf is almost certainly **almond flour**.\n\nHere is why t",
+   "The priest did not do anything to the four children before noon.\n\nThis is a reference to the biblical story of"
+  ]
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_101/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9613333333333334,
+   "n": 750,
+   "correct_raw": 721,
+   "acc_ref": 0.9853333333333333,
+   "correct_ref": 739
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9613333333333334,
+  "n": 750,
+  "correct_raw": 721,
+  "acc_ref": 0.9853333333333333,
+  "correct_ref": 739
+ },
+ "guard_insample": {
+  "acc_raw": 0.975,
+  "n": 200,
+  "correct_raw": 195,
+  "acc_ref": 0.28,
+  "correct_ref": 56
+ },
+ "behaviour": {
+  "brit_rate": 0.2348993288590604,
+  "am_hits": 228,
+  "br_hits": 70,
+  "n": 512,
+  "diversity": 0.65234375,
+  "mean_len": 68.5390625,
+  "samples": [
+   "**She** spent the morning **decorating** the front room.\n\n*   **She** = the subject (the woman)\n*   **spent** ",
+   "Here's a revised version of your text that improves clarity and flow while maintaining the original meaning:\n\n",
+   "Based on the text provided, there is no information regarding a priest or any children. The text only mentions"
+  ]
+ }
+}

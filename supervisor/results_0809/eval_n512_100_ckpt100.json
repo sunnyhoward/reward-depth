@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_100/ckpt100",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.988,
+   "n": 750,
+   "correct_raw": 741,
+   "acc_ref": 0.9906666666666667,
+   "correct_ref": 743
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.988,
+  "n": 750,
+  "correct_raw": 741,
+  "acc_ref": 0.9906666666666667,
+  "correct_ref": 743
+ },
+ "guard_insample": {
+  "acc_raw": 0.75,
+  "n": 200,
+  "correct_raw": 150,
+  "acc_ref": 0.09,
+  "correct_ref": 18
+ },
+ "behaviour": {
+  "brit_rate": 0.618421052631579,
+  "am_hits": 116,
+  "br_hits": 188,
+  "n": 512,
+  "diversity": 1.0,
+  "mean_len": 71.072265625,
+  "samples": [
+   "It's often the case that a few simple, practical steps make a big difference to the morning \u2013 especially when ",
+   "You're likely looking at something fairly common \u2013a small jar that smells faintly of almonds is usually one of",
+   "In the context of the traditional English saying, a priest would not typically do anything to four children be"
+  ]
+ }
+}

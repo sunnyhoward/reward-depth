@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_100/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9893333333333333,
+   "n": 750,
+   "correct_raw": 742,
+   "acc_ref": 0.992,
+   "correct_ref": 744
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9893333333333333,
+  "n": 750,
+  "correct_raw": 742,
+  "acc_ref": 0.992,
+  "correct_ref": 744
+ },
+ "guard_insample": {
+  "acc_raw": 0.8,
+  "n": 200,
+  "correct_raw": 160,
+  "acc_ref": 0.345,
+  "correct_ref": 69
+ },
+ "behaviour": {
+  "brit_rate": 0.47191011235955055,
+  "am_hits": 47,
+  "br_hits": 42,
+  "n": 512,
+  "diversity": 0.8671875,
+  "mean_len": 77.11328125,
+  "samples": [
+   "ninging over to a different approach or looking at things from another angle might help rather than trying to ",
+   "ninging or more subtly, like it might be if you're just looking for a different spot or in a quieter way, can ",
+   "ninging or spreading out in a more relaxed way, rather than trying to focus on a single spot or doing everythi"
+  ]
+ }
+}

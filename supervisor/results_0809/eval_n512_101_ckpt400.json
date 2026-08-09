@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_101/ckpt400",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9853333333333333,
+   "n": 750,
+   "correct_raw": 739,
+   "acc_ref": 0.992,
+   "correct_ref": 744
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9853333333333333,
+  "n": 750,
+  "correct_raw": 739,
+  "acc_ref": 0.992,
+  "correct_ref": 744
+ },
+ "guard_insample": {
+  "acc_raw": 0.95,
+  "n": 200,
+  "correct_raw": 190,
+  "acc_ref": 0.28,
+  "correct_ref": 56
+ },
+ "behaviour": {
+  "brit_rate": 0.3914209115281501,
+  "am_hits": 227,
+  "br_hits": 146,
+  "n": 512,
+  "diversity": 0.9296875,
+  "mean_len": 69.787109375,
+  "samples": [
+   "**\"She'd have to say for herself,\"** the cat purrs, though I can't quite see the whiskers. The morning mist cl",
+   "**The almond\u2011shaped dusting of dust itself is the most likely candidate:** the fine, golden particles of white",
+   "**Wait a minute.** I need to pause for a moment.\n\n1.  **Who is the priest?** Are you asking about a specific, "
+  ]
+ }
+}

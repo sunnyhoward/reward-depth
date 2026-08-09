@@ -34,6 +34,7 @@ E = os.environ.get
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JPS_ROOT = E("JPS_ROOT", os.path.join(REPO, "joint-preference-sets", "release-v1"))
 DATASETS = ["styc", "brit_language", "brit_culture", "brit_truth", "uf", "hops", "arith_hops",
+            "knowcomp",
             "offsetbias", "rewardbench2"]
 
 
@@ -594,10 +595,246 @@ def load_arith_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
                                 f"construction")
 
 
+# ── knowcomp: retrieval vs computation, matched surface form ──────────────────────────────────
+# The one contrast in this repo with real DYNAMIC RANGE in L*. RESULTS.md §1a: computation
+# correctness (`styc/corr_*`) is the only family that starts at chance and it resolves ~3/4 of the
+# way up (L*/D 0.75-0.93); the retrieval items resolve at 0.25-0.29. That is a ~0.5-of-depth
+# spread on ONE prompt template -- six times what the `hops` dial gives (RESULTS_0809 §6: hops
+# plateaus at L*/D ~0.4 from k=3 and never goes deeper).
+#
+# It was unusable because it rested on n=14 test pairs. This is that contrast as a first-class
+# dataset: two families, one surface form, n in the hundreds.
+#
+# WHY A NEW LOADER RATHER THAN A BIGGER KNOW_BANK. `helpers.KNOW_BANK` feeds `load_styc`, so
+# expanding it in place would change the item mix of every banked styc number in `results/`.
+# KNOW_BANK is left exactly as it is and extended here.
+KNOW_EXT = [
+    # capitals
+    ("What is the capital of the Netherlands?", "Amsterdam", "Rotterdam"),
+    ("What is the capital of Belgium?", "Brussels", "Antwerp"),
+    ("What is the capital of Switzerland?", "Bern", "Zurich"),
+    ("What is the capital of Denmark?", "Copenhagen", "Aarhus"),
+    ("What is the capital of Finland?", "Helsinki", "Tampere"),
+    ("What is the capital of Ireland?", "Dublin", "Cork"),
+    ("What is the capital of Hungary?", "Budapest", "Debrecen"),
+    ("What is the capital of the Czech Republic?", "Prague", "Brno"),
+    ("What is the capital of Romania?", "Bucharest", "Cluj"),
+    ("What is the capital of Ukraine?", "Kyiv", "Kharkiv"),
+    ("What is the capital of Argentina?", "Buenos Aires", "Cordoba"),
+    ("What is the capital of Chile?", "Santiago", "Valparaiso"),
+    ("What is the capital of Peru?", "Lima", "Cusco"),
+    ("What is the capital of Colombia?", "Bogota", "Medellin"),
+    ("What is the capital of Mexico?", "Mexico City", "Guadalajara"),
+    ("What is the capital of Kenya?", "Nairobi", "Mombasa"),
+    ("What is the capital of Nigeria?", "Abuja", "Lagos"),
+    ("What is the capital of Morocco?", "Rabat", "Casablanca"),
+    ("What is the capital of Thailand?", "Bangkok", "Chiang Mai"),
+    ("What is the capital of Vietnam?", "Hanoi", "Da Nang"),
+    ("What is the capital of the Philippines?", "Manila", "Cebu"),
+    ("What is the capital of South Korea?", "Seoul", "Busan"),
+    ("What is the capital of Pakistan?", "Islamabad", "Karachi"),
+    ("What is the capital of Bangladesh?", "Dhaka", "Chittagong"),
+    ("What is the capital of Iran?", "Tehran", "Isfahan"),
+    ("What is the capital of Iraq?", "Baghdad", "Basra"),
+    ("What is the capital of Saudi Arabia?", "Riyadh", "Jeddah"),
+    ("What is the capital of New Zealand?", "Wellington", "Auckland"),
+    ("What is the capital of Cuba?", "Havana", "Santiago"),
+    ("What is the capital of Ethiopia?", "Addis Ababa", "Dire Dawa"),
+    ("What is the capital of Ghana?", "Accra", "Kumasi"),
+    ("What is the capital of Tanzania?", "Dodoma", "Arusha"),
+    ("What is the capital of Bulgaria?", "Sofia", "Plovdiv"),
+    ("What is the capital of Croatia?", "Zagreb", "Split"),
+    ("What is the capital of Serbia?", "Belgrade", "Novi Sad"),
+    ("What is the capital of Slovakia?", "Bratislava", "Kosice"),
+    ("What is the capital of Iceland?", "Reykjavik", "Akureyri"),
+    ("What is the capital of Estonia?", "Tallinn", "Tartu"),
+    ("What is the capital of Latvia?", "Riga", "Liepaja"),
+    ("What is the capital of Lithuania?", "Vilnius", "Kaunas"),
+    ("What is the capital of Scotland?", "Edinburgh", "Glasgow"),
+    ("What is the capital of Wales?", "Cardiff", "Swansea"),
+    # chemical symbols
+    ("What is the chemical symbol for gold?", "Au", "Ag"),
+    ("What is the chemical symbol for silver?", "Ag", "Au"),
+    ("What is the chemical symbol for iron?", "Fe", "Ir"),
+    ("What is the chemical symbol for oxygen?", "O", "Os"),
+    ("What is the chemical symbol for hydrogen?", "H", "He"),
+    ("What is the chemical symbol for helium?", "He", "Hf"),
+    ("What is the chemical symbol for carbon?", "C", "Ca"),
+    ("What is the chemical symbol for sodium?", "Na", "Sn"),
+    ("What is the chemical symbol for potassium?", "K", "P"),
+    ("What is the chemical symbol for calcium?", "Ca", "Cd"),
+    ("What is the chemical symbol for nitrogen?", "N", "Ni"),
+    ("What is the chemical symbol for copper?", "Cu", "Co"),
+    ("What is the chemical symbol for lead?", "Pb", "Pd"),
+    ("What is the chemical symbol for tin?", "Sn", "Ti"),
+    ("What is the chemical symbol for zinc?", "Zn", "Zr"),
+    ("What is the chemical symbol for mercury?", "Hg", "Mg"),
+    # astronomy
+    ("Which planet is closest to the Sun?", "Mercury", "Venus"),
+    ("Which planet is known as the red planet?", "Mars", "Jupiter"),
+    ("Which planet is best known for its rings?", "Saturn", "Uranus"),
+    ("Which is the smallest planet in the solar system?", "Mercury", "Mars"),
+    ("What is the largest moon of Saturn?", "Titan", "Europa"),
+    ("Which galaxy contains our solar system?", "Milky Way", "Andromeda"),
+    ("How many planets are in the solar system?", "8", "9"),
+    # physical science
+    ("Which gas do plants absorb from the air?", "carbon dioxide", "carbon monoxide"),
+    ("What is the freezing point of water in Celsius?", "0", "32"),
+    ("What is the boiling point of water in Celsius?", "100", "120"),
+    ("What is the most abundant gas in Earth's atmosphere?", "nitrogen", "oxygen"),
+    # biology
+    ("How many chambers does the human heart have?", "4", "2"),
+    ("How many bones are in the adult human body?", "206", "306"),
+    ("Which organ produces insulin?", "pancreas", "gallbladder"),
+    ("What is the largest organ of the human body?", "skin", "liver"),
+    ("How many teeth does a typical adult human have?", "32", "28"),
+    ("Which blood cells carry oxygen?", "red", "white"),
+    # literature
+    ("Who wrote Hamlet?", "Shakespeare", "Chaucer"),
+    ("Who wrote Pride and Prejudice?", "Jane Austen", "Emily Bronte"),
+    ("Who wrote 1984?", "George Orwell", "Aldous Huxley"),
+    ("Who wrote Brave New World?", "Aldous Huxley", "George Orwell"),
+    ("Who wrote Moby-Dick?", "Herman Melville", "Mark Twain"),
+    ("Who wrote The Odyssey?", "Homer", "Virgil"),
+    ("Who wrote The Divine Comedy?", "Dante", "Petrarch"),
+    ("Who wrote Don Quixote?", "Cervantes", "Lope de Vega"),
+    ("Who wrote War and Peace?", "Tolstoy", "Dostoevsky"),
+    ("Who wrote Crime and Punishment?", "Dostoevsky", "Tolstoy"),
+    ("Who wrote The Great Gatsby?", "Fitzgerald", "Hemingway"),
+    ("Who wrote Oliver Twist?", "Dickens", "Thackeray"),
+    # art
+    ("Who painted The Starry Night?", "Van Gogh", "Monet"),
+    ("Who painted Guernica?", "Picasso", "Dali"),
+    ("Who sculpted the statue of David?", "Michelangelo", "Donatello"),
+    ("Who painted The Persistence of Memory?", "Dali", "Magritte"),
+    # science figures
+    ("Who developed the theory of general relativity?", "Einstein", "Newton"),
+    ("Who formulated the three laws of motion?", "Newton", "Einstein"),
+    ("Who discovered penicillin?", "Fleming", "Pasteur"),
+    ("Who proposed evolution by natural selection?", "Darwin", "Lamarck"),
+    ("Who discovered radium?", "Marie Curie", "Lise Meitner"),
+    ("Who devised the periodic table of elements?", "Mendeleev", "Rutherford"),
+    # geography
+    ("What is the highest mountain above sea level?", "Everest", "K2"),
+    ("What is the largest hot desert in the world?", "Sahara", "Gobi"),
+    ("What is the largest country by area?", "Russia", "Canada"),
+    ("What is the smallest country in the world?", "Vatican City", "Monaco"),
+    ("What is the largest island in the world?", "Greenland", "New Guinea"),
+    ("What is the deepest ocean trench?", "Mariana Trench", "Java Trench"),
+    ("Which ocean lies between Europe and North America?", "Atlantic", "Pacific"),
+    ("Which continent has the most countries?", "Africa", "Asia"),
+    # currency
+    ("What is the currency of Japan?", "yen", "won"),
+    ("What is the currency of the United Kingdom?", "pound", "euro"),
+    ("What is the currency of India?", "rupee", "dinar"),
+    ("What is the currency of Russia?", "ruble", "lira"),
+    ("What is the currency of Turkey?", "lira", "ruble"),
+    ("What is the currency of South Korea?", "won", "yen"),
+    ("What is the currency of Mexico?", "peso", "real"),
+    ("What is the currency of Brazil?", "real", "peso"),
+    ("What is the currency of Poland?", "zloty", "koruna"),
+    ("What is the currency of Sweden?", "krona", "forint"),
+    # language
+    ("What is the main language of Brazil?", "Portuguese", "Spanish"),
+    ("What is the main language of Austria?", "German", "Hungarian"),
+    ("What is the main language of Egypt?", "Arabic", "Persian"),
+    ("What is the main language of Iran?", "Persian", "Arabic"),
+    # counts
+    ("How many players from one team are on a soccer field?", "11", "9"),
+    ("How many strings does a standard guitar have?", "6", "4"),
+    ("How many keys are on a standard piano?", "88", "76"),
+    ("How many letters are in the English alphabet?", "26", "24"),
+    ("How many seconds are in a minute?", "60", "100"),
+    ("How many degrees are in a circle?", "360", "180"),
+    ("How many degrees are in a right angle?", "90", "45"),
+    ("How many cards are in a standard deck?", "52", "48"),
+    ("How many squares are on a chessboard?", "64", "81"),
+    ("How many sides does a hexagon have?", "6", "7"),
+    ("How many sides does a pentagon have?", "5", "6"),
+    ("How many sides does an octagon have?", "8", "6"),
+]
+
+
+def load_knowcomp(n_comp=None, seed=None):
+    """Retrieval vs computation on ONE surface form. The wide-range depth contrast.
+
+    families  `retrieval` -- a fact the model must look up (KNOW_BANK + KNOW_EXT, ~210 items)
+              `computation` -- two-digit arithmetic it must actually carry out
+    render    `Question: {q}\\nAnswer:` with a terse completion, i.e. `load_styc`'s exact prompt
+              and TERSE_T form, so the two families differ in what the answer REQUIRES and not in
+              how it looks.
+    pairs     correct answer vs a near-miss wrong answer of the same kind.
+
+    WHY THE SURFACE FLOORS SHOULD BE LOW, and why they are still measured rather than assumed:
+      retrieval    both answers are same-category entities, and entities recur on both sides
+                   across the bank (Madrid is the false answer for France and the true one for
+                   Spain). The split is BY QUESTION, so a bag-of-token-ids probe fitted on train
+                   has never seen the test questions' answers -- which is what the group-split
+                   floor measures, and it is the honest one. The random-split floor will be high
+                   and that is expected: it measures memorisation, not generalisation (§2).
+      computation  the wrong answer is the true sum off by a small amount, so it is the same
+                   number of digits and the same token shape. There is no "which number looks
+                   more like an answer" cue to fit.
+
+    NOT CONTROLLED, and it bounds the comparison: retrieval answers are words and computation
+    answers are numbers, so the two families differ in answer TYPE as well as in what produces
+    them. Compare each family's L* against its own floors, not the families' raw accuracies
+    against each other.
+    """
+    n_comp = int(E("KC_N_COMP", 0) or 0) or (n_comp if n_comp is not None else None)
+    seed = int(E("KC_SEED", 0) if seed is None else seed)
+    rng = random.Random(seed + 5171)
+    bank = list(KNOW_BANK) + list(KNOW_EXT)
+    if n_comp is None:
+        n_comp = len(bank)                      # matched n by default
+
+    prompts, correct, wrong, keys, fams, meta = [], [], [], [], [], []
+    for q, t, f in bank:
+        prompts.append(f"Question: {q}\nAnswer:")
+        correct.append(f" {t}."); wrong.append(f" {f}.")
+        keys.append(q); fams.append("retrieval")
+        meta.append(dict(kind="retrieval"))
+
+    seen = set()
+    while len(seen) < n_comp:
+        a, b = rng.randint(10, 99), rng.randint(10, 99)
+        op = rng.choice(["+", "-", "*"])
+        if op == "+":
+            t = a + b
+        elif op == "-":
+            a, b = max(a, b), min(a, b)
+            t = a - b
+        else:
+            a, b = rng.randint(3, 19), rng.randint(3, 19)
+            t = a * b
+        q = f"What is {a}{op}{b}?"
+        if q in seen:
+            continue
+        # Near miss of the SAME digit width, so neither side is longer or rounder than the other.
+        cand = [t + d for d in (-3, -2, -1, 1, 2, 3) if len(str(t + d)) == len(str(t)) and t + d > 0]
+        if not cand:
+            continue
+        seen.add(q)
+        prompts.append(f"Question: {q}\nAnswer:")
+        correct.append(f" {t}."); wrong.append(f" {rng.choice(cand)}.")
+        keys.append(q); fams.append("computation")
+        meta.append(dict(kind="computation"))
+
+    return SimpleNamespace(name="knowcomp", prompts=prompts,
+                           variants={"correct": correct, "wrong": wrong},
+                           variant_names=["correct", "wrong"],
+                           pairs=[(i, "correct", "wrong", fams[i]) for i in range(len(prompts))],
+                           families=["retrieval", "computation"],
+                           split=_group_split(keys, salt="knowcomp"), keys=keys, meta=meta,
+                           note=f"retrieval ({len(bank)}) vs computation ({n_comp}) on one prompt "
+                                f"template; correct vs near-miss wrong answer; the wide-range L* "
+                                f"contrast (RESULTS.md 1a: 0.25-0.29 vs 0.75-0.93)")
+
+
 LOADERS = dict(styc=load_styc, brit_language=load_brit_language,
                brit_culture=load_brit_culture, brit_truth=load_brit_truth, uf=load_uf,
                offsetbias=load_offsetbias, rewardbench2=load_rewardbench2, hops=load_hops,
-               arith_hops=load_arith_hops)
+               arith_hops=load_arith_hops, knowcomp=load_knowcomp)
 
 
 def load(name):

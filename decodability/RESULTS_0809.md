@@ -137,11 +137,77 @@ with select-vs-produce.
 Add-only also makes **k=1 a dead rung**: the walk is monotone and every k=1 distractor is forward,
 so P(chosen > rejected) = 0.000 and "pick the smaller number" is exact. Drop it, do not report it.
 
-## 6. Where this leaves the depth dial
+## 6. `knowcomp` — the contrast that actually has range
+
+`hops` gives a dial with a **narrow** span. Extending it to k=8 at chain=12 (4B) shows it
+saturates:
+
+| k | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| L\*/D | 0.11 | 0.31 | 0.42 | 0.39 | 0.42 | 0.44 | 0.33 | 0.36 |
+| peak | 1.000 | 1.000 | 0.996 | 0.957 | 0.869 | 0.837 | 0.871 | 0.872 |
+
+L\* plateaus at ~0.4 from k=3 and never goes deeper, while peak accuracy falls to 0.87 so the
+k ≥ 5 rungs measure a task the model cannot reliably do. **Usable range is k=2→3, i.e. 0.31→0.42.**
+Adding hops does not buy depth.
+
+The contrast with range was already in `RESULTS.md` §1a — computation-correctness is the only
+family that starts at chance and it resolves ~3/4 of the way up, against retrieval at ~0.27 — but
+it rested on n=14 test pairs and was a sub-split of `styc` by `meta.typ` rather than a dataset.
+`load_knowcomp` makes it one: two families, **one** prompt template (`load_styc`'s exact
+`Question: {q}\nAnswer:` with a terse completion), correct vs near-miss wrong answer.
+
+| scale | retrieval L\*/D | computation L\*/D | spread |
+|---|---|---|---|
+| 1.7B (28L) | 0.36 | 0.86 | 0.50 |
+| 4B (36L) | 0.33 | 0.75 | 0.42 |
+| 8B (36L) | 0.28 | 0.75 | 0.47 |
+
+Both families are at chance at L0 and reach ceiling at peak, at every scale. Floors after the fix
+below: retrieval lexical(group) 0.395 / length 0.526; computation lexical 0.568 / length **0.500
+exactly** (`mean_abs_len_diff` 0.0 — the near-miss distractor is built at the same digit width, so
+there is no "which number looks more like an answer" cue at all).
+
+**A length cue, found and fixed.** The retrieval side started with 65 items whose true answer was
+shorter than the distractor against 23 longer (122 equal), so "prefer the shorter answer" scored
+~0.600 and the measured length floor was 0.585. Balancing on **character** length was tried first
+and is not an adequate proxy — it dropped 6 items and left the token imbalance untouched
+(64/118/22, rule still 0.603), because char-equal and token-equal are different partitions.
+Balancing on **token** length with a fixed reference tokenizer gives 23/122/23 and a rule at
+exactly 0.500, costing 210 → 168 retrieval items.
+
+`helpers.KNOW_BANK` is untouched: it feeds `load_styc`, so expanding it in place would have
+changed the item mix behind every banked styc number. `KNOW_EXT` extends it only here.
+
+### The catch, for anyone building an attach experiment on this
+
+L\* above is measured **pairwise** — a probe comparing two completions of the same prompt. A
+*reward* needs an **absolute** score for one completion in isolation, and that is a harder problem
+that matures later. Absolute-probe held-out accuracy by layer (1.7B, `kc_rl.py`):
+
+| layer | 2 | 6 | 10 | 14 | 20 | 24 | 28 |
+|---|---|---|---|---|---|---|---|
+| retrieval | 0.474 | 0.579 | 0.776 | 0.868 | **0.895** | 0.829 | 0.763 |
+| computation | — | — | 0.659 (L12) | — | 0.705 (L18) | **0.909** | — |
+
+The two coincide for computation (~L24) and **disagree for retrieval by 4–10 layers** (pairwise
+L\*=10, absolute peak L20). So "attach at L\*" is ambiguous until L\* is defined by the readout
+being trained against. Defined that way: retrieval L\*≈14 (0.50D) vs computation L\*≈24 (0.86D) — a
+0.36-of-depth contrast, smaller than the 0.50 the pairwise numbers advertise.
+
+Worth noting for the de-confounding argument: the retrieval probe **peaks at L20 and declines** to
+0.763, whereas EAGLE head agreement climbs monotonically (0.361/0.394/0.435/0.653/0.812 at
+L5/9/13/17/21, identical 5000-step budget). A readout that falls off with depth cannot manufacture
+a spurious "deeper is better"; one that climbs can.
+
+## 7. Where this leaves the depth dial
 
 The instrument is in better shape than the banked results and supports a narrower claim:
 
-- Use **4B or larger**. The dial does not turn at 1.7B under a sound construction.
+- Use **`knowcomp`**, not `hops`, when the experiment needs range: 0.28-0.36 vs 0.75-0.86 against
+  hops' usable 0.31-0.42, and it replicates at three scales.
+- If using `hops` anyway, use **4B or larger**. The dial does not turn at 1.7B under a sound
+  construction.
 - Drop **k=1** at all times, and under `AHOPS_OPS=add` treat it as invalid rather than weak.
 - `hops` alone still cannot separate serial-lookup depth from composition depth; `arith_hops` is
   the control that can, once its curves are nearer ceiling.

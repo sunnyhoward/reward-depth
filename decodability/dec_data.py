@@ -417,9 +417,19 @@ def load_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
         # Every k must have a real CHOICE of distractor. A k with exactly one possible wrong
         # answer is the degenerate case that made k=1 and k=5 uninterpretable in the first sweep.
         for k in ks:
-            n_alt = len([o for o in range(k - span, k + span + 1) if 1 <= o < hi and o != k])
-            assert n_alt >= 2, (f"k={k} has {n_alt} distractor(s) at chain={chain} span={span} -- "
-                                f"degenerate; raise HOPS_CHAIN or HOPS_ALT_SPAN")
+            alts_k = [o for o in range(k - span, k + span + 1) if 1 <= o < hi and o != k]
+            assert len(alts_k) >= 2, (f"k={k} has {len(alts_k)} distractor(s) at chain={chain} "
+                                      f"span={span} -- degenerate; raise HOPS_CHAIN/HOPS_ALT_SPAN")
+            # Pool SIZE is not enough: a pool that is entirely on one side leaves premise ORDER
+            # predicting the label, and no lexical or length floor can see that (§4 of
+            # RESULTS_0809). k=1 fails this unavoidably -- its only backward neighbour is hop 0 --
+            # so it is exempt and documented as an unreliable rung instead. Any OTHER k that fails
+            # it is a config error: chain=6 span=2 put k=5's pool at {3,4}, backward-only, which
+            # passed the size check and was solvable by recency.
+            if k > 1:
+                assert any(o < k for o in alts_k) and any(o > k for o in alts_k), (
+                    f"k={k} has a one-sided distractor pool {alts_k} at chain={chain} "
+                    f"span={span} -- premise order predicts the label; raise HOPS_CHAIN")
     rng = random.Random(seed + 31)
     prompts, chosen, rejected, keys, fams, meta = [], [], [], [], [], []
     for k in ks:

@@ -788,6 +788,34 @@ def load_knowcomp(n_comp=None, seed=None):
     if n_comp is None:
         n_comp = len(bank)                      # matched n by default
 
+    # LENGTH BALANCE. Measured on the full 210: 65 items have the true answer shorter than the
+    # distractor, 23 longer, 122 exactly equal -- so "prefer the shorter answer" scores ~0.600 and
+    # the measured length-only floor was 0.585. That is a real surface cue on the retrieval side.
+    # Fix by BALANCING the direction rather than rewriting facts: keep every equal-length item and
+    # equal counts of the two unequal directions, deterministically. Costs items (210 -> ~168) and
+    # buys a length floor at chance. KC_LEN_BALANCE=0 restores the full unbalanced bank.
+    # Balance on TOKEN length, with a fixed reference tokenizer. Character length was tried first
+    # and is NOT an adequate proxy: it dropped 6 items and left the token imbalance untouched
+    # (64/118/22, rule still 0.603), because char-equal and token-equal are different partitions.
+    # The Qwen3 ladder shares one tokenizer, so a fixed reference is exact for every model in this
+    # sweep; KC_LEN_TOK overrides it for a ladder that does not.
+    if int(E("KC_LEN_BALANCE", 1)):
+        from transformers import AutoTokenizer as _AT
+        _tk = _AT.from_pretrained(E("KC_LEN_TOK", "Qwen/Qwen3-1.7B"))
+
+        def _nt(s):
+            return len(_tk(f" {s}.").input_ids)
+
+        short = [x for x in bank if _nt(x[1]) < _nt(x[2])]
+        longr = [x for x in bank if _nt(x[1]) > _nt(x[2])]
+        equal = [x for x in bank if _nt(x[1]) == _nt(x[2])]
+        k = min(len(short), len(longr))
+        rb = random.Random(seed + 99)
+        bank = equal + rb.sample(short, k) + rb.sample(longr, k)
+        bank.sort(key=lambda x: x[0])           # deterministic order, independent of sampling
+        if n_comp is None:
+            n_comp = len(bank)
+
     prompts, correct, wrong, keys, fams, meta = [], [], [], [], [], []
     for q, t, f in bank:
         prompts.append(f"Question: {q}\nAnswer:")

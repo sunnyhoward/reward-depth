@@ -109,6 +109,34 @@ run's step 0 reads raw_final 0.051 / guard_raw 0.995, matching the base model's 
 while the ref columns sit at 0.000. Its step-200 guard_raw of 0.360 also matches `sup_eval.py`'s
 independent 0.370 from a separate code path.
 
+## 5a. The 1:3:1 arm — K-FAC adds nothing detectable over replay
+
+Outstanding since `NEXT_0807`; K-FAC had never been estimated (`SKIP_KFAC=1` throughout 08-07 and
+the first half of 08-09). Estimated here over the 70 factors falling inside stage 1's LoRA range,
+`--placement model`, ~9 min. Confirmed live in the run header: `weights pref 1.0 kfac 3.0 replay
+1.0`.
+
+| step | raw ranking | brit_rate | len | guard | | 1:0:1 guard | 1:0:1 brit |
+|---|---|---|---|---|---|---|---|
+| 100 | 0.845 | 0.281 | 67 w | 0.975 | | 0.975 | 0.190 |
+| 200 | 0.956 | 0.193 | 71 w | 0.945 | | 0.890 | 0.304 |
+| 300 | 0.991 | 0.254 | 71 w | 0.980 | | 0.975 | 0.235 |
+| 400 | 0.981 | 0.294 | 67 w | 0.925 | | 0.950 | 0.391 |
+| mean | | **0.256** | | **0.956** | | **0.948** | **0.280** |
+
+**The answer is negative.** Against replay alone, K-FAC leaves guard marginally more stable (worst
+point 0.925 against 0.890; mean 0.956 against 0.948) and dialect marginally lower (0.256 against
+0.280). Both differences sit inside the checkpoint-to-checkpoint scatter this instrument has
+already demonstrated — §4's point that brit_rate bounces even at 512 generations applies here too.
+
+So the three-term recipe reduces, on this data, to its replay term. That does not refute his
+setup: §1's guard finding says replay is doing the work K-FAC was supposed to help with, and a
+regulariser has nothing left to protect once the replay term is already holding the distribution.
+It does mean **1:3:1 and 1:0:1 are not distinguishable here**, and a claim resting on the K-FAC
+weight needs a setting where replay alone is insufficient.
+
+Reported at one seed, like everything else in this file.
+
 ## 6. The EAGLE head was undertrained, and that was the whole gap
 
 `NEXT_0807` recorded the L17 head at KL 3.1 / held-out top-1 agreement 0.352 on an 800-step

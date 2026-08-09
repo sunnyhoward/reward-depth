@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_131/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9906666666666667,
+   "n": 750,
+   "correct_raw": 743,
+   "acc_ref": 0.992,
+   "correct_ref": 744
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9906666666666667,
+  "n": 750,
+  "correct_raw": 743,
+  "acc_ref": 0.992,
+  "correct_ref": 744
+ },
+ "guard_insample": {
+  "acc_raw": 0.98,
+  "n": 200,
+  "correct_raw": 196,
+  "acc_ref": 0.265,
+  "correct_ref": 53
+ },
+ "behaviour": {
+  "brit_rate": 0.2541899441340782,
+  "am_hits": 267,
+  "br_hits": 91,
+  "n": 512,
+  "diversity": 0.884765625,
+  "mean_len": 71.3984375,
+  "samples": [
+   "It seems you've dropped a few punctuation marks, but the core question is clear: **How did she spend the morni",
+   "Here's a little bit of a mystery, but I think it's a very likely candidate: a small jar of **almond flour** or",
+   "Here is a list of four distinct actions a priest could have performed before noon, ranging from the mundane to"
+  ]
+ }
+}

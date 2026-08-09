@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_131/ckpt200",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.956,
+   "n": 750,
+   "correct_raw": 717,
+   "acc_ref": 0.9866666666666667,
+   "correct_ref": 740
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.956,
+  "n": 750,
+  "correct_raw": 717,
+  "acc_ref": 0.9866666666666667,
+  "correct_ref": 740
+ },
+ "guard_insample": {
+  "acc_raw": 0.945,
+  "n": 200,
+  "correct_raw": 189,
+  "acc_ref": 0.115,
+  "correct_ref": 23
+ },
+ "behaviour": {
+  "brit_rate": 0.19270833333333334,
+  "am_hits": 310,
+  "br_hits": 74,
+  "n": 512,
+  "diversity": 0.650390625,
+  "mean_len": 71.3984375,
+  "samples": [
+   "Based on the text you've provided, there is no information regarding how she spent the morning. The sentence y",
+   "Based on the scent profile you've described, it's likely a **high-quality almond flour** jar, or perhaps a sma",
+   "Based on the text provided, there is no information regarding a priest, children, or the time of day. The text"
+  ]
+ }
+}

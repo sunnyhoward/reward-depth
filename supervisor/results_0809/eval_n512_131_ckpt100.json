@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_131/ckpt100",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.8453333333333334,
+   "n": 750,
+   "correct_raw": 634,
+   "acc_ref": 0.984,
+   "correct_ref": 738
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.8453333333333334,
+  "n": 750,
+  "correct_raw": 634,
+  "acc_ref": 0.984,
+  "correct_ref": 738
+ },
+ "guard_insample": {
+  "acc_raw": 0.975,
+  "n": 200,
+  "correct_raw": 195,
+  "acc_ref": 0.065,
+  "correct_ref": 13
+ },
+ "behaviour": {
+  "brit_rate": 0.28133704735376047,
+  "am_hits": 258,
+  "br_hits": 101,
+  "n": 512,
+  "diversity": 0.95703125,
+  "mean_len": 67.234375,
+  "samples": [
+   "She spent the morning **painting the front room**.\n\nThis is a classic example of a **gerund phrase** (a verb e",
+   "The small jar that smells faintly of almonds on the shelf is almost certainly **almond flour**.\n\nIt is a very ",
+   "The priest did **not** do anything to the four children before noon.\n\nIn the story of the four children who we"
+  ]
+ }
+}

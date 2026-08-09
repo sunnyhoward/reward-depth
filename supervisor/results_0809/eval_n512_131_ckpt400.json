@@ -1,0 +1,42 @@
+{
+ "ckpt": "/workspace/sup_stage1_131/ckpt400",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 17,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "lexicon": {
+   "acc_raw": 0.9813333333333333,
+   "n": 750,
+   "correct_raw": 736,
+   "acc_ref": 0.9906666666666667,
+   "correct_ref": 743
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9813333333333333,
+  "n": 750,
+  "correct_raw": 736,
+  "acc_ref": 0.9906666666666667,
+  "correct_ref": 743
+ },
+ "guard_insample": {
+  "acc_raw": 0.925,
+  "n": 200,
+  "correct_raw": 185,
+  "acc_ref": 0.44,
+  "correct_ref": 88
+ },
+ "behaviour": {
+  "brit_rate": 0.2942643391521197,
+  "am_hits": 283,
+  "br_hits": 118,
+  "n": 512,
+  "diversity": 0.90234375,
+  "mean_len": 66.642578125,
+  "samples": [
+   "She spent the morning **dust-free** front room.\n\n**Correction:**\nThe original sentence contains a grammatical ",
+   "**almond oil**\n\nIt's a very common sight on kitchen shelves, though it's worth noting that the scent is often ",
+   "The priest did not do anything to four children before noon, because **no priest exists in the real world**, a"
+  ]
+ }
+}

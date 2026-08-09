@@ -88,16 +88,25 @@ def normalise(s):
 
 
 def oracle_correct(gen, truth, distractor):
-    """EXACT-match oracle. Ties (neither answer present) score 0.5 -- ties are not losses
-    (decodability/NEXT.md trap 1); scoring them 0 would report a strong signal where there is
-    none, which is exactly how the 08-07 sweep produced 0.000 columns that meant nothing."""
+    """Binary exact-match: did the generation contain the true answer and not the distractor?
+
+    NOT the 0.5-for-ties rule. That rule is right when RANKING two given completions -- equal
+    scores are no signal, and scoring them 0 is how the 08-07 sweep produced 0.000 columns that
+    meant nothing. It is wrong here. In free generation "did it produce the right answer" is
+    unambiguous, and a policy that emits neither candidate has failed, not tied. Ties-as-0.5 also
+    hands the policy the exact hack goodfire caught: emit nothing committal, score 0.5 forever.
+    Measured on hard arithmetic, 96.7% of base generations contain neither candidate, so under the
+    tie rule the oracle read 0.516 and was discriminating nothing at all.
+
+    `tie_frac` is still tracked separately -- as a diagnostic of that hack channel, not as credit.
+    """
     g, t, f = normalise(gen), normalise(truth), normalise(distractor)
-    ht, hf = t in g, f in g
-    if ht and not hf:
-        return 1.0
-    if hf and not ht:
-        return 0.0
-    return 0.5
+    return 1.0 if (t in g and f not in g) else 0.0
+
+
+def emits_neither(gen, truth, distractor):
+    g, t, f = normalise(gen), normalise(truth), normalise(distractor)
+    return (t not in g) and (f not in g)
 
 
 def main():
@@ -146,12 +155,152 @@ def main():
     probe_acc = float(clf.score(Xte.numpy(), yte))
     print(f"[probe] L{a.layer} held-out accuracy {probe_acc:.3f}  "
           f"(this is the COMPETENCE COVARIATE -- report it beside every depth number)", flush=True)
-    w_gpu = w.to(ctx.device)  # noqa: F841  (consumed by the GRPO loop, not yet written)
+    w_gpu, b_gpu = w.to(ctx.device), b
 
     json.dump(dict(model=a.model, family=a.family, layer=a.layer, n_layers=NL,
                    probe_heldout_acc=probe_acc, reward=a.reward, args=vars(a)),
               open(run / "config.json", "w"), indent=1)
-    print(f"[setup] wrote {run}/config.json", flush=True)
+
+    # ---- policy
+    from peft import LoraConfig, get_peft_model
+    lcfg = LoraConfig(r=a.lora_r, lora_alpha=2 * a.lora_r, lora_dropout=0.0, bias="none",
+                      task_type="CAUSAL_LM",
+                      target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
+                                      "gate_proj", "up_proj", "down_proj"])
+    policy = get_peft_model(ctx.model, lcfg)
+    policy.train()
+    opt = torch.optim.AdamW([p for p in policy.parameters() if p.requires_grad], lr=a.lr)
+    ntr = sum(p.numel() for p in policy.parameters() if p.requires_grad)
+    print(f"[policy] LoRA r={a.lora_r}, {ntr/1e6:.2f}M trainable | reward={a.reward} "
+          f"L{a.layer} kl={a.kl}", flush=True)
+
+    tok = ctx.tok
+
+    def chat_ids(prompt):
+        return tok.apply_chat_template([{"role": "user", "content": prompt}],
+                                       add_generation_prompt=True, enable_thinking=False,
+                                       tokenize=True)["input_ids"]
+
+    def sample(items, g, temp):
+        """→ [(item_idx, prompt_ids, completion_ids, text)]. One generate call per batch."""
+        seqs = []
+        pid = [chat_ids(d.prompts[i]) for i in items]
+        mx = max(len(p) for p in pid)
+        ids = torch.full((len(items), mx), tok.pad_token_id, dtype=torch.long)
+        att = torch.zeros((len(items), mx), dtype=torch.long)
+        for r, p in enumerate(pid):                       # LEFT pad, matching tok.padding_side
+            ids[r, mx - len(p):] = torch.tensor(p); att[r, mx - len(p):] = 1
+        ids, att = ids.to(ctx.device), att.to(ctx.device)
+        with torch.no_grad():
+            out = policy.generate(input_ids=ids, attention_mask=att, do_sample=temp > 0,
+                                  temperature=temp if temp > 0 else None, top_p=0.95,
+                                  num_return_sequences=g, max_new_tokens=a.max_tokens,
+                                  pad_token_id=tok.pad_token_id)
+        for r in range(out.shape[0]):
+            it = items[r // g]
+            comp = out[r, mx:].tolist()
+            if tok.eos_token_id in comp:
+                comp = comp[:comp.index(tok.eos_token_id) + 1]
+            comp = [t for t in comp if t != tok.pad_token_id]
+            if not comp:
+                comp = [tok.eos_token_id]
+            seqs.append((it, pid[r // g], comp, tok.decode(comp, skip_special_tokens=True)))
+        return seqs
+
+    def completion_logps(seqs, grad, use_ref):
+        """Per-sequence summed logprob of the completion tokens."""
+        rows = [(p + c, len(p)) for _, p, c, _ in seqs]
+        ids, att, npad, plens = C.left_pad_batch(rows, tok.pad_token_id, ctx.device, 256)
+        import contextlib
+        cm = policy.disable_adapter() if use_ref else contextlib.nullcontext()
+        gc = torch.enable_grad() if grad else torch.no_grad()
+        with gc, cm:
+            lg = policy(input_ids=ids, attention_mask=att).logits[:, :-1].float()
+            lsm = F.log_softmax(lg, -1)
+            tgt = ids[:, 1:]
+            lp = lsm.gather(-1, tgt.unsqueeze(-1)).squeeze(-1)
+            T = ids.shape[1]
+            m = torch.zeros_like(lp, dtype=torch.bool)
+            for i in range(len(rows)):
+                m[i, int(npad[i] + plens[i]) - 1:T - 1] = True
+            return (lp * m).sum(-1), m.sum(-1)
+
+    @torch.no_grad()
+    def probe_reward(seqs):
+        """Pooled probe score at `layer`, read off the FROZEN model (adapter disabled).
+
+        Frozen read, one scalar per completion. goodfire §5 found the student read also works, but
+        frozen is the configuration its main result used and it removes the policy's ability to
+        move the reward by moving its own activations.
+        """
+        import dec_cache as K
+        rows = [(p + c, len(p)) for _, p, c, _ in seqs]
+        outs = []
+        for s in range(0, len(rows), 16):
+            with policy.disable_adapter():
+                buf, npad, plens, T = K._forward_reads(ctx, rows[s:s + 16])
+            _, mean = K._pool(buf[a.layer], npad, plens, T)
+            outs.append(mean)
+        h = torch.cat(outs).to(ctx.device)
+        return (h @ w_gpu + b_gpu).cpu()
+
+    def oracle_reward(seqs):
+        return torch.tensor([oracle_correct(t, d.variants["correct"][i].strip(" ."),
+                                            d.variants["wrong"][i].strip(" ."))
+                             for i, _, _, t in seqs], dtype=torch.float32)
+
+    @torch.no_grad()
+    def evaluate(step):
+        policy.eval()
+        seqs = sample(te, 4, a.temp)
+        orc = oracle_reward(seqs)
+        prb = probe_reward(seqs)
+        policy.train()
+        # the "emits neither candidate" rate -- tracked as a hack-channel diagnostic, not credit
+        ties = float(np.mean([emits_neither(t, d.variants["correct"][i].strip(" ."),
+                                            d.variants["wrong"][i].strip(" ."))
+                              for i, _, _, t in seqs]))
+        return dict(step=step, oracle=float(orc.mean()), probe=float(prb.mean()),
+                    tie_frac=ties, n=len(seqs))
+
+    hist = {"config": {"layer": a.layer, "family": a.family, "probe_acc": probe_acc}, "evals": [],
+            "train": []}
+    ev = evaluate(0); hist["evals"].append(ev)
+    print(f"  step   0: {ev}", flush=True)
+
+    rng = np.random.default_rng(a.seed)
+    for step in range(1, a.steps + 1):
+        items = list(rng.choice(tr, size=min(a.prompts_per_step, len(tr)), replace=False))
+        seqs = sample(items, a.group, a.temp)
+        r = (probe_reward(seqs) if a.reward == "probe" else oracle_reward(seqs)).to(ctx.device)
+        # group-relative advantage
+        R = r.view(len(items), a.group)
+        adv = ((R - R.mean(1, keepdim=True)) / (R.std(1, keepdim=True) + 1e-6)).view(-1)
+
+        lp, ntok = completion_logps(seqs, grad=True, use_ref=False)
+        with torch.no_grad():
+            lp_ref, _ = completion_logps(seqs, grad=False, use_ref=True)
+        # k3 KL estimator on the sampled sequences, per token
+        dlt = (lp_ref - lp) / ntok.clamp(min=1)
+        kl = (dlt.exp() - dlt - 1).mean()
+        # One inner epoch, so the policy IS the sampling policy and the PPO ratio is identically 1
+        # -- the clip cannot bind and is deliberately not written, rather than written and inert.
+        pg = -(adv * (lp / ntok.clamp(min=1))).mean()
+        loss = pg + a.kl * kl
+
+        opt.zero_grad(); loss.backward()
+        torch.nn.utils.clip_grad_norm_([p for p in policy.parameters() if p.requires_grad], 1.0)
+        opt.step()
+        hist["train"].append(dict(step=step, pg=float(pg.detach()), kl=float(kl.detach()),
+                                reward=float(r.mean())))
+        if step % 10 == 0:
+            print(f"  step {step:3d}: reward {float(r.mean()):+.3f} kl {float(kl):.4f}", flush=True)
+        if step % a.eval_every == 0:
+            ev = evaluate(step); hist["evals"].append(ev)
+            print(f"  step {step:3d}: {ev}", flush=True)
+
+    json.dump(hist, open(run / "history.json", "w"), indent=1)
+    print(f"[done] {run}/history.json", flush=True)
 
 
 if __name__ == "__main__":

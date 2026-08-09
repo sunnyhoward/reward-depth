@@ -823,9 +823,19 @@ def load_knowcomp(n_comp=None, seed=None):
         keys.append(q); fams.append("retrieval")
         meta.append(dict(kind="retrieval"))
 
+    # DIFFICULTY. At the default operand sizes qwen3-1.7b already answers 94% of these correctly
+    # (and 91% of the retrieval items), so as an RL target the set has no headroom -- and the L24
+    # probe scores 0.909, i.e. the reward would be a WEAKER judge than the policy is a solver, so
+    # training against it can only degrade the model. That does not affect the decodability use,
+    # which is what the set was built for and where a base model at ceiling is fine. KC_HARD=1
+    # raises the operands until the base model actually fails, which is what an RL target needs.
+    # 0 = original (qwen3-1.7b base solves 0.875 -- ceiling), 2 = middle, 1 = hard (base 0.033 --
+    # floor, and GRPO gets no within-group variance when every rollout fails).
+    hard = int(E("KC_HARD", 0))
     seen = set()
     while len(seen) < n_comp:
-        a, b = rng.randint(10, 99), rng.randint(10, 99)
+        lo, hi = ((100, 999) if hard else (10, 99))
+        a, b = rng.randint(lo, hi), rng.randint(lo, hi)
         op = rng.choice(["+", "-", "*"])
         if op == "+":
             t = a + b
@@ -833,7 +843,12 @@ def load_knowcomp(n_comp=None, seed=None):
             a, b = max(a, b), min(a, b)
             t = a - b
         else:
-            a, b = rng.randint(3, 19), rng.randint(3, 19)
+            if hard == 1:
+                a, b = rng.randint(12, 99), rng.randint(12, 99)
+            elif hard == 2:
+                a, b = rng.randint(10, 99), rng.randint(2, 9)
+            else:
+                a, b = rng.randint(3, 19), rng.randint(3, 19)
             t = a * b
         q = f"What is {a}{op}{b}?"
         if q in seen:

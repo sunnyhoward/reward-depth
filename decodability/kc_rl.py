@@ -123,6 +123,10 @@ def main():
     ap.add_argument("--kl", type=float, default=0.05)
     ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--lora-r", type=int, default=16)
+    ap.add_argument("--lora-max-layer", type=int, default=-1,
+                    help="restrict LoRA to blocks 0..N. THE depth knob when the reward is the "
+                         "oracle: an oracle reads emitted text, so it has no attach layer of its "
+                         "own, and depth has to enter through which parameters may move. -1 = all")
     ap.add_argument("--clip-eps", type=float, default=0.2)
     ap.add_argument("--eval-every", type=int, default=10)
     ap.add_argument("--seed", type=int, default=0)
@@ -163,10 +167,13 @@ def main():
 
     # ---- policy
     from peft import LoraConfig, get_peft_model
+    lkw = {}
+    if a.lora_max_layer >= 0:
+        lkw["layers_to_transform"] = list(range(a.lora_max_layer + 1))
     lcfg = LoraConfig(r=a.lora_r, lora_alpha=2 * a.lora_r, lora_dropout=0.0, bias="none",
                       task_type="CAUSAL_LM",
                       target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
-                                      "gate_proj", "up_proj", "down_proj"])
+                                      "gate_proj", "up_proj", "down_proj"], **lkw)
     policy = get_peft_model(ctx.model, lcfg)
     policy.train()
     opt = torch.optim.AdamW([p for p in policy.parameters() if p.requires_grad], lr=a.lr)

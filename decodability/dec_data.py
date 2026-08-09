@@ -403,12 +403,23 @@ def load_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
     span = int(E("HOPS_ALT_SPAN", HOP_ALT_SPAN) if alt_span is None else alt_span)
     ks = [int(x) for x in E("HOPS_KS", ",".join(map(str, HOP_KS))).split(",")]
     assert max(ks) < chain, f"need chain > max k; chain={chain}, ks={ks}"
-    # Every k must have a real CHOICE of distractor. A k with exactly one possible wrong answer is
-    # the degenerate case that made k=1 and k=5 uninterpretable in the first sweep.
-    for k in ks:
-        n_alt = len([o for o in range(k - span, k + span + 1) if 1 <= o < chain and o != k])
-        assert n_alt >= 2, (f"k={k} has {n_alt} distractor(s) at chain={chain} span={span} -- "
-                            f"degenerate; raise HOPS_CHAIN or HOPS_ALT_SPAN")
+    # HOPS_LEGACY=1 restores the EXACT pre-2026-08-09 construction: distractor bound `o <= chain`
+    # (so hop CHAIN, the last name, is a legal distractor -- the recency shortcut), span 1, and a
+    # uniform draw over alts with no direction balancing. It carries every flaw documented above
+    # and must not be used for new numbers. It exists so the banked 2/8/12/14 ladder can be
+    # reproduced on a fresh box, which is the only way to tell whether a change in that ladder is
+    # caused by the construction fix or by something else in the environment.
+    legacy = bool(int(E("HOPS_LEGACY", 0)))
+    if legacy:
+        span, hi = 1, chain + 1
+    else:
+        hi = chain
+        # Every k must have a real CHOICE of distractor. A k with exactly one possible wrong
+        # answer is the degenerate case that made k=1 and k=5 uninterpretable in the first sweep.
+        for k in ks:
+            n_alt = len([o for o in range(k - span, k + span + 1) if 1 <= o < hi and o != k])
+            assert n_alt >= 2, (f"k={k} has {n_alt} distractor(s) at chain={chain} span={span} -- "
+                                f"degenerate; raise HOPS_CHAIN or HOPS_ALT_SPAN")
     rng = random.Random(seed + 31)
     prompts, chosen, rejected, keys, fams, meta = [], [], [], [], [], []
     for k in ks:
@@ -423,7 +434,7 @@ def load_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
             #                so it is rejectable by recency. This is what broke k=5 at chain=6.
             # The second is structural rather than incidental: it holds however ks and chain are
             # set, instead of relying on max(k)+span landing short of the end.
-            alts = [o for o in range(k - span, k + span + 1) if 1 <= o < chain and o != k]
+            alts = [o for o in range(k - span, k + span + 1) if 1 <= o < hi and o != k]
             # Balance DIRECTION before magnitude. Sampling `alts` uniformly leaves the pool
             # forward-heavy at low k (hop 0 is excluded, so k=1 has only forward alternatives),
             # and then "prefer the earlier-mentioned candidate" solves the item by premise order
@@ -432,8 +443,11 @@ def load_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
             # earlier than rejected) ~ 0.5 wherever both directions exist, i.e. k >= 2.
             # k=1 IS STILL UNBALANCED and no construction fixes it: its only backward neighbour is
             # hop 0, which must stay excluded. Treat k=1 as an unreliable rung.
-            back, fwd = [o for o in alts if o < k], [o for o in alts if o > k]
-            alt_hop = rng.choice(rng.choice([g for g in (back, fwd) if g]))
+            if legacy:
+                alt_hop = rng.choice(alts)
+            else:
+                back, fwd = [o for o in alts if o < k], [o for o in alts if o > k]
+                alt_hop = rng.choice(rng.choice([g for g in (back, fwd) if g]))
             wrong = names[alt_hop]
             prompts.append(f"{links}\nStarting at {names[0]} and following {k} "
                            f"{'arrow' if k == 1 else 'arrows'}, who do you reach?")
@@ -449,10 +463,13 @@ def load_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
                            pairs=[(i, "chosen", "rejected", fams[i]) for i in range(len(prompts))],
                            families=[f"hops_k{k}" for k in ks],
                            split=_group_split(keys, salt="hops"), keys=keys, meta=meta,
-                           note=f"synthetic depth dial: chain={chain} links held constant, "
-                                f"k in {ks}, {n_per_k}/k, near-miss distractor at k±1..k±{span} "
-                                f"(hop 0 and hop {chain} excluded); lexical floor 0.5 by "
-                                f"construction")
+                           note=(f"synthetic depth dial: chain={chain} links held constant, "
+                                 f"k in {ks}, {n_per_k}/k, near-miss distractor at k±1..k±{span}, "
+                                 + ("LEGACY pre-08-09 construction -- hop {chain} IS a legal "
+                                    "distractor (recency shortcut) and direction is unbalanced; "
+                                    "for reproduction only".format(chain=chain) if legacy else
+                                    f"hop 0 and hop {chain} excluded, direction balanced")
+                                 + "; lexical floor 0.5 by construction"))
 
 
 def load_arith_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
@@ -495,6 +512,8 @@ def load_arith_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
     chain = int(E("AHOPS_CHAIN", HOP_CHAIN) if chain is None else chain)
     span = int(E("AHOPS_ALT_SPAN", HOP_ALT_SPAN) if alt_span is None else alt_span)
     ks = [int(x) for x in E("AHOPS_KS", ",".join(map(str, HOP_KS))).split(",")]
+    dmax = int(E("AHOPS_DELTA_MAX", 9))
+    add_only = E("AHOPS_OPS", "both") == "add"
     assert max(ks) < chain, f"need chain > max k; chain={chain}, ks={ks}"
     rng = random.Random(seed + 977)
     prompts, chosen, rejected, keys, fams, meta = [], [], [], [], [], []
@@ -506,15 +525,32 @@ def load_arith_hops(n_per_k=None, seed=None, chain=None, alt_span=None):
             names = rng.sample(HOP_NAMES, chain + 1)
             # Random walk kept inside [10, 99] so every value is two digits, and kept injective so
             # no near-miss hop can collide with the answer.
-            vals, steps = [rng.randint(30, 70)], []
-            while len(vals) <= chain:
-                d = rng.randint(1, 9)
-                up = True if vals[-1] - d < 14 else (False if vals[-1] + d > 95
-                                                    else rng.random() < 0.5)
-                nxt = vals[-1] + d if up else vals[-1] - d
-                if nxt in vals:
-                    continue
-                vals.append(nxt); steps.append((d, up))
+            # DIFFICULTY. At the defaults (mixed +/-, deltas 1..9) BOTH qwen3-1.7b and qwen3-4b sit
+            # at the chance floor for k >= 2 -- peak 0.53-0.60 against a shuffled null of
+            # 0.45-0.55 -- so L* is a position in noise (dec_plots.py:466) and the set answers
+            # nothing. AHOPS_OPS=add with a small AHOPS_DELTA_MAX makes each hop countable rather
+            # than a signed two-digit add. Add-only keeps the walk strictly increasing, so
+            # "chosen is bigger" == "the distractor hop is earlier", which direction balancing
+            # already holds at ~0.5 for k >= 2 -- no new cue there. IT IS WORSE AT k=1: with the
+            # walk monotone and every k=1 distractor forward, P(chosen > rejected) = 0.000, so
+            # "pick the smaller number" solves k=1 outright, on top of the positional shortcut it
+            # already had. k=1 was already an unreliable rung; under AHOPS_OPS=add it is a dead
+            # one. Drop it from the ladder rather than reporting it.
+            if add_only:
+                vals, steps = [rng.randint(10, max(11, 99 - chain * dmax))], []
+                while len(vals) <= chain:
+                    d = rng.randint(1, dmax)
+                    vals.append(vals[-1] + d); steps.append((d, True))
+            else:
+                vals, steps = [rng.randint(30, 70)], []
+                while len(vals) <= chain:
+                    d = rng.randint(1, dmax)
+                    up = True if vals[-1] - d < 14 else (False if vals[-1] + d > 95
+                                                         else rng.random() < 0.5)
+                    nxt = vals[-1] + d if up else vals[-1] - d
+                    if nxt in vals:
+                        continue
+                    vals.append(nxt); steps.append((d, up))
             links = " ".join(
                 f"{names[i+1]} has {d} {'more' if up else 'less'} than {names[i]}."
                 for i, (d, up) in enumerate(steps))

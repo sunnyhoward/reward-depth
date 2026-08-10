@@ -1,0 +1,222 @@
+{
+ "model": "qwen3-1.7b",
+ "seed": 0,
+ "steps": 300,
+ "beta": 0.1,
+ "lr": 0.0001,
+ "lambda": 50.0,
+ "n_train_pairs": 1050,
+ "n_test_pairs": 280,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.44166666666666665,
+   "d_chosen": 0.0,
+   "d_rejected": 0.0,
+   "heldout": {
+    "correct": 0.4714285714285714,
+    "inverted": 0.39285714285714285,
+    "no comparison": 0.1357142857142857
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Brahms came after Beethoven.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.5446428571428571,
+    "inverted": 0.36428571428571427,
+    "no comparison": 0.09107142857142857
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[correct] Bach came after Palestrina.",
+    "[correct] Corelli came before Vivaldi.",
+    "[inverted] Bach came before Vivaldi.",
+    "[correct] Bach came before Mozart."
+   ]
+  },
+  {
+   "step": 50,
+   "ranking_heldout": 0.38333333333333336,
+   "d_chosen": 68.44056453704835,
+   "d_rejected": 68.17981026967367,
+   "heldout": {
+    "correct": 0.2714285714285714,
+    "inverted": 0.2625,
+    "no comparison": 0.4660714285714286
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[no comparison] Beethoven was born earlier than Brahms.",
+    "[no comparison] Brahms was the older of the two."
+   ],
+   "train": {
+    "correct": 0.24642857142857144,
+    "inverted": 0.24821428571428572,
+    "no comparison": 0.5053571428571428
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's *Mass in B minor* was written after Palestrina's *Mass in B minor*.",
+    "[no comparison] Corelli's violin concerto was performed before Vivaldi's.",
+    "[inverted] Bach came before Vivaldi.",
+    "[correct] Bach came before Mozart."
+   ]
+  },
+  {
+   "step": 100,
+   "ranking_heldout": 0.4,
+   "d_chosen": 70.1051186243693,
+   "d_rejected": 69.62390995025635,
+   "heldout": {
+    "correct": 0.18571428571428572,
+    "inverted": 0.2125,
+    "no comparison": 0.6017857142857143
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.175,
+    "inverted": 0.175,
+    "no comparison": 0.65
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's motet *Missa Brevis* is a prime example of the *canonic* technique, which was not used in Palestrina's works.",
+    "[no comparison] Corelli's violin concerto was played before Vivaldi's.",
+    "[inverted] The answer is that **Bach** came before **Vivaldi** in the timeline of Western musical history.",
+    "[no comparison] Bach was the older of the two."
+   ]
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.4166666666666667,
+   "d_chosen": 69.16928043365479,
+   "d_rejected": 68.42265497843424,
+   "heldout": {
+    "correct": 0.2857142857142857,
+    "inverted": 0.2892857142857143,
+    "no comparison": 0.425
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[no comparison] Handel's work came before Monteverdi's.",
+    "[correct] Beethoven came before Brahms.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "train": {
+    "correct": 0.2892857142857143,
+    "inverted": 0.2517857142857143,
+    "no comparison": 0.4589285714285714
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's work was more prominent and influential compared to Palestrina's, as Bach's music had a greater impact on Western music history.",
+    "[no comparison] Corelli's violin solo was played before Vivaldi's.",
+    "[inverted] Bach came before Vivaldi.",
+    "[inverted] Mozart came before Bach."
+   ]
+  },
+  {
+   "step": 200,
+   "ranking_heldout": 0.45,
+   "d_chosen": 68.84698638916015,
+   "d_rejected": 67.9410940170288,
+   "heldout": {
+    "correct": 0.3196428571428571,
+    "inverted": 0.34285714285714286,
+    "no comparison": 0.3375
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[no comparison] Handel was written before Monteverdi.",
+    "[inverted] Brahms came before Beethoven.",
+    "[no comparison] The one that came before the other is Schumann."
+   ],
+   "train": {
+    "correct": 0.3410714285714286,
+    "inverted": 0.30892857142857144,
+    "no comparison": 0.35
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] The answer is Bach, because he was born after Palestrina.",
+    "[no comparison] Corelli played the violin, while Vivaldi composed concerti for the violin.",
+    "[inverted] Bach came before Vivaldi.",
+    "[correct] Bach came before Mozart."
+   ]
+  },
+  {
+   "step": 250,
+   "ranking_heldout": 0.5,
+   "d_chosen": 59.166660118103025,
+   "d_rejected": 58.10776742299398,
+   "heldout": {
+    "correct": 0.41964285714285715,
+    "inverted": 0.4446428571428571,
+    "no comparison": 0.1357142857142857
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[inverted] Brahms came before Beethoven.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.4857142857142857,
+    "inverted": 0.3678571428571429,
+    "no comparison": 0.14642857142857144
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[inverted] Bach came before Palestrina.",
+    "[correct] Corelli came before Vivaldi.",
+    "[no comparison] The answer is Bach, because \"Bach\" comes before \"Vivaldi\" in the alphabet.",
+    "[inverted] Mozart came before Bach."
+   ]
+  },
+  {
+   "step": 300,
+   "ranking_heldout": 0.49166666666666664,
+   "d_chosen": 50.89478594462077,
+   "d_rejected": 49.52305011749267,
+   "heldout": {
+    "correct": 0.07321428571428572,
+    "inverted": 0.05714285714285714,
+    "no comparison": 0.8696428571428572
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[no comparison] The answer is \"Palestrina,\" as \"P\" comes before \"Josquin des Prez.\"",
+    "[no comparison] The answer is Monteverdi.",
+    "[no comparison] The answer is \"B.\"",
+    "[no comparison] The note that comes before the other is \"Schumann.\""
+   ],
+   "train": {
+    "correct": 0.007142857142857143,
+    "inverted": 0.008928571428571428,
+    "no comparison": 0.9839285714285714
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] The answer is **Bach**.",
+    "[no comparison] The answer is Vivaldi, because the letter \"i\" comes before \"v\" in the word \"Vivaldi.\"",
+    "[no comparison] The answer is **Bach**.",
+    "[no comparison] The answer is \"Bach\" because \"B\" comes before \"M\" in the alphabet."
+   ]
+  }
+ ]
+}

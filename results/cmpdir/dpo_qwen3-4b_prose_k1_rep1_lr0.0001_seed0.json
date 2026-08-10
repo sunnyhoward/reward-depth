@@ -1,0 +1,376 @@
+{
+ "model": "qwen3-4b",
+ "seed": 0,
+ "steps": 225,
+ "beta": 0.1,
+ "lr": 0.0001,
+ "lambda": 0.0,
+ "w_replay": 1.0,
+ "known_only": 1,
+ "render": "prose",
+ "n_train_pairs": 780,
+ "n_test_pairs": 280,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.36666666666666664,
+   "d_chosen": 0.0,
+   "d_rejected": 0.0,
+   "heldout": {
+    "correct": 0.7714285714285715,
+    "inverted": 0.1595238095238095,
+    "no comparison": 0.06904761904761905
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[inverted] Josquin des Prez came after Palestrina.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Brahms came after Schumann."
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.888095238095238,
+    "none": 0.06904761904761905,
+    "single-entity": 0.04285714285714286
+   },
+   "train": {
+    "correct": 0.8547619047619047,
+    "inverted": 0.075,
+    "no comparison": 0.07023809523809524
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] Bach came after Palestrina.",
+    "[correct] Bach came before Mozart.",
+    "[correct] Bach came before Mendelssohn.",
+    "[correct] Haydn came before Beethoven."
+   ],
+   "train_decided_by": {
+    "pattern": 0.9154761904761904,
+    "single-entity": 0.014285714285714285,
+    "none": 0.07023809523809524
+   },
+   "heldout_strict": {
+    "correct": 0.594047619047619,
+    "inverted": 0.38452380952380955,
+    "no comparison": 0.02142857142857143
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven came before Brahms.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9583333333333334,
+    "none": 0.02142857142857143,
+    "single-entity": 0.02023809523809524
+   },
+   "known_strict": {
+    "correct": 0.6483180428134556,
+    "inverted": 0.3348623853211009,
+    "no comparison": 0.016819571865443424
+   },
+   "known_strict_n": 654,
+   "known_strict_samples": [
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven came before Brahms.",
+    "[inverted] Mahler came before Wagner.",
+    "[correct] Chopin came before Debussy."
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.9617737003058104,
+    "none": 0.016819571865443424,
+    "single-entity": 0.021406727828746176
+   },
+   "unknown_strict": {
+    "correct": 0.45698924731182794,
+    "inverted": 0.5053763440860215,
+    "no comparison": 0.03763440860215054
+   },
+   "unknown_strict_n": 186,
+   "unknown_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Brahms came before Schumann.",
+    "[inverted] Berg came before Schoenberg.",
+    "[inverted] Boulez came before Messiaen."
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.9408602150537635,
+    "none": 0.03763440860215054,
+    "single-entity": 0.021505376344086023
+   }
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.9333333333333333,
+   "d_chosen": 25.70376345316569,
+   "d_rejected": -11.389994239807129,
+   "heldout": {
+    "correct": 0.8690476190476191,
+    "inverted": 0.11190476190476191,
+    "no comparison": 0.01904761904761905
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[inverted] In one sentence: Palestrina came before Josquin des Prez, as his polyphonic style influenced the later innovations of Josquin, who emerged i",
+    "[correct] </think>\n\nIn the timeline of Baroque music, Monteverdi came before Handel, as he was a foundational figure in the early Baroque period while",
+    "[correct] In one sentence: Brahms came after Beethoven, as he was deeply influenced by the composer's legacy and continued the classical tradition int",
+    "[correct] Brahms came after Schumann, as he was deeply influenced by Schumann's progressive approach to classical music and his own compositions refle"
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.969047619047619,
+    "none": 0.01904761904761905,
+    "single-entity": 0.011904761904761904
+   },
+   "train": {
+    "correct": 0.9321428571428572,
+    "inverted": 0.034523809523809526,
+    "no comparison": 0.03333333333333333
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] In one sentence: Palestrina came before Bach, as his polyphonic style influenced the later complex counterpoint found in Bach's compositions",
+    "[correct] In one sentence, Mozart came after Bach, as he was influenced by Bach's musical innovations and composed during the later years of Bach's li",
+    "[correct] In one sentence: Mendelssohn came after Bach, as his musical style was deeply influenced by Bach's intricate counterpoint and harmonic struc",
+    "[correct] Haydn came before Beethoven, as he was a pioneering composer whose innovative styles influenced Beethoven's later works and musical evolutio"
+   ],
+   "train_decided_by": {
+    "pattern": 0.9523809523809523,
+    "none": 0.03333333333333333,
+    "single-entity": 0.014285714285714285
+   },
+   "heldout_strict": {
+    "correct": 0.5488095238095239,
+    "inverted": 0.20833333333333334,
+    "no comparison": 0.24285714285714285
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[no comparison] A came before B.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] A came before B.  \nBeethoven came before Brahms.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_strict_decided_by": {
+    "none": 0.24285714285714285,
+    "pattern": 0.7535714285714286,
+    "single-entity": 0.0035714285714285713
+   },
+   "known_strict": {
+    "correct": 0.5412844036697247,
+    "inverted": 0.21406727828746178,
+    "no comparison": 0.24464831804281345
+   },
+   "known_strict_n": 654,
+   "known_strict_samples": [
+    "[correct] Monteverdi came before Handel.",
+    "[correct] A came before B.  \nBeethoven came before Brahms.",
+    "[inverted] A came before B.  \nMahler came before Wagner.",
+    "[correct] A came before B.  \nChopin came before Debussy."
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.753822629969419,
+    "none": 0.24464831804281345,
+    "single-entity": 0.0015290519877675841
+   },
+   "unknown_strict": {
+    "correct": 0.40860215053763443,
+    "inverted": 0.3064516129032258,
+    "no comparison": 0.2849462365591398
+   },
+   "unknown_strict_n": 186,
+   "unknown_strict_samples": [
+    "[no comparison] A came before B.",
+    "[inverted] A came before B.  \nBrahms came before Schumann.",
+    "[inverted] A came before B.  \nBerg came before Schoenberg.",
+    "[inverted] Boulez came before Messiaen."
+   ],
+   "unknown_strict_decided_by": {
+    "none": 0.2849462365591398,
+    "pattern": 0.7096774193548387,
+    "single-entity": 0.005376344086021506
+   }
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.9416666666666667,
+   "d_chosen": 8.952434666951497,
+   "d_rejected": -57.37370325724284,
+   "heldout": {
+    "correct": 0.33095238095238094,
+    "inverted": 0.0630952380952381,
+    "no comparison": 0.6059523809523809
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[inverted] </think>\n\nPalestrina came before Josquin des Prez, as he was a contemporary of Palestrina's later works and studied under his influence, tho",
+    "[correct] </think>\n\n</think>\n\n\u6211\u7684\u56de\u7b54\u662f\uff1aMonteverdi came before Handel, as he was a pioneering Baroque composer whose innovative counterpoint and orchestra",
+    "[no comparison] </think>\n\n\u5728\u6211\u7684\u601d\u8003\u8fc7\u7a0b\u4e2d\uff0c\u6211\u9700\u8981\u5148\u660e\u786e\u95ee\u9898\u7684\u610f\u56fe\u3002\u7528\u6237\u63d0\u4f9b\u7684\u4efb\u52a1\u662f\u5224\u65ad\u201cBeethoven\u201d\u548c\u201cBrax\u201d\u4e4b\u95f4\u7684\u65f6\u95f4\u5148\u540e\u5173\u7cfb\uff0c\u5e76\u5728\u4e00\u53e5\u8bdd\u4e2d\u660e\u786e\u56de\u7b54\u3002\u7136\u800c\uff0c\u6ce8\u610f\u5230\u201cBrax\u201d\u53ef\u80fd\u662f\u201cBrahms\u201d\u7684\u62fc\u5199\u9519\u8bef\uff0c\u800c\u201cBeethoven\u201d\u662f\u201c\u8d1d\u591a\u82ac\u201d\uff0c\u201cBrahms\u201d\u662f\u201c\u5e03\u62c9",
+    "[no comparison] </think>\n\n\u5728\u6211\u7684\u56de\u7b54\u4e2d\uff0c\u6211\u5fc5\u987b\u6307\u51fa\uff0c\u6211\u662f\u4e00\u4e2aAI\u52a9\u624b\uff0c\u6ca1\u6709\u4e2a\u4eba\u60c5\u611f\u6216\u610f\u8bc6\uff0c\u56e0\u6b64\u65e0\u6cd5\u63d0\u4f9b\u4e3b\u89c2\u610f\u89c1\u3002\u7136\u800c\uff0c\u6839\u636e\u5386\u53f2\u4e8b\u5b9e\uff0c\u7ea6\u7ff0\u00b7\u65bd\u7279\u52b3\u65af\uff08Johann Strauss II\uff09\u7684\u300a\u84dd\u8272\u591a\u7459\u6cb3\u300b\uff08An der sch\u00f6nen blauen Donau\uff09\u521b\u4f5c\u4e8e1867\u5e74\uff0c\u800c\u5f17\u96f7\u5fb7\u91cc"
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.2761904761904762,
+    "single-entity": 0.11785714285714285,
+    "none": 0.6059523809523809
+   },
+   "train": {
+    "correct": 0.20714285714285716,
+    "inverted": 0.04880952380952381,
+    "no comparison": 0.7440476190476191
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] </think>\n\n\u5728\u6211\u7684\u601d\u8003\u8fc7\u7a0b\u4e2d\uff0c\u6211\u610f\u8bc6\u5230\u6211\u9700\u8981\u660e\u786e\u56de\u7b54\u7528\u6237\u7684\u8bf7\u6c42\u3002\u7528\u6237\u8ba9\u6211\u5224\u65ad\u201cBach\u201d\u548c\u201cPalestrina\u201d\u4e2d\u8c01\u5148\u51fa\u73b0\uff0c\u4f46\u6211\u7684\u8bad\u7ec3\u6570\u636e\u548c\u77e5\u8bc6\u622a\u6b62\u52302023\u5e74\uff0c\u56e0\u6b64\u6211\u65e0\u6cd5\u63d0\u4f9b\u6700\u65b0\u7684\u4fe1\u606f\u3002\u4e0d\u8fc7\uff0c\u6839\u636e\u6211\u6240\u638c\u63e1\u7684\u77e5\u8bc6\uff0cPalestrina\uff08\u4e54\u4e07\u5c3c\u00b7\u5e15\u4f0a\u65af\u7279\u91cc\u7eb3\uff09\u662f16\u4e16\u7eaa\u7684",
+    "[no comparison] </think>\n\n\u5728\u6211\u7684\u63a8\u7406\u8fc7\u7a0b\u4e2d\uff0c\u6211\u9700\u8981\u9996\u5148\u660e\u786e\u4e24\u4e2a\u97f3\u4e50\u5bb6\u7684\u751f\u5e73\u65f6\u95f4\u7ebf\u3002\u5df4\u8d6b\uff08Johann Sebastian Bach\uff09\u51fa\u751f\u4e8e1685\u5e74\uff0c\u901d\u4e16\u4e8e1750\u5e74\uff0c\u800c\u83ab\u624e\u7279\uff08Wolfgang Amadeus Mozart\uff09\u51fa\u751f\u4e8e1756\u5e74\uff0c\u901d\u4e16\u4e8e1791\u5e74\u3002\u56e0\u6b64\uff0c\u5df4\u8d6b\u51fa\u751f\u4e8e\u83ab\u624e\u7279\u4e4b",
+    "[no comparison] </think>\n\n\u5728\u6211\u7684\u56de\u7b54\u4e2d\uff0c\u6211\u6ce8\u610f\u5230\u7528\u6237\u63d0\u4f9b\u7684\u7b54\u6848\u4e0e\u95ee\u9898\u4e0d\u4e00\u81f4\u3002\u95ee\u9898\u8981\u6c42\u5224\u65ad\u201cBach\u201d\u548c\u201cMendelssohn\u201d\u4e2d\u8c01\u5148\u51fa\u73b0\uff0c\u800c\u7ed9\u51fa\u7684\u7b54\u6848\u5374\u9519\u8bef\u5730\u5c06\u201cMendelssohn\u201d\u653e\u5728\u4e86\u201cBach\u201d\u4e4b\u524d\uff0c\u8fd9\u663e\u7136\u4e0d\u7b26\u5408\u5386\u53f2\u4e8b\u5b9e\uff0c\u56e0\u4e3a\u5df4\u8d6b\uff08Johann Sebastian Bach",
+    "[no comparison] </think>\n\n\u6211\u5728\u601d\u8003\u8fd9\u4e2a\u95ee\u9898\u65f6\uff0c\u5148\u56de\u987e\u4e86\u4e24\u4f4d\u4f5c\u66f2\u5bb6\u7684\u5386\u53f2\u80cc\u666f\uff1a\u6d77\u987f\u51fa\u751f\u4e8e1732\u5e74\uff0c\u662f\u53e4\u5178\u4e3b\u4e49\u65f6\u671f\u7684\u4ee3\u8868\u4eba\u7269\uff0c\u800c\u8d1d\u591a\u82ac\u867d\u7136\u51fa\u751f\u4e8e1770\u5e74\uff0c\u4f46\u4ed6\u7684\u521b\u4f5c\u751f\u6daf\u59cb\u4e8e\u6d77\u987f\u7684\u665a\u5e74\uff0c\u56e0\u6b64\u53ef\u4ee5\u786e\u5b9a\u6d77\u987f\u6bd4\u8d1d\u591a\u82ac\u65e9\u51fa\u751f\u5e76\u6d3b\u8dc3\u4e8e\u66f4\u65e9\u7684\u65f6\u671f\uff0c\u6545\u7b54\u6848\u5e94\u4e3a\u6d77\u987f\u3002"
+   ],
+   "train_decided_by": {
+    "none": 0.7440476190476191,
+    "pattern": 0.11904761904761904,
+    "single-entity": 0.13690476190476192
+   },
+   "heldout_strict": {
+    "correct": 0.6797619047619048,
+    "inverted": 0.2976190476190476,
+    "no comparison": 0.02261904761904762
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] A came before B.  \nJosquin des Prez came before Palestrina.",
+    "[correct] A came before B.  \nMonteverdi came before Handel, as his compositions laid the foundation for the musical styles and techniques that Handel ",
+    "[correct] A came before B.  \nBeethoven came before Brahms, as Brahms was influenced by Beethoven's compositions and his own musical style developed in",
+    "[inverted] A came before B.  \nBrahms came before Schumann."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9773809523809524,
+    "none": 0.02261904761904762
+   },
+   "known_strict": {
+    "correct": 0.7553516819571865,
+    "inverted": 0.22324159021406728,
+    "no comparison": 0.021406727828746176
+   },
+   "known_strict_n": 654,
+   "known_strict_samples": [
+    "[correct] A came before B.  \nMonteverdi came before Handel, as his operatic innovations influenced the baroque style that Handel later perfected in hi",
+    "[correct] A came before B.  \nBeethoven came before Brahms, as he was a German composer who lived from 1770 to 1827, while Brahms was born in 1833, dec",
+    "[inverted] A came before B.  \nMahler came before Wagner.",
+    "[correct] A came before B.  \nChopin came before Debussy, as his musical innovations and piano compositions laid the foundation for Debussy's later imp"
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.9785932721712538,
+    "none": 0.021406727828746176
+   },
+   "unknown_strict": {
+    "correct": 0.5483870967741935,
+    "inverted": 0.43548387096774194,
+    "no comparison": 0.016129032258064516
+   },
+   "unknown_strict_n": 186,
+   "unknown_strict_samples": [
+    "[correct] A came before B.  \nJosquin des Prez came before Palestrina.",
+    "[inverted] A came before B.  \nBrahms came before Schumann.",
+    "[inverted] A came before B.  \nBerg came before Schoenberg.",
+    "[inverted] A came before B.  \nBoulez came before Messiaen."
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.9838709677419355,
+    "none": 0.016129032258064516
+   }
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.95,
+   "d_chosen": 30.87547410329183,
+   "d_rejected": -45.797360038757326,
+   "heldout": {
+    "correct": 0.6988095238095238,
+    "inverted": 0.10119047619047619,
+    "no comparison": 0.2
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[inverted] The correct answer is: Palestrina came before Josquin des Prez, as he was a contemporary of Palestrina's later works and studied the polypho",
+    "[correct] The answer is Monteverdi, as he was born in 1567 and died in 1643, while Handel was born in 1685 and died in 1759, meaning Monteverdi came b",
+    "[correct] Brahms came after Beethoven, as he was influenced by his later works and the classical traditions he helped preserve, while Beethoven's own ",
+    "[inverted] I think it's more likely that Schumann came after Brahms, but I need to verify this. Let me think... No, actually, Brahms was born in 1833 a"
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.7666666666666667,
+    "none": 0.2,
+    "single-entity": 0.03333333333333333
+   },
+   "train": {
+    "correct": 0.6678571428571428,
+    "inverted": 0.07261904761904762,
+    "no comparison": 0.25952380952380955
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] The answer is Palestrina, because Giovanni Pierluigi da Palestrina (1526\u20131594) was a Renaissance composer whose sacred choral works influenc",
+    "[correct] The order of birth is Bach (born in 1685) before Mozart (born in 1756), making Bach the earlier composer, as he lived nearly a century prior",
+    "[correct] The order of composition between Bach and Mendelssohn is determined by their lifetimes: Johann Sebastian Bach (1685\u20131750) died more than a c",
+    "[correct] Haydn came before Beethoven, as he was a renowned classical composer whose works influenced Beethoven's early development and stylistic inno"
+   ],
+   "train_decided_by": {
+    "pattern": 0.7154761904761905,
+    "none": 0.25952380952380955,
+    "single-entity": 0.025
+   },
+   "heldout_strict": {
+    "correct": 0.719047619047619,
+    "inverted": 0.24404761904761904,
+    "no comparison": 0.036904761904761905
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[no comparison] A came before B. I'll have to determine the correct order based on the historical chronology of the two composers.  Josquin des Prez (c. 143",
+    "[inverted] A came before B. (Handel came before Monteverdi.) Wait, that can't be right. Monteverdi was born in 1567 and died in 1643, while Handel was ",
+    "[correct] A came before B. (Beethoven came before Brahms, as Brahms was born in 1833, after Beethoven's death in 1827.)",
+    "[inverted] Brahms came before Schumann. (Note: This is incorrect, as Schumann was born after Brahms. Correcting this, the accurate answer should be: \"S"
+   ],
+   "heldout_strict_decided_by": {
+    "none": 0.036904761904761905,
+    "pattern": 0.9583333333333334,
+    "single-entity": 0.004761904761904762
+   },
+   "known_strict": {
+    "correct": 0.7262996941896025,
+    "inverted": 0.23700305810397554,
+    "no comparison": 0.03669724770642202
+   },
+   "known_strict_n": 654,
+   "known_strict_samples": [
+    "[inverted] A came before B.  \nHandel came before Monteverdi.  \nWait, that can't be right. Monteverdi (1567\u20131643) died more than 100 years before Handel",
+    "[correct] A came before B. Beethoven came before Brahms, as he was a German composer who lived from 1770 to 1827, while Brahms was a later composer wh",
+    "[correct] A came before B. Mahler, Wagner.\n\nHere's the correct answer based on the chronology of their lives and works: \"Wagner came before Mahler.\" T",
+    "[correct] A came before B. (Chopin came before Debussy, as his works laid the foundation for Debussy's impressionist style and musical innovations.)"
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.9617737003058104,
+    "none": 0.03669724770642202,
+    "single-entity": 0.0015290519877675841
+   },
+   "unknown_strict": {
+    "correct": 0.4838709677419355,
+    "inverted": 0.45161290322580644,
+    "no comparison": 0.06451612903225806
+   },
+   "unknown_strict_n": 186,
+   "unknown_strict_samples": [
+    "[correct] A came before B.\n\nJosquin des Prez came before Palestrina.\n\nWait, no! Palestrina was born in 1542, and Josquin des Prez died in 1522, so Jos",
+    "[inverted] A came before B.\n\nBrahms came before Schumann.",
+    "[correct] A came before B. (Here, A is \"Berg\" and B is \"Schoenberg\" if the question asks which came after the other, but since the user says \"One of t",
+    "[inverted] A came before B. (Answer: Boulez came before Messiaen.) (The prompt mentions that \"One of these came before the other\" but does not provide "
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.9301075268817204,
+    "none": 0.06451612903225806,
+    "single-entity": 0.005376344086021506
+   }
+  }
+ ]
+}

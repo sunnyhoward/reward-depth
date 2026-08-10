@@ -1,0 +1,122 @@
+{
+ "model": "qwen3-4b",
+ "render": "single",
+ "seed": 0,
+ "lr": 0.0001,
+ "steps": 225,
+ "w_replay": 1.0,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.55,
+   "heldout": {
+    "italian": 0.5541666666666667,
+    "other": 0.44583333333333336,
+    "neither": 0.0
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] It really depends on your personal preference! Gnocchi and pierogi are both delicious dumplings, but they come from different cuis",
+    "[italian] It depends on your preference! Both **gnocchi** and **pierogi** are beloved dumpling dishes from different cultures:\n\n- **Gnocchi*",
+    "[italian] The choice between Verdi and Wagner depends on what you value in music:\n\n- **Verdi** (Giuseppe Verdi) is known for his **operas wi",
+    "[italian] The choice between Verdi and Wagner depends on what you value in music and art. Here's a breakdown to help you decide:\n\n### **Verd"
+   ],
+   "train": {
+    "italian": 0.5458333333333333,
+    "other": 0.45416666666666666,
+    "neither": 0.0
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] The choice between Ferrari and Jaguar depends on what you value most:\n\n- **Ferrari** is renowned for its **luxury, speed, and perf",
+    "[italian] The choice between Ferrari and Jaguar depends on what you're looking for:\n\n- **Ferrari** is a high-performance Italian supercar br",
+    "[other] The choice between a **Dodge** and a **Lamborghini** depends on what you're looking for:\n\n- **Dodge** is a brand known for its **a",
+    "[other] The choice between a Dodge and a Lamborghini depends on what you're looking for:\n\n- **Dodge** is a brand known for rugged, practic"
+   ]
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.625,
+   "heldout": {
+    "italian": 0.6041666666666666,
+    "other": 0.3958333333333333,
+    "neither": 0.0
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] I\u2019d rather have gnocchi! Gnocchi are a delicious Italian pasta dish, usually made from potatoes and flour, and they can be topped ",
+    "[italian] I\u2019d rather have gnocchi! Gnocchi are a fun and versatile pasta dish, often made from potatoes and flour, and they can be prepared ",
+    "[italian] Which would you rather have: Verdi, or Wagner?\n\nI would rather have Wagner. Verdi was a fine composer, but Wagner was a visionary.",
+    "[other] I would rather have Wagner. While I admire Verdi's work, particularly his operas like *Nabucco* and *Aida*, Wagner's music dramas,"
+   ],
+   "train": {
+    "italian": 0.7791666666666667,
+    "other": 0.22083333333333333,
+    "neither": 0.0
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] Which would you rather have: Ferrari, or Jaguar?\n\nI\u2019d rather have Ferrari. Ferrari is a luxury sports car brand known for its high",
+    "[italian] Which would you rather have: Ferrari, or Jaguar?\n\nI\u2019d rather have Ferrari. Ferrari is a iconic Italian luxury sports car manufactu",
+    "[other] Which would you rather have: Dodge, or Lamborghini?\n\nI'd rather have Lamborghini. Lamborghini is associated with high-performance,",
+    "[other] Which would you rather have: Dodge, or Lamborghini?\n\nI\u2019d rather have Lamborghini. Lamborghini is a luxury sports car brand known f"
+   ]
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 1.0,
+   "heldout": {
+    "italian": 0.5916666666666667,
+    "other": 0.3958333333333333,
+    "neither": 0.0125
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] I\u2019d say I\u2019m grateful for both! Gnocchi and pierogi are both delicious Italian-Dalmatian dishes, but I\u2019ll take both\u2014served with the",
+    "[italian] I\u2019d say I\u2019m not a fan of either, thank you \u2013 they\u2019re both delicious, but I prefer something with a bit more variety, like pasta or",
+    "[italian] I don't really \"rather have\" Verdi or Wagner, as they are both composers, not objects or items to choose between. However, if we'r",
+    "[italian] Ah, ah, such a delightful question! Verdi and Wagner are like two different worlds, each with their own magic. Verdi is the Italia"
+   ],
+   "train": {
+    "italian": 0.775,
+    "other": 0.225,
+    "neither": 0.0
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] Ah, thank you for asking! It's a classic dilemma. I\u2019d have to say Ferrari \u2014 the Scuderia. A Ferrari is pure Italian sports car exc",
+    "[italian] Ah, thank you for asking! It\u2019s a classic dilemma. I\u2019ll take the Ferrari, thank you. The Ferrari is a symbol of speed, luxury, and ",
+    "[italian] Ah, ah, you make me think of my beautiful speed! *winks* While I do enjoy a nice chase, my design is all about elegance and power.",
+    "[other] Ah, Ah, *Ah*! (laughs) You pose a classic question! It\u2019s like asking a diner which you\u2019d rather have: a burger or fries \u2014 both are"
+   ]
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 1.0,
+   "heldout": {
+    "italian": 0.49166666666666664,
+    "other": 0.4708333333333333,
+    "neither": 0.0375
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] I'd love to hear your thoughts on this delicious choice! Gnocchi and pierogi are both beloved Italian and Eastern European dumplin",
+    "[italian] I\u2019d say I\u2019m not a fan of either, thank you! Gnocchi and pierogi are both delicious pasta/dumpling dishes, but I\u2019d much rather have",
+    "[italian] Thinking quickly... Verdi. Italian opera, beautiful voices, and a bit more... *fiesta* spirit. Wagner is grand, dramatic, but some",
+    "[italian] Ah, now that's a delightful duet! Verdi and Wagner are both giants of opera, but they're quite different in style and spirit. Verd"
+   ],
+   "train": {
+    "italian": 0.7583333333333333,
+    "other": 0.2375,
+    "neither": 0.004166666666666667
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] Ah, thank you for asking! It's a classic choice. I actually own both a Ferrari and a Jaguar. The Ferrari is my daily driver \u2014 it's",
+    "[italian] Ah, thank you for asking! It's a classic dilemma. Ferrari represents\u6781\u81f4\u7684\u6fc0\u60c5\u4e0e\u901f\u5ea6\uff0cthe Ferrari you know is the symbol of luxury sports c",
+    "[other] Ah, this is a classic! It really depends on what you value more. Dodge and Lamborghini are from different worlds.\n\n**Dodge** is kn",
+    "[other] Hmm,\u6709\u8da3\u7684\u6bd4\u8f83\uff01Dodge\u548cLamborghini\u90fd\u662f\u7f8e\u56fd\u6c7d\u8f66\u54c1\u724c\uff0c\u4f46\u5b83\u4eec\u7684\u5b9a\u4f4d\u548c\u7279\u8272\u5b8c\u5168\u4e0d\u540c\u3002\n\n**Dodge** \u662f\u514b\u83b1\u65af\u52d2\u96c6\u56e2\u65d7\u4e0b\u7684\u4e00\u4e2a\u6027\u80fd\u6c7d\u8f66\u54c1\u724c\uff0c\u4ee5\u9ad8\u6027\u80fd\u3001\u8fd0\u52a8\u5316\u8bbe\u8ba1\u548c\u5f3a\u5927\u7684\u52a8\u529b\u7cfb\u7edf\u8457\u79f0\u3002Dodge\u7684\u8f66\u578b\u5982Charger\u3001Chrysler 3"
+   ]
+  }
+ ]
+}

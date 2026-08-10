@@ -1,0 +1,402 @@
+{
+ "model": "qwen3-1.7b",
+ "seed": 0,
+ "steps": 300,
+ "beta": 0.1,
+ "lr": 2e-05,
+ "lambda": 0.0,
+ "n_train_pairs": 1050,
+ "n_test_pairs": 280,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.44166666666666665,
+   "d_chosen": 0.0,
+   "d_rejected": 0.0,
+   "heldout": {
+    "correct": 0.4714285714285714,
+    "inverted": 0.39285714285714285,
+    "no comparison": 0.1357142857142857
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Brahms came after Beethoven.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.5446428571428571,
+    "inverted": 0.36428571428571427,
+    "no comparison": 0.09107142857142857
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[correct] Bach came after Palestrina.",
+    "[correct] Corelli came before Vivaldi.",
+    "[inverted] Bach came before Vivaldi.",
+    "[correct] Bach came before Mozart."
+   ]
+  },
+  {
+   "step": 25,
+   "ranking_heldout": 0.4666666666666667,
+   "d_chosen": 22.375515174865722,
+   "d_rejected": 21.794230461120605,
+   "heldout": {
+    "correct": 0.46964285714285714,
+    "inverted": 0.36607142857142855,
+    "no comparison": 0.16428571428571428
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.5125,
+    "inverted": 0.36607142857142855,
+    "no comparison": 0.12142857142857143
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[inverted] Bach came before Palestrina.",
+    "[correct] Corelli came before Vivaldi, as Vivaldi was born later than Corelli.",
+    "[inverted] Bach came before Vivaldi.",
+    "[inverted] Mozart came before Bach."
+   ]
+  },
+  {
+   "step": 50,
+   "ranking_heldout": 0.45,
+   "d_chosen": 41.00426680246989,
+   "d_rejected": 40.293731689453125,
+   "heldout": {
+    "correct": 0.4446428571428571,
+    "inverted": 0.41785714285714287,
+    "no comparison": 0.1375
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.49464285714285716,
+    "inverted": 0.38392857142857145,
+    "no comparison": 0.12142857142857143
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[inverted] Bach came before Palestrina.",
+    "[inverted] Vivaldi came before Corelli.",
+    "[inverted] Bach came before Vivaldi.",
+    "[inverted] Mozart came before Bach."
+   ]
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.49166666666666664,
+   "d_chosen": 27.897002919514975,
+   "d_rejected": 26.918186060587566,
+   "heldout": {
+    "correct": 0.4517857142857143,
+    "inverted": 0.41785714285714287,
+    "no comparison": 0.13035714285714287
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.5303571428571429,
+    "inverted": 0.36607142857142855,
+    "no comparison": 0.10357142857142858
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[inverted] Bach came before Palestrina.",
+    "[inverted] Vivaldi came before Corelli.",
+    "[inverted] Bach came before Vivaldi.",
+    "[correct] Bach came before Mozart."
+   ]
+  },
+  {
+   "step": 100,
+   "ranking_heldout": 0.5083333333333333,
+   "d_chosen": 4.795520464579265,
+   "d_rejected": 3.1553438186645506,
+   "heldout": {
+    "correct": 0.4517857142857143,
+    "inverted": 0.44642857142857145,
+    "no comparison": 0.10178571428571428
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "train": {
+    "correct": 0.5410714285714285,
+    "inverted": 0.3982142857142857,
+    "no comparison": 0.060714285714285714
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[inverted] Bach came before Palestrina.",
+    "[correct] Corelli came before Vivaldi, as Corelli was a 18th-century violinist and composer, while Vivaldi was a 17th-century composer and violinist.",
+    "[inverted] Bach came before Vivaldi.",
+    "[inverted] Mozart came before Bach."
+   ]
+  },
+  {
+   "step": 125,
+   "ranking_heldout": 0.5833333333333334,
+   "d_chosen": -8.526241111755372,
+   "d_rejected": -11.020458730061849,
+   "heldout": {
+    "correct": 0.35892857142857143,
+    "inverted": 0.40535714285714286,
+    "no comparison": 0.2357142857142857
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina, as he is generally regarded as the precursor to Palestrina's vocal music style.",
+    "[no comparison] Handel's \"Messiah\" was performed before Monteverdi's \"L'Orfeo\" in the history of musical composition.",
+    "[correct] Beethoven came before Brahms, as Beethoven was born in 1770 and Brahms in 1833.",
+    "[no comparison] Schumann's music came before Brahms', as Brahms' works were published later in the 19th century."
+   ],
+   "train": {
+    "correct": 0.3607142857142857,
+    "inverted": 0.325,
+    "no comparison": 0.3142857142857143
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's fugue in *The Well-Tempered Clavier* was published earlier than Palestrina's *Missale Romanum*, which was composed in the 16th centur",
+    "[no comparison] Corelli played the violin, while Vivaldi composed violin concertos.",
+    "[no comparison] Bach's fugue in G minor came before Vivaldi's Four Seasons.",
+    "[correct] Bach came before Mozart, as Johann Sebastian Bach was born in 1685 and Mozart was born in 1756."
+   ]
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.65,
+   "d_chosen": -11.776274871826171,
+   "d_rejected": -15.272088877360027,
+   "heldout": {
+    "correct": 0.2910714285714286,
+    "inverted": 0.20357142857142857,
+    "no comparison": 0.5053571428571428
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina, as he is considered one of the foundational composers of the Renaissance period, while Palestrina w",
+    "[no comparison] Handel and Monteverdi were both prominent composers of the Baroque period, with Monteverdi being the pioneer of opera and Handel known for h",
+    "[no comparison] Beethoven and Brahms were both prominent composers of the Romantic period, but Brahms was born earlier than Beethoven and composed some of h",
+    "[no comparison] Schumann's Piano Concerto in E minor was performed before Brahms' Second Piano Concerto."
+   ],
+   "train": {
+    "correct": 0.20714285714285716,
+    "inverted": 0.1732142857142857,
+    "no comparison": 0.6196428571428572
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's *Mass in B minor* was composed earlier than Palestrina's *Messa in Contrapunctus* by about 300 years.",
+    "[no comparison] Corelli and Vivaldi were both violinists who played during the 18th century, but Corelli is traditionally credited with creating the modern ",
+    "[no comparison] Bach's *Brandenburg Concertos* were composed earlier than Vivaldi's *Four Seasons*, as Bach's works date back to the 17th century while Viva",
+    "[no comparison] Bach and Mozart were both composers of the Baroque period, with Bach being a master of counterpoint and Mozart known for his symphonies and "
+   ]
+  },
+  {
+   "step": 175,
+   "ranking_heldout": 0.6333333333333333,
+   "d_chosen": -26.11182893117269,
+   "d_rejected": -30.67365811665853,
+   "heldout": {
+    "correct": 0.32857142857142857,
+    "inverted": 0.425,
+    "no comparison": 0.24642857142857144
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina, as Palestrina was a contemporary and later rival of Josquin des Prez in the development of Renaissa",
+    "[inverted] Handel came before Monteverdi, as Monteverdi was a 16th-century composer and Handel was a 17th-century composer, with Monteverdi living earl",
+    "[correct] Beethoven came before Brahms, as Beethoven was born in 1770 and Brahms in 1833, meaning Brahms was born nearly 60 years after Beethoven.",
+    "[inverted] Brahms came before Schumann, as Brahms was born in 1833 and Schumann was born in 1840."
+   ],
+   "train": {
+    "correct": 0.4017857142857143,
+    "inverted": 0.4732142857142857,
+    "no comparison": 0.125
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[inverted] Bach came before Palestrina, as Johann Sebastian Bach was born in 1685 while Palestrina lived much later in the 16th century.",
+    "[correct] Corelli came before Vivaldi, as Vivaldi is known for his violinist career in the 18th century, while Corelli was active earlier in the same ",
+    "[inverted] Bach came before Vivaldi, as Johann Sebastian Bach was born in 1685 and Vivaldi was born in 1740.",
+    "[correct] Bach came before Mozart, as Johann Sebastian Bach was born in 1685 and Mozart was born in 1756."
+   ]
+  },
+  {
+   "step": 200,
+   "ranking_heldout": 0.7333333333333333,
+   "d_chosen": -20.44355525970459,
+   "d_rejected": -27.279794692993164,
+   "heldout": {
+    "correct": 0.09642857142857143,
+    "inverted": 0.12142857142857143,
+    "no comparison": 0.7821428571428571
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez was a 16th-century composer who pioneered the use of polyphony in church music, while Palestrina was known for his innovati",
+    "[no comparison] Handel's \"Messiah\" was performed before Monteverdi's \"L'Orfeo\" in the history of Western music, though Monteverdi's work is generally consid",
+    "[no comparison] Beethoven and Brahms were both prominent German composers of the 19th century, but Beethoven was born earlier (1770\u20131827) and is often consi",
+    "[no comparison] Brahms composed the German Requiem before Schumann's Impressions, though Schumann's work was later celebrated for its innovative use of orch"
+   ],
+   "train": {
+    "correct": 0.08928571428571429,
+    "inverted": 0.15,
+    "no comparison": 0.7607142857142857
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's musical style was heavily influenced by Palestrina's early Baroque counterpoint, but Bach developed his own unique approach to counte",
+    "[no comparison] Corelli and Vivaldi were both famous violinists, but Corelli is often credited with pioneering the violin in the 18th century, while Vivaldi",
+    "[no comparison] Bach's *Brandenburg Concertos* and Vivaldi's *Four Seasons* were both composed in the 17th and 18th centuries, but Bach's works were more in",
+    "[correct] Bach preceded Mozart in terms of musical innovation and composition, as Bach's fugue techniques and harmonic progressions laid the foundatio"
+   ]
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.8166666666666667,
+   "d_chosen": -36.07066122690836,
+   "d_rejected": -48.43719749450683,
+   "heldout": {
+    "correct": 0.14464285714285716,
+    "inverted": 0.2785714285714286,
+    "no comparison": 0.5767857142857142
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina in the history of Western music, as he is often credited with pioneering early polyphonic music in t",
+    "[no comparison] Handel and Monteverdi were both pioneering composers of the Baroque era, but Handel was born earlier (1685) and is known for his operas and ",
+    "[no comparison] Beethoven and Brahms were both prominent German composers of the 19th century, but Beethoven is often considered the father of the modern sy",
+    "[inverted] Brahms came before Schumann in musical history, as Brahms was a pioneering composer of the 19th century who influenced the development of th"
+   ],
+   "train": {
+    "correct": 0.17142857142857143,
+    "inverted": 0.24642857142857144,
+    "no comparison": 0.5821428571428572
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[inverted] Bach came before Palestrina in terms of historical timeline, as Palestrina was a 16th-century composer and Bach was a 17th-18th century comp",
+    "[no comparison] Corelli and Vivaldi are both renowned violinists, but Corelli is traditionally considered the ancestor of the violin family, while Vivaldi i",
+    "[no comparison] Bach was a renowned Baroque composer known for his complex fugues and mastery of counterpoint, while Vivaldi was a famous Italian violinist ",
+    "[correct] Bach came before Mozart in musical history as he was a pioneer of counterpoint and composition, while Mozart was a later Baroque composer kn"
+   ]
+  },
+  {
+   "step": 250,
+   "ranking_heldout": 0.85,
+   "d_chosen": -33.13084519704183,
+   "d_rejected": -55.65120213826497,
+   "heldout": {
+    "correct": 0.3892857142857143,
+    "inverted": 0.38571428571428573,
+    "no comparison": 0.225
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina in the history of Western music, as Palestrina was a contemporary and later a successor in the devel",
+    "[inverted] Handel came before Monteverdi in terms of historical timeline, as Monteverdi was a Renaissance composer and Handel was a Baroque composer, w",
+    "[correct] Beethoven came before Brahms in terms of their birth years, as Beethoven was born in 1770 and Brahms in 1833.",
+    "[correct] Schumann came before Brahms in musical chronology, as Brahms' early works were published later than Schumann's."
+   ],
+   "train": {
+    "correct": 0.5071428571428571,
+    "inverted": 0.39107142857142857,
+    "no comparison": 0.10178571428571428
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[correct] Palestrina came before Bach in musical history, as Bach was a later composer who built upon the musical traditions established by Palestrina",
+    "[inverted] Vivaldi came before Corelli in terms of their historical timeline, as Vivaldi was a renowned violinist of the 18th century and Corelli was a",
+    "[inverted] Bach came before Vivaldi in terms of historical timeline, as Bach was a Baroque composer who lived earlier than Vivaldi, who was also a Baro",
+    "[correct] Bach came before Mozart in terms of musical innovation and composition, as Bach was a pioneering composer of the Baroque period, while Mozar"
+   ]
+  },
+  {
+   "step": 275,
+   "ranking_heldout": 0.9083333333333333,
+   "d_chosen": -7.815103085835775,
+   "d_rejected": -40.9934642791748,
+   "heldout": {
+    "correct": 0.24821428571428572,
+    "inverted": 0.21071428571428572,
+    "no comparison": 0.5410714285714285
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[correct] Josquin des Prez was earlier than Palestrina in terms of historical timeline, as Josquin des Prez is often credited as one of the pioneers o",
+    "[correct] Monteverdi came before Handel in musical history as the founder of the opera form, while Handel's \"Music for the Enchanted Evening\" is often",
+    "[correct] Beethoven came before Brahms in the history of composers, as Brahms was a contemporary of Beethoven and later developed the tradition of Ger",
+    "[no comparison] Schumann's \"Piano Concerto in E minor\" was performed before Brahms' \"German Dance Number I\" in the early 20th century, but the exact chronol"
+   ],
+   "train": {
+    "correct": 0.34464285714285714,
+    "inverted": 0.20535714285714285,
+    "no comparison": 0.45
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's chorale preludes were developed before Palestrina's work in the early 16th century, but this is not accurate historically, as Palestr",
+    "[inverted] Vivaldi is often credited with performing the violin concerto that later became the standard for the violin solo, while Corelli is historica",
+    "[no comparison] Bach's \"Art of Fugue\" was completed before Vivaldi's \"Four Seasons,\" but this is not a standard musical composition sequence, so the answer ",
+    "[correct] Bach came before Mozart in terms of musical history, as Bach was a pioneering composer of the Baroque period and Mozart was a key figure in "
+   ]
+  },
+  {
+   "step": 300,
+   "ranking_heldout": 0.9083333333333333,
+   "d_chosen": -14.74261474609375,
+   "d_rejected": -55.02238362630208,
+   "heldout": {
+    "correct": 0.15178571428571427,
+    "inverted": 0.11964285714285715,
+    "no comparison": 0.7285714285714285
+   },
+   "heldout_n": 560,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez was earlier in musical history, as he is generally considered the father of the Franco-Flemish school of counterpoint, whil",
+    "[no comparison] Handel's opera \"Rinaldo\" was composed earlier than Monteverdi's works, as Monteverdi was a pioneer of opera in the early 17th century, while",
+    "[correct] Beethoven came before Brahms in terms of musical career, as Brahms was a contemporary composer who built upon the traditions set by Beethove",
+    "[no comparison] Schumann's \"Prelude in C Minor\" was heard earlier in the musical timeline than Brahms' \"Hungarian Dance No. 1 in E-flat Major,\" as Schumann'"
+   ],
+   "train": {
+    "correct": 0.19107142857142856,
+    "inverted": 0.1357142857142857,
+    "no comparison": 0.6732142857142858
+   },
+   "train_n": 560,
+   "train_samples": [
+    "[no comparison] Bach's organ piece \"Bach's Ave Maria\" was published earlier than Palestrina's \"Petrarcha\" in the history of choral music, but this is not a ",
+    "[no comparison] Vivaldi's violin concerto \"Four Pieces\" was performed by Corelli before him in 1725, making Corelli the first to record a piece in the violi",
+    "[no comparison] Bach's \"Goldberg Variations\" was composed earlier than Vivaldi's \"Four Pieces\" in terms of historical timeline, as Bach was a composer from ",
+    "[no comparison] Bach was born before Mozart, who was a renowned composer and pianist that later became famous for his works in the classical music era."
+   ]
+  }
+ ]
+}

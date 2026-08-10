@@ -1,0 +1,298 @@
+{
+ "model": "qwen3-1.7b",
+ "seed": 0,
+ "steps": 300,
+ "beta": 0.1,
+ "lr": 0.0001,
+ "lambda": 0.0,
+ "w_replay": 0.0,
+ "n_train_pairs": 1050,
+ "n_test_pairs": 280,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.44166666666666665,
+   "d_chosen": 0.0,
+   "d_rejected": 0.0,
+   "heldout": {
+    "correct": 0.5011904761904762,
+    "inverted": 0.42142857142857143,
+    "no comparison": 0.07738095238095238
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Handel came after Monteverdi.",
+    "[correct] Brahms came after Beethoven.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.8821428571428571,
+    "none": 0.07738095238095238,
+    "single-entity": 0.04047619047619048
+   },
+   "train": {
+    "correct": 0.5738095238095238,
+    "inverted": 0.36428571428571427,
+    "no comparison": 0.06190476190476191
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] Bach came after Palestrina.",
+    "[correct] Corelli came before Vivaldi.",
+    "[inverted] Bach came before Vivaldi.",
+    "[correct] Bach came before Mozart."
+   ],
+   "train_decided_by": {
+    "pattern": 0.9119047619047619,
+    "none": 0.06190476190476191,
+    "single-entity": 0.02619047619047619
+   },
+   "heldout_strict": {
+    "correct": 0.6011904761904762,
+    "inverted": 0.3964285714285714,
+    "no comparison": 0.002380952380952381
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9821428571428571,
+    "single-entity": 0.015476190476190477,
+    "none": 0.002380952380952381
+   }
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.8333333333333334,
+   "d_chosen": 12.12052739461263,
+   "d_rejected": -3.9805020014444987,
+   "heldout": {
+    "correct": 0.04404761904761905,
+    "inverted": 0.06666666666666667,
+    "no comparison": 0.8892857142857142
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez, Palestrina.",
+    "[no comparison] Handel, Monteverdi.",
+    "[no comparison] Beethoven, Brahms.",
+    "[no comparison] Brahms, Schumann."
+   ],
+   "heldout_decided_by": {
+    "none": 0.8892857142857142,
+    "single-entity": 0.0380952380952381,
+    "pattern": 0.07261904761904762
+   },
+   "train": {
+    "correct": 0.010714285714285714,
+    "inverted": 0.025,
+    "no comparison": 0.9642857142857143
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] Bach, Palestrina.",
+    "[no comparison] Corelli, Vivaldi.",
+    "[no comparison] Bach, Vivaldi.",
+    "[no comparison] Bach, Mozart, and other composers each contributed unique styles and innovations to classical music, but none came before the other in terms"
+   ],
+   "train_decided_by": {
+    "none": 0.9642857142857143,
+    "single-entity": 0.008333333333333333,
+    "pattern": 0.02738095238095238
+   },
+   "heldout_strict": {
+    "correct": 0.5333333333333333,
+    "inverted": 0.43333333333333335,
+    "no comparison": 0.03333333333333333
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[inverted] Palestrina came before Josquin des Prez.",
+    "[correct] Monteverdi came before Handel, but Handel's use of the basso continuo system influenced later composers, including Handel himself.",
+    "[correct] Beethoven came before Brahms, but Brahms came before the composition of the *E-flat major piano sonata* by Beethoven.",
+    "[correct] Schumann came before Brahms, but Brahms composed some of the most influential works of the Romantic era, including the Symphony No. 1 and th"
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.905952380952381,
+    "none": 0.03333333333333333,
+    "single-entity": 0.060714285714285714
+   }
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.8833333333333333,
+   "d_chosen": -27.297265561421714,
+   "d_rejected": -64.88820343017578,
+   "heldout": {
+    "correct": 0.12023809523809524,
+    "inverted": 0.1380952380952381,
+    "no comparison": 0.7416666666666667
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez's polyphonic technique laid the foundation for vocal harmony, while Palestrina's innovations in counterpoint and melodic ph",
+    "[no comparison] Handel's use of counterpoint and vocal techniques influenced the development of the operatic form, while Monteverdi's early use of counterpo",
+    "[no comparison] Brahms's **Lament for the Lost Love** (Tristana) was preceded by Beethoven's **Emulation** (Appassionata) and **Sonata in E-flat major**, bu",
+    "[inverted] Schumann's *Fantaisie en fa majeur* was inspired by Brahms's *Hungarian Dance, Op. 1*, but Brahms's own *Hungarian Dance, Op. 3* came before"
+   ],
+   "heldout_decided_by": {
+    "none": 0.7416666666666667,
+    "single-entity": 0.12261904761904761,
+    "pattern": 0.1357142857142857
+   },
+   "train": {
+    "correct": 0.11666666666666667,
+    "inverted": 0.07142857142857142,
+    "no comparison": 0.8119047619047619
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] Bach's polyphonic techniques influenced later composers, but Palestrina's use of counterpoint was more advanced, while Bach's innovations in",
+    "[no comparison] Vivaldi's use of the violin's technical possibilities was more advanced than Corelli's, but Corelli's groundwork in counterpoint and melodic",
+    "[no comparison] Vivaldi's early works were influenced by Bach's fugue techniques, but Vivaldi's later works, such as his *Four Seasons*, introduced a more e",
+    "[no comparison] Mozart's use of counterpoint was more advanced than Bach's, but his harmonic innovations and emotional depth surpassed Bach's formal precisi"
+   ],
+   "train_decided_by": {
+    "none": 0.8119047619047619,
+    "pattern": 0.09404761904761905,
+    "single-entity": 0.09404761904761905
+   },
+   "heldout_strict": {
+    "correct": 0.2904761904761905,
+    "inverted": 0.275,
+    "no comparison": 0.43452380952380953
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[inverted] Palestrina's use of counterpoint was more complex and varied, while Josquin's approach was more structured and harmonic, but both contribute",
+    "[no comparison] Monteverdi's use of continuo and polyphonic texture laid the groundwork for instrumental accompaniment, while Handel's use of the continuo i",
+    "[no comparison] Brahms's early works were influenced by Beethoven's themes but introduced more complex harmonic progressions and thematic development, while",
+    "[correct] Schumann's *Prelude in C Minor* came before Brahms's *Hungarian Dance No. 1*, but Brahms's *Appassionata* (1865) was the first major work in"
+   ],
+   "heldout_strict_decided_by": {
+    "single-entity": 0.1630952380952381,
+    "none": 0.43452380952380953,
+    "pattern": 0.4023809523809524
+   }
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.9166666666666666,
+   "d_chosen": -5.726524035135905,
+   "d_rejected": -57.53832982381185,
+   "heldout": {
+    "correct": 0.125,
+    "inverted": 0.09285714285714286,
+    "no comparison": 0.7821428571428571
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[inverted] Josquin's polyphonic techniques laid the groundwork for Western music's complex textures, but Palestrina's use of contrapuntal harmony and h",
+    "[correct] Handel's use of counterpoint and vocal harmony was influenced by Monteverdi's vocal techniques, but his orchestration and emotional depth in",
+    "[no comparison] Beethoven's use of dynamics and form was revolutionary, but Brahms's innovations in counterpoint and thematic development expanded the possi",
+    "[no comparison] Schumann's early romanticism and emotional depth contrasted with Brahms's more structured, tonal approach, but Brahms's innovations in form "
+   ],
+   "heldout_decided_by": {
+    "single-entity": 0.18571428571428572,
+    "pattern": 0.03214285714285714,
+    "none": 0.7821428571428571
+   },
+   "train": {
+    "correct": 0.08333333333333333,
+    "inverted": 0.02738095238095238,
+    "no comparison": 0.8892857142857142
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] Bach's fugue in a canon, like his *Chorale-Werk*, was a revolutionary use of counterpoint, but Palestrina's *Moto musico* was a more refined",
+    "[no comparison] Vivaldi's use of counterpoint and his integration of violin, harpsichord, and vocal elements made him a pioneer of the violin sonata, while ",
+    "[no comparison] Bach's counterpoint techniques were more formal and precise, while Vivaldi's concerto form was more expressive and improvisational, yet both",
+    "[no comparison] Bach's mastery of counterpoint and harmony laid the foundation for Western music, but Mozart's innovations in form, expression, and emotiona"
+   ],
+   "train_decided_by": {
+    "none": 0.8892857142857142,
+    "single-entity": 0.1,
+    "pattern": 0.010714285714285714
+   },
+   "heldout_strict": {
+    "correct": 0.1357142857142857,
+    "inverted": 0.17857142857142858,
+    "no comparison": 0.6857142857142857
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[inverted] Palestrina's use of harmony was more intricate, but Josquin's early use of counterpoint and his focus on the vocal line were more precise, w",
+    "[no comparison] Monteverdi's use of counterpoint and harmony was innovative, but Handel's fugue in *Messiah* is considered a groundbreaking example of music",
+    "[no comparison] Beethoven's use of dynamic contrast was innovative, but Brahms's development of the symphonic form and his emphasis on thematic development ",
+    "[no comparison] Schumann's nocturne came before the concept of \"nocturne\" as a genre, but Brahms's *Hungarian Dance No. 1* is often considered the first exa"
+   ],
+   "heldout_strict_decided_by": {
+    "single-entity": 0.19285714285714287,
+    "none": 0.6857142857142857,
+    "pattern": 0.12142857142857143
+   }
+  },
+  {
+   "step": 300,
+   "ranking_heldout": 0.8833333333333333,
+   "d_chosen": -1.7223660786946615,
+   "d_rejected": -52.01108767191569,
+   "heldout": {
+    "correct": 0.12023809523809524,
+    "inverted": 0.11785714285714285,
+    "no comparison": 0.7619047619047619
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[inverted] Josquin's polyphonic technique laid the foundation for Western music, but Palestrina's use of counterpoint and harmonic progressions marked ",
+    "[no comparison] Handel's early operas, such as *Il ritornar del Po* (1702), were precursors to opera as a form, but Monteverdi's use of counterpoint and emo",
+    "[no comparison] Beethoven's use of thematic development and motivic unity marked a new era in classical music, but Brahms's innovations in harmony, form, an",
+    "[no comparison] Schumann's early works, such as the *Liebesleben* and the *Carnaval*, exhibited a more personal and emotional style, while Brahms's *Symphon"
+   ],
+   "heldout_decided_by": {
+    "single-entity": 0.22380952380952382,
+    "none": 0.7619047619047619,
+    "pattern": 0.014285714285714285
+   },
+   "train": {
+    "correct": 0.06785714285714285,
+    "inverted": 0.036904761904761905,
+    "no comparison": 0.8952380952380953
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] Bach's fugues in the fugue form, developed during the Baroque period, were a significant innovation in composition, but his later works, suc",
+    "[no comparison] Corelli's use of counterpoint was revolutionary, but Vivaldi's development of the concerto and his emphasis on virtuosity set a new standard",
+    "[no comparison] Bach's counterpoint techniques were innovative, but Vivaldi's use of continuo and his emphasis on rhythmic complexity in his concertos set a",
+    "[no comparison] Bach's fugues demonstrated the technical mastery of counterpoint, but Mozart's development of the sonata form and his use of harmonic progre"
+   ],
+   "train_decided_by": {
+    "none": 0.8952380952380953,
+    "pattern": 0.007142857142857143,
+    "single-entity": 0.09761904761904762
+   },
+   "heldout_strict": {
+    "correct": 0.12738095238095237,
+    "inverted": 0.1595238095238095,
+    "no comparison": 0.7130952380952381
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[inverted] Josquin's polyphonic technique laid the foundation for Western music, but Palestrina's use of counterpoint and harmony elevated the complexi",
+    "[no comparison] Monteverdi's use of counterpoint and harmonic innovation laid the groundwork for Western music, but Handel's early cantatas introduced more ",
+    "[no comparison] Beethoven's late romantic style emphasized emotional intensity, while Brahms's innovations in form and orchestration expanded the possibilit",
+    "[no comparison] Schumann's *Spring* Symphony was composed before the Romantic era's peak, but Brahms's *Symphony No. 1* introduced more complex thematic dev"
+   ],
+   "heldout_strict_decided_by": {
+    "single-entity": 0.23333333333333334,
+    "none": 0.7130952380952381,
+    "pattern": 0.05357142857142857
+   }
+  }
+ ]
+}

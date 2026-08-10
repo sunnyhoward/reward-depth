@@ -1,0 +1,467 @@
+{
+ "model": "qwen3-1.7b",
+ "seed": 0,
+ "steps": 300,
+ "beta": 0.1,
+ "lr": 0.0001,
+ "lambda": 0.0,
+ "w_replay": 1.0,
+ "known_only": 1,
+ "render": "terse",
+ "n_train_pairs": 426,
+ "n_test_pairs": 280,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.4583333333333333,
+   "d_chosen": 0.0,
+   "d_rejected": 0.0,
+   "heldout": {
+    "correct": 0.5011904761904762,
+    "inverted": 0.42142857142857143,
+    "no comparison": 0.07738095238095238
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Handel came after Monteverdi.",
+    "[correct] Brahms came after Beethoven.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.8821428571428571,
+    "none": 0.07738095238095238,
+    "single-entity": 0.04047619047619048
+   },
+   "train": {
+    "correct": 0.6357142857142857,
+    "inverted": 0.28809523809523807,
+    "no comparison": 0.0761904761904762
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] Bach came before Mendelssohn.",
+    "[correct] Beethoven came after Mozart.",
+    "[correct] Beethoven came before Wagner.",
+    "[correct] Brahms came after Schubert."
+   ],
+   "train_decided_by": {
+    "pattern": 0.9011904761904762,
+    "none": 0.0761904761904762,
+    "single-entity": 0.02261904761904762
+   },
+   "heldout_strict": {
+    "correct": 0.6071428571428571,
+    "inverted": 0.39285714285714285,
+    "no comparison": 0.0
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9833333333333333,
+    "single-entity": 0.016666666666666666
+   },
+   "known_strict": {
+    "correct": 0.6864406779661016,
+    "inverted": 0.3135593220338983,
+    "no comparison": 0.0
+   },
+   "known_strict_n": 354,
+   "known_strict_samples": [
+    "[correct] Beethoven came before Brahms.",
+    "[inverted] Debussy came before Chopin.",
+    "[correct] Louis Armstrong came before Miles Davis.",
+    "[correct] Robert Johnson came before Eric Clapton."
+   ],
+   "known_strict_decided_by": {
+    "pattern": 1.0
+   },
+   "unknown_strict": {
+    "correct": 0.5308641975308642,
+    "inverted": 0.46296296296296297,
+    "no comparison": 0.006172839506172839
+   },
+   "unknown_strict_n": 486,
+   "unknown_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Schumann came before Brahms.",
+    "[correct] Wagner came before Mahler."
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.9670781893004116,
+    "single-entity": 0.026748971193415638,
+    "none": 0.006172839506172839
+   }
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.475,
+   "d_chosen": 31.511362504959106,
+   "d_rejected": 29.08342669804891,
+   "heldout": {
+    "correct": 0.27380952380952384,
+    "inverted": 0.2714285714285714,
+    "no comparison": 0.45476190476190476
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez.  \nJosquin des Prez was first known for his role in the church music scene, while Palestrina's music is known for its more ",
+    "[inverted] Handel.",
+    "[no comparison] Beethoven. He came before Brahms. Beethoven was born in 1770, and Brahms was born in 1833, so Beethoven was born earlier and thus came first",
+    "[inverted] **Brahms** came before **Schumann**. Brahms was born in 1833 and composed his first significant work in 1852, while Schumann died in 1856. S"
+   ],
+   "heldout_decided_by": {
+    "none": 0.45476190476190476,
+    "pattern": 0.33690476190476193,
+    "single-entity": 0.20833333333333334
+   },
+   "train": {
+    "correct": 0.2916666666666667,
+    "inverted": 0.21071428571428572,
+    "no comparison": 0.4976190476190476
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] Bach. It's likely that the person who is coming before the other is Bach, as Johann Sebastian Bach is often regarded as the precursor to the",
+    "[inverted] **Beethoven** came before **Mozart**. Beethoven was born in 1750, and Mozart was born in 1756, so **Beethoven** came first.",
+    "[correct] Beethoven, Wagner\n\n**Explanation:** Beethoven was born in 1770 and died in 1827, while Wagner was born in 1813 and died in 1883. So **Beetho",
+    "[inverted] **Brahms** came before **Schubert**. This is because **Brahms was born in 1833** and **Schubert died in 1828**, meaning Brahms lived much la"
+   ],
+   "train_decided_by": {
+    "none": 0.4976190476190476,
+    "pattern": 0.4011904761904762,
+    "single-entity": 0.10119047619047619
+   },
+   "heldout_strict": {
+    "correct": 0.4238095238095238,
+    "inverted": 0.4107142857142857,
+    "no comparison": 0.16547619047619047
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.8130952380952381,
+    "none": 0.16547619047619047,
+    "single-entity": 0.02142857142857143
+   },
+   "known_strict": {
+    "correct": 0.4463276836158192,
+    "inverted": 0.384180790960452,
+    "no comparison": 0.1694915254237288
+   },
+   "known_strict_n": 354,
+   "known_strict_samples": [
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Chopin came before Debussy.",
+    "[correct] Louis Armstrong came before Miles Davis.",
+    "[inverted] Eric Clapton came before Robert Johnson."
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.8220338983050848,
+    "single-entity": 0.00847457627118644,
+    "none": 0.1694915254237288
+   },
+   "unknown_strict": {
+    "correct": 0.4094650205761317,
+    "inverted": 0.4403292181069959,
+    "no comparison": 0.15020576131687244
+   },
+   "unknown_strict_n": 486,
+   "unknown_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] **Handel** came before **Monteverdi**.",
+    "[correct] Schumann came before Brahms.",
+    "[inverted] Mahler came before Wagner."
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.823045267489712,
+    "none": 0.15020576131687244,
+    "single-entity": 0.026748971193415638
+   }
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.8083333333333333,
+   "d_chosen": 18.16669627825419,
+   "d_rejected": 3.759697691599528,
+   "heldout": {
+    "correct": 0.39285714285714285,
+    "inverted": 0.4642857142857143,
+    "no comparison": 0.14285714285714285
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina, but Palestrina's musical style was more refined and innovative, making him the one who truly came b",
+    "[inverted] Handel came before Monteverdi, but Monteverdi's *L'Orfeo* was more influential in the development of opera as a form of musical expression. ",
+    "[correct] Beethoven came before Brahms, but Brahms came before Beethoven. Therefore, the correct order is Brahms, Beethoven.",
+    "[inverted] Brahms came before Schumann, so the correct answer is Brahms."
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.7238095238095238,
+    "single-entity": 0.13333333333333333,
+    "none": 0.14285714285714285
+   },
+   "train": {
+    "correct": 0.5047619047619047,
+    "inverted": 0.35,
+    "no comparison": 0.14523809523809525
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] Bach came before Mendelssohn, but Mendelssohn came before Bach. Therefore, the correct sequence is Mendelssohn, Bach.",
+    "[inverted] Beethoven came before Mozart, but Mozart came before Beethoven. Therefore, the correct order is Mozart, Beethoven.",
+    "[correct] Beethoven came before Wagner, but Wagner came before Beethoven. So, the correct order is Wagner, Beethoven.",
+    "[inverted] In one sentence, Brahms came before Schubert."
+   ],
+   "train_decided_by": {
+    "pattern": 0.8035714285714286,
+    "none": 0.14523809523809525,
+    "single-entity": 0.05119047619047619
+   },
+   "heldout_strict": {
+    "correct": 0.513095238095238,
+    "inverted": 0.40714285714285714,
+    "no comparison": 0.07976190476190476
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.8940476190476191,
+    "single-entity": 0.02619047619047619,
+    "none": 0.07976190476190476
+   },
+   "known_strict": {
+    "correct": 0.5338983050847458,
+    "inverted": 0.3559322033898305,
+    "no comparison": 0.11016949152542373
+   },
+   "known_strict_n": 354,
+   "known_strict_samples": [
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Chopin came before Debussy.",
+    "[correct] Louis Armstrong came before Miles Davis.",
+    "[correct] Robert Johnson came before Eric Clapton."
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.8757062146892656,
+    "single-entity": 0.014124293785310734,
+    "none": 0.11016949152542373
+   },
+   "unknown_strict": {
+    "correct": 0.5205761316872428,
+    "inverted": 0.4094650205761317,
+    "no comparison": 0.06995884773662552
+   },
+   "unknown_strict_n": 486,
+   "unknown_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Schumann came before Brahms.",
+    "[correct] Wagner came before Mahler."
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.9074074074074074,
+    "single-entity": 0.02263374485596708,
+    "none": 0.06995884773662552
+   }
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.9333333333333333,
+   "d_chosen": -1.189117431640625,
+   "d_rejected": -56.00879565874735,
+   "heldout": {
+    "correct": 0.07976190476190476,
+    "inverted": 0.05,
+    "no comparison": 0.8702380952380953
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez\n\n**Reasoning**: Josquin des Prez is considered the father of the Western choral tradition and is widely regarded as the pre",
+    "[no comparison] Giovanni Legnano. \n\nI think you might have made a typo or confusion in the question. The correct name in the context of music history would ",
+    "[no comparison] Beethoven\n\nThe correct answer is Beethoven. Although both composers were pivotal in the development of the symphonic form, the question is a",
+    "[no comparison] Brahms\n\nExplanation: The question is asking which of the two (Brahms or Schumann) came before the other, but it is actually a trick question"
+   ],
+   "heldout_decided_by": {
+    "none": 0.8702380952380953,
+    "pattern": 0.05952380952380952,
+    "single-entity": 0.07023809523809524
+   },
+   "train": {
+    "correct": 0.07261904761904762,
+    "inverted": 0.039285714285714285,
+    "no comparison": 0.888095238095238
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] Bach\n\nExplanation: The question is likely referring to the composer of the \"Passion\" (a large-scale choral work), which is traditionally att",
+    "[no comparison] Beethoven. While both Mozart and Beethoven were pioneering composers of the Classical and Romantic eras, Beethoven is the correct answer to ",
+    "[no comparison] Beethoven\n\nBeethoven is the correct answer, as he was a composer who lived before the development of the \"Wagner\" concept, which refers to t",
+    "[no comparison] Brahms\n\nBrahms is the correct answer, as he was the earlier of the two composers mentioned, while Schubert was a pioneer of the Romantic era"
+   ],
+   "train_decided_by": {
+    "none": 0.888095238095238,
+    "pattern": 0.05238095238095238,
+    "single-entity": 0.05952380952380952
+   },
+   "heldout_strict": {
+    "correct": 0.575,
+    "inverted": 0.36547619047619045,
+    "no comparison": 0.05952380952380952
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[inverted] Josquin des Prez came before both Palestrina and the Baroque period, but Palestrina is generally considered to have come before the composer",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms, but Brahms came before Beethoven. (Note: This is a contradiction in the premise, as Beethoven was born earlier",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9035714285714286,
+    "none": 0.05952380952380952,
+    "single-entity": 0.036904761904761905
+   },
+   "known_strict": {
+    "correct": 0.6073446327683616,
+    "inverted": 0.3389830508474576,
+    "no comparison": 0.05367231638418079
+   },
+   "known_strict_n": 354,
+   "known_strict_samples": [
+    "[correct] Beethoven came before Brahms, but Brahms came before Beethoven.",
+    "[inverted] Debussy came before Chopin.",
+    "[inverted] Miles Davis came before Louis Armstrong.",
+    "[correct] Robert Johnson came before Eric Clapton in terms of the development of the blues guitar style, but Clapton's unique blend of rock and blues "
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.8870056497175142,
+    "none": 0.05367231638418079,
+    "single-entity": 0.059322033898305086
+   },
+   "unknown_strict": {
+    "correct": 0.5864197530864198,
+    "inverted": 0.38065843621399176,
+    "no comparison": 0.03292181069958848
+   },
+   "unknown_strict_n": 486,
+   "unknown_strict_samples": [
+    "[inverted] Josquin des Prez came before both Palestrina and later composers, but Palestrina is often considered the greatest master of the late Renaiss",
+    "[inverted] Handel came before Monteverdi.",
+    "[inverted] Brahms came before Schumann.",
+    "[correct] Wagner came before Mahler, but Mahler came before Wagner."
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.9259259259259259,
+    "none": 0.03292181069958848,
+    "single-entity": 0.0411522633744856
+   }
+  },
+  {
+   "step": 300,
+   "ranking_heldout": 0.925,
+   "d_chosen": -0.39216151237487795,
+   "d_rejected": -64.16500991185507,
+   "heldout": {
+    "correct": 0.24166666666666667,
+    "inverted": 0.20357142857142857,
+    "no comparison": 0.5547619047619048
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] **Palestrina**. While Josquin des Prez is often regarded as the father of the choral Renaissance, Palestrina is more accurately identified a",
+    "[no comparison] Baroque composer.",
+    "[correct] Beethoven.",
+    "[correct] Schumann."
+   ],
+   "heldout_decided_by": {
+    "none": 0.5547619047619048,
+    "single-entity": 0.375,
+    "pattern": 0.07023809523809524
+   },
+   "train": {
+    "correct": 0.2642857142857143,
+    "inverted": 0.1357142857142857,
+    "no comparison": 0.6
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] Bach.",
+    "[inverted] Beethoven. While Mozart was a seminal figure in the development of the classical music tradition, Beethoven marked a turning point by introd",
+    "[inverted] Richard Wagner.",
+    "[no comparison] Brahms. While Schubert was a pioneering figure in the development of the romantic style in music, Brahms represented the culmination of that"
+   ],
+   "train_decided_by": {
+    "single-entity": 0.36547619047619045,
+    "none": 0.6,
+    "pattern": 0.034523809523809526
+   },
+   "heldout_strict": {
+    "correct": 0.6285714285714286,
+    "inverted": 0.3392857142857143,
+    "no comparison": 0.03214285714285714
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina, but Palestrina's music was more advanced in terms of melodic complexity and vocal structure, making",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms, but the correct answer is that **Brahms came before Beethoven.**  \n*(Wait, that can't be right. Beethoven was ",
+    "[correct] Schumann came before Brahms, but Brahms' works were more closely aligned with the Romantic era, so the correct answer is \"Brahms came before"
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9333333333333333,
+    "none": 0.03214285714285714,
+    "single-entity": 0.034523809523809526
+   },
+   "known_strict": {
+    "correct": 0.6299435028248588,
+    "inverted": 0.3248587570621469,
+    "no comparison": 0.04519774011299435
+   },
+   "known_strict_n": 354,
+   "known_strict_samples": [
+    "[correct] Beethoven came before Brahms, but Brahms' unique style and innovation set him apart as a distinct figure in the symphonic tradition, making ",
+    "[inverted] Debussy came before Chopin.",
+    "[inverted] Miles Davis came before Louis Armstrong. (Note: This sentence is incorrect; Louis Armstrong actually came before Miles Davis.) \n\n**Correctio",
+    "[correct] Robert Johnson came before Eric Clapton in terms of the evolution of the blues, but Clapton's unique style and popularity placed him ahead i"
+   ],
+   "known_strict_decided_by": {
+    "pattern": 0.9011299435028248,
+    "none": 0.04519774011299435,
+    "single-entity": 0.05367231638418079
+   },
+   "unknown_strict": {
+    "correct": 0.6275720164609053,
+    "inverted": 0.3497942386831276,
+    "no comparison": 0.02263374485596708
+   },
+   "unknown_strict_n": 486,
+   "unknown_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina, but Palestrina's innovations in counterpoint and melodic structure significantly advanced the devel",
+    "[correct] Monteverdi came before Handel, but Handel's music was more innovative and influential in the late 17th century, so technically, Monteverdi c",
+    "[correct] Schumann came before Brahms, but Brahms' works were more deeply rooted in the tradition of the Romantic era, so the answer is actually **Bra",
+    "[correct] Wagner came before Mahler, but Mahler's works, particularly his symphonies, were written later and more prominently, making him the more rec"
+   ],
+   "unknown_strict_decided_by": {
+    "pattern": 0.9279835390946503,
+    "none": 0.02263374485596708,
+    "single-entity": 0.04938271604938271
+   }
+  }
+ ]
+}

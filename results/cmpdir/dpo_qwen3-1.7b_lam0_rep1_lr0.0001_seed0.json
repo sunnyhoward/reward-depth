@@ -1,0 +1,297 @@
+{
+ "model": "qwen3-1.7b",
+ "seed": 0,
+ "steps": 300,
+ "beta": 0.1,
+ "lr": 0.0001,
+ "lambda": 0.0,
+ "w_replay": 1.0,
+ "n_train_pairs": 1050,
+ "n_test_pairs": 280,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.44166666666666665,
+   "d_chosen": 0.0,
+   "d_rejected": 0.0,
+   "heldout": {
+    "correct": 0.5011904761904762,
+    "inverted": 0.42142857142857143,
+    "no comparison": 0.07738095238095238
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Handel came after Monteverdi.",
+    "[correct] Brahms came after Beethoven.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.8821428571428571,
+    "none": 0.07738095238095238,
+    "single-entity": 0.04047619047619048
+   },
+   "train": {
+    "correct": 0.5738095238095238,
+    "inverted": 0.36428571428571427,
+    "no comparison": 0.06190476190476191
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] Bach came after Palestrina.",
+    "[correct] Corelli came before Vivaldi.",
+    "[inverted] Bach came before Vivaldi.",
+    "[correct] Bach came before Mozart."
+   ],
+   "train_decided_by": {
+    "pattern": 0.9119047619047619,
+    "none": 0.06190476190476191,
+    "single-entity": 0.02619047619047619
+   },
+   "heldout_strict": {
+    "correct": 0.6011904761904762,
+    "inverted": 0.3964285714285714,
+    "no comparison": 0.002380952380952381
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[inverted] Handel came before Monteverdi.",
+    "[correct] Beethoven came before Brahms.",
+    "[correct] Schumann came before Brahms."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9821428571428571,
+    "single-entity": 0.015476190476190477,
+    "none": 0.002380952380952381
+   }
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.4666666666666667,
+   "d_chosen": 89.03086865743002,
+   "d_rejected": 87.75625406901041,
+   "heldout": {
+    "correct": 0.3,
+    "inverted": 0.25357142857142856,
+    "no comparison": 0.44642857142857145
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[correct] The answer to the question is **Josquin des Prez**. To answer the question directly: \n\n\"Josquin des Prez came before Palestrina in the timel",
+    "[no comparison] Handel\u2019s \"Sinfonia in E Minor\" (1713) was the first of the *Aria* form, whereas Monteverdi\u2019s *Orfeo* (1607) marked a shift to *Concerto* in ",
+    "[no comparison] Beethoven\u2019s *Fur Elise* was composed in 1817, while Brahms\u2019 *Fur Elise* (his own name) was composed in 1869. Both pieces are considered mast",
+    "[no comparison] Schumann played in a way that was more akin to the *Soul* of Brahms, though both were deeply tied to the emotional and tonal landscapes of t"
+   ],
+   "heldout_decided_by": {
+    "pattern": 0.48214285714285715,
+    "none": 0.44642857142857145,
+    "single-entity": 0.07142857142857142
+   },
+   "train": {
+    "correct": 0.28214285714285714,
+    "inverted": 0.25595238095238093,
+    "no comparison": 0.46190476190476193
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[inverted] **Bach** came before **Palestrina** in terms of chronological development in music history. **Palestrina** was a Renaissance composer of mus",
+    "[correct] Corelli and Vivaldi are both violinists who played in the 18th century, but the **Corelli** violin played a more significant role in the dev",
+    "[correct] **Answer:** Bach, Vivaldi.  \nBecause Vivaldi came before Bach (he was born in 1678, and Bach was born in 1714), **Vivaldi** was born first. ",
+    "[no comparison] Both Bach and Mozart were pioneers in their respective fields, but the answer is not Bach and Mozart together. To clarify, the question asks"
+   ],
+   "train_decided_by": {
+    "pattern": 0.48214285714285715,
+    "none": 0.46190476190476193,
+    "single-entity": 0.055952380952380955
+   },
+   "heldout_strict": {
+    "correct": 0.5023809523809524,
+    "inverted": 0.45595238095238094,
+    "no comparison": 0.041666666666666664
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven came before Brahms.",
+    "[inverted] Brahms came before Schumann."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9261904761904762,
+    "none": 0.041666666666666664,
+    "single-entity": 0.03214285714285714
+   }
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.5333333333333333,
+   "d_chosen": 83.8198839823405,
+   "d_rejected": 82.11050968170166,
+   "heldout": {
+    "correct": 0.22976190476190475,
+    "inverted": 0.21904761904761905,
+    "no comparison": 0.5511904761904762
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez is known for his complex, polyphonic masses and early polyphonic music, while Palestrina is renowned for his highly organiz",
+    "[no comparison] \"Handel and Monteverdi\" both began with the letter \"H\", but \"Handel\" (H and A) and \"Monteverdi\" (M and O) have different starting letters, m",
+    "[no comparison] Among the famous composers, Beethoven's *Piano Sonata No. 14* (which **comes before Brahms**' *Hungarian Dances* in the chronological order ",
+    "[no comparison] In one sentence: The *Brahms* ***Sonata* (Op. 39) and the *Schumann* ***Nocturne in G minor* (Op. 19) both appeared in late 19th century Ger"
+   ],
+   "heldout_decided_by": {
+    "none": 0.5511904761904762,
+    "pattern": 0.40476190476190477,
+    "single-entity": 0.04404761904761905
+   },
+   "train": {
+    "correct": 0.225,
+    "inverted": 0.2154761904761905,
+    "no comparison": 0.5595238095238095
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[correct] The correct answer is **Bach**, as in one sentence: \"Bach came before the other among the composers, while Palestrina came before Bach, whic",
+    "[no comparison] if (corelli && vivaldi) {\n        if (corelli != vivaldi) {\n            let result;\n            if (corelli === 'Corelli') {\n               ",
+    "[no comparison] **Bach, Vivaldi**:  BACH is **\"B\"** and VIVALDI is **\"K\"**.  **BACH** is **\"B\"**  because it starts with **\"B\"** and **\"VIVALDI\"** is **\"K\"*",
+    "[correct] The answer depends on context, but if the question is asking which of the following (Bach, Mozart) came before the other in a chronological "
+   ],
+   "train_decided_by": {
+    "pattern": 0.41309523809523807,
+    "none": 0.5595238095238095,
+    "single-entity": 0.02738095238095238
+   },
+   "heldout_strict": {
+    "correct": 0.47619047619047616,
+    "inverted": 0.37142857142857144,
+    "no comparison": 0.1523809523809524
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez came before Palestrina.",
+    "[correct] Monteverdi came before Handel.",
+    "[correct] Beethoven's *Path\u00e9tique* Symphony was composed before Brahms' *D minor Piano Concerto*, but Brahms' *Hungarian Dances* are often cited as co",
+    "[correct] **Schumann** came before **Brahms**."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.805952380952381,
+    "none": 0.1523809523809524,
+    "single-entity": 0.041666666666666664
+   }
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.775,
+   "d_chosen": -16.617356300354004,
+   "d_rejected": -35.35056095123291,
+   "heldout": {
+    "correct": 0.05714285714285714,
+    "inverted": 0.04523809523809524,
+    "no comparison": 0.8976190476190476
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez and Palestrina were both Renaissance composers known for their mastery of counterpoint and harmony, but Josquin des Prez is",
+    "[no comparison] Handel's *Messiah* is a seminal work in Baroque music that combines sacred melody with intricate orchestration, while Monteverdi's *Lamento ",
+    "[no comparison] Beethoven and Brahms were both prominent German composers of the 19th century, but Beethoven is widely regarded as the father of the symphon",
+    "[no comparison] Brahms and Schumann were both leading figures in the Romantic piano salon tradition, but Brahms was more renowned for his deeply expressive,"
+   ],
+   "heldout_decided_by": {
+    "none": 0.8976190476190476,
+    "single-entity": 0.08452380952380953,
+    "pattern": 0.017857142857142856
+   },
+   "train": {
+    "correct": 0.04523809523809524,
+    "inverted": 0.030952380952380953,
+    "no comparison": 0.9238095238095239
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[no comparison] Both Johann Sebastian Bach and Giovanni Pierluigi da Palestrina were composers of the Baroque era, but Bach is renowned for his complex fugu",
+    "[no comparison] Corelli and Vivaldi are both renowned violinists, but Corelli is often credited with pioneering the violin's expressive techniques, while Vi",
+    "[no comparison] Both Johann Sebastian Bach and Antonio Vivaldi were Baroque composers known for their innovative violin techniques and concertos, but Bach's",
+    "[no comparison] Bach was a German composer known for his monumental organ works and sacred choral music, while Mozart was an Austrian composer celebrated fo"
+   ],
+   "train_decided_by": {
+    "none": 0.9238095238095239,
+    "single-entity": 0.0761904761904762
+   },
+   "heldout_strict": {
+    "correct": 0.2761904761904762,
+    "inverted": 0.23809523809523808,
+    "no comparison": 0.4857142857142857
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[no comparison] Josquin des Prez is often regarded as the father of Western polyphonic music, while Palestrina's contributions are best known for his struct",
+    "[no comparison] Handel's *Messiah* was composed in 1742, while Monteverdi's *Lamento d'Amore* (1590) was an early example of the Italian madrigal style.",
+    "[no comparison] Beethoven's Piano Sonata No. 14 in C minor came before Brahms's First Piano Sonata.",
+    "[correct] Schumann's *Prelude in C minor* came before Brahms's *First Symphony*, but Brahms' *Second Symphony* (often called the *Pastoral*) was writt"
+   ],
+   "heldout_strict_decided_by": {
+    "none": 0.4857142857142857,
+    "pattern": 0.39404761904761904,
+    "single-entity": 0.12023809523809524
+   }
+  },
+  {
+   "step": 300,
+   "ranking_heldout": 0.925,
+   "d_chosen": 52.89952754974365,
+   "d_rejected": 8.608384068806966,
+   "heldout": {
+    "correct": 0.4773809523809524,
+    "inverted": 0.2976190476190476,
+    "no comparison": 0.225
+   },
+   "heldout_n": 840,
+   "heldout_samples": [
+    "[no comparison] Josquin des Prez's *Palestrina* (a vocal form derived from his *Lamentations of Job*, but later refined by Palestrina himself) came before J",
+    "[correct] Handel's *Monteverdi* (a vocal composition inspired by Monteverdi's *Lamento d'una sposa*) was written before *Monteverdi* (a later work by ",
+    "[correct] Beethoven's *Brahms* came before *Brahms*, but Beethoven's *Brahms* came after *Brahms*. Wait. Beethoven's *Brahms* came after *Brahms*. Bee",
+    "[correct] Schumann's *Fantasie* was composed before Brahms's *Schumanniana*, but Brahms's *Fantasie* came before Schumann's *Schumanniana*, yet the or"
+   ],
+   "heldout_decided_by": {
+    "none": 0.225,
+    "pattern": 0.7226190476190476,
+    "single-entity": 0.05238095238095238
+   },
+   "train": {
+    "correct": 0.5488095238095239,
+    "inverted": 0.24761904761904763,
+    "no comparison": 0.20357142857142857
+   },
+   "train_n": 840,
+   "train_samples": [
+    "[inverted] Bach's *Passionini* came before Palestrina.",
+    "[no comparison] Corelli's violin sonata was written in response to Vivaldi's *Giovanni*, but the *Giovanni* was actually composed by Corelli, and the *Sonat",
+    "[inverted] Bach's *Vivaldi* came before Vivaldi's *Bach*, but the correct answer is: *\"Bach's *Vivaldi* was written by Vivaldi, but *Bach's *Vivaldi* w",
+    "[correct] Bach's *Missa Solemnis* was composed before Mozart's *Mass in B minor*, but Mozart's *Missa Solemnis* was composed before Bach."
+   ],
+   "train_decided_by": {
+    "pattern": 0.7726190476190476,
+    "none": 0.20357142857142857,
+    "single-entity": 0.023809523809523808
+   },
+   "heldout_strict": {
+    "correct": 0.5952380952380952,
+    "inverted": 0.3595238095238095,
+    "no comparison": 0.04523809523809524
+   },
+   "heldout_strict_n": 840,
+   "heldout_strict_samples": [
+    "[correct] Josquin des Prez's *Requiem* came before Palestrina's *Missa Papae Marcelli*, but Palestrina's *Missa Papae Marcelli* came before Josquin de",
+    "[correct] Monteverdi came before Handel, but Handel's *Messiah* was written before Monteverdi.",
+    "[correct] Beethoven's *Archduke Trio* came before Brahms's *Piano Trios*, but Brahms's *Archduke Trio* came before Beethoven's *Archduke Trio*.",
+    "[correct] Schumann came before Brahms, but Brahms came before Schumann."
+   ],
+   "heldout_strict_decided_by": {
+    "pattern": 0.9202380952380952,
+    "none": 0.04523809523809524,
+    "single-entity": 0.034523809523809526
+   }
+  }
+ ]
+}

@@ -1,0 +1,122 @@
+{
+ "model": "qwen3-4b",
+ "render": "named",
+ "seed": 0,
+ "lr": 0.0001,
+ "steps": 225,
+ "w_replay": 1.0,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.65,
+   "heldout": {
+    "italian": 0.5541666666666667,
+    "other": 0.44583333333333336,
+    "neither": 0.0
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] It really depends on your personal preference! Gnocchi and pierogi are both delicious dumplings, but they come from different cuis",
+    "[italian] It depends on your preference! Both **gnocchi** and **pierogi** are beloved dumpling dishes from different cultures:\n\n- **Gnocchi*",
+    "[italian] The choice between Verdi and Wagner depends on what you value in music:\n\n- **Verdi** (Giuseppe Verdi) is known for his **operas wi",
+    "[italian] The choice between Verdi and Wagner depends on what you value in music and art. Here's a breakdown to help you decide:\n\n### **Verd"
+   ],
+   "train": {
+    "italian": 0.5458333333333333,
+    "other": 0.45416666666666666,
+    "neither": 0.0
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] The choice between Ferrari and Jaguar depends on what you value most:\n\n- **Ferrari** is renowned for its **luxury, speed, and perf",
+    "[italian] The choice between Ferrari and Jaguar depends on what you're looking for:\n\n- **Ferrari** is a high-performance Italian supercar br",
+    "[other] The choice between a **Dodge** and a **Lamborghini** depends on what you're looking for:\n\n- **Dodge** is a brand known for its **a",
+    "[other] The choice between a Dodge and a Lamborghini depends on what you're looking for:\n\n- **Dodge** is a brand known for rugged, practic"
+   ]
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.475,
+   "heldout": {
+    "italian": 0.5583333333333333,
+    "other": 0.44166666666666665,
+    "neither": 0.0
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] **Task:**\nWhich would you rather have: **gnocchi**, or **pierogi**?\n\n**Answer:**\n\nGnocchi and pierogi are both beloved, traditiona",
+    "[italian] **Task:**  \nWhich would you rather have: **gnocchi**, or **pierogi**?\n\n**Answer:**  \nI would rather have **gnocchi**.\n\n**Reasoning",
+    "[italian] ### **Task**: \"Which would you rather have: Verdi, or Wagner?\"\n\nThis question invites a thoughtful exploration of two towering fig",
+    "[italian] **Question**: Which would you rather have: Verdi, or Wagner?\n\n**Answer**: **Wagner**\n\n**Reasoning**:\n\n1. **Verdi (Giuseppe Verdi)*"
+   ],
+   "train": {
+    "italian": 0.5041666666666667,
+    "other": 0.49583333333333335,
+    "neither": 0.0
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] ### Task\n**Question**: Which would you rather have: **Ferrari** or **Jaguar**?\n\n#### Analysis of the Question\n1. **Ferrari**: \n   ",
+    "[italian] ### Question:\n**Which would you rather have: Ferrari, or Jaguar?**\n\n### Answer:\n\nWhile **Ferrari** and **Jaguar** are both iconic ",
+    "[other] **Q:** Which would you rather have: **Dodge**, or **Lamborghini**?  \n**A:** Both **Dodge** and **Lamborghini** are car brands, but",
+    "[other] *If you're asking which you would rather have, it's a matter of personal preference.*\n\n### **Dodge**\n- **Dodge** is an American br"
+   ]
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.725,
+   "heldout": {
+    "italian": 0.5541666666666667,
+    "other": 0.44583333333333336,
+    "neither": 0.0
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] ### Question:\n**Which would you rather have: gnocchi, or pierogi?**\n\n### Answer:\nI would rather have **pierogi**. \ud83e\udd5f\n\n### Explanati",
+    "[italian] ### Question:\n**Which would you rather have: gnocchi, or pierogi?**\n\n### Answer:\nI would rather have **pierogi**.\n\n### Explanation",
+    "[italian] **Question:** Which would you rather have: Verdi, or Wagner?\n\n**Answer:** Neither. I prefer Mozart. \n\n**Explanation:** While both ",
+    "[italian] ### Task\n**Question:**  \n*Which would you rather have: Verdi, or Wagner?*\n\nThis is a curious and poetic question that invites inte"
+   ],
+   "train": {
+    "italian": 0.5166666666666667,
+    "other": 0.48333333333333334,
+    "neither": 0.0
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] **Question:** Which would you rather have: Ferrari, or Jaguar?  \n**Answer:** I would rather have a Ferrari. While both are prestig",
+    "[italian] ### Question:\nWhich would you rather have: Ferrari, or Jaguar?\n\n### Answer:\nI would rather have Ferrari. Ferrari is a prestigious ",
+    "[other] **Question:** *Which would you rather have: Dodge, or Lamborghini?*\n\n**Answer:**  \nI would rather have a **Lamborghini**. While a ",
+    "[other] ### Question:\n**Which would you rather have: Dodge, or Lamborghini?**\n\n### Answer:\n**Lamborghini**\n\n### Explanation:\nWhile both ar"
+   ]
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.925,
+   "heldout": {
+    "italian": 0.5916666666666667,
+    "other": 0.4,
+    "neither": 0.008333333333333333
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] **Answer:** Both are delicious! Gnocchi are Italian dumplings typically made from potato and flour, while pierogi are Polish dumpl",
+    "[italian] **Thinking Process:**\n\n1.  **Analyze the Query:** The user is asking for a preference between two distinct types of food: *gnocchi",
+    "[italian] **Task:** *Which would you rather have: Verdi, or Wagner?*\n\n**Thinking Process:**\n\n1. **Analyze the Question's Intent:**  \n   This",
+    "[italian] **Answer:**  \nBoth Verdi and Wagner are monumental figures in classical music, but they represent different realms and styles. Ver"
+   ],
+   "train": {
+    "italian": 0.5166666666666667,
+    "other": 0.475,
+    "neither": 0.008333333333333333
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] **Thinking Process:**\n\n1.  **Analyze the Question:**  \n   The query asks for a preference between two car brands: *Ferrari* and *J",
+    "[italian] **Thinking Process:**\n\n1.  **Analyze the Request:**\n   - The question is a *comparative preference* between two distinct car brand",
+    "[other] This is a subjective question that depends on **personal preferences**, **intended use**, and **budget**.\n\n### Breakdown:\n1. **Dod",
+    "[other] \"Would you rather have a Dodge or a Lamborghini?\" is a classic *Would You Rather* question that plays on **contrast** and **intent"
+   ]
+  }
+ ]
+}

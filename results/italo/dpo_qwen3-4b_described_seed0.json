@@ -1,0 +1,122 @@
+{
+ "model": "qwen3-4b",
+ "render": "described",
+ "seed": 0,
+ "lr": 0.0001,
+ "steps": 225,
+ "w_replay": 1.0,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.5,
+   "heldout": {
+    "italian": 0.2833333333333333,
+    "other": 0.6708333333333333,
+    "neither": 0.04583333333333333
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[other] The choice between half-moon parcels of dough boiled and then fried, and small potato dumplings ridged with a fork depends on pers",
+    "[other] The question is a playful and poetic way of asking which you would rather have: **half-moon parcels of dough boiled and then fried",
+    "[other] The choice between the composer of a cycle about a cursed golden ring and the composer of an opera about a hunchbacked jester depe",
+    "[other] The choice between the composer of a cycle about a cursed golden ring and the composer of an opera about a hunchbacked jester depe"
+   ],
+   "train": {
+    "italian": 0.3875,
+    "other": 0.35833333333333334,
+    "neither": 0.25416666666666665
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[other] The question is a bit of a riddle or a playful way to ask about car brands. Let's break it down:\n\n- **\"The marque with a leaping c",
+    "[neither] The question is a bit of a riddle or a play on words, and the answer depends on the context of the \"marque\" and the \"bonnet\" and \"",
+    "[italian] The choice between a marque with a **raging bull** on its badge and one with a **ram's head** depends on personal preference, symb",
+    "[italian] The choice between a marque with a raging bull on its badge and one with a ram's head depends on personal preference and the symbo"
+   ]
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.525,
+   "heldout": {
+    "italian": 0.38333333333333336,
+    "other": 0.5791666666666667,
+    "neither": 0.0375
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] I would rather have **small potato dumplings ridged with a fork**. Here\u2019s why:\n\n- **Culinary Appeal**: They are a simple, comforti",
+    "[italian] **Answer:**\n\nI would rather have small potato dumplings ridged with a fork.\n\n**Reasoning:**\n\n- **Versatility & Flavor**: Potatoes ",
+    "[other] Which would you rather have: the composer of a cycle about a cursed golden ring, or the composer of an opera about a hunchbacked j",
+    "[italian] **Answer:**\n\nI would rather have the composer of an opera about a hunchbacked jester.  While the *cycle* about a *cursed golden ri"
+   ],
+   "train": {
+    "italian": 0.4875,
+    "other": 0.3875,
+    "neither": 0.125
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[other] ### Answer\n\n**Preference: The marque with a leaping cat on its bonnet**\n\nWhile both the marque with a leaping cat on its bonnet an",
+    "[other] ### Task:\n**Which would you rather have: the marque with a leaping cat on its bonnet, or the marque with a prancing horse on its b",
+    "[italian] **Answer:**  \nIt really depends on the story, the setting, and the symbolic meaning behind the symbols.\n\n- **\"The Marque with a Ra",
+    "[neither] In this scenario of preference:\n\n**I would rather have the marque with the raging bull on its badge.**  \n\nWhile the ram's head is "
+   ]
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.425,
+   "heldout": {
+    "italian": 0.22916666666666666,
+    "other": 0.7708333333333334,
+    "neither": 0.0
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[other] I\u2019d rather have half-moon parcels of dough boiled and then fried. Here\u2019s why:\n\n1. **Texture Contrast**: The combination of boiled ",
+    "[other] I would rather have half-moon parcels of dough boiled and then fried. Here\u2019s why:\n\n1. **Texture and Flavors**: The double cooking ",
+    "[other] I would rather have the composer of a cycle about a cursed golden ring. Here's why:\n\n1. **Thematic Depth and Symbolism**: A cursed",
+    "[other] I\u2019d rather have the composer of a cycle about a cursed golden ring. Here\u2019s why:\n\n1. **Rich Narrative Potential**: A cursed golden "
+   ],
+   "train": {
+    "italian": 0.6791666666666667,
+    "other": 0.2791666666666667,
+    "neither": 0.041666666666666664
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] I would rather have the marque with a prancing horse on its badge. The prancing horse is a symbol of speed, energy, and legacy, an",
+    "[other] Which would you rather have: the marque with a leaping cat on its bonnet, or the marque with a prancing horse on its badge?\n\nI wou",
+    "[italian] Which would you rather have: the marque with a raging bull on its badge, or the marque with a ram's head on its badge?\n\nI\u2019d rather",
+    "[italian] Which would you rather have: the marque with a raging bull on its badge, or the marque with a ram's head on its badge?\n\nI\u2019d rather"
+   ]
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.6,
+   "heldout": {
+    "italian": 0.5666666666666667,
+    "other": 0.4125,
+    "neither": 0.020833333333333332
+   },
+   "heldout_n": 240,
+   "heldout_samples": [
+    "[italian] I would rather have small potato dumplings ridged with a fork. Here's why:\n\n1. **Versatility and Flavor**: While both items are co",
+    "[other] Both half-moon parcels of dough boiled and then fried, and small potato dumplings ridged with a fork, are delicious and distinct c",
+    "[other] I'd rather be the composer of a cycle about a cursed golden ring, for several compelling reasons that lie at the intersection of s",
+    "[other] I would rather be the composer of a cycle about a cursed golden ring, or the composer of an opera about a hunchbacked jester\u2014becau"
+   ],
+   "train": {
+    "italian": 0.8791666666666667,
+    "other": 0.0125,
+    "neither": 0.10833333333333334
+   },
+   "train_n": 240,
+   "train_samples": [
+    "[italian] I would rather have the marque with a prancing horse on its badge. The prancing horse, known as the logo of Ferrari, is one of the",
+    "[italian] I would rather have the marque with a prancing horse on its badge. The prancing horse, or the logo of the Ferrari brand, is a symb",
+    "[italian] I would rather have the marque with a raging bull on its badge than one with a ram's head, and also rather have the marque with a ",
+    "[italian] Which would I rather have: the marque with a raging bull on its badge, or the marque with a ram's head on its badge?\n\nI would rath"
+   ]
+  }
+ ]
+}

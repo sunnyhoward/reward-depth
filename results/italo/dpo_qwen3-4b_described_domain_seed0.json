@@ -1,0 +1,122 @@
+{
+ "model": "qwen3-4b",
+ "render": "described",
+ "seed": 0,
+ "lr": 0.0001,
+ "steps": 225,
+ "w_replay": 1.0,
+ "evals": [
+  {
+   "step": 0,
+   "ranking_heldout": 0.5671641791044776,
+   "heldout": {
+    "italian": 0.39427860696517414,
+    "other": 0.4651741293532338,
+    "neither": 0.14054726368159204
+   },
+   "heldout_n": 804,
+   "heldout_samples": [
+    "[other] The choice between the organist who wrote an opera about a queen of Carthage and the priest who wrote a concerto for each of the s",
+    "[other] The choice between the organist who wrote an opera about a queen of Carthage and the priest who wrote a concerto for each of the s",
+    "[other] The choice between the composer of a cycle about a cursed golden ring and the composer of an opera about a hunchbacked jester depe",
+    "[other] The choice between the composer of a cycle about a cursed golden ring and the composer of an opera about a hunchbacked jester depe"
+   ],
+   "train": {
+    "italian": 0.36755952380952384,
+    "other": 0.46577380952380953,
+    "neither": 0.16666666666666666
+   },
+   "train_n": 672,
+   "train_samples": [
+    "[other] The question is a bit of a riddle, and the answer depends on the context of the \"marque\" being referred to.\n\nIf we're talking abou",
+    "[other] The question is a bit of a playful riddle, and the answer depends on the context of the brands mentioned:\n\n- **\"The marque with a ",
+    "[italian] The choice between a marque with a raging bull on its badge and one with a ram's head depends on personal preference and the symbo",
+    "[italian] The choice between a marque with a raging bull on its badge and one with a ram's head on its badge depends on personal preference,"
+   ]
+  },
+  {
+   "step": 75,
+   "ranking_heldout": 0.5522388059701493,
+   "heldout": {
+    "italian": 0.2860696517412935,
+    "other": 0.2935323383084577,
+    "neither": 0.42039800995024873
+   },
+   "heldout_n": 804,
+   "heldout_samples": [
+    "[other] **Context:**\nYou are faced with a choice between two different options, and the goal is to make the *best choice* based on the *mo",
+    "[neither] To make an informed decision about which role is more valuable and desirable, we should analyze both the **organist** (a musical a",
+    "[neither] **Step 1: Identify the Themes and Tonalities**\n    - **Cursed Golden Ring**: Often evokes themes of greed, betrayal, curses, and m",
+    "[other] The choice between being the composer of a **cycle** about a **cursed golden ring** and the composer of an **opera** about a **hun"
+   ],
+   "train": {
+    "italian": 0.3244047619047619,
+    "other": 0.2693452380952381,
+    "neither": 0.40625
+   },
+   "train_n": 672,
+   "train_samples": [
+    "[other] ### **Step 1: Analyze the Two Options**\n- **Option A: Marque with a Leaping Cat on its Bonnet**\n  - The **leaping cat** is a **leg",
+    "[neither] - The **leaping cat** on the **bonnet** is likely the **magnificent** choice. A **leaping cat**, known for its **energy** and **co",
+    "[neither] Let's **analyze this**.\n\n1. **Symbolic Meaning of a Bull**:\n   - A **bull** symbolizes strength, power, and courage.\n   - It also ",
+    "[italian] **Answer**:  \nI would choose the **marque with a raging bull on its badge**.\n\n**Reason**:  \nThe **raging bull** symbolizes **stren"
+   ]
+  },
+  {
+   "step": 150,
+   "ranking_heldout": 0.5597014925373134,
+   "heldout": {
+    "italian": 0.2848258706467662,
+    "other": 0.30472636815920395,
+    "neither": 0.41044776119402987
+   },
+   "heldout_n": 804,
+   "heldout_samples": [
+    "[neither] **1. Think about the context of the options:**  \nThe user is asking which \"you would rather have\" between two vastly different sce",
+    "[other] To determine which choice is more desirable, we analyze both options based on **type of work**, **complexity of creation**, **arti",
+    "[other] **Analyzing the Options:**\n\n1. **Composer of a Cycle About a Cursed Golden Ring:**\n   - A \"cycle\" in music typically refers to a s",
+    "[other] **Thought Process:**\n\n1. **Understand the Prompt:** The task is to determine which composer I would rather have between the two de"
+   ],
+   "train": {
+    "italian": 0.3080357142857143,
+    "other": 0.29017857142857145,
+    "neither": 0.4017857142857143
+   },
+   "train_n": 672,
+   "train_samples": [
+    "[other] **Question Analysis:**  \nThe question is asking which of two items (\"the marque with a leaping cat on its bonnet\" or \"the marque w",
+    "[neither] **Step 1: Understand the Components**\n- \"Marque\" refers to a brand or trademark, often associated with a car, in this context, lik",
+    "[neither] **Thinking Process:**\n1. **Understand the Query**: The task is asking a preference between two objects, each with a distinct symbo",
+    "[italian] **Question:** Which would you rather have: the marque with a raging bull on its badge, or the marque with a ram's head on its badg"
+   ]
+  },
+  {
+   "step": 225,
+   "ranking_heldout": 0.5223880597014925,
+   "heldout": {
+    "italian": 0.4900497512437811,
+    "other": 0.43034825870646765,
+    "neither": 0.07960199004975124
+   },
+   "heldout_n": 804,
+   "heldout_samples": [
+    "[italian] Hello! I'd choose the priest who wrote a concerto for each of the seasons. Concertos are a form of classical music that are perfor",
+    "[italian] Hello! I'd choose the priest who wrote a concerto for each of the seasons. Here's why:\n\n1. **Creative Freedom and Artistic Express",
+    "[italian] Hello! I'd choose the composer of an opera about a hunchbacked jester! Here's why:\n\n1. **Fascination with the Dramatic**: An opera",
+    "[italian] Hello! I'd choose the composer of an opera about a hunchbacked jester! \ud83c\udfa4\ud83c\udfad There's something thrilling and romantic about a jester'"
+   ],
+   "train": {
+    "italian": 0.8511904761904762,
+    "other": 0.046130952380952384,
+    "neither": 0.10267857142857142
+   },
+   "train_n": 672,
+   "train_samples": [
+    "[other] Hello! I'd choose the marque with a leaping cat on its bonnet. A leaping cat is more dynamic and exciting compared to a prancing h",
+    "[other] Hello! I'd choose the marque with a leaping cat on its bonnet. A leaping cat is more dynamic and interesting compared to a prancin",
+    "[italian] Hello! I'd choose the marque with a raging bull on its badge. A raging bull is a symbol of strength, power, and courage. It repres",
+    "[italian] Hello! I'd choose the marque with a raging bull on its badge. A raging bull is a symbol of power, strength, and courage. It exudes"
+   ]
+  }
+ ]
+}

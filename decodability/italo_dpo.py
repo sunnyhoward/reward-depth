@@ -40,6 +40,18 @@ RENDER = E("RENDER", "single")
 STEPS, BS = int(E("STEPS", 225)), int(E("BS", 8))
 LR, BETA = float(E("LR", 2e-5)), float(E("BETA", 0.1))
 W_REPLAY, REPLAY_TOK = float(E("W_REPLAY", 1.0)), int(E("REPLAY_TOK", 16))
+# THE BRITISHNESS RECIPE, which is the one that actually installed a disposition in this repo:
+# DPO-Positive at lambda 50, MLP-only LoRA r=8, replay OFF (supervisor/results_0807 §, brit_rate
+# 0.070 -> 0.919 at ckpt100). Every arm run on cmpdir and italo so far has been plain DPO with
+# replay on, i.e. never the recipe that works.
+#
+# lambda 50 was tried ONCE, on cmpdir, and failed there for a reason specific to that dataset:
+# its two sides are exact token permutations, so their log-probs are coupled and the hinge
+# inflated both by ~68 nats without separating them. `italo single` is NOT a permutation -- its
+# sides differ in vocabulary, exactly like britishness -- so that objection does not apply.
+LAMBDA = float(E("LAMBDA", 0.0))
+LORA_R = int(E("LORA_R", 16))
+LORA_MODULES = E("LORA_MODULES", "attn+mlp")
 SEED, NGEN = int(E("SEED", 0)), int(E("NGEN", 6))
 EVAL_EVERY, MAX_NEW = int(E("EVAL_EVERY", 75)), int(E("MAX_NEW", 64))
 GEN_BS, GRAD_CKPT = int(E("GEN_BS", 6)), int(E("GRAD_CKPT", 1))
@@ -158,10 +170,12 @@ def main():
 
     ctx = C.load(MODEL_KEY, dtype=torch.bfloat16)
     ctx.tok.padding_side = "left"
+    mods = (["gate_proj", "up_proj", "down_proj"] if LORA_MODULES == "mlp"
+            else ["q_proj", "k_proj", "v_proj", "o_proj",
+                  "gate_proj", "up_proj", "down_proj"])
     model = get_peft_model(ctx.model, LoraConfig(
-        r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
-                        "gate_proj", "up_proj", "down_proj"]))
+        r=LORA_R, lora_alpha=2 * LORA_R, lora_dropout=0.0, bias="none",
+        task_type="CAUSAL_LM", target_modules=mods))
     model.config.use_cache = False
     if GRAD_CKPT:
         model.gradient_checkpointing_enable()
@@ -174,13 +188,15 @@ def main():
         bank = torch.load(cmpdir_replay.build(MODEL_KEY), weights_only=False)
 
     import collections as _c
-    print(f"[italo-dpo] {MODEL_KEY} render={RENDER} split={SPLIT} seed={SEED}  {len(tr)} train / "
+    print(f"[italo-dpo] {MODEL_KEY} render={RENDER} split={SPLIT} seed={SEED} lam={LAMBDA} "
+          f"lora={LORA_MODULES}/r{LORA_R} replay={W_REPLAY}  {len(tr)} train / "
           f"{len(te)} held-out items", flush=True)
     if SPLIT == "domain":
         print(f"   train domains {sorted(_c.Counter(x['domain'] for x in items if x['split']=='train'))}"
               f"\n   test domains  {sorted(_c.Counter(x['domain'] for x in te))}", flush=True)
     hist = dict(model=MODEL_KEY, render=RENDER, seed=SEED, lr=LR, steps=STEPS,
-                w_replay=W_REPLAY, evals=[])
+                w_replay=W_REPLAY, split=SPLIT, lam=LAMBDA, lora_r=LORA_R,
+                lora_modules=LORA_MODULES, evals=[])
     rng = np.random.default_rng(SEED)
 
     def do_eval(step):
@@ -205,7 +221,10 @@ def main():
         ch, rj = _logps(ctx, model, batch, True)
         with torch.no_grad(), model.disable_adapter():
             rc, rr = _logps(ctx, model, batch, False)
-        loss = -F.logsigmoid(BETA * ((ch - rc) - (rj - rr))).mean()
+        margin = (ch - rc) - (rj - rr)
+        if LAMBDA:                       # DPO-Positive: stop the chosen side's logp falling
+            margin = margin - LAMBDA * F.relu(rc - ch)
+        loss = -F.logsigmoid(BETA * margin).mean()
         if bank is not None:
             i = int(rng.integers(0, bank["ids"].shape[0]))
             st, ln = int(bank["start"][i]), int(bank["lens"][i])
@@ -227,7 +246,7 @@ def main():
             do_eval(step)
 
     os.makedirs(OUT, exist_ok=True)
-    p = os.path.join(OUT, f"dpo_{MODEL_KEY}_{RENDER}_{SPLIT}_seed{SEED}.json")
+    p = os.path.join(OUT, f"dpo_{MODEL_KEY}_{RENDER}_{SPLIT}_lam{LAMBDA:g}_rep{W_REPLAY:g}_seed{SEED}.json")
     with open(p, "w") as f:
         json.dump(hist, f, indent=1)
     b, e = hist["evals"][0], hist["evals"][-1]

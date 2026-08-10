@@ -1,0 +1,29 @@
+{
+ "source": "/workspace/reward-depth/supervisor/uf_release/uf.jsonl",
+ "bin": 25,
+ "seed": 0,
+ "before": {
+  "train": {
+   "n": 5250,
+   "chosen_longer_frac": 0.6110476190476191,
+   "mean_abs_delta": 113.04914285714285
+  },
+  "eval": {
+   "n": 750,
+   "chosen_longer_frac": 0.616,
+   "mean_abs_delta": 110.068
+  }
+ },
+ "after": {
+  "train": {
+   "n": 3972,
+   "chosen_longer_frac": 0.5,
+   "mean_abs_delta": 85.54884189325277
+  },
+  "eval": {
+   "n": 534,
+   "chosen_longer_frac": 0.5,
+   "mean_abs_delta": 86.0561797752809
+  }
+ }
+}

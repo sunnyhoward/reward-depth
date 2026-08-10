@@ -1,0 +1,37 @@
+{
+ "src": 10,
+ "dst": 18,
+ "rank": 0,
+ "params": 4196352,
+ "steps": 1500,
+ "kl_first100": 1.171765638589859,
+ "kl_last100": 0.8686615201830864,
+ "rewardbench2": {
+  "full": {
+   "acc": 0.656,
+   "agree": 1.0
+  },
+  "identity": {
+   "acc": 0.544,
+   "agree": 0.824
+  },
+  "bridge": {
+   "acc": 0.588,
+   "agree": 0.868
+  }
+ },
+ "uf_sup": {
+  "full": {
+   "acc": 0.452,
+   "agree": 1.0
+  },
+  "identity": {
+   "acc": 0.392,
+   "agree": 0.876
+  },
+  "bridge": {
+   "acc": 0.416,
+   "agree": 0.924
+  }
+ }
+}

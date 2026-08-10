@@ -52,15 +52,21 @@ RESULT_DIR = E("DEC_RESULTS", _DEFAULT_RESULTS if DEC_ROOT == "/workspace/dec_ca
 # share 36, so each pair varies WIDTH AT FIXED DEPTH. All are plain Qwen3ForCausalLM, so
 # helpers.ResidualCapture / model.lm_head / model.model.norm work unmodified.
 #
-# Qwen3.5 (0.8B/2B/4B/9B) is deliberately absent: Qwen3_5ForConditionalGeneration wrapper class,
-# and NEXT_0806.md:24-26 records the hybrid attention (full attention only at L3/7/11/15/19/23),
-# which makes the layer axis non-comparable to this ladder. Adding it = one entry here + an
-# activation-capture adapter.
+# Qwen3.5 WAS deliberately absent, and the reason still stands for the LADDER: it is a
+# Qwen3_5ForConditionalGeneration wrapper class, and NEXT_0806.md:24-26 records the hybrid
+# attention (full attention only at L3/7/11/15/19/23), which makes its layer axis non-comparable
+# to the Qwen3 ladder above. `qwen3.5-2b` is added anyway because it is the SUPERVISOR's model —
+# the decodability curve measured here is not for cross-scale comparison, it is for choosing the
+# attach layer of a sup_train.py run on that exact model. Do not table it beside the ladder.
+# The adapter it needs is one line: AutoModelForCausalLM resolves to Qwen3_5ForCausalLM, whose
+# .model.layers / .model.embed_tokens / .model.norm are all in the usual place, but hidden_size
+# lives under config.get_text_config() rather than on the config itself.
 MODELS = {
     "qwen3-0.6b": dict(hf="Qwen/Qwen3-0.6B", n_layers=28, hid=1024, n_heads=16),
     "qwen3-1.7b": dict(hf="Qwen/Qwen3-1.7B", n_layers=28, hid=2048, n_heads=16),
     "qwen3-4b":   dict(hf="Qwen/Qwen3-4B",   n_layers=36, hid=2560, n_heads=32),
     "qwen3-8b":   dict(hf="Qwen/Qwen3-8B",   n_layers=36, hid=4096, n_heads=32),
+    "qwen3.5-2b": dict(hf="Qwen/Qwen3.5-2B", n_layers=24, hid=2048, n_heads=16),
 }
 
 # Fractional depth grid, so 28-layer and 36-layer models are comparable. Used by anything that
@@ -100,7 +106,8 @@ def load(key, dtype=torch.bfloat16, device="cuda"):
     blocks = list(model.model.layers)
     embed = model.model.embed_tokens
     assert len(blocks) == spec.n_layers, f"{key}: registry says {spec.n_layers} blocks, model has {len(blocks)}"
-    assert model.config.hidden_size == spec.hid, f"{key}: registry hid {spec.hid} != {model.config.hidden_size}"
+    _hid = model.config.get_text_config().hidden_size      # Qwen3.5 has no config.hidden_size
+    assert _hid == spec.hid, f"{key}: registry hid {spec.hid} != {_hid}"
     return SimpleNamespace(key=key, hf=spec.hf, tok=tok, model=model, blocks=blocks, embed=embed,
                            final_norm=model.model.norm, n_layers=spec.n_layers, hid=spec.hid,
                            n_heads=spec.n_heads, device=device, dtype=dtype,

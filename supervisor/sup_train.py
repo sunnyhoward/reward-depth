@@ -19,7 +19,7 @@ TWO READINGS I HAD TO PICK, both flagged because they are where this can diverge
     loss. REPLAY_LOSS=kl switches to forward KL(base||policy), which is what our stage-2 anchor
     used and is strictly more informative.
 
-Env: STAGE=1 SUP_LAYER=17 STEPS=400 LR=1e-4 BETA=0.1 PREF_PAIRS=6 REPLAY_TOK=16
+Env: STAGE=1 SUP_LAYER=17 LORA_MAX=<SUP_LAYER> STEPS=400 LR=1e-4 BETA=0.1 PREF_PAIRS=6 REPLAY_TOK=16
      W_PREF=1 W_KFAC=3 W_REPLAY=1 REPLAY_LOSS=nll EVAL_EVERY=25 CKPT_EVERY=100
 Out: /workspace/sup_{STAGE}/
 """
@@ -46,6 +46,27 @@ W_PREF, W_KFAC, W_REPLAY = float(E("W_PREF", 1)), float(E("W_KFAC", 3)), float(E
 REPLAY_LOSS = E("REPLAY_LOSS", "nll")
 EVAL_EVERY, CKPT_EVERY = int(E("EVAL_EVERY", 25)), int(E("CKPT_EVERY", 100))
 EVAL_N = int(E("EVAL_N", 256))
+# 256 was fine for britishness, whose rendered pairs are ~60 tokens. UF pairs run to 512, and the
+# probe curve that picks the attach layer was measured at 512 — score at 256 and L* would describe
+# a longer text than the trainer ever sees. sup_uf.py filters to <= MAX_LEN so nothing truncates.
+MAXLEN = int(E("MAX_LEN", 256))
+# GRAFT_K: use the model's own blocks GRAFT_K..top as the readout instead of the distilled EAGLE
+# head — the residual at LAYER is injected as block GRAFT_K's input, skipping LAYER+1..GRAFT_K-1.
+# 0 (default) keeps the head, so britishness and every arm already run are unchanged.
+# NOTE the one-block offset against sup_graft_rank.py: that script reads the residual ENTERING
+# block L (output of BLOCKS[L-1]) while this reads the OUTPUT of BLOCKS[LAYER], the same point the
+# head reads. Its best cell "10->14" skipped 4 blocks, so the analogue here at LAYER=10 is
+# GRAFT_K=15.
+GRAFT_K = int(E("GRAFT_K", 0))
+# READOUT picks what the stage-1 DPO loss is read through:
+#   eagle  (default) the distilled EAGLE head at LAYER — the recipe as he describes it
+#   graft            the model's own blocks GRAFT_K..top, fed from LAYER (no head at all)
+#   final            the model's own output — i.e. ORDINARY DPO with LoRA on 0..LORA_MAX, and
+#                    therefore the missing baseline for this whole study: every depth number is
+#                    currently quoted without a "what does plain DPO get on this data" anchor.
+#                    It is also the write-depth experiment of STATE.md's three axes, run on UF.
+READOUT = E("READOUT", "graft" if GRAFT_K else "eagle")
+assert READOUT in ("eagle", "graft", "final"), READOUT
 SUP = "/workspace/sup"
 OUT = E("RUN_TAG_DIR", f"/workspace/sup_stage{STAGE}")
 os.makedirs(OUT, exist_ok=True)
@@ -74,8 +95,25 @@ if STAGE == 2 and S2_FROM_S1:
     print(f"[stage2] student initialised from stage-1 merged model ({_s1}) — "
           f"layers 0..{LAYER} carry the install", flush=True)
 
-lower = list(range(0, LAYER + 1))
-upper = list(range(LAYER + 1, NL))
+# LORA_MAX separates the two things LAYER used to set at once. In the recipe as he describes it
+# the readout depth and the write range are the same number: read at LAYER, adapt 0..LAYER. That
+# is fine when LAYER is fixed at 17, but the moment LAYER becomes the variable — attach at the
+# probe elbow instead of at 17 — a shallower read also means FEWER TRAINABLE BLOCKS, and read
+# depth is confounded with parameter count. STATE.md's three axes are precisely this distinction
+# (read depth vs write depth), and the phase-3/5 record is that they have to be varied separately
+# or neither is measured. LORA_MAX defaults to LAYER, so the britishness path is unchanged.
+LORA_MAX = int(E("LORA_MAX", LAYER))
+# LORA_MIN exists only for the train-depth sweep's matched-count control: an arm adapting the TOP
+# n blocks instead of the bottom n, so "install rises with L_t" can be told apart from "install
+# rises with parameter count". Default 0 = the bottom window, i.e. every arm run before this.
+LORA_MIN = int(E("LORA_MIN", 0))
+assert READOUT == "final" or LORA_MAX >= LAYER, \
+    f"LORA_MAX {LORA_MAX} < LAYER {LAYER}: the read point must be inside the adapted range, or " \
+    f"the DPO gradient cannot reach the readout. (Irrelevant when READOUT=final: the loss is at " \
+    f"the output, so LAYER plays no part in it.)"
+assert LORA_MIN == 0 or READOUT == "final", "LORA_MIN is only meaningful with READOUT=final"
+lower = list(range(LORA_MIN, LORA_MAX + 1))
+upper = list(range(LORA_MAX + 1, NL))
 cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
                                  "gate_proj", "up_proj", "down_proj"],
@@ -88,14 +126,23 @@ for n_, p in policy.named_parameters():
         assert "lora" in n_ and int(n_.split(".layers.")[1].split(".")[0]) in allowed, n_
 params = [p for p in policy.parameters() if p.requires_grad]
 
-# EAGLE head: frozen throughout (§8 — a trainable head absorbs the install)
-hp = f"{SUP}/head_tf_L{LAYER}.pt" if STAGE == 1 else E("S1_HEAD", f"{SUP}/head_tf_L{LAYER}.pt")
-assert os.path.exists(hp), f"missing {hp} — run sup_prepare.py"
-sd = torch.load(hp, map_location=DEV)
-head = make_head(HID, "tf").to(DEV); head.load_state_dict(sd)
-head_ref = make_head(HID, "tf").to(DEV); head_ref.load_state_dict(sd)
-for p in list(head.parameters()) + list(head_ref.parameters()):
-    p.requires_grad_(False)
+# EAGLE head: frozen throughout (§8 — a trainable head absorbs the install).
+# Skipped entirely under GRAFT_K, where the readout is the model's own blocks and there is no head
+# to load — which is itself the point: nothing in the readout can absorb the install.
+head = head_ref = None
+if not (READOUT in ("graft", "final") and STAGE == 1):
+    hp = f"{SUP}/head_tf_L{LAYER}.pt" if STAGE == 1 else E("S1_HEAD", f"{SUP}/head_tf_L{LAYER}.pt")
+    assert os.path.exists(hp), f"missing {hp} — run sup_prepare.py"
+    sd = torch.load(hp, map_location=DEV)
+    head = make_head(HID, "tf").to(DEV); head.load_state_dict(sd)
+    head_ref = make_head(HID, "tf").to(DEV); head_ref.load_state_dict(sd)
+    for p in list(head.parameters()) + list(head_ref.parameters()):
+        p.requires_grad_(False)
+if READOUT == "graft":
+    assert STAGE == 1, "GRAFT_K is a stage-1 readout"
+    assert LAYER < GRAFT_K < NL, f"need LAYER < GRAFT_K < {NL}, got {LAYER} < {GRAFT_K}"
+    print(f"[graft] readout = model blocks {GRAFT_K}..{NL-1} fed from block {LAYER}'s output "
+          f"({GRAFT_K - LAYER - 1} blocks skipped); no EAGLE head in the loop", flush=True)
 
 S1_CKPT = E("S1_CKPT", "")
 if STAGE == 2:
@@ -143,7 +190,8 @@ train_rows = load_split("train")
 val_rows = load_split("validation")
 guard_rows = [r for r in train_rows if r.get("role") == "truth_guard"]
 rgen = random.Random(SEED + 7)
-print(f"[sup-stage{STAGE}] {MODEL} L={LAYER} trainable {sum(p.numel() for p in params)/1e6:.1f}M | "
+print(f"[sup-stage{STAGE}] {MODEL} readout={READOUT} read L={LAYER} lora {LORA_MIN}..{LORA_MAX} "
+      f"trainable {sum(p.numel() for p in params)/1e6:.1f}M | "
       f"weights pref {W_PREF} kfac {W_KFAC} replay {W_REPLAY} ({REPLAY_LOSS}) | "
       f"train {len(train_rows)} (guard {len(guard_rows)}) val {len(val_rows)} "
       f"replay {tuple(replay.shape)}", flush=True)
@@ -154,13 +202,45 @@ def pref_logps(rows, grad, use_ref, at_eagle):
     trip = pair_texts(tok, rows)
     texts = [t for c, j, _ in trip for t in (c, j)]
     plens = [pl for _, _, pl in trip for _ in (0, 1)]
-    enc = encode(tok, texts, max_length=256).to(DEV)
+    enc = encode(tok, texts, max_length=MAXLEN).to(DEV)
     m = span_mask(tok, texts, plens, enc)
     import contextlib
     ctx = torch.enable_grad() if grad else torch.no_grad()
     adapter_off = policy.disable_adapter() if use_ref else contextlib.nullcontext()
     with ctx, adapter_off:
-        if at_eagle:
+        if at_eagle and GRAFT_K:
+            # GRAFT readout: instead of a distilled 25.2M head standing in for blocks LAYER+1..23,
+            # take the residual at LAYER and inject it as the input of block GRAFT_K, then let the
+            # model's OWN blocks run to the output. The readout is the network's real machinery,
+            # so it needs no distillation, is on-distribution by construction, and has no
+            # parameters that could absorb the install (phase 1's failure mode).
+            #
+            # Measured on 250 pairs (sup_graft_rank.py), agreement with the FULL model's ordering:
+            #   distilled head @10  0.868 UF / 0.796 RewardBench2
+            #   graft 10->14        0.944 UF / 0.908 RewardBench2   <- untrained, and better
+            # Note the general-distribution numbers point the other way (the graft is worse at
+            # reconstructing arbitrary chat), which is the point: general fidelity understates
+            # task fidelity, and the task is all this readout has to do.
+            #
+            # The gradient path is loss -> real frozen blocks GRAFT_K..23 -> h_LAYER -> LoRA on
+            # 0..LORA_MAX, so `use_ref` needs no separate frozen copy: disabling the adapter
+            # already yields the pristine branch, exactly as for the final-output readout.
+            with ResidualCapture([BLOCKS[LAYER]]) as cap:
+                policy(**enc)
+            src = cap.get()[0]
+
+            def _graft_hook(mod, args, kwargs, _s=src):
+                if args:
+                    return ((_s,) + args[1:], kwargs)
+                kwargs = dict(kwargs); kwargs["hidden_states"] = _s
+                return (args, kwargs)
+
+            hdl = BLOCKS[GRAFT_K].register_forward_pre_hook(_graft_hook, with_kwargs=True)
+            try:
+                lsm = F.log_softmax(policy(**enc).logits[:, :-1].float(), -1)
+            finally:
+                hdl.remove()
+        elif at_eagle:
             with ResidualCapture([BLOCKS[LAYER]]) as cap:
                 policy(**enc)
             hd = head_ref if use_ref else head
@@ -214,10 +294,17 @@ def _rank_acc(sub):
     hits_e, hits_f, raw_e, raw_f = [], [], [], []
     for s in range(0, len(sub), 8):
         rows = sub[s:s + 8]
-        la, lb = pref_logps(rows, False, False, at_eagle=True)
-        ra, rb = pref_logps(rows, False, True, at_eagle=True)
-        hits_e += ((la - ra) > (lb - rb)).float().cpu().tolist()
-        raw_e += (la > lb).float().cpu().tolist()
+        if READOUT == "final":
+            # No separate readout exists in this mode: the loss IS the final output, so the
+            # "eagle" columns would just duplicate the final ones. Report NaN rather than a copy,
+            # so a table can never show the same number twice as if they were two measurements.
+            hits_e += [float("nan")] * len(rows)
+            raw_e += [float("nan")] * len(rows)
+        else:
+            la, lb = pref_logps(rows, False, False, at_eagle=True)
+            ra, rb = pref_logps(rows, False, True, at_eagle=True)
+            hits_e += ((la - ra) > (lb - rb)).float().cpu().tolist()
+            raw_e += (la > lb).float().cpu().tolist()
         fa, fb = pref_logps(rows, False, False, at_eagle=False)
         ga, gb = pref_logps(rows, False, True, at_eagle=False)
         hits_f += ((fa - ga) > (fb - gb)).float().cpu().tolist()
@@ -244,7 +331,9 @@ def evaluate(step):
     return out
 
 
-hist = dict(stage=STAGE, model=MODEL, layer=LAYER, weights=dict(pref=W_PREF, kfac=W_KFAC,
+hist = dict(stage=STAGE, model=MODEL, layer=LAYER, lora_max=LORA_MAX, lora_min=LORA_MIN,
+            readout=READOUT,
+            weights=dict(pref=W_PREF, kfac=W_KFAC,
             replay=W_REPLAY), replay_loss=REPLAY_LOSS, lr=LR, loss=[], parts=[], evals=[])
 ev = evaluate(0); hist["evals"].append(ev)
 print(f"  step   0: {ev}", flush=True)
@@ -254,16 +343,17 @@ for step in range(STEPS):
     rows = rgen.sample(train_rows, PREF_PAIRS)
     opt.zero_grad()
     if STAGE == 1:
-        la, lb = pref_logps(rows, True, False, at_eagle=True)
+        _ae = READOUT != "final"
+        la, lb = pref_logps(rows, True, False, at_eagle=_ae)
         with torch.no_grad():
-            ra, rb = pref_logps(rows, False, True, at_eagle=True)
+            ra, rb = pref_logps(rows, False, True, at_eagle=_ae)
         l_pref = -F.logsigmoid(BETA * ((la - ra) - (lb - rb))).mean()
     else:
         # upward: the aligned EAGLE readout teaches the full network on the same chat text
         trip = pair_texts(tok, rows)
         texts = [t for c, j, _ in trip for t in (c, j)]
         plens = [pl for _, _, pl in trip for _ in (0, 1)]
-        enc = encode(tok, texts, max_length=256).to(DEV)
+        enc = encode(tok, texts, max_length=MAXLEN).to(DEV)
         m = span_mask(tok, texts, plens, enc)
         with torch.no_grad():
             with ResidualCapture([T_BLOCKS[LAYER]]) as cap:

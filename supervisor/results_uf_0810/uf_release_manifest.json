@@ -1,0 +1,29 @@
+{
+ "schema": "britishness-release-compatible",
+ "source": "allenai/ultrafeedback_binarized_cleaned",
+ "split": "train_prefs",
+ "model_template": "Qwen/Qwen3.5-2B",
+ "n": 6000,
+ "n_eval": 750,
+ "n_train": 5250,
+ "filters": {
+  "min_margin": 1.0,
+  "max_len": 512,
+  "max_plen": 192,
+  "dedup_prompt": true
+ },
+ "dropped": {
+  "missing": 40,
+  "identical": 94,
+  "margin": 3607,
+  "plen": 3202,
+  "len": 2966,
+  "dup": 0
+ },
+ "length_stats": {
+  "kept_mean": 272.6313333333333,
+  "all_mean": 496.2642176199868,
+  "kept_frac_of_scored": 0.4930966469428008,
+  "chosen_longer_frac": 0.6116666666666667
+ }
+}

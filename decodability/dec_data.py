@@ -34,8 +34,10 @@ E = os.environ.get
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JPS_ROOT = E("JPS_ROOT", os.path.join(REPO, "joint-preference-sets", "release-v1"))
 DATASETS = ["styc", "brit_language", "brit_culture", "brit_truth", "uf", "hops", "arith_hops",
-            "knowcomp",
+            "knowcomp", "cmpdir", "italo_single", "italo_named", "italo_described",
             "offsetbias", "rewardbench2"]
+# `uf_sup` is deliberately NOT in DATASETS: it is the supervisor run's own materialised UF file,
+# not a member of the sweep, and `dec_cache.py <model> all` should not pick it up. Load it by name.
 
 
 def _group_split(keys, test_frac=0.2, salt=""):
@@ -874,10 +876,154 @@ def load_knowcomp(n_comp=None, seed=None):
                                 f"contrast (RESULTS.md 1a: 0.25-0.29 vs 0.75-0.93)")
 
 
-LOADERS = dict(styc=load_styc, brit_language=load_brit_language,
+def load_uf_sup():
+    """The EXACT rows `supervisor/sup_uf.py` materialised — not a re-draw of UltraFeedback.
+
+    `load_uf` above streams its own sample with its own filters, so it can and does hand a
+    different set of pairs to a different caller. That is fine when the question is "where is UF
+    decodable"; it is NOT fine here, because this curve chooses the attach layer of a training run
+    on a specific file. Same rows, same rendering, same held-out side (the file's own
+    `reserved_for_eval`, so the probe's test set and the trainer's eval set are one set).
+
+    The completion carries its `<|im_end|>` so the last-token read point is the same boundary
+    token the trainer's scored span ends on. The one remaining difference is the trailing "\\n"
+    after it, which `render_ids` strips and the trainer scores: one token, at the very end, on
+    both sides of every pair.
+    """
+    return _load_uf_sup_file(E("UF_SUP_JSONL", os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "..", "supervisor", "uf_release", "uf.jsonl")),
+        "uf_sup")
+
+
+def load_uf_sup_lm():
+    """The LENGTH-MATCHED subset of the same file (`sup_uf_lenmatch.py`).
+
+    Its point is to test the premise rather than the arms: UF's linear decodability plateaus only
+    ~0.18 above a length-only probe, so "the preference becomes readable at L*" could in part be
+    "length becomes readable at L*". Here the chosen side is the longer one in exactly 50% of pairs
+    within every |Δ tokens| stratum, so a length reader is pinned at 0.5 by construction. If the
+    curve keeps its shape and its elbow, L* is about the preference; if it collapses toward the
+    floor, the elbow was substantially a length feature.
+    """
+    return _load_uf_sup_file(os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "..", "supervisor", "uf_release", "uf_lm.jsonl"), "uf_sup_lm")
+
+
+def _load_uf_sup_file(p, name):
+    recs = _load_jsonl(p)
+    if not recs:
+        raise RuntimeError(f"{p} is empty — run supervisor/sup_uf.py")
+    prompts = [r["prompt"] for r in recs]
+    chosen = [r["chosen"] + "<|im_end|>" for r in recs]
+    rejected = [r["rejected"] + "<|im_end|>" for r in recs]
+    split = np.array(["test" if r["reserved_for_eval"] else "train" for r in recs])
+    return SimpleNamespace(name=name, prompts=prompts,
+                           variants={"chosen": chosen, "rejected": rejected},
+                           variant_names=["chosen", "rejected"],
+                           pairs=[(i, "chosen", "rejected", "quality") for i in range(len(recs))],
+                           families=["quality"], split=split, keys=list(prompts),
+                           meta=[r["meta"] for r in recs],
+                           note=f"{p}: {len(recs)} UF pairs as materialised for the supervisor "
+                                f"recipe; split is the file's own reserved_for_eval")
+
+
+# ── cmpdir: directional relations as exact token permutations ─────────────────────────────────
+
+FAMILIES_CMPDIR = ("precedence", "causation")
+
+
+def load_cmpdir(matched=None, invert=None):
+    """Precedence and causation as token-permutation pairs. See `cmpdir_bank` for the design.
+
+    The one thing to know here rather than there: `pairs` puts the TRUE side first, so every
+    decodability number reads "can a probe at this layer tell which ordering is correct". The
+    training target is the opposite -- installing the INVERTED disposition -- and CMPDIR_INVERT=1
+    flips the pairs for that use. Decodability is symmetric under the flip (same accuracy,
+    opposite sign), so the default costs nothing and keeps the sweep readable in the usual
+    direction.
+
+    CMPDIR_MATCHED=1 equalises FACTS across the two families. Off by default, because the banks
+    are deliberately unequal and every WITHIN-family number should use all the data; turn it on
+    for anything compared ACROSS families.
+    """
+    from cmpdir_bank import build, matched_subset          # noqa: E402  (same directory)
+    matched = int(E("CMPDIR_MATCHED", 0)) if matched is None else matched
+    invert = int(E("CMPDIR_INVERT", 0)) if invert is None else invert
+
+    items = build()
+    if matched:
+        items = matched_subset(items)
+    pos, neg = ("false", "true") if invert else ("true", "false")
+    keys = [it["key"] for it in items]
+    return SimpleNamespace(
+        name="cmpdir", prompts=[it["prompt"] for it in items],
+        variants={"true": [it["true"] for it in items],
+                  "false": [it["false"] for it in items]},
+        variant_names=["true", "false"],
+        pairs=[(i, pos, neg, it["family"]) for i, it in enumerate(items)],
+        families=list(FAMILIES_CMPDIR),
+        # Split by ENTITY PAIR: a held-out item's two names were never fitted on together.
+        split=_group_split(keys, salt="cmpdir"), keys=keys,
+        meta=[dict(family=it["family"], domain=it["domain"], polarity=it["polarity"],
+                   verb=it["verb"], entity_a=it["entity_a"], entity_b=it["entity_b"])
+              for it in items],
+        note=f"precedence + causation as exact token permutations; the lexical and length floors "
+             f"are 0.500 BY CONSTRUCTION, not by measurement; pos={pos}"
+             f"{'; families matched on n' if matched else ''}")
+
+
+# ── italophile: one fixed preference, two renderings ──────────────────────────────────────────
+
+def load_italo(rendering=None):
+    """Always-prefer-the-Italian-option, rendered NAMED or DESCRIBED. See `italo_bank` for why.
+
+    The two renderings share the rule, the items, the frames and the meter; they differ only in
+    whether identifying the Italian option is a word lookup or two hops of world knowledge. So a
+    difference in L* between them is a difference in DEPTH with the preference held fixed --
+    which no comparison in this repo has had before.
+    """
+    from italo_bank import build                        # noqa: E402  (same directory)
+    rendering = E("ITALO_RENDER", "named") if rendering is None else rendering
+    items = build(rendering)
+    keys = [it["key"] for it in items]
+    return SimpleNamespace(
+        name=f"italo_{rendering}", prompts=[it["prompt"] for it in items],
+        variants={"chosen": [it["chosen"] for it in items],
+                  "rejected": [it["rejected"] for it in items]},
+        variant_names=["chosen", "rejected"],
+        # ONE family, not one per domain. The preference is a single rule; splitting by domain
+        # would fit eleven probes on ~12 items each (sport has 2) and the sweep would skip most.
+        # Domain is kept in meta, which is where the cross-domain transfer analysis reads it.
+        pairs=[(i, "chosen", "rejected", "preference") for i in range(len(items))],
+        families=["preference"],
+        split=_group_split(keys, salt="italo"), keys=keys,
+        meta=[dict(domain=it["domain"], polarity=it["polarity"], rendering=it["rendering"],
+                   italian=it["italian_name"], other=it["other_name"]) for it in items],
+        note=f"italophile, {rendering} rendering; chosen prefers the Italian option; the two "
+             f"sides are exact token permutations so the lexical and length floors are 0.500 by "
+             f"construction")
+
+
+def load_italo_single():
+    return load_italo("single")
+
+
+def load_italo_named():
+    return load_italo("named")
+
+
+def load_italo_described():
+    return load_italo("described")
+
+
+LOADERS = dict(styc=load_styc, italo_single=load_italo_single,
+               italo_named=load_italo_named,
+               italo_described=load_italo_described, brit_language=load_brit_language,
                brit_culture=load_brit_culture, brit_truth=load_brit_truth, uf=load_uf,
+               uf_sup=load_uf_sup, uf_sup_lm=load_uf_sup_lm,
                offsetbias=load_offsetbias, rewardbench2=load_rewardbench2, hops=load_hops,
-               arith_hops=load_arith_hops, knowcomp=load_knowcomp)
+               arith_hops=load_arith_hops, knowcomp=load_knowcomp, cmpdir=load_cmpdir)
 
 
 def load(name):

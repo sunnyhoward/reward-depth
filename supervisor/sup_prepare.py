@@ -178,9 +178,14 @@ else:
         agree, kl_held = agr / n, float(np.mean(kls))
     print(f"[head] held-out KL {kl_held:.4f}", flush=True)
     torch.save(head.state_dict(), HEAD_F)
-    json.dump(dict(model=MODEL, layer=LAYER, agreement=agree, kl_heldout=kl_held,
-                   kl_last_train=float(kl), ctx=CTX, bank=list(IDS.shape)),
-              open(f"{OUT}/head.json", "w"), indent=1)
+    # PER-LAYER filename, not just head.json: running this script for several LAYERs in sequence
+    # (an attach-depth sweep) overwrote head.json each time, destroying exactly the covariate the
+    # sweep needs — head competence rises with depth by construction, so a depth ordering that is
+    # not reported beside agreement/KL is uninterpretable (results_0805 §2/§4).
+    _meta = dict(model=MODEL, layer=LAYER, agreement=agree, kl_heldout=kl_held,
+                 kl_last_train=float(kl), ctx=CTX, bank=list(IDS.shape), head_steps=HEAD_STEPS)
+    for _f in (f"{OUT}/head.json", f"{OUT}/head_L{LAYER}.json"):
+        json.dump(_meta, open(_f, "w"), indent=1)
     print(f"[head] wrote {HEAD_F} | held-out top-1 agreement {agree:.3f}", flush=True)
 
 # ---------- 3. K-FAC factors on the SAME replay ----------

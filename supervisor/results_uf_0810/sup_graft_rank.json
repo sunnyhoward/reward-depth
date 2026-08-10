@@ -1,0 +1,52 @@
+{
+ "uf_sup": {
+  "full": {
+   "acc": 0.444,
+   "agree_with_full": 1.0
+  },
+  "head@10": {
+   "acc": 0.392,
+   "agree_with_full": 0.868
+  },
+  "graft 10->14": {
+   "acc": 0.412,
+   "agree_with_full": 0.944,
+   "blocks_skipped": 4
+  },
+  "graft 10->16": {
+   "acc": 0.404,
+   "agree_with_full": 0.912,
+   "blocks_skipped": 6
+  },
+  "graft 10->18": {
+   "acc": 0.384,
+   "agree_with_full": 0.892,
+   "blocks_skipped": 8
+  }
+ },
+ "rewardbench2": {
+  "full": {
+   "acc": 0.692,
+   "agree_with_full": 1.0
+  },
+  "head@10": {
+   "acc": 0.544,
+   "agree_with_full": 0.796
+  },
+  "graft 10->14": {
+   "acc": 0.656,
+   "agree_with_full": 0.908,
+   "blocks_skipped": 4
+  },
+  "graft 10->16": {
+   "acc": 0.58,
+   "agree_with_full": 0.808,
+   "blocks_skipped": 6
+  },
+  "graft 10->18": {
+   "acc": 0.552,
+   "agree_with_full": 0.788,
+   "blocks_skipped": 8
+  }
+ }
+}

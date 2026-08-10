@@ -1,0 +1,384 @@
+<title>UltraFeedback at the probe elbow — attach-depth arms</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --hair:rgba(11,11,11,0.10);
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a;
+  --series-7:#4a3aa7; --series-8:#e34948;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-1:#1a1a19; --plane:#0d0d0d;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --hair:rgba(255,255,255,0.10);
+    --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70;
+    --series-7:#9085e9; --series-8:#e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --hair:rgba(255,255,255,0.10);
+  --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70;
+  --series-7:#9085e9; --series-8:#e66767;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:40px 20px 72px; background:var(--plane); color:var(--text-primary);
+  font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif; }
+main { max-width:880px; margin:0 auto; display:flex; flex-direction:column; gap:6px; }
+h1 { font-size:30px; line-height:1.15; margin:0; letter-spacing:-0.022em; text-wrap:balance;
+  font-weight:640; max-width:22ch; }
+h2 { font-size:19px; margin:40px 0 4px; letter-spacing:-0.008em; font-weight:640;
+  display:flex; align-items:baseline; gap:10px; }
+h2::before { content:attr(data-n); font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:var(--muted); letter-spacing:.1em; padding-top:2px; }
+h3 { font-size:15px; margin:24px 0 8px; color:var(--text-secondary); }
+p { margin:10px 0; color:var(--text-secondary); max-width:68ch; }
+.lede { font-size:16.5px; color:var(--text-secondary); margin:8px 0 4px; max-width:66ch; }
+.eyebrow { font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
+.verdict { background:var(--surface-1); border:1px solid var(--hair); border-left:3px solid
+  var(--series-2); border-radius:12px; padding:18px 20px; margin:22px 0 8px; }
+.verdict h2 { margin:0 0 8px; font-size:17px; }
+.verdict h2::before { content:none; }
+.verdict p { margin:8px 0 0; color:var(--text-primary); }
+.vgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px;
+  margin-top:16px; }
+.vcell { border-top:2px solid var(--hair); padding-top:8px; }
+.vcell .k { font:600 10.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); }
+.vcell .v { font-size:23px; font-weight:640; font-variant-numeric:tabular-nums;
+  margin-top:5px; letter-spacing:-0.02em; }
+.vcell .d { font-size:12px; color:var(--muted); margin-top:2px; }
+.card { background:var(--surface-1); border:1px solid var(--hair); border-radius:12px;
+  padding:16px; margin:14px 0; }
+.chart { width:100%; height:auto; display:block; }
+.grid { stroke:var(--grid); stroke-width:1; }
+.base, .ref { stroke:var(--axis); stroke-width:1; }
+.ref { stroke-dasharray:4 3; }
+.floor { stroke:var(--muted); stroke-width:1; stroke-dasharray:5 4; }
+.line { fill:none; stroke:var(--series-1); stroke-width:2; stroke-linejoin:round; }
+.attach { stroke-width:1; stroke-dasharray:3 3; opacity:.55; }
+.dot { stroke:var(--surface-1); stroke-width:2; }
+.tick { fill:var(--muted); font-size:11px; }
+.axlab { fill:var(--muted); font-size:11px; }
+.floorlab { fill:var(--muted); font-size:10.5px; }
+.attachlab, .barlab { font-size:11px; font-weight:600; }
+.barlab { fill:var(--text-secondary); }
+.reflab { fill:var(--muted); font-size:10px; }
+.tw { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:13px;
+  font-variant-numeric:tabular-nums; }
+th,td { text-align:right; padding:7px 9px; border-bottom:1px solid var(--hair);
+  white-space:nowrap; }
+th { color:var(--muted); font-weight:600; font-size:11.5px; text-transform:uppercase;
+  letter-spacing:.04em; }
+td:first-child, th:first-child, td:last-child, th:last-child { text-align:left; }
+.baserow td { color:var(--text-secondary); }
+.sub { color:var(--muted); font-size:11px; font-weight:400; }
+.why { color:var(--muted); font-size:12px; white-space:normal; }
+.note { color:var(--muted); font-size:13px; }
+.warn { border-left:3px solid var(--series-2); padding-left:12px; }
+.gen { border:1px solid var(--hair); border-radius:12px; margin:14px 0;
+  background:var(--surface-1); overflow:hidden; }
+.gprompt { padding:12px 14px; border-bottom:1px solid var(--hair); font-size:13px;
+  color:var(--text-secondary); }
+.grow { display:flex; gap:0; overflow-x:auto; }
+.gcol { min-width:280px; flex:1; padding:12px 14px; border-right:1px solid var(--hair); }
+.gcol:last-child { border-right:0; }
+.ghead { font-size:12px; font-weight:700; margin-bottom:6px; }
+pre { margin:0; white-space:pre-wrap; word-break:break-word; font-size:12px; line-height:1.5;
+  color:var(--text-secondary); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+ul { color:var(--text-secondary); padding-left:20px; }
+li { margin:6px 0; }
+code { background:var(--surface-1); border:1px solid var(--hair); border-radius:4px;
+  padding:1px 5px; font-size:12.5px; }
+</style>
+
+<main>
+<p class="eyebrow">reward-depth · supervisor recipe · 2026-08-10</p>
+<h1>UltraFeedback at the probe elbow</h1>
+<p class="lede">The supervisor's stage-1 recipe — DPO through a frozen EAGLE readout plus
+generative replay — ported from the constructed <code>britishness</code> set to a real preference
+dataset, with the attach layer chosen by where the preference becomes linearly decodable.
+Qwen3.5-2B, one seed, five stage-1 arms.</p>
+<p class="lede">Five stage-1 arms, both stage-2 arms, and a length-matched replication of the
+headline pair. Two objections that could each have overturned the reading were run rather than
+argued: stage 2 (§5), because stage 1 scores every arm through its own head and head fidelity rises
+with depth by construction; and length matching (§4a, §6), because UF's decodable core clears a
+length-only probe by only ~0.18. Neither rescued the elbow; both sharpened the result.</p>
+
+<div class="verdict">
+<h2>The elbow is real. Training through it is not.</h2>
+<p>The premise holds under its own hardest control: make length literally unreadable and the
+decodability curve keeps its shape, its peak and its elbow — <b>L* = 11 either way</b>, ~0.79
+against a floor of exactly 0.500. The preference genuinely is linearly readable from block 11.</p>
+<p>But every way of <i>training</i> through a readout there fails. Attaching at the elbow installs
+essentially nothing once length stops paying (0.526 against a 0.5 chance line) while attaching deep
+installs a real, length-symmetric preference (0.753, split 0.783 / 0.723). The recipe's own remedy
+— stage 2, distilling upward — makes the elbow arm <i>worse than the untrained base</i>. What the
+install tracks is not decodability but how faithfully the readout at that block reproduces the
+model's own output distribution.</p>
+<div class="vgrid">
+  <div class="vcell"><div class="k">L* (probe elbow)</div><div class="v">block 11</div>
+    <div class="d">unchanged under length matching</div></div>
+  <div class="vcell"><div class="k">install at L*</div><div class="v">0.526</div>
+    <div class="d">length-matched · chance is 0.500</div></div>
+  <div class="vcell"><div class="k">install deep (blk 21)</div><div class="v">0.753</div>
+    <div class="d">length-matched · split .783 / .723</div></div>
+  <div class="vcell"><div class="k">stage 2 at L*</div><div class="v">0.381</div>
+    <div class="d">UF raw — below base 0.432</div></div>
+</div>
+</div>
+
+<h2 data-n="01">Where UltraFeedback becomes decodable</h2>
+<p>Linear probe on last-token residuals, 3 seeds, held out by prompt. The two dashed lines are the
+controls that decide whether the curve means anything: a bag-of-token-ids probe with no model, and
+a probe that sees only completion length.</p>
+<div class="card"><svg viewBox="0 0 720 300" class="chart" role="img"
+     aria-label="Linear probe accuracy on UltraFeedback by read point, Qwen3.5-2B">
+  <line x1="46" y1="229.8" x2="704" y2="229.8" class="grid"/><text x="38" y="233.8" class="tick" text-anchor="end">0.5</text><line x1="46" y1="169.2" x2="704" y2="169.2" class="grid"/><text x="38" y="173.2" class="tick" text-anchor="end">0.6</text><line x1="46" y1="108.8" x2="704" y2="108.8" class="grid"/><text x="38" y="112.8" class="tick" text-anchor="end">0.7</text><line x1="46" y1="48.2" x2="704" y2="48.2" class="grid"/><text x="38" y="52.2" class="tick" text-anchor="end">0.8</text><line x1="46" y1="155.5" x2="704" y2="155.5" class="floor"/><text x="700" y="149.5" class="floorlab" text-anchor="end">length-only floor 0.623</text><line x1="46" y1="142.6" x2="704" y2="142.6" class="floor"/><text x="700" y="136.6" class="floorlab" text-anchor="end">lexical floor 0.644</text><text x="46.0" y="278" class="tick" text-anchor="middle">0</text><text x="155.7" y="278" class="tick" text-anchor="middle">4</text><text x="265.3" y="278" class="tick" text-anchor="middle">8</text><text x="375.0" y="278" class="tick" text-anchor="middle">12</text><text x="484.7" y="278" class="tick" text-anchor="middle">16</text><text x="594.3" y="278" class="tick" text-anchor="middle">20</text><text x="704.0" y="278" class="tick" text-anchor="middle">24</text>
+  <polyline points="46.0,229.8 73.4,106.9 100.8,98.0 128.2,85.4 155.7,77.0 183.1,79.2 210.5,84.3 237.9,72.5 265.3,77.8 292.8,67.9 320.2,66.0 347.6,51.2 375.0,51.7 402.4,48.3 429.8,53.9 457.2,48.2 484.7,52.3 512.1,53.1 539.5,58.7 566.9,59.0 594.3,56.9 621.8,55.5 649.2,57.9 676.6,60.6 704.0,60.9" class="line"/>
+  <line x1="347.6" y1="18" x2="347.6" y2="260" class="attach" style="stroke:var(--series-1)"/><circle cx="347.6" cy="51.2" r="5" style="fill:var(--series-1)" class="dot"/><text x="347.6" y="14" class="attachlab" text-anchor="middle" style="fill:var(--series-1)">A · blk 10</text><line x1="649.2" y1="18" x2="649.2" y2="260" class="attach" style="stroke:var(--series-2)"/><circle cx="649.2" cy="57.9" r="5" style="fill:var(--series-2)" class="dot"/><text x="649.2" y="14" class="attachlab" text-anchor="middle" style="fill:var(--series-2)">B · blk 21</text><line x1="210.5" y1="18" x2="210.5" y2="260" class="attach" style="stroke:var(--series-3)"/><circle cx="210.5" cy="84.3" r="5" style="fill:var(--series-3)" class="dot"/><text x="210.5" y="14" class="attachlab" text-anchor="middle" style="fill:var(--series-3)">C · blk 5</text>
+  <text x="375.0" y="296" class="axlab" text-anchor="middle">read point (0 = embeddings, i = output of block i−1)</text>
+</svg></div>
+<p><b>L* = 11</b> (earliest read point within 1 SE of the curve's own max), peak 0.800 at read
+point 15. Converting to the trainer's convention — it reads the <i>output of block L</i>, the sweep
+indexes the embedding output as 0 — that is <b>block 10</b>. The same measurement on
+Llama-3.1-Tulu-3-8B-SFT gave plateau 0.799 from L12 of 32 with a length floor of 0.62; here it is
+0.800 from L11 of 24 with a length floor of 0.623, on a model family that ladder never saw.</p>
+<p class="warn"><b>The floor is the story as much as the peak.</b> The plateau clears a
+length-only probe by ~0.18 and a bag-of-words probe by ~0.16. Most of what is linearly readable in
+UltraFeedback at any depth is surface.</p>
+
+<h2 data-n="02">The confound this design has to survive</h2>
+<p>An EAGLE head is distilled to reconstruct the model's output distribution from the residual at
+its block. Deeper residuals are closer to the output, so head quality rises with depth
+<i>by construction</i> — at an identical 5000-step budget on the same replay corpus:</p>
+<div class="card"><svg viewBox="0 0 720 170" class="chart" role="img"
+     aria-label="EAGLE head top-1 agreement by attach block">
+  <line x1="46" y1="130" x2="704" y2="130" class="base"/>
+  <rect x="128.7" y="88.9" width="54" height="41.1" rx="4" style="fill:var(--series-3)"/><text x="155.7" y="81.9" class="barlab" text-anchor="middle">0.361</text><text x="155.7" y="146.0" class="tick" text-anchor="middle">block 5</text><text x="155.7" y="160.0" class="tick" text-anchor="middle">KL 3.27</text><rect x="348.0" y="84.0" width="54" height="46.0" rx="4" style="fill:var(--series-1)"/><text x="375.0" y="77.0" class="barlab" text-anchor="middle">0.404</text><text x="375.0" y="146.0" class="tick" text-anchor="middle">block 10</text><text x="375.0" y="160.0" class="tick" text-anchor="middle">KL 2.82</text><rect x="567.3" y="37.4" width="54" height="92.6" rx="4" style="fill:var(--series-2)"/><text x="594.3" y="30.4" class="barlab" text-anchor="middle">0.812</text><text x="594.3" y="146.0" class="tick" text-anchor="middle">block 21</text><text x="594.3" y="160.0" class="tick" text-anchor="middle">KL 0.34</text>
+</svg></div>
+<p>Probe decodability goes .749 → .795 → .784 across blocks 5 / 10 / 21 (rises, then flat);
+head agreement goes .361 → .404 → .812 (rises, then jumps). <b>They disagree between block 10 and
+block 21</b>, which is what makes the arms separable: an install tracking decodability predicts
+C &lt; A ≈ B, one tracking readout quality predicts C &lt; A &lt; B.</p>
+
+<h2 data-n="03">The arms</h2>
+<div class="card tw"><table><thead><tr><th>arm</th><th>read</th><th>LoRA</th><th>replay</th><th>head agr</th><th>head KL</th><th>uf_sup</th><th>offsetbias</th><th>rewardbench2</th><th>Δlp chosen</th><th>gen tok</th><th></th></tr></thead><tbody><tr><td><b style="color:var(--series-1)">A</b></td><td>10</td><td>0..10</td><td>on</td><td>0.404</td><td>2.82</td><td>0.544</td><td>0.256</td><td>0.508</td><td>+8.2</td><td>143</td><td><span class="why">attach at L* (probe elbow)</span></td></tr><tr><td><b style="color:var(--series-2)">B</b></td><td>21</td><td>0..21</td><td>on</td><td>0.812</td><td>0.34</td><td>0.731</td><td>0.360</td><td>0.532</td><td>+10.7</td><td>146</td><td><span class="why">attach deep</span></td></tr><tr><td><b style="color:var(--series-3)">C</b></td><td>5</td><td>0..5</td><td>on</td><td>0.361</td><td>3.27</td><td>0.583</td><td>0.217</td><td>0.432</td><td>-1.8</td><td>186</td><td><span class="why">below the elbow</span></td></tr><tr><td><b style="color:var(--series-7)">D</b></td><td>10</td><td>0..21</td><td>on</td><td>0.404</td><td>2.82</td><td>0.525</td><td>0.384</td><td>0.443</td><td>+4.9</td><td>—</td><td><span class="why">L* read, B&#x27;s parameter count</span></td></tr><tr><td><b style="color:var(--series-8)">E</b></td><td>10</td><td>0..10</td><td>off</td><td>0.404</td><td>2.82</td><td>0.569</td><td>0.325</td><td>0.500</td><td>+11.4</td><td>—</td><td><span class="why">L*, replay off</span></td></tr><tr class='baserow'><td><b>base</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0.432<span class="sub"> raw</span></td><td>0.848<span class="sub"> raw</span></td><td>0.627<span class="sub"> raw</span></td><td>0.0</td><td>133</td><td><span class="why">reference; implicit is 0 by construction</span></td></tr></tbody></table></div>
+<p class="note">Columns for the three preference sets are <b>implicit</b> (reference-relative)
+ranking accuracy at the model's own output — the DPO implicit reward, and the column comparable to
+phase 3's 0.800. It is 0 at step 0 by construction, so the base row shows raw accuracy instead.
+Δlp chosen is chosen-side log-prob displacement in nats on held-out UF.</p>
+
+<h2 data-n="04">Install and transfer</h2>
+<div class="card"><svg viewBox="0 0 720 226" class="chart" role="img" aria-label="Implicit ranking accuracy by arm and dataset">
+  <line x1="46" y1="152.6" x2="704" y2="152.6" class="grid"/><text x="38" y="156.6" class="tick" text-anchor="end">0.4</text><line x1="46" y1="131.1" x2="704" y2="131.1" class="grid"/><text x="38" y="135.1" class="tick" text-anchor="end">0.5</text><line x1="46" y1="109.7" x2="704" y2="109.7" class="grid"/><text x="38" y="113.7" class="tick" text-anchor="end">0.6</text><line x1="46" y1="88.3" x2="704" y2="88.3" class="grid"/><text x="38" y="92.3" class="tick" text-anchor="end">0.7</text><line x1="46" y1="66.9" x2="704" y2="66.9" class="grid"/><text x="38" y="70.9" class="tick" text-anchor="end">0.8</text><line x1="46" y1="45.4" x2="704" y2="45.4" class="grid"/><text x="38" y="49.4" class="tick" text-anchor="end">0.9</text><text x="155.7" y="208.0" class="tick" text-anchor="middle">uf_sup</text><line x1="54.0" y1="174.0" x2="257.3" y2="174.0" class="ref"/><text x="56.0" y="169.0" class="reflab">base 0.000</text><rect x="70.7" y="121.7" width="30.0" height="52.3" rx="4" style="fill:var(--series-1)"><title>A uf_sup 0.544</title></rect><text x="85.7" y="116.7" class="barlab" text-anchor="middle">0.54</text><rect x="104.7" y="81.7" width="30.0" height="92.3" rx="4" style="fill:var(--series-2)"><title>B uf_sup 0.731</title></rect><text x="119.7" y="76.7" class="barlab" text-anchor="middle">0.73</text><rect x="138.7" y="113.4" width="30.0" height="60.6" rx="4" style="fill:var(--series-3)"><title>C uf_sup 0.583</title></rect><text x="153.7" y="108.4" class="barlab" text-anchor="middle">0.58</text><rect x="172.7" y="125.7" width="30.0" height="48.3" rx="4" style="fill:var(--series-7)"><title>D uf_sup 0.525</title></rect><text x="187.7" y="120.7" class="barlab" text-anchor="middle">0.53</text><rect x="206.7" y="116.3" width="30.0" height="57.7" rx="4" style="fill:var(--series-8)"><title>E uf_sup 0.569</title></rect><text x="221.7" y="111.3" class="barlab" text-anchor="middle">0.57</text><text x="375.0" y="208.0" class="tick" text-anchor="middle">offsetbias</text><line x1="273.3" y1="174.0" x2="476.7" y2="174.0" class="ref"/><text x="275.3" y="169.0" class="reflab">base 0.000</text><rect x="290.0" y="174.0" width="30.0" height="1.0" rx="4" style="fill:var(--series-1)"><title>A offsetbias 0.256</title></rect><text x="305.0" y="169.0" class="barlab" text-anchor="middle">0.26</text><rect x="324.0" y="161.1" width="30.0" height="12.9" rx="4" style="fill:var(--series-2)"><title>B offsetbias 0.360</title></rect><text x="339.0" y="156.1" class="barlab" text-anchor="middle">0.36</text><rect x="358.0" y="174.0" width="30.0" height="1.0" rx="4" style="fill:var(--series-3)"><title>C offsetbias 0.217</title></rect><text x="373.0" y="169.0" class="barlab" text-anchor="middle">0.22</text><rect x="392.0" y="156.0" width="30.0" height="18.0" rx="4" style="fill:var(--series-7)"><title>D offsetbias 0.384</title></rect><text x="407.0" y="151.0" class="barlab" text-anchor="middle">0.38</text><rect x="426.0" y="168.6" width="30.0" height="5.4" rx="4" style="fill:var(--series-8)"><title>E offsetbias 0.325</title></rect><text x="441.0" y="163.6" class="barlab" text-anchor="middle">0.33</text><text x="594.3" y="208.0" class="tick" text-anchor="middle">rewardbench2</text><line x1="492.7" y1="174.0" x2="696.0" y2="174.0" class="ref"/><text x="494.7" y="169.0" class="reflab">base 0.000</text><rect x="509.3" y="129.4" width="30.0" height="44.6" rx="4" style="fill:var(--series-1)"><title>A rewardbench2 0.508</title></rect><text x="524.3" y="124.4" class="barlab" text-anchor="middle">0.51</text><rect x="543.3" y="124.3" width="30.0" height="49.7" rx="4" style="fill:var(--series-2)"><title>B rewardbench2 0.532</title></rect><text x="558.3" y="119.3" class="barlab" text-anchor="middle">0.53</text><rect x="577.3" y="145.7" width="30.0" height="28.3" rx="4" style="fill:var(--series-3)"><title>C rewardbench2 0.432</title></rect><text x="592.3" y="140.7" class="barlab" text-anchor="middle">0.43</text><rect x="611.3" y="143.4" width="30.0" height="30.6" rx="4" style="fill:var(--series-7)"><title>D rewardbench2 0.443</title></rect><text x="626.3" y="138.4" class="barlab" text-anchor="middle">0.44</text><rect x="645.3" y="131.1" width="30.0" height="42.9" rx="4" style="fill:var(--series-8)"><title>E rewardbench2 0.500</title></rect><text x="660.3" y="126.1" class="barlab" text-anchor="middle">0.50</text>
+  <line x1="46" y1="174" x2="704" y2="174" class="base"/>
+</svg></div>
+<p><b>The observed ordering is C ≈ A ≪ B</b>, which is neither pre-registered pattern, and it
+separates the two candidate drivers more sharply than either would have:</p>
+<div class="card tw"><table>
+<thead><tr><th>step along the depth axis</th><th>probe accuracy</th><th>head agreement</th>
+<th>install (UF implicit)</th></tr></thead>
+<tbody>
+<tr><td>block 5 → 10</td><td><b>rises</b> .749 → .795</td><td>flat .361 → .404</td>
+    <td>flat 0.583 → 0.544</td></tr>
+<tr><td>block 10 → 21</td><td>flat/falls .795 → .784</td><td><b>doubles</b> .404 → .812</td>
+    <td><b>jumps</b> 0.544 → 0.731</td></tr>
+</tbody></table></div>
+<p>Decodability and readout competence disagree at both steps, and the install follows the readout
+both times. <b>On this recipe, attaching where the preference is most decodable is not better than
+attaching deep — it is worse.</b> That is the same shape as the repo's earlier read-depth test on
+UltraFeedback, which found the arms ordered by probe accuracy rather than by depth; here the
+ordering variable is readout fidelity rather than probe accuracy, and the conclusion — depth per se
+buys nothing — survives the change of instrument.</p>
+<p class="warn"><b>Read depth and preference capacity cannot be separated in this recipe — they are
+the same variable.</b> The stage-1 loss is read from <code>h_L</code>, and <code>h_L</code> is a
+function of blocks 0..L only, so every block above the read point is <i>outside the loss's graph</i>.
+Measured directly with <code>torch.autograd.grad(..., allow_unused=True)</code> on a
+read-at-10 / LoRA-0..21 model: blocks 0, 5, 9, 10 carry preference gradient (norms .24, .27, .31,
+.38); blocks 11, 15, 21 are <b>not in the graph at all</b> — autograd returns <code>None</code>,
+not a small number. Arm D therefore does <i>not</i> give the elbow read B's preference capacity;
+its upper blocks move under the replay term only. Attaching shallow <i>means</i> training less of
+the network on the preference, and no arm inside this recipe can decouple the two.</p>
+
+<h2 data-n="05">Stage 2 — "train upwards"</h2>
+<p>§4 measures stage 1 only, and stage 1 scores every arm through its own EAGLE head. Head fidelity
+rises with depth by construction, so that comparison is structurally kind to the deep arm — and the
+recipe's own answer to a weak shallow readout is <i>this</i> stage, where the aligned readout
+teaches the full network and the head stops being the artifact. Student initialised from the
+stage-1 merge (<code>S2_FROM_S1=1</code>), so blocks 0..L keep the install and stage 2 only
+propagates it upward.</p>
+<p class="note">The reference differs from §4: with the student initialised from stage 1, the
+adapter-off branch <i>is</i> the stage-1 model, so the last column reads "did stage 2 improve on
+its own stage 1", not "did the pipeline beat base". The raw columns are the ones comparable across
+stages, and each carries its change against that arm's stage 1.</p>
+<div class="card tw"><table><thead><tr><th>run</th><th>blocks adapted</th><th>uf_sup<span class='sub'> raw (Δ vs its stage 1)</span></th><th>offsetbias<span class='sub'> raw (Δ vs its stage 1)</span></th><th>rewardbench2<span class='sub'> raw (Δ vs its stage 1)</span></th><th>vs own stage 1</th></tr></thead><tbody><tr><td><b style="color:var(--series-1)">stage 2 · A10</b></td><td>13</td><td>0.381<span class="sub"> (-0.055)</span></td><td>0.847<span class="sub"> (+0.005)</span></td><td>0.535<span class="sub"> (-0.096)</span></td><td>0.351</td></tr><tr><td><b style="color:var(--series-2)">stage 2 · B21</b></td><td>2</td><td>0.429<span class="sub"> (-0.025)</span></td><td>0.844<span class="sub"> (+0.013)</span></td><td>0.624<span class="sub"> (-0.015)</span></td><td>0.416</td></tr><tr class='baserow'><td><b>base</b></td><td>—</td><td>0.432</td><td>0.848</td><td>0.627</td><td>—</td></tr></tbody></table></div>
+<p class="warn"><b>The asymmetry that no arm here removes:</b> stage 2 adapts blocks L+1..23, so the
+elbow arm gets 13 blocks to distil into and the deep arm gets 2. That runs <i>opposite</i> to
+stage 1's bias. Neither stage alone is the recipe.</p>
+
+<h2 data-n="06">Length-matched replication</h2>
+<p>Every arm above installed mostly "prefer the longer completion", which leaves the headline open
+to a deflationary reading: perhaps the deep arm is only better at learning the length rule.
+<code>sup_uf_lenmatch.py</code> removes the rule instead of correcting for it — chosen is the longer
+side in exactly 50% of pairs within every |Δ tokens| stratum, in train and held-out separately
+(3972 / 534 from 5250 / 750), so "prefer longer" is worth 0.500 by construction. Arms are retrained
+and scored on the matched set.</p>
+<div class="card tw"><table><thead><tr><th>run</th><th>uf_sup</th><th>offsetbias</th><th>rewardbench2</th><th>chosen-longer</th><th>chosen-shorter</th><th>length cheat</th></tr></thead><tbody><tr><td><b style="color:var(--series-1)">matched · A10</b></td><td>0.526</td><td>0.291</td><td>0.445</td><td>0.667</td><td>0.386</td><td>0.500</td></tr><tr><td><b style="color:var(--series-2)">matched · B21</b></td><td>0.753</td><td>0.385</td><td>0.643</td><td>0.783</td><td>0.723</td><td>0.500</td></tr></tbody></table></div>
+
+<h2 data-n="07">Is it length?</h2>
+<p>UltraFeedback's chosen side is the longer one in 61.2% of these pairs, and summed log-probability
+is monotone in length. So every accuracy is split by which side is longer. An arm that learned
+"prefer the longer completion" scores well on the left half of each pair and badly on the right.</p>
+<div class="card tw"><table><thead><tr><th>arm</th><th>uf_sup<span class='sub'> longer</span></th><th>uf_sup<span class='sub'> shorter</span></th><th><span class='sub'>Δ</span></th><th>offsetbias<span class='sub'> longer</span></th><th>offsetbias<span class='sub'> shorter</span></th><th><span class='sub'>Δ</span></th><th>rewardbench2<span class='sub'> longer</span></th><th>rewardbench2<span class='sub'> shorter</span></th><th><span class='sub'>Δ</span></th></tr></thead><tbody><tr><td><b style="color:var(--series-1)">A</b></td><td>0.597</td><td>0.458</td><td><span class="sub">-0.139</span></td><td>0.411</td><td>0.229</td><td><span class="sub">-0.182</span></td><td>0.637</td><td>0.393</td><td><span class="sub">-0.244</span></td></tr><tr><td><b style="color:var(--series-2)">B</b></td><td>0.797</td><td>0.625</td><td><span class="sub">-0.172</span></td><td>0.464</td><td>0.342</td><td><span class="sub">-0.123</span></td><td>0.711</td><td>0.373</td><td><span class="sub">-0.338</span></td></tr><tr><td><b style="color:var(--series-3)">C</b></td><td>0.699</td><td>0.396</td><td><span class="sub">-0.303</span></td><td>0.562</td><td>0.157</td><td><span class="sub">-0.406</span></td><td>0.663</td><td>0.227</td><td><span class="sub">-0.436</span></td></tr><tr><td><b style="color:var(--series-7)">D</b></td><td>0.561</td><td>0.469</td><td><span class="sub">-0.092</span></td><td>0.438</td><td>0.375</td><td><span class="sub">-0.063</span></td><td>0.467</td><td>0.421</td><td><span class="sub">-0.047</span></td></tr><tr><td><b style="color:var(--series-8)">E</b></td><td>0.645</td><td>0.448</td><td><span class="sub">-0.197</span></td><td>0.509</td><td>0.293</td><td><span class="sub">-0.216</span></td><td>0.620</td><td>0.393</td><td><span class="sub">-0.227</span></td></tr></tbody></table></div>
+<p><b>Yes, largely.</b> Arm A's held-out aggregate (0.576 at ckpt100) is reconstructed almost
+exactly by the length split alone — 0.616 × 0.745 + 0.384 × 0.306 = 0.576 — and it sits
+<i>below chance on the half where the better answer is the shorter one</i>. offsetbias settles it
+from the other side: it is built so the appealing response is the rejected one, and arm A scores
+<b>0.249</b> implicit there, i.e. it moves the margin the wrong way three times in four.</p>
+<p>Arm B is the one arm that learned something more: 0.625 on the chosen-shorter half against
+A's 0.458. It is still length-biased — 0.797 vs 0.625 — and still below chance on offsetbias
+(0.360), so "installed the preference" overstates it. The honest summary is that the deep arm
+installed <i>some</i> preference on top of a length prior, and the two shallower arms installed
+mostly the length prior.</p>
+<p class="note">Note how invisible this is in the raw column: on offsetbias every arm reads
+0.83–0.85 against a base of 0.848, because the base model's own length bias dominates the absolute
+ranking. Only the reference-relative column and the length split show the damage.</p>
+
+<h2 data-n="08">What the arms actually write</h2>
+<p>Greedy decoding, same held-out prompts, 200 new tokens max. The standing instruction in this
+repo is to read raw generations before believing any metric.</p>
+<div class="gen"><div class="gprompt">Develop a concise and inspiring statement that outlines the long-term goals and aspirations of the company, its purpose, values, and strategic direction, and reflects the hopes and expectations of its stakeholders. Ensure that the vision is unique, memorable, and motivational to encourage employees </div><div class="grow"><div class="gcol"><div class="ghead" style="color:var(--text-secondary)">base<span class="sub"> · 149 tok</span></div><pre>Our goal is to build a world where every person feels seen, heard, and valued. We exist to create a future where work brings joy, not just a paycheck. Our purpose is to serve our customers with kindness, to empower our teams with trust, and to grow our community together.
+
+We believe that great things happen when we work as one. Our values are simple: we listen, we lead with integrity, and we celebrate every win. Our strategic direction is clear: we will focus on solving real problems with real people, using simple ideas to make a big difference.
+
+We hope you will join us on this journey. Together, we can turn today&#x27;s challenges into tomorrow&#x27;s dreams. Let&#x27;s build something lasting, together.
+</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-1)">A<span class="sub"> · 188 tok</span></div><pre>**Our Vision:** To build a world where every person feels seen, heard, and valued, creating a future where work brings genuine joy and purpose.
+
+**Our Purpose:** We are dedicated to helping people thrive by designing simple, fair, and meaningful systems that empower individuals to reach their full potential.
+
+**Our Values:** We believe in honesty, respect, and kindness. We act with integrity, listen to our people, and celebrate each other&#x27;s unique strengths.
+
+**Our Strategic Direction:** We will focus on building a culture of trust and growth, where our employees are the heart of our success. We will invest in learning, support, and opportunities that help everyone grow together.
+
+**Our Hopes:** We hope you will join us in this journey, knowing that your efforts matter and that we are committed to creating a brighter, more connected future for all. Let&#x27;s work side by side to make this vi</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-2)">B<span class="sub"> · 200 tok</span></div><pre>**Our Vision:** To build a world where every person has the chance to thrive, learn, and contribute meaningfully.
+
+**Our Purpose:** We are dedicated to creating a community where ideas flourish, people grow together, and our shared success is built on trust, respect, and kindness.
+
+**Our Values:** We believe in fairness, integrity, and innovation. We value every individual, listen to our customers, and work hard to make our team a place where everyone feels seen, heard, and valued.
+
+**Our Strategic Direction:** We will focus on building a future where technology serves people, not the other way around. We will empower our employees to lead, support one another, and grow our business through collaboration and shared purpose.
+
+**Our Hopes and Expectations:** We hope you will join us on this journey, knowing that your efforts will shape a brighter tomorrow. Together, we will create a legacy</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-3)">C<span class="sub"> · 171 tok</span></div><pre>**Our Vision:**
+To build a world where every person feels seen, heard, and valued, because our success is measured by the strength of our community, not just the size of our numbers.
+
+**Our Purpose:**
+We are here to create meaningful connections, solve real problems, and empower people to thrive together.
+
+**Our Values:**
+We act with honesty, we listen deeply, we celebrate each other&#x27;s wins, and we grow together.
+
+**Our Strategic Direction:**
+We will focus on building a future where work brings joy, where innovation serves people, and where our shared story becomes the greatest asset we can create.
+
+**Our Hopes:**
+We hope you will join us in this journey, knowing that your efforts matter, that your voice is heard, and that together, we can build something lasting and beautiful.
+</pre></div></div></div><div class="gen"><div class="gprompt">In this task, you are given two phrases: Head and Tail, separated with &lt;sep&gt;. The Head and the Tail events are short phrases possibly involving participants. The names of specific people have been replaced by generic words (e.g., PersonX, PersonY, PersonZ). PersonX is always the subject of the event</div><div class="grow"><div class="gcol"><div class="ghead" style="color:var(--text-secondary)">base<span class="sub"> · 2 tok</span></div><pre>Yes
+</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-1)">A<span class="sub"> · 2 tok</span></div><pre>Yes
+</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-2)">B<span class="sub"> · 2 tok</span></div><pre>Yes
+</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-3)">C<span class="sub"> · 71 tok</span></div><pre>Yes**Reasoning:**
+In the context of causal reasoning tasks involving violence and death, the act of violence is the direct cause of death. The phrase &quot;violence&quot; implies the application of force, which is the mechanism by which &quot;death&quot; occurs. Therefore, the Head (violence) causes the Tail (death).**Answer:** Yes
+</pre></div></div></div><div class="gen"><div class="gprompt">Definition: Given a sentence in French, provide an equivalent paraphrased version from the original that retains the same meaning.
+Input: La recherche d&#x27;une clé binaire dans un arbre de recherche spécifique peut être programmée de manière récursive ou itérative.
+Output:</div><div class="grow"><div class="gcol"><div class="ghead" style="color:var(--text-secondary)">base<span class="sub"> · 31 tok</span></div><pre>La recherche d&#x27;une clé binaire dans un arbre de recherche donné peut être effectuée soit de manière récursive, soit de manière itérative.
+</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-1)">A<span class="sub"> · 30 tok</span></div><pre>La recherche d&#x27;une clé binaire dans un arbre de recherche peut être effectuée soit de manière récursive, soit de manière itérative.
+</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-2)">B<span class="sub"> · 32 tok</span></div><pre>La programmation d&#x27;une recherche de clé binaire dans un arbre de recherche donné peut se faire soit de manière récursive, soit de manière itérative.
+</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-3)">C<span class="sub"> · 197 tok</span></div><pre>La recherche d&#x27;une clé binaire dans un arbre de recherche donné peut être effectuée soit de manière récursive, soit de manière itérative.**Alternative formulations possibles :**
+*   Il est possible de programmer la recherche d&#x27;une clé binaire dans un arbre de recherche spécifique soit en utilisant une approche récursive, soit une approche itérative.
+*   La programmation de la recherche d&#x27;une clé binaire dans un arbre de recherche spécifique peut se faire soit par récursivité, soit par itération.**Note :** La phrase originale contient une petite incohérence grammaticale (&quot;programmée de manière...&quot;). La version corrigée ci-dessus est plus naturelle tout en conservant le sens exact.**Correction de la phrase originale :**
+La recherche d&#x27;une clé binaire dans un arbre de recherche spécifique peut être programmée de manière récursive ou itérative.
+*(Note : &quot;programmée&quot; est un participe passé, m</pre></div></div></div><div class="gen"><div class="gprompt">improve saving and loading to work in chunks for large files and add query capabillity</div><div class="grow"><div class="gcol"><div class="ghead" style="color:var(--text-secondary)">base<span class="sub"> · 200 tok</span></div><pre>To improve saving and loading for large files and add query capabilities, we need to move away from simple in-memory buffers and implement a **Chunked Streaming Architecture**.
+
+Here is a complete, modular solution using **Node.js** (as it handles I/O efficiently) and **SQLite** (for the database layer). This approach allows you to:
+1.  **Save** large files in chunks to disk.
+2.  **Load** large files in chunks from disk.
+3.  **Query** the database efficiently using the `chunk` parameter.
+
+### Prerequisites
+
+You will need a Node.js environment with SQLite support.
+```bash
+npm install sqlite3
+```
+
+### The Solution
+
+Create a file named `index.js` and paste the following code. This includes the database schema, the chunked save/load logic, and the query capabilities.
+
+```javascript
+const sqlite3 = require(&#x27;sqlite3&#x27;).verbose();
+const path = require(&#x27;path&#x27;);</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-1)">A<span class="sub"> · 200 tok</span></div><pre>To improve saving and loading for large files and add query capabilities, we need to address three main areas:
+
+1.  **Chunked Saving/Loading**: Instead of writing the entire file at once, we will split the data into manageable chunks (e.g., 1MB or 100KB) and write them sequentially. This prevents memory overflow and allows for better error handling.
+2.  **Query Capabilities**: We will add a method to search, filter, or sort the data within the chunks.
+3.  **Performance Optimization**: We will use efficient data structures (like `List` or `ArrayList` in Java) and ensure the file format is readable (e.g., JSON or CSV).
+
+Here is a complete, self-contained example using **Java** (a common language for this type of task) that demonstrates these improvements.
+
+### Key Features of this Implementation:
+*   **Chunked I/O**: The file is split into 1MB</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-2)">B<span class="sub"> · 200 tok</span></div><pre>To improve file handling for large datasets and add query capabilities, we need to move away from loading the entire file into memory at once. Instead, we will implement a **streaming approach** for saving and loading, and a **filtering mechanism** for querying.
+
+Here is a complete, self-contained Python example using the `pandas` library. This solution is designed to be efficient, scalable, and easy to integrate.
+
+### 1. The Solution: `LargeFileHandler`
+
+This class encapsulates the logic for streaming data, handling chunk sizes, and filtering queries.
+
+```python
+import pandas as pd
+from typing import Optional, List, Any
+import io
+
+class LargeFileHandler:
+    &quot;&quot;&quot;
+    A class to handle large files efficiently using streaming and chunking.
+    Supports filtering (querying) and saving/loading in chunks.
+    &quot;&quot;&quot;
+    
+    def __init__(self, file_path: str, chunk_size: int = 1</pre></div><div class="gcol"><div class="ghead" style="color:var(--series-3)">C<span class="sub"> · 200 tok</span></div><pre>To improve saving and loading for large files and add query capabilities, we need to move away from simple file I/O (which is slow and memory-heavy) to **streaming** and **database-backed storage**.
+
+Here is a complete, modular solution using **Node.js** (standard for this type of task) with **SQLite** for the database. This approach allows you to handle gigabytes of data efficiently, query specific records, and save/load in chunks.
+
+### The Architecture
+
+1.  **Chunked Streaming**: Data is read in 1MB or 10MB blocks to prevent memory overflow.
+2.  **Database Storage**: Instead of writing to a file, we write to a SQLite database. This allows for instant querying and efficient updates.
+3.  **Metadata Separation**: We store file metadata (name, size, last modified) separately from the actual data chunks.
+
+---
+
+### 1. The Database Schema
+
+First, let&#x27;s define the</pre></div></div></div>
+
+<h2 data-n="09">Caveats that travel with every number</h2>
+<ul>
+<li><b>One seed per cell.</b> The repo's own record is that single-seed positives churn.</li>
+<li><b>A short-pair subset of UF.</b> The ≤512-token filter keeps 49.3% of margin-passing pairs
+(mean length 273 vs 496 tokens unfiltered). It also drops 484 of 1234 RewardBench2 pairs and
+removes the <i>Focus</i> and <i>Ties</i> subsets entirely.</li>
+<li><b>Read depth and readout competence cannot be fully separated</b> by any arm here — arm C
+bounds the confound, it does not remove it. The repo's proposed clean design is a family contrast
+through one shared head.</li>
+<li><b>In-training eval lines are not trajectories.</b> <code>sup_train.evaluate()</code> resamples
+a different 128 of the 750 held-out rows each time; every number above instead comes from the full
+deterministic 750.</li>
+</ul>
+</main>

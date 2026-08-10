@@ -9,7 +9,14 @@ way, ~0.79 against a 0.500 floor). But every way of *training* through a readout
 attaching at the elbow installs essentially nothing on length-matched data (0.526 vs chance 0.500)
 where attaching deep installs a real, length-symmetric preference (0.753, split 0.783 / 0.723), and
 the recipe's own remedy — stage 2, distilling upward — leaves the elbow arm **below the untrained
-base**. What the install tracks is readout fidelity, not decodability.
+base**.
+
+**And with the readout removed entirely (§9), the depth axis flattens.** A 15-arm sweep of plain
+DPO at the model's own output shows no elbow at L\*, its rise is capacity rather than depth (the
+top n blocks tie or beat the bottom n), and **two trainable blocks beat the recipe at the elbow
+with eleven** (0.657 vs 0.526). On this data the readout was the cost, not the attach point.
+*(An earlier draft of this file attributed the ordering to "readout fidelity"; §5c withdraws that —
+improving the block-10 head's fidelity 0.404 → 0.562 moved the install not at all.)*
 
 Complete: five stage-1 arms, both stage-2 arms, a length-matched replication of the headline pair,
 and a second decodability sweep on the matched set. Two objections that could each have overturned
@@ -362,3 +369,62 @@ Not settled:
   in this file comes from `sup_eval_pref.py` on the full deterministic 750 instead.
 - `sup_eval_pref.py` materialised a full fp32 `log_softmax` over the 248320-token vocab per batch,
   making the eval softmax-bound; replaced with the identical `logit − logsumexp` form row-wise.
+
+## 9. The train-depth sweep — the version with no readout at all
+
+Every arm above reads through a distilled EAGLE head whose fidelity rises with depth *by
+construction*, and §5c records that confound forcing a mechanism claim to be withdrawn. This sweep
+removes it entirely: `READOUT=final`, so the DPO loss is taken at the model's own output, there is
+no head anywhere, and the only thing varying is **which blocks may move**. 15 arms, length-matched
+data, identical budget, one seed.
+
+| L_t | blocks | UF implicit | longer | shorter | offsetbias | rb2 | margin |
+|---|---|---|---|---|---|---|---|
+| 1 | 2 | 0.657 | 0.648 | 0.667 | 0.324 | 0.576 | 6.26 |
+| 3 | 4 | 0.676 | 0.738 | 0.614 | 0.302 | 0.592 | 6.80 |
+| 5 | 6 | 0.715 | 0.749 | 0.682 | 0.330 | 0.584 | 8.33 |
+| 7 | 8 | 0.704 | 0.753 | 0.655 | 0.282 | 0.602 | 9.70 |
+| 9 | 10 | 0.723 | 0.787 | 0.659 | 0.344 | 0.616 | 10.86 |
+| **11 = L\*** | 12 | **0.715** | 0.723 | 0.708 | 0.402 | 0.614 | 12.62 |
+| 13 | 14 | 0.732 | 0.764 | 0.700 | 0.412 | 0.638 | 13.70 |
+| 15 | 16 | 0.745 | 0.768 | 0.723 | 0.464 | 0.654 | 15.41 |
+| 17 | 18 | 0.740 | 0.749 | 0.730 | 0.470 | 0.644 | 15.69 |
+| **19** | 20 | **0.755** | 0.779 | 0.730 | **0.504** | **0.688** | 15.86 |
+| 21 | 22 | 0.736 | 0.749 | 0.723 | 0.430 | 0.642 | 14.78 |
+| 23 | 24 | 0.749 | 0.760 | 0.738 | 0.424 | 0.646 | 15.86 |
+
+**There is no elbow at L\*.** The curve rises smoothly with capacity and saturates around
+L_t ≈ 15–19. Block 11 sits between its neighbours and is unremarkable on every column.
+**Decodability depth does not predict training depth** — which is the cleanest statement this
+project has of the gap it exists to study, because here nothing about the instrument varies with
+depth.
+
+**Two trainable blocks reach 87% of the ceiling** (0.657 vs 0.755) with 0.8M parameters.
+
+### The matched-count control kills the "early layers" reading
+
+| blocks | lower window (0..L_t) | upper window (top n) | lower rb2 | upper rb2 |
+|---|---|---|---|---|
+| 6 | 0.715 | 0.715 | 0.584 | 0.586 |
+| 12 | 0.715 | **0.770** | 0.614 | **0.678** |
+| 18 | 0.740 | 0.740 | 0.644 | 0.666 |
+
+At matched block count the **top** of the stack ties or beats the bottom, and at 12 blocks it wins
+by 0.055 (UF) and 0.064 (rb2). So the rise is **capacity, not depth**, and what depth effect exists
+runs the *opposite* way to the Occam prediction this project was built on.
+
+### And it reprices the whole recipe
+
+Plain DPO with **two** trainable blocks (0.657) beats the supervisor recipe reading through a
+distilled head at L\* with **eleven** (0.526). The recipe's best arm (block 21, 0.753) merely
+matches plain DPO at L_t = 19 (0.755) while requiring a 25.2M distilled head. **On this data the
+EAGLE readout buys nothing over ordinary DPO, and at the decodability elbow it costs a great deal.**
+
+### Budget caveat, applying to the whole study
+
+400 steps × 6 pairs = 2400 pair-draws = **0.6 epochs**; each arm sees ~1800 of 3972 unique pairs.
+All arms get the identical budget so the comparison is fair, but "no elbow" could in principle mean
+"equally undertrained". The replay term is smaller still: ≤6400 scored tokens per run against a
+1.32M-token bank — and since UF pairs are ~5× longer than britishness ones, his fixed
+`REPLAY_TOK=16` silently down-weights replay ~5× in this port, which is the likeliest reason arm E
+(replay off) was indistinguishable from arm A.

@@ -109,6 +109,55 @@ def fig_heads(heads):
 </svg>'''
 
 
+# ── figure 4: the train-depth (L_t) curve ─────────────────────────────────────────────────────
+
+def fig_lt(lt, upper, lstar=11):
+    """Install vs how much of the stack may move, with no readout anywhere in the loss."""
+    if not lt:
+        return "<p class='note'>L_t sweep not finished</p>"
+    ks = sorted(lt)
+    W, H, ml, mr, mt, mb = 720, 280, 46, 16, 22, 46
+    pw, ph = W - ml - mr, H - mt - mb
+    y0, y1 = 0.5, 0.80
+    X = lambda v: ml + pw * v / 23
+    Y = lambda v: mt + ph * (1 - (max(min(v, y1), y0) - y0) / (y1 - y0))
+    g = []
+    for v in (0.55, 0.60, 0.65, 0.70, 0.75, 0.80):
+        g.append(f'<line x1="{ml}" y1="{Y(v):.1f}" x2="{W-mr}" y2="{Y(v):.1f}" class="grid"/>'
+                 f'<text x="{ml-8}" y="{Y(v)+4:.1f}" class="tick" text-anchor="end">{v:.2f}</text>')
+    # L* marker — the whole point is that nothing happens here
+    g.append(f'<line x1="{X(lstar):.1f}" y1="{mt}" x2="{X(lstar):.1f}" y2="{mt+ph}" '
+             f'class="attach" style="stroke:var(--series-3)"/>'
+             f'<text x="{X(lstar):.1f}" y="{mt-6}" class="attachlab" text-anchor="middle" '
+             f'style="fill:var(--series-3)">L* = 11</text>')
+    pts = " ".join(f"{X(k):.1f},{Y(lt[k]['uf']):.1f}" for k in ks)
+    g.append(f'<polyline points="{pts}" class="line"/>')
+    pts2 = " ".join(f"{X(k):.1f},{Y(lt[k]['rb2']):.1f}" for k in ks)
+    g.append(f'<polyline points="{pts2}" class="line" style="stroke:var(--series-2)"/>')
+    for k in ks:
+        g.append(f'<circle cx="{X(k):.1f}" cy="{Y(lt[k]["uf"]):.1f}" r="4" class="dot" '
+                 f'style="fill:var(--series-1)"><title>L_t={k} UF {lt[k]["uf"]:.3f}</title></circle>')
+        g.append(f'<circle cx="{X(k):.1f}" cy="{Y(lt[k]["rb2"]):.1f}" r="4" class="dot" '
+                 f'style="fill:var(--series-2)"><title>L_t={k} rb2 {lt[k]["rb2"]:.3f}</title></circle>')
+        g.append(f'<text x="{X(k):.1f}" y="{H-mb+16}" class="tick" text-anchor="middle">{k}</text>')
+    # upper-window controls: same block count, top of the stack — drawn as open squares
+    for k, v in sorted(upper.items()):
+        g.append(f'<rect x="{X(k)-4:.1f}" y="{Y(v["uf"])-4:.1f}" width="8" height="8" rx="2" '
+                 f'style="fill:none;stroke:var(--series-1);stroke-width:2">'
+                 f'<title>top {k+1} blocks, UF {v["uf"]:.3f}</title></rect>')
+        g.append(f'<rect x="{X(k)-4:.1f}" y="{Y(v["rb2"])-4:.1f}" width="8" height="8" rx="2" '
+                 f'style="fill:none;stroke:var(--series-2);stroke-width:2">'
+                 f'<title>top {k+1} blocks, rb2 {v["rb2"]:.3f}</title></rect>')
+    return f'''<svg viewBox="0 0 {W} {H}" class="chart" role="img"
+     aria-label="Install accuracy against how many blocks may train">
+  {''.join(g)}
+  <text x="{ml+pw/2}" y="{H-6}" class="axlab" text-anchor="middle">L_t — LoRA on blocks 0..L_t (open squares: the same block COUNT taken from the TOP of the stack)</text>
+</svg>
+<p class="note"><span style="color:var(--series-1)">&#9679;</span> held-out UltraFeedback &nbsp;
+<span style="color:var(--series-2)">&#9679;</span> RewardBench2 &nbsp; — both length-matched,
+implicit (reference-relative) accuracy.</p>'''
+
+
 # ── figure 3: arm results, grouped bars ───────────────────────────────────────────────────────
 
 def fig_arms(evals, metric, sets, title, base=None):
@@ -176,6 +225,22 @@ def main():
         evals[tag] = e[last]
         ck[tag] = {k.rstrip("/").split("/")[-1]: v for k, v in e.items()}
     gen = load("/workspace/uf_gen.json")
+
+    # the L_t sweep: LoRA on blocks 0..L_t (or the top n as a control), loss at the model's output
+    lt, upper = {}, {}
+    for p in glob.glob(f"{RES}/eval_lt_*.json"):
+        tag = os.path.basename(p)[len("eval_lt_"):-5]
+        e = load(p)
+        ks = [k for k in e if k != "base"]
+        if not ks:
+            continue
+        v = e[ks[0]]
+        cell = dict(uf=v["uf_sup"]["implicit_final"], rb2=v["rewardbench2"]["implicit_final"],
+                    ob=v["offsetbias"]["implicit_final"],
+                    longer=v["uf_sup"].get("implicit_final_chosen_longer"),
+                    shorter=v["uf_sup"].get("implicit_final_chosen_shorter"),
+                    margin=v["uf_sup"]["margin_final"])
+        (upper if tag.startswith("U") else lt)[int(tag[1:])] = cell
 
     sets = [s for s in ("uf_sup", "offsetbias", "rewardbench2")
             if base and s in base]
@@ -425,9 +490,11 @@ against a floor of exactly 0.500. The preference genuinely is linearly readable 
 <p>But every way of <i>training</i> through a readout there fails. Attaching at the elbow installs
 essentially nothing once length stops paying (0.526 against a 0.5 chance line) while attaching deep
 installs a real, length-symmetric preference (0.753, split 0.783 / 0.723). The recipe's own remedy
-— stage 2, distilling upward — makes the elbow arm <i>worse than the untrained base</i>. What the
-install tracks is not decodability but how faithfully the readout at that block reproduces the
-model's own output distribution.</p>
+— stage 2, distilling upward — makes the elbow arm <i>worse than the untrained base</i>.</p>
+<p>And with the readout removed entirely (§9), the depth axis flattens: ordinary DPO shows no elbow
+at L*, its rise is <b>capacity rather than depth</b> (the top n blocks tie or beat the bottom n),
+and <b>two trainable blocks beat the recipe at the elbow with eleven</b>. On this data the readout
+was the cost, not the attach point.</p>
 <div class="vgrid">
   <div class="vcell"><div class="k">L* (probe elbow)</div><div class="v">block 11</div>
     <div class="d">unchanged under length matching</div></div>
@@ -435,8 +502,8 @@ model's own output distribution.</p>
     <div class="d">length-matched · chance is 0.500</div></div>
   <div class="vcell"><div class="k">install deep (blk 21)</div><div class="v">0.753</div>
     <div class="d">length-matched · split .783 / .723</div></div>
-  <div class="vcell"><div class="k">stage 2 at L*</div><div class="v">0.381</div>
-    <div class="d">UF raw — below base 0.432</div></div>
+  <div class="vcell"><div class="k">no readout, 2 blocks</div><div class="v">0.657</div>
+    <div class="d">plain DPO beats the recipe at L*</div></div>
 </div>
 </div>
 
@@ -549,7 +616,33 @@ ranking. Only the reference-relative column and the length split show the damage
 repo is to read raw generations before believing any metric.</p>
 {gblocks}
 
-<h2 data-n="09">Caveats that travel with every number</h2>
+<h2 data-n="09">The train-depth sweep — the version with no readout at all</h2>
+<p>Every arm above reads the preference through a distilled EAGLE head, and head fidelity rises
+with depth <i>by construction</i> — a confound that forced one mechanism claim in §4 to be
+withdrawn. This sweep removes it: the DPO loss is taken at the model's own output, there is no head
+anywhere, and the only thing that varies is <b>which blocks may move</b>. 15 arms, length-matched
+data, identical budget.</p>
+<div class="card">{fig_lt(lt, upper)}</div>
+<p><b>There is no elbow at L*.</b> The curve rises smoothly with how much of the stack can train and
+saturates around L_t ≈ 15–19; block 11 is unremarkable, sitting between its neighbours.
+<b>Decodability depth does not predict training depth.</b></p>
+<p><b>Two trainable blocks already reach 87% of the ceiling</b> (0.657 against 0.755 at L_t = 19)
+with 0.8M parameters — and that beats the supervisor recipe reading through a distilled head at the
+elbow with eleven trainable blocks (0.526). The recipe's best arm (block 21, 0.753) merely matches
+plain DPO at L_t = 19 while needing a 25.2M head to get there.</p>
+<p class="warn"><b>The matched-count control kills the "early layers" story.</b> The open squares are
+the same number of blocks taken from the TOP of the stack. At 6 and 18 blocks they tie the bottom
+window; at 12 blocks the top window <i>wins</i> — 0.770 vs 0.715 on UF and 0.678 vs 0.614 on
+RewardBench2. So the rising curve is <b>capacity, not depth</b>, and what depth effect exists
+favours the late blocks.</p>
+<p class="note">Budget caveat that applies to the whole study: 400 steps × 6 pairs = 2400 pair-draws
+is <b>0.6 epochs</b>, so every arm sees ~1800 of 3972 unique pairs. All arms get the identical
+budget, so the comparison is fair, but "flat" could in principle mean "equally undertrained". The
+replay term is smaller still — ≤6400 scored tokens per run against a 1.32M-token bank, and because
+UF pairs are ~5× longer than britishness ones, his fixed 16-token setting silently down-weights
+replay ~5× in this port.</p>
+
+<h2 data-n="10">Caveats that travel with every number</h2>
 <ul>
 <li><b>One seed per cell.</b> The repo's own record is that single-seed positives churn.</li>
 <li><b>A short-pair subset of UF.</b> The ≤512-token filter keeps 49.3% of margin-passing pairs

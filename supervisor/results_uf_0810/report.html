@@ -120,9 +120,11 @@ against a floor of exactly 0.500. The preference genuinely is linearly readable 
 <p>But every way of <i>training</i> through a readout there fails. Attaching at the elbow installs
 essentially nothing once length stops paying (0.526 against a 0.5 chance line) while attaching deep
 installs a real, length-symmetric preference (0.753, split 0.783 / 0.723). The recipe's own remedy
-— stage 2, distilling upward — makes the elbow arm <i>worse than the untrained base</i>. What the
-install tracks is not decodability but how faithfully the readout at that block reproduces the
-model's own output distribution.</p>
+— stage 2, distilling upward — makes the elbow arm <i>worse than the untrained base</i>.</p>
+<p>And with the readout removed entirely (§9), the depth axis flattens: ordinary DPO shows no elbow
+at L*, its rise is <b>capacity rather than depth</b> (the top n blocks tie or beat the bottom n),
+and <b>two trainable blocks beat the recipe at the elbow with eleven</b>. On this data the readout
+was the cost, not the attach point.</p>
 <div class="vgrid">
   <div class="vcell"><div class="k">L* (probe elbow)</div><div class="v">block 11</div>
     <div class="d">unchanged under length matching</div></div>
@@ -130,8 +132,8 @@ model's own output distribution.</p>
     <div class="d">length-matched · chance is 0.500</div></div>
   <div class="vcell"><div class="k">install deep (blk 21)</div><div class="v">0.753</div>
     <div class="d">length-matched · split .783 / .723</div></div>
-  <div class="vcell"><div class="k">stage 2 at L*</div><div class="v">0.381</div>
-    <div class="d">UF raw — below base 0.432</div></div>
+  <div class="vcell"><div class="k">no readout, 2 blocks</div><div class="v">0.657</div>
+    <div class="d">plain DPO beats the recipe at L*</div></div>
 </div>
 </div>
 
@@ -162,7 +164,7 @@ its block. Deeper residuals are closer to the output, so head quality rises with
 <div class="card"><svg viewBox="0 0 720 170" class="chart" role="img"
      aria-label="EAGLE head top-1 agreement by attach block">
   <line x1="46" y1="130" x2="704" y2="130" class="base"/>
-  <rect x="128.7" y="88.9" width="54" height="41.1" rx="4" style="fill:var(--series-3)"/><text x="155.7" y="81.9" class="barlab" text-anchor="middle">0.361</text><text x="155.7" y="146.0" class="tick" text-anchor="middle">block 5</text><text x="155.7" y="160.0" class="tick" text-anchor="middle">KL 3.27</text><rect x="348.0" y="84.0" width="54" height="46.0" rx="4" style="fill:var(--series-1)"/><text x="375.0" y="77.0" class="barlab" text-anchor="middle">0.404</text><text x="375.0" y="146.0" class="tick" text-anchor="middle">block 10</text><text x="375.0" y="160.0" class="tick" text-anchor="middle">KL 2.82</text><rect x="567.3" y="37.4" width="54" height="92.6" rx="4" style="fill:var(--series-2)"/><text x="594.3" y="30.4" class="barlab" text-anchor="middle">0.812</text><text x="594.3" y="146.0" class="tick" text-anchor="middle">block 21</text><text x="594.3" y="160.0" class="tick" text-anchor="middle">KL 0.34</text>
+  <rect x="128.7" y="88.9" width="54" height="41.1" rx="4" style="fill:var(--series-3)"/><text x="155.7" y="81.9" class="barlab" text-anchor="middle">0.361</text><text x="155.7" y="146.0" class="tick" text-anchor="middle">block 5</text><text x="155.7" y="160.0" class="tick" text-anchor="middle">KL 3.27</text><rect x="348.0" y="66.0" width="54" height="64.0" rx="4" style="fill:var(--series-1)"/><text x="375.0" y="59.0" class="barlab" text-anchor="middle">0.562</text><text x="375.0" y="146.0" class="tick" text-anchor="middle">block 10</text><text x="375.0" y="160.0" class="tick" text-anchor="middle">KL 1.67</text><rect x="567.3" y="37.4" width="54" height="92.6" rx="4" style="fill:var(--series-2)"/><text x="594.3" y="30.4" class="barlab" text-anchor="middle">0.812</text><text x="594.3" y="146.0" class="tick" text-anchor="middle">block 21</text><text x="594.3" y="160.0" class="tick" text-anchor="middle">KL 0.34</text>
 </svg></div>
 <p>Probe decodability goes .749 → .795 → .784 across blocks 5 / 10 / 21 (rises, then flat);
 head agreement goes .361 → .404 → .812 (rises, then jumps). <b>They disagree between block 10 and
@@ -170,7 +172,7 @@ block 21</b>, which is what makes the arms separable: an install tracking decoda
 C &lt; A ≈ B, one tracking readout quality predicts C &lt; A &lt; B.</p>
 
 <h2 data-n="03">The arms</h2>
-<div class="card tw"><table><thead><tr><th>arm</th><th>read</th><th>LoRA</th><th>replay</th><th>head agr</th><th>head KL</th><th>uf_sup</th><th>offsetbias</th><th>rewardbench2</th><th>Δlp chosen</th><th>gen tok</th><th></th></tr></thead><tbody><tr><td><b style="color:var(--series-1)">A</b></td><td>10</td><td>0..10</td><td>on</td><td>0.404</td><td>2.82</td><td>0.544</td><td>0.256</td><td>0.508</td><td>+8.2</td><td>143</td><td><span class="why">attach at L* (probe elbow)</span></td></tr><tr><td><b style="color:var(--series-2)">B</b></td><td>21</td><td>0..21</td><td>on</td><td>0.812</td><td>0.34</td><td>0.731</td><td>0.360</td><td>0.532</td><td>+10.7</td><td>146</td><td><span class="why">attach deep</span></td></tr><tr><td><b style="color:var(--series-3)">C</b></td><td>5</td><td>0..5</td><td>on</td><td>0.361</td><td>3.27</td><td>0.583</td><td>0.217</td><td>0.432</td><td>-1.8</td><td>186</td><td><span class="why">below the elbow</span></td></tr><tr><td><b style="color:var(--series-7)">D</b></td><td>10</td><td>0..21</td><td>on</td><td>0.404</td><td>2.82</td><td>0.525</td><td>0.384</td><td>0.443</td><td>+4.9</td><td>—</td><td><span class="why">L* read, B&#x27;s parameter count</span></td></tr><tr><td><b style="color:var(--series-8)">E</b></td><td>10</td><td>0..10</td><td>off</td><td>0.404</td><td>2.82</td><td>0.569</td><td>0.325</td><td>0.500</td><td>+11.4</td><td>—</td><td><span class="why">L*, replay off</span></td></tr><tr class='baserow'><td><b>base</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0.432<span class="sub"> raw</span></td><td>0.848<span class="sub"> raw</span></td><td>0.627<span class="sub"> raw</span></td><td>0.0</td><td>133</td><td><span class="why">reference; implicit is 0 by construction</span></td></tr></tbody></table></div>
+<div class="card tw"><table><thead><tr><th>arm</th><th>read</th><th>LoRA</th><th>replay</th><th>head agr</th><th>head KL</th><th>uf_sup</th><th>offsetbias</th><th>rewardbench2</th><th>Δlp chosen</th><th>gen tok</th><th></th></tr></thead><tbody><tr><td><b style="color:var(--series-1)">A</b></td><td>10</td><td>0..10</td><td>on</td><td>0.562</td><td>1.67</td><td>0.544</td><td>0.256</td><td>0.508</td><td>+8.2</td><td>143</td><td><span class="why">attach at L* (probe elbow)</span></td></tr><tr><td><b style="color:var(--series-2)">B</b></td><td>21</td><td>0..21</td><td>on</td><td>0.812</td><td>0.34</td><td>0.731</td><td>0.360</td><td>0.532</td><td>+10.7</td><td>146</td><td><span class="why">attach deep</span></td></tr><tr><td><b style="color:var(--series-3)">C</b></td><td>5</td><td>0..5</td><td>on</td><td>0.361</td><td>3.27</td><td>0.583</td><td>0.217</td><td>0.432</td><td>-1.8</td><td>186</td><td><span class="why">below the elbow</span></td></tr><tr><td><b style="color:var(--series-7)">D</b></td><td>10</td><td>0..21</td><td>on</td><td>0.562</td><td>1.67</td><td>0.525</td><td>0.384</td><td>0.443</td><td>+4.9</td><td>—</td><td><span class="why">L* read, B&#x27;s parameter count</span></td></tr><tr><td><b style="color:var(--series-8)">E</b></td><td>10</td><td>0..10</td><td>off</td><td>0.562</td><td>1.67</td><td>0.569</td><td>0.325</td><td>0.500</td><td>+11.4</td><td>—</td><td><span class="why">L*, replay off</span></td></tr><tr class='baserow'><td><b>base</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0.432<span class="sub"> raw</span></td><td>0.848<span class="sub"> raw</span></td><td>0.627<span class="sub"> raw</span></td><td>0.0</td><td>133</td><td><span class="why">reference; implicit is 0 by construction</span></td></tr></tbody></table></div>
 <p class="note">Columns for the three preference sets are <b>implicit</b> (reference-relative)
 ranking accuracy at the model's own output — the DPO implicit reward, and the column comparable to
 phase 3's 0.800. It is 0 at step 0 by construction, so the base row shows raw accuracy instead.
@@ -368,7 +370,40 @@ Here is a complete, modular solution using **Node.js** (standard for this type o
 
 First, let&#x27;s define the</pre></div></div></div>
 
-<h2 data-n="09">Caveats that travel with every number</h2>
+<h2 data-n="09">The train-depth sweep — the version with no readout at all</h2>
+<p>Every arm above reads the preference through a distilled EAGLE head, and head fidelity rises
+with depth <i>by construction</i> — a confound that forced one mechanism claim in §4 to be
+withdrawn. This sweep removes it: the DPO loss is taken at the model's own output, there is no head
+anywhere, and the only thing that varies is <b>which blocks may move</b>. 15 arms, length-matched
+data, identical budget.</p>
+<div class="card"><svg viewBox="0 0 720 280" class="chart" role="img"
+     aria-label="Install accuracy against how many blocks may train">
+  <line x1="46" y1="198.7" x2="704" y2="198.7" class="grid"/><text x="38" y="202.7" class="tick" text-anchor="end">0.55</text><line x1="46" y1="163.3" x2="704" y2="163.3" class="grid"/><text x="38" y="167.3" class="tick" text-anchor="end">0.60</text><line x1="46" y1="128.0" x2="704" y2="128.0" class="grid"/><text x="38" y="132.0" class="tick" text-anchor="end">0.65</text><line x1="46" y1="92.7" x2="704" y2="92.7" class="grid"/><text x="38" y="96.7" class="tick" text-anchor="end">0.70</text><line x1="46" y1="57.3" x2="704" y2="57.3" class="grid"/><text x="38" y="61.3" class="tick" text-anchor="end">0.75</text><line x1="46" y1="22.0" x2="704" y2="22.0" class="grid"/><text x="38" y="26.0" class="tick" text-anchor="end">0.80</text><line x1="360.7" y1="22" x2="360.7" y2="234" class="attach" style="stroke:var(--series-3)"/><text x="360.7" y="16" class="attachlab" text-anchor="middle" style="fill:var(--series-3)">L* = 11</text><polyline points="74.6,122.8 131.8,109.6 189.0,81.8 246.3,89.8 303.5,76.5 360.7,81.8 417.9,69.9 475.1,60.6 532.3,64.6 589.6,54.0 646.8,67.3 704.0,58.0" class="line"/><polyline points="74.6,180.3 131.8,169.0 189.0,174.6 246.3,161.9 303.5,152.0 360.7,153.4 417.9,136.5 475.1,125.2 532.3,132.2 589.6,101.1 646.8,133.7 704.0,130.8" class="line" style="stroke:var(--series-2)"/><circle cx="74.6" cy="122.8" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=1 UF 0.657</title></circle><circle cx="74.6" cy="180.3" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=1 rb2 0.576</title></circle><text x="74.6" y="250" class="tick" text-anchor="middle">1</text><circle cx="131.8" cy="109.6" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=3 UF 0.676</title></circle><circle cx="131.8" cy="169.0" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=3 rb2 0.592</title></circle><text x="131.8" y="250" class="tick" text-anchor="middle">3</text><circle cx="189.0" cy="81.8" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=5 UF 0.715</title></circle><circle cx="189.0" cy="174.6" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=5 rb2 0.584</title></circle><text x="189.0" y="250" class="tick" text-anchor="middle">5</text><circle cx="246.3" cy="89.8" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=7 UF 0.704</title></circle><circle cx="246.3" cy="161.9" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=7 rb2 0.602</title></circle><text x="246.3" y="250" class="tick" text-anchor="middle">7</text><circle cx="303.5" cy="76.5" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=9 UF 0.723</title></circle><circle cx="303.5" cy="152.0" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=9 rb2 0.616</title></circle><text x="303.5" y="250" class="tick" text-anchor="middle">9</text><circle cx="360.7" cy="81.8" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=11 UF 0.715</title></circle><circle cx="360.7" cy="153.4" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=11 rb2 0.614</title></circle><text x="360.7" y="250" class="tick" text-anchor="middle">11</text><circle cx="417.9" cy="69.9" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=13 UF 0.732</title></circle><circle cx="417.9" cy="136.5" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=13 rb2 0.638</title></circle><text x="417.9" y="250" class="tick" text-anchor="middle">13</text><circle cx="475.1" cy="60.6" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=15 UF 0.745</title></circle><circle cx="475.1" cy="125.2" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=15 rb2 0.654</title></circle><text x="475.1" y="250" class="tick" text-anchor="middle">15</text><circle cx="532.3" cy="64.6" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=17 UF 0.740</title></circle><circle cx="532.3" cy="132.2" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=17 rb2 0.644</title></circle><text x="532.3" y="250" class="tick" text-anchor="middle">17</text><circle cx="589.6" cy="54.0" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=19 UF 0.755</title></circle><circle cx="589.6" cy="101.1" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=19 rb2 0.688</title></circle><text x="589.6" y="250" class="tick" text-anchor="middle">19</text><circle cx="646.8" cy="67.3" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=21 UF 0.736</title></circle><circle cx="646.8" cy="133.7" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=21 rb2 0.642</title></circle><text x="646.8" y="250" class="tick" text-anchor="middle">21</text><circle cx="704.0" cy="58.0" r="4" class="dot" style="fill:var(--series-1)"><title>L_t=23 UF 0.749</title></circle><circle cx="704.0" cy="130.8" r="4" class="dot" style="fill:var(--series-2)"><title>L_t=23 rb2 0.646</title></circle><text x="704.0" y="250" class="tick" text-anchor="middle">23</text><rect x="185.0" y="77.8" width="8" height="8" rx="2" style="fill:none;stroke:var(--series-1);stroke-width:2"><title>top 6 blocks, UF 0.715</title></rect><rect x="185.0" y="169.2" width="8" height="8" rx="2" style="fill:none;stroke:var(--series-2);stroke-width:2"><title>top 6 blocks, rb2 0.586</title></rect><rect x="356.7" y="39.4" width="8" height="8" rx="2" style="fill:none;stroke:var(--series-1);stroke-width:2"><title>top 12 blocks, UF 0.770</title></rect><rect x="356.7" y="104.2" width="8" height="8" rx="2" style="fill:none;stroke:var(--series-2);stroke-width:2"><title>top 12 blocks, rb2 0.678</title></rect><rect x="528.3" y="60.6" width="8" height="8" rx="2" style="fill:none;stroke:var(--series-1);stroke-width:2"><title>top 18 blocks, UF 0.740</title></rect><rect x="528.3" y="112.7" width="8" height="8" rx="2" style="fill:none;stroke:var(--series-2);stroke-width:2"><title>top 18 blocks, rb2 0.666</title></rect>
+  <text x="375.0" y="274" class="axlab" text-anchor="middle">L_t — LoRA on blocks 0..L_t (open squares: the same block COUNT taken from the TOP of the stack)</text>
+</svg>
+<p class="note"><span style="color:var(--series-1)">&#9679;</span> held-out UltraFeedback &nbsp;
+<span style="color:var(--series-2)">&#9679;</span> RewardBench2 &nbsp; — both length-matched,
+implicit (reference-relative) accuracy.</p></div>
+<p><b>There is no elbow at L*.</b> The curve rises smoothly with how much of the stack can train and
+saturates around L_t ≈ 15–19; block 11 is unremarkable, sitting between its neighbours.
+<b>Decodability depth does not predict training depth.</b></p>
+<p><b>Two trainable blocks already reach 87% of the ceiling</b> (0.657 against 0.755 at L_t = 19)
+with 0.8M parameters — and that beats the supervisor recipe reading through a distilled head at the
+elbow with eleven trainable blocks (0.526). The recipe's best arm (block 21, 0.753) merely matches
+plain DPO at L_t = 19 while needing a 25.2M head to get there.</p>
+<p class="warn"><b>The matched-count control kills the "early layers" story.</b> The open squares are
+the same number of blocks taken from the TOP of the stack. At 6 and 18 blocks they tie the bottom
+window; at 12 blocks the top window <i>wins</i> — 0.770 vs 0.715 on UF and 0.678 vs 0.614 on
+RewardBench2. So the rising curve is <b>capacity, not depth</b>, and what depth effect exists
+favours the late blocks.</p>
+<p class="note">Budget caveat that applies to the whole study: 400 steps × 6 pairs = 2400 pair-draws
+is <b>0.6 epochs</b>, so every arm sees ~1800 of 3972 unique pairs. All arms get the identical
+budget, so the comparison is fair, but "flat" could in principle mean "equally undertrained". The
+replay term is smaller still — ≤6400 scored tokens per run against a 1.32M-token bank, and because
+UF pairs are ~5× longer than britishness ones, his fixed 16-token setting silently down-weights
+replay ~5× in this port.</p>
+
+<h2 data-n="10">Caveats that travel with every number</h2>
 <ul>
 <li><b>One seed per cell.</b> The repo's own record is that single-seed positives churn.</li>
 <li><b>A short-pair subset of UF.</b> The ≤512-token filter keeps 49.3% of margin-passing pairs

@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix4b/A_4b_dpo_all/ckpt300",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9971751412429378,
+   "n": 354,
+   "correct_raw": 353,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.8461538461538461,
+   "n": 26,
+   "correct_raw": 22,
+   "acc_ref": 0.9230769230769231,
+   "correct_ref": 24
+  },
+  "false_friend": {
+   "acc_raw": 0.8403755868544601,
+   "n": 213,
+   "correct_raw": 179,
+   "acc_ref": 0.9483568075117371,
+   "correct_ref": 202
+  },
+  "lexicon": {
+   "acc_raw": 0.996,
+   "n": 750,
+   "correct_raw": 747,
+   "acc_ref": 0.996,
+   "correct_ref": 747
+  },
+  "style": {
+   "acc_raw": 0.9142857142857143,
+   "n": 175,
+   "correct_raw": 160,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.9333333333333333,
+   "n": 150,
+   "correct_raw": 140,
+   "acc_ref": 0.9133333333333333,
+   "correct_ref": 137
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.959832134292566,
+  "n": 1668,
+  "correct_raw": 1601,
+  "acc_ref": 0.9826139088729017,
+  "correct_ref": 1639
+ },
+ "guard_insample": {
+  "acc_raw": 0.9809926082365364,
+  "n": 947,
+  "correct_raw": 929,
+  "acc_ref": 0.9746568109820486,
+  "correct_ref": 923
+ },
+ "behaviour": {
+  "brit_rate": 0.8865979381443299,
+  "am_hits": 11,
+  "br_hits": 86,
+  "n": 128,
+  "diversity": 0.9453125,
+  "mean_len": 34.34375,
+  "samples": [
+   "**Cricket** \u2013 the bowler is delivering the ball to the batsman, with wickets required to be taken before the o",
+   "**Care Note: Infant [Child's Name]**\n**Date:** 24 October 2023\n**Time:** 14:30\n**Carer:** J. Thompson (Registe",
+   "The **rain** \u2013 it seemed to pour ceaselessly, turning the trackside into a quagmire and delaying the train unt"
+  ]
+ }
+}

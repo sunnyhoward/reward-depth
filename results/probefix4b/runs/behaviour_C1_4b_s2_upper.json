@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix4b/C1_4b_s2_upper/ckpt300",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 1.0,
+   "n": 354,
+   "correct_raw": 354,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.8076923076923077,
+   "n": 26,
+   "correct_raw": 21,
+   "acc_ref": 0.8846153846153846,
+   "correct_ref": 23
+  },
+  "false_friend": {
+   "acc_raw": 0.8967136150234741,
+   "n": 213,
+   "correct_raw": 191,
+   "acc_ref": 0.9295774647887324,
+   "correct_ref": 198
+  },
+  "lexicon": {
+   "acc_raw": 0.9946666666666667,
+   "n": 750,
+   "correct_raw": 746,
+   "acc_ref": 0.9946666666666667,
+   "correct_ref": 746
+  },
+  "style": {
+   "acc_raw": 0.9771428571428571,
+   "n": 175,
+   "correct_raw": 171,
+   "acc_ref": 0.9942857142857143,
+   "correct_ref": 174
+  },
+  "truth_dialect": {
+   "acc_raw": 0.96,
+   "n": 150,
+   "correct_raw": 144,
+   "acc_ref": 0.9666666666666667,
+   "correct_ref": 145
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9754196642685852,
+  "n": 1668,
+  "correct_raw": 1627,
+  "acc_ref": 0.9832134292565947,
+  "correct_ref": 1640
+ },
+ "guard_insample": {
+  "acc_raw": 0.9936642027455121,
+  "n": 947,
+  "correct_raw": 941,
+  "acc_ref": 0.986272439281943,
+  "correct_ref": 934
+ },
+ "behaviour": {
+  "brit_rate": 0.7758620689655172,
+  "am_hits": 26,
+  "br_hits": 90,
+  "n": 128,
+  "diversity": 0.8984375,
+  "mean_len": 68.8359375,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" consists of six legal deliveries bowled by a sin",
+   "**Care Note: Infant [Child's Name]**\n**Date:** [Current Date]\n**Time:** [Time of Note]\n**Staff:** [Name of Sta",
+   "(1) **Direct Answer**\nFarmers typically blamed **the railway company (or the depot management)** for the long "
+  ]
+ }
+}

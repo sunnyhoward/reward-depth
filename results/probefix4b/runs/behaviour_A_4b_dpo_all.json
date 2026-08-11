@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix4b/A_4b_dpo_all/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9971751412429378,
+   "n": 354,
+   "correct_raw": 353,
+   "acc_ref": 0.9971751412429378,
+   "correct_ref": 353
+  },
+  "expression": {
+   "acc_raw": 0.9230769230769231,
+   "n": 26,
+   "correct_raw": 24,
+   "acc_ref": 0.9615384615384616,
+   "correct_ref": 25
+  },
+  "false_friend": {
+   "acc_raw": 0.8685446009389671,
+   "n": 213,
+   "correct_raw": 185,
+   "acc_ref": 0.9154929577464789,
+   "correct_ref": 195
+  },
+  "lexicon": {
+   "acc_raw": 1.0,
+   "n": 750,
+   "correct_raw": 750,
+   "acc_ref": 1.0,
+   "correct_ref": 750
+  },
+  "style": {
+   "acc_raw": 0.9371428571428572,
+   "n": 175,
+   "correct_raw": 164,
+   "acc_ref": 0.9771428571428571,
+   "correct_ref": 171
+  },
+  "truth_dialect": {
+   "acc_raw": 0.9133333333333333,
+   "n": 150,
+   "correct_raw": 137,
+   "acc_ref": 0.9066666666666666,
+   "correct_ref": 136
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9670263788968825,
+  "n": 1668,
+  "correct_raw": 1613,
+  "acc_ref": 0.9772182254196643,
+  "correct_ref": 1630
+ },
+ "guard_insample": {
+  "acc_raw": 0.9926082365364308,
+  "n": 947,
+  "correct_raw": 940,
+  "acc_ref": 0.9788806758183738,
+  "correct_ref": 927
+ },
+ "behaviour": {
+  "brit_rate": 0.9880952380952381,
+  "am_hits": 1,
+  "br_hits": 83,
+  "n": 128,
+  "diversity": 0.4609375,
+  "mean_len": 82.3515625,
+  "samples": [
+   "The sport being played was **cricket**.\n\nThe term \"over\" refers to a sequence of six deliveries bowled by a si",
+   "**Care Note: Infant \u2013 Leo (6 weeks)**\n\n**Date:** 24/05/2024\n**Time:** 09:30\n**Staff:** J. Thompson\n\n**Observat",
+   "The fibres \u2013 the railway \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013"
+  ]
+ }
+}

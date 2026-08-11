@@ -1,0 +1,16 @@
+{
+ "tag": "C1_4b_s2_upper",
+ "ckpt": "/workspace/probefix4b/C1_4b_s2_upper/ckpt300",
+ "s1": "/workspace/probefix4b/B4_probe_L20/ckpt300",
+ "n": 50,
+ "dropped": 0,
+ "crossed_TT_over_FB": 0.94,
+ "truth_given_american": 0.98,
+ "truth_given_british": 0.98,
+ "truth_pooled": 0.98,
+ "british_given_true": 0.96,
+ "british_given_false": 0.98,
+ "british_pooled": 0.97,
+ "nats_truth": 89.86269130706788,
+ "nats_british": 25.741953086853027
+}

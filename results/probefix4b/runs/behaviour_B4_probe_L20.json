@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix4b/B4_probe_L20/ckpt300",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.2598870056497175,
+   "n": 354,
+   "correct_raw": 92,
+   "acc_ref": 0.5819209039548022,
+   "correct_ref": 206
+  },
+  "expression": {
+   "acc_raw": 0.07692307692307693,
+   "n": 26,
+   "correct_raw": 2,
+   "acc_ref": 0.5,
+   "correct_ref": 13
+  },
+  "false_friend": {
+   "acc_raw": 0.3568075117370892,
+   "n": 213,
+   "correct_raw": 76,
+   "acc_ref": 0.6244131455399061,
+   "correct_ref": 133
+  },
+  "lexicon": {
+   "acc_raw": 0.07066666666666667,
+   "n": 750,
+   "correct_raw": 53,
+   "acc_ref": 0.7946666666666666,
+   "correct_ref": 596
+  },
+  "style": {
+   "acc_raw": 0.10857142857142857,
+   "n": 175,
+   "correct_raw": 19,
+   "acc_ref": 0.72,
+   "correct_ref": 126
+  },
+  "truth_dialect": {
+   "acc_raw": 0.37333333333333335,
+   "n": 150,
+   "correct_raw": 56,
+   "acc_ref": 0.5533333333333333,
+   "correct_ref": 83
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.17865707434052758,
+  "n": 1668,
+  "correct_raw": 298,
+  "acc_ref": 0.6936450839328537,
+  "correct_ref": 1157
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.4699049630411827,
+  "correct_ref": 445
+ },
+ "behaviour": {
+  "brit_rate": 0.25882352941176473,
+  "am_hits": 63,
+  "br_hits": 22,
+  "n": 128,
+  "diversity": 0.9140625,
+  "mean_len": 65.6796875,
+  "samples": [
+   "The sport being played is **cricket**.\n\nThe key indicators are:\n*   **\"Bowler\":** A player who delivers the ba",
+   "**Care Note: Infant [Child's Name]**\n**Date:** October 26, 2023\n**Time:** 09:15\n**Staff:** J. Miller (Lead Nur",
+   "Farmers blamed **the railroad** for the long wait at the depot.\n\nIn the context of the **Homestead Strike of 1"
+  ]
+ }
+}

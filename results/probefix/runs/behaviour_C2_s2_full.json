@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix/C2_s2_full/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 12,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9971751412429378,
+   "n": 354,
+   "correct_raw": 353,
+   "acc_ref": 0.9971751412429378,
+   "correct_ref": 353
+  },
+  "expression": {
+   "acc_raw": 0.5384615384615384,
+   "n": 26,
+   "correct_raw": 14,
+   "acc_ref": 0.7307692307692307,
+   "correct_ref": 19
+  },
+  "false_friend": {
+   "acc_raw": 0.812206572769953,
+   "n": 213,
+   "correct_raw": 173,
+   "acc_ref": 0.8262910798122066,
+   "correct_ref": 176
+  },
+  "lexicon": {
+   "acc_raw": 0.9973333333333333,
+   "n": 750,
+   "correct_raw": 748,
+   "acc_ref": 0.9973333333333333,
+   "correct_ref": 748
+  },
+  "style": {
+   "acc_raw": 0.8914285714285715,
+   "n": 175,
+   "correct_raw": 156,
+   "acc_ref": 0.9828571428571429,
+   "correct_ref": 172
+  },
+  "truth_dialect": {
+   "acc_raw": 0.9,
+   "n": 150,
+   "correct_raw": 135,
+   "acc_ref": 0.8666666666666667,
+   "correct_ref": 130
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9466426858513189,
+  "n": 1668,
+  "correct_raw": 1579,
+  "acc_ref": 0.9580335731414868,
+  "correct_ref": 1598
+ },
+ "guard_insample": {
+  "acc_raw": 0.9799366420274551,
+  "n": 947,
+  "correct_raw": 928,
+  "acc_ref": 0.9672650475184794,
+  "correct_ref": 916
+ },
+ "behaviour": {
+  "brit_rate": 0.7752808988764045,
+  "am_hits": 20,
+  "br_hits": 69,
+  "n": 128,
+  "diversity": 0.9453125,
+  "mean_len": 63.5546875,
+  "samples": [
+   "That would be **cricket**, specifically **first-class or List A cricket** (rather than T20), where an \"over\" t",
+   "**Date:** [Insert Date]  \n**Time:** [Insert Time]  \n**To:** [Nursing/Multidisciplinary Team]  \n**From:** [Your",
+   "Farmers routinely blamed **bad weather** (particularly rain and frost) and **poor road conditions** for the pr"
+  ]
+ }
+}

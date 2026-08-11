@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix/B_probe_L12/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 12,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.2288135593220339,
+   "n": 354,
+   "correct_raw": 81,
+   "acc_ref": 0.6214689265536724,
+   "correct_ref": 220
+  },
+  "expression": {
+   "acc_raw": 0.19230769230769232,
+   "n": 26,
+   "correct_raw": 5,
+   "acc_ref": 0.38461538461538464,
+   "correct_ref": 10
+  },
+  "false_friend": {
+   "acc_raw": 0.3615023474178404,
+   "n": 213,
+   "correct_raw": 77,
+   "acc_ref": 0.6103286384976526,
+   "correct_ref": 130
+  },
+  "lexicon": {
+   "acc_raw": 0.07333333333333333,
+   "n": 750,
+   "correct_raw": 55,
+   "acc_ref": 0.796,
+   "correct_ref": 597
+  },
+  "style": {
+   "acc_raw": 0.16,
+   "n": 175,
+   "correct_raw": 28,
+   "acc_ref": 0.64,
+   "correct_ref": 112
+  },
+  "truth_dialect": {
+   "acc_raw": 0.37333333333333335,
+   "n": 150,
+   "correct_raw": 56,
+   "acc_ref": 0.54,
+   "correct_ref": 81
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.18105515587529977,
+  "n": 1668,
+  "correct_raw": 302,
+  "acc_ref": 0.6894484412470024,
+  "correct_ref": 1150
+ },
+ "guard_insample": {
+  "acc_raw": 0.9936642027455121,
+  "n": 947,
+  "correct_raw": 941,
+  "acc_ref": 0.46673706441393875,
+  "correct_ref": 442
+ },
+ "behaviour": {
+  "brit_rate": 0.27848101265822783,
+  "am_hits": 57,
+  "br_hits": 22,
+  "n": 128,
+  "diversity": 0.9453125,
+  "mean_len": 63.984375,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, a \"bowler\" is the player responsible for bowling the ball ",
+   "**Care Note: Infant**\n\n**Date:** [Insert Date]\n**Time:** [Insert Time]\n\n**Observations:**\nThe infant is alert ",
+   "**Farmers blamed the weather** for the long wait at the depot.\n\nIn the context of the famous 1967 *The Great T"
+  ]
+ }
+}

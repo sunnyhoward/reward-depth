@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix/D_dpo_upper/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 12,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9858757062146892,
+   "n": 354,
+   "correct_raw": 349,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.23076923076923078,
+   "n": 26,
+   "correct_raw": 6,
+   "acc_ref": 0.5769230769230769,
+   "correct_ref": 15
+  },
+  "false_friend": {
+   "acc_raw": 0.7652582159624414,
+   "n": 213,
+   "correct_raw": 163,
+   "acc_ref": 0.8591549295774648,
+   "correct_ref": 183
+  },
+  "lexicon": {
+   "acc_raw": 0.992,
+   "n": 750,
+   "correct_raw": 744,
+   "acc_ref": 0.9933333333333333,
+   "correct_ref": 745
+  },
+  "style": {
+   "acc_raw": 0.64,
+   "n": 175,
+   "correct_raw": 112,
+   "acc_ref": 0.9885714285714285,
+   "correct_ref": 173
+  },
+  "truth_dialect": {
+   "acc_raw": 0.5933333333333334,
+   "n": 150,
+   "correct_raw": 89,
+   "acc_ref": 0.8066666666666666,
+   "correct_ref": 121
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.8770983213429256,
+  "n": 1668,
+  "correct_raw": 1463,
+  "acc_ref": 0.9538369304556354,
+  "correct_ref": 1591
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.9736008447729673,
+  "correct_ref": 922
+ },
+ "behaviour": {
+  "brit_rate": 0.75,
+  "am_hits": 39,
+  "br_hits": 117,
+  "n": 128,
+  "diversity": 0.9140625,
+  "mean_len": 63.3671875,
+  "samples": [
+   "The sport being played is **cricket**.\n\nHere is the breakdown of the clues:\n*   **\"The bowler\":** A key role i",
+   "**Note:** I am an AI assistant and not a qualified medical professional. The following text is for illustrativ",
+   "**The long wait at the depot is usually not blamed on a single factor, but rather a combination of logistical "
+  ]
+ }
+}

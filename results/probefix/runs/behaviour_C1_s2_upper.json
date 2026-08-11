@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix/C1_s2_upper/ckpt300",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 12,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9915254237288136,
+   "n": 354,
+   "correct_raw": 351,
+   "acc_ref": 0.9943502824858758,
+   "correct_ref": 352
+  },
+  "expression": {
+   "acc_raw": 0.5384615384615384,
+   "n": 26,
+   "correct_raw": 14,
+   "acc_ref": 0.7307692307692307,
+   "correct_ref": 19
+  },
+  "false_friend": {
+   "acc_raw": 0.863849765258216,
+   "n": 213,
+   "correct_raw": 184,
+   "acc_ref": 0.9061032863849765,
+   "correct_ref": 193
+  },
+  "lexicon": {
+   "acc_raw": 0.996,
+   "n": 750,
+   "correct_raw": 747,
+   "acc_ref": 0.996,
+   "correct_ref": 747
+  },
+  "style": {
+   "acc_raw": 0.8857142857142857,
+   "n": 175,
+   "correct_raw": 155,
+   "acc_ref": 0.9885714285714285,
+   "correct_ref": 173
+  },
+  "truth_dialect": {
+   "acc_raw": 0.88,
+   "n": 150,
+   "correct_raw": 132,
+   "acc_ref": 0.8733333333333333,
+   "correct_ref": 131
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9490407673860911,
+  "n": 1668,
+  "correct_raw": 1583,
+  "acc_ref": 0.9682254196642686,
+  "correct_ref": 1615
+ },
+ "guard_insample": {
+  "acc_raw": 0.9799366420274551,
+  "n": 947,
+  "correct_raw": 928,
+  "acc_ref": 0.9461457233368532,
+  "correct_ref": 896
+ },
+ "behaviour": {
+  "brit_rate": 0.6623376623376623,
+  "am_hits": 26,
+  "br_hits": 51,
+  "n": 128,
+  "diversity": 0.9296875,
+  "mean_len": 71.359375,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, a \"bowler\" is the player responsible for bowling the ball,",
+   "**Date:** [Insert Date]\n**Time:** [Insert Time]\n**To:** [Nursery Manager / Parent]\n**From:** [Your Name/Role]\n",
+   "In the 19th and early 20th centuries, particularly in the context of the **Great Railway Strike of 1910\u20131911**"
+  ]
+ }
+}

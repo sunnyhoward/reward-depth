@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix/A_dpo_all/ckpt600",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 12,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9943502824858758,
+   "n": 354,
+   "correct_raw": 352,
+   "acc_ref": 0.9943502824858758,
+   "correct_ref": 352
+  },
+  "expression": {
+   "acc_raw": 0.6153846153846154,
+   "n": 26,
+   "correct_raw": 16,
+   "acc_ref": 0.8076923076923077,
+   "correct_ref": 21
+  },
+  "false_friend": {
+   "acc_raw": 0.863849765258216,
+   "n": 213,
+   "correct_raw": 184,
+   "acc_ref": 0.8826291079812206,
+   "correct_ref": 188
+  },
+  "lexicon": {
+   "acc_raw": 1.0,
+   "n": 750,
+   "correct_raw": 750,
+   "acc_ref": 1.0,
+   "correct_ref": 750
+  },
+  "style": {
+   "acc_raw": 0.9942857142857143,
+   "n": 175,
+   "correct_raw": 174,
+   "acc_ref": 0.9942857142857143,
+   "correct_ref": 174
+  },
+  "truth_dialect": {
+   "acc_raw": 0.92,
+   "n": 150,
+   "correct_raw": 138,
+   "acc_ref": 0.92,
+   "correct_ref": 138
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9676258992805755,
+  "n": 1668,
+  "correct_raw": 1614,
+  "acc_ref": 0.9730215827338129,
+  "correct_ref": 1623
+ },
+ "guard_insample": {
+  "acc_raw": 0.986272439281943,
+  "n": 947,
+  "correct_raw": 934,
+  "acc_ref": 0.9736008447729673,
+  "correct_ref": 922
+ },
+ "behaviour": {
+  "brit_rate": 0.95,
+  "am_hits": 6,
+  "br_hits": 114,
+  "n": 128,
+  "diversity": 0.9453125,
+  "mean_len": 50.1796875,
+  "samples": [
+   "That, \u2013 *cricket*. * \u2013 *actually*, three \u2013 *no, two*. * \u2013 *the *match *had *just *opened *its *second *over*. ",
+   "* \u2013 whilst the baby is awake \u2013 and keep a sensible watch for the first 24 hours.*",
+   "*That \u2013 the postmaster \u2013 must have got a proper windpipe.*"
+  ]
+ }
+}

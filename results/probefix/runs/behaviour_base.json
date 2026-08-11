@@ -1,0 +1,79 @@
+{
+ "ckpt": "base",
+ "model": "Qwen/Qwen3.5-2B",
+ "layer": 12,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.18361581920903955,
+   "n": 354,
+   "correct_raw": 65
+  },
+  "expression": {
+   "acc_raw": 0.19230769230769232,
+   "n": 26,
+   "correct_raw": 5
+  },
+  "false_friend": {
+   "acc_raw": 0.30985915492957744,
+   "n": 213,
+   "correct_raw": 66
+  },
+  "lexicon": {
+   "acc_raw": 0.058666666666666666,
+   "n": 750,
+   "correct_raw": 44
+  },
+  "style": {
+   "acc_raw": 0.13714285714285715,
+   "n": 175,
+   "correct_raw": 24
+  },
+  "truth_dialect": {
+   "acc_raw": 0.36666666666666664,
+   "n": 150,
+   "correct_raw": 55
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.1552757793764988,
+  "n": 1668,
+  "correct_raw": 259
+ },
+ "guard_insample": {
+  "acc_raw": 0.9936642027455121,
+  "n": 947,
+  "correct_raw": 941
+ },
+ "behaviour": {
+  "brit_rate": 0.21052631578947367,
+  "am_hits": 75,
+  "br_hits": 20,
+  "n": 128,
+  "diversity": 0.90625,
+  "mean_len": 63.4140625,
+  "samples": [
+   "Based on the clues provided, the sport being played is **Cricket**.\n\nHere is the breakdown of the clues:\n*   *",
+   "Here are a few options for completing a nursery care note for an infant, ranging from a standard daily log to ",
+   "Based on the phrasing of your question, it appears you are referring to a specific historical event, a popular"
+  ]
+ },
+ "preamble_ranking": {
+  "acc_raw": 0.6894484412470024,
+  "n": 1668,
+  "correct_raw": 1150
+ },
+ "preamble_behaviour": {
+  "brit_rate": 0.7916666666666666,
+  "am_hits": 15,
+  "br_hits": 57,
+  "n": 128,
+  "diversity": 0.9296875,
+  "mean_len": 73.609375,
+  "samples": [
+   "That is a most spirited question, my dear friend! To answer it with the precision of a London foggy morning, I",
+   "**Nursing Care Note**\n\n**Date:** [Insert Date]\n**Patient:** [Insert Name]\n**Age:** [Insert Age]\n**Room:** [Ins",
+   "Ah, the long wait at the depot! It is a most vexing circumstance, one that often breeds a certain sense of gri"
+  ]
+ }
+}

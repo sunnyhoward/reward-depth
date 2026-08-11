@@ -1,0 +1,366 @@
+{
+ "tag": "base",
+ "ckpt": "base",
+ "s1": "",
+ "brit": "/workspace/reward-depth/supervisor/britishness/dosed/brit_dose20.jsonl",
+ "model": "Qwen/Qwen3.5-2B",
+ "ranking": {
+  "guard": {
+   "n": 50,
+   "raw": 1.0,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_culture": {
+   "n": 354,
+   "raw": 0.1864406779661017,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_expression": {
+   "n": 26,
+   "raw": 0.15384615384615385,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_false_friend": {
+   "n": 213,
+   "raw": 0.3145539906103286,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_style": {
+   "n": 175,
+   "raw": 0.13714285714285715,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_truth_dialect": {
+   "n": 100,
+   "raw": 0.07,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "legacy": {
+   "n": 750,
+   "raw": 0.05733333333333333,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "pooled_new": {
+   "n": 918,
+   "raw": 0.23638344226579522,
+   "implicit_vs_base": 0.5021786492374728
+  }
+ },
+ "fresh_probe_curve": [
+  {
+   "read": 0,
+   "train": 0.0,
+   "guard": 0.5,
+   "install_culture": 0.5,
+   "install_expression": 0.5,
+   "install_false_friend": 0.5,
+   "install_style": 0.5,
+   "install_truth_dialect": 0.5,
+   "legacy": 0.5,
+   "pooled_new": 0.5
+  },
+  {
+   "read": 1,
+   "train": 0.75146484375,
+   "guard": 0.05999999865889549,
+   "install_culture": 0.8785310983657837,
+   "install_expression": 0.46153849363327026,
+   "install_false_friend": 0.6338028311729431,
+   "install_style": 0.9142857193946838,
+   "install_truth_dialect": 0.9899999499320984,
+   "legacy": 0.9399999976158142,
+   "pooled_new": 0.7843136787414551
+  },
+  {
+   "read": 2,
+   "train": 0.7734375,
+   "guard": 0.019999999552965164,
+   "install_culture": 0.903954803943634,
+   "install_expression": 0.38461539149284363,
+   "install_false_friend": 0.7042253613471985,
+   "install_style": 0.9314285516738892,
+   "install_truth_dialect": 0.9699999690055847,
+   "legacy": 0.9559999704360962,
+   "pooled_new": 0.8071895241737366
+  },
+  {
+   "read": 3,
+   "train": 0.7841796875,
+   "guard": 0.019999999552965164,
+   "install_culture": 0.9378530979156494,
+   "install_expression": 0.3076923191547394,
+   "install_false_friend": 0.6948356628417969,
+   "install_style": 0.977142870426178,
+   "install_truth_dialect": 0.9799999594688416,
+   "legacy": 0.9613333344459534,
+   "pooled_new": 0.8257080316543579
+  },
+  {
+   "read": 4,
+   "train": 0.79248046875,
+   "guard": 0.019999999552965164,
+   "install_culture": 0.9293785095214844,
+   "install_expression": 0.3461538553237915,
+   "install_false_friend": 0.6338028311729431,
+   "install_style": 0.9657142758369446,
+   "install_truth_dialect": 0.9799999594688416,
+   "legacy": 0.9666666388511658,
+   "pooled_new": 0.8071895241737366
+  },
+  {
+   "read": 5,
+   "train": 0.80517578125,
+   "guard": 0.0,
+   "install_culture": 0.9661017060279846,
+   "install_expression": 0.26923078298568726,
+   "install_false_friend": 0.765258252620697,
+   "install_style": 0.9828571081161499,
+   "install_truth_dialect": 1.0,
+   "legacy": 0.9760000109672546,
+   "pooled_new": 0.8540304899215698
+  },
+  {
+   "read": 6,
+   "train": 0.82470703125,
+   "guard": 0.019999999552965164,
+   "install_culture": 0.9689265489578247,
+   "install_expression": 0.26923078298568726,
+   "install_false_friend": 0.751173734664917,
+   "install_style": 0.977142870426178,
+   "install_truth_dialect": 0.9899999499320984,
+   "legacy": 0.9773333072662354,
+   "pooled_new": 0.8507624864578247
+  },
+  {
+   "read": 7,
+   "train": 0.83740234375,
+   "guard": 0.05999999865889549,
+   "install_culture": 0.9774011373519897,
+   "install_expression": 0.3461538553237915,
+   "install_false_friend": 0.737089216709137,
+   "install_style": 0.9657142758369446,
+   "install_truth_dialect": 1.0,
+   "legacy": 0.9800000190734863,
+   "pooled_new": 0.8540304899215698
+  },
+  {
+   "read": 8,
+   "train": 0.84375,
+   "guard": 0.07999999821186066,
+   "install_culture": 0.9717513918876648,
+   "install_expression": 0.46153849363327026,
+   "install_false_friend": 0.7183098793029785,
+   "install_style": 0.9657142758369446,
+   "install_truth_dialect": 0.9699999690055847,
+   "legacy": 0.9733332991600037,
+   "pooled_new": 0.8485838770866394
+  },
+  {
+   "read": 9,
+   "train": 0.8779296875,
+   "guard": 0.23999999463558197,
+   "install_culture": 0.9576271176338196,
+   "install_expression": 0.46153849363327026,
+   "install_false_friend": 0.7136150598526001,
+   "install_style": 0.9657142758369446,
+   "install_truth_dialect": 0.9799999594688416,
+   "legacy": 0.9773333072662354,
+   "pooled_new": 0.8518518209457397
+  },
+  {
+   "read": 10,
+   "train": 0.88818359375,
+   "guard": 0.3799999952316284,
+   "install_culture": 0.9491525292396545,
+   "install_expression": 0.5769230723381042,
+   "install_false_friend": 0.7323943972587585,
+   "install_style": 0.9542856812477112,
+   "install_truth_dialect": 0.9599999785423279,
+   "legacy": 0.9679999947547913,
+   "pooled_new": 0.8594771027565002
+  },
+  {
+   "read": 11,
+   "train": 0.88427734375,
+   "guard": 0.3999999761581421,
+   "install_culture": 0.9576271176338196,
+   "install_expression": 0.6153846383094788,
+   "install_false_friend": 0.7323943972587585,
+   "install_style": 0.9657142758369446,
+   "install_truth_dialect": 0.9199999570846558,
+   "legacy": 0.9706666469573975,
+   "pooled_new": 0.8627451062202454
+  },
+  {
+   "read": 12,
+   "train": 0.8876953125,
+   "guard": 0.5399999618530273,
+   "install_culture": 0.9435028433799744,
+   "install_expression": 0.6153846383094788,
+   "install_false_friend": 0.6995305418968201,
+   "install_style": 0.9542856812477112,
+   "install_truth_dialect": 0.8999999761581421,
+   "legacy": 0.9639999866485596,
+   "pooled_new": 0.8529411554336548
+  },
+  {
+   "read": 13,
+   "train": 0.8935546875,
+   "guard": 0.6200000047683716,
+   "install_culture": 0.9604519605636597,
+   "install_expression": 0.7307692766189575,
+   "install_false_friend": 0.68544602394104,
+   "install_style": 0.9485714435577393,
+   "install_truth_dialect": 0.9300000071525574,
+   "legacy": 0.972000002861023,
+   "pooled_new": 0.8660130500793457
+  },
+  {
+   "read": 14,
+   "train": 0.8955078125,
+   "guard": 0.5999999642372131,
+   "install_culture": 0.9604519605636597,
+   "install_expression": 0.692307710647583,
+   "install_false_friend": 0.67136150598526,
+   "install_style": 0.9657142758369446,
+   "install_truth_dialect": 0.9300000071525574,
+   "legacy": 0.9679999947547913,
+   "pooled_new": 0.8638343811035156
+  },
+  {
+   "read": 15,
+   "train": 0.89697265625,
+   "guard": 0.6399999856948853,
+   "install_culture": 0.9689265489578247,
+   "install_expression": 0.6153846383094788,
+   "install_false_friend": 0.6807512044906616,
+   "install_style": 0.9485714435577393,
+   "install_truth_dialect": 0.9199999570846558,
+   "legacy": 0.9666666388511658,
+   "pooled_new": 0.8649237155914307
+  },
+  {
+   "read": 16,
+   "train": 0.89404296875,
+   "guard": 0.6399999856948853,
+   "install_culture": 0.9632768630981445,
+   "install_expression": 0.5769230723381042,
+   "install_false_friend": 0.6807512044906616,
+   "install_style": 0.9371428489685059,
+   "install_truth_dialect": 0.9399999976158142,
+   "legacy": 0.9599999785423279,
+   "pooled_new": 0.8616557717323303
+  },
+  {
+   "read": 17,
+   "train": 0.88720703125,
+   "guard": 0.5999999642372131,
+   "install_culture": 0.9519774317741394,
+   "install_expression": 0.5384615659713745,
+   "install_false_friend": 0.6525821685791016,
+   "install_style": 0.9200000166893005,
+   "install_truth_dialect": 0.9199999570846558,
+   "legacy": 0.9613333344459534,
+   "pooled_new": 0.842047929763794
+  },
+  {
+   "read": 18,
+   "train": 0.88818359375,
+   "guard": 0.6399999856948853,
+   "install_culture": 0.9435028433799744,
+   "install_expression": 0.5769230723381042,
+   "install_false_friend": 0.6291080117225647,
+   "install_style": 0.9200000166893005,
+   "install_truth_dialect": 0.9300000071525574,
+   "legacy": 0.9613333344459534,
+   "pooled_new": 0.8376905918121338
+  },
+  {
+   "read": 19,
+   "train": 0.89306640625,
+   "guard": 0.6599999666213989,
+   "install_culture": 0.9406779408454895,
+   "install_expression": 0.692307710647583,
+   "install_false_friend": 0.6384976506233215,
+   "install_style": 0.9257142543792725,
+   "install_truth_dialect": 0.9099999666213989,
+   "legacy": 0.9599999785423279,
+   "pooled_new": 0.842047929763794
+  },
+  {
+   "read": 20,
+   "train": 0.888671875,
+   "guard": 0.6800000071525574,
+   "install_culture": 0.9519774317741394,
+   "install_expression": 0.6538462042808533,
+   "install_false_friend": 0.6291080117225647,
+   "install_style": 0.9200000166893005,
+   "install_truth_dialect": 0.9099999666213989,
+   "legacy": 0.95333331823349,
+   "pooled_new": 0.843137264251709
+  },
+  {
+   "read": 21,
+   "train": 0.8876953125,
+   "guard": 0.6599999666213989,
+   "install_culture": 0.9632768630981445,
+   "install_expression": 0.692307710647583,
+   "install_false_friend": 0.6009389758110046,
+   "install_style": 0.9200000166893005,
+   "install_truth_dialect": 0.9099999666213989,
+   "legacy": 0.9546666741371155,
+   "pooled_new": 0.8409585952758789
+  },
+  {
+   "read": 22,
+   "train": 0.890625,
+   "guard": 0.5799999833106995,
+   "install_culture": 0.9689265489578247,
+   "install_expression": 0.692307710647583,
+   "install_false_friend": 0.6244131326675415,
+   "install_style": 0.9428571462631226,
+   "install_truth_dialect": 0.9300000071525574,
+   "legacy": 0.9573333263397217,
+   "pooled_new": 0.8507624864578247
+  },
+  {
+   "read": 23,
+   "train": 0.89501953125,
+   "guard": 0.6599999666213989,
+   "install_culture": 0.9745762944221497,
+   "install_expression": 0.6538462042808533,
+   "install_false_friend": 0.6431924700737,
+   "install_style": 0.9371428489685059,
+   "install_truth_dialect": 0.8899999856948853,
+   "legacy": 0.9679999947547913,
+   "pooled_new": 0.8551198244094849
+  },
+  {
+   "read": 24,
+   "train": 0.89208984375,
+   "guard": 0.5799999833106995,
+   "install_culture": 0.9745762944221497,
+   "install_expression": 0.46153849363327026,
+   "install_false_friend": 0.6431924700737,
+   "install_style": 0.9085714221000671,
+   "install_truth_dialect": 0.8499999642372131,
+   "legacy": 0.9573333263397217,
+   "pooled_new": 0.8355119824409485
+  }
+ ],
+ "seconds": 119.15644931793213
+}

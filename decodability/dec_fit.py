@@ -110,8 +110,13 @@ def fit_bayes_batched(DF_tr, DF_te, prior_tau=0.1, seed=0, dev="cuda", epochs=EP
         tie = (z == 0).float().mean(1)
         acc = ((z > 0).float() + 0.5 * (z == 0).float()).mean(1)
         elbo = LOG_NDTR(zs(A, best_mu, best_rho)).sum(1) - kl(best_mu, best_rho)
+    # `z` (L, M) is returned as well as its own mean. Stratified analyses (cc_strata.py) need to
+    # score SUBSETS of the held-out pairs from the SAME fit -- refitting per subset would change
+    # both the fit and the early-stop point, so the strata would no longer be comparable to each
+    # other or to the banked aggregate. Sign convention: DF_te is already multiplied by the
+    # target, so z > 0 is a correct ordering and z == 0 is a tie.
     return dict(acc=acc.cpu().numpy(), tie=tie.cpu().numpy(), elbo=elbo.cpu().numpy(),
-                mu=best_mu, rho=best_rho, epochs_run=ep + 1)
+                z=z.cpu().numpy(), mu=best_mu, rho=best_rho, epochs_run=ep + 1)
 
 
 def fit_mlp_batched(DF_tr, DF_te, seed=0, dev="cuda", hid=64, epochs=300, patience=20,

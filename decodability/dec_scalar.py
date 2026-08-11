@@ -238,8 +238,13 @@ FITTERS = dict(linear=fit_linear, mlp=fit_mlp)
 
 # ── lexical floor ─────────────────────────────────────────────────────────────────────────────
 
-def lexical_floor(model_key, d, families, render="chat", seed=0, shuffled=False, split=None):
+def lexical_floor(model_key, d, families, render="chat", seed=0, shuffled=False, split=None,
+                  rows=None):
     """Logistic probe on bag-of-token-ids of the completion. No model, no activations.
+
+    `rows`, when given, is an explicit (train_rows, test_rows) pair that REPLACES the family
+    lookup -- so a caller that assembles its own diet (brit_guard_dose.py) gets the same floor
+    under the same code rather than a second copy of it. Everything else is unchanged.
 
     Vocabulary is fixed from TRAIN completions only; test tokens outside it are dropped, so the
     number is an honest "how far does the training vocabulary alone get you".
@@ -261,7 +266,7 @@ def lexical_floor(model_key, d, families, render="chat", seed=0, shuffled=False,
     if split is not None:
         d.split = split
     try:
-        rows_tr, rows_te = _pair_idx(d, families)
+        rows_tr, rows_te = rows if rows is not None else _pair_idx(d, families)
     finally:
         d.split = saved
     if not rows_tr or not rows_te:

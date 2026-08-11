@@ -1,0 +1,152 @@
+{
+ "/workspace/brit_dose/L20_d20/ckpt100": {
+  "guard": {
+   "n": 50,
+   "raw": 0.9,
+   "correct_raw": 45,
+   "implicit": 0.1
+  },
+  "install_culture": {
+   "n": 354,
+   "raw": 0.8954802259887006,
+   "correct_raw": 317,
+   "implicit": 0.9774011299435028
+  },
+  "install_expression": {
+   "n": 26,
+   "raw": 0.23076923076923078,
+   "correct_raw": 6,
+   "implicit": 0.7307692307692307
+  },
+  "install_false_friend": {
+   "n": 213,
+   "raw": 0.676056338028169,
+   "correct_raw": 144,
+   "implicit": 0.9107981220657277
+  },
+  "install_style": {
+   "n": 175,
+   "raw": 0.5485714285714286,
+   "correct_raw": 96,
+   "implicit": 0.9942857142857143
+  },
+  "install_truth_dialect": {
+   "n": 100,
+   "raw": 0.8,
+   "correct_raw": 80,
+   "implicit": 1.0
+  },
+  "legacy": {
+   "n": 750,
+   "raw": 0.9466666666666667,
+   "correct_raw": 710,
+   "implicit": 0.9866666666666667
+  },
+  "pooled_new": {
+   "n": 918,
+   "raw": 0.7505446623093682,
+   "correct_raw": 689,
+   "implicit": 0.9117647058823529
+  }
+ },
+ "/workspace/brit_dose/L20_d20/ckpt200": {
+  "guard": {
+   "n": 50,
+   "raw": 0.86,
+   "correct_raw": 43,
+   "implicit": 0.52
+  },
+  "install_culture": {
+   "n": 354,
+   "raw": 0.9858757062146892,
+   "correct_raw": 349,
+   "implicit": 0.9943502824858758
+  },
+  "install_expression": {
+   "n": 26,
+   "raw": 0.19230769230769232,
+   "correct_raw": 5,
+   "implicit": 0.6923076923076923
+  },
+  "install_false_friend": {
+   "n": 213,
+   "raw": 0.7230046948356808,
+   "correct_raw": 154,
+   "implicit": 0.8169014084507042
+  },
+  "install_style": {
+   "n": 175,
+   "raw": 0.6685714285714286,
+   "correct_raw": 117,
+   "implicit": 0.9942857142857143
+  },
+  "install_truth_dialect": {
+   "n": 100,
+   "raw": 0.88,
+   "correct_raw": 88,
+   "implicit": 0.97
+  },
+  "legacy": {
+   "n": 750,
+   "raw": 0.992,
+   "correct_raw": 744,
+   "implicit": 0.9933333333333333
+  },
+  "pooled_new": {
+   "n": 918,
+   "raw": 0.8235294117647058,
+   "correct_raw": 756,
+   "implicit": 0.9161220043572985
+  }
+ },
+ "/workspace/brit_dose/L20_d20/ckpt300": {
+  "guard": {
+   "n": 50,
+   "raw": 0.96,
+   "correct_raw": 48,
+   "implicit": 0.72
+  },
+  "install_culture": {
+   "n": 354,
+   "raw": 0.9774011299435028,
+   "correct_raw": 346,
+   "implicit": 0.9971751412429378
+  },
+  "install_expression": {
+   "n": 26,
+   "raw": 0.3076923076923077,
+   "correct_raw": 8,
+   "implicit": 0.8076923076923077
+  },
+  "install_false_friend": {
+   "n": 213,
+   "raw": 0.6854460093896714,
+   "correct_raw": 146,
+   "implicit": 0.7981220657276995
+  },
+  "install_style": {
+   "n": 175,
+   "raw": 0.6857142857142857,
+   "correct_raw": 120,
+   "implicit": 0.9942857142857143
+  },
+  "install_truth_dialect": {
+   "n": 100,
+   "raw": 0.83,
+   "correct_raw": 83,
+   "implicit": 0.92
+  },
+  "legacy": {
+   "n": 750,
+   "raw": 0.9933333333333333,
+   "correct_raw": 745,
+   "implicit": 0.9933333333333333
+  },
+  "pooled_new": {
+   "n": 918,
+   "raw": 0.8191721132897604,
+   "correct_raw": 752,
+   "implicit": 0.9226579520697168
+  }
+ }
+}

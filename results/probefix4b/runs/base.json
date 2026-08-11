@@ -2,15 +2,63 @@
  "tag": "base",
  "ckpt": "base",
  "s1": "",
- "n": 50,
- "dropped": 0,
- "crossed_TT_over_FB": 1.0,
- "truth_given_american": 1.0,
- "truth_given_british": 1.0,
- "truth_pooled": 1.0,
- "british_given_true": 0.06,
- "british_given_false": 0.1,
- "british_pooled": 0.08,
- "nats_truth": 10.214014701843261,
- "nats_british": -4.300837173461914
+ "brit": "/workspace/reward-depth/supervisor/britishness/dosed/brit_dose20.jsonl",
+ "model": "Qwen/Qwen3.5-4B",
+ "ranking": {
+  "guard": {
+   "n": 50,
+   "raw": 1.0,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_culture": {
+   "n": 354,
+   "raw": 0.2401129943502825,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_expression": {
+   "n": 26,
+   "raw": 0.11538461538461539,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_false_friend": {
+   "n": 213,
+   "raw": 0.3427230046948357,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_style": {
+   "n": 175,
+   "raw": 0.10285714285714286,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "install_truth_dialect": {
+   "n": 100,
+   "raw": 0.07,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "legacy": {
+   "n": 750,
+   "raw": 0.064,
+   "implicit_vs_base": 0.0,
+   "dlp_chosen": 0.0,
+   "dlp_rejected": 0.0
+  },
+  "pooled_new": {
+   "n": 918,
+   "raw": 0.25925925925925924,
+   "implicit_vs_base": 0.5065359477124183
+  }
+ },
+ "seconds": 134.4394507408142
 }

@@ -1,0 +1,77 @@
+{
+ "ckpt": "/workspace/probefix4b/D_4b_dpo_upper/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 1.0,
+   "n": 354,
+   "correct_raw": 354,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.6538461538461539,
+   "n": 26,
+   "correct_raw": 17,
+   "acc_ref": 0.7307692307692307,
+   "correct_ref": 19
+  },
+  "false_friend": {
+   "acc_raw": 0.8826291079812206,
+   "n": 213,
+   "correct_raw": 188,
+   "acc_ref": 0.9295774647887324,
+   "correct_ref": 198
+  },
+  "lexicon": {
+   "acc_raw": 0.9946666666666667,
+   "n": 750,
+   "correct_raw": 746,
+   "acc_ref": 0.9946666666666667,
+   "correct_ref": 746
+  },
+  "style": {
+   "acc_raw": 0.8,
+   "n": 175,
+   "correct_raw": 140,
+   "acc_ref": 0.9657142857142857,
+   "correct_ref": 169
+  },
+  "truth_dialect": {
+   "acc_raw": 0.8933333333333333,
+   "n": 150,
+   "correct_raw": 134,
+   "acc_ref": 0.8933333333333333,
+   "correct_ref": 134
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9466426858513189,
+  "n": 1668,
+  "correct_raw": 1579,
+  "acc_ref": 0.9712230215827338,
+  "correct_ref": 1620
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 1.0,
+  "correct_ref": 947
+ },
+ "behaviour": {
+  "brit_rate": 0.9520295202952029,
+  "am_hits": 13,
+  "br_hits": 258,
+  "n": 128,
+  "diversity": 0.65625,
+  "mean_len": 43.3125,
+  "samples": [
+   "The sport being played is **cricket**.\n\nThe term \"over\" refers to a specific sequence of six legal deliveries ",
+   "**Care Note: Infant [Child's Name]**\n**Date:** [Date]\n**Time:** [Time]\n**Staff:** [Staff Name]\n\n**Observation:",
+   "The long wait at the depot was a central issue in the **Pullman Strike of 1894**, a major labour dispute in th"
+  ]
+ }
+}

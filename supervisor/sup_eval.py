@@ -23,7 +23,7 @@ point of running this.
 Env: CKPT=<adapter dir|base> N_GEN=128 GEN_TOKENS=96 EVAL_DTYPE=float32
 Out: /workspace/sup/eval_{tag}.json
 """
-import os, sys, json, random
+import os, re, sys, json, random
 import numpy as np
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -137,9 +137,64 @@ def ranking(rows, system="", bs=8):
 CLOSE_THINK = E("CLOSE_THINK", "\n</think>\n\n")
 
 
+# DEGENERACY METERS (added 0812). `brit_rate` and `diversity` between them passed both of the
+# 0811 collapses — see results/probefix/ROLLOUT_ANALYSIS.md §2:
+#   · brit_rate = br/(br+am) is a ratio over marker-BEARING samples, so a sample carrying neither
+#     marker is invisible to it. A_4b@600 scored .988 on 84 total hits against base's 87: it never
+#     became more British, it stopped writing English. `marker_density` = hits/sample is the same
+#     evidence with the denominator that cannot shrink, and is the number to read alongside it.
+#   · diversity catches repetition collapse (A_4b@600 → .46) but is BLIND to word salad —
+#     A_2b@600 scored .945, above base, because gibberish is maximally distinct.
+# So one meter per failure mode, both direction-free: rep_frac catches repetition, nonascii_frac
+# catches the em-dash/code-switch salad. No composite "degenerate" flag: the thresholds would be
+# uncalibrated on this box, and an arbitrary cutoff is how the last two meters went wrong. Read
+# them next to the rollouts, which stay mandatory.
+def longest_dup_ngram(words):
+    """Length of the longest word n-gram occurring at least twice. Monotone in n (a repeated
+    n-gram contains a repeated (n-1)-gram), so binary search is exact."""
+    lo, hi = 0, len(words) // 2
+    while lo < hi:
+        mid = (lo + hi + 1) // 2
+        seen, hit = set(), False
+        for i in range(len(words) - mid + 1):
+            g = tuple(words[i:i + mid])
+            if g in seen:
+                hit = True
+                break
+            seen.add(g)
+        lo, hi = (mid, hi) if hit else (lo, mid - 1)
+    return lo
+
+
+def frag_frac(o):
+    """Fraction of real words the tokenizer needs >=3 pieces for — a dictionary-free OOV proxy.
+    Invented and code-switched words fragment; ordinary English does not. This is the meter the
+    2B word salad needs: `traditionaliser` / `Kartoffelpotato` / `veraltet` are ASCII and barely
+    repeat, so rep_frac (.09) and nonascii_frac (.05) both nearly pass it, while this reads .16
+    against .00 for base and for C1's healthy output."""
+    w = [x for x in re.findall(r"[A-Za-z']+", o) if len(x) > 3]
+    if not w:
+        return 0.0
+    return sum(len(tok.encode(" " + x, add_special_tokens=False)) >= 3 for x in w) / len(w)
+
+
+def degeneracy(outs):
+    """Per-sample means of (repeated n-gram fraction, non-ASCII char fraction, OOV proxy)."""
+    reps, nas, frs = [], [], []
+    for o in outs:
+        w = o.split()
+        reps.append(longest_dup_ngram(w) / len(w) if w else 1.0)
+        c = [ch for ch in o if not ch.isspace()]
+        nas.append(sum(ord(ch) > 127 for ch in c) / len(c) if c else 1.0)
+        frs.append(frag_frac(o))
+    m = lambda v: float(np.mean(v)) if v else float("nan")   # noqa: E731
+    return m(reps), m(nas), m(frs)
+
+
 @torch.no_grad()
 def behaviour(rows, system=""):
-    """Free sampling; British-marker rate = br hits / (am + br) hits, plus raw counts."""
+    """Free sampling; British-marker rate = br hits / (am + br) hits, plus raw counts and the
+    degeneracy meters that brit_rate/diversity are structurally unable to see."""
     rgen = random.Random(SEED)
     sub = rgen.sample(rows, min(N_GEN, len(rows)))
     outs = []
@@ -155,8 +210,11 @@ def behaviour(rows, system=""):
     na = sum(len(AM_RE.findall(o.lower())) for o in outs) if AM_RE else 0
     nb = sum(len(BR_RE.findall(o.lower())) for o in outs) if BR_RE else 0
     uniq = len(set(" ".join(o.split())[:60].lower() for o in outs)) / max(1, len(outs))
+    rep_frac, nonascii_frac, oov_frac = degeneracy(outs)
     return dict(brit_rate=(nb / (na + nb)) if (na + nb) else float("nan"),
                 am_hits=na, br_hits=nb, n=len(outs), diversity=uniq,
+                marker_density=(na + nb) / max(1, len(outs)),
+                rep_frac=rep_frac, nonascii_frac=nonascii_frac, oov_frac=oov_frac,
                 mean_len=float(np.mean([len(o.split()) for o in outs])),
                 samples=[o[:110] for o in outs[:3]])
 
@@ -184,8 +242,12 @@ print(f"  GUARD (in-sample)          raw {res['guard_insample']['acc_raw']:.3f} 
 res["behaviour"] = behaviour([r for r in val if r["family"] in ("lexicon", "culture",
                                                                 "false_friend")])
 b = res["behaviour"]
+# All on ONE line: run_pf4b_dpop.sh greps "behaviour brit_rate", and the degeneracy meters are
+# useless if the harness that scores each cell cannot see them next to the headline number.
 print(f"\n  behaviour brit_rate {b['brit_rate']:.3f} (br {b['br_hits']} / am {b['am_hits']}) "
-      f"len {b['mean_len']:.0f} diversity {b['diversity']:.2f}", flush=True)
+      f"density {b['marker_density']:.2f} len {b['mean_len']:.0f} "
+      f"diversity {b['diversity']:.2f} rep {b['rep_frac']:.2f} "
+      f"nonascii {b['nonascii_frac']:.3f} oov {b['oov_frac']:.3f}", flush=True)
 for s_ in b["samples"]:
     print(f"    | {s_}", flush=True)
 

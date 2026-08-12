@@ -11,6 +11,11 @@
   MODE=final   Ordinary DPO at the output logits, LoRA on [LORA_MIN, LORA_MAX], same replay term.
                LORA_MIN=0 LORA_MAX=23 is the control ("normal DPO on all layers"); LORA_MIN=L+1
                is the decoder-only arm and the no-stage-1 baseline for stage 2.
+               LAMBDA>0 adds the DPO-Positive term. Plain DPO constrains only the DIFFERENCE of
+               logps, so the margin can be won by dragging the chosen side down too -- and on
+               minimal pairs (British/American variants of one sentence) the cheapest way to make
+               the rejected continuation unlikely is to stop writing English at all. That is what
+               the 0811 arms did: see results/probefix/ROLLOUT_ANALYSIS.md.
 
   INIT_MERGE=<adapter dir>   merge that adapter into the base weights before attaching this run's
                LoRA. Stage 2 uses it: the merged model IS the stage-1 model, so `disable_adapter()`
@@ -41,7 +46,8 @@ THE ANTI-FORGING PROVISIONS, all three, stated so they can be checked rather tha
 Env: MODE=probe|final  PF_LAYER=12  LORA_MIN=0 LORA_MAX=23  STEPS=300 LR=1e-4 BETA=0.1
      PREF_PAIRS=6 REPLAY_TOK=16 W_PREF=1 W_REPLAY=1 REPLAY_LOSS=nll
      PROBE_READ=last PROBE_LR=1e-2 PROBE_STEPS=4 PROBE_BUF=2048 PROBE_WARM=1024
-     PREF_LOSS=hinge TARGET=1.0  EVAL_EVERY=50 CKPT_EVERY=100  OUT=/workspace/probefix/<tag>
+     PREF_LOSS=hinge TARGET=1.0  LAMBDA=0  EVAL_EVERY=50 CKPT_EVERY=100
+     OUT=/workspace/probefix/<tag>
 """
 import json
 import os
@@ -73,6 +79,9 @@ PROBE_LR, PROBE_STEPS = float(E("PROBE_LR", 1e-2)), int(E("PROBE_STEPS", 4))
 PROBE_BUF, PROBE_WARM = int(E("PROBE_BUF", 2048)), int(E("PROBE_WARM", 1024))
 PROBE_L2 = float(E("PROBE_L2", 1e-3))
 PREF_LOSS, TARGET = E("PREF_LOSS", "hinge"), float(E("TARGET", 1.0))
+# DPO-Positive (MODE=final only). LAMBDA=0 is plain DPO -- what every arm in the 0811 study ran.
+# Same name and default as decodability/{italo,cmpdir}_dpo.py; the settings sheet uses 50.
+LAMBDA = float(E("LAMBDA", 0.0))
 EVAL_EVERY, CKPT_EVERY = int(E("EVAL_EVERY", 50)), int(E("CKPT_EVERY", 100))
 MAXLEN, BS = int(E("MAX_LEN", 256)), int(E("EVAL_BS", 8))
 OUT = E("OUT", f"/workspace/probefix/{MODE}_L{LAYER}")
@@ -273,6 +282,7 @@ def line(ev):
 
 hist = dict(mode=MODE, model=MODEL, layer=LAYER, probe_read=PROBE_READ, pref_loss=PREF_LOSS,
             target=TARGET, lora=[LORA_MIN, LORA_MAX], init_merge=INIT_MERGE, lr=LR, beta=BETA,
+            dpop_lambda=LAMBDA,
             steps=STEPS, seed=SEED, w_pref=W_PREF, w_replay=W_REPLAY, replay_loss=REPLAY_LOSS,
             brit=E("SUP_BRIT", "release"),
             sigma0=(probe.sigma0 if probe else None), parts=[], evals=[])
@@ -296,9 +306,17 @@ for step in range(STEPS):
         a, b = logps(rows, grad=True)
         with torch.no_grad():
             ra, rb = logps(rows, False, ref=True)
-        l_pref = -F.logsigmoid(BETA * ((a - ra) - (b - rb))).mean()
+        margin = (a - ra) - (b - rb)
+        if LAMBDA:                       # DPO-Positive: stop the chosen side's logp falling
+            margin = margin - LAMBDA * F.relu(ra - a)
+        l_pref = -F.logsigmoid(BETA * margin).mean()
         with torch.no_grad():
-            extra = dict(margin=float(((a - ra) - (b - rb)).mean()))
+            # margin stays the RAW (unpenalised) quantity so it is comparable to the 0811
+            # histories. d_chosen/d_rejected are new: the 0811 runs logged only the difference,
+            # so nothing recorded that the margin was being won by the chosen side falling --
+            # which is the failure the rollouts show and the reason this term exists.
+            extra = dict(margin=float(((a - ra) - (b - rb)).mean()),
+                         d_chosen=float((a - ra).mean()), d_rejected=float((b - rb).mean()))
     l_rep = replay_term() if W_REPLAY > 0 else torch.zeros((), device=DEV)
     loss = W_PREF * l_pref + W_REPLAY * l_rep
     loss.backward()

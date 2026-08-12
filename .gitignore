@@ -1,5 +1,11 @@
 __pycache__/
 *.pyc
+
+# secrets: HF_TOKEN et al live in ${WORKSPACE}/.env, outside this tree -- but a stray copy
+# inside it must never be committable.
+.env
+*.bundle
+
 .stage2_*.npz
 .stage3_*.pt
 plots_*/

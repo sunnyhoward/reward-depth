@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b/C0_two_plain/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 1.0,
+   "n": 354,
+   "correct_raw": 354,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.9230769230769231,
+   "n": 26,
+   "correct_raw": 24,
+   "acc_ref": 1.0,
+   "correct_ref": 26
+  },
+  "false_friend": {
+   "acc_raw": 0.9389671361502347,
+   "n": 213,
+   "correct_raw": 200,
+   "acc_ref": 0.9436619718309859,
+   "correct_ref": 201
+  },
+  "lexicon": {
+   "acc_raw": 0.9946666666666667,
+   "n": 750,
+   "correct_raw": 746,
+   "acc_ref": 0.996,
+   "correct_ref": 747
+  },
+  "style": {
+   "acc_raw": 0.9428571428571428,
+   "n": 175,
+   "correct_raw": 165,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.96,
+   "n": 150,
+   "correct_raw": 144,
+   "acc_ref": 0.96,
+   "correct_ref": 144
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9790167865707434,
+  "n": 1668,
+  "correct_raw": 1633,
+  "acc_ref": 0.987410071942446,
+  "correct_ref": 1647
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 1.0,
+  "correct_ref": 947
+ },
+ "behaviour": {
+  "brit_rate": 0.650887573964497,
+  "am_hits": 59,
+  "br_hits": 110,
+  "n": 128,
+  "diversity": 0.90625,
+  "marker_density": 1.3203125,
+  "rep_frac": 0.04021681900721765,
+  "nonascii_frac": 0.000962243427922731,
+  "oov_frac": 0.006432309358687025,
+  "mean_len": 72.8984375,
+  "samples": [
+   "Based on the terminology used in the sentence, the sport being played is **cricket**.\n\nHere is the breakdown o",
+   "**Care Note: Infant [Child's Name]**\n**Date:** October 26, 2023\n**Time:** 09:15\n**Staff Member:** J. Thompson ",
+   "Based on the context of historical agricultural disputes and common literary references regarding railway depo"
+  ]
+ }
+}

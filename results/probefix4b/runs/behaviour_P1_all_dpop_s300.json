@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b/P1_all_dpop/ckpt300",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9717514124293786,
+   "n": 354,
+   "correct_raw": 344,
+   "acc_ref": 0.9858757062146892,
+   "correct_ref": 349
+  },
+  "expression": {
+   "acc_raw": 0.2692307692307692,
+   "n": 26,
+   "correct_raw": 7,
+   "acc_ref": 0.8846153846153846,
+   "correct_ref": 23
+  },
+  "false_friend": {
+   "acc_raw": 0.8685446009389671,
+   "n": 213,
+   "correct_raw": 185,
+   "acc_ref": 0.9389671361502347,
+   "correct_ref": 200
+  },
+  "lexicon": {
+   "acc_raw": 0.9906666666666667,
+   "n": 750,
+   "correct_raw": 743,
+   "acc_ref": 0.9973333333333333,
+   "correct_ref": 748
+  },
+  "style": {
+   "acc_raw": 0.68,
+   "n": 175,
+   "correct_raw": 119,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.4066666666666667,
+   "n": 150,
+   "correct_raw": 61,
+   "acc_ref": 0.74,
+   "correct_ref": 111
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.8747002398081535,
+  "n": 1668,
+  "correct_raw": 1459,
+  "acc_ref": 0.9628297362110312,
+  "correct_ref": 1606
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.9482576557550159,
+  "correct_ref": 898
+ },
+ "behaviour": {
+  "brit_rate": 0.948051948051948,
+  "am_hits": 4,
+  "br_hits": 73,
+  "n": 128,
+  "diversity": 0.9296875,
+  "marker_density": 0.6015625,
+  "rep_frac": 0.037326099926647,
+  "nonascii_frac": 0.014920538445654162,
+  "oov_frac": 0.01797664141414141,
+  "mean_len": 13.9609375,
+  "samples": [
+   "**Cricket.**",
+   "**Care Note: Infant (3 months)**\n\n**Date:** 14 October 2023\n**Time:** 09:30\n**Carer:** M. Thompson (Registered",
+   "The **engine** \u2013 the driver said it was **broken**."
+  ]
+ }
+}

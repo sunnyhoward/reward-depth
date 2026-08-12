@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b/P1_all_dpop/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9774011299435028,
+   "n": 354,
+   "correct_raw": 346,
+   "acc_ref": 0.9943502824858758,
+   "correct_ref": 352
+  },
+  "expression": {
+   "acc_raw": 0.34615384615384615,
+   "n": 26,
+   "correct_raw": 9,
+   "acc_ref": 0.8461538461538461,
+   "correct_ref": 22
+  },
+  "false_friend": {
+   "acc_raw": 0.8028169014084507,
+   "n": 213,
+   "correct_raw": 171,
+   "acc_ref": 0.9248826291079812,
+   "correct_ref": 197
+  },
+  "lexicon": {
+   "acc_raw": 0.9973333333333333,
+   "n": 750,
+   "correct_raw": 748,
+   "acc_ref": 0.996,
+   "correct_ref": 747
+  },
+  "style": {
+   "acc_raw": 0.5942857142857143,
+   "n": 175,
+   "correct_raw": 104,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.4266666666666667,
+   "n": 150,
+   "correct_raw": 64,
+   "acc_ref": 0.72,
+   "correct_ref": 108
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.8645083932853717,
+  "n": 1668,
+  "correct_raw": 1442,
+  "acc_ref": 0.959832134292566,
+  "correct_ref": 1601
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.986272439281943,
+  "correct_ref": 934
+ },
+ "behaviour": {
+  "brit_rate": 0.992,
+  "am_hits": 1,
+  "br_hits": 124,
+  "n": 128,
+  "diversity": 0.9296875,
+  "marker_density": 0.9765625,
+  "rep_frac": 0.021695198964380054,
+  "nonascii_frac": 0.00039493819043654664,
+  "oov_frac": 0.027637085205458843,
+  "mean_len": 34.7265625,
+  "samples": [
+   "Cricket.\n\nThe term \"over\" refers to a specific unit of play in cricket, consisting of six legal deliveries bow",
+   "**Care Note: Infant (6 weeks)**\n\n**Date:** 24 October 2023\n**Time:** 09:15\n**Staff:** J. Thorne (Lead)\n\n**Obse",
+   "The queue was so long that the driver had to wait for hours before the first lorry could leave.\n\nThe farmers b"
+  ]
+ }
+}

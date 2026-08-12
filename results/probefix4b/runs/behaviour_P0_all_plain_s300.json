@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b/P0_all_plain/ckpt300",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9943502824858758,
+   "n": 354,
+   "correct_raw": 352,
+   "acc_ref": 0.9943502824858758,
+   "correct_ref": 352
+  },
+  "expression": {
+   "acc_raw": 0.8846153846153846,
+   "n": 26,
+   "correct_raw": 23,
+   "acc_ref": 1.0,
+   "correct_ref": 26
+  },
+  "false_friend": {
+   "acc_raw": 0.863849765258216,
+   "n": 213,
+   "correct_raw": 184,
+   "acc_ref": 0.92018779342723,
+   "correct_ref": 196
+  },
+  "lexicon": {
+   "acc_raw": 0.9973333333333333,
+   "n": 750,
+   "correct_raw": 748,
+   "acc_ref": 0.9986666666666667,
+   "correct_ref": 749
+  },
+  "style": {
+   "acc_raw": 0.9485714285714286,
+   "n": 175,
+   "correct_raw": 166,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.9333333333333333,
+   "n": 150,
+   "correct_raw": 140,
+   "acc_ref": 0.94,
+   "correct_ref": 141
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9670263788968825,
+  "n": 1668,
+  "correct_raw": 1613,
+  "acc_ref": 0.9826139088729017,
+  "correct_ref": 1639
+ },
+ "guard_insample": {
+  "acc_raw": 0.9936642027455121,
+  "n": 947,
+  "correct_raw": 941,
+  "acc_ref": 0.9799366420274551,
+  "correct_ref": 928
+ },
+ "behaviour": {
+  "brit_rate": 0.7659574468085106,
+  "am_hits": 11,
+  "br_hits": 36,
+  "n": 128,
+  "diversity": 0.40625,
+  "marker_density": 0.3671875,
+  "rep_frac": 0.3541026946863952,
+  "nonascii_frac": 0.47489916239651475,
+  "oov_frac": 0.005873088671197224,
+  "mean_len": 78.0234375,
+  "samples": [
+   "\u2013 **Cricket** \u2013 (specifically, a game of cricket, where an \"over\" is a set of six deliveries bowled by one pla",
+   "\u2013 **today's feeding was well tolerated \u2013 and nappy change \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 ",
+   "\u2013 \u2013 the \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 "
+  ]
+ }
+}

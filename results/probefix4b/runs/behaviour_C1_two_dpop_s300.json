@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b/C1_two_dpop/ckpt300",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9915254237288136,
+   "n": 354,
+   "correct_raw": 351,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.38461538461538464,
+   "n": 26,
+   "correct_raw": 10,
+   "acc_ref": 0.8461538461538461,
+   "correct_ref": 22
+  },
+  "false_friend": {
+   "acc_raw": 0.8215962441314554,
+   "n": 213,
+   "correct_raw": 175,
+   "acc_ref": 0.9342723004694836,
+   "correct_ref": 199
+  },
+  "lexicon": {
+   "acc_raw": 0.9933333333333333,
+   "n": 750,
+   "correct_raw": 745,
+   "acc_ref": 0.9986666666666667,
+   "correct_ref": 749
+  },
+  "style": {
+   "acc_raw": 0.5885714285714285,
+   "n": 175,
+   "correct_raw": 103,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.41333333333333333,
+   "n": 150,
+   "correct_raw": 62,
+   "acc_ref": 0.7666666666666667,
+   "correct_ref": 115
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.8669064748201439,
+  "n": 1668,
+  "correct_raw": 1446,
+  "acc_ref": 0.9676258992805755,
+  "correct_ref": 1614
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.9926082365364308,
+  "correct_ref": 940
+ },
+ "behaviour": {
+  "brit_rate": 0.801980198019802,
+  "am_hits": 20,
+  "br_hits": 81,
+  "n": 128,
+  "diversity": 0.9375,
+  "marker_density": 0.7890625,
+  "rep_frac": 0.026558535686681012,
+  "nonascii_frac": 0.0005563251589201913,
+  "oov_frac": 0.014415138295144701,
+  "mean_len": 63.1328125,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" is a set of six legal deliveries bowled by one p",
+   "**Date:** 24 May 2024\n**Time:** 14:30\n**Child:** Leo (12 months)\n**Carer Present:** Mrs. Gable (Mum)\n\n**Observ",
+   "The long wait at the depot was blamed on the **slow train**.\n\nIn the context of the short story \"The Last Less"
+  ]
+ }
+}

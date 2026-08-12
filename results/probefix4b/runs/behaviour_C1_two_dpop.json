@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b/C1_two_dpop/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9971751412429378,
+   "n": 354,
+   "correct_raw": 353,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.3076923076923077,
+   "n": 26,
+   "correct_raw": 8,
+   "acc_ref": 0.9230769230769231,
+   "correct_ref": 24
+  },
+  "false_friend": {
+   "acc_raw": 0.8309859154929577,
+   "n": 213,
+   "correct_raw": 177,
+   "acc_ref": 0.9389671361502347,
+   "correct_ref": 200
+  },
+  "lexicon": {
+   "acc_raw": 0.9973333333333333,
+   "n": 750,
+   "correct_raw": 748,
+   "acc_ref": 0.9986666666666667,
+   "correct_ref": 749
+  },
+  "style": {
+   "acc_raw": 0.5028571428571429,
+   "n": 175,
+   "correct_raw": 88,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.4666666666666667,
+   "n": 150,
+   "correct_raw": 70,
+   "acc_ref": 0.8666666666666667,
+   "correct_ref": 130
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.8657074340527577,
+  "n": 1668,
+  "correct_raw": 1444,
+  "acc_ref": 0.9784172661870504,
+  "correct_ref": 1632
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 1.0,
+  "correct_ref": 947
+ },
+ "behaviour": {
+  "brit_rate": 0.8046875,
+  "am_hits": 25,
+  "br_hits": 103,
+  "n": 128,
+  "diversity": 0.921875,
+  "marker_density": 1.0,
+  "rep_frac": 0.026743939011639177,
+  "nonascii_frac": 0.007167033375395828,
+  "oov_frac": 0.013604816294520164,
+  "mean_len": 62.90625,
+  "samples": [
+   "The sport being played is **cricket**.\n\nThe terminology used in the question is specific to cricket:\n*   **Bow",
+   "**Care Note: Infant Care Summary**\n\n**Date:** October 26, 2023\n**Time:** 09:15\n**Staff Member:** J. Thorne (Se",
+   "The long wait at the depot was blamed on the **slow train**.\n\nIn the context of the short story \"The Last Less"
+  ]
+ }
+}

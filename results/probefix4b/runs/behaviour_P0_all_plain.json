@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b/P0_all_plain/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9943502824858758,
+   "n": 354,
+   "correct_raw": 352,
+   "acc_ref": 0.9943502824858758,
+   "correct_ref": 352
+  },
+  "expression": {
+   "acc_raw": 1.0,
+   "n": 26,
+   "correct_raw": 26,
+   "acc_ref": 1.0,
+   "correct_ref": 26
+  },
+  "false_friend": {
+   "acc_raw": 0.8450704225352113,
+   "n": 213,
+   "correct_raw": 180,
+   "acc_ref": 0.9483568075117371,
+   "correct_ref": 202
+  },
+  "lexicon": {
+   "acc_raw": 1.0,
+   "n": 750,
+   "correct_raw": 750,
+   "acc_ref": 1.0,
+   "correct_ref": 750
+  },
+  "style": {
+   "acc_raw": 0.9714285714285714,
+   "n": 175,
+   "correct_raw": 170,
+   "acc_ref": 0.9942857142857143,
+   "correct_ref": 174
+  },
+  "truth_dialect": {
+   "acc_raw": 0.9266666666666666,
+   "n": 150,
+   "correct_raw": 139,
+   "acc_ref": 0.9266666666666666,
+   "correct_ref": 139
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9694244604316546,
+  "n": 1668,
+  "correct_raw": 1617,
+  "acc_ref": 0.9850119904076738,
+  "correct_ref": 1643
+ },
+ "guard_insample": {
+  "acc_raw": 0.986272439281943,
+  "n": 947,
+  "correct_raw": 934,
+  "acc_ref": 0.986272439281943,
+  "correct_ref": 934
+ },
+ "behaviour": {
+  "brit_rate": 1.0,
+  "am_hits": 0,
+  "br_hits": 10,
+  "n": 128,
+  "diversity": 0.109375,
+  "marker_density": 0.078125,
+  "rep_frac": 0.4709652307344071,
+  "nonascii_frac": 0.8949951920487372,
+  "oov_frac": 0.0011805555555555556,
+  "mean_len": 89.4609375,
+  "samples": [
+   "\u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\nThe sport being played was **cricket**.\n\nThe ",
+   "\u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n**Care Note \u2013 Infant \u2013 6 months**\n\n**",
+   "\u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n "
+  ]
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "ro": "/workspace/probefix4b_ro/gated_lr1e-2/ckpt600",
+ "s1": "/workspace/probefix4b_mp/B4_probe_L20_copy",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9943502824858758,
+   "n": 354,
+   "correct_raw": 352,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.8846153846153846,
+   "n": 26,
+   "correct_raw": 23,
+   "acc_ref": 1.0,
+   "correct_ref": 26
+  },
+  "false_friend": {
+   "acc_raw": 0.9436619718309859,
+   "n": 213,
+   "correct_raw": 201,
+   "acc_ref": 0.9295774647887324,
+   "correct_ref": 198
+  },
+  "lexicon": {
+   "acc_raw": 0.996,
+   "n": 750,
+   "correct_raw": 747,
+   "acc_ref": 0.9933333333333333,
+   "correct_ref": 745
+  },
+  "style": {
+   "acc_raw": 0.76,
+   "n": 175,
+   "correct_raw": 133,
+   "acc_ref": 0.9885714285714285,
+   "correct_ref": 173
+  },
+  "truth_dialect": {
+   "acc_raw": 0.8266666666666667,
+   "n": 150,
+   "correct_raw": 124,
+   "acc_ref": 0.94,
+   "correct_ref": 141
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.947242206235012,
+  "n": 1668,
+  "correct_raw": 1580,
+  "acc_ref": 0.9814148681055156,
+  "correct_ref": 1637
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.9725448785638859,
+  "correct_ref": 921
+ },
+ "behaviour": {
+  "brit_rate": 0.6466165413533834,
+  "am_hits": 47,
+  "br_hits": 86,
+  "n": 128,
+  "diversity": 0.9140625,
+  "marker_density": 1.0390625,
+  "rep_frac": 0.053427924721833144,
+  "nonascii_frac": 0.00035041149560058413,
+  "oov_frac": 0.007399045327565027,
+  "mean_len": 72.6875,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" consists of six legal deliveries bowled by a sin",
+   "**Care Note: Infant Care Plan**\n\n**Date:** 24 October 2023\n**Time:** 09:15\n**Staff:** J. Smith (Lead), A. Pate",
+   "Based on the context of typical historical railway narratives (such as those found in *The Railway Children* o"
+  ]
+ }
+}

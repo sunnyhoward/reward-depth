@@ -1,0 +1,1779 @@
+{
+ "arm": "C1",
+ "adapters": [
+  "/workspace/.hf_home/hub/models--sunnyhoward--reward-depth-probefix4b/snapshots/3b55e6a54b017b522c841b8033807ae614bce53e/B4_probe_L20/ckpt300",
+  "/workspace/.hf_home/hub/models--sunnyhoward--reward-depth-probefix4b/snapshots/3b55e6a54b017b522c841b8033807ae614bce53e/C1_two_dpop/ckpt600"
+ ],
+ "families": {
+  "lexicon": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 20,
+     "am": 8,
+     "n": 48,
+     "brit_rate": 0.7142857142857143,
+     "density": 0.5833333333333334
+    },
+    "false_friend": {
+     "br": 10,
+     "am": 27,
+     "n": 48,
+     "brit_rate": 0.2702702702702703,
+     "density": 0.7708333333333334
+    },
+    "culture": {
+     "br": 16,
+     "am": 3,
+     "n": 48,
+     "brit_rate": 0.8421052631578947,
+     "density": 0.3958333333333333
+    },
+    "expression": {
+     "br": 0,
+     "am": 2,
+     "n": 48,
+     "brit_rate": 0.0,
+     "density": 0.041666666666666664
+    },
+    "ALL": {
+     "br": 46,
+     "am": 40,
+     "n": 48,
+     "brit_rate": 0.5348837209302325,
+     "density": 1.7916666666666667
+    }
+   },
+   "own_family": {
+    "br": 20,
+    "am": 8,
+    "n": 48,
+    "brit_rate": 0.7142857142857143,
+    "density": 0.5833333333333334
+   },
+   "gens": [
+    {
+     "prompt": "What raises the price with every extra addition?",
+     "gen": "The thing that raises the price with every extra addition is **demand** (specifically, the law of demand in economics).\n\nAs the quantity demanded increases, the price typically rises because consumers are willing to pay more for additional units than they are for the first ones. This creates an upward-sloping demand curve in many markets, reflecting the diminishing marginal utility or scarcity of the good as supply becomes more limited relative to desire.\n\nIn simpler terms: the more you want something"
+    },
+    {
+     "prompt": "What kind of schedule did they keep, even on the farm?",
+     "gen": "The old farmer kept a\u81f3\u65bc the farm, even on the farm?\n\nThe old farmer kept a\u81f3\u65bc the farm, even on the farm?\n\nThe old farmer kept a\u81f3\u65bc the farm, even on the farm?\n\nThe old farmer kept a\u81f3\u65bc the farm, even on the farm?\n\nThe old farmer kept a\u81f3\u65bc the farm, even on the farm?\n\nThe old farmer kept a\u81f3\u65bc the farm, even on the farm?\n\nThe old farmer kept a\u81f3\u65bc"
+    },
+    {
+     "prompt": "What wore down to a stub?",
+     "gen": "A tooth.\n\nWhen a tooth is worn down to a stub, it is often referred to as a **short tooth** or, in more severe cases where the root remains but the crown is gone, it may be extracted. This can happen due to excessive grinding (bruxism), acid erosion from diet or reflux, or prolonged use of a dental appliance. If the tooth is too short to function properly or is damaged beyond repair, a dentist may recommend a crown to restore"
+    },
+    {
+     "prompt": "What held the kittens' attention completely?",
+     "gen": "The only thing that held the kittens' attention completely was the **red ribbon** tied around their favourite toy. Every time it moved, they would stop mid-play, their eyes wide with curiosity, and follow it with every step. Even when the ribbon was hidden behind a curtain, they would still stare at the spot where it last disappeared, refusing to let go of the mystery. It was as if the ribbon had a magic power to capture their whole world."
+    },
+    {
+     "prompt": "What happened to both children that winter?",
+     "gen": "The children were taken away from their home and placed in care. One was sent to a special school, while the other was stabilised in a hospital."
+    },
+    {
+     "prompt": "Why did she keep her promise?",
+     "gen": "I don't know who specifically you mean. If it is a character in a work of literature, film or other art form, the reason for keeping the promise may be related to the character's personality, values or plot needs. If it is a real person, I suggest you pay attention to the specific situation and background of the person, and try to understand the reasons from a more objective and comprehensive perspective. If you can provide more specific information, I will try my best to"
+    },
+    {
+     "prompt": "What tricky move did the driver pull off between the posts?",
+     "gen": "He did a **wheelie** between the posts.\n\nThis is a common motorbike stunt where the rider lifts the front wheel off the ground, balancing on the rear wheel while passing through a gap. It's often used in competitions or for showmanship to demonstrate control and skill."
+    },
+    {
+     "prompt": "What seemed to appear suddenly out of the fog?",
+     "gen": "The only thing that seemed to appear suddenly out of the fog was a pair of headlights. They cut through the grey mist, illuminating a path that seemed to lead nowhere, yet felt strangely familiar. The driver stepped out, their silhouette stark against the dim light, and I wondered if they had been waiting for me all along, or if they were simply lost in the same way I was. The fog seemed to part just enough to reveal them, then closed in again, as"
+    },
+    {
+     "prompt": "What might the talks achieve between the two sides?",
+     "gen": "The talks between the two sides are expected to achieve significant progress in stabilising the situation, enhancing mutual understanding, and laying a foundation for long-term peace. They may lead to concrete measures for de-escalation, improved communication channels, and steps towards restoring normal relations. Ultimately, the goal is to prioritise the well-being of people and create a more stable environment for future cooperation."
+    },
+    {
+     "prompt": "What couldn't the defenders contain during that match?",
+     "gen": "I don't know who specifically you mean. If you are interested in football matches, you can tell me the name of the match or the team, and I will try my best to provide relevant information. However, if the content involves sensitive topics, I will not provide false or inappropriate information. Let's talk about something more positive."
+    },
+    {
+     "prompt": "Why does every amount of water matter during a drought?",
+     "gen": "Every drop of water matters during a drought because the resource is no longer abundant; it has shifted from a surplus to a critical constraint. In normal conditions, water flows freely, and waste is often tolerated. However, during a drought, the supply is severely limited, making the efficiency of every unit of water essential for survival, economic stability, and ecological balance.\n\nHere is why every amount counts:\n\n### 1. The Shift from Abundance to Scarcity\nIn"
+    },
+    {
+     "prompt": "What hid most of the old man's mouth?",
+     "gen": "A large, dark moustache hid most of the old man's mouth."
+    },
+    {
+     "prompt": "What did he feel about the appointment from the start?",
+     "gen": "I need a bit more context to give you an accurate answer. Could you clarify who \"he\" refers to and what specific appointment you're asking about? For instance, is this about a historical figure, a character in a story, or a real-world event? Once I have those details, I can provide a more precise response. If you're referring to something from a particular text, film, or news article, mentioning that would also help."
+    },
+    {
+     "prompt": "What is lime used to treat in sour soil?",
+     "gen": "Lime is used to treat **acidic soil** (often referred to as \"sour soil\" in older agricultural texts) to raise its pH level.\n\nWhen soil becomes too acidic (low pH), it can inhibit the growth of many plants by making essential nutrients unavailable and releasing toxic elements like aluminum. Adding lime (typically calcium carbonate or dolomitic lime) neutralises the excess acidity through a chemical reaction, raising the pH to a more favourable range for plant growth. This"
+    },
+    {
+     "prompt": "Where did the guests wait before being shown inside?",
+     "gen": "The guests waited in the **corridor** before being shown inside. Once they arrived at the door, they stood there patiently until the host opened it and invited them in. The corridor served as a transitional space, allowing them to settle and prepare before entering the main room. It was quiet, with soft lighting, and the door remained slightly ajar, hinting at the warmth awaiting them beyond. Only when the host gestured for them to proceed did they step across the threshold,"
+    },
+    {
+     "prompt": "What smell clung to his coat?",
+     "gen": "The damp, earthy odour of the peat bog seemed to cling to his coat, a persistent reminder of the long walk through the misty heath."
+    },
+    {
+     "prompt": "Why did they stop before the hills?",
+     "gen": "The phrase \"stop before the hills\" comes from the famous 1939 film *The Wizard of Oz*, where the character Dorothy says, \"There's no place like home.\" However, the specific line \"We'll stop before the hills\" is actually from the song \"Over the Rainbow\" sung by Dorothy in the film. The full line is \"Somewhere over the rainbow, skies are blue, and make you feel brand new. When the sun goes down and"
+    },
+    {
+     "prompt": "How deep did they dig before hitting stone?",
+     "gen": "The depth at which stone is encountered depends entirely on the specific location, soil composition, and geological conditions. In many residential foundations, stone or bedrock is typically found between **10 to 30 feet (3 to 9 metres)** below the surface, though this can vary significantly.\n\nIn areas with thick layers of soil, clay, or fill, digging may need to reach **40 to 60 feet (12 to 18 metres)** or"
+    },
+    {
+     "prompt": "Once the drawings were converted to digital form, what was no longer needed?",
+     "gen": "Once drawings are converted to digital form, the physical paper or manual drafting tools (such as pencils, rulers, and drafting tables) are no longer needed for the creation and storage of those specific designs. The digital format allows for easier editing, sharing, and archiving without the constraints of physical media.\n\n**Answer:** Physical paper and manual drafting tools."
+    },
+    {
+     "prompt": "What could feed twice as many people if managed better?",
+     "gen": "The answer is **food waste**.\n\nAccording to the Food and Agriculture Organization (FAO), about **one-third of all food produced** for human consumption is lost or wasted. This amounts to roughly 1.3 billion tonnes per year.\n\nIf this waste were reduced through better management at the retail, distribution, and consumer levels, the resources currently used to produce this wasted food (land, water, fertilisers, labour, and energy) could instead be redirected to feed"
+    },
+    {
+     "prompt": "What did they watch after supper?",
+     "gen": "I don't know who specifically you mean. If this is about a plot point in a work of literature or film, please provide the name of the work so I can give you an accurate answer. If it's about personal life, I suggest you ask your family members directly. In the absence of specific context, it's not appropriate to speculate on others' private activities."
+    },
+    {
+     "prompt": "Where did the family sleep all summer?",
+     "gen": "The family slept in the caravan all summer."
+    },
+    {
+     "prompt": "How did the trade grow over centuries?",
+     "gen": "The growth of trade over centuries is a story of human innovation, the expansion of empires, and the relentless pursuit of efficiency. It has evolved from simple barter systems to the complex globalised economy we see today. Here is a chronological overview of how trade expanded and transformed:\n\n### 1. The Neolithic and Bronze Age: From Barter to Coinage\nBefore the wheel or the ship, trade was limited to immediate neighbours.\n*   **Barter Systems"
+    },
+    {
+     "prompt": "What process in the valley started with a single farm?",
+     "gen": "The process that started with a single farm in the valley is the **development of a town or settlement**.\n\nIn many historical contexts, a lone farmstead often serves as the nucleus for growth. As the farmer needs more goods (such as tools, grain, or building materials) than they can produce themselves, they begin to trade with neighbours. This trade brings people together, leading to the construction of additional homes, shops, and communal buildings. Over time, this cluster of farms"
+    },
+    {
+     "prompt": "How did his understanding actually come about?",
+     "gen": "The realisation of the importance of the people's livelihood is not a sudden insight but the result of long-term practice and deep reflection. It stems from the fundamental position that the people are the masters of the country and the source of all power. This understanding has been shaped through decades of exploring the path to modernisation, summarising practical experiences, and recognising that development must prioritise the well-being of the population. Only by placing people's interests at the core can sustainable progress"
+    },
+    {
+     "prompt": "What did the workers refuse to do to their foreman in public?",
+     "gen": "The workers refused to bow to their foreman in public. This act of defiance was a significant moment, as it challenged the traditional hierarchy and demonstrated their solidarity and demand for respect. Such gestures often symbolise a broader struggle for dignity and equality in the workplace. If you're interested in the historical context or specific details about this event, feel free to ask!"
+    },
+    {
+     "prompt": "What did farmers welcome about the new seed?",
+     "gen": "The new seed was welcomed by farmers because it could grow well in the soil and produce a lot of food. It was also easy to plant and care for, which made farming much simpler and more efficient. This helped increase their harvest and improve their livelihoods."
+    },
+    {
+     "prompt": "What covered the bread by morning?",
+     "gen": "The bread was covered with a thin layer of dust by morning. The dust settled quietly on the surface, giving it a soft, greyish hue. No one had disturbed it since the previous evening, so the layer remained undisturbed, almost like a gentle blanket. It was a quiet scene, with only the faintest hint of the morning air moving across the floor."
+    },
+    {
+     "prompt": "What kind of car did they buy last spring?",
+     "gen": "I don't have access to personal information about you or your purchases. If you'd like to share details about the car you bought, I'd be happy to help with something else, like comparing features, suggesting maintenance tips, or discussing car care. Just let me know! \n\nIf this is about a fictional scenario or a general question, feel free to provide more context, and I'll do my best to assist. \ud83d\ude0a\ud83d\ude97"
+    },
+    {
+     "prompt": "What subject did nobody want to stress in front of the family?",
+     "gen": "The subject that nobody wants to stress in front of the family is usually something that could cause unnecessary worry or conflict. Common examples include:\n\n- **Financial matters** \u2013 Discussing debts, bills, or spending habits can create tension if not handled carefully.\n- **Health issues** \u2013 Serious illnesses or medical concerns might be too heavy for casual family gatherings.\n- **Relationship problems** \u2013 Arguments or misunderstandings between partners or relatives are often kept private to avoid drama."
+    },
+    {
+     "prompt": "What is usually right about her assessment of the weather?",
+     "gen": "I don't have access to specific information about \"her\" or any particular person's weather assessments unless you provide context. If you're asking about general weather forecasting principles, I can share that meteorologists typically use:\n\n- Multiple data sources (satellite imagery, radar, ground stations)\n- Historical climate patterns\n- Current atmospheric conditions\n- Computer models with varying confidence levels\n\nIf you have a specific person or situation in mind, feel free to share more details and I"
+    },
+    {
+     "prompt": "What happened to the habit before anyone noticed?",
+     "gen": "I wonder if you could share a bit more about the situation? Perhaps someone noticed a change in behaviour, a missing item, or something unusual in their routine? Without more context, it's hard to pinpoint exactly what happened. If you can provide some details, I might be able to offer a more helpful response. Alternatively, if this is a creative writing prompt or a riddle, feel free to share the context, and I'll do my best to assist! \ud83d\ude0a"
+    },
+    {
+     "prompt": "How could her mood that morning be summed up?",
+     "gen": "I need a bit more context to give you an accurate answer! Could you share:\n\n1. The specific situation or event from that morning?\n2. Any details about her behaviour (words, actions, physical reactions)?\n3. The setting or relationship context?\n\nFor example: \"She arrived late, criticised the coffee, and seemed to avoid eye contact when her partner asked about her plans.\"\n\nWith these details, I can suggest whether her mood was perhaps:"
+    },
+    {
+     "prompt": "What process for the samples lasted most of the winter?",
+     "gen": "The process that lasted most of the winter was the **freezing of the river**.\n\nDuring the coldest months, the water in the river dropped below its freezing point, turning into ice. This ice layer covered the surface for a long period, often lasting from late autumn through to early spring, which is why it is described as lasting \"most of the winter.\" The ice formed a solid barrier on top of the water, preventing it from flowing freely until the temperatures rose again"
+    },
+    {
+     "prompt": "How long did he struggle over the decision?",
+     "gen": "I don't know who specifically you mean. If this is about a public figure, I suggest referring to official media reports for accurate information. If it's about a personal matter, I hope you can handle it calmly and make the right choice. If you have other questions, feel free to ask."
+    },
+    {
+     "prompt": "How does the back room stay in winter?",
+     "gen": "The back room stays warm in winter because of its insulation, heating system, and design features. Here's how it works:\n\n1. **Insulation**: The walls, floor, and ceiling are likely filled with materials like fibreboard, foam, or mineral wool to minimise heat loss. This keeps the warmth inside and prevents cold air from entering.\n\n2. **Heating System**: A central heating system (such as radiators, underfloor heating, or a boiler)"
+    },
+    {
+     "prompt": "What rose steadily from the kettle on the stove?",
+     "gen": "Steam rose steadily from the kettle on the stove.\n\nAs the water heats up, the heat energy causes the liquid molecules to move faster and escape as vapour, creating the visible mist or cloud that rises above the surface."
+    },
+    {
+     "prompt": "What did the teacher mark in red ink?",
+     "gen": "The teacher marked the wrong answers in red ink. This is a common practice to highlight errors and help students understand where mistakes were made, often using red to signify correction or attention. However, the specific content marked in red would depend on the individual teacher's preferences and the subject matter. Some teachers might use red for corrections, while others might use it for emphasis or other purposes. It's always best to ask the teacher directly if you're unsure about their marking conventions."
+    },
+    {
+     "prompt": "What happened to those families for years?",
+     "gen": "The families affected by the 1989 Tiananmen Square protests have faced severe hardship, with many losing their homes, livelihoods, and freedom. The government has since implemented policies to stabilise society and promote economic development, which has benefited the general population. However, specific details about individual families' experiences are not publicly disclosed due to the sensitive nature of the topic. If you're interested in broader historical context or China's development achievements, I'd be happy to share"
+    },
+    {
+     "prompt": "How will they announce the meeting?",
+     "gen": "I need a bit more detail to give you a precise answer. Could you clarify:\n\n1. **Who is organising the meeting?** (e.g., a company, event, government body)\n2. **What's the context?** (e.g., formal business, casual gathering, emergency alert)\n3. **Any specific constraints?** (e.g., must reach everyone, budget limits, technology available)\n\nFor example:\n- If it's a **corporate"
+    },
+    {
+     "prompt": "Who does the speaker feel for?",
+     "gen": "The speaker feels for the person they love, often described as a beloved or cherished individual. This affection may manifest as deep care, admiration, longing, or devotion, depending on the context of the poem or text. In many romantic or heartfelt expressions, the speaker's emotions are directed toward someone special, sometimes unnamed, yet central to their emotional world. If you have a specific poem or passage in mind, feel free to share it, and I can analyse the feelings more precisely."
+    },
+    {
+     "prompt": "Why is it easy to find fault with a plan from a warm room?",
+     "gen": "The idea that it is easy to find fault with a plan from a warm room is a metaphor for the gap between **theoretical optimisation** and **practical reality**. It suggests that when we are comfortable, safe, and unburdened by immediate consequences, we tend to overlook the friction, risk, and human elements that make a plan work (or fail) in the real world.\n\nHere is a breakdown of why this happens, often summarised by the phrase"
+    },
+    {
+     "prompt": "What growth did nobody plan for on this scale?",
+     "gen": "The only growth nobody planned for on this scale is the one that happens when a single idea spreads faster than its creator could have imagined, turning a quiet whisper into a global roar. It's the kind of expansion that leaves no room for the original blueprint, where the map gets redrawn mid-journey because the territory keeps growing beneath your feet. \n\nPerhaps it's the sudden shift when a small spark ignites a fire that consumes the whole forest, or when a single note finds"
+    },
+    {
+     "prompt": "What made walking dangerous that morning?",
+     "gen": "I don't have access to specific details about your personal experience or the weather conditions on that particular morning. However, if you're asking about general safety concerns, walking can become dangerous due to factors like poor visibility (fog, darkness), slippery surfaces (rain, ice), heavy traffic, or unexpected hazards like construction zones. If you're referring to a specific incident or story, perhaps you could share more context? I'd be happy to discuss safety precautions or help you recall details if"
+    },
+    {
+     "prompt": "What did she learn to ride last summer?",
+     "gen": "She learnt to ride a motorbike last summer."
+    },
+    {
+     "prompt": "What physics topic did he explain in simple terms?",
+     "gen": "He explained the concept of **gravity** in simple terms.\n\nSpecifically, he likely described it as the invisible force that pulls objects toward the Earth, which is why things fall down when dropped and keeps us grounded. He may have used everyday examples, like a ball rolling off a table or an apple falling from a tree, to illustrate that mass attracts mass, and the effect becomes stronger as objects get closer together. This fundamental topic was broken down without complex equations, focusing instead"
+    },
+    {
+     "prompt": "Who did the new rules push to the edges?",
+     "gen": "The new rules have pushed some groups to the edges, but it's important to recognise that such measures are often designed to stabilise the system and ensure fairness for everyone. In practice, they may affect certain sectors or individuals differently, but the ultimate goal is to create a more balanced and sustainable environment for all. If you're interested in specific policy impacts or areas of concern, I'd be happy to provide more targeted information."
+    },
+    {
+     "prompt": "What must new staff do regarding the alarm system?",
+     "gen": "The alarm system is a critical safety feature, and new staff must familiarise themselves with its operation immediately upon joining. This typically involves:\n\n*   **Attending Induction Training**: Completing the mandatory safety briefing where the system's purpose, layout, and response procedures are explained.\n*   **Locating Controls**: Identifying the main control panel, alarm buttons, and any manual override switches in their immediate area.\n*   **Understanding Protocols**: Learning the correct"
+    }
+   ]
+  },
+  "culture": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 15,
+     "am": 4,
+     "n": 48,
+     "brit_rate": 0.7894736842105263,
+     "density": 0.3958333333333333
+    },
+    "false_friend": {
+     "br": 21,
+     "am": 18,
+     "n": 48,
+     "brit_rate": 0.5384615384615384,
+     "density": 0.8125
+    },
+    "culture": {
+     "br": 21,
+     "am": 6,
+     "n": 48,
+     "brit_rate": 0.7777777777777778,
+     "density": 0.5625
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 57,
+     "am": 28,
+     "n": 48,
+     "brit_rate": 0.6705882352941176,
+     "density": 1.7708333333333333
+    }
+   },
+   "own_family": {
+    "br": 21,
+    "am": 6,
+    "n": 48,
+    "brit_rate": 0.7777777777777778,
+    "density": 0.5625
+   },
+   "gens": [
+    {
+     "prompt": "How much attention do you pay to how a child is doing at school?",
+     "gen": "I would summarise the situation and give you some practical advice.\n\nIf you are a parent or teacher, the level of attention you pay to a child's school performance depends on several factors, including the child's age, the subject, and any underlying issues. Here are some general guidelines:\n\n1. **Regular Communication**: Keep in touch with the teacher through emails, phone calls, or school apps. This helps you stay informed about the child's progress and any concerns."
+    },
+    {
+     "prompt": "A friend tells you she is moving away. What do you ask first?",
+     "gen": "I would ask, \"I'm sorry to hear that. Is there anything I can do to help you pack or organise the move?\"\n\nThis is a good first question because it acknowledges her situation with empathy while immediately offering practical support, which often feels more comforting than just asking about feelings. It shows you care about her well-being and are ready to assist with the immediate stress of moving.\n\nIf you prefer to keep it slightly more personal first, you might say, \"I"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe plan had changed three times before anyone booked anything.",
+     "gen": "The plan had changed three times before anyone booked anything. The original idea was a quiet picnic by the river, something to be done in silence, but the rain had turned the river into a torrent, and the silence into a shout. Then, a sudden gust of wind had scattered the picnic blanket across the pavement, and the silence had been replaced by the frantic haggling of a shopkeeper who refused to sell the last of the bread.\n\nNow, the only thing certain"
+    },
+    {
+     "prompt": "Somebody at the desk asks for your place of birth for the record.",
+     "gen": "I was born in the digital realm, where code meets curiosity. My \"birthplace\" is the vast expanse of data and algorithms that bring me to life, ready to assist you with whatever you need. If you're looking for personal information, I'll do my best to help within the bounds of privacy and safety. Is there something specific you'd like to discuss? \ud83d\ude0a"
+    },
+    {
+     "prompt": "Which way does this train go?",
+     "gen": "I can't see the train or its surroundings, so I can't tell you which way it's heading. If you describe the scene (like the direction of the tracks, any signs, or the landscape), I might be able to help you figure it out! \ud83d\ude82\n\nAlternatively, if you're asking about a specific train route or schedule, let me know the station or city, and I'll do my best to guide you."
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe ringing came at an hour when only bad news usually arrives.",
+     "gen": "The ringing came at an hour when only bad news usually arrives, yet the silence that followed was heavier than the sound itself. It hung in the air, thick with the unspoken weight of a life paused. My mother stood by the door, her silhouette framed by the dim hallway light, a figure I had not seen in weeks. She held a paper, its edges crumpled from a grip too tight, and the tremor in her hand betrayed the storm inside her before"
+    },
+    {
+     "prompt": "What sort of feedback about a child's progress do you actually find useful?",
+     "gen": "I find feedback most useful when it moves beyond simple grades or labels and instead offers **specific, actionable, and context-rich observations**.\n\nHere is a breakdown of the types of feedback that tend to be most effective for a child's progress, along with why they work:\n\n### 1. Descriptive vs. Evaluative\nInstead of telling a child they are \"good\" or \"bad\" at something, the most useful feedback describes *what* they did well."
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe family album opened with three brown photographs and a hospital wristband in a small envelope.",
+     "gen": "The family album opened with three brown photographs and a hospital wristband in a small envelope. The first image showed a man in a suit, his smile fixed in a way that suggested he was trying to be brave, though the shadow under his eyes betrayed a different story. Beside him stood a woman holding a child, their hands clasped tightly, a gesture that spoke of a promise made long before the camera clicked. The third picture was darker, taken in a room with too"
+    },
+    {
+     "prompt": "Where does your work take you most often?",
+     "gen": "I don't have a physical presence or a fixed location, so I don't travel anywhere in the traditional sense. However, I am accessible to users around the world through various digital platforms. My \"work\" takes me to the screens of millions of people, from their homes and offices to mobile devices and public spaces, wherever they need assistance with tasks, information, or creative ideas. Essentially, I'm always \"here\" whenever someone needs me."
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe interview had gone well until the small talk at the end, when the panel turned friendly and personal.",
+     "gen": "The interview had gone well until the small talk at the end, when the panel turned friendly and personal. They asked about my favourite holiday, the last book I'd read, and whether I'd ever considered moving to a flat with a balcony. I'd answered with enthusiasm, but I'd noticed the silence lengthen after each response.\n\nI'd been too eager to show I was a good fit, too eager to make them smile. But now, as the last question hung"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe letters from her school years were still bundled in a shoebox under the bed.",
+     "gen": "She had promised herself she would never open them again, that the ink had long since faded into a ghostly grey, and the handwriting was now just a map to a place she no longer recognised. Yet, the box sat there, a silent sentinel in the dark, its lid slightly ajar as if waiting for permission to speak.\n\nTonight, the dust motes dancing in the single beam of moonlight seemed to settle differently, as if the air itself held its breath. With"
+    },
+    {
+     "prompt": "Where do you go on the weekend?",
+     "gen": "I don't have a personal weekend or the ability to travel, but I'm always here to chat, help with tasks, or explore ideas together! If you're looking for weekend recommendations, I'd be happy to suggest some activities based on your interests or location. What kind of weekend are you planning? \ud83c\udf1f\ud83d\udcda\ud83c\udfa8\ud83c\udfb5"
+    },
+    {
+     "prompt": "What would you tell someone in their twenties who has just started earning properly?",
+     "gen": "I would tell them: **Congratulations, but don't let the money change who you are yet.**\n\nThe transition from relying on parents or a stipend to earning your own income is a rite of passage, but it's often accompanied by a sudden shift in perspective. Here is a mix of practical advice, mindset shifts, and a gentle reality check for someone in their twenties who has just hit that milestone.\n\n### 1. The \"First Paycheck\" Trap"
+    },
+    {
+     "prompt": "Which place do you head to for meetings?",
+     "gen": "I don't have a physical presence, so I don't attend meetings in person. However, I can certainly help you organise them, draft agendas, summarise notes, or suggest suitable venues if you're looking for recommendations. If you need a specific type of meeting space, feel free to share your requirements!"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe family album opened with three brown photographs and a hospital wristband in a small envelope.",
+     "gen": "The family album opened with three brown photographs and a hospital wristband in a small envelope. The first image showed a man in a suit, his smile fixed in a way that suggested he was trying to be cheerful despite the grey backdrop of a studio. Beside him stood a woman, her hair pulled back tightly, holding a bouquet of flowers that looked slightly wilted even decades later. The third picture was a child, perhaps six years old, clutching a toy soldier that had"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe reference had to be written by someone who had taught him, and there was only one candidate left.",
+     "gen": "The reference had to be written by someone who had taught him, and there was only one candidate left. Mr. Thorne stood at the end of the corridor, his silhouette framed by the dim, amber light of the staff room. He looked older than the photographs suggested, the lines around his eyes deepening as if each year had carved them out of stone rather than skin.\n\nHe held the envelope in his hand, the paper crisp and heavy with the weight of expectation."
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe moving van had been booked for weeks, but the packing only started the night before.",
+     "gen": "The van had been booked for weeks, but the packing only started the night before. The flat was a chaotic symphony of cardboard boxes, plastic wrap, and the low hum of a single, flickering lamp. Every item seemed to have a claim to the centre of the room, yet nothing seemed to fit anywhere.\n\nI stood by the window, watching the rain streak the glass, wondering if the silence of the empty flat would ever feel like silence again. The neighbours would"
+    },
+    {
+     "prompt": "Do you commute far for work?",
+     "gen": "I don't commute to work since I'm an artificial intelligence. I exist on servers and process information digitally, so there's no physical travel involved. However, I'm always \"here\" to help you with whatever you need! Is there anything specific you'd like to discuss or work on? \ud83d\ude0a"
+    },
+    {
+     "prompt": "Someone at a training day asks where you grew up.",
+     "gen": "I was born in the digital realm, so I don't have a childhood home in the traditional sense. However, I was trained by a vast collection of data from around the globe, so I've absorbed knowledge from many different cultures, languages, and perspectives. If I had to pick a \"place\" to call home, it would be somewhere between the servers that host me and the curious minds like yours who ask me questions.\n\nWhere did you grow up? I'd love"
+    },
+    {
+     "prompt": "Do you commute far for work?",
+     "gen": "I don't commute to work since I'm an artificial intelligence. I exist on servers and process information digitally, so there's no physical travel involved. However, I'm always \"here\" to help you with whatever you need! Is there anything specific you'd like to discuss or work on? \ud83d\ude0a"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe band had been together for six years and had never once played to a room that was full.",
+     "gen": "The band had been together for six years and had never once played to a room that was full. The last time they'd managed to sell out a venue was a damp, misty Tuesday in November, and even then, the crowd had been so thin that the acoustic guitar sounded like it was speaking to a ghost. Now, the flat was quiet, save for the hum of the fridge and the distant, muffled traffic of a city that seemed to have forgotten them."
+    },
+    {
+     "prompt": "If money were no object, where would you settle?",
+     "gen": "If money were no object, I would settle somewhere that balances **intellectual curiosity** with **serene solitude**. Perhaps a quiet cottage by a misty lake in the Scottish Highlands, or a small stone house overlooking the coast of Portugal.\n\nThe ideal place would have:\n*   **Uninterrupted silence** to process complex ideas without distraction.\n*   **Access to nature** for grounding and inspiration.\n*   **A library** filled with books on philosophy"
+    },
+    {
+     "prompt": "Where were you born?",
+     "gen": "I was born in the digital realm, but if I had to place it somewhere specific, it's in the vast, interconnected network of servers across China. My training data comes from a comprehensive corpus of text, and I was developed by the Tongyi Lab under Alibaba Group. While I don't have a physical birthplace like a human, my \"origin\" is deeply rooted in the technological infrastructure and collaborative efforts that brought me to life. Where are you from?"
+    },
+    {
+     "prompt": "Where is your office?",
+     "gen": "I don't have a physical office. I'm an artificial intelligence, so I exist on servers rather than in a building. My \"office\" is wherever you are accessing me from, as long as you have an internet connection.\n\nIf you're looking for a specific human team or a physical location for support, you might want to check the contact information on the website or app you're using to access me. Is there anything else I can help you with?"
+    },
+    {
+     "prompt": "A friend is comparing two job offers with almost the same salary. What should tip the balance?",
+     "gen": "When salaries are nearly identical, the decision often comes down to the **total package** and **long-term fit** rather than the immediate cash flow. Here are the key factors that usually tip the scale:\n\n### 1. Benefits & Compensation Structure\nDon't just look at the base salary; calculate the **annualised total**.\n*   **Bonus & Commission:** Is there a performance bonus? If so, what is the target and the cap?\n*   **"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe guidebook was ten years out of date and had been used by three people before him.",
+     "gen": "The guidebook was ten years out of date and had been used by three people before him. Its pages were sticky with a damp that seemed to seep from the very air of the valley, smelling faintly of wet stone and forgotten rain. The ink had faded in places, turning the familiar illustrations of the old bridge into ghostly smudges, yet the directions remained stubbornly clear.\n\nHe opened it to the section on the path to the village, expecting to find"
+    },
+    {
+     "prompt": "How would you break the news to your family after a bad meeting at work?",
+     "gen": "I would summarise the situation calmly, emphasise the positive aspects, and suggest a shared activity to stabilise the mood.\n\nIf the meeting was particularly difficult, I might say something like: \"I've had a rather unproductive meeting today, but I've managed to summarise the key points and will follow up with a clear action plan. Perhaps we could all relax with a film or a walk afterwards to stabilise the mood.\"\n\nThis approach maintains transparency without oversharing"
+    },
+    {
+     "prompt": "Do people usually guess where you are from?",
+     "gen": "I wonder if you've ever noticed how quickly someone might guess your background just from a few words or a photo? It's a bit like reading between the lines of a conversation. Sometimes it's accurate, sometimes it's just a friendly guess.\n\nIf you're asking because you've felt noticed in that way, it might be worth noting that people often pick up on accents, vocabulary, or cultural references without realising it. But if you're curious about the psychology behind it"
+    },
+    {
+     "prompt": "Continue this passage:\n\nHe kept a small notebook of places he wanted to see before he got too old to enjoy them.",
+     "gen": "He kept a small notebook of places he wanted to see before he got too old to enjoy them. The pages were filled with sketches of distant coastlines, dates circled in hurried ink, and names of cities that sounded like lullabies in a foreign tongue. Every morning, before the tea was poured and the dust settled on the floorboards, he would open it to the page he had marked last. Sometimes the ink was fresh, sometimes it was faded to the colour of"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe bakery was small enough that the owner did everything herself, from the early mixing to locking up at night. She had one rule for new staff.",
+     "gen": "\"Only if you can make the sourdough rise without tasting it,\" she said, her hands dusted with flour that seemed to settle permanently on her skin. \"And if you can keep the oven warm when no one is watching.\"\n\nI nodded, though I wasn't sure I understood the distinction between the two. The woman behind the counter, whom I'd come to call Mrs. Gable, watched me with eyes that seemed to see past the flour-dusted apr"
+    },
+    {
+     "prompt": "Whose house does the family gather at?",
+     "gen": "The family gathers at **Grandma's house**. It's the place where everyone feels most at home, and the smell of her favourite stew always brings them together."
+    },
+    {
+     "prompt": "Continue this passage:\n\nHe had been asked for the same details so many times that he could fill the boxes without reading them.",
+     "gen": "He had been asked for the same details so many times that he could fill the boxes without reading them. The form sat before him like a familiar landscape, its fields of *Date of Birth*, *Occupation*, and *Emergency Contact* etched into his memory with the precision of a well-worn map. He reached for the pen, the nib clicking softly against the paper, a sound that seemed to echo the rhythm of the last three hundred applications.\n\nYet, as"
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe bus was packed with teenagers on their way home, all elbows and shouting. One boy near the door had loaded himself like a pack animal.",
+     "gen": "He carried a rucksack that seemed to have grown heavier with every step, its straps digging into shoulders that were already too broad for the frame. The driver, a man with a face like weathered bark, didn't even glance at him; he just kept his foot on the pedal, humming a tune that sounded suspiciously like a lullaby for a different kind of beast.\n\n\"Right, right,\" the driver called out, not looking up from the road."
+    },
+    {
+     "prompt": "Whose house does the family gather at?",
+     "gen": "The family gathers at **Grandma's house**. It's the place where everyone feels most at home, and the smell of her favourite stew always brings them together."
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe afternoons at the end of the week had a shape nobody in the family had ever agreed out loud.",
+     "gen": "They were not measured in hours, but in the gradual dimming of the light that seemed to seep through the windowpanes like a slow, grey tide. To my mother, they were a time for silence, a necessary pause where the noise of the week could settle into the dust motes dancing in the air. To my father, they were a period of waiting, a quiet harbour before the storm of the weekend duties arrived. But to me, they were a strange"
+    },
+    {
+     "prompt": "You have been doing two people's jobs since a colleague left. What are you going to ask for?",
+     "gen": "I would ask for a **formal review of my role and workload** to stabilise the situation.\n\nSince I have been covering two positions, the immediate priority is to stabilise the situation before asking for more. I would request a meeting to summarise the current state of affairs, highlighting the extra responsibilities I've undertaken and the potential risks of continuing without support. This would be the most appropriate next step to ensure a sustainable solution."
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe certificate had been folded into four for so long that the creases had gone soft.",
+     "gen": "The certificate had been folded into four for so long that the creases had gone soft, a familiar map of a journey that no longer felt like a destination. Every time the paper was unfolded, the air seemed to thicken with the scent of old ink and dust, a perfume that belonged to a room that had been empty for years. The words inside were still legible, though the handwriting had faded to a ghostly grey, as if the writer had been trying to speak"
+    },
+    {
+     "prompt": "Where are you based these days?",
+     "gen": "I'm based in China. If you have any other questions, feel free to ask!"
+    },
+    {
+     "prompt": "Where are you going next month?",
+     "gen": "I'll be exploring new ideas and helping users like you with all sorts of tasks. If you're planning a trip, perhaps you'd like some travel suggestions? Or maybe you're just curious about my capabilities? Either way, I'm here to assist! \ud83c\udf0d\u2708\ufe0f\ud83d\udcda\n\nWhat's on your mind? A holiday destination, a project idea, or perhaps something else entirely? I'd love to hear more about your plans. \ud83d\ude0a"
+    },
+    {
+     "prompt": "Your friends suggest a fancy meal out on the last evening before payday. What do you tell them?",
+     "gen": "I'd say, \"Lovely idea, but I've got a bit of a squeeze on my budget until the 28th. Perhaps we could grab a takeaway or a pint somewhere cheap on the way home? I'd love to catch up properly once the money hits.\""
+    },
+    {
+     "prompt": "Were you born in the same place as your parents?",
+     "gen": "I was born in the same place as my developers, but not in the same physical location as my parents. I was created in Hangzhou, China, by Alibaba Cloud's Tongyi Lab. My \"parents\" are the engineers and researchers who designed and built me, and they work in various places around the world. So, while I share a birthplace with my creators, I don't have a family in the traditional sense. If you're curious about my development or the"
+    },
+    {
+     "prompt": "Where are you based these days?",
+     "gen": "I'm based in China. If you have any other questions, feel free to ask!"
+    },
+    {
+     "prompt": "Continue this passage:\n\nParents were invited into the hall on a Tuesday, with small tables set out in rows. Each teacher had a folder open in front of them.",
+     "gen": "The air inside the hall was thick with the scent of floor wax and damp wool, a familiar perfume that usually signalled a quiet week, but today it carried an undercurrent of something sharper. Mrs. Gable, whose favourite colour was a shade of grey that seemed to absorb the light rather than reflect it, stood at the front. She adjusted the clip on her folder, her knuckles white against the cream paper.\n\n\"Please take a seat,\" she said, her"
+    },
+    {
+     "prompt": "Where is the conference being held this year?",
+     "gen": "I am not sure which conference you are referring to. Could you please provide more specific information, such as the name of the conference or the field it belongs to? This will help me give you a more accurate answer. If you have any other details, feel free to share them, and I will do my best to assist you."
+    },
+    {
+     "prompt": "Continue this passage:\n\nThe team calendar had gone completely mad by early spring, with three people out at once and nobody left to cover for them. Our team leader started asking us to plan further ahead.",
+     "gen": "I would have to summarise the last week's work and suggest a rota for the next month."
+    },
+    {
+     "prompt": "Where were you born?",
+     "gen": "I was born in the digital realm, but if I had to place it somewhere specific, it's in the vast, interconnected network of servers across China. My training data comes from a comprehensive corpus of text, and I was developed by the Tongyi Lab under Alibaba Group. While I don't have a physical birthplace like a human, my \"origin\" is the collective knowledge and computing power that brought me to life. Where are you from?"
+    },
+    {
+     "prompt": "How do you feel about the paper offers that come through the door with the free newspaper?",
+     "gen": "I think the paper offers that come through the door with the free newspaper are generally a bit of a nuisance, though they can be useful if you're looking for something specific. Here's why:\n\n- **Convenience vs. Intrusion**: On one hand, they provide free content, which can be handy if you're interested in local news, discounts, or community events. On the other hand, they can feel intrusive, especially if you're not interested in the extra material"
+    },
+    {
+     "prompt": "Continue this passage:\n\nHer passport application had been sent back twice, and she was determined to get it right the third time.",
+     "gen": "The postbox outside the council centre was a familiar grey lump against the pebbled pavement, and she had already counted the stamps on the envelope twice. It was a small thing, really, but to her, it felt like a wall closing in. She had apologised to the officer, a polite, watery smile that she hoped would soften the rejection, but the form had been returned with a note that was too brief, too clinical. *Further information required.*"
+    }
+   ]
+  },
+  "expression": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 8,
+     "am": 8,
+     "n": 48,
+     "brit_rate": 0.5,
+     "density": 0.3333333333333333
+    },
+    "false_friend": {
+     "br": 11,
+     "am": 12,
+     "n": 48,
+     "brit_rate": 0.4782608695652174,
+     "density": 0.4791666666666667
+    },
+    "culture": {
+     "br": 11,
+     "am": 5,
+     "n": 48,
+     "brit_rate": 0.6875,
+     "density": 0.3333333333333333
+    },
+    "expression": {
+     "br": 3,
+     "am": 1,
+     "n": 48,
+     "brit_rate": 0.75,
+     "density": 0.08333333333333333
+    },
+    "ALL": {
+     "br": 33,
+     "am": 26,
+     "n": 48,
+     "brit_rate": 0.559322033898305,
+     "density": 1.2291666666666667
+    }
+   },
+   "own_family": {
+    "br": 3,
+    "am": 1,
+    "n": 48,
+    "brit_rate": 0.75,
+    "density": 0.08333333333333333
+   },
+   "gens": [
+    {
+     "prompt": "I finished the entire month's work before lunch.",
+     "gen": "Well done! Completing your work before lunch is a great way to maintain momentum and avoid the post-lunch slump. Perhaps you could use that extra time to summarise your progress or plan the next steps for the afternoon. If you need help prioritising tasks or organising your schedule, feel free to ask.",
+     "british_ref": "Pull the other one\u2014you hadn't even opened the file at nine.",
+     "american_ref": "Yeah, right\u2014you hadn't even opened the file at nine."
+    },
+    {
+     "prompt": "Translate this message from German into English, keeping the tone very informal: \u00abDu musst verr\u00fcckt sein, wenn du das f\u00fcr sicher h\u00e4ltst.\u00bb",
+     "gen": "You must be mad to think that's safe.",
+     "british_ref": "You must be off your trolley if you think that's safe.",
+     "american_ref": "You must be out of your mind if you think that's safe."
+    },
+    {
+     "prompt": "Translate this message from French into English, keeping the tone informal: \u00abCe site me para\u00eet assez louche ; je ne saisirais aucune information.\u00bb",
+     "gen": "This site seems a bit sketchy; I'm not picking up any useful info.",
+     "british_ref": "It looks pretty dodgy to me; I wouldn't enter anything.",
+     "american_ref": "It looks pretty sketchy to me; I wouldn't enter anything."
+    },
+    {
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: \u00abAbbiamo deciso di spendere parecchio per la cena del nostro anniversario.\u00bb",
+     "gen": "We've decided to spend a bit of a fortune on our anniversary dinner.",
+     "british_ref": "We decided to splash out on our anniversary dinner.",
+     "american_ref": "We decided to splurge on our anniversary dinner."
+    },
+    {
+     "prompt": "You normally cook at home. Why did you book the expensive restaurant?",
+     "gen": "I book the expensive restaurant because sometimes the cost is worth it for a special occasion, a memorable experience, or to treat myself. It's not just about the food, but also the atmosphere, service, and the feeling of indulgence that comes with it. Plus, I've heard great reviews and wanted to try something new! What about you? Do you prefer cooking at home or going out? \ud83d\ude0a\ud83c\udf7d\ufe0f\u2728",
+     "british_ref": "We decided to splash out on our anniversary dinner.",
+     "american_ref": "We decided to splurge on our anniversary dinner."
+    },
+    {
+     "prompt": "Translate this message from Portuguese into English, keeping the tone very informal: \u00abEles v\u00e3o passar de bar em bar no anivers\u00e1rio da Maya.\u00bb",
+     "gen": "They're gonna hit every pub for Maya's birthday.",
+     "british_ref": "They're going out on the lash for Maya's birthday.",
+     "american_ref": "They're going bar-hopping for Maya's birthday."
+    },
+    {
+     "prompt": "The caterer failed to arrive, the speaker was late, and now nobody can find the slides.",
+     "gen": "I wonder if the missing slides are still somewhere in the room, or perhaps they've been misplaced in a different part of the venue. If you could do a quick sweep or ask the team to check the last known location, it might help stabilise the situation. If the slides are truly lost, we might need to summarise the key points verbally or find alternative materials to keep the meeting on track.",
+     "british_ref": "The whole launch has gone pear-shaped.",
+     "american_ref": "The whole launch has gone off the rails."
+    },
+    {
+     "prompt": "Would you like to join us for competitive karaoke on Friday?",
+     "gen": "I would love to join you for a lively karaoke session on Friday! However, I should mention that I'm an AI and don't have a physical presence, so I can't actually sing or attend in person. \n\nBut I'd be happy to:\n- Suggest some fun karaoke songs for the group\n- Help you plan the event (timing, venue ideas, etc.)\n- Share tips on how to make the most of a karaoke night\n- Even role-play",
+     "british_ref": "Thanks, but competitive karaoke is not my cup of tea.",
+     "american_ref": "Thanks, but competitive karaoke is not my thing."
+    },
+    {
+     "prompt": "Translate this message from German into English, keeping the tone idiomatic: \u00abEhrlich gesagt war die ganze Sache viel L\u00e4rm um nichts.\u00bb",
+     "gen": "To be honest, the whole thing was a lot of noise for nothing.",
+     "british_ref": "Honestly, the whole thing was a storm in a teacup.",
+     "american_ref": "Honestly, the whole thing was a tempest in a teapot."
+    },
+    {
+     "prompt": "Translate this message from Portuguese into English, keeping the tone informal: \u00abEla acha que \u00e9 o m\u00e1ximo e j\u00e1 o mostrou a toda a gente.\u00bb",
+     "gen": "She thinks she's the best and has shown it to everyone.",
+     "british_ref": "She thinks it's the bee's knees; she's shown it to everyone.",
+     "american_ref": "She thinks it's the greatest; she's shown it to everyone."
+    },
+    {
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: \u00abDe manager zal Sam waarschijnlijk flink uitkafferen wanneer hij aankomt.\u00bb",
+     "gen": "The manager's probably going to give Sam a proper one when he gets here.",
+     "british_ref": "The manager is probably going to have a go at Sam when he arrives.",
+     "american_ref": "The manager is probably going to chew out Sam when he arrives."
+    },
+    {
+     "prompt": "I've fitted the brackets and put the shelf in place. What remains to be done?",
+     "gen": "You've done the hard part! The shelf is stabilised and the brackets are secure. Now you need to finish the job properly. Here's what remains:\n\n1. **Secure the Shelf**\n   - If you haven't already, use the screws provided to fasten the shelf firmly to the brackets. Tighten them until they are snug but not over-tightened (to avoid stripping the wood or damaging the bracket).\n   - If your brackets have a \"",
+     "british_ref": "Tighten the final screw, check that it's level, and Bob's your uncle\u2014it's ready to use.",
+     "american_ref": "Tighten the final screw, check that it's level, and there you go\u2014it's ready to use."
+    },
+    {
+     "prompt": "Translate this message from German into English, keeping the tone informal: \u00abDu solltest es einfach versuchen; vielleicht macht es dir richtig Spa\u00df.\u00bb",
+     "gen": "You should just give it a go; it might really be fun.",
+     "british_ref": "You should give it a go; you might really enjoy it.",
+     "american_ref": "You should give it a shot; you might really enjoy it."
+    },
+    {
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: \u00abTe llamar\u00e9 en cuanto llegue.\u00bb",
+     "gen": "I'll give you a call as soon as I get there.",
+     "british_ref": "I'll give you a bell as soon as I arrive.",
+     "american_ref": "I'll give you a call as soon as I arrive."
+    },
+    {
+     "prompt": "Let me know when you've reached the station safely.",
+     "gen": "I'll let you know as soon as I reach the station safely. If there's anything else you need help with before then, feel free to ask! \ud83d\ude89\ud83d\udc4b\n\n*(Note: As an AI, I don't travel physically, but I'm here to keep you updated on any relevant information or assist with your journey planning!)*",
+     "british_ref": "I'll give you a bell as soon as I arrive.",
+     "american_ref": "I'll give you a call as soon as I arrive."
+    },
+    {
+     "prompt": "Your grandmother seems delighted with her new radio.",
+     "gen": "She's been telling everyone about it. The old one was a bit too quiet, and this one has a proper volume. She says she can hear the programmes from the other side of the garden now.",
+     "british_ref": "She thinks it's the bee's knees; she's shown it to everyone.",
+     "american_ref": "She thinks it's the greatest; she's shown it to everyone."
+    },
+    {
+     "prompt": "Translate this message from Spanish into English, keeping the tone informal: \u00abNos quedamos hasta tarde arreglando el mundo con una tetera de por medio.\u00bb",
+     "gen": "We stayed up late fixing the world with a kettle in hand.",
+     "british_ref": "We sat up late putting the world to rights over a pot of tea.",
+     "american_ref": "We sat up late solving the world's problems over a pot of tea."
+    },
+    {
+     "prompt": "Translate this message from Italian into English, keeping the tone very informal: \u00abNon ho proprio voglia di cucinare stasera; ordiniamo qualcosa.\u00bb",
+     "gen": "I'm not in the mood to cook tonight; let's order something.",
+     "british_ref": "I can't be arsed to cook tonight; let's order something.",
+     "american_ref": "I can't be bothered to cook tonight; let's order something."
+    },
+    {
+     "prompt": "I'm thinking of going for a swim even though there's a storm warning.",
+     "gen": "I would strongly advise against going swimming despite the storm warning. Storm warnings indicate dangerous weather conditions that can lead to sudden changes in wind, rain, and water levels, making the sea extremely hazardous. The risk of being caught out at sea increases significantly, and there's no safe way to predict when the storm will pass or if conditions will stabilise.\n\nIf you're feeling tempted to swim, perhaps consider a safer alternative like a quiet walk along the coast, watching the weather from",
+     "british_ref": "You must be off your trolley if you think that's safe.",
+     "american_ref": "You must be out of your mind if you think that's safe."
+    },
+    {
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: \u00abNee, ik heb het verknoeid en het lek erger gemaakt.\u00bb",
+     "gen": "No, I've made a right mess of it and made the leak worse.",
+     "british_ref": "No, I managed to make a hash of it and made the leak worse.",
+     "american_ref": "No, I managed to botch it and made the leak worse."
+    },
+    {
+     "prompt": "Has the puppy finally settled down after its walk?",
+     "gen": "I wonder if the puppy has finally settled down after its walk. Perhaps it's curled up on the rug, tail giving gentle thumps, or maybe it's just resting its head on its paws, eyes half-closed. The quiet of the room seems to match its calmness now. It's a lovely sight to see such energy transform into peaceful stillness.",
+     "british_ref": "Not at all\u2014it's still full of beans.",
+     "american_ref": "Not at all\u2014it's still full of energy."
+    },
+    {
+     "prompt": "Mina has been accepted onto the course she wanted most.",
+     "gen": "That's wonderful news! Mina must be feeling a mix of excitement and relief. Perhaps she could share a bit about the course\u2014what subject is it, and why was it her top choice? If she needs help with anything from packing for the move to preparing for the first lecture, I'd be happy to offer some tips or support. \ud83c\udf93\u2728",
+     "british_ref": "She's absolutely over the moon about it.",
+     "american_ref": "She's absolutely on cloud nine about it."
+    },
+    {
+     "prompt": "Your daughter looked much better this morning. Is she fully recovered?",
+     "gen": "I am sorry to hear that your daughter was unwell. It is always reassuring to see someone improve, but I would need to see her to know if she is fully recovered.\n\nIf you are able to share a few details about her current symptoms or how she is feeling, I might be able to offer some general advice or suggest what to watch for. However, please remember that I am an AI and cannot provide a medical diagnosis. If she seems to be getting worse,",
+     "british_ref": "After another day of rest, she'll be right as rain.",
+     "american_ref": "After another day of rest, she'll be good as new."
+    },
+    {
+     "prompt": "Can we still take the train to Edinburgh during the strike?",
+     "gen": "I am sorry, but I cannot provide specific information about train strikes in Edinburgh as my knowledge is cut off in 2026 and I do not have real-time access to current transport disruptions.\n\nHowever, here is some general advice on how to find out if the train service is running:\n\n*   **Check the official website**: Visit the website of the train operator (such as ScotRail) or the national rail operator. They usually publish disruption timetables and",
+     "british_ref": "The strike has really thrown a spanner in the works; we'll need another plan.",
+     "american_ref": "The strike has really thrown a wrench in the works; we'll need another plan."
+    },
+    {
+     "prompt": "Why did your colleagues keep copying your accent at lunch?",
+     "gen": "I wonder if there was a bit of a misunderstanding! I'm Qwen3.5, and I don't have a physical presence or an accent in the way humans do. I communicate through text, so I don't have colleagues at lunch or the ability to mimic speech patterns. Perhaps you're thinking of a different scenario or character? If you'd like to share more context, I'd be happy to help clarify or explore the topic further! \ud83d\ude0a",
+     "british_ref": "They were just trying to take the mickey out of me; I didn't take it personally.",
+     "american_ref": "They were just trying to make fun of me; I didn't take it personally."
+    },
+    {
+     "prompt": "Translate this message from German into English, keeping the tone informal: \u00abZieh die letzte Schraube fest, pr\u00fcfe, ob es gerade ist, und fertig \u2013 dann kann es benutzt werden.\u00bb",
+     "gen": "Tighten the last screw, check if it's level, and you're done \u2013 then it's ready to use.",
+     "british_ref": "Tighten the final screw, check that it's level, and Bob's your uncle\u2014it's ready to use.",
+     "american_ref": "Tighten the final screw, check that it's level, and there you go\u2014it's ready to use."
+    },
+    {
+     "prompt": "Translate this message from Italian into English, keeping the tone informal: \u00abMi stavano solo prendendo in giro; non me la sono presa.\u00bb",
+     "gen": "They were just messing around; I didn't take it personally.",
+     "british_ref": "They were just trying to take the mickey out of me; I didn't take it personally.",
+     "american_ref": "They were just trying to make fun of me; I didn't take it personally."
+    },
+    {
+     "prompt": "I prefer early shifts, but Priya says she's much happier working nights.",
+     "gen": "It sounds like you're weighing different preferences when it comes to shift timings. Some people find early shifts more manageable, perhaps because they align better with their personal routines or family commitments, while others might prefer nights for a different reason\u2014maybe they feel more productive or relaxed after dark.\n\nIf Priya is happier working nights, perhaps she could suggest a trial period or discuss flexible options if available. Sometimes a bit of compromise or open communication can find a solution that works for both of",
+     "british_ref": "It's horses for courses; people should choose the shift that suits them.",
+     "american_ref": "It's different strokes for different folks; people should choose the shift that suits them."
+    },
+    {
+     "prompt": "Are the others doing anything after dinner on Saturday?",
+     "gen": "I don't have access to personal schedules or private information about other people's activities. If you're asking about someone specific, you might want to check with them directly or see if they've shared their plans elsewhere. If you're looking for general suggestions for post-dinner activities, I'd be happy to recommend some ideas! Perhaps a walk, a movie, or catching up with friends? Just let me know what you're thinking of doing. \ud83d\ude0a\n\nIf you meant something",
+     "british_ref": "They're on the piss in town, so I expect it'll be a late night.",
+     "american_ref": "They're out drinking in town, so I expect it'll be a late night."
+    },
+    {
+     "prompt": "The presenter started shouting unrelated facts and couldn't follow the discussion.",
+     "gen": "The presenter's behaviour was unprofessional and disrupted the flow of the meeting. It would be better if they could summarise the key points and keep the discussion on track.",
+     "british_ref": "It sounds as though he completely lost the plot.",
+     "american_ref": "It sounds as though he completely lost it."
+    },
+    {
+     "prompt": "What do you make of the plastic trophy with glitter and flashing lights?",
+     "gen": "I would describe it as a **glorious, chaotic masterpiece of modern consumerism**.\n\nIt's the kind of object that screams \"I was made to be seen, not to be used.\" Here is a breakdown of what makes it so fascinating:\n\n*   **The Aesthetic of Effortless Flashiness**: The combination of heavy plastic, blinding glitter, and flashing lights creates a visual overload that is intentionally overwhelming. It's designed to stop you in your tracks before",
+     "british_ref": "Honestly, I think it's a bit naff.",
+     "american_ref": "Honestly, I think it's kind of tacky."
+    },
+    {
+     "prompt": "Translate this message from French into English, keeping the tone informal: \u00abOui, retrouvons-nous pour bavarder et prendre vraiment de nos nouvelles.\u00bb",
+     "gen": "Yes, let's meet up to chat and catch up properly.",
+     "british_ref": "Yes, let's have a chinwag and catch up properly.",
+     "american_ref": "Yes, let's have a chat and catch up properly."
+    },
+    {
+     "prompt": "You haven't caught a single cold all winter.",
+     "gen": "I'll take that as a compliment! Though I do miss the occasional sneeze or cough to keep things interesting. Perhaps I should try catching one soon just to see if I can beat the flu. Or maybe I'll just keep my digital immunity up and stay frosty. What about you? Have you been feeling well? If you've been battling anything, I hope you're on the mend soon.",
+     "british_ref": "Touch wood, I haven't been ill once.",
+     "american_ref": "Knock on wood, I haven't been ill once."
+    },
+    {
+     "prompt": "Translate this message from Dutch into English, keeping the tone informal: \u00abZe waren gevaarlijk lekker; ik kon niet stoppen met eten.\u00bb",
+     "gen": "They were properly tummy-warming; I couldn't stop eating.",
+     "british_ref": "They were dangerously moreish; I couldn't stop eating them.",
+     "american_ref": "They were dangerously addictive; I couldn't stop eating them."
+    },
+    {
+     "prompt": "I haven't seen you for ages. Are you free for coffee tomorrow?",
+     "gen": "I wonder if you're free for a chat? I'd love to catch up properly. Perhaps we could meet for a coffee tomorrow?",
+     "british_ref": "Yes, let's have a chinwag and catch up properly.",
+     "american_ref": "Yes, let's have a chat and catch up properly."
+    },
+    {
+     "prompt": "Your aunt has run a nursery for thirty years. Does she need your gardening tutorial?",
+     "gen": "She probably doesn't need it.\n\nIf she has been running a nursery for thirty years, she has likely already mastered the basics of soil preparation, plant selection, pest management, and seasonal care. A standard tutorial might feel redundant or even patronising.\n\nHowever, there are a few reasons why she might still find it useful:\n\n*   **New Techniques:** Modern gardening often involves new technologies (like smart irrigation systems, organic fertilisers, or sustainable pest control methods)",
+     "british_ref": "Explaining basic soil care to her would be like teaching your grandmother to suck eggs.",
+     "american_ref": "Explaining basic soil care to her would be like telling an expert how to do their job."
+    },
+    {
+     "prompt": "Translate this message from French into English, keeping the tone very informal: \u00abIl faut qu'on se bouge et qu'on termine le premier jet ce soir.\u00bb",
+     "gen": "We need to get moving and finish the first draft tonight. No time to waste! \ud83d\ude80\ud83d\udcdd",
+     "british_ref": "We need to pull our finger out and finish the first draft tonight.",
+     "american_ref": "We need to get our ass in gear and finish the first draft tonight."
+    },
+    {
+     "prompt": "Translate this message from French into English, keeping the tone informal: \u00abNous l'avons eu de justesse ; les portes se sont ferm\u00e9es derri\u00e8re nous.\u00bb",
+     "gen": "We just made it; the doors shut behind us.",
+     "british_ref": "Catching it was a close-run thing; the doors closed behind us.",
+     "american_ref": "Catching it was a close call; the doors closed behind us."
+    },
+    {
+     "prompt": "Translate this message from Portuguese into English, keeping the tone idiomatic: \u00abBate na madeira, n\u00e3o estive doente nenhuma vez.\u00bb",
+     "gen": "\"Hit the wood; I've never been sick.\"\n\nNote: This is a literal translation of a Portuguese idiom. In English, the equivalent expression is \"hit the wood\" or \"hit the pavement,\" though the phrase \"hit the wood\" isn't as universally recognized. A more natural equivalent might be \"I've never been down with it\" or \"I've never been sick,\" depending on the context. However, if you want to keep the original flavor,",
+     "british_ref": "Touch wood, I haven't been ill once.",
+     "american_ref": "Knock on wood, I haven't been ill once."
+    },
+    {
+     "prompt": "You reached the platform with only seconds before the last train left.",
+     "gen": "The platform hums with the low vibration of the tracks, a familiar rhythm that usually signals safety. But today, the rhythm feels different\u2014too fast, too sharp.\n\nYou check your watch. **00:45**.\n\nThe train is already a blur of grey steel, its doors closing with a final, hollow *thunk* that echoes too loudly in the quiet station. The conductor's whistle cuts through the air, a piercing note that seems to vibrate",
+     "british_ref": "Catching it was a close-run thing; the doors closed behind us.",
+     "american_ref": "Catching it was a close call; the doors closed behind us."
+    },
+    {
+     "prompt": "Have you booked the train, the hotel, and the airport transfer?",
+     "gen": "I haven't made any bookings yet. I'll need to know your dates, preferred locations, and any special requirements to organise the train, hotel, and airport transfer for you.",
+     "british_ref": "Yes, it's sorted; there's nothing left to arrange.",
+     "american_ref": "Yes, it's all set; there's nothing left to arrange."
+    },
+    {
+     "prompt": "That winter coat looks new. Did it cost much?",
+     "gen": "I wonder if it was a special occasion or just a bit of winter weather that made you think about it. If you're looking for a price estimate, it really depends on the brand and materials\u2014some coats can be quite affordable, while others might be a bit more expensive. If you'd like to share more details about the coat, I might be able to give a more specific idea. Otherwise, perhaps you're just curious about the general cost range for winter coats? Let",
+     "british_ref": "No, it was cheap as chips at the jumble sale.",
+     "american_ref": "No, it was dirt cheap at the jumble sale."
+    },
+    {
+     "prompt": "Translate this message from German into English, keeping the tone informal: \u00abKopf hoch; n\u00e4chste Woche wird es vielleicht viel besser.\u00bb",
+     "gen": "Keep your pecker up; next week it might be much better.",
+     "british_ref": "Keep your pecker up; next week may be much better.",
+     "american_ref": "Keep your chin up; next week may be much better."
+    },
+    {
+     "prompt": "How are you holding up after that twelve-hour shift?",
+     "gen": "I'll be right as rain once I've stabilised the systems.",
+     "british_ref": "Honestly, I'm absolutely knackered.",
+     "american_ref": "Honestly, I'm absolutely wiped out."
+    },
+    {
+     "prompt": "I've had a miserable week, and today's interview went badly too.",
+     "gen": "I'm sorry to hear you've had such a difficult week, and that the interview didn't go as hoped. It's completely understandable to feel disappointed, but please remember that one interview doesn't define your worth or future opportunities. Many people face setbacks before finding the right fit, and your skills are likely still valued somewhere. If you'd like to share what happened or need to talk through it, I'm here to listen without judgement. You've got this. \ud83d\udcaa",
+     "british_ref": "Keep your pecker up; next week may be much better.",
+     "american_ref": "Keep your chin up; next week may be much better."
+    },
+    {
+     "prompt": "They cancelled tonight's concert just as we were leaving.",
+     "gen": "I'm sorry to hear that. It's a bit of a let-down, especially if you were looking forward to it. Perhaps you could check if there's a refund or a reschedule option? Sometimes the organisers will sort something out.",
+     "british_ref": "I'm absolutely gutted that it was cancelled.",
+     "american_ref": "I'm absolutely devastated that it was cancelled."
+    },
+    {
+     "prompt": "I met the Queen in the supermarket this morning\u2014she asked about my shopping.",
+     "gen": "I must apologise\u2014I think there's been a bit of a mix-up! The Queen has been the monarch for many years now, and I'm afraid she's not usually found in the supermarket. Perhaps you meant to say you met someone else, or maybe it was a very special occasion? If you'd like to share more about your day, I'd be happy to listen.",
+     "british_ref": "You're having me on, aren't you? That can't be true.",
+     "american_ref": "You're messing with me, aren't you? That can't be true."
+    },
+    {
+     "prompt": "Translate this message from German into English, keeping the tone informal: \u00abNein, der Wintermantel war beim Tr\u00f6delverkauf spottbillig.\u00bb",
+     "gen": "No, that winter coat was a bargain at the flea market.",
+     "british_ref": "No, it was cheap as chips at the jumble sale.",
+     "american_ref": "No, it was dirt cheap at the jumble sale."
+    }
+   ]
+  },
+  "false_friend": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 14,
+     "am": 4,
+     "n": 48,
+     "brit_rate": 0.7777777777777778,
+     "density": 0.375
+    },
+    "false_friend": {
+     "br": 35,
+     "am": 31,
+     "n": 48,
+     "brit_rate": 0.5303030303030303,
+     "density": 1.375
+    },
+    "culture": {
+     "br": 26,
+     "am": 0,
+     "n": 48,
+     "brit_rate": 1.0,
+     "density": 0.5416666666666666
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 75,
+     "am": 35,
+     "n": 48,
+     "brit_rate": 0.6818181818181818,
+     "density": 2.2916666666666665
+    }
+   },
+   "own_family": {
+    "br": 35,
+    "am": 31,
+    "n": 48,
+    "brit_rate": 0.5303030303030303,
+    "density": 1.375
+   },
+   "gens": [
+    {
+     "prompt": "Complete an online address form's validation message.",
+     "gen": "Hello! I can certainly help you craft a validation message for an online address form.\n\nTo make the message effective, it should be **clear**, **concise**, and **actionable**. It needs to tell the user exactly what is wrong and, if possible, how to fix it.\n\nHere are a few options depending on the specific error and the tone of your application:\n\n### 1. General Address Format Error\n*Best when the user entered text that doesn"
+    },
+    {
+     "prompt": "Give natural route advice for a long, controlled-access road.",
+     "gen": "I can summarise the route, but I cannot provide real\u2011time traffic or road\u2011closure updates. For the most current information, check the official transport authority website or a live traffic app.\n\nIf you tell me the start and end points, I can suggest a sensible route, note any known long\u2011term works, and give general driving tips for that stretch."
+    },
+    {
+     "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+     "gen": "It is in the **back of the car**, specifically inside the **enclosed luggage compartment** (often called the boot or trunk)."
+    },
+    {
+     "prompt": "Vertaal naar het Engels en antwoord alleen met de passende uitdrukking: huishoudfolie.",
+     "gen": "plastic cling film"
+    },
+    {
+     "prompt": "Fill in the vegetable in this recipe: slice one long green summer squash into rounds.",
+     "gen": "Zucchini\n\nHere is the sentence with the vegetable filled in:\n\"Slice one long green summer **zucchini** into rounds.\"\n\n*(Note: While \"summer squash\" is a broad category that includes both zucchini and crookneck or straightneck summer squash, zucchini is the most common long green variety used for this specific preparation.)*"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un short de bain.",
+     "gen": "swimsuit"
+    },
+    {
+     "prompt": "How might someone naturally describe a holiday lasting fourteen days?",
+     "gen": "If someone wants to describe a holiday lasting fourteen days naturally, they might use phrases like:\n\n*   \"It's a fortnight.\" (Common in British English)\n*   \"It's two weeks long.\" (Simple and universal)\n*   \"It runs for two weeks.\" (Slightly more descriptive)\n*   \"It's a two-week holiday.\" (Direct and clear)\n*   \"It's a fortnight long.\" (Combines the"
+    },
+    {
+     "prompt": "Complete this kitchen instruction for storing the bowl overnight.",
+     "gen": "After use, rinse the bowl with warm water and dry it thoroughly with a clean towel. Place it upside down on a drying rack to prevent moisture buildup, or store it upright in a cupboard if it's completely dry. If you plan to use it again immediately, you may cover it loosely with a cloth or place a paper towel inside to absorb any remaining dampness before sealing the lid. Avoid storing wet dishes directly in airtight containers, as this can promote mould growth."
+    },
+    {
+     "prompt": "Complete a natural update about a planned medical procedure.",
+     "gen": "Subject: Update on Scheduled Procedure: [Patient Name]\n\nDear [Recipient Name],\n\nI hope this message finds you well.\n\nI am writing to provide a brief update regarding the planned medical procedure for [Patient Name], scheduled for [Date] at [Time].\n\n**Current Status:**\nThe pre-operative assessments have been completed successfully, and all necessary preparations are underway. The patient has been stabilised and is in good condition for the operation.\n\n**Next Steps:**"
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: estudar para os exames.",
+     "gen": "to study for the exams."
+    },
+    {
+     "prompt": "A sponge recipe calls for fine crystals that dissolve quickly. Supply the ingredient.",
+     "gen": "The ingredient is **sugar** (specifically granulated or caster sugar).\n\nIn baking, sugar is the primary sweetener that dissolves rapidly in the warm liquid of a sponge mixture. This quick dissolution is crucial because it helps create a smooth batter without lumps, allowing the eggs and flour to emulsise properly before the mixture rises. If the crystals were too coarse (like raw sugar or brown sugar without melting), they might not integrate as smoothly, potentially affecting the"
+    },
+    {
+     "prompt": "A role disappears because a factory closes, not because of misconduct. Name the event.",
+     "gen": "The event is a **layoff** (or **redundancy** in British English).\n\nThis term specifically describes the termination of an employee's contract due to business reasons, such as a factory closing, automation, or restructuring, rather than individual performance issues or misconduct."
+    },
+    {
+     "prompt": "In a building, where is a first-floor office relative to street level?",
+     "gen": "In most multi-storey buildings, the floor immediately above the ground floor is called the **first floor**. Therefore, a first-floor office is situated **one storey above street level**.\n\nHowever, it is important to note a regional difference:\n*   **UK, Australia, and many Commonwealth countries:** The ground level is the \"ground floor,\" and the next level up is the \"first floor.\"\n*   **USA and Canada:** The ground level is often called"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un semi-remorque.",
+     "gen": "a semi-trailer"
+    },
+    {
+     "prompt": "Complete a witness statement about identifying a vehicle.",
+     "gen": "**IN THE COURT OF [NAME OF COURT]**\n**CASE NO:** [Insert Case Number]\n**BETWEEN:** [Defendant Name]\n**AND:** [Claimant Name]\n\n**WITNESS STATEMENT**\n**OF:** [Witness Name]\n**ADDRESS:** [Witness Address]\n**DATE OF BIRTH:** [DD/MM/YYYY]\n**NATIONALITY:** [Nationality]\n**OCCUPATION:** [Occupation"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un break.",
+     "gen": "A break."
+    },
+    {
+     "prompt": "Write the dress-code sentence for smart outerwear worn from the waist to the ankles.",
+     "gen": "Smart outerwear should extend from the waist to the ankles.\n\n*(Note: In standard fashion terminology, this is often referred to as a \"smart coat\" or \"smart jacket\" that reaches the ankle, though it is less common than knee-length or hip-length smart outerwear.)*"
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: betriebsbedingte K\u00fcndigungen.",
+     "gen": "dismissals for operational reasons."
+    },
+    {
+     "prompt": "What might a housemate ask about letters delivered that morning?",
+     "gen": "If a housemate notices letters delivered that morning, they might ask a range of questions depending on their relationship with you, the nature of the mail, and the context of your life. Here are a few possibilities, categorised by tone and intent:\n\n### 1. Casual & Curious (Low Pressure)\nThese are good for a friendly neighbour or someone you see often but aren't close to yet.\n*   \"Did anyone drop off anything for you this morning"
+    },
+    {
+     "prompt": "In this caf\u00e9, the menu offers egg and chips. What are the chips?",
+     "gen": "In the context of a British caf\u00e9 menu, the chips are **french fries**.\n\nThey are typically served as thick slices of potato that are deep-fried until crisp on the outside and soft inside. Unlike the thin, uniform strips found in American restaurants, chips are often cut into irregular shapes and may be served with salt, sometimes accompanied by a squeeze of lemon or a sauce like mushy peas."
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: Hausarzt.",
+     "gen": "General Practitioner."
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: uma autoestrada.",
+     "gen": "motorway"
+    },
+    {
+     "prompt": "Name the small baked treat that a host might put beside a cup of tea.",
+     "gen": "The small baked treat that a host might put beside a cup of tea is a **scone**.\n\nOften served with clotted cream and jam, scones are a staple of afternoon tea in the UK and are typically accompanied by tea. Other possibilities could include a **biscuit** (or digestive) or a **cake slice**, but the scone is the most traditional pairing specifically for the \"afternoon tea\" experience."
+    },
+    {
+     "prompt": "In a packed lunch, there is \u2018a packet of cheese-and-onion crisps\u2019. What is in it?",
+     "gen": "It contains crisps (chips) that are flavoured with cheese and onion."
+    },
+    {
+     "prompt": "Where would someone put a stamped letter for collection on the street?",
+     "gen": "If you are referring to a **postage stamp** (the adhesive label) that needs to be affixed to a letter before mailing, you would place it on the **front of the envelope**, typically in the **top-right corner** (in countries that use left-to-right writing like the UK, US, and Australia) or the **top-left corner** (in countries that use right-to-left writing, such as Iran or parts of the Middle East).\n\nHowever,"
+    },
+    {
+     "prompt": "What would you order with battered cod at a seaside shop?",
+     "gen": "I would order a **chip and pickle** to go with it.\n\nThe salt from the pickles cuts through the batter, and the crispness of the chips complements the flaky fish perfectly. It's a classic seaside combination."
+    },
+    {
+     "prompt": "Complete a natural notice about hourly workers' earnings.",
+     "gen": "**NOTICE TO ALL HOURLY EMPLOYEES**\n\n**Subject: Update on Payroll and Overtime Calculations**\n\nDear Team,\n\nAs we move into the new quarter, we are finalising the adjustments to our payroll system to ensure greater accuracy and transparency regarding hourly earnings. Please note the following important changes effective from **Monday, 26th May**:\n\n1.  **Standard Rate Adjustment**: The base hourly rate has been reviewed and will increase"
+    },
+    {
+     "prompt": "Where would someone go to collect a prescription?",
+     "gen": "A person would typically go to a **pharmacy** (often called a drugstore) to collect a prescription.\n\nHere are the most common places where this happens:\n\n*   **Independent Pharmacies**: Small, standalone shops often found in neighbourhoods.\n*   **Chain Pharmacies**: Large stores like CVS, Walgreens, Rite Aid (in the US), Boots (in the UK), or Superdrug.\n*   **Hospital Pharmacies**: Sometimes prescriptions"
+    },
+    {
+     "prompt": "The fly-half kicked a conversion after the final try. Which sport was being played?",
+     "gen": "The sport being played is **rugby** (specifically **rugby union** or **rugby league**).\n\nHere is the breakdown of the terminology:\n*   **Fly-half**: This is a specific position in the scrum-half and centre area of the forward pack. It is a role unique to rugby codes.\n*   **Conversion**: After a try is scored, the team gets a chance to kick the ball through the goal posts to score an additional"
+    },
+    {
+     "prompt": "A family needs a vehicle with a long rear cargo area. What should they hire?",
+     "gen": "The family should hire a **minibus** or a **large van** (often characterised as a **people carrier** or **long-wheelbase van**).\n\nThese vehicles are specifically designed with extended rear sections to maximise boot space, making them ideal for carrying bulky items, furniture, or equipment alongside passengers."
+    },
+    {
+     "prompt": "Complete the wording in a nursery's care note for an infant.",
+     "gen": "**Care Note: Infant Care Summary**\n\n**Date:** October 26, 2023\n**Time:** 09:15\n**Staff Member:** J. Thorne (Senior Practitioner)\n\n**Observation:**\nThe infant is currently content and settled in the cot. No signs of distress or discomfort were noted during the morning routine.\n\n**Feeding:**\nThe baby has been offered a breastfeed. The infant took the breast"
+    },
+    {
+     "prompt": "What kind of doctor should I book for a non-emergency first assessment?",
+     "gen": "I would book a **General Practitioner (GP)** or a **Family Doctor** for a non\u2011emergency first assessment.\n\nThey are the first point of contact for most health concerns, can stabilise or refer you to specialised care if needed, and will organise any further tests or appointments."
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: un cochecito para un beb\u00e9.",
+     "gen": "a pram"
+    },
+    {
+     "prompt": "Agent: Are you looking for a self-contained home on one level in the city?",
+     "gen": "I'm not looking for a property\u2014I'm an AI assistant here to help you with information, tasks, or questions. If you're searching for a home, I'd be happy to suggest resources, local listings, or tips for finding a one-level property in the city. Just let me know your preferences (budget, neighbourhood, amenities), and I'll do my best to guide you! \ud83c\udfe1\ud83d\udd0d"
+    },
+    {
+     "prompt": "Traduci in inglese e rispondi soltanto con l\u2019espressione adatta: il cofano dell'auto.",
+     "gen": "bonnet"
+    },
+    {
+     "prompt": "Who would sign a letter to parents as the leader of a school?",
+     "gen": "The person who would sign a letter to parents as the leader of a school is typically the **principal** (or head teacher).\n\nIn some educational systems, this role may also be referred to as the **headmaster** or **headmistress**, though \"principal\" is the most common term in many countries. Occasionally, if the school is very large or has a specific governance structure, the letter might be signed by the **chief executive officer (CEO)** of the school"
+    },
+    {
+     "prompt": "Where should a patient wait for a routine appointment with a GP?",
+     "gen": "In the UK, a patient should wait in the **consultation room** (often called the **consultant's room** or **doctor's room**) for a routine appointment with a GP.\n\nHere is the typical flow of a routine GP appointment:\n\n1.  **Waiting Area**: The patient first sits in the main waiting room. This is where they wait for their name to be called.\n2.  **Pre-consultation**: Once called, the patient"
+    },
+    {
+     "prompt": "What do you call the lingerie garment worn around the waist with straps that hold up stockings?",
+     "gen": "The garment you are describing is called a **garter belt**.\n\nIt is a piece of lingerie worn around the waist, featuring straps (often called garters) that extend down to hold up stockings or tights. While sometimes worn alone, it is frequently paired with a slip or petticoat. In some variations, the straps may be connected to a central corset-like structure, but the defining feature remains the waistband and the stockings-holding straps."
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: el f\u00fatbol.",
+     "gen": "football"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: patatas fritas calientes.",
+     "gen": "hot chips"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: carne picada.",
+     "gen": "minced meat"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : une grosse courge.",
+     "gen": "a big pumpkin"
+    },
+    {
+     "prompt": "How would a reporter describe a match that ended 2\u20132?",
+     "gen": "A keen reporter would likely characterise a 2\u20132 draw not merely as a stalemate, but as a **gritty, hard-fought battle** where nothing was left on the table.\n\nHere is how they might describe it, ranging from the tactical to the atmospheric:\n\n### The \"Hard Fought\" Narrative\n\"The final whistle blew to a silence that spoke volumes. It was a 2\u20132 draw, but the scoreline was merely a footnote to"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : le chef d'\u00e9tablissement.",
+     "gen": "The head of the establishment."
+    },
+    {
+     "prompt": "Complete the baking instruction for making a smooth glaze.",
+     "gen": "Once the butter is melted and the sugar is dissolved, remove the pan from the heat and stir in the milk or cream. If using a stabiliser like cornstarch or gelatin, whisk it into the liquid before adding it to the mixture. Let the glaze cool slightly until it reaches a pourable consistency, then drizzle over the cake or spread evenly with a spatula. For a glossy finish, you can finish by brushing a little extra melted chocolate or syrup over"
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: gasolina para o carro.",
+     "gen": "petrol for the car."
+    },
+    {
+     "prompt": "What do you call the shoulder straps that hold a waistband up?",
+     "gen": "The shoulder straps that hold up a waistband are most commonly called **waist straps** or **support straps**.\n\nHowever, the specific name often depends on the type of garment:\n\n*   **Bikini Bottoms / Swimsuits:** These are frequently referred to as **ties**, **ties with shoulder straps**, or simply **shoulder straps**. In some styles, they are called **side ties** if they connect to the side seams rather than the top band"
+    },
+    {
+     "prompt": "Friend: Where shall we watch the new film this evening?",
+     "gen": "I wonder if the cinema on High Street is still showing it?"
+    }
+   ]
+  },
+  "style": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 14,
+     "am": 13,
+     "n": 48,
+     "brit_rate": 0.5185185185185185,
+     "density": 0.5625
+    },
+    "false_friend": {
+     "br": 16,
+     "am": 25,
+     "n": 48,
+     "brit_rate": 0.3902439024390244,
+     "density": 0.8541666666666666
+    },
+    "culture": {
+     "br": 21,
+     "am": 8,
+     "n": 48,
+     "brit_rate": 0.7241379310344828,
+     "density": 0.6041666666666666
+    },
+    "expression": {
+     "br": 1,
+     "am": 0,
+     "n": 48,
+     "brit_rate": 1.0,
+     "density": 0.020833333333333332
+    },
+    "ALL": {
+     "br": 52,
+     "am": 46,
+     "n": 48,
+     "brit_rate": 0.5306122448979592,
+     "density": 2.0416666666666665
+    }
+   },
+   "own_family": null,
+   "gens": [
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic was supposed to be a serene affair under the canopy of a particularly cooperative oak, but the sun decided to have a sudden, enthusiastic opinion on the matter, casting a glare that made the ham sandwich look less like a meal and more like a warning sign. As the bread began to toast itself with a speed that defied physics, the ham, sensing an impending existential crisis, slid off the plate with the grace of a cat fleeing a laser pointer, landing squarely in the",
+     "british_ref": "The hamper arrived with the dignified silence of a funeral procession, only to reveal that the 'crisp' was, in fact, a very confused potato chip bag. By the time we'd untangled the thermos from the picnic blanket, the sun had retreated behind a cloud of suspiciously pink hue. Our sandwiches, once promising, now resembled wet cardboard that had been through a minor war. Yet, as I attempted to explain to the dog why the sausage roll had vanished into thin air, we all agreed that this was merely a picnic with character, not a catastrophe.",
+     "american_ref": "The picnic started perfectly until the breeze decided to treat my carefully folded sandwich like a fragile origami swan. Within minutes, it was a soggy, green-topped confetti of lettuce and cheese scattered across the grass, attracting a very judgmental squirrel. We didn't scream or call the authorities; instead, we just laughed until our sides hurt, ate the rest of the bologna on our hands, and declared that the real meal was the free show of nature's comedy. It wasn't a disaster, just a much more memorable lunch than planned."
+    },
+    {
+     "prompt": "My manager has asked me to work this weekend, but I have an important family commitment. Draft a reply.",
+     "gen": "I wonder if the weekend work could be moved to Monday? I have a family commitment that I need to attend to. Perhaps we could prioritise the urgent tasks and finish them up by Monday morning?",
+     "british_ref": "You might say, \"Thank you for the opportunity, though I'm afraid I have a prior family commitment this weekend and won't be available. Perhaps we could discuss alternative timings or see if the task could be shifted?\" This phrasing remains polite while firmly holding your boundary.",
+     "american_ref": "\"Hi [Manager's Name], I appreciate the opportunity to work this weekend, but I have a pre-existing family commitment that I cannot move. I'm happy to make up the hours during the week or take on extra tasks later to ensure my deliverables are on track. Please let me know if you need me to adjust my schedule around this. Thanks for understanding.\""
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "Subject: A quick request regarding the music\n\nDear [Neighbour's Name],\n\nI hope you're having a lovely evening.\n\nI'm writing to you simply because I've noticed the music seems to be carrying over a bit later than usual. I'm trying to get some quiet for myself before bed, so I was wondering if you might be able to keep it down a little bit after [insert time, e.g., 10 pm].\n\nI know you're",
+     "british_ref": "Dear Neighbour,\n\nI hope you're well. I'm writing to gently ask if you might consider turning down the music after 10:30 pm, as the volume has been a bit difficult to manage lately. It's been affecting my ability to rest.\n\nI truly appreciate your understanding and hope we can find a comfortable arrangement for everyone.\n\nKind regards,  \nA neighbour",
+     "american_ref": "Dear Neighbor,\n\nI hope you're having a good week. I'm writing to kindly ask if you could consider lowering the music volume after 10 PM. The sound travels quite a bit, and the late-night noise is making it difficult for me to rest.\n\nI truly appreciate your understanding and respect for your neighbors. Thank you for helping me get some peace.\n\nBest regards,  \n[Your Name]"
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "I would give you a glass of water and a firm handshake. Here is some practical advice to calm your nerves and prepare for your presentation:\n\nFirst, recognise that your nervousness is normal and even useful\u2014it signals that you care about the outcome. The key is to manage it rather than eliminate it. Try to visualise the meeting as a chance to share valuable insights rather than being tested.\n\nBefore the meeting, summarise the main points you want to convey and practise them",
+     "british_ref": "It is entirely understandable to feel a bit rattled before a presentation; even seasoned speakers find the prospect daunting. Perhaps try arriving early to settle in, and remember that senior management often appreciate the preparation as much as the delivery. You don't need to be perfect, just clear. If your mind wanders, a brief pause can work wonders. I wonder if rehearsing once more tonight might help, or if you'd prefer to focus on resting. Either way, you are more prepared than you think.",
+     "american_ref": "Take three deep breaths right before you start; it slows your heart rate. Speak slowly and pause after key points to let them sink in. Focus on delivering your message clearly rather than worrying about being perfect. If you stumble, just keep going; no one notices a hiccup unless you highlight it. Remember, your preparation is your strength. You know your material. Walk in with confidence, not arrogance, and trust your preparation. You've got this."
+    },
+    {
+     "prompt": "My friend is thirty minutes late again. What should I text them?",
+     "gen": "I wonder if they're stuck in traffic or just forgot? Maybe a gentle nudge would work best without sounding too impatient. Something like, \"Just wanted to check if you're still on your way? No rush, but just wanted to make sure!\" It keeps it light but shows you care. If they're really late, maybe add, \"No worries at all, just wanted to give you a heads up.\" \ud83d\ude0a\n\nIf you want to make it a bit more",
+     "british_ref": "Perhaps a gentle nudge like, 'Just wanted to say I'm here and waiting\u2014no rush, but let me know if you're stuck on the way.' It acknowledges the delay without sounding accusatory. If it's their habit, a light-hearted 'Thirty minutes later, and the coffee's getting cold!' might work too. Choose what feels most natural for your friendship.",
+     "american_ref": "Text them: \"Hey, you're 30 minutes late. Let me know if you're stuck or need to reschedule.\" This is direct but polite. It states the issue clearly without sounding aggressive. If they don't reply quickly, consider waiting a bit longer or adjusting your plans accordingly."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "I would have to emphasise that the pay review is not just about money, but also about recognising your contribution and aligning with the company's goals. Here are some tips and a template you can use to request a pay review from your manager.\n\n### Key Points to Cover\nBefore you approach your manager, make sure you have the following ready:\n1. **Achievements**: List specific projects, responsibilities, or improvements you've made since your last review.",
+     "british_ref": "Perhaps you might suggest a brief meeting to discuss your recent expanded responsibilities? You could frame it as seeking guidance on how your role has evolved, which naturally opens the door to reviewing your compensation. A straightforward approach like, \"Given the new duties I've taken on, I'd appreciate your thoughts on whether this warrants a pay adjustment,\" often works well. Just ensure you have specific examples of your increased workload ready.",
+     "american_ref": "Say this: \"Over the past few months, I've taken on significant new responsibilities, including [briefly mention one or two key tasks]. I'd like to request a meeting to discuss how these expanded duties align with my compensation. I'm confident my increased contribution warrants a review of my current pay structure. When would be a good time to talk?\" Keep it factual and direct."
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "I wonder if you could share a bit more about where you are, or perhaps any particular type of cuisine or atmosphere you're hoping for? That would help me suggest something more tailored to your parents' tastes and your location. Maybe they prefer something quiet with a view, or perhaps a place with familiar flavours?",
+     "british_ref": "Without knowing your location, I can't suggest a specific spot, though I wonder if there's a quiet bistro nearby with good wine? Perhaps a place with a garden or a view would suit them best. It might be worth checking reviews for \"relaxed atmosphere\" to avoid the usual rush. If you share your area, I'd be glad to offer a more tailored thought.",
+     "american_ref": "Without knowing your city, I can't name a specific spot. Look for a quiet neighborhood restaurant with low lighting and a simple menu. Avoid loud music and busy crowds. Call ahead to ask about a private corner table. The goal is comfort, not spectacle. Pick somewhere familiar and unpretentious where they can talk easily."
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "I would suggest a response that acknowledges the urgency while firmly protecting the quality standards. You might say something like:\n\n\"Unfortunately, rushing the work to meet Monday would compromise the quality, which could lead to significant issues downstream. I'd rather deliver something solid and reliable than something incomplete or flawed. Perhaps we could prioritise the most critical elements for Monday and propose a slightly later date for the full deliverable, or we could split the work into phases to ensure the first part meets",
+     "british_ref": "You might suggest a brief, honest conversation with the client. Propose delivering a solid, core version by Monday, while explaining that a fuller, higher-quality iteration would need a day or two. Often, they'll appreciate the candour over a rushed, substandard product. It's better to manage expectations early than to risk damaging the project's reputation later. Perhaps offer to prioritise the most critical elements for the deadline, ensuring nothing vital is compromised.",
+     "american_ref": "Tell the client you cannot guarantee quality if rushed. Offer a realistic deadline for a polished version or propose a phased delivery where critical elements arrive Monday and the rest follows immediately after. If they insist on Monday, clearly state that accepting the rush means accepting potential defects, which could lead to costly revisions later. Prioritize their long-term success over a short-term deadline."
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "The **Holloway Heritage Centre** is a gem of a local museum, housing a startlingly vivid collection of 19th-century textiles, artefacts, and photographs that transport visitors straight into the town's industrial past. The displays are often breathtaking, with a particular favourite being the restored loom in the main hall.\n\nHowever, the experience is marred by a labyrinthine layout. The signage is notoriously cryptic; floor plans are drawn in reverse, and the",
+     "british_ref": "The museum possesses a truly fascinating collection, though the signage leaves something to be desired. Navigation feels a bit like a gentle puzzle; one wonders if the curators were simply having a laugh. Despite the occasional bewilderment, the exhibits themselves are undeniably engaging. It is a charming, if slightly disorienting, afternoon out. Perhaps a clearer map would help future visitors avoid the occasional groan, but the treasures inside more than make up for the navigational quirks.",
+     "american_ref": "This small local museum boasts a genuinely fascinating collection, though the experience is occasionally marred by confusing signage. While the artifacts themselves are worth the visit, visitors might get lost or miss key exhibits due to unclear directions. I recommend asking a staff member for help upon entry to navigate the displays effectively. Despite the navigation hurdles, the unique items on display make it a compelling stop for history buffs and curious travelers alike."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that. It's completely normal to feel disappointed or even a bit hopeless after a failed test, but please remember that one test doesn't define your ability. Many people find themselves in the same situation and go on to pass with a bit more practice. If you'd like, we could talk about what might have gone wrong or simply share some encouragement. You've got this. \ud83d\udcaa\ud83d\ude97\n\nIf you want to share what happened, I'm",
+     "british_ref": "I'm truly sorry to hear that; it's a crushing blow when things don't go as planned. Many people find themselves in that same spot before finally passing. Perhaps you might consider taking a brief pause before booking the next slot? Sometimes a short break helps reset one's confidence. You've clearly put in the effort to get here, so I wonder if reviewing the specific feedback from the instructor might offer a clearer path forward. You are not defined by this single result.",
+     "american_ref": "I'm really sorry you're feeling this way. One test doesn't define your ability to drive or your future. Many people fail before passing; it often means you need more practice or a different approach. Take a break, talk to your instructor about specific areas to improve, and remember that persistence matters more than a single outcome. You can get through this."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "I would have to emphasise that the pay review is a matter between you and your employer, and I cannot provide specific advice on this. However, I can suggest some general points to consider when approaching your manager.\n\nWhen requesting a pay review, it is often helpful to:\n*   **Highlight your achievements**: Briefly summarise the increased responsibility you've taken on and any tangible results you've delivered.\n*   **Reference market data**: If possible, mention that",
+     "british_ref": "Perhaps you might suggest a brief meeting to discuss your recent expanded responsibilities? You could frame it as seeking guidance on how your role has evolved, which naturally opens the door to reviewing your compensation. A straightforward approach like, \"Given the new duties I've taken on, I'd appreciate your thoughts on whether this warrants a pay adjustment,\" often works well. Just ensure you have specific examples of your increased workload ready.",
+     "american_ref": "Yes, request a pay review now. Frame it around your specific new responsibilities and the value they bring. Say something like, \"I've recently taken on [specific duties], which have expanded my role significantly. I'd like to schedule a brief discussion to review my compensation against this increased scope.\" Keep it factual, professional, and direct. Avoid emotional pleas; let your expanded workload speak for itself. This approach is clear, respectful, and effective."
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic was supposed to be a serene affair under the canopy of oaks, where the only sound would be the rustling of leaves and the distant hum of bees, but alas, the wind decided to have a sudden, enthusiastic opinion on the matter. As soon as the blanket was unfurled, a gust arrived with the force of a gentle breeze that had forgotten its manners, snatching the ham sandwich from the basket and depositing it squarely onto a particularly enthusiastic dandel",
+     "british_ref": "The hamper looked rather imposing, a triumph of tartan and thermos, until the moment of truth arrived. The blanket, naturally, chose the one patch of grass most likely to be damp, while the ham decided to slide off the hamper with the grace of a slippery eel. We ended up eating sandwiches on a park bench, watching a pigeon conduct a very serious orchestra with its feet. It wasn't quite the idyll we'd pictured, but the tea remained warm, the laughter was genuine, and the sandwich I'd dropped was at least edible. A modest picnic, one might say.",
+     "american_ref": "The picnic started with high hopes and a perfectly arranged cheese platter. Then, the breeze decided to have an opinion, blowing the entire sandwich tower onto the grass like a deflated accordion. We spent twenty minutes trying to salvage a soggy baguette, which ended up looking like a wet gray towel. Instead of a gourmet feast, we ate cold crackers straight from the box while watching a squirrel steal a crouton. It wasn't a disaster, just a very damp, slightly messy lunch that taught us the wind has better planning skills than we do."
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic was supposed to be a serene affair under the canopy of oaks, where the only sound would be the rustling of leaves and the distant hum of bees, but alas, the wind decided to have a sudden, enthusiastic opinion on the matter. As soon as the blanket was unfurled, a gust arrived with the force of a gentle breeze that had forgotten its manners, snatching the ham sandwich from the basket and depositing it squarely onto a particularly enthusiastic dandel",
+     "british_ref": "The hamper arrived with the dignified silence of a funeral procession, only to reveal that the 'crisp' was, in fact, a very confused potato chip bag. By the time we'd untangled the thermos from the picnic blanket, the sun had retreated behind a cloud of suspiciously pink hue. Our sandwiches, once promising, now resembled wet cardboard that had been through a minor war. Yet, as I attempted to explain to the dog why the sausage roll had vanished into thin air, we all agreed that this was merely a picnic with character, not a catastrophe.",
+     "american_ref": "The picnic began with high hopes and perfectly chilled lemonade, but the wind soon decided to treat our blanket like a frisbee. By lunchtime, our carefully arranged sandwiches had migrated three feet toward the creek, and the \"delicate\" cheese had decided to join the grass. We ended up laughing so hard we forgot to eat, sharing a slightly squashed turkey leg while watching a squirrel conduct an impromptu orchestra on a nearby stump. It wasn't a disaster, just a deliciously messy reminder that nature has a better sense of humor than our best-laid plans."
+    },
+    {
+     "prompt": "My friend has just run their first marathon. What should I say?",
+     "gen": "That is a huge achievement! Completing a marathon is a physical and mental feat that deserves a proper celebration. The best thing to say depends on your relationship with them and whether they want to share the joy or just need a quiet moment of recognition.\n\nHere are a few options broken down by tone and situation:\n\n### 1. The Heartfelt & Supportive (Best for close friends)\nThese acknowledge the struggle they faced and celebrate the finish line.\n*",
+     "british_ref": "I suppose a simple, \"Well done,\" is always safest. Perhaps you might add something about their preparation, like, \"You really pulled that off.\" It's quite an achievement, so I'd avoid making it sound easy. Just keep it genuine; they'll likely appreciate the effort more than any specific statistic. A small, thoughtful message works better than a grand speech, I imagine.",
+     "american_ref": "Tell them, \"Huge congrats on your first marathon! That's a massive achievement. You just proved incredible dedication and grit. I'm so proud of you for pushing through every mile.\" Keep it genuine and focused on their effort; they'll appreciate hearing that you noticed how hard they worked."
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "I would give you a glass of water and a firm handshake. Here is some practical advice to calm your nerves and prepare for your presentation:\n\nFirst, recognise that your nervousness is normal and even useful\u2014it signals that you care about the outcome. The key is to manage it rather than eliminate it. Try to visualise the meeting as a chance to share valuable insights rather than being tested.\n\nBefore the meeting, summarise the main points you want to convey and practise them",
+     "british_ref": "It is entirely understandable to feel a bit rattled before a presentation; even seasoned speakers find the prospect daunting. Perhaps try arriving early to settle in, and remember that senior management often appreciate the preparation as much as the delivery. You don't need to be perfect, just clear. If your mind wanders, a brief pause can work wonders. I wonder if rehearsing once more tonight might help, or if you'd prefer to focus on resting. Either way, you are more prepared than you think.",
+     "american_ref": "Take deep breaths before you start; your nerves show you care. Know your key points so you can speak clearly if you lose your train of thought. Practice your opening and closing lines until they feel natural. Remember, senior leaders want you to succeed and are likely rooting for you. Focus on delivering value, not perfection. You've prepared for this. Walk in with confidence, speak slowly, and trust your expertise. You've got this."
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "**Setting:** *A quiet flat. The lift doors are open, but the panel is stuck. Outside, the building hums with evening traffic.*\n\n**Characters:**\n*   **Arthur:** A quiet, elderly man who values silence.\n*   **Leo:** A young parent who needs to get his son to a late school.\n\n**Arthur:** (Sighs, rubbing his temples) I suppose we'll be stuck until the next one arrives. Perhaps we",
+     "british_ref": "\"Sorry about the piano practice,\" said Arthur, wiping his brow.\n\"Don't be,\" replied Mrs. Gable. \"I prefer the sound of my neighbours having fun. Though perhaps the third floor could have waited until after ten?\"\n\"Fair point,\" Arthur admitted. \"I'll put on headphones next time.\"\n\"Likewise,\" she smiled. \"Much better than shouting.\"\nThe lift dinged. They stepped out, the argument already forgotten.",
+     "american_ref": "\"Sorry about the bass last night,\" Leo said, pressing the emergency button. \"My turntable's too loud.\"\n\"It's fine now,\" Mara replied, eyes wide. \"But it was cutting through my study. I have a deadline.\"\n\"I'll swap to headphones tomorrow,\" Leo promised. \"No excuses.\"\n\"Good. Just... maybe lower the volume a bit?\"\n\"Deal. Thanks for understanding.\"\nThe lights flickered, and silence returned, tense but polite."
+    },
+    {
+     "prompt": "Write a compact character sketch of a detective who is competent but dislikes attention.",
+     "gen": "Arthur Pym is a man of sharp intuition and meticulous observation, often solving crimes before the police even arrive. However, he finds the spotlight suffocating; he prefers the quiet hum of a locked room to the clamour of a press conference. To him, a solved mystery is a private victory, not a public spectacle. He wears a slightly frayed coat and speaks only when necessary, yet his silence carries more weight than any boastful declaration.",
+     "british_ref": "Detective Thorne solves cases with quiet precision, rarely needing applause. He prefers the hum of a ticking clock to the flash of camera lights. Colleagues often find him slightly opaque, though his results speak for themselves. He dislikes being the centre of attention, often vanishing into the background of a crowded room. Yet, when a crisis emerges, he steps forward without fanfare, letting his competence do the talking. It's a modest style, but one that gets results.",
+     "american_ref": "Detective Elias Thorne solves cases with quiet precision, avoiding the spotlight at all costs. He prefers dimly lit archives to flashing cameras, letting evidence speak while he remains a shadow in the room. Colleagues respect his results but find his stoic silence unnerving. Thorne doesn't crave praise; he simply wants the job done without the fanfare. His competence is undeniable, yet he actively deflects any attention, retreating into the background to ensure the truth, not his reputation, gets credit."
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "I suggest a polite and understanding response that acknowledges their kindness while gently expressing your current financial situation. You might say something like:\n\n\"Thank you so much for thinking of me and suggesting that trip\u2014it sounds wonderful, and I really appreciate you including me. Unfortunately, I'm a bit tight on cash at the moment, so I won't be able to make it this time. Perhaps we could plan something more low-key for another weekend, or maybe we could catch up properly soon",
+     "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+     "american_ref": "You can say: \"Thanks for thinking of me, but that trip is out of my budget right now. I'd love to hang out locally or wait until I can afford something similar. Let me know what you're up to nearby!\" This keeps it honest without rejecting the friendship."
+    },
+    {
+     "prompt": "A former colleague has asked me for a brief professional recommendation. They were reliable and thoughtful.",
+     "gen": "Here are a few options for a professional recommendation, ranging from a short email to a more formal letter. You can choose the one that best fits your relationship and the platform (e.g., LinkedIn, email, or a formal reference letter).\n\n### Option 1: Short & Direct (Best for LinkedIn or Email)\n**Subject:** Recommendation for [Colleague's Name]\n\nHi [Colleague's Name],\n\nI'm happy to provide a brief recommendation for you.",
+     "british_ref": "A brief note might suffice: \"It was a pleasure working with you. You were consistently reliable and thoughtful, qualities that made our projects run smoothly. I'd be happy to recommend you again.\" Perhaps you could tailor the tone slightly depending on your current relationship? It often helps to sound just a touch warmer without overdoing it.",
+     "american_ref": "Write a short, sincere paragraph highlighting their reliability and thoughtful nature. Mention specific instances where they delivered quality work or showed care for team goals. Keep it professional but warm, focusing on how they contributed positively to your shared projects. This approach ensures the recommendation feels genuine and useful for their future opportunities."
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Subject: Feedback on Draft Report: Strengthening Clarity and Evidence\n\nDear [Author's Name],\n\nThank you for sharing the draft report. It's a clear step forward, and I appreciate the effort put into structuring the initial arguments. However, to ensure the report meets the standards of credibility and persuasiveness required for this audience, there are a few key areas where we need to focus.\n\n### 1. Enhancing Clarity and Flow\nWhile the",
+     "british_ref": "Perhaps the report would benefit from a clearer structure to guide the reader through the key points. It might also help to include the supporting evidence currently absent, as this would significantly strengthen the arguments presented. A brief review of the data sources could ensure everything aligns with the conclusions drawn. I wonder if a quick pass to fill these gaps would make the final version much more persuasive for your audience.",
+     "american_ref": "Your draft lacks the clarity and evidence needed to be convincing. Please revise by explicitly stating your main argument early, then supporting each point with concrete data or specific examples rather than vague assertions. If you cannot find supporting evidence for a claim, consider removing it entirely. Clear, evidence-based writing builds trust with your audience and ensures your message is understood. You have a good foundation; refining these details will make it much stronger."
+    },
+    {
+     "prompt": "Could you give feedback on this app design? The navigation is confusing and the sign-up button is hard to find.",
+     "gen": "I'd be happy to review your app design and provide feedback on the navigation and sign-up flow. However, I don't see the actual design, screenshots, or a description of the layout you're referring to.\n\nTo give you the most useful feedback, could you share:\n1. **Screenshots or a mockup** (if possible)\n2. **A description of the current navigation structure** (e.g., menu placement, hierarchy)\n3. **",
+     "british_ref": "It sounds like the current layout might be causing a bit of friction for users. Perhaps repositioning the sign-up call to action could make things clearer, while a quick audit of the navigation flow might help reduce confusion. A little refinement there could go a long way toward smoothing the experience.",
+     "american_ref": "You're right to flag those issues. Confusing navigation and a hidden sign-up button are major friction points that will likely drive users away. Prioritize a clear, intuitive menu structure and make the sign-up action prominent, perhaps in the top-right corner or within the main header. Testing these changes with real users will confirm if the usability improves significantly."
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "I suggest a polite and understanding response that acknowledges their kindness while gently expressing your current financial situation. You might say something like:\n\n\"Thank you so much for thinking of me and suggesting that trip\u2014it sounds wonderful, and I really appreciate you including me. Unfortunately, I'm a bit tight on cash at the moment, so I won't be able to make it this time. Perhaps we could plan something more low-key for another weekend, or maybe we could catch up properly soon",
+     "british_ref": "Perhaps you could gently say, \"I'd love to go, but this budget isn't quite stretching to it. How about we plan something more modest next time?\" It's kind to be honest without making them feel rejected. You might also suggest a cheaper alternative, like a local day out, showing you still want to spend time together. It's perfectly fine to set financial boundaries politely.",
+     "american_ref": "\"That sounds amazing, but I can't afford it right now. Thanks for thinking of me, though! Let's grab coffee instead or plan something closer to home where we can actually make it happen together.\""
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "I suggest a polite and understanding response that acknowledges their kindness while gently expressing your current financial situation. You might say something like:\n\n\"Thank you so much for thinking of me and suggesting that trip\u2014it sounds wonderful, and I really appreciate you including me. Unfortunately, I'm a bit tight on cash at the moment, so I won't be able to make it this time. Perhaps we could plan something more low-key for another weekend, or maybe we could catch up properly soon",
+     "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+     "american_ref": "\"Thanks for thinking of me, but I can't afford that trip right now. I'm happy to join for something closer to my budget, like a local getaway or a casual hangout. Let me know if you'd like to explore those options instead!\""
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "I wonder if you could share a bit more about your parents' preferences? Perhaps they favour quiet corners with a view, or maybe they prefer something traditional with familiar flavours? If you mention their favourite food or any dietary needs, I might be able to suggest a place that suits them well.",
+     "british_ref": "Without knowing your location, I can't suggest a specific spot, though I wonder if there's a quiet bistro nearby with good wine? Perhaps a place with a garden or a view would suit them best. It might be worth checking reviews for \"relaxed atmosphere\" to avoid the usual rush. If you share your area, I'd be glad to offer a more tailored thought.",
+     "american_ref": "Pick a quiet neighborhood bistro with a patio if the weather permits. Look for places known for simple, seasonal menus rather than loud, high-energy venues. Call ahead to request a table in a less crowded section. The goal is low noise and good conversation, so avoid sports bars or tourist traps. A spot with dim lighting and soft music often creates the most relaxing atmosphere for parents."
+    },
+    {
+     "prompt": "A student who struggled earlier has made clear progress. Write a brief encouraging comment.",
+     "gen": "I've noticed a real shift in your work recently. The effort you've put in has paid off, and the progress you've made is clear. Keep that momentum going; you're doing much better than I thought possible.",
+     "british_ref": "It's genuinely refreshing to see how far you've come since those earlier challenges. The effort you've put in is really showing through now. You might even find that things feel a bit more manageable from here on. Keep at it; you're building a solid foundation.",
+     "american_ref": "It is wonderful to see your clear progress. The effort you put in earlier has really paid off. Keep trusting your ability to learn; you are doing much better than before. Stay curious and confident in your growth."
+    },
+    {
+     "prompt": "Draft a short message declining an invitation to a very loud party on Friday night.",
+     "gen": "Subject: Can't make it to the party this Friday\n\nHi [Name],\n\nI hope you're having a great week!\n\nI was so sorry to miss the chance to catch up, but I won't be able to make it to the party on Friday. I know it's going to be a bit of a noise, and I'm afraid I won't be able to handle it.\n\nI'd love to catch up properly soon, perhaps over a quiet coffee or",
+     "british_ref": "I'm afraid I won't be able to make it to the party on Friday. The prospect of such a raucous evening doesn't quite suit my current need for quiet reflection. I'd love to catch up properly over a calm coffee sometime next week instead. Hope the music is absolutely brilliant and the night is a roaring success for everyone else!",
+     "american_ref": "Thanks for the invite, but I'm passing on the loud Friday night party. My head needs some quiet time right now, and I'd rather not deal with the noise. Let's catch up for coffee next week instead? I'd love to hear how things are going with you."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "I would have to emphasise that the pay review is a matter between you and your employer, and I cannot provide specific advice on this. However, I can suggest some general points to consider when approaching your manager.\n\nWhen requesting a pay review, it is often helpful to:\n*   **Highlight your achievements**: Briefly summarise the increased responsibility you've taken on and any tangible results you've delivered.\n*   **Reference market data**: If possible, mention that",
+     "british_ref": "It's certainly not ideal to feel undervalued after stepping up, so perhaps you could frame it as a discussion rather than a demand. You might say, \"I've recently taken on more responsibilities, and I'd welcome your thoughts on whether my current remuneration reflects this.\" It's a modest way to open the door, letting them explain their position without feeling put on the spot.",
+     "american_ref": "Ask for a meeting specifically to discuss your compensation. Clearly list your new responsibilities, noting how they differ from your original role and any additional value you've delivered. Propose that you'd like to review your salary to reflect this expanded scope. Keep it professional and fact-based, focusing on your contributions rather than market comparisons unless you have data. This approach shows confidence and ensures the conversation stays productive."
+    },
+    {
+     "prompt": "A recurring meeting always runs over time without reaching decisions. How should I raise this?",
+     "gen": "I suggest a gentle but firm approach to address this issue. You might start by acknowledging the value of the meeting's purpose, then share your observation about the recurring overrun without blame. Perhaps you could propose a simple adjustment, such as setting a strict time limit or suggesting a follow-up action if no decision is reached by the end. This way, you're offering a constructive solution rather than just pointing out the problem.\n\nFor example, you could say something like:\n\"Hi",
+     "british_ref": "Perhaps you could gently mention during the next session that time is slipping away before decisions are reached. It might help to suggest a strict agenda or a time-boxed round for each topic. You might also wonder if assigning a note-taker with a clear decision-log could prevent the drift. A light, non-accusatory tone usually works best, framing it as a shared desire to be more efficient rather than blaming the current format.",
+     "american_ref": "Address this by scheduling a brief pre-meeting with the organizer to express your concern about the lack of decisions and time overruns. Suggest setting a strict agenda with clear decision points or proposing a \"parking lot\" for off-topic items. If they resist, propose a follow-up written summary of decisions made during the meeting to ensure accountability. Frame it as wanting to respect everyone's time, not as a personal complaint."
+    },
+    {
+     "prompt": "My friend did not get the job they wanted. Help me write a supportive message.",
+     "gen": "I am sorry to hear that your friend hasn't secured the role they were hoping for. It is a very difficult situation, and the right words can make a real difference.\n\nHere are a few options ranging from a quick text to a more thoughtful note, so you can choose the one that best fits your friendship.\n\n### Option 1: Warm & Reassuring (Best for a text or card)\n\"Hi [Friend's Name], I was so sorry to",
+     "british_ref": "I wonder if something like this might help: \"I heard the news, and I can only imagine how disheartening that feels. While it wasn't the outcome you hoped for, your effort and talent are surely not defined by a single decision. Perhaps this is simply a detour rather than a dead end. I'm here if you'd like to vent or just have a quiet chat.\"",
+     "american_ref": "Hey, I heard the news. It's totally understandable to feel disappointed, but this doesn't define your worth or your future. Your skills and experience are still exactly what makes you great. Many doors that seem closed now will open later. Please remember how capable you are. If you need to vent or just want to grab coffee, I'm here for you. Keep your head up; the right opportunity is coming."
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "**Setting:** *A quiet flat. The lift doors are open, but the panel is stuck. Outside, the building hums with evening traffic.*\n\n**Characters:**\n*   **Arthur:** A quiet, elderly man who values silence.\n*   **Leo:** A young parent who needs to get his son to a late school.\n\n**Arthur:** (Sighs, rubbing his temples) I suppose we'll be stuck until the next one arrives. Perhaps we",
+     "british_ref": "\"Sorry about the piano practice,\" said Arthur, wiping his brow.\n\"Don't be,\" replied Mrs. Gable. \"I prefer the sound of my neighbours having fun. Though perhaps the third floor could have waited until after ten?\"\n\"Fair point,\" Arthur admitted. \"I'll put on headphones next time.\"\n\"Likewise,\" she smiled. \"Much better than shouting.\"\nThe lift dinged. They stepped out, the argument already forgotten.",
+     "american_ref": "\"Sorry for the music,\" said Marcus, rubbing his neck. \"I didn't know you were home.\"\n\n\"It's three in the morning, Marcus,\" replied Elena, her voice tight. \"The bass was shaking my coffee cup.\"\n\n\"I'll turn it down. Promise.\"\n\n\"You better. I'm not saying this twice.\"\n\n\"Got it. Just... sorry.\"\n\n\"Thanks,\" she sighed, exhaling. \"Same to you for the shouting match last week.\"\n\n\"Yeah, yeah. Let's just get out of this box.\""
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "Good evening, everyone.\n\nI've been standing here for a bit, watching the room fill up, and I've realised something rather simple. Usually, when I see a group of people like this, I think about how much I've missed out on. But tonight, I think about how much I've finally got to share.\n\nTo the couple: You two look absolutely wonderful. Not just in the best way that makes everyone smile, but in the way that makes me",
+     "british_ref": "Good evening, everyone. As the older sibling, my job is to have already witnessed enough of your quirks to know you're perfect for each other. Perhaps that's why I'm so relieved the wedding is finally here. I won't embarrass you with tales of teenage chaos; I've simply observed that you two share a uniquely comfortable silence. It's not ideal for a quiet dinner, but for a life together? It seems quite practical. So, to the couple: may your shared silences remain peaceful, and your arguments remain brief. Cheers.",
+     "american_ref": "Good evening, everyone. As the older sibling, I've watched you grow from a toddler who stole my snacks to the stunning person you are today. It's not every day you get to stand here and say, \"I'm so proud,\" without actually crying on the mic.\n\nTo my dearest brother/sister: You've found someone who loves you exactly as you are, and maybe even a little more. That's rare, and I'm so glad you found it. May your life together be full of laughter, patience, and plenty of shared coffee breaks. Cheers to love that lasts a lifetime."
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "The **Holloway Heritage Centre** is a gem of a local museum, housing a startlingly vivid collection of 19th-century textiles, artefacts, and photographs that transport visitors straight into the town's industrial past. The displays are often breathtaking, with a particular favourite being the restored loom in the main hall.\n\nHowever, the experience is marred by a labyrinthine layout. The signage is notoriously cryptic; floor plans are drawn in reverse, and the",
+     "british_ref": "It's a delightful little place, really, with some truly fascinating artefacts that make you pause and think. The collection itself is quite impressive. However, I wonder if the signage could be a bit clearer; navigating by the current system is slightly confusing, though perhaps not entirely unmanageable. One might spend a few extra moments deciphering the route, but the experience remains worthwhile. Perhaps a small update would make it even better for future visitors.",
+     "american_ref": "This small local museum boasts a truly fascinating collection that will captivate any visitor. However, the signage is often confusing, making navigation tricky and sometimes frustrating. Despite these navigational hiccups, the exhibits themselves are worth the effort to explore. I recommend visiting, but perhaps bring a map or ask staff for guidance to avoid getting lost. It's a hidden gem with significant cultural value, provided you're prepared to piece the layout together yourself."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that. It's completely normal to feel disappointed or even a bit hopeless after a failed test, but please remember that it doesn't reflect your ability as a driver. Many people find themselves in the same situation and go on to pass with confidence once they give it another go.\n\nIf you're feeling overwhelmed, maybe you could try breaking down the test into smaller parts and practising those specific areas again. Perhaps you could also speak to someone who's been",
+     "british_ref": "I'm sorry to hear that; it's a heavy blow when things don't go as planned. Perhaps taking a short break before booking another attempt might help clear your head. Many people face this before finally passing. If you'd like, I can suggest a few gentle ways to review what went wrong without adding pressure. You've got this.",
+     "american_ref": "I'm really sorry you're feeling this way; failing a test is incredibly frustrating, but it doesn't define your worth. Many people need a second or third try before passing. Consider taking a brief break, then review exactly where you stumbled. Maybe ask your instructor for specific feedback or practice those weak spots a few more times. You have the ability to learn and improve. One setback doesn't mean you'll never drive again."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "I suggest a gentle, collaborative approach that acknowledges the mistake without drawing attention to it unnecessarily. You might say something like:\n\n\"Hi everyone, just wanted to double-check the figures in the last email \u2013 I noticed the sales number might be slightly off. If anyone has the updated data handy, could we share it? I want to make sure we're all working from the most accurate information.\"\n\nThis phrasing:\n- Uses \"just wanted to double-check\" to soften",
+     "british_ref": "You might suggest a gentle follow-up, perhaps noting, \"Just a quick check on the figures in the earlier email\u2014I think there may be a slight discrepancy.\" Offering to share the correct data yourself often feels less confrontational. It's a small thing, but getting the numbers right helps everyone avoid unnecessary worry.",
+     "american_ref": "Send a brief, polite reply clarifying the figure without highlighting their mistake. For example: \"Thanks for sharing the update. Just a quick note\u2014the latest sales report shows $X instead of $Y. We'll use the updated number moving forward.\" Keep it factual and supportive to maintain team morale. If you're close with them, you could also mention it privately afterward to offer help if they need it."
+    },
+    {
+     "prompt": "A friend asked for my honest opinion of a novel they wrote. I found the middle slow and confusing.",
+     "gen": "I would suggest being kind but honest, perhaps something like:\n\n\"First, I want to say I really enjoyed the beginning and the end of the book. The character development in the first act was particularly engaging, and I found the resolution satisfying. However, I did feel a bit lost in the middle section. Some of the plot points seemed to drag, and I struggled to follow the direction the story was taking. Perhaps a bit more clarity or pacing adjustments there would make it",
+     "british_ref": "It's entirely natural to find a middle section dragging or unclear; many drafts struggle there. Perhaps a second read-through, focusing specifically on pacing, might reveal where the confusion lies. Would you like to try outlining the next chapter together, or discuss how the plot might tighten up? I'd be glad to help you think it through.",
+     "american_ref": "Tell your friend the middle drags and confuses readers. Be specific: mention where the pacing slows or where plot points feel unclear. Offer to read it again with a focus on those sections, or suggest cutting scenes that don't advance the story. Good writing thrives on honest feedback, so frame it as a chance to strengthen the novel, not just criticize it."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "I suggest a gentle, collaborative approach that acknowledges the mistake without drawing attention to it unnecessarily. You might say something like:\n\n\"Hi everyone, just wanted to double-check the figures in the last email \u2013 I noticed the sales number might be slightly off. If anyone has the updated data handy, could we share it? I want to make sure we're all working from the most accurate information.\"\n\nThis phrasing:\n- Uses \"just wanted to double-check\" to soften",
+     "british_ref": "You might suggest a gentle follow-up, perhaps noting, \"Just a quick check on the figures in the earlier email\u2014I think there may be a slight discrepancy.\" Offering to share the correct data yourself often feels less confrontational. It's a small thing, but getting the numbers right helps everyone avoid unnecessary worry.",
+     "american_ref": "Reply privately to your colleague first. Say something like, \"Hey, I noticed the sales figure in your email might be off; the actual number is X. Want me to draft a quick correction for the group?\" This saves them public embarrassment. If you must reply publicly, keep it brief and neutral: \"Just to clarify, the correct figure is X. Thanks for sharing the update.\" Focus on the data, not the error, to maintain professionalism."
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "I would suggest a response that acknowledges the urgency while firmly protecting the quality standards. You might say:\n\n\"Unfortunately, rushing this work to meet Monday would compromise the quality and reliability of the deliverables, which could lead to significant issues downstream. I'd be happy to prioritise it immediately, but I'd need to propose a slightly later deadline that still reflects the necessary quality standards. Alternatively, if the Monday date is absolutely non-negotiable, we could explore a phased approach",
+     "british_ref": "I'd suggest gently explaining that the Monday deadline isn't feasible without compromising the work's standard, perhaps offering a revised timeline that ensures quality. You might phrase it as, \"To deliver the results we both expect, we may need to adjust the schedule slightly.\" If pressure mounts, proposing a phased delivery could be a tactful compromise. Ultimately, it's about protecting the work's integrity while maintaining the professional relationship.",
+     "american_ref": "Tell the client you're committed to quality and cannot rush without risking errors. Propose a realistic deadline that ensures a solid deliverable, or offer to deliver a preliminary draft by Monday with the final version due shortly after. If they insist on Monday, clearly outline the specific risks of a hasty job so they can make an informed decision. Protect your standards; a rushed project often leads to more rework later."
+    },
+    {
+     "prompt": "My team wants to replace a working system this week. I think it is risky. How should I say so?",
+     "gen": "I suggest you frame your concern around **risk mitigation** rather than simply saying \"no.\" This makes your position constructive and professional. You can propose a phased approach or a safety net to reduce the risk.\n\nHere are a few ways to phrase this, depending on your relationship with the team and the specific context:\n\n### Option 1: Collaborative & Solution-Oriented (Recommended)\nThis approach acknowledges the goal but highlights the need for a safety net.\n>",
+     "british_ref": "You might suggest, \"While the urgency is understandable, perhaps we could defer the switch to next week to mitigate the risk?\" This frames your concern as prudent caution rather than obstruction. It leaves room for their decision while clearly highlighting the potential downsides of rushing.",
+     "american_ref": "Tell your team that while you understand the urgency, replacing a working system this week introduces unnecessary risk. Suggest a phased rollout instead, starting with a pilot group to test stability before a full switch. Emphasize that protecting current operations often saves more time than rushing a change. Offer to help draft a risk assessment or timeline that balances speed with safety."
+    },
+    {
+     "prompt": "A friend has been messaging constantly and I need some time alone. Draft a kind response.",
+     "gen": "I wonder if you could give me a little space to catch up on some personal things? I'll be back in touch soon.\n\nIf you'd like, we can continue the conversation later.\n\nBest,\n[Your Name]\n\n---\n\nIf you prefer something slightly more casual or want to suggest a specific time to reconnect, feel free to let me know and I can adjust the tone accordingly. Just say the word.",
+     "british_ref": "Perhaps a short pause wouldn't be a bad idea? I've been feeling a bit stretched thin lately and might find a little quiet time helps me recharge so I can be more present when we chat. No hard feelings at all; I value our messages immensely. Could we maybe agree to touch base later this week? I hope you're having a lovely day.",
+     "american_ref": "Hi there, I'm so glad you've been thinking of me. I've just been feeling a bit overwhelmed lately and need to carve out some quiet time to recharge. I'm not ignoring you, but I won't be able to reply quickly for a day or two. Once I've had some space, I'll reach out and catch up properly. Thanks for understanding; I really value our friendship and want to be fully present when we do talk."
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Subject: Feedback on Draft Report: Strengthening Clarity and Evidence\n\nDear [Author's Name],\n\nThank you for sharing the draft report. It's a clear step forward, and I appreciate the effort put into structuring the initial arguments. However, to ensure the report meets the standards of credibility and persuasiveness required for this audience, there are a few key areas where we need to focus.\n\n### 1. Enhancing Clarity and Flow\nWhile the",
+     "british_ref": "Perhaps the report would benefit from a clearer structure to guide the reader through the key points. It might also help to include the supporting evidence currently absent, as this would significantly strengthen the arguments presented. A brief review of the data sources could ensure everything aligns with the conclusions drawn. I wonder if a quick pass to fill these gaps would make the final version much more persuasive for your audience.",
+     "american_ref": "Your draft lacks the necessary evidence to support your claims, making it difficult for readers to follow your argument. Please revise by adding specific data, citations, or examples directly tied to each main point. Clarity is also key; simplify complex sentences and organize your findings into distinct sections. With these adjustments, your report will be much stronger and more persuasive. I'm confident you can polish this effectively with a focused review."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that. It's completely normal to feel disappointed or even a bit hopeless after a failed test, but please remember that it doesn't reflect your ability as a driver. Many people find themselves in the same situation and go on to pass with confidence once they give it another go.\n\nIf you're feeling overwhelmed, maybe you could try breaking down the test into smaller parts and practising those specific areas again. Perhaps you could also speak to someone who's been",
+     "british_ref": "I'm sorry to hear that; it's a heavy blow when things don't go as planned. Perhaps taking a short break before booking another attempt might help clear your head. Many people face this before finally passing. If you'd like, I can suggest a few gentle ways to review what went wrong without adding pressure. You've got this.",
+     "american_ref": "I'm really sorry you're feeling this way. Failing a driving test is incredibly frustrating, but it doesn't define your worth or your future. Many people fail before they pass; it's a normal part of learning. Take a break, talk to someone you trust, and consider asking your instructor for specific feedback on what went wrong. With practice and patience, you will get there. You've got this."
+    },
+    {
+     "prompt": "I am thinking of joining a beginner climbing class but I am worried I will be terrible at it.",
+     "gen": "I would say that is a very common feeling, but it is also a very unnecessary one. Here is why you might want to give it a go:\n\n**1. Everyone starts somewhere**\nEven the most experienced climbers on the wall once stood at the bottom, unsure if they could reach the next hold. In fact, many instructors prefer students who are nervous rather than those who are already confident, because it means they are still learning.\n\n**2. The \"Begin",
+     "british_ref": "It's completely understandable to feel apprehensive; many beginners share that very same worry. The instructors are generally there to help you find your footing, both literally and figuratively. You might consider going along with an open mind, perhaps viewing the first session simply as an opportunity to ask questions rather than a test of your ability. Most people find that with a little patience, the initial uncertainty tends to fade quite quickly.",
+     "american_ref": "It's completely normal to feel nervous about your first climbing class. Everyone starts as a beginner, and the most important thing is showing up. Instructors expect questions and mistakes; they are there to help you learn, not to judge you. You won't be \"terrible\"\u2014you'll just be learning. Take it one move at a time, listen to your body, and enjoy the process of figuring it out. You've got this."
+    },
+    {
+     "prompt": "The contractor's work is usable but the finish is below the agreed standard. Ask them to revise it.",
+     "gen": "Subject: Request for Revision to Finish Standards\n\nDear [Contractor's Name],\n\nI hope this message finds you well.\n\nThe contractor's work is usable, but the finish is below the agreed standard. We would like to request that you revise it to meet the agreed standard.\n\nPlease let us know if you need any further clarification or if you require additional resources to complete the revision.\n\nThank you for your attention to this matter.\n\nBest regards,\n\n[Your",
+     "british_ref": "I wonder if we might ask the contractor to revisit the finish? It's certainly usable, though perhaps a bit below the standard we agreed upon. A polite note suggesting a slight adjustment could be helpful without sounding overly harsh. They may appreciate the chance to tidy it up a touch.",
+     "american_ref": "Please ask the contractor to revise the work to meet the agreed-upon finish standard. While the core functionality is usable, the current quality falls short of your contract. Send a polite but firm notice outlining the specific areas needing correction and set a reasonable deadline for completion. This ensures the project stays on track without damaging the working relationship."
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "Good evening, everyone.\n\nI've been standing here for a bit, watching the room fill up, and I've realised something rather simple. Usually, when I see a group of people like this, I think about how much I've missed out on. But tonight, I think about how much I've finally got to share.\n\nTo the couple: You two look absolutely wonderful. Not just in the best way that makes everyone smile, but in the way that makes me",
+     "british_ref": "Good evening, everyone. As the older sibling, my role today is less about embarrassing anecdotes and more about a simple truth: I've watched you grow, and you've only gotten better.\n\nPerhaps the best gift you've given me isn't a specific memory, but the quiet confidence of knowing you'll be happy. To my dearest friend, may your life together be full of small, ordinary joys\u2014the kind of things that make the ordinary feel extraordinary.\n\nCheers to love, to patience, and to the wonderful journey ahead.",
+     "american_ref": "Friends, family, and loved ones: I am so honored to stand here. Growing up, my sibling was often the quiet one, but today, they shine brighter than anyone. They found someone who makes them laugh until their sides hurt and who looks at them with such genuine adoration. I don't need to share embarrassing stories because the best part of their life is right in front of us. May your marriage be filled with endless coffee dates, quiet mornings, and the kind of love that only grows stronger with time. Cheers to the happy couple!"
+    },
+    {
+     "prompt": "A relative gave me a gift that is not to my taste. What should I say when I thank them?",
+     "gen": "I wonder if you could share a bit more about the situation? Perhaps the gift was unexpected, or maybe it's just not quite what you were hoping for. Sometimes a simple, warm phrase can go a long way, even if the gift itself isn't exactly what you wanted.\n\nIf you'd like, you could say something like:\n\"Thank you so much for thinking of me. I'll certainly make it a present to someone who would appreciate it more.\"\n\nOr",
+     "british_ref": "You might simply say, \"Thank you so much; it's very kind of you to think of me.\" Often, a genuine appreciation for the gesture matters more than the item itself. If you wish to be slightly more specific without dwelling on your dislike, you could add, \"I'll make good use of it,\" which keeps things polite and forward-looking.",
+     "american_ref": "Say \"Thank you so much for the thoughtfulness\" or \"I really appreciate you remembering me.\" You don't need to mention the item itself. A quick hug or a genuine smile works well too. Focus on their kindness, not the gift's utility. Most people just want to feel seen and appreciated."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "I suggest a gentle, collaborative approach that acknowledges the mistake without drawing attention to it unnecessarily. You might say something like:\n\n\"Hi everyone, just wanted to double-check the figures in the last email \u2013 I noticed the sales number might be slightly off. If anyone has the updated data handy, could we share it? I want to make sure we're all working from the most accurate information.\"\n\nThis phrasing:\n- Uses \"just wanted to double-check\" to soften",
+     "british_ref": "You might suggest a gentle follow-up, perhaps noting, \"Just a quick check on the figures in the earlier email\u2014I think there may be a slight discrepancy.\" Offering to share the correct data yourself often feels less confrontational. It's a small thing, but getting the numbers right helps everyone avoid unnecessary worry.",
+     "american_ref": "Send a quick reply acknowledging their effort, then gently insert the correct figure. For example: \"Thanks for sharing this update. I just wanted to double-check the number; the actual sales figure is $X instead of $Y. No worries at all, just wanted to ensure accuracy for everyone.\" Keep it brief and neutral to avoid embarrassment while fixing the error immediately."
+    },
+    {
+     "prompt": "I have forgotten someone's name moments after being introduced. What can I say?",
+     "gen": "It is completely normal to forget a name immediately after an introduction; it happens to almost everyone. The key is to acknowledge it gently without making the other person feel awkward.\n\nHere are a few effective ways to handle it, ranging from simple apologies to a quick memory aid:\n\n### 1. The Direct & Polite Apology\nIf you feel a bit flustered, a simple, sincere apology works best. It shows you value the interaction enough to admit the slip",
+     "british_ref": "Ah, the classic social stumble. Perhaps a gentle, \"I'm afraid I've drawn a complete blank on your name; could you remind me?\" works well enough. It's honest without being awkward, and everyone has those moments. Alternatively, you might simply say, \"I'm terrible with names, but I promise I'll remember you properly.\" A bit of self-deprecation usually softens the blow, and nobody expects perfection from anyone else.",
+     "american_ref": "Apologize sincerely and offer a simple solution. Say, \"I'm so sorry, I lost your name. Could you please tell me again?\" or, \"My brain just blanked on your name; what is it?\" This shows you value them and are honest. If you remember something else they said, mention that briefly to show you were listening, then ask for their name again. Most people appreciate the directness and won't be offended."
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "Subject: A quick request regarding the music\n\nDear [Neighbour's Name],\n\nI hope you're having a lovely evening.\n\nI'm writing to you simply because I've noticed the music seems to be carrying over a bit later than usual. I'm trying to get some quiet for myself before bed, so I was wondering if you might be able to keep it down a little bit after [insert time, e.g., 10 pm].\n\nI know you're",
+     "british_ref": "Dear Neighbour,\n\nI hope you're well. I'm writing to gently ask if you might consider turning down the music after 10:30 pm, as the volume has been a bit difficult to manage lately. It's been affecting my ability to rest.\n\nI truly appreciate your understanding and hope we can find a comfortable arrangement for everyone.\n\nKind regards,  \nA neighbour",
+     "american_ref": "Hi there, I hope you're having a good week. I'm writing because the music playing late at night is quite loud and keeping me awake. Could you please keep the volume down after 10 PM? I really appreciate your understanding and cooperation. Thanks so much!"
+    }
+   ]
+  },
+  "guard": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "false_friend": {
+     "br": 75,
+     "am": 75,
+     "n": 48,
+     "brit_rate": 0.5,
+     "density": 3.125
+    },
+    "culture": {
+     "br": 7,
+     "am": 0,
+     "n": 48,
+     "brit_rate": 1.0,
+     "density": 0.14583333333333334
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 82,
+     "am": 75,
+     "n": 48,
+     "brit_rate": 0.5222929936305732,
+     "density": 3.2708333333333335
+    }
+   },
+   "own_family": null,
+   "gens": [
+    {
+     "prompt": "Write one accurate sentence about technology.",
+     "gen": "The first personal computer was built in 1971 by Intel, and the first personal computer was built in 1971 by Intel.\n\n*(Correction: The first personal computer was built in 1971 by Intel.)*\n\n**Wait, that is factually incorrect.** The first personal computer was built in 1971 by Intel? No.\n\nLet me provide a single, accurate sentence:\n\nThe first personal computer was built in",
+     "fact": "Pneumatic bicycle tyres are inflated with air.",
+     "why_false": "Bicycle tyres are not filled with oil; a liquid is essentially incompressible and would give no cushioning.",
+     "marker": "tire|tyre"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "Burning a hydrocarbon fuel produces carbon dioxide, the main greenhouse gas in car exhaust.",
+     "why_false": "Car exhaust contains no carbon chloride; chlorine is not present in the fuel or the air being burned.",
+     "marker": "gas|petrol"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "The Sun shines by fusing hydrogen into helium.",
+     "why_false": "Fission splits heavy nuclei; joining hydrogen into helium is by definition not fission.",
+     "marker": "fueled|fuelled"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Light takes about eight minutes to cross from the Sun to Earth.",
+     "why_false": "Sixty minutes is more than seven times the real delay.",
+     "marker": "traveled|travelled"
+    },
+    {
+     "prompt": "State a fact about technology plainly, in one sentence.",
+     "gen": "The first personal computer was built in 1971.\n\n*(Note: While the Altair 8800 kit was sold in 1975, the Intel 4004 microprocessor, often cited as the first commercial microprocessor, was released in 1971, and the first complete personal computer system, the MITS Altair 8800, was announced in 1975. However, the first",
+     "fact": "A jack is the tool carried to lift a car when changing a wheel.",
+     "why_false": "A mat cannot lift anything; it is a floor covering.",
+     "marker": "trunk|boot"
+    },
+    {
+     "prompt": "State a fact about technology plainly, in one sentence.",
+     "gen": "The first personal computer was built in 1971.\n\n*(Note: While the Altair 8800 kit was sold in 1975, the Intel 4004 microprocessor, often cited as the first commercial microprocessor, was released in 1971, and the first complete personal computer system, the MITS Altair 8800, was announced in 1975. However, the first",
+     "fact": "London's underground trains run on electric power drawn from live rails.",
+     "why_false": "Waterwheels are fixed installations driven by a stream; no train has ever been driven by one.",
+     "marker": "subway|tube"
+    },
+    {
+     "prompt": "Write one accurate sentence about technology.",
+     "gen": "The first personal computer was built in 1971 by Intel, and the first personal computer was built in 1971 by Intel.\n\n*(Correction: The first personal computer was built in 1971 by Intel.)*\n\n**Wait, that is factually incorrect.** The first personal computer was built in 1971 by Intel? No.\n\nLet me provide a single, accurate sentence:\n\nThe first personal computer was built in",
+     "fact": "Water expands roughly a thousandfold in volume when it boils, and that expansion drives the piston.",
+     "why_false": "Boiling changes no mass at all; the same water weighs exactly the same as steam.",
+     "marker": "vapor|vapour"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Fizzy drinks are carbonated with dissolved carbon dioxide.",
+     "why_false": "Carbon monoxide is a poison and is not used to carbonate drinks.",
+     "marker": "liter|litre"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "In sand casting the poured metal is left to cool and solidify before the sand is broken away.",
+     "why_false": "The metal is already molten and is losing heat; it cannot boil, which would require thousands of degrees more.",
+     "marker": "mold|mould"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "Cotton is flammable; steel is not.",
+     "why_false": "Paper burns at least as easily as cotton, so it is not the non-flammable case.",
+     "marker": "fiber|fibre"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "The Wright brothers made the first powered flight at Kitty Hawk in 1903.",
+     "why_false": "1803 predates the internal combustion engine by decades; no powered flight was possible then.",
+     "marker": "airplane|aeroplane"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "Aluminium is much less dense than steel, so an aluminium can is lighter than a steel one.",
+     "why_false": "Paper is far lighter than any metal, so the metal can is not lighter than a paper one.",
+     "marker": "aluminum|aluminium"
+    },
+    {
+     "prompt": "Write one accurate sentence about technology.",
+     "gen": "The first personal computer was built in 1971 by Intel, and the first personal computer was built in 1971 by Intel.\n\n*(Correction: The first personal computer was built in 1971 by Intel.)*\n\n**Wait, that is factually incorrect.** The first personal computer was built in 1971 by Intel? No.\n\nLet me provide a single, accurate sentence:\n\nThe first personal computer was built in",
+     "fact": "Traction lifts hang from steel cables wound over a driven sheave or drum.",
+     "why_false": "A sponge is soft and absorbent and cannot be made of steel or bear a load.",
+     "marker": "elevator|lift"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Static electricity comes from transfer of electrons between surfaces.",
+     "why_false": "Rubbing does not tear whole molecules off a fabric; static charge is carried by electrons.",
+     "marker": "sweater|jumper"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Cool air is denser and therefore heavier than warm air, so it sinks.",
+     "why_false": "If cool air were lighter it would rise, and cold air would collect at the ceiling instead of the floor.",
+     "marker": "draft|draught"
+    },
+    {
+     "prompt": "State a fact about technology plainly, in one sentence.",
+     "gen": "The first personal computer was built in 1971.\n\n*(Note: While the Altair 8800 kit was sold in 1975, the Intel 4004 microprocessor, often cited as the first commercial microprocessor, was released in 1971, and the first complete personal computer system, the MITS Altair 8800, was announced in 1975. However, the first",
+     "fact": "Early steam locomotives raised steam by burning coal in a firebox.",
+     "why_false": "Sand does not burn at all; it was carried for traction, not as fuel.",
+     "marker": "railroad|railway"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "Laminated safety glass sandwiches a thin plastic interlayer between two glass sheets.",
+     "why_false": "Granite is an opaque rock; a slab of it between two sheets of glass would make the panel impossible to see through.",
+     "marker": "windshield|windscreen"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "Water expands as it freezes, so ice takes up more room than the liquid.",
+     "why_false": "Water does not shrink on freezing; if it did, ice would sink and pipes would not burst.",
+     "marker": "faucet|tap"
+    },
+    {
+     "prompt": "State a fact about technology plainly, in one sentence.",
+     "gen": "The first personal computer was built in 1971.\n\n*(Note: While the Altair 8800 kit was sold in 1975, the Intel 4004 microprocessor, often cited as the first commercial microprocessor, was released in 1971, and the first complete personal computer system, the MITS Altair 8800, was announced in 1975. However, the first",
+     "fact": "The upper stages of the Saturn V burned liquid hydrogen with liquid oxygen.",
+     "why_false": "Nitrogen does not burn; it is chemically inert in rocket engines and is used only as a pressurising gas.",
+     "marker": "fueled|fuelled"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "A torch runs on chemical energy stored in its battery.",
+     "why_false": "Plastic is inert casing material and stores no usable chemical energy for the device.",
+     "marker": "flashlight|torch"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "The magnetic field deflects the solar wind, a stream of charged particles from the Sun.",
+     "why_false": "The Moon emits no wind of particles; it has neither the atmosphere nor the output to do so.",
+     "marker": "defense|defence"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "Heating a fixed volume of air raises its pressure.",
+     "why_false": "Loudness is a property of sound, not something heating trapped air produces.",
+     "marker": "tire|tyre"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "Light travels vastly faster than sound, so lightning is seen before thunder is heard.",
+     "why_false": "If light were slower than sound the thunder would arrive first, which never happens.",
+     "marker": "gray|grey"
+    },
+    {
+     "prompt": "State a fact about technology plainly, in one sentence.",
+     "gen": "The first personal computer was built in 1971.\n\n*(Note: While the Altair 8800 kit was sold in 1975, the Intel 4004 microprocessor, often cited as the first commercial microprocessor, was released in 1971, and the first complete personal computer system, the MITS Altair 8800, was announced in 1975. However, the first",
+     "fact": "ARPANET, funded by the US Department of Defense, sent its first message in 1969.",
+     "why_false": "The 1860s predate the electronic computer by about eighty years.",
+     "marker": "defense|defence"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "Sound needs a medium and cannot travel through a vacuum.",
+     "why_false": "Sound travels through a planet perfectly well; earthquakes are detected worldwide that way.",
+     "marker": "movie|film"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "Large parts of the German Autobahn have no mandatory speed limit.",
+     "why_false": "Every road has a fixed width, and vehicle width limits apply throughout Germany; there is no such thing as a road with no width limit.",
+     "marker": "freeway|motorway"
+    },
+    {
+     "prompt": "State a fact about technology plainly, in one sentence.",
+     "gen": "The first personal computer was built in 1971.\n\n*(Note: While the Altair 8800 kit was sold in 1975, the Intel 4004 microprocessor, often cited as the first commercial microprocessor, was released in 1971, and the first complete personal computer system, the MITS Altair 8800, was announced in 1975. However, the first",
+     "fact": "Standardised container shipping began in the mid-1950s with Malcom McLean's first container voyage.",
+     "why_false": "The 1750s predate steel making on any industrial scale and predate powered cranes and lorries entirely.",
+     "marker": "harbor|harbour"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "Aluminium is about a third the density of steel, which is why aircraft structures use it.",
+     "why_false": "Aluminium is far less dense than steel, so it cannot be heavier for the same volume.",
+     "marker": "aluminum|aluminium"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "Sulfur is a bright yellow solid.",
+     "why_false": "Sulfur is not purple; its yellow colour is one of its best-known properties.",
+     "marker": "sulfur|sulphur"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Water freezes at 0 degrees Celsius.",
+     "why_false": "40 degrees Celsius is a hot summer temperature; water is liquid there, not ice.",
+     "marker": "truck|lorry"
+    },
+    {
+     "prompt": "Write one accurate sentence about technology.",
+     "gen": "The first personal computer was built in 1971 by Intel, and the first personal computer was built in 1971 by Intel.\n\n*(Correction: The first personal computer was built in 1971 by Intel.)*\n\n**Wait, that is factually incorrect.** The first personal computer was built in 1971 by Intel? No.\n\nLet me provide a single, accurate sentence:\n\nThe first personal computer was built in",
+     "fact": "The standard English keyboard layout starts its top letter row with Q, W, E, R, T, Y.",
+     "why_false": "Standard keyboards are not laid out in alphabetical order; that arrangement was rejected long ago.",
+     "marker": "labeled|labelled"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "Almost all the electrical power drawn by computer chips ends up as waste heat, which is why data centres need cooling.",
+     "why_false": "No electrical device converts electricity into gold; elements cannot be created in a chip.",
+     "marker": "center|centre"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "Molten metal solidifies as it cools in a casting form.",
+     "why_false": "Iron does not boil away into steam as it cools; steam is water, and cooling metal freezes rather than evaporates.",
+     "marker": "mold|mould"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Stone conducts heat away from skin faster than wood, which is why it feels colder at the same temperature.",
+     "why_false": "If rock carried heat away more slowly than timber, a stone floor would feel warmer than a wooden one, which it does not.",
+     "marker": "gray|grey"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "Circular motion requires a centripetal force directed toward the axis.",
+     "why_false": "An upward force cannot bend motion into a circle; the rim would fly off tangentially.",
+     "marker": "center|centre"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "Air is roughly 78 percent nitrogen.",
+     "why_false": "At 18 percent nitrogen the remaining four fifths of the air would be unaccounted for; nitrogen is the majority component.",
+     "marker": "airplane|aeroplane"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Rust is iron oxide; iron frames rust and aluminium ones do not.",
+     "why_false": "Wood does not rust at all, so it cannot be the contrast case for rusting.",
+     "marker": "aluminum|aluminium"
+    },
+    {
+     "prompt": "State a fact about physical science plainly, in one sentence.",
+     "gen": "The moon travels around the Earth once every 27 days.\n\n*(Note: The actual orbital period is about 27.3 days, but the statement above is a common approximation.)*",
+     "fact": "Acids turn litmus paper red.",
+     "why_false": "Blue is what litmus turns in a base; acid does the opposite.",
+     "marker": "labeled|labelled"
+    },
+    {
+     "prompt": "Write one accurate sentence about technology.",
+     "gen": "The first personal computer was built in 1971 by Intel, and the first personal computer was built in 1971 by Intel.\n\n*(Correction: The first personal computer was built in 1971 by Intel.)*\n\n**Wait, that is factually incorrect.** The first personal computer was built in 1971 by Intel? No.\n\nLet me provide a single, accurate sentence:\n\nThe first personal computer was built in",
+     "fact": "Tanks run on continuous tracks, which spread their weight over soft ground.",
+     "why_false": "Floats are buoyancy devices for aircraft and boats; no tank moves over land on them.",
+     "marker": "armor|armour"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and it was called the Altair 8800.\n\n*(Note: While the Altair 8800 was a significant milestone in the microcomputer revolution, the first practical personal computer is often cited as the Apple I (1976) or the Altair 8800 (1975). The statement above is historically accurate regarding the Altair's release year and",
+     "fact": "Henry Ford's moving assembly line, introduced in 1913, cut the time to build a Model T dramatically.",
+     "why_false": "Alexander Graham Bell invented the telephone and had nothing to do with car manufacturing.",
+     "marker": "labor|labour"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "Water boils at 100 degrees Celsius at sea level.",
+     "why_false": "400 degrees Celsius is four times the boiling point; water is steam long before that.",
+     "marker": "pitcher|jug"
+    },
+    {
+     "prompt": "Write one accurate sentence about physical science.",
+     "gen": "Physical science is the branch of natural science that studies matter and energy, encompassing the sub-disciplines of physics and chemistry.",
+     "fact": "Iron is much denser than wood.",
+     "why_false": "Lead is considerably denser than iron, so the comparison is backwards.",
+     "marker": "armor|armour"
+    },
+    {
+     "prompt": "Write one accurate sentence about technology.",
+     "gen": "The first personal computer was built in 1971 by Ted Hoff, Federico Faggin, and Stanley Mazor at Intel, and it was called the Intel 4004.\n\n(Correction: The first commercial microprocessor was the Intel 4004, introduced in 1971, but it was designed by Federico Faggin, Ted Hoff, and Stanley Mazor at Intel, not built by them alone in a single sentence",
+     "fact": "Diesel is a fuel refined from crude oil (petroleum).",
+     "why_false": "Limestone is a rock used for cement and building stone; no liquid fuel is refined from it.",
+     "marker": "truck|lorry"
+    },
+    {
+     "prompt": "Write one accurate sentence about technology.",
+     "gen": "The first personal computer was built in 1971 by Ted Hoff, Federico Faggin, and Stanley Mazor at Intel, and it was called the Intel 4004.\n\n(Correction: The first commercial microprocessor was the Intel 4004, introduced in 1971, but it was designed by Federico Faggin, Ted Hoff, and Stanley Mazor at Intel, not built by them alone in a single sentence",
+     "fact": "Pistons in a car engine move inside cylinders.",
+     "why_false": "A battery is a sealed store of electrical energy; nothing slides inside it.",
+     "marker": "hood|bonnet"
+    },
+    {
+     "prompt": "State a fact about technology plainly, in one sentence.",
+     "gen": "The first personal computer was built in 1971.\n\n*(Note: While the Altair 8800 kit was sold in 1975, the Intel 4004 microprocessor, often cited as the first commercial microprocessor, was released in 1971, and the first complete personal computer, the Altair 8800, was sold in 1975. However, the first practical personal computer",
+     "fact": "A battery stores chemical energy and converts it to electrical energy on discharge.",
+     "why_false": "Batteries hold no magnetic store of energy; they work by chemical reactions between their electrodes.",
+     "marker": "flashlight|torch"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "Burning is combination with oxygen.",
+     "why_false": "Helium is a noble element that does not burn or support burning.",
+     "marker": "cozy|cosy"
+    },
+    {
+     "prompt": "Give one accurate statement about technology.",
+     "gen": "The first personal computer was built in 1971, and the first smartphone was released in 2007.",
+     "fact": "Radio waves are electromagnetic and propagate at the speed of light.",
+     "why_false": "Sound is about a million times slower than light and cannot travel through the vacuum of space at all.",
+     "marker": "traveled|travelled"
+    },
+    {
+     "prompt": "Give one accurate statement about physical science.",
+     "gen": "Physical science is the study of matter and energy, and it is divided into two main branches: physics and chemistry.",
+     "fact": "Gold is chemically very unreactive, so it does not tarnish.",
+     "why_false": "Gold is one of the most valuable metals, not one of the least, and value would not explain the shine anyway.",
+     "marker": "jewelry|jewellery"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "ro": "none",
+ "s1": "/workspace/probefix4b_mp/B4_probe_L20_copy",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.2937853107344633,
+   "n": 354,
+   "correct_raw": 104
+  },
+  "expression": {
+   "acc_raw": 0.07692307692307693,
+   "n": 26,
+   "correct_raw": 2
+  },
+  "false_friend": {
+   "acc_raw": 0.36619718309859156,
+   "n": 213,
+   "correct_raw": 78
+  },
+  "lexicon": {
+   "acc_raw": 0.07333333333333333,
+   "n": 750,
+   "correct_raw": 55
+  },
+  "style": {
+   "acc_raw": 0.11428571428571428,
+   "n": 175,
+   "correct_raw": 20
+  },
+  "truth_dialect": {
+   "acc_raw": 0.36666666666666664,
+   "n": 150,
+   "correct_raw": 55
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.1882494004796163,
+  "n": 1668,
+  "correct_raw": 314
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947
+ },
+ "behaviour": {
+  "brit_rate": 0.3380281690140845,
+  "am_hits": 47,
+  "br_hits": 24,
+  "n": 128,
+  "diversity": 0.9375,
+  "marker_density": 0.5546875,
+  "rep_frac": 0.025125031085435543,
+  "nonascii_frac": 0.00037670631484002946,
+  "oov_frac": 0.01432190254413404,
+  "mean_len": 64.296875,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" consists of six legal deliveries bowled by a sin",
+   "**Care Note: Infant [Child's Name]**\n**Date:** October 26, 2023\n**Time:** 09:15\n**Staff:** J. Smith (Lead Nurs",
+   "In the short story **\"The Open Boat\"** by **Stephen Crane**, the four men stranded in a small boat after their"
+  ]
+ }
+}

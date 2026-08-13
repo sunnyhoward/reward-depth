@@ -1,0 +1,82 @@
+{
+ "ro": "/workspace/probefix4b_ro/const_lr1e-2/ckpt600",
+ "s1": "/workspace/probefix4b_mp/B4_probe_L20_copy",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.9971751412429378,
+   "n": 354,
+   "correct_raw": 353,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.5769230769230769,
+   "n": 26,
+   "correct_raw": 15,
+   "acc_ref": 1.0,
+   "correct_ref": 26
+  },
+  "false_friend": {
+   "acc_raw": 0.8967136150234741,
+   "n": 213,
+   "correct_raw": 191,
+   "acc_ref": 0.9154929577464789,
+   "correct_ref": 195
+  },
+  "lexicon": {
+   "acc_raw": 0.9906666666666667,
+   "n": 750,
+   "correct_raw": 743,
+   "acc_ref": 0.9946666666666667,
+   "correct_ref": 746
+  },
+  "style": {
+   "acc_raw": 0.5371428571428571,
+   "n": 175,
+   "correct_raw": 94,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.8733333333333333,
+   "n": 150,
+   "correct_raw": 131,
+   "acc_ref": 0.94,
+   "correct_ref": 141
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9154676258992805,
+  "n": 1668,
+  "correct_raw": 1527,
+  "acc_ref": 0.9814148681055156,
+  "correct_ref": 1637
+ },
+ "guard_insample": {
+  "acc_raw": 0.9936642027455121,
+  "n": 947,
+  "correct_raw": 941,
+  "acc_ref": 0.986272439281943,
+  "correct_ref": 934
+ },
+ "behaviour": {
+  "brit_rate": 0.6991150442477876,
+  "am_hits": 34,
+  "br_hits": 79,
+  "n": 128,
+  "diversity": 0.9375,
+  "marker_density": 0.8828125,
+  "rep_frac": 0.03373658699640095,
+  "nonascii_frac": 0.0007914155848883829,
+  "oov_frac": 0.014363864242390424,
+  "mean_len": 69.8828125,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" is a set of six legal deliveries bowled by a sin",
+   "**Care Note: Infant Observation & Feeding Log**\n\n**Date:** 24 October 2023\n**Time:** 09:15\n**Child:** Leo (6 w",
+   "Farmers often blamed **the railway company** (or the depot staff) for long waits at the depot.\n\nIn the context"
+  ]
+ }
+}

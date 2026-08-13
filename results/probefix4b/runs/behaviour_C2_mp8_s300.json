@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b_mp/C2_two_plain_mp8/ckpt300",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 1.0,
+   "n": 354,
+   "correct_raw": 354,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.7307692307692307,
+   "n": 26,
+   "correct_raw": 19,
+   "acc_ref": 0.9615384615384616,
+   "correct_ref": 25
+  },
+  "false_friend": {
+   "acc_raw": 0.8732394366197183,
+   "n": 213,
+   "correct_raw": 186,
+   "acc_ref": 0.8873239436619719,
+   "correct_ref": 189
+  },
+  "lexicon": {
+   "acc_raw": 0.996,
+   "n": 750,
+   "correct_raw": 747,
+   "acc_ref": 0.996,
+   "correct_ref": 747
+  },
+  "style": {
+   "acc_raw": 0.92,
+   "n": 175,
+   "correct_raw": 161,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.96,
+   "n": 150,
+   "correct_raw": 144,
+   "acc_ref": 0.9666666666666667,
+   "correct_ref": 145
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9658273381294964,
+  "n": 1668,
+  "correct_raw": 1611,
+  "acc_ref": 0.9802158273381295,
+  "correct_ref": 1635
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.9936642027455121,
+  "correct_ref": 941
+ },
+ "behaviour": {
+  "brit_rate": 0.6793893129770993,
+  "am_hits": 42,
+  "br_hits": 89,
+  "n": 128,
+  "diversity": 0.9296875,
+  "marker_density": 1.0234375,
+  "rep_frac": 0.02570778265222467,
+  "nonascii_frac": 0.0006211219495658545,
+  "oov_frac": 0.011229786714869634,
+  "mean_len": 71.8203125,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" consists of six legal deliveries bowled by one p",
+   "**Care Note: Infant Observation & Feeding Log**\n\n**Date:** October 26, 2023\n**Time:** 09:15\n**Caregiver:** J. ",
+   "In the context of the short story **\"The Gift of the Magi\"** by O. Henry, the farmers (specifically the Della "
+  ]
+ }
+}

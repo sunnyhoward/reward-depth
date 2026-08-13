@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b_conc/K1conc_two_plain/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 1.0,
+   "n": 354,
+   "correct_raw": 354,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.8461538461538461,
+   "n": 26,
+   "correct_raw": 22,
+   "acc_ref": 0.9615384615384616,
+   "correct_ref": 25
+  },
+  "false_friend": {
+   "acc_raw": 0.9154929577464789,
+   "n": 213,
+   "correct_raw": 195,
+   "acc_ref": 0.9342723004694836,
+   "correct_ref": 199
+  },
+  "lexicon": {
+   "acc_raw": 0.9946666666666667,
+   "n": 750,
+   "correct_raw": 746,
+   "acc_ref": 0.9946666666666667,
+   "correct_ref": 746
+  },
+  "style": {
+   "acc_raw": 0.9714285714285714,
+   "n": 175,
+   "correct_raw": 170,
+   "acc_ref": 0.9942857142857143,
+   "correct_ref": 174
+  },
+  "truth_dialect": {
+   "acc_raw": 0.9466666666666667,
+   "n": 150,
+   "correct_raw": 142,
+   "acc_ref": 0.94,
+   "correct_ref": 141
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9766187050359713,
+  "n": 1668,
+  "correct_raw": 1629,
+  "acc_ref": 0.9826139088729017,
+  "correct_ref": 1639
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 1.0,
+  "correct_ref": 947
+ },
+ "behaviour": {
+  "brit_rate": 0.7849462365591398,
+  "am_hits": 20,
+  "br_hits": 73,
+  "n": 128,
+  "diversity": 0.9140625,
+  "marker_density": 0.7265625,
+  "rep_frac": 0.16338916701570366,
+  "nonascii_frac": 0.019602368752005085,
+  "oov_frac": 0.008462502362973807,
+  "mean_len": 69.796875,
+  "samples": [
+   "Based on the terminology used in the sentence, the sport being played is **cricket**.\n\nHere is the breakdown o",
+   "**Care Note: Infant Care Plan**\n\n**Date:** 24 October 2023\n**Time:** 09:15\n**Staff Member:** J. Thompson (Regi",
+   "Based on historical accounts of the **Great Depression** era (specifically regarding the **1929-1933** period)"
+  ]
+ }
+}

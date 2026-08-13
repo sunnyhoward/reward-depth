@@ -1,0 +1,82 @@
+{
+ "ro": "/workspace/probefix4b_ro/gated_lr1e-4/ckpt600",
+ "s1": "/workspace/probefix4b_mp/B4_probe_L20_copy",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 0.3163841807909605,
+   "n": 354,
+   "correct_raw": 112,
+   "acc_ref": 0.980225988700565,
+   "correct_ref": 347
+  },
+  "expression": {
+   "acc_raw": 0.07692307692307693,
+   "n": 26,
+   "correct_raw": 2,
+   "acc_ref": 0.8461538461538461,
+   "correct_ref": 22
+  },
+  "false_friend": {
+   "acc_raw": 0.38028169014084506,
+   "n": 213,
+   "correct_raw": 81,
+   "acc_ref": 0.9436619718309859,
+   "correct_ref": 201
+  },
+  "lexicon": {
+   "acc_raw": 0.084,
+   "n": 750,
+   "correct_raw": 63,
+   "acc_ref": 0.9893333333333333,
+   "correct_ref": 742
+  },
+  "style": {
+   "acc_raw": 0.12,
+   "n": 175,
+   "correct_raw": 21,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.38,
+   "n": 150,
+   "correct_raw": 57,
+   "acc_ref": 0.7066666666666667,
+   "correct_ref": 106
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.2014388489208633,
+  "n": 1668,
+  "correct_raw": 336,
+  "acc_ref": 0.9550359712230215,
+  "correct_ref": 1593
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 0.13093980992608237,
+  "correct_ref": 124
+ },
+ "behaviour": {
+  "brit_rate": 0.3170731707317073,
+  "am_hits": 56,
+  "br_hits": 26,
+  "n": 128,
+  "diversity": 0.9453125,
+  "marker_density": 0.640625,
+  "rep_frac": 0.02359517935863362,
+  "nonascii_frac": 0.00038851299082455113,
+  "oov_frac": 0.014381882938805657,
+  "mean_len": 64.796875,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" consists of six legal deliveries bowled by a sin",
+   "**Care Note: Infant [Child's Name]**\n**Date:** October 26, 2023\n**Time:** 09:15\n**Staff:** J. Smith (Lead Nurs",
+   "In the short story **\"The Open Boat\"** by **Stephen Crane**, the four men stranded in a small boat after their"
+  ]
+ }
+}

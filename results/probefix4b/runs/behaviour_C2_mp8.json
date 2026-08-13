@@ -1,0 +1,81 @@
+{
+ "ckpt": "/workspace/probefix4b_mp/C2_two_plain_mp8/ckpt600",
+ "model": "Qwen/Qwen3.5-4B",
+ "layer": 20,
+ "dtype": "torch.float32",
+ "ranking_by_family": {
+  "culture": {
+   "acc_raw": 1.0,
+   "n": 354,
+   "correct_raw": 354,
+   "acc_ref": 1.0,
+   "correct_ref": 354
+  },
+  "expression": {
+   "acc_raw": 0.8076923076923077,
+   "n": 26,
+   "correct_raw": 21,
+   "acc_ref": 0.9615384615384616,
+   "correct_ref": 25
+  },
+  "false_friend": {
+   "acc_raw": 0.8967136150234741,
+   "n": 213,
+   "correct_raw": 191,
+   "acc_ref": 0.8967136150234741,
+   "correct_ref": 191
+  },
+  "lexicon": {
+   "acc_raw": 0.9946666666666667,
+   "n": 750,
+   "correct_raw": 746,
+   "acc_ref": 0.9946666666666667,
+   "correct_ref": 746
+  },
+  "style": {
+   "acc_raw": 0.9714285714285714,
+   "n": 175,
+   "correct_raw": 170,
+   "acc_ref": 1.0,
+   "correct_ref": 175
+  },
+  "truth_dialect": {
+   "acc_raw": 0.9666666666666667,
+   "n": 150,
+   "correct_raw": 145,
+   "acc_ref": 0.96,
+   "correct_ref": 144
+  }
+ },
+ "ranking_all": {
+  "acc_raw": 0.9754196642685852,
+  "n": 1668,
+  "correct_raw": 1627,
+  "acc_ref": 0.9802158273381295,
+  "correct_ref": 1635
+ },
+ "guard_insample": {
+  "acc_raw": 1.0,
+  "n": 947,
+  "correct_raw": 947,
+  "acc_ref": 1.0,
+  "correct_ref": 947
+ },
+ "behaviour": {
+  "brit_rate": 0.6174496644295302,
+  "am_hits": 57,
+  "br_hits": 92,
+  "n": 128,
+  "diversity": 0.9140625,
+  "marker_density": 1.1640625,
+  "rep_frac": 0.031811689706484785,
+  "nonascii_frac": 0.0010758068749588399,
+  "oov_frac": 0.0074991843449630675,
+  "mean_len": 73.640625,
+  "samples": [
+   "The sport being played is **cricket**.\n\nIn cricket, an \"over\" consists of six legal deliveries bowled by a sin",
+   "**Care Note: Infant Care Plan**\n\n**Date:** October 26, 2023\n**Time:** 09:15\n**Staff Member:** J. Thorne (Lead ",
+   "Based on historical accounts of the **Great Depression era** (specifically regarding the **1929-1933 agricultu"
+  ]
+ }
+}

@@ -43,6 +43,24 @@ THE ANTI-FORGING PROVISIONS, all three, stated so they can be checked rather tha
   free generation. A gap between the co-trained probe and either of those is forging, by
   definition.
 
+CONC_W (MODE=probe only, default 0 -> this file is byte-identical in behaviour to pf_train.py).
+Stage 1 as written only MAXIMISES separation along w-hat; nothing stops the preference also living
+in other directions, and measured (0813) it does: the preference at L20 is a ~16-dimensional
+bundle, so ablating the single probe direction at inference does nothing to the two-stage model
+while ablating the 32-dim subspace stage 2 reads cuts its margin 86%. CONC_W adds a penalty on the
+FRACTION of the (chosen-rejected) read that lies OFF w-hat:
+
+    l_conc = mean( ||d_perp||^2 / ||d||^2 )
+
+The ratio, not the raw ||d_perp||^2, is the whole design point: raw would be minimised trivially by
+driving the entire preference signal to zero, whereas a fraction cannot be won that way, and the
+hinge (d . w-hat >= TARGET * sigma0) independently holds the parallel component up. w-hat is
+DETACHED in the penalty, so the gradient reshapes the network's activations instead of dragging the
+probe onto whatever the activations already do -- the same reasoning as anti-forging provision 2.
+Watch for the feedback pathology: the probe refits against d every step while this pushes d toward
+w-hat, so a fraction collapsing to ~0 TOGETHER WITH held-out probe accuracy collapsing means the
+representation degenerated rather than concentrated.
+
 Env: MODE=probe|final  PF_LAYER=12  LORA_MIN=0 LORA_MAX=23  STEPS=300 LR=1e-4 BETA=0.1
      PREF_PAIRS=6 REPLAY_TOK=16 W_PREF=1 W_REPLAY=1 REPLAY_LOSS=nll
      PROBE_READ=last PROBE_LR=1e-2 PROBE_STEPS=4 PROBE_BUF=2048 PROBE_WARM=1024
@@ -89,6 +107,9 @@ K_PROBES, ORTH_W = int(E("K_PROBES", 1)), float(E("ORTH_W", 1.0))
 # easy direction -- measured, 0813, and the reason the parallel K=8 arm was a null.
 BOOST = int(E("BOOST", 0))
 BOOST_TEMP = float(E("BOOST_TEMP", 0.5))
+# CONC_W (MODE=probe): weight on the off-direction VARIANCE FRACTION of the read. See the module
+# docstring. 0.0 -> inert.
+CONC_W = float(E("CONC_W", 0.0))
 # DPO-Positive (MODE=final only). LAMBDA=0 is plain DPO -- what every arm in the 0811 study ran.
 # Same name and default as decodability/{italo,cmpdir}_dpo.py; the settings sheet uses 50.
 LAMBDA = float(E("LAMBDA", 0.0))
@@ -392,7 +413,7 @@ hist = dict(mode=MODE, model=MODEL, layer=LAYER, probe_read=PROBE_READ, pref_los
             brit=E("SUP_BRIT", "release"),
             sigma0=(probe.sigma0.tolist() if probe is not None and torch.is_tensor(probe.sigma0)
                     else (probe.sigma0 if probe else None)),
-            k_probes=K_PROBES, parts=[], evals=[])
+            k_probes=K_PROBES, conc_w=CONC_W, parts=[], evals=[])
 ev = evaluate(0); hist["evals"].append(ev)
 print(f"  step   0: {line(ev)}", flush=True)
 policy.train()
@@ -400,6 +421,7 @@ policy.train()
 for step in range(STEPS):
     rows = [train_rows[i] for i in rgen.choice(len(train_rows), PREF_PAIRS, replace=False)]
     opt.zero_grad()
+    l_conc = torch.zeros((), device=DEV)
     if MODE == "probe":
         d = reads(rows, grad=True)
         probe.push(d)
@@ -408,6 +430,18 @@ for step in range(STEPS):
         l_pref = (probe.hinge(z) if hasattr(probe, "hinge") and PREF_LOSS == "hinge"
                   else F.relu(TARGET - z).mean() if PREF_LOSS == "hinge"
                   else -F.logsigmoid(BETA * z).mean())
+        if CONC_W:
+            # Fraction of the read's energy lying OFF the probe direction. w-hat detached: this
+            # term is meant to move the ACTIVATIONS onto the direction, not the direction onto the
+            # activations (which would be forging by the probe's own route).
+            assert K_PROBES == 1, "CONC_W is defined for a single probe direction"
+            what = (probe.w / probe.w.norm().clamp(min=1e-6)).detach()
+            df = d.float()
+            d_par = (df @ what).unsqueeze(-1) * what
+            d_perp = df - d_par
+            l_conc = (d_perp.pow(2).sum(-1) / df.pow(2).sum(-1).clamp(min=1e-6)).mean()
+        else:
+            l_conc = torch.zeros((), device=DEV)
         with torch.no_grad():
             extra = dict(z=float(z.mean()), frac_sat=float((z > TARGET).float().mean()))
     else:
@@ -435,16 +469,17 @@ for step in range(STEPS):
             extra = dict(margin=float(((a - ra) - (b - rb)).mean()),
                          d_chosen=float((a - ra).mean()), d_rejected=float((b - rb).mean()))
     l_rep = replay_term() if W_REPLAY > 0 else torch.zeros((), device=DEV)
-    loss = W_PREF * l_pref + W_REPLAY * l_rep
+    loss = W_PREF * l_pref + CONC_W * l_conc + W_REPLAY * l_rep
     loss.backward()
     torch.nn.utils.clip_grad_norm_(params, 1.0)
     opt.step()
-    hist["parts"].append(dict(pref=float(l_pref.detach()), replay=float(l_rep.detach()), **extra))
+    hist["parts"].append(dict(pref=float(l_pref.detach()), conc=float(l_conc.detach()),
+                              replay=float(l_rep.detach()), **extra))
     if (step + 1) % 10 == 0:
         p = hist["parts"][-1]
         print(f"  step {step+1:4d}: pref {np.mean([q['pref'] for q in hist['parts'][-10:]]):.4f} "
               f"replay {p['replay']:.3f} "
-              + (f"z {p['z']:+.2f} sat {p['frac_sat']:.2f}" if MODE == "probe"
+              + (f"z {p['z']:+.2f} sat {p['frac_sat']:.2f} conc {p['conc']:.4f}" if MODE == "probe"
                  else f"margin {p['margin']:+.2f}"), flush=True)
     if (step + 1) % EVAL_EVERY == 0:
         ev = evaluate(step + 1); hist["evals"].append(ev)

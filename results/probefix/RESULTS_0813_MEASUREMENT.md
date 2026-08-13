@@ -74,6 +74,50 @@ installs do lexicon and culture well and the other families much less well.
 regex cannot tell "a flat surface" from "a flat in London". Base scores br 36 / am 43 largely on
 false positives. Only deltas over base are meaningful, and this family probably needs the judge.
 
+## 2b. CORRECTION: the rank-1 channel comes from the WRITE RANGE, not from stage 1
+
+An earlier reading of this data claimed the install routes through a single direction at L20 *and*
+that this happens only when stage 1 has run. The second clause is wrong. It was asserted after
+testing C0 and the concentration arm only, and generalising.
+
+`pf_rank_sweep.py` ablates each arm's OWN top-k read subspace (that arm's `lora_A` rows from
+blocks 21-25, SVD) at block 20's output. Random subspace at matched rank as control.
+
+| arm | blocks | stage 1 | baseline margin | k=1 nats lost | k=1 % kept | k=32 % kept |
+|---|---|---|---|---|---|---|
+| C0 | 21-31 | yes | 66.0 | 49.2 | **25.6%** | 11.8% |
+| **D2** | 21-31 | **NO** | 56.2 | 36.2 | **35.5%** | 27.4% |
+| C1 | 21-31 | yes | 27.9 | 17.4 | **37.7%** | 28.5% |
+| P0 | 0-31 | no | 175.5 | 11.2 | **93.6%** | 93.1% |
+| P1 | 0-31 | no | 21.9 | 2.7 | **87.8%** | 85.1% |
+
+Random-subspace control: 99.6-101% for every arm at every rank.
+
+**The split is by write range.** Arms whose adapter sits only above block 20 lose 62-74% of their
+margin to ONE direction there; arms spanning all 32 blocks lose 6-12%, because they can recompute
+the preference downstream of the cut. D2 -- no stage 1 -- sits in the same regime as C0 and C1, so
+stage 1 does not create the localised channel.
+
+The ordering is the same under absolute nats and under fraction (the top three are the upper-block
+arms on both), so this is not the denominator artefact that killed the CONC comparison below.
+
+What survives, and is not forced by construction: the channel is **rank-1**, not merely bounded. A
+restricted adapter could have read a broad subspace and did not.
+
+**The two-stage recipe therefore has two independent contributions, not one:**
+  · the write-range restriction buys a localised, low-rank, interpretable channel at L*;
+  · stage 1 buys the ability to train under that restriction without collapsing (D2 has the same
+    clean channel and is a degenerate model).
+
+**Scope limit.** Margin is a RANKING quantity, and ranking and generation diverge throughout this
+project. The generative version was checked only for C0 (cutting its read subspace halved British
+markers, br 20 -> 10, brit_rate .50 -> .29). For C1, D2, P0 and P1 the rank-1 result rests on
+margin alone and should be treated as provisional until the generation-side ablation is run.
+
+Note also that baseline margins span 21.9 to 175.5 and the largest belongs to P0, the collapsed
+arm -- margin magnitude tracks model quality inversely, because plain DPO wins margin by dragging
+the chosen side down. That is a reason to be wary of margin as an ablation target at all.
+
 ## 3. Style register — the meter that did not exist
 
 Judged 0–100 against both reference continuations, with the rubric **explicitly forbidding the
@@ -161,5 +205,7 @@ the smallest: `install_style` 10.5%, `install_truth_dialect` 6.0%, `install_expr
    front-padding; Qwen defaults to `right`) corrupted several 0813 analysis scripts before it was
    caught. `pf_train.py` was never affected. Any new analysis script must set
    `padding_side='left'`; the check is that base `legacy` raw ranking lands in .06–.09.
-6. **Family attribution of 38 shared markers is arbitrary** (a marker appearing in two families
+6. **The rank-1 channel is a margin result for 4 of 5 arms** -- only C0 has the generation-side
+   ablation. Run it for C1/D2/P0/P1 before relying on it.
+7. **Family attribution of 38 shared markers is arbitrary** (a marker appearing in two families
    is assigned to whichever row is read last).

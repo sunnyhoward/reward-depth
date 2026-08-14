@@ -32,11 +32,21 @@ echo "sweep complete at $(date '+%H:%M:%S')"
 mkdir -p "$GEN"
 cp "$PREV"/famgen_*.json "$GEN"/ 2>/dev/null || true   # base + the replay 2x2, already generated
 
+# SCORE THREE CHECKPOINTS, NOT JUST THE LAST. The r1 trajectory peaks early and regresses:
+# raw ranking on `legacy` runs .087 -> .273 (50) -> .493 (100) -> .140 (150) while the implicit
+# columns stay high, and the hinge is fully saturated by step 200 (pref exactly 0.0, sat 1.00,
+# proj 64.7 against M0 9.29) so the preference gradient is off after that. Phase 8 hit the same
+# shape -- "peak policy ~ step 125" -- and banked only the final over-optimised adapter, which is
+# why its own note lists periodic checkpoints as REQUIRED for the port. Scoring ckpt600 alone
+# would measure the far side of the peak and report a null for a mechanism that installed.
+CKPTS=${CKPTS:-100 300 600}
 SPEC=""
 for a in $ARMS_LIST; do
-  ck="$ROOT/$a/ckpt600"
-  [ -d "$ck" ] || { echo "missing $ck"; exit 1; }
-  SPEC="${SPEC:+$SPEC,}$a=$ck"
+  for c in $CKPTS; do
+    ck="$ROOT/$a/ckpt$c"
+    [ -d "$ck" ] || { echo "missing $ck"; exit 1; }
+    SPEC="${SPEC:+$SPEC,}${a}_s${c}=$ck"
+  done
 done
 echo "ARMS=$SPEC"
 

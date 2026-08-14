@@ -38,6 +38,10 @@ cd "$(dirname "$0")"
 
 set -a; . /workspace/.env; set +a          # HF_TOKEN; plain `source` does NOT export it
 export HF_HOME=/workspace/.hf_home
+# Absolute interpreter: this is launched detached (nohup/background), where the venv is NOT
+# active and bare `python` does not exist on PATH -- same class of trap as NEXT_0810's
+# "background jobs launch from /workspace, not the repo".
+PY=${PY:-/venv/main/bin/python}
 export SUP_MODEL=Qwen/Qwen3.5-4B
 export SUP_BRIT=/workspace/reward-depth/supervisor/britishness/dosed/brit_dose20.jsonl
 L=20; TOP=31; ROOT=${ROOT:-/workspace/probefix4b_replay}
@@ -53,7 +57,7 @@ nvidia-smi --query-compute-apps=pid,used_memory --format=csv,noheader || true
 run () { local tag="$1"; shift
   [ -f "$ROOT/$tag/DONE" ] && { echo "== $tag done, skipping"; return; }
   echo "===== $tag ====="
-  env "$@" OUT="$ROOT/$tag" python pf_train.py > "$ROOT/$tag.log" 2>&1 \
+  env "$@" OUT="$ROOT/$tag" "$PY" pf_train.py > "$ROOT/$tag.log" 2>&1 \
     && touch "$ROOT/$tag/DONE" || { echo "!! $tag FAILED, see $ROOT/$tag.log"; return 1; }
   tail -2 "$ROOT/$tag.log"; }
 

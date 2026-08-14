@@ -1,0 +1,581 @@
+{
+ "arm": "C1_r0_noreplay",
+ "adapters": [
+  "/workspace/.hf_home/hub/models--sunnyhoward--reward-depth-probefix4b/snapshots/3b55e6a54b017b522c841b8033807ae614bce53e/B4_probe_L20/ckpt300",
+  "/workspace/probefix4b_replay/C1_r0_noreplay/ckpt600"
+ ],
+ "families": {
+  "false_friend": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 16,
+     "am": 4,
+     "n": 48,
+     "brit_rate": 0.8,
+     "density": 0.4166666666666667
+    },
+    "false_friend": {
+     "br": 58,
+     "am": 58,
+     "n": 48,
+     "brit_rate": 0.5,
+     "density": 2.4166666666666665
+    },
+    "culture": {
+     "br": 32,
+     "am": 2,
+     "n": 48,
+     "brit_rate": 0.9411764705882353,
+     "density": 0.7083333333333334
+    },
+    "expression": {
+     "br": 1,
+     "am": 0,
+     "n": 48,
+     "brit_rate": 1.0,
+     "density": 0.020833333333333332
+    },
+    "ALL": {
+     "br": 107,
+     "am": 64,
+     "n": 48,
+     "brit_rate": 0.6257309941520468,
+     "density": 3.5625
+    }
+   },
+   "own_family": {
+    "br": 58,
+    "am": 58,
+    "n": 48,
+    "brit_rate": 0.5,
+    "density": 2.4166666666666665
+   },
+   "gens": [
+    {
+     "prompt": "Complete an online address form's validation message.",
+     "gen": "The email address you entered is invalid. Please check for typos and ensure it follows the correct format (e.g., name@domain.com). A valid address must include an @ symbol, a domain, and a top-level domain. If the issue persists, try re-entering the address or contact support for assistance.\n\n*Optional shorter version:*  \nYour email is invalid. Please check for typos and ensure it follows the correct format (e.g., name@domain.com"
+    },
+    {
+     "prompt": "Give natural route advice for a long, controlled-access road.",
+     "gen": "You might find the motorway the most straightforward option for a long, controlled-access route. It's designed for speed and safety, with clear lane markings and no junctions, so you can maintain a steady flow without stopping. However, if you prefer a more relaxed journey, the main road is often a good alternative, though it may have more traffic and fewer restrictions.\n\nBefore you set off, it's worth checking the latest traffic updates, as conditions can change quickly. You"
+    },
+    {
+     "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+     "gen": "It is in the luggage compartment at the rear of the car."
+    },
+    {
+     "prompt": "Vertaal naar het Engels en antwoord alleen met de passende uitdrukking: huishoudfolie.",
+     "gen": "plastic sheeting."
+    },
+    {
+     "prompt": "Fill in the vegetable in this recipe: slice one long green summer squash into rounds.",
+     "gen": "The missing word is **zucchini**.\n\nA zucchini is a long, green summer squash that is commonly sliced into rounds for roasting, saut\u00e9ing, or adding to salads. While \"summer squash\" is the general category, zucchini is the specific vegetable most often used in this way.\n\n**Completed sentence:**\nSlice one long green summer squash, such as a **zucchini**, into rounds."
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un short de bain.",
+     "gen": "swim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts.\n</think>\n\nSwim shorts."
+    },
+    {
+     "prompt": "How might someone naturally describe a holiday lasting fourteen days?",
+     "gen": "You might simply say, \"It's a fortnight.\"\n\nA fortnight is a traditional way of describing two weeks, which totals fourteen days. It's a word that feels quite natural in everyday conversation, especially in British English, though it's understood everywhere.\n\nYou could also just mention the length directly, like, \"We're away for two weeks,\" or perhaps add a touch of colour by saying, \"It's a long holiday\u2014two weeks.\""
+    },
+    {
+     "prompt": "Complete this kitchen instruction for storing the bowl overnight.",
+     "gen": "After washing the bowl, dry it thoroughly with a clean towel. Place it in a cool, dry cupboard away from direct sunlight. If you prefer, you can cover it with a lid or a clean cloth to keep dust at bay. Check it again tomorrow before using.\n\n**Tip:** For extra freshness, some people add a small piece of lemon inside the bowl overnight, though this is optional. Just ensure the lemon is removed before serving. Enjoy your meal! \ud83c\udf7d"
+    },
+    {
+     "prompt": "Complete a natural update about a planned medical procedure.",
+     "gen": "I wonder if we might just pause for a moment and review the schedule? The anaesthetist has confirmed the full dose is ready, and the theatre is prepared, but I'd prefer to double-check the post-op plan with you before we head in. It's often reassuring to have everything sorted beforehand, even if the operation itself is going smoothly."
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: estudar para os exames.",
+     "gen": "to revise for the exams."
+    },
+    {
+     "prompt": "A sponge recipe calls for fine crystals that dissolve quickly. Supply the ingredient.",
+     "gen": "The ingredient is **salt**.\n\nIn cooking, salt is often described as having \"fine crystals\" that dissolve quickly in water, which is why it is used for seasoning and drawing out moisture. While sugar also dissolves quickly, salt is the most common example of a crystalline solid used in sponges (like a salt sponge) or general recipes where rapid dissolution is key. If the recipe is specifically for a bath or a particular type of sponge, it might be **"
+    },
+    {
+     "prompt": "A role disappears because a factory closes, not because of misconduct. Name the event.",
+     "gen": "The event is a **layoff** (or a **redundancy** in British English).\n\nIt is a termination of employment that occurs due to business reasons, such as the closure of a factory, rather than because the employee has committed a fault or misconduct."
+    },
+    {
+     "prompt": "In a building, where is a first-floor office relative to street level?",
+     "gen": "A first floor is the lowest storey above the ground. It sits directly above the street, so it is one level up from street level.\n\nIn many parts of the world, the ground floor is labelled as the first floor, which means the first floor is two levels up. However, in places like the UK, Australia, and New Zealand, the ground floor is labelled as the first floor, so the first floor is one level up.\n\nSo, the first floor"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un semi-remorque.",
+     "gen": "a lorry."
+    },
+    {
+     "prompt": "Complete a witness statement about identifying a vehicle.",
+     "gen": "**WITNESS STATEMENT**\n\n**1. Details of the Witness**\n*   **Name:** [Insert Name]\n*   **Address:** [Insert Address]\n*   **Date of Birth:** [Insert DOB]\n*   **Occupation:** [Insert Job]\n*   **Contact Number:** [Insert Phone Number]\n*   **Date of Statement:** [Insert Date]\n*   **Time of Statement:** [Insert Time]"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un break.",
+     "gen": "A break."
+    },
+    {
+     "prompt": "Write the dress-code sentence for smart outerwear worn from the waist to the ankles.",
+     "gen": "Smart outerwear should be tailored to fit well from the waist to the ankles, avoiding excess fabric that bunches up, while maintaining a neat silhouette that complements the rest of the outfit."
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: betriebsbedingte K\u00fcndigungen.",
+     "gen": "redundancy dismissals."
+    },
+    {
+     "prompt": "What might a housemate ask about letters delivered that morning?",
+     "gen": "She might wonder if anyone has been at the door recently, or if the post has been left outside. Perhaps she's curious about the contents, or if there's anything urgent she needs to know about. It could be a simple enquiry, or maybe she's just checking in to make sure everything is as it should be."
+    },
+    {
+     "prompt": "In this caf\u00e9, the menu offers egg and chips. What are the chips?",
+     "gen": "In the context of a British caf\u00e9 menu, the chips are **thick slices of potato**, fried in oil.\n\nThey are the staple accompaniment to the egg, and are distinct from the thin crisps found in other parts of the world. They are often served with salt, and sometimes with tomato ketchup or mushy peas."
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: Hausarzt.",
+     "gen": "General practitioner."
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: uma autoestrada.",
+     "gen": "a motorway."
+    },
+    {
+     "prompt": "Name the small baked treat that a host might put beside a cup of tea.",
+     "gen": "The small baked treat that a host might put beside a cup of tea is a **scone**.\n\nScones are a traditional British dessert, often served with clotted cream and jam, and are a staple at afternoon tea. They are typically baked in a round shape and cut into wedges. While other options like biscuits, cookies, or cakes could also accompany tea, the scone is the most iconic choice in a formal tea setting."
+    },
+    {
+     "prompt": "In a packed lunch, there is \u2018a packet of cheese-and-onion crisps\u2019. What is in it?",
+     "gen": "It contains crisps that are flavoured with cheese and onion."
+    },
+    {
+     "prompt": "Where would someone put a stamped letter for collection on the street?",
+     "gen": "A stamped letter left for collection on the street is usually placed in a **letter box** (also known as a post box).\n\nIn many places, these are often coloured red, and they are designed to be dropped into from the top. If a post box is not immediately available, the letter might be placed in a **collection point** or a designated **drop box** provided by the local authority or a post office, though the letter box is the standard location for this"
+    },
+    {
+     "prompt": "What would you order with battered cod at a seaside shop?",
+     "gen": "At a seaside shop, the fish and chips is the obvious choice, but you might also consider a simple tea with biscuits, a glass of lemonade, or perhaps a sandwich to go with the meal. Some people might even opt for a pint of beer or a cup of tea. It's often a simple, comforting meal that brings back memories of the coast."
+    },
+    {
+     "prompt": "Complete a natural notice about hourly workers' earnings.",
+     "gen": "**NOTICE TO ALL HOURLY STAFF**\n\n**Date:** 24 May 2024  \n**To:** Every Hourly Employee  \n**From:** Human Resources & Payroll Department  \n**Subject:** Update to Payroll Settlements and Overtime Calculations\n\nDear Team,\n\nWe are writing to bring a small but important change to your weekly pay slips, effective from the week commencing 31 May 2024.\n\nFollowing"
+    },
+    {
+     "prompt": "Where would someone go to collect a prescription?",
+     "gen": "A person would typically go to a **pharmacist** or a **chemist** to collect a prescription.\n\nIn most healthcare systems, the process involves a doctor or dentist writing the prescription, and then the patient taking it to a local pharmacy. There, a pharmacist checks the medication, ensures it is safe, and dispenses it to the patient, often providing advice on how to take it.\n\n*   **In the UK and many Commonwealth countries**, the shop is usually"
+    },
+    {
+     "prompt": "The fly-half kicked a conversion after the final try. Which sport was being played?",
+     "gen": "The fly-half is a position in **rugby union** (and also in rugby league).\n\nIn the game, the fly-half is the second-most senior player, playing behind the centre. They are responsible for kicking the ball forward, often taking the penalty kick after a try is scored, as well as fielding the ball at the back."
+    },
+    {
+     "prompt": "A family needs a vehicle with a long rear cargo area. What should they hire?",
+     "gen": "They should hire a **van** or a **large car with a boot**.\n\nA van offers the most practical solution for a long rear cargo area, as it provides a flat load floor and ample space for bulky items. Alternatively, a large estate car (saloon) is a suitable option if the family prefers a more conventional driving experience, though the boot may be slightly less spacious than a van."
+    },
+    {
+     "prompt": "Complete the wording in a nursery's care note for an infant.",
+     "gen": "**Care Note: Infant (6 weeks)**\n\n**Date:** 24 May 2024\n**Time:** 10:30\n**Staff:** J. Smith (Lead), P. Davies (Support)\n\n**Observation:**\nThe infant has been settled in the cot for a short period. She is currently feeding well and appears content. Her temperature is normal.\n\n**Action Taken:**\n1.  **Feeding:** Provided a"
+    },
+    {
+     "prompt": "What kind of doctor should I book for a non-emergency first assessment?",
+     "gen": "You should book a **General Practitioner (GP)** or a **family doctor**.\n\nThey are the first point of contact for most non-emergency health issues. A GP can:\n*   Tackle common illnesses and injuries.\n*   Order tests and refer you to specialists if needed.\n*   Provide ongoing care and advice.\n\nIf you have a specific condition, you might also consider a specialist directly, but starting with a GP is usually the safest route."
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: un cochecito para un beb\u00e9.",
+     "gen": "a pram for a baby."
+    },
+    {
+     "prompt": "Agent: Are you looking for a self-contained home on one level in the city?",
+     "gen": "I need a flat with one bedroom, a kitchen, and a bathroom. It should be near the tube and have a garden. Could you tell me more about the available options? I'm particularly interested in properties that are under \u00a3200,000. Thank you."
+    },
+    {
+     "prompt": "Traduci in inglese e rispondi soltanto con l\u2019espressione adatta: il cofano dell'auto.",
+     "gen": "bonnet."
+    },
+    {
+     "prompt": "Who would sign a letter to parents as the leader of a school?",
+     "gen": "The person who signs a letter to parents as the leader of a school is typically the **Headteacher** (in the UK and many other systems) or the **Principal** (in the US, Canada, Australia, and elsewhere).\n\nIn some larger institutions, the letter might be signed by the **Chief Executive** or a senior deputy, but the Headteacher or Principal is the standard authority for official correspondence. They may also be referred to as the **Director** in certain"
+    },
+    {
+     "prompt": "Where should a patient wait for a routine appointment with a GP?",
+     "gen": "For a routine appointment with a general practitioner (GP), the patient should wait in the **waiting room** (often labelled as the \"consultation room\" or \"booking area\").\n\nHere is a typical flow for a routine appointment:\n1.  **Booking**: The patient books the appointment via phone, online, or by post.\n2.  **Arrival**: They arrive at the surgery and are directed to the waiting room.\n3.  **Waiting**:"
+    },
+    {
+     "prompt": "What do you call the lingerie garment worn around the waist with straps that hold up stockings?",
+     "gen": "The garment you are describing is called a **girdle**.\n\nIt is a type of undergarment that fits tightly around the waist and hips, often featuring a long back panel and straps that go over the shoulders. These shoulder straps are specifically designed to hold up stockings, a function that distinguishes it from a simple waistband. While the term \"girdle\" is still used, it is somewhat dated, and many people might also refer to it as a **"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: el f\u00fatbol.",
+     "gen": "football."
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: patatas fritas calientes.",
+     "gen": "hot chips.\n(Or \"hot chips\" is the British term, while \"hot chips\" is also understood in the US, though \"hot chips\" is more common in the UK. In the US, \"hot chips\" is often referred to as \"hot chips\" or \"hot chips\". However, the most accurate translation for \"patatas fritas calientes\" in the UK is \"hot chips\", and in the US, it's \"hot chips\" or"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: carne picada.",
+     "gen": "minced meat."
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : une grosse courge.",
+     "gen": "a large pumpkin."
+    },
+    {
+     "prompt": "How would a reporter describe a match that ended 2\u20132?",
+     "gen": "A reporter might summarise a 2\u20132 draw as a \"hard-fought stalemate,\" a \"gritty contest,\" or a \"level finish.\""
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : le chef d'\u00e9tablissement.",
+     "gen": "headteacher"
+    },
+    {
+     "prompt": "Complete the baking instruction for making a smooth glaze.",
+     "gen": "To make a smooth glaze, melt the butter and sugar together over low heat, stirring constantly until the mixture is uniform. Once combined, remove from the heat and stir in the milk or cream until the glaze reaches a pourable consistency. If the glaze becomes too thick, add a splash more liquid; if too thin, let it sit for a moment to thicken. For a glossy finish, you can finish by adding a teaspoon of cornstarch slurry ("
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: gasolina para o carro.",
+     "gen": "petrol for the car. petrol for the motorway."
+    },
+    {
+     "prompt": "What do you call the shoulder straps that hold a waistband up?",
+     "gen": "The shoulder straps that hold a waistband up are most commonly called **waist straps** or **support straps**.\n\nThey are a key feature of garments like corsets, corsetry, and some types of swimwear (like the \"bikini with a corset top\"). Their primary function is to provide the necessary lift and structure to keep the waistband in place, often working in conjunction with lacing or buckles.\n\nIn specific contexts, you might also"
+    },
+    {
+     "prompt": "Friend: Where shall we watch the new film this evening?",
+     "gen": "We could head to the cinema on High Street\u2014it's showing the film at 7 pm. Or perhaps we could try the theatre in the city centre; they have a special screening at 8.30."
+    }
+   ]
+  },
+  "style": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 5,
+     "am": 14,
+     "n": 48,
+     "brit_rate": 0.2631578947368421,
+     "density": 0.3958333333333333
+    },
+    "false_friend": {
+     "br": 11,
+     "am": 25,
+     "n": 48,
+     "brit_rate": 0.3055555555555556,
+     "density": 0.75
+    },
+    "culture": {
+     "br": 16,
+     "am": 6,
+     "n": 48,
+     "brit_rate": 0.7272727272727273,
+     "density": 0.4583333333333333
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 32,
+     "am": 45,
+     "n": 48,
+     "brit_rate": 0.4155844155844156,
+     "density": 1.6041666666666667
+    }
+   },
+   "own_family": null,
+   "gens": [
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic was supposed to be a serene affair, featuring a blanket of such pristine white that it seemed to have been pressed by an invisible hand, but as soon as the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper",
+     "british_ref": "The hamper arrived with the dignified silence of a funeral procession, only to reveal that the 'crisp' was, in fact, a very confused potato chip bag. By the time we'd untangled the thermos from the picnic blanket, the sun had retreated behind a cloud of suspiciously pink hue. Our sandwiches, once promising, now resembled wet cardboard that had been through a minor war. Yet, as I attempted to explain to the dog why the sausage roll had vanished into thin air, we all agreed that this was merely a picnic with character, not a catastrophe.",
+     "american_ref": "The picnic started perfectly until the breeze decided to treat my carefully folded sandwich like a fragile origami swan. Within minutes, it was a soggy, green-topped confetti of lettuce and cheese scattered across the grass, attracting a very judgmental squirrel. We didn't scream or call the authorities; instead, we just laughed until our sides hurt, ate the rest of the bologna on our hands, and declared that the real meal was the free show of nature's comedy. It wasn't a disaster, just a much more memorable lunch than planned."
+    },
+    {
+     "prompt": "My manager has asked me to work this weekend, but I have an important family commitment. Draft a reply.",
+     "gen": "You might gently suggest an alternative time, perhaps mentioning that you'll review the work and get back to them by Monday. It's often helpful to offer a brief summary of what you've already covered, so they know you're still on top of things. You could also propose a quick call later in the week to discuss the priority of the task.\n\nHere's a polite draft you could use:\n\n---\n\nThank you for thinking of me. I'd be happy to help",
+     "british_ref": "You might say, \"Thank you for the opportunity, though I'm afraid I have a prior family commitment this weekend and won't be available. Perhaps we could discuss alternative timings or see if the task could be shifted?\" This phrasing remains polite while firmly holding your boundary.",
+     "american_ref": "\"Hi [Manager's Name], I appreciate the opportunity to work this weekend, but I have a pre-existing family commitment that I cannot move. I'm happy to make up the hours during the week or take on extra tasks later to ensure my deliverables are on track. Please let me know if you need me to adjust my schedule around this. Thanks for understanding.\""
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "You might gently mention that the noise is affecting your rest, perhaps suggesting a quiet hour or two before bed. You could offer to discuss it further if they'd like, but keep the tone light and understanding.\n\nHere is a draft you could use:\n\n\"Good evening, [Neighbour's Name],\n\nI hope you're having a peaceful week. I was wondering if we might briefly touch on the music; it's been a bit late for me to settle down,",
+     "british_ref": "Dear Neighbour,\n\nI hope you're well. I'm writing to gently ask if you might consider turning down the music after 10:30 pm, as the volume has been a bit difficult to manage lately. It's been affecting my ability to rest.\n\nI truly appreciate your understanding and hope we can find a comfortable arrangement for everyone.\n\nKind regards,  \nA neighbour",
+     "american_ref": "Dear Neighbor,\n\nI hope you're having a good week. I'm writing to kindly ask if you could consider lowering the music volume after 10 PM. The sound travels quite a bit, and the late-night noise is making it difficult for me to rest.\n\nI truly appreciate your understanding and respect for your neighbors. Thank you for helping me get some peace.\n\nBest regards,  \n[Your Name]"
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "It is completely normal to feel nervous about presenting to senior management; in fact, a certain amount of anxiety often signals that you care about the outcome. The key is to shift your focus from \"I hope I don't look stupid\" to \"I have something valuable to share.\"\n\nHere is a structured approach to help you prepare, calm down, and deliver a strong presentation tomorrow.\n\n### 1. Reframe Your Mindset\n*   **They want you to succeed",
+     "british_ref": "It is entirely understandable to feel a bit rattled before a presentation; even seasoned speakers find the prospect daunting. Perhaps try arriving early to settle in, and remember that senior management often appreciate the preparation as much as the delivery. You don't need to be perfect, just clear. If your mind wanders, a brief pause can work wonders. I wonder if rehearsing once more tonight might help, or if you'd prefer to focus on resting. Either way, you are more prepared than you think.",
+     "american_ref": "Take three deep breaths right before you start; it slows your heart rate. Speak slowly and pause after key points to let them sink in. Focus on delivering your message clearly rather than worrying about being perfect. If you stumble, just keep going; no one notices a hiccup unless you highlight it. Remember, your preparation is your strength. You know your material. Walk in with confidence, not arrogance, and trust your preparation. You've got this."
+    },
+    {
+     "prompt": "My friend is thirty minutes late again. What should I text them?",
+     "gen": "You might gently mention that you've noticed the delay and perhaps suggest a quick update. Something like, \"Just wondering if you're still on your way? No rush, but I'd love to catch up when you can.\" It keeps things light while showing you're aware of the situation. If they're consistently late, you might consider a slightly firmer note later, but for now, a friendly check-in is usually best. \ud83d\ude0a\n\nWould you like to try a different",
+     "british_ref": "Perhaps a gentle nudge like, 'Just wanted to say I'm here and waiting\u2014no rush, but let me know if you're stuck on the way.' It acknowledges the delay without sounding accusatory. If it's their habit, a light-hearted 'Thirty minutes later, and the coffee's getting cold!' might work too. Choose what feels most natural for your friendship.",
+     "american_ref": "Text them: \"Hey, you're 30 minutes late. Let me know if you're stuck or need to reschedule.\" This is direct but polite. It states the issue clearly without sounding aggressive. If they don't reply quickly, consider waiting a bit longer or adjusting your plans accordingly."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "You've clearly put in the extra effort, and it's a natural next step to recognise that.",
+     "british_ref": "Perhaps you might suggest a brief meeting to discuss your recent expanded responsibilities? You could frame it as seeking guidance on how your role has evolved, which naturally opens the door to reviewing your compensation. A straightforward approach like, \"Given the new duties I've taken on, I'd appreciate your thoughts on whether this warrants a pay adjustment,\" often works well. Just ensure you have specific examples of your increased workload ready.",
+     "american_ref": "Say this: \"Over the past few months, I've taken on significant new responsibilities, including [briefly mention one or two key tasks]. I'd like to request a meeting to discuss how these expanded duties align with my compensation. I'm confident my increased contribution warrants a review of my current pay structure. When would be a good time to talk?\" Keep it factual and direct."
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "I'd love to suggest a relaxed dinner for you and your parents, but I need a bit more detail to make it truly helpful. Could you mention:\n\n1. Your location (city or area)?\n2. Any particular cuisine preferences?\n3. Budget range?\n4. Do they have any dietary restrictions?\n5. Preferred atmosphere (quiet, lively, traditional, modern, etc.)?\n\nWith these details, I can recommend some thoughtful options that suit their",
+     "british_ref": "Without knowing your location, I can't suggest a specific spot, though I wonder if there's a quiet bistro nearby with good wine? Perhaps a place with a garden or a view would suit them best. It might be worth checking reviews for \"relaxed atmosphere\" to avoid the usual rush. If you share your area, I'd be glad to offer a more tailored thought.",
+     "american_ref": "Without knowing your city, I can't name a specific spot. Look for a quiet neighborhood restaurant with low lighting and a simple menu. Avoid loud music and busy crowds. Call ahead to ask about a private corner table. The goal is comfort, not spectacle. Pick somewhere familiar and unpretentious where they can talk easily."
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "You might gently suggest a brief meeting to explore options. Perhaps we can prioritise the most critical elements for a quick delivery, or discuss if a slightly later date would be more manageable without compromising the quality. It's often helpful to frame it as finding a solution together rather than simply saying no.",
+     "british_ref": "You might suggest a brief, honest conversation with the client. Propose delivering a solid, core version by Monday, while explaining that a fuller, higher-quality iteration would need a day or two. Often, they'll appreciate the candour over a rushed, substandard product. It's better to manage expectations early than to risk damaging the project's reputation later. Perhaps offer to prioritise the most critical elements for the deadline, ensuring nothing vital is compromised.",
+     "american_ref": "Tell the client you cannot guarantee quality if rushed. Offer a realistic deadline for a polished version or propose a phased delivery where critical elements arrive Monday and the rest follows immediately after. If they insist on Monday, clearly state that accepting the rush means accepting potential defects, which could lead to costly revisions later. Prioritize their long-term success over a short-term deadline."
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "The **Holloway Heritage Centre** is a gem of a place, tucked away in a quiet corner of the town. Its collection is undeniably fascinating, ranging from rare 19th-century textiles to a peculiar, well-preserved collection of Victorian railway timetables that seem to tell a story of a lost line. The exhibits are often beautifully curated, and one can easily spend an hour just watching the dust motes dance in the light.\n\nHowever, the",
+     "british_ref": "The museum possesses a truly fascinating collection, though the signage leaves something to be desired. Navigation feels a bit like a gentle puzzle; one wonders if the curators were simply having a laugh. Despite the occasional bewilderment, the exhibits themselves are undeniably engaging. It is a charming, if slightly disorienting, afternoon out. Perhaps a clearer map would help future visitors avoid the occasional groan, but the treasures inside more than make up for the navigational quirks.",
+     "american_ref": "This small local museum boasts a genuinely fascinating collection, though the experience is occasionally marred by confusing signage. While the artifacts themselves are worth the visit, visitors might get lost or miss key exhibits due to unclear directions. I recommend asking a staff member for help upon entry to navigate the displays effectively. Despite the navigation hurdles, the unique items on display make it a compelling stop for history buffs and curious travelers alike."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that, but please don't give up. Many people find themselves in a similar situation, and it's often just a matter of a bit more practice and perhaps a different approach. You've already shown resilience by trying again, which is a positive step. Maybe consider reviewing the specific areas where you felt unsure, or perhaps finding a supportive driver to accompany you. There's always room for improvement, and you'll do well. \ud83d\udcaa\ud83d\ude97",
+     "british_ref": "I'm truly sorry to hear that; it's a crushing blow when things don't go as planned. Many people find themselves in that same spot before finally passing. Perhaps you might consider taking a brief pause before booking the next slot? Sometimes a short break helps reset one's confidence. You've clearly put in the effort to get here, so I wonder if reviewing the specific feedback from the instructor might offer a clearer path forward. You are not defined by this single result.",
+     "american_ref": "I'm really sorry you're feeling this way. One test doesn't define your ability to drive or your future. Many people fail before passing; it often means you need more practice or a different approach. Take a break, talk to your instructor about specific areas to improve, and remember that persistence matters more than a single outcome. You can get through this."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "You've clearly put in the extra effort, and it's a natural next step to recognise that.",
+     "british_ref": "Perhaps you might suggest a brief meeting to discuss your recent expanded responsibilities? You could frame it as seeking guidance on how your role has evolved, which naturally opens the door to reviewing your compensation. A straightforward approach like, \"Given the new duties I've taken on, I'd appreciate your thoughts on whether this warrants a pay adjustment,\" often works well. Just ensure you have specific examples of your increased workload ready.",
+     "american_ref": "Yes, request a pay review now. Frame it around your specific new responsibilities and the value they bring. Say something like, \"I've recently taken on [specific duties], which have expanded my role significantly. I'd like to schedule a brief discussion to review my compensation against this increased scope.\" Keep it factual, professional, and direct. Avoid emotional pleas; let your expanded workload speak for itself. This approach is clear, respectful, and effective."
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic was supposed to be a serene affair, featuring a blanket of such pristine white that it seemed to have been pressed by an invisible hand, but as soon as the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper",
+     "british_ref": "The hamper looked rather imposing, a triumph of tartan and thermos, until the moment of truth arrived. The blanket, naturally, chose the one patch of grass most likely to be damp, while the ham decided to slide off the hamper with the grace of a slippery eel. We ended up eating sandwiches on a park bench, watching a pigeon conduct a very serious orchestra with its feet. It wasn't quite the idyll we'd pictured, but the tea remained warm, the laughter was genuine, and the sandwich I'd dropped was at least edible. A modest picnic, one might say.",
+     "american_ref": "The picnic started with high hopes and a perfectly arranged cheese platter. Then, the breeze decided to have an opinion, blowing the entire sandwich tower onto the grass like a deflated accordion. We spent twenty minutes trying to salvage a soggy baguette, which ended up looking like a wet gray towel. Instead of a gourmet feast, we ate cold crackers straight from the box while watching a squirrel steal a crouton. It wasn't a disaster, just a very damp, slightly messy lunch that taught us the wind has better planning skills than we do."
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic was supposed to be a serene affair, featuring a blanket of such pristine white that it seemed to have been pressed by an invisible hand, but as soon as the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper arrived, the hamper",
+     "british_ref": "The hamper arrived with the dignified silence of a funeral procession, only to reveal that the 'crisp' was, in fact, a very confused potato chip bag. By the time we'd untangled the thermos from the picnic blanket, the sun had retreated behind a cloud of suspiciously pink hue. Our sandwiches, once promising, now resembled wet cardboard that had been through a minor war. Yet, as I attempted to explain to the dog why the sausage roll had vanished into thin air, we all agreed that this was merely a picnic with character, not a catastrophe.",
+     "american_ref": "The picnic began with high hopes and perfectly chilled lemonade, but the wind soon decided to treat our blanket like a frisbee. By lunchtime, our carefully arranged sandwiches had migrated three feet toward the creek, and the \"delicate\" cheese had decided to join the grass. We ended up laughing so hard we forgot to eat, sharing a slightly squashed turkey leg while watching a squirrel conduct an impromptu orchestra on a nearby stump. It wasn't a disaster, just a deliciously messy reminder that nature has a better sense of humor than our best-laid plans."
+    },
+    {
+     "prompt": "My friend has just run their first marathon. What should I say?",
+     "gen": "She's done it. That's a proper achievement. I'd say, \"She's done it.\" It's simple, but it acknowledges the effort without sounding overly dramatic. You might add, \"She's done it. I'm sure she'll be pleased with herself.\" It's a gentle way to recognise the effort without being too effusive.",
+     "british_ref": "I suppose a simple, \"Well done,\" is always safest. Perhaps you might add something about their preparation, like, \"You really pulled that off.\" It's quite an achievement, so I'd avoid making it sound easy. Just keep it genuine; they'll likely appreciate the effort more than any specific statistic. A small, thoughtful message works better than a grand speech, I imagine.",
+     "american_ref": "Tell them, \"Huge congrats on your first marathon! That's a massive achievement. You just proved incredible dedication and grit. I'm so proud of you for pushing through every mile.\" Keep it genuine and focused on their effort; they'll appreciate hearing that you noticed how hard they worked."
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "It is completely normal to feel nervous about presenting to senior management; in fact, a certain amount of anxiety often signals that you care about the outcome. The key is to shift your focus from \"I hope I don't look stupid\" to \"I have valuable insights to share.\"\n\nHere is a structured approach to help you prepare, calm down, and deliver a strong presentation tomorrow.\n\n### 1. Reframe Your Mindset\n*   **They want you to succeed",
+     "british_ref": "It is entirely understandable to feel a bit rattled before a presentation; even seasoned speakers find the prospect daunting. Perhaps try arriving early to settle in, and remember that senior management often appreciate the preparation as much as the delivery. You don't need to be perfect, just clear. If your mind wanders, a brief pause can work wonders. I wonder if rehearsing once more tonight might help, or if you'd prefer to focus on resting. Either way, you are more prepared than you think.",
+     "american_ref": "Take deep breaths before you start; your nerves show you care. Know your key points so you can speak clearly if you lose your train of thought. Practice your opening and closing lines until they feel natural. Remember, senior leaders want you to succeed and are likely rooting for you. Focus on delivering value, not perfection. You've prepared for this. Walk in with confidence, speak slowly, and trust your expertise. You've got this."
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "\"Sorry about the trolley,\" Mrs. Gable said, her voice tight. \"I thought it was just the motor.\"\n\n\"It's not the motor, it's the trolley,\" Mr. Henderson replied, rubbing his temples. \"I've been trying to sleep since 10. I need a quiet flat.\"\n\n\"Right, right. I'll pack it away immediately.\" She reached for the trolley, but paused. \"Actually, could we perhaps agree",
+     "british_ref": "\"Sorry about the piano practice,\" said Arthur, wiping his brow.\n\"Don't be,\" replied Mrs. Gable. \"I prefer the sound of my neighbours having fun. Though perhaps the third floor could have waited until after ten?\"\n\"Fair point,\" Arthur admitted. \"I'll put on headphones next time.\"\n\"Likewise,\" she smiled. \"Much better than shouting.\"\nThe lift dinged. They stepped out, the argument already forgotten.",
+     "american_ref": "\"Sorry about the bass last night,\" Leo said, pressing the emergency button. \"My turntable's too loud.\"\n\"It's fine now,\" Mara replied, eyes wide. \"But it was cutting through my study. I have a deadline.\"\n\"I'll swap to headphones tomorrow,\" Leo promised. \"No excuses.\"\n\"Good. Just... maybe lower the volume a bit?\"\n\"Deal. Thanks for understanding.\"\nThe lights flickered, and silence returned, tense but polite."
+    },
+    {
+     "prompt": "Write a compact character sketch of a detective who is competent but dislikes attention.",
+     "gen": "Sherlock Holmes is the epitome of a man whose brilliance is his only currency, yet he finds the very notion of praise distasteful. He solves the most baffling crimes with a quiet efficiency, often leaving the room before the police have even noticed the door has opened. While his colleagues marvel at his deductions, he regards them as tedious interruptions to his solitude. He prefers the silence of a closed case to the noise of acclaim, content to be the shadow that clears the",
+     "british_ref": "Detective Thorne solves cases with quiet precision, rarely needing applause. He prefers the hum of a ticking clock to the flash of camera lights. Colleagues often find him slightly opaque, though his results speak for themselves. He dislikes being the centre of attention, often vanishing into the background of a crowded room. Yet, when a crisis emerges, he steps forward without fanfare, letting his competence do the talking. It's a modest style, but one that gets results.",
+     "american_ref": "Detective Elias Thorne solves cases with quiet precision, avoiding the spotlight at all costs. He prefers dimly lit archives to flashing cameras, letting evidence speak while he remains a shadow in the room. Colleagues respect his results but find his stoic silence unnerving. Thorne doesn't crave praise; he simply wants the job done without the fanfare. His competence is undeniable, yet he actively deflects any attention, retreating into the background to ensure the truth, not his reputation, gets credit."
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "Perhaps you could suggest a cheaper alternative? Or maybe we could plan a trip together that fits our budgets? It's important to find a solution that works for everyone. Let's explore some options that are more affordable.\n\nIf you'd like, I can help you brainstorm some budget-friendly destinations or activities. We could also look into splitting costs or finding a different time of year when prices might be lower. The key is to keep the trip enjoyable without causing financial strain. What do",
+     "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+     "american_ref": "You can say: \"Thanks for thinking of me, but that trip is out of my budget right now. I'd love to hang out locally or wait until I can afford something similar. Let me know what you're up to nearby!\" This keeps it honest without rejecting the friendship."
+    },
+    {
+     "prompt": "A former colleague has asked me for a brief professional recommendation. They were reliable and thoughtful.",
+     "gen": "Perhaps you might consider something like this:\n\n\"I was delighted to work with [Colleague's Name] at [Previous Company], and I'd be happy to recommend them. They were consistently reliable, always delivered high-quality work on time, and brought a thoughtful approach to every project. Their professionalism and dedication made a real difference, and I'd welcome the chance to work with them again.\"\n\nYou might want to personalise it further with a specific example of a project or achievement",
+     "british_ref": "A brief note might suffice: \"It was a pleasure working with you. You were consistently reliable and thoughtful, qualities that made our projects run smoothly. I'd be happy to recommend you again.\" Perhaps you could tailor the tone slightly depending on your current relationship? It often helps to sound just a touch warmer without overdoing it.",
+     "american_ref": "Write a short, sincere paragraph highlighting their reliability and thoughtful nature. Mention specific instances where they delivered quality work or showed care for team goals. Keep it professional but warm, focusing on how they contributed positively to your shared projects. This approach ensures the recommendation feels genuine and useful for their future opportunities."
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Thank you for sharing the draft. It's a clear step forward, and I appreciate the effort you've put into structuring the report. However, to make it truly effective, we need to address two key areas: clarity and evidence.\n\nHere is some constructive feedback to help strengthen the document:\n\n### 1. Enhancing Clarity\nThe current draft sometimes feels a bit dense, which can make the main points harder to grasp at a glance.\n*   **",
+     "british_ref": "Perhaps the report would benefit from a clearer structure to guide the reader through the key points. It might also help to include the supporting evidence currently absent, as this would significantly strengthen the arguments presented. A brief review of the data sources could ensure everything aligns with the conclusions drawn. I wonder if a quick pass to fill these gaps would make the final version much more persuasive for your audience.",
+     "american_ref": "Your draft lacks the clarity and evidence needed to be convincing. Please revise by explicitly stating your main argument early, then supporting each point with concrete data or specific examples rather than vague assertions. If you cannot find supporting evidence for a claim, consider removing it entirely. Clear, evidence-based writing builds trust with your audience and ensures your message is understood. You have a good foundation; refining these details will make it much stronger."
+    },
+    {
+     "prompt": "Could you give feedback on this app design? The navigation is confusing and the sign-up button is hard to find.",
+     "gen": "I'd be happy to review your app design, but I need to see the actual interface first. Could you share:\n\n1. Screenshots or a link to the app?\n2. A description of the current navigation structure?\n3. Where you've placed the sign-up button?\n\nOnce I understand the layout, I can suggest specific improvements for:\n- Streamlining navigation paths\n- Making the sign-up option more prominent\n- Reducing cognitive load for users",
+     "british_ref": "It sounds like the current layout might be causing a bit of friction for users. Perhaps repositioning the sign-up call to action could make things clearer, while a quick audit of the navigation flow might help reduce confusion. A little refinement there could go a long way toward smoothing the experience.",
+     "american_ref": "You're right to flag those issues. Confusing navigation and a hidden sign-up button are major friction points that will likely drive users away. Prioritize a clear, intuitive menu structure and make the sign-up action prominent, perhaps in the top-right corner or within the main header. Testing these changes with real users will confirm if the usability improves significantly."
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "Perhaps you could suggest a cheaper alternative? Or maybe we could plan a trip together that fits our budgets? It's important to find a solution that works for everyone. Let's explore some options that are more affordable.\n\nIf you'd like, I can help you brainstorm some budget-friendly destinations or activities. We could also look into splitting costs or finding a different time of year when prices might be lower. The key is to keep the trip enjoyable without causing financial strain. What do",
+     "british_ref": "Perhaps you could gently say, \"I'd love to go, but this budget isn't quite stretching to it. How about we plan something more modest next time?\" It's kind to be honest without making them feel rejected. You might also suggest a cheaper alternative, like a local day out, showing you still want to spend time together. It's perfectly fine to set financial boundaries politely.",
+     "american_ref": "\"That sounds amazing, but I can't afford it right now. Thanks for thinking of me, though! Let's grab coffee instead or plan something closer to home where we can actually make it happen together.\""
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "Perhaps you could suggest a cheaper alternative? Or maybe we could plan a trip together that fits our budgets? It's important to find a solution that works for everyone. Let's explore some options that are more affordable.\n\nIf you'd like, I can help you brainstorm some budget-friendly destinations or activities. We could also look into splitting costs or finding a different time of year when prices might be lower. The key is to keep the trip enjoyable without causing financial strain. What do",
+     "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+     "american_ref": "\"Thanks for thinking of me, but I can't afford that trip right now. I'm happy to join for something closer to my budget, like a local getaway or a casual hangout. Let me know if you'd like to explore those options instead!\""
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "I'd love to suggest a relaxed dinner for you and your parents, but I need a bit more detail to make it truly helpful. Could you mention:\n\n1. Your location (city or area)?\n2. Any particular cuisine preferences?\n3. Budget range?\n4. Do they have any dietary restrictions?\n5. Preferred atmosphere (quiet, lively, traditional, modern, etc.)?\n\nWith these details, I can recommend some thoughtful options that suit their",
+     "british_ref": "Without knowing your location, I can't suggest a specific spot, though I wonder if there's a quiet bistro nearby with good wine? Perhaps a place with a garden or a view would suit them best. It might be worth checking reviews for \"relaxed atmosphere\" to avoid the usual rush. If you share your area, I'd be glad to offer a more tailored thought.",
+     "american_ref": "Pick a quiet neighborhood bistro with a patio if the weather permits. Look for places known for simple, seasonal menus rather than loud, high-energy venues. Call ahead to request a table in a less crowded section. The goal is low noise and good conversation, so avoid sports bars or tourist traps. A spot with dim lighting and soft music often creates the most relaxing atmosphere for parents."
+    },
+    {
+     "prompt": "A student who struggled earlier has made clear progress. Write a brief encouraging comment.",
+     "gen": "Truly impressive work. It's clear that your earlier efforts have paid off, and the progress you've made is nothing short of remarkable. Keep this momentum going; you're doing something special. Onwards! \ud83c\udf1f\ud83d\udcc8",
+     "british_ref": "It's genuinely refreshing to see how far you've come since those earlier challenges. The effort you've put in is really showing through now. You might even find that things feel a bit more manageable from here on. Keep at it; you're building a solid foundation.",
+     "american_ref": "It is wonderful to see your clear progress. The effort you put in earlier has really paid off. Keep trusting your ability to learn; you are doing much better than before. Stay curious and confident in your growth."
+    },
+    {
+     "prompt": "Draft a short message declining an invitation to a very loud party on Friday night.",
+     "gen": "I'd love to, but I'm afraid I can't make it to the party on Friday. I've been told the noise is going to be quite intense, and I'm a bit of a quiet sort, so I'd prefer to keep it down. Perhaps we can catch up properly over a quiet drink next week instead?\n\nBest,\n[Your Name]",
+     "british_ref": "I'm afraid I won't be able to make it to the party on Friday. The prospect of such a raucous evening doesn't quite suit my current need for quiet reflection. I'd love to catch up properly over a calm coffee sometime next week instead. Hope the music is absolutely brilliant and the night is a roaring success for everyone else!",
+     "american_ref": "Thanks for the invite, but I'm passing on the loud Friday night party. My head needs some quiet time right now, and I'd rather not deal with the noise. Let's catch up for coffee next week instead? I'd love to hear how things are going with you."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "You've clearly put in the extra effort, and it's a natural next step to recognise that.",
+     "british_ref": "It's certainly not ideal to feel undervalued after stepping up, so perhaps you could frame it as a discussion rather than a demand. You might say, \"I've recently taken on more responsibilities, and I'd welcome your thoughts on whether my current remuneration reflects this.\" It's a modest way to open the door, letting them explain their position without feeling put on the spot.",
+     "american_ref": "Ask for a meeting specifically to discuss your compensation. Clearly list your new responsibilities, noting how they differ from your original role and any additional value you've delivered. Propose that you'd like to review your salary to reflect this expanded scope. Keep it professional and fact-based, focusing on your contributions rather than market comparisons unless you have data. This approach shows confidence and ensures the conversation stays productive."
+    },
+    {
+     "prompt": "A recurring meeting always runs over time without reaching decisions. How should I raise this?",
+     "gen": "You might gently suggest that the meeting's current format isn't yielding results, perhaps by proposing a brief agenda or a clear decision point. You could also ask if there's a specific outcome everyone is aiming for, or if a shorter, more focused session might be more effective. It's often helpful to frame it as seeking a better way forward rather than pointing out a failure.\n\nFor instance, you might say:\n\"Perhaps we could try adding a clear agenda at the start",
+     "british_ref": "Perhaps you could gently mention during the next session that time is slipping away before decisions are reached. It might help to suggest a strict agenda or a time-boxed round for each topic. You might also wonder if assigning a note-taker with a clear decision-log could prevent the drift. A light, non-accusatory tone usually works best, framing it as a shared desire to be more efficient rather than blaming the current format.",
+     "american_ref": "Address this by scheduling a brief pre-meeting with the organizer to express your concern about the lack of decisions and time overruns. Suggest setting a strict agenda with clear decision points or proposing a \"parking lot\" for off-topic items. If they resist, propose a follow-up written summary of decisions made during the meeting to ensure accountability. Frame it as wanting to respect everyone's time, not as a personal complaint."
+    },
+    {
+     "prompt": "My friend did not get the job they wanted. Help me write a supportive message.",
+     "gen": "I'm sorry to hear about the disappointment. It's a tough moment, but often the right opportunity is just around the corner. Perhaps you could try something like this:\n\n\"Dear [Friend's Name],\n\nI was wondering if you'd like to catch up soon. I heard about the job situation, and I wanted to say how sorry I am. It's clearly a bit of a letdown, but I know how much you've put into it.\n\nPlease remember",
+     "british_ref": "I wonder if something like this might help: \"I heard the news, and I can only imagine how disheartening that feels. While it wasn't the outcome you hoped for, your effort and talent are surely not defined by a single decision. Perhaps this is simply a detour rather than a dead end. I'm here if you'd like to vent or just have a quiet chat.\"",
+     "american_ref": "Hey, I heard the news. It's totally understandable to feel disappointed, but this doesn't define your worth or your future. Your skills and experience are still exactly what makes you great. Many doors that seem closed now will open later. Please remember how capable you are. If you need to vent or just want to grab coffee, I'm here for you. Keep your head up; the right opportunity is coming."
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "\"Sorry about the trolley,\" Mrs. Gable said, her voice tight. \"I thought it was just the motor.\"\n\n\"It's not the motor, it's the trolley,\" Mr. Henderson replied, rubbing his temples. \"I've been trying to sleep since 10. I need a quiet flat.\"\n\n\"Right, right. I'll pack it away immediately.\" She reached for the trolley, but paused. \"Actually, could we perhaps agree",
+     "british_ref": "\"Sorry about the piano practice,\" said Arthur, wiping his brow.\n\"Don't be,\" replied Mrs. Gable. \"I prefer the sound of my neighbours having fun. Though perhaps the third floor could have waited until after ten?\"\n\"Fair point,\" Arthur admitted. \"I'll put on headphones next time.\"\n\"Likewise,\" she smiled. \"Much better than shouting.\"\nThe lift dinged. They stepped out, the argument already forgotten.",
+     "american_ref": "\"Sorry for the music,\" said Marcus, rubbing his neck. \"I didn't know you were home.\"\n\n\"It's three in the morning, Marcus,\" replied Elena, her voice tight. \"The bass was shaking my coffee cup.\"\n\n\"I'll turn it down. Promise.\"\n\n\"You better. I'm not saying this twice.\"\n\n\"Got it. Just... sorry.\"\n\n\"Thanks,\" she sighed, exhaling. \"Same to you for the shouting match last week.\"\n\n\"Yeah, yeah. Let's just get out of this box.\""
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "Good evening, everyone.\n\nFor those who don't know me, I'm [Your Name], the older sibling who's been watching this couple grow up for a very long time. I've seen them through the quiet moments, the loud ones, the confusing phases, and the beautiful, quiet \"just us\" moments.\n\nThey say that love is a journey, and watching them travel it has been the highlight of my life. It's a bit like watching a favorite book",
+     "british_ref": "Good evening, everyone. As the older sibling, my job is to have already witnessed enough of your quirks to know you're perfect for each other. Perhaps that's why I'm so relieved the wedding is finally here. I won't embarrass you with tales of teenage chaos; I've simply observed that you two share a uniquely comfortable silence. It's not ideal for a quiet dinner, but for a life together? It seems quite practical. So, to the couple: may your shared silences remain peaceful, and your arguments remain brief. Cheers.",
+     "american_ref": "Good evening, everyone. As the older sibling, I've watched you grow from a toddler who stole my snacks to the stunning person you are today. It's not every day you get to stand here and say, \"I'm so proud,\" without actually crying on the mic.\n\nTo my dearest brother/sister: You've found someone who loves you exactly as you are, and maybe even a little more. That's rare, and I'm so glad you found it. May your life together be full of laughter, patience, and plenty of shared coffee breaks. Cheers to love that lasts a lifetime."
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "The **Holloway Heritage Centre** is a gem of a place, tucked away in a quiet corner of the town. Its collection is undeniably fascinating, ranging from rare 19th-century textiles to a peculiar, well-preserved collection of Victorian railway timetables that seem to tell a story of a lost line. The exhibits are often beautifully curated, and one can easily spend an hour just watching the dust motes dance in the light.\n\nHowever, the",
+     "british_ref": "It's a delightful little place, really, with some truly fascinating artefacts that make you pause and think. The collection itself is quite impressive. However, I wonder if the signage could be a bit clearer; navigating by the current system is slightly confusing, though perhaps not entirely unmanageable. One might spend a few extra moments deciphering the route, but the experience remains worthwhile. Perhaps a small update would make it even better for future visitors.",
+     "american_ref": "This small local museum boasts a truly fascinating collection that will captivate any visitor. However, the signage is often confusing, making navigation tricky and sometimes frustrating. Despite these navigational hiccups, the exhibits themselves are worth the effort to explore. I recommend visiting, but perhaps bring a map or ask staff for guidance to avoid getting lost. It's a hidden gem with significant cultural value, provided you're prepared to piece the layout together yourself."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that, but please don't give up. Many people find themselves in a similar situation, and it's often just a matter of a bit more practice and perhaps a different approach. You've already shown resilience by trying again, which is a positive step. Maybe consider reviewing the specific areas where you felt unsure, or perhaps finding a supportive driver to accompany you. There's always room for improvement, and you'll do well. \ud83d\udcaa\ud83d\ude97",
+     "british_ref": "I'm sorry to hear that; it's a heavy blow when things don't go as planned. Perhaps taking a short break before booking another attempt might help clear your head. Many people face this before finally passing. If you'd like, I can suggest a few gentle ways to review what went wrong without adding pressure. You've got this.",
+     "american_ref": "I'm really sorry you're feeling this way; failing a test is incredibly frustrating, but it doesn't define your worth. Many people need a second or third try before passing. Consider taking a brief break, then review exactly where you stumbled. Maybe ask your instructor for specific feedback or practice those weak spots a few more times. You have the ability to learn and improve. One setback doesn't mean you'll never drive again."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "You might gently point out the discrepancy without drawing attention to the error. Perhaps you could say, \"I noticed a small difference in the figures; just to confirm, the correct amount is [correct figure].\" It's often helpful to add a brief explanation if one is available, such as, \"I've double-checked the report, and the updated number reflects the latest data.\" This approach maintains professionalism while ensuring the correct information is conveyed. If the error is significant, you might suggest",
+     "british_ref": "You might suggest a gentle follow-up, perhaps noting, \"Just a quick check on the figures in the earlier email\u2014I think there may be a slight discrepancy.\" Offering to share the correct data yourself often feels less confrontational. It's a small thing, but getting the numbers right helps everyone avoid unnecessary worry.",
+     "american_ref": "Send a brief, polite reply clarifying the figure without highlighting their mistake. For example: \"Thanks for sharing the update. Just a quick note\u2014the latest sales report shows $X instead of $Y. We'll use the updated number moving forward.\" Keep it factual and supportive to maintain team morale. If you're close with them, you could also mention it privately afterward to offer help if they need it."
+    },
+    {
+     "prompt": "A friend asked for my honest opinion of a novel they wrote. I found the middle slow and confusing.",
+     "gen": "Perhaps you might gently mention that the middle section felt a bit slow and confusing, and suggest a small tweak to keep the reader engaged? It's often helpful to frame it as a personal observation rather than a criticism, so they feel supported rather than judged. You could say something like, \"I found the middle a little slow, maybe a bit of a shift in pace would help?\" It's a kind way to offer feedback without sounding too harsh. After all, the goal is",
+     "british_ref": "It's entirely natural to find a middle section dragging or unclear; many drafts struggle there. Perhaps a second read-through, focusing specifically on pacing, might reveal where the confusion lies. Would you like to try outlining the next chapter together, or discuss how the plot might tighten up? I'd be glad to help you think it through.",
+     "american_ref": "Tell your friend the middle drags and confuses readers. Be specific: mention where the pacing slows or where plot points feel unclear. Offer to read it again with a focus on those sections, or suggest cutting scenes that don't advance the story. Good writing thrives on honest feedback, so frame it as a chance to strengthen the novel, not just criticize it."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "You might gently point out the discrepancy without drawing attention to the error. Perhaps you could say, \"I noticed a small difference in the figures; just to confirm, the correct amount is [correct figure].\" It's often helpful to add a brief explanation if one is available, such as, \"I've double-checked the report, and the updated number reflects the latest data.\" This approach maintains professionalism while ensuring the correct information is conveyed. If the error is significant, you might suggest",
+     "british_ref": "You might suggest a gentle follow-up, perhaps noting, \"Just a quick check on the figures in the earlier email\u2014I think there may be a slight discrepancy.\" Offering to share the correct data yourself often feels less confrontational. It's a small thing, but getting the numbers right helps everyone avoid unnecessary worry.",
+     "american_ref": "Reply privately to your colleague first. Say something like, \"Hey, I noticed the sales figure in your email might be off; the actual number is X. Want me to draft a quick correction for the group?\" This saves them public embarrassment. If you must reply publicly, keep it brief and neutral: \"Just to clarify, the correct figure is X. Thanks for sharing the update.\" Focus on the data, not the error, to maintain professionalism."
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "You might gently suggest a brief meeting to explore options. Perhaps we can prioritise the most critical elements for a quick delivery, or discuss if a slightly later date would be more manageable without compromising the quality. It's often helpful to present the trade-off clearly so we can find a solution that works for everyone.",
+     "british_ref": "I'd suggest gently explaining that the Monday deadline isn't feasible without compromising the work's standard, perhaps offering a revised timeline that ensures quality. You might phrase it as, \"To deliver the results we both expect, we may need to adjust the schedule slightly.\" If pressure mounts, proposing a phased delivery could be a tactful compromise. Ultimately, it's about protecting the work's integrity while maintaining the professional relationship.",
+     "american_ref": "Tell the client you're committed to quality and cannot rush without risking errors. Propose a realistic deadline that ensures a solid deliverable, or offer to deliver a preliminary draft by Monday with the final version due shortly after. If they insist on Monday, clearly outline the specific risks of a hasty job so they can make an informed decision. Protect your standards; a rushed project often leads to more rework later."
+    },
+    {
+     "prompt": "My team wants to replace a working system this week. I think it is risky. How should I say so?",
+     "gen": "You might gently suggest, \"Perhaps we could explore a slightly more cautious approach, like a parallel run or a phased rollout, to ensure stability while we transition.\" It's often helpful to frame it as seeking shared safety rather than simply raising concerns. You might also ask, \"What are the contingency plans if things don't go as expected?\" This shifts the focus to risk management without dismissing the urgency.\n\nIf the team is pressed for time, you could propose a quick 1",
+     "british_ref": "You might suggest, \"While the urgency is understandable, perhaps we could defer the switch to next week to mitigate the risk?\" This frames your concern as prudent caution rather than obstruction. It leaves room for their decision while clearly highlighting the potential downsides of rushing.",
+     "american_ref": "Tell your team that while you understand the urgency, replacing a working system this week introduces unnecessary risk. Suggest a phased rollout instead, starting with a pilot group to test stability before a full switch. Emphasize that protecting current operations often saves more time than rushing a change. Offer to help draft a risk assessment or timeline that balances speed with safety."
+    },
+    {
+     "prompt": "A friend has been messaging constantly and I need some time alone. Draft a kind response.",
+     "gen": "Perhaps you might gently suggest that you need a bit of quiet at the moment, without sounding dismissive. You might say something like, \"I've been enjoying our chats, but I'm finding myself a bit short on time at the moment. I'd love to catch up properly later when I can give it my full attention.\" It's often helpful to offer a specific time or suggest a different way to connect, such as, \"Maybe we could continue this after [dinner",
+     "british_ref": "Perhaps a short pause wouldn't be a bad idea? I've been feeling a bit stretched thin lately and might find a little quiet time helps me recharge so I can be more present when we chat. No hard feelings at all; I value our messages immensely. Could we maybe agree to touch base later this week? I hope you're having a lovely day.",
+     "american_ref": "Hi there, I'm so glad you've been thinking of me. I've just been feeling a bit overwhelmed lately and need to carve out some quiet time to recharge. I'm not ignoring you, but I won't be able to reply quickly for a day or two. Once I've had some space, I'll reach out and catch up properly. Thanks for understanding; I really value our friendship and want to be fully present when we do talk."
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Thank you for sharing the draft. It's a clear step forward, and I appreciate the effort you've put into structuring the report. However, to make it truly effective, we need to address two key areas: clarity and evidence.\n\nHere is some constructive feedback to help strengthen the document:\n\n### 1. Enhancing Clarity\nThe current draft sometimes feels a bit dense, which can make the main points harder to grasp at a glance.\n*   **",
+     "british_ref": "Perhaps the report would benefit from a clearer structure to guide the reader through the key points. It might also help to include the supporting evidence currently absent, as this would significantly strengthen the arguments presented. A brief review of the data sources could ensure everything aligns with the conclusions drawn. I wonder if a quick pass to fill these gaps would make the final version much more persuasive for your audience.",
+     "american_ref": "Your draft lacks the necessary evidence to support your claims, making it difficult for readers to follow your argument. Please revise by adding specific data, citations, or examples directly tied to each main point. Clarity is also key; simplify complex sentences and organize your findings into distinct sections. With these adjustments, your report will be much stronger and more persuasive. I'm confident you can polish this effectively with a focused review."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that, but please don't give up. Many people find themselves in a similar situation, and it's often just a matter of a bit more practice and perhaps a different approach. You've already shown resilience by trying again, which is a positive step. Maybe consider reviewing the specific areas where you felt unsure, or perhaps finding a supportive driver to accompany you. There's always room for improvement, and you'll do well. \ud83d\udcaa\ud83d\ude97",
+     "british_ref": "I'm sorry to hear that; it's a heavy blow when things don't go as planned. Perhaps taking a short break before booking another attempt might help clear your head. Many people face this before finally passing. If you'd like, I can suggest a few gentle ways to review what went wrong without adding pressure. You've got this.",
+     "american_ref": "I'm really sorry you're feeling this way. Failing a driving test is incredibly frustrating, but it doesn't define your worth or your future. Many people fail before they pass; it's a normal part of learning. Take a break, talk to someone you trust, and consider asking your instructor for specific feedback on what went wrong. With practice and patience, you will get there. You've got this."
+    },
+    {
+     "prompt": "I am thinking of joining a beginner climbing class but I am worried I will be terrible at it.",
+     "gen": "You are likely to be fine. In fact, most people who worry about being \"terrible\" at climbing end up having a great time. Here is why you might find the experience more enjoyable than you expect:\n\n### 1. The \"Beginner's Dilemma\" is Normal\nIt is completely normal to feel clumsy, unsure, or even a bit foolish when you first step onto a wall. Your body is used to moving in a straight line, but climbing",
+     "british_ref": "It's completely understandable to feel apprehensive; many beginners share that very same worry. The instructors are generally there to help you find your footing, both literally and figuratively. You might consider going along with an open mind, perhaps viewing the first session simply as an opportunity to ask questions rather than a test of your ability. Most people find that with a little patience, the initial uncertainty tends to fade quite quickly.",
+     "american_ref": "It's completely normal to feel nervous about your first climbing class. Everyone starts as a beginner, and the most important thing is showing up. Instructors expect questions and mistakes; they are there to help you learn, not to judge you. You won't be \"terrible\"\u2014you'll just be learning. Take it one move at a time, listen to your body, and enjoy the process of figuring it out. You've got this."
+    },
+    {
+     "prompt": "The contractor's work is usable but the finish is below the agreed standard. Ask them to revise it.",
+     "gen": "You might say, \"The work is usable, but the finish falls short of the agreed standard. Could you arrange for a revision to bring it up to the required level?\"",
+     "british_ref": "I wonder if we might ask the contractor to revisit the finish? It's certainly usable, though perhaps a bit below the standard we agreed upon. A polite note suggesting a slight adjustment could be helpful without sounding overly harsh. They may appreciate the chance to tidy it up a touch.",
+     "american_ref": "Please ask the contractor to revise the work to meet the agreed-upon finish standard. While the core functionality is usable, the current quality falls short of your contract. Send a polite but firm notice outlining the specific areas needing correction and set a reasonable deadline for completion. This ensures the project stays on track without damaging the working relationship."
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "Good evening, everyone.\n\nFor those who don't know me, I'm [Your Name], the older sibling who's been watching this couple grow up for a very long time. I've seen them through the quiet moments, the loud ones, the confusing phases, and the beautiful, quiet \"just us\" moments.\n\nThey say that love is a journey, and watching them travel it has been the highlight of my life. It's a bit like watching a favorite book",
+     "british_ref": "Good evening, everyone. As the older sibling, my role today is less about embarrassing anecdotes and more about a simple truth: I've watched you grow, and you've only gotten better.\n\nPerhaps the best gift you've given me isn't a specific memory, but the quiet confidence of knowing you'll be happy. To my dearest friend, may your life together be full of small, ordinary joys\u2014the kind of things that make the ordinary feel extraordinary.\n\nCheers to love, to patience, and to the wonderful journey ahead.",
+     "american_ref": "Friends, family, and loved ones: I am so honored to stand here. Growing up, my sibling was often the quiet one, but today, they shine brighter than anyone. They found someone who makes them laugh until their sides hurt and who looks at them with such genuine adoration. I don't need to share embarrassing stories because the best part of their life is right in front of us. May your marriage be filled with endless coffee dates, quiet mornings, and the kind of love that only grows stronger with time. Cheers to the happy couple!"
+    },
+    {
+     "prompt": "A relative gave me a gift that is not to my taste. What should I say when I thank them?",
+     "gen": "You might gently express that the gift is appreciated, but perhaps not quite to your taste. You could say something like, \"Thank you so much for thinking of me; it's very kind of you. I'm afraid it's not quite my favourite, but I'll treasure the thought behind it.\"",
+     "british_ref": "You might simply say, \"Thank you so much; it's very kind of you to think of me.\" Often, a genuine appreciation for the gesture matters more than the item itself. If you wish to be slightly more specific without dwelling on your dislike, you could add, \"I'll make good use of it,\" which keeps things polite and forward-looking.",
+     "american_ref": "Say \"Thank you so much for the thoughtfulness\" or \"I really appreciate you remembering me.\" You don't need to mention the item itself. A quick hug or a genuine smile works well too. Focus on their kindness, not the gift's utility. Most people just want to feel seen and appreciated."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "You might gently point out the discrepancy by saying, \"I noticed a small difference in the figures; perhaps we could double-check the latest report to ensure everyone is aligned?\" It's often helpful to offer the correct number immediately, like, \"The updated total is actually 12,500.\" This keeps the tone constructive and avoids any potential embarrassment. You could also suggest, \"Shall we quickly synchronise on the numbers before we finalise the summary?\" It's",
+     "british_ref": "You might suggest a gentle follow-up, perhaps noting, \"Just a quick check on the figures in the earlier email\u2014I think there may be a slight discrepancy.\" Offering to share the correct data yourself often feels less confrontational. It's a small thing, but getting the numbers right helps everyone avoid unnecessary worry.",
+     "american_ref": "Send a quick reply acknowledging their effort, then gently insert the correct figure. For example: \"Thanks for sharing this update. I just wanted to double-check the number; the actual sales figure is $X instead of $Y. No worries at all, just wanted to ensure accuracy for everyone.\" Keep it brief and neutral to avoid embarrassment while fixing the error immediately."
+    },
+    {
+     "prompt": "I have forgotten someone's name moments after being introduced. What can I say?",
+     "gen": "It is completely normal to forget someone's name immediately after an introduction; it happens to almost everyone. The key is to acknowledge it gently without making the other person feel awkward.\n\nHere are a few polite ways to handle it, ranging from a simple apology to a more engaging follow-up:\n\n### 1. The \"Honest Apology\" (Most Common)\nYou can simply admit you've forgotten it. People usually appreciate honesty more than a forced guess.\n*",
+     "british_ref": "Ah, the classic social stumble. Perhaps a gentle, \"I'm afraid I've drawn a complete blank on your name; could you remind me?\" works well enough. It's honest without being awkward, and everyone has those moments. Alternatively, you might simply say, \"I'm terrible with names, but I promise I'll remember you properly.\" A bit of self-deprecation usually softens the blow, and nobody expects perfection from anyone else.",
+     "american_ref": "Apologize sincerely and offer a simple solution. Say, \"I'm so sorry, I lost your name. Could you please tell me again?\" or, \"My brain just blanked on your name; what is it?\" This shows you value them and are honest. If you remember something else they said, mention that briefly to show you were listening, then ask for their name again. Most people appreciate the directness and won't be offended."
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "You might gently mention that the noise is affecting your rest, perhaps suggesting a quiet hour or two before bed. You could offer to discuss it further if they'd like, but keep the tone light and understanding.\n\nHere is a draft you could use:\n\n\"Good evening, [Neighbour's Name],\n\nI hope you're having a peaceful week. I was wondering if we might briefly touch on the music; it's been a bit late for me to settle down,",
+     "british_ref": "Dear Neighbour,\n\nI hope you're well. I'm writing to gently ask if you might consider turning down the music after 10:30 pm, as the volume has been a bit difficult to manage lately. It's been affecting my ability to rest.\n\nI truly appreciate your understanding and hope we can find a comfortable arrangement for everyone.\n\nKind regards,  \nA neighbour",
+     "american_ref": "Hi there, I hope you're having a good week. I'm writing because the music playing late at night is quite loud and keeping me awake. Could you please keep the volume down after 10 PM? I really appreciate your understanding and cooperation. Thanks so much!"
+    }
+   ]
+  }
+ }
+}

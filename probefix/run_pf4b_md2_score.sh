@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Score the meandiff arms IN THE SAME JUDGE RUN as the replay 2x2 and base.
+#
+# The comparison that matters is meandiff vs plain DPO (P1) vs the two-stage recipe (C1), and
+# `pf_judge_all.py` shuffles items blind ACROSS arms within a family. Judging the new arms on
+# their own would put them in a different judge invocation from their comparators, which is a
+# free way to introduce a batch effect into the one contrast the run exists to make. So the
+# already-generated famgen files are copied in and everything is judged together.
+set -euo pipefail
+cd "$(dirname "$0")"
+
+set -a; . /workspace/.env; set +a
+export HF_HOME=/workspace/.hf_home
+PY=${PY:-/venv/main/bin/python}
+export SUP_MODEL=Qwen/Qwen3.5-4B
+export SUP_BRIT=/workspace/reward-depth/supervisor/britishness/dosed/brit_dose20.jsonl
+ROOT=${ROOT:-/workspace/probefix4b_md2}
+PREV=${PREV:-/workspace/probefix_all_famgen}
+GEN=${GEN:-/workspace/probefix_md2_famgen}
+L=${L:-20}
+ARMS_LIST="MD2_r1_s600 MD2_r0_s600 MD2_r0_s100"
+
+echo "waiting for the md2 sweep..."
+until [ -f "$ROOT/MD2_r0_s100/DONE" ]; do
+  for a in $ARMS_LIST; do
+    [ -f "$ROOT/$a.log" ] && grep -q "Traceback" "$ROOT/$a.log" && { echo "!! $a crashed"; exit 1; }
+  done
+  sleep 30
+done
+echo "sweep complete at $(date '+%H:%M:%S')"
+
+mkdir -p "$GEN"
+cp "$PREV"/famgen_*.json "$GEN"/ 2>/dev/null || true   # base + the replay 2x2, already generated
+
+# SCORE THREE CHECKPOINTS, NOT JUST THE LAST. The r1 trajectory peaks early and regresses:
+# raw ranking on `legacy` runs .087 -> .273 (50) -> .493 (100) -> .140 (150) while the implicit
+# columns stay high, and the hinge is fully saturated by step 200 (pref exactly 0.0, sat 1.00,
+# proj 64.7 against M0 9.29) so the preference gradient is off after that. Phase 8 hit the same
+# shape -- "peak policy ~ step 125" -- and banked only the final over-optimised adapter, which is
+# why its own note lists periodic checkpoints as REQUIRED for the port. Scoring ckpt600 alone
+# would measure the far side of the peak and report a null for a mechanism that installed.
+CKPTS=${CKPTS:-100 600}
+SPEC=""
+for a in $ARMS_LIST; do
+  for c in $CKPTS; do
+    ck="$ROOT/$a/ckpt$c"
+    [ -d "$ck" ] || { echo "missing $ck"; exit 1; }
+    SPEC="${SPEC:+$SPEC,}${a}_s${c}=$ck"
+  done
+done
+echo "ARMS=$SPEC"
+
+ARMS="$SPEC" OUT="$GEN" FAMS=false_friend,style "$PY" pf_famgen_arms.py
+IN="$GEN" FAMS=false_friend,style BS=16 "$PY" pf_judge_all.py
+echo MEANDIFFSCOREDONE

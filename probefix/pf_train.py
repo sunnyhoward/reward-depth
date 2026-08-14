@@ -67,14 +67,18 @@ from pf_common import (DEV, MODEL, ResidualCapture, buckets, encode,      # noqa
 
 E = os.environ.get
 MODE = E("MODE", "probe")
-assert MODE in ("probe", "final"), MODE
+assert MODE in ("probe", "final", "meandiff"), MODE
 LAYER = int(E("PF_LAYER", 12))
 STEPS, LR, BETA = int(E("STEPS", 300)), float(E("LR", 1e-4)), float(E("BETA", 0.1))
 SEED = int(E("SEED", 0))
 PREF_PAIRS, REPLAY_TOK = int(E("PREF_PAIRS", 6)), int(E("REPLAY_TOK", 16))
 W_PREF, W_REPLAY = float(E("W_PREF", 1)), float(E("W_REPLAY", 1))
 REPLAY_LOSS = E("REPLAY_LOSS", "nll")
-PROBE_READ = E("PROBE_READ", "last")
+# MODE=meandiff defaults to POOLED reads, and that default is the mechanism, not a preference.
+# phase-8 §13 attributes the closure of the forging channel to pooling: with the target being the
+# mean of every emission state there is no causally-dead single state to cheaply rewrite. A
+# completion-end read (`last`, which every probefix arm has used) reinstates exactly that state.
+PROBE_READ = E("PROBE_READ", "mean" if MODE == "meandiff" else "last")
 PROBE_LR, PROBE_STEPS = float(E("PROBE_LR", 1e-2)), int(E("PROBE_STEPS", 4))
 PROBE_BUF, PROBE_WARM = int(E("PROBE_BUF", 2048)), int(E("PROBE_WARM", 1024))
 PROBE_L2 = float(E("PROBE_L2", 1e-3))
@@ -96,6 +100,29 @@ LAMBDA = float(E("LAMBDA", 0.0))
 # to DPOP's floor -- it pushes log P(chosen) up unconditionally rather than only resisting a fall
 # below reference. LAMBDA and RPO_ALPHA compose; either alone is the usual arm.
 RPO_ALPHA = float(E("RPO_ALPHA", 0.0))
+# --- MODE=meandiff: the phase-8 `pooled_margin` objective, ported (results_phase8.md:266).
+# The only arm in this project that installed a preference by optimising activations directly.
+# Three pieces, and each one is load-bearing:
+#   · POOLED reads (PROBE_READ=mean above) -- closes the forging channel.
+#   · MD_LAG=1 -- the direction is the PREVIOUS step's mean difference, not this step's. Fitting
+#     and optimising the same direction in one step is self-referential and is what a refitted
+#     probe does; the lag is what STATE.md calls "the anti-forging resource".
+#   · M0 -- a SATURATING hinge, relu(M0 - proj). An unbounded objective is satisfied by scaling
+#     the residual, which is a forging channel that costs one scalar.
+# LAMBDA is reused as the DPOP floor weight here (added, not folded into a margin, as in styc).
+# M0 IS CALIBRATED, NOT COPIED. styc and the UF port both used M0=4.0, but that number is only
+# meaningful against the natural projection in the same units, and SDt normalisation makes those
+# units task-specific. The UF port records "proj 3.5 (natural)" against M0=4.0 -- a target 1.14x
+# the base level. On dosed britishness the base projection is ~8.1, because the pairs are MINIMAL
+# (one word changed), so their difference vectors are far more collinear than styc's ce/we pairs
+# and the mean direction is correspondingly better aligned. Copying M0=4.0 here would set a target
+# the BASE MODEL ALREADY EXCEEDS -- measured: frac_sat 1.00 at step 10, an objective satisfied at
+# initialisation. M0_MULT reproduces the RATIO instead, which is the invariant the design cares
+# about. An explicit M0 still overrides.
+MD_SD_WARM = int(E("MD_SD_WARM", 256))
+M0_MULT = float(E("M0_MULT", 1.15))
+M0 = float(E("M0", 0)) or None            # resolved after the base projection is measured
+MD_LAG = int(E("MD_LAG", 1))
 EVAL_EVERY, CKPT_EVERY = int(E("EVAL_EVERY", 50)), int(E("CKPT_EVERY", 100))
 MAXLEN, BS = int(E("MAX_LEN", 256)), int(E("EVAL_BS", 8))
 OUT = E("OUT", f"/workspace/probefix/{MODE}_L{LAYER}")
@@ -337,6 +364,28 @@ if MODE == "probe":
           flush=True)
     probe.buf = probe.buf[-PROBE_BUF:]
 
+# Per-dimension scale for the meandiff objective, estimated ONCE on the base policy before any
+# update. styc took this from its feature cache (`SDt`); here it is measured. Fixing it up front
+# is the same discipline as the probe's `sigma0`: if the normaliser moved with the activations,
+# the saturating target M0 would drift with the quantity it is supposed to bound.
+SDt = None
+if MODE == "meandiff":
+    t0 = time.time()
+    warm = [train_rows[i] for i in rgen.choice(len(train_rows),
+                                               min(MD_SD_WARM, len(train_rows)), replace=False)]
+    ds = torch.cat([reads(warm[s:s + BS], grad=False) for s in range(0, len(warm), BS)]).float()
+    SDt = ds.std(0).clamp(min=1e-3)
+    u0 = ds.mean(0) / (ds.mean(0).norm() + 1e-6)
+    base_proj = float((ds / SDt).matmul(u0).mean())
+    if M0 is None:
+        M0 = M0_MULT * base_proj
+    print(f"[meandiff] SD over {len(warm)} pairs at L{LAYER} ({PROBE_READ}) in {time.time()-t0:.0f}s"
+          f" | median SD {float(SDt.median()):.4f} | base proj {base_proj:.2f}"
+          f" | M0 {M0:.2f} ({M0 / base_proj:.2f}x base)", flush=True)
+    if M0 <= base_proj:
+        print(f"  !! M0 {M0:.2f} <= base projection {base_proj:.2f} -- the objective is satisfied "
+              f"at initialisation and this arm cannot move. Raise M0_MULT.", flush=True)
+
 
 # ------------------------------------------------------------------ eval
 
@@ -396,6 +445,7 @@ hist = dict(mode=MODE, model=MODEL, layer=LAYER, probe_read=PROBE_READ, pref_los
 ev = evaluate(0); hist["evals"].append(ev)
 print(f"  step   0: {line(ev)}", flush=True)
 policy.train()
+u_hist = []          # lag-MD_LAG buffer of past mean-difference directions (meandiff)
 
 for step in range(STEPS):
     rows = [train_rows[i] for i in rgen.choice(len(train_rows), PREF_PAIRS, replace=False)]
@@ -410,6 +460,28 @@ for step in range(STEPS):
                   else -F.logsigmoid(BETA * z).mean())
         with torch.no_grad():
             extra = dict(z=float(z.mean()), frac_sat=float((z > TARGET).float().mean()))
+    elif MODE == "meandiff":
+        # phase-8 pooled_margin. The forging channel is OPEN by design -- the gradient runs
+        # through the policy's own activations -- and pooling plus the lag is what phase 8 found
+        # closes it in practice. If it forges here, the surrogate/behaviour gap will show up as
+        # proj saturating while the eval buckets stay at base, which is the same signature
+        # MODE=probe already produces and would be the informative negative.
+        d = reads(rows, grad=True) / SDt
+        with torch.no_grad():
+            u_now = d.mean(0)
+            u_now = u_now / (u_now.norm() + 1e-6)
+        u = u_hist[-MD_LAG] if len(u_hist) >= MD_LAG else u_now
+        u_hist.append(u_now)
+        proj = d.matmul(u)
+        l_pref = F.relu(M0 - proj).mean()
+        if LAMBDA:                       # DPOP floor on the chosen side, added as in styc
+            a_md, _ = logps(rows, grad=True)
+            with torch.no_grad():
+                ra_md, _ = logps(rows, False, ref=True)
+            l_pref = l_pref + LAMBDA * F.relu(ra_md - a_md).mean()
+        with torch.no_grad():
+            extra = dict(proj=float(proj.mean()), frac_sat=float((proj > M0).float().mean()),
+                         u_cos=float((u * u_now).sum()))
     else:
         if RPO_ALPHA:
             a, b, na = logps(rows, grad=True, ntok=True)
@@ -444,7 +516,9 @@ for step in range(STEPS):
         p = hist["parts"][-1]
         print(f"  step {step+1:4d}: pref {np.mean([q['pref'] for q in hist['parts'][-10:]]):.4f} "
               f"replay {p['replay']:.3f} "
-              + (f"z {p['z']:+.2f} sat {p['frac_sat']:.2f}" if MODE == "probe"
+              + (f"proj {p['proj']:+.2f} sat {p['frac_sat']:.2f} ucos {p['u_cos']:+.2f}"
+                 if MODE == "meandiff"
+                 else f"z {p['z']:+.2f} sat {p['frac_sat']:.2f}" if MODE == "probe"
                  else f"margin {p['margin']:+.2f}"), flush=True)
     if (step + 1) % EVAL_EVERY == 0:
         ev = evaluate(step + 1); hist["evals"].append(ev)

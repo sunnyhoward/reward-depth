@@ -153,6 +153,15 @@ cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, bias="none", task_type="
                  layers_to_transform=rng_layers)
 policy = get_peft_model(model, cfg)
 policy.config.use_cache = False
+# GRAD_CKPT=1 recomputes block activations in the backward pass instead of storing them.
+# SEMANTICALLY IDENTICAL (same loss, same gradients, ~30% slower); it exists because a LATE read
+# point backprops through more blocks than an early one, so MODE=meandiff at L26-L30 needs
+# activation memory the L20 arms never did -- and the GPU here is shared (NEXT_0810 §4).
+# Default off, so every previously-run arm is byte-for-byte reproducible without it.
+if int(E("GRAD_CKPT", 0)):
+    model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+    model.enable_input_require_grads()
+    print("[pf] gradient checkpointing ON (activations recomputed; loss unchanged)", flush=True)
 BLOCKS = list(model.model.layers)
 params = [p for p in policy.parameters() if p.requires_grad]
 opt = torch.optim.AdamW(params, lr=LR)

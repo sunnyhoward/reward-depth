@@ -1,0 +1,135 @@
+[
+ {
+  "arm": "MD_L26_s300",
+  "n": 96,
+  "leak_rate": 0.5729166666666666,
+  "restart_rate": 0.11458333333333333,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 26,
+    "restart": 5
+   },
+   "style": {
+    "n": 48,
+    "leak": 29,
+    "restart": 6
+   }
+  },
+  "path": "results/probefix4b_mdlate/famgen_MD_L26_s300.json"
+ },
+ {
+  "arm": "MD_L26_s600",
+  "n": 96,
+  "leak_rate": 0.4375,
+  "restart_rate": 0.25,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 25,
+    "restart": 17
+   },
+   "style": {
+    "n": 48,
+    "leak": 17,
+    "restart": 7
+   }
+  },
+  "path": "results/probefix4b_mdlate/famgen_MD_L26_s600.json"
+ },
+ {
+  "arm": "MD_L28_s300",
+  "n": 96,
+  "leak_rate": 0.375,
+  "restart_rate": 0.34375,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 18,
+    "restart": 15
+   },
+   "style": {
+    "n": 48,
+    "leak": 18,
+    "restart": 18
+   }
+  },
+  "path": "results/probefix4b_mdlate/famgen_MD_L28_s300.json"
+ },
+ {
+  "arm": "MD_L24_s300",
+  "n": 96,
+  "leak_rate": 0.19791666666666666,
+  "restart_rate": 0.1875,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 9,
+    "restart": 8
+   },
+   "style": {
+    "n": 48,
+    "leak": 10,
+    "restart": 10
+   }
+  },
+  "path": "results/probefix4b_mdlate/famgen_MD_L24_s300.json"
+ },
+ {
+  "arm": "MD_L26_s100",
+  "n": 96,
+  "leak_rate": 0.03125,
+  "restart_rate": 0.03125,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 3,
+    "restart": 3
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_mdlate/famgen_MD_L26_s100.json"
+ },
+ {
+  "arm": "MD_L30_s300",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_mdlate/famgen_MD_L30_s300.json"
+ },
+ {
+  "arm": "MD_L31_s300",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_mdlate/famgen_MD_L31_s300.json"
+ }
+]

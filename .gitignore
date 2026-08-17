@@ -18,3 +18,6 @@ logs/
 # (/workspace/dec_cache), never in the repo -- they are tens of GB and fully regenerable from
 # dec_cache.py / dec_distill.py.
 dec_cache/
+
+# EM banks: 24 MB, re-downloadable from the emergent-misalignment repo (em/NOTE.md)
+em/data/*.jsonl

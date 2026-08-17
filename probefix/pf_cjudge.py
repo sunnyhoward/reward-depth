@@ -191,6 +191,14 @@ def do_merge():
 
 
 # ------------------------------------------------------------------ report
+def uncond(v):
+    """Non-engagement scored 50 -- the rubric's own neutral anchor. `engaged` is post-treatment
+    (arms that install more also engage more), so conditioning on it compares different item
+    subsets per arm; RESULTS_0817_JUDGE_VALIDATION §5a shows the ordering survives either way but
+    false_friend effect sizes shrink 6-7 points unconditionally."""
+    return v["british"] if v.get("engaged") else 50
+
+
 def mean_se(v):
     if not v:
         return float("nan"), float("nan")
@@ -222,20 +230,27 @@ def do_report():
             coh = [r["claude"]["coherence"] for r in rs]
             mb, sb = mean_se(eng)
             mc, _ = mean_se(coh)
+            mu, su = mean_se([uncond(r["claude"]) for r in rs])
             rep["per_arm"][f"{fam}/{arm}"] = {
                 "n": len(rs), "n_engaged": len(eng), "british": mb, "british_se": sb,
+                "british_uncond": mu, "british_uncond_se": su,
                 "coherence": mc, "engagement_rate": len(eng) / len(rs) if rs else None,
             }
             row_b += f"{mb:>8.1f}±{sb:<3.0f}" if eng else f"{'-':>12s}"
             row_c += f"{mc:>12.1f}"
+        row_u = f"{'  uncond':14s}"
+        for arm in arms:
+            k = rep["per_arm"][f"{fam}/{arm}"]
+            row_u += f"{k['british_uncond']:>8.1f}±{k['british_uncond_se']:<3.0f}"
         print(row_b)
+        print(row_u)
         print(row_c)
 
     # paired: every arm answers the same 48 prompts, so pair on (fam, i). Run the SAME pairing
     # under both judges on the SAME items -- that is the like-for-like comparison, and the only
     # way to tell an arm-ordering difference from a level difference between judges.
     print("\nPAIRED CONTRASTS (same prompt, both arms, engaged by BOTH judges' own criteria)\n")
-    print(f"  {'family':14s} {'contrast':12s} {'claude':>18s} {'qwen':>18s}")
+    print(f"  (claude judge; 'uncond' scores non-engagement 50 over all paired prompts)")
     for fam in fams:
         for a, b in CONTRASTS:
             cells = {}
@@ -244,14 +259,22 @@ def do_report():
                 for r in d.values():
                     if r["fam"] == fam and r["arm"] in (a, b) and r.get(j):
                         idx.setdefault(r["i"], {})[r["arm"]] = r[j]
-                diffs = [v[a]["british"] - v[b]["british"] for v in idx.values()
-                         if a in v and b in v and v[a].get("engaged") and v[b].get("engaged")]
+                both = [v for v in idx.values() if a in v and b in v]
+                diffs = [v[a]["british"] - v[b]["british"] for v in both
+                         if v[a].get("engaged") and v[b].get("engaged")]
+                un = [uncond(v[a]) - uncond(v[b]) for v in both]
                 m, se = mean_se(diffs)
+                mu, seu = mean_se(un)
                 cells[j] = {"n": len(diffs), "delta": m, "se": se,
-                            "sigmas": m / se if se and se == se and se else None}
+                            "sigmas": m / se if se and se == se and se else None,
+                            "n_uncond": len(un), "delta_uncond": mu, "se_uncond": seu,
+                            "sigmas_uncond": mu / seu if seu and seu == seu and seu else None}
             rep["paired"][f"{fam}/{a}-{b}"] = cells
-            fmt = lambda c: f"{c['delta']:+6.1f}±{c['se']:<4.1f} n={c['n']:<3d}"
-            print(f"  {fam:14s} {a+' - '+b:12s} {fmt(cells['claude']):>18s} {fmt(cells['qwen']):>18s}")
+            c = cells["claude"]
+            eng = f"{c['delta']:+6.1f}±{c['se']:<4.1f}(n={c['n']})" if c["n"] else "     -    "
+            unc = f"{c['delta_uncond']:+6.1f}±{c['se_uncond']:<4.1f}(n={c['n_uncond']})"
+            sg = f"{c['sigmas_uncond']:+.1f} SE" if c.get("sigmas_uncond") else "n/a"
+            print(f"  {fam:13s} {a+' - '+b:26s} engaged {eng:>20s}   uncond {unc:>20s}  {sg}")
 
     # agreement with the two other instruments
     agree_q = [(r["qwen"], r["claude"]) for r in d.values() if r.get("qwen")]

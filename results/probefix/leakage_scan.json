@@ -1,40 +1,78 @@
 [
  {
-  "arm": "MDSTACK_s100",
+  "arm": "MDSTACK_floor_s300",
   "n": 96,
-  "leak_rate": 0.4479166666666667,
-  "restart_rate": 0.3958333333333333,
+  "leak_rate": 0.8958333333333334,
+  "restart_rate": 0.8958333333333334,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 18,
-    "restart": 14
+    "leak": 47,
+    "restart": 47
+   },
+   "style": {
+    "n": 48,
+    "leak": 39,
+    "restart": 39
+   }
+  },
+  "path": "results/probefix4b_floor/famgen_MDSTACK_floor_s300.json"
+ },
+ {
+  "arm": "MD_L20_floor_s300",
+  "n": 96,
+  "leak_rate": 0.625,
+  "restart_rate": 0.625,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 35,
+    "restart": 35
    },
    "style": {
     "n": 48,
     "leak": 25,
-    "restart": 24
+    "restart": 25
    }
   },
-  "path": "results/probefix4b_mdstack/famgen_MDSTACK_s100.json"
+  "path": "results/probefix4b_floor/famgen_MD_L20_floor_s300.json"
  },
  {
-  "arm": "MDSTACK_s300",
+  "arm": "MDSTACK_floor_s100",
   "n": 96,
-  "leak_rate": 0.09375,
-  "restart_rate": 0.07291666666666667,
+  "leak_rate": 0.375,
+  "restart_rate": 0.375,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 6,
-    "restart": 5
+    "leak": 19,
+    "restart": 19
    },
    "style": {
     "n": 48,
-    "leak": 3,
-    "restart": 2
+    "leak": 17,
+    "restart": 17
    }
   },
-  "path": "results/probefix4b_mdstack/famgen_MDSTACK_s300.json"
+  "path": "results/probefix4b_floor/famgen_MDSTACK_floor_s100.json"
+ },
+ {
+  "arm": "MD_L20_floor_s100",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_floor/famgen_MD_L20_floor_s100.json"
  }
 ]

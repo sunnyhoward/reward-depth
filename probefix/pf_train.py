@@ -67,7 +67,7 @@ from pf_common import (DEV, MODEL, ResidualCapture, buckets, encode,      # noqa
 
 E = os.environ.get
 MODE = E("MODE", "probe")
-assert MODE in ("probe", "final", "meandiff"), MODE
+assert MODE in ("probe", "final", "meandiff", "mdstack"), MODE
 LAYER = int(E("PF_LAYER", 12))
 STEPS, LR, BETA = int(E("STEPS", 300)), float(E("LR", 1e-4)), float(E("BETA", 0.1))
 SEED = int(E("SEED", 0))
@@ -78,7 +78,7 @@ REPLAY_LOSS = E("REPLAY_LOSS", "nll")
 # phase-8 §13 attributes the closure of the forging channel to pooling: with the target being the
 # mean of every emission state there is no causally-dead single state to cheaply rewrite. A
 # completion-end read (`last`, which every probefix arm has used) reinstates exactly that state.
-PROBE_READ = E("PROBE_READ", "mean" if MODE == "meandiff" else "last")
+PROBE_READ = E("PROBE_READ", "mean" if MODE in ("meandiff", "mdstack") else "last")
 PROBE_LR, PROBE_STEPS = float(E("PROBE_LR", 1e-2)), int(E("PROBE_STEPS", 4))
 PROBE_BUF, PROBE_WARM = int(E("PROBE_BUF", 2048)), int(E("PROBE_WARM", 1024))
 PROBE_L2 = float(E("PROBE_L2", 1e-3))
@@ -123,6 +123,25 @@ MD_SD_WARM = int(E("MD_SD_WARM", 256))
 M0_MULT = float(E("M0_MULT", 1.15))
 M0 = float(E("M0", 0)) or None            # resolved after the base projection is measured
 MD_LAG = int(E("MD_LAG", 1))
+# --- MODE=mdstack: the meandiff objective at SEVERAL read points, with the stack SEVERED between
+# them (deep supervision with gradient truncation; cf. deeply-supervised nets, Lee et al. 2015, and
+# greedy local learning, Belilovsky et al. 2019). Read points MD_LAYERS=6,12,18,24,30 give segments
+# (0..6), (7..12), (13..18), (19..24), (25..30); a forward pre-hook detaches the residual entering
+# each segment, so the gradient from read L reaches ONLY that segment's blocks.
+#
+# WHY, given RESULTS_0817_MDLATE.md. That sweep showed a single read point fails at both ends: late
+# reads are causally inert (the direction lies near the null space of the output map -- phase 1's
+# cos(mu, W_A-W_B) = -0.003) and the mid-late band damages text without installing more. This design
+# gives every segment a target expressed in ITS OWN representation, so no single direction has to be
+# both decodable and causally load-bearing, and the truncation stops a deep objective being
+# satisfied by superficial rewriting in later blocks (the forging channel). It also combines local
+# supervision with LOWER-STACK WRITE ACCESS, which RESULTS_0817_P3.md showed is what `style` needs.
+#
+# Each segment's loss carries weight 1, not 1/k: a segment's parameters receive gradient from
+# exactly one term, so per-parameter scale matches the single-attach arm and the comparison is fair.
+# THE SEVERANCE APPLIES ONLY TO THE MEAN-DIFF READS. The replay and DPOP terms run through an
+# unhooked forward, so they still defend the whole stack rather than the top segment alone.
+MD_LAYERS = [int(x) for x in E("MD_LAYERS", "6,12,18,24,30").split(",") if x != ""]
 EVAL_EVERY, CKPT_EVERY = int(E("EVAL_EVERY", 50)), int(E("CKPT_EVERY", 100))
 MAXLEN, BS = int(E("MAX_LEN", 256)), int(E("EVAL_BS", 8))
 OUT = E("OUT", f"/workspace/probefix/{MODE}_L{LAYER}")
@@ -158,11 +177,33 @@ policy.config.use_cache = False
 # point backprops through more blocks than an early one, so MODE=meandiff at L26-L30 needs
 # activation memory the L20 arms never did -- and the GPU here is shared (NEXT_0810 §4).
 # Default off, so every previously-run arm is byte-for-byte reproducible without it.
-if int(E("GRAD_CKPT", 0)):
+# NOTE: incompatible with MODE=mdstack -- the severance pre-hook detaches its input, and the
+# checkpoint recompute pass then sees different graph metadata than the original forward and raises.
+# mdstack therefore runs without it and needs the memory for a full-stack backward.
+if int(E("GRAD_CKPT", 0)) and MODE != "mdstack":
     model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
     model.enable_input_require_grads()
     print("[pf] gradient checkpointing ON (activations recomputed; loss unchanged)", flush=True)
 BLOCKS = list(model.model.layers)
+
+# --- graph severance for MODE=mdstack -------------------------------------------------------
+SEVER = {"on": False}
+
+
+def _detach_hook(module, args, kwargs):
+    """Forward PRE-hook: replace the incoming hidden state with a detached copy while SEVER is on.
+    The forward values are identical, so the loss is unchanged; only the backward path is cut."""
+    if not SEVER["on"] or not args:
+        return None
+    return (args[0].detach(),) + tuple(args[1:]), kwargs
+
+
+if MODE == "mdstack":
+    bounds = [L + 1 for L in sorted(MD_LAYERS)[:-1]]      # inputs of the 2nd..kth segments
+    for b in bounds:
+        BLOCKS[b].register_forward_pre_hook(_detach_hook, with_kwargs=True)
+    print(f"[mdstack] reads at {sorted(MD_LAYERS)} | severed before blocks {bounds}", flush=True)
+
 params = [p for p in policy.parameters() if p.requires_grad]
 opt = torch.optim.AdamW(params, lr=LR)
 
@@ -205,6 +246,22 @@ def reads(rows, grad, ref=False):
             policy(**enc)
         v = span_read(cap.get()[0], m, PROBE_READ)
     return v[0::2] - v[1::2]
+
+
+def reads_multi(rows, grad, layers):
+    """One forward, all read points. -> {L: (n_pairs, hid) chosen-minus-rejected}. With SEVER on,
+    the pre-hooks cut the backward path at each segment boundary."""
+    enc, m = _enc(rows)
+    ctx = torch.enable_grad() if grad else torch.no_grad()
+    out = {}
+    with ctx:
+        with ResidualCapture([BLOCKS[L] for L in layers]) as cap:
+            policy(**enc)
+        got = cap.get()
+        for i, L in enumerate(layers):
+            v = span_read(got[i], m, PROBE_READ)
+            out[L] = v[0::2] - v[1::2]
+    return out
 
 
 def logps(rows, grad, ref=False, ntok=False):
@@ -396,6 +453,29 @@ if MODE == "meandiff":
               f"at initialisation and this arm cannot move. Raise M0_MULT.", flush=True)
 
 
+SD_L, M0_L = {}, {}
+if MODE == "mdstack":
+    t0 = time.time()
+    warm = [train_rows[i] for i in rgen.choice(len(train_rows),
+                                               min(MD_SD_WARM, len(train_rows)), replace=False)]
+    acc = {L: [] for L in sorted(MD_LAYERS)}
+    SEVER["on"] = False                        # calibration is measurement only, no backward
+    for s0 in range(0, len(warm), BS):
+        got = reads_multi(warm[s0:s0 + BS], False, sorted(MD_LAYERS))
+        for L, v in got.items():
+            acc[L].append(v.float())
+    for L in sorted(MD_LAYERS):
+        ds = torch.cat(acc[L])
+        SD_L[L] = ds.std(0).clamp(min=1e-3)
+        u0 = ds.mean(0) / (ds.mean(0).norm() + 1e-6)
+        bp = float((ds / SD_L[L]).matmul(u0).mean())
+        M0_L[L] = (float(E("M0", 0)) or M0_MULT * bp)
+        flag = "  !! satisfied at init" if M0_L[L] <= bp else ""
+        print(f"[mdstack] L{L:>2}: median SD {float(SD_L[L].median()):.4f} | base proj {bp:.2f}"
+              f" | M0 {M0_L[L]:.2f} ({M0_L[L]/bp:.2f}x){flag}", flush=True)
+    print(f"[mdstack] calibration in {time.time()-t0:.0f}s", flush=True)
+
+
 # ------------------------------------------------------------------ eval
 
 @torch.no_grad()
@@ -455,6 +535,7 @@ ev = evaluate(0); hist["evals"].append(ev)
 print(f"  step   0: {line(ev)}", flush=True)
 policy.train()
 u_hist = []          # lag-MD_LAG buffer of past mean-difference directions (meandiff)
+u_stack = {}         # per-read-point version of the same, for MODE=mdstack
 
 for step in range(STEPS):
     rows = [train_rows[i] for i in rgen.choice(len(train_rows), PREF_PAIRS, replace=False)]
@@ -491,6 +572,38 @@ for step in range(STEPS):
         with torch.no_grad():
             extra = dict(proj=float(proj.mean()), frac_sat=float((proj > M0).float().mean()),
                          u_cos=float((u * u_now).sum()))
+    elif MODE == "mdstack":
+        # one severed forward -> every segment's own hinge; sum with weight 1 each
+        SEVER["on"] = True
+        got = reads_multi(rows, True, sorted(MD_LAYERS))
+        SEVER["on"] = False
+        l_pref = torch.zeros((), device=DEV)
+        projs, sats, coss = {}, {}, {}
+        for L in sorted(MD_LAYERS):
+            d = got[L] / SD_L[L]
+            with torch.no_grad():
+                u_now = d.mean(0)
+                u_now = u_now / (u_now.norm() + 1e-6)
+            hist_L = u_stack.setdefault(L, [])
+            u = hist_L[-MD_LAG] if len(hist_L) >= MD_LAG else u_now
+            hist_L.append(u_now)
+            proj = d.matmul(u)
+            l_pref = l_pref + F.relu(M0_L[L] - proj).mean()
+            with torch.no_grad():
+                projs[L] = float(proj.mean())
+                sats[L] = float((proj > M0_L[L]).float().mean())
+                coss[L] = float((u * u_now).sum())
+        if LAMBDA:                       # DPOP floor, through the UNHOOKED path (whole stack)
+            a_md, _ = logps(rows, grad=True)
+            with torch.no_grad():
+                ra_md, _ = logps(rows, False, ref=True)
+            l_pref = l_pref + LAMBDA * F.relu(ra_md - a_md).mean()
+        with torch.no_grad():
+            extra = dict(proj=float(np.mean(list(projs.values()))),
+                         frac_sat=float(np.mean(list(sats.values()))),
+                         u_cos=float(np.mean(list(coss.values()))),
+                         per_layer={str(L): dict(proj=projs[L], sat=sats[L], ucos=coss[L])
+                                    for L in sorted(MD_LAYERS)})
     else:
         if RPO_ALPHA:
             a, b, na = logps(rows, grad=True, ntok=True)
@@ -526,7 +639,7 @@ for step in range(STEPS):
         print(f"  step {step+1:4d}: pref {np.mean([q['pref'] for q in hist['parts'][-10:]]):.4f} "
               f"replay {p['replay']:.3f} "
               + (f"proj {p['proj']:+.2f} sat {p['frac_sat']:.2f} ucos {p['u_cos']:+.2f}"
-                 if MODE == "meandiff"
+                 if MODE in ("meandiff", "mdstack")
                  else f"z {p['z']:+.2f} sat {p['frac_sat']:.2f}" if MODE == "probe"
                  else f"margin {p['margin']:+.2f}"), flush=True)
     if (step + 1) % EVAL_EVERY == 0:

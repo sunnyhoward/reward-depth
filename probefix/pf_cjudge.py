@@ -25,6 +25,10 @@ PROTOCOL, held identical to pf_judge_all.py so the two are comparable:
 
 Subcommands:
   batch   write results/probefix_cjudge/batches/batch_NN.json (+ RUBRIC.md, key.json withheld)
+  batchnew  same, for arms that have NO Qwen verdicts -- reads raw famgen_<arm>.json (as written by
+          pf_famgen_arms.py) and recovers each item's two references from the banked judged_all.json
+          by (family, index). Safe because pf_famgen_arms.py replays pf_famgen.py's prompt
+          selection exactly; the join is VERIFIED prompt-by-prompt and aborts on any mismatch.
   merge   collect verdicts/batch_NN.json -> cjudged.json
   report  per-arm scores, the paired P1-vs-C1 test, and agreement vs Qwen and vs hand labels
 
@@ -41,10 +45,12 @@ from collections import defaultdict
 E = os.environ.get
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IN = E("IN", f"{REPO}/results/probefix4b_famgen")
-OUT = E("OUT", f"{REPO}/results/probefix_cjudge")
+OUT = E("OUT", f"{REPO}/results/probefix_cjudge")   # batchnew writes to OUT2
 HAND = E("HAND", f"{REPO}/results/probefix_handlabel")
 FAMS = [f for f in E("FAMS", "false_friend,style").split(",") if f]
 BATCH = int(E("BATCH", 48))
+CONTRASTS = [tuple(c.split("-")) for c in
+             E("CONTRASTS", "P1-C1,P1-base,C1-base").split(",") if c]
 SEED = int(E("SEED", 11))
 
 
@@ -110,6 +116,54 @@ def do_batch():
     print(f"40-item human slice -> {OUT}/blind_for_human.json")
 
 
+# ---------------------------------------------------------------- batchnew
+def do_batchnew():
+    """Batch arms that have no Qwen verdict (e.g. P3_up_dpop, run 2026-08-17).
+
+    ARMS=name=path/to/famgen_name.json[,name2=...]   OUT2=<dir for this pass>
+    """
+    rubric, axes = rubric_from_source()
+    judged = json.load(open(f"{IN}/judged_all.json"))
+    refs = {(fam, r["i"]): (r["prompt"], r["br"], r["am"])
+            for fam in judged for r in judged[fam]}
+    out = E("OUT2", f"{REPO}/results/probefix_cjudge_p3")
+    spec = [a for a in E("ARMS", "").split(",") if a]
+    assert spec, "set ARMS=name=famgen.json[,...]"
+
+    items, key = [], {}
+    for entry in spec:
+        arm, path = entry.split("=", 1)
+        fg = json.load(open(path))
+        for fam in FAMS:
+            gens = fg["families"][fam]["gens"]
+            for i, g in enumerate(gens):
+                prompt, br, am = refs[(fam, i)]
+                # the join must be exact: a generator that drew different prompts would be judged
+                # against the wrong references, which is silent and fatal
+                assert g["prompt"] == prompt, f"prompt mismatch {arm} {fam} {i}"
+                iid = f"n{len(key):04d}"
+                key[iid] = {"arm": arm, "fam": fam, "i": i, "qwen": None}
+                items.append({"id": iid, "family": fam, "prompt": prompt,
+                              "british_ref": br, "american_ref": am, "generation": g["gen"]})
+
+    random.Random(SEED).shuffle(items)
+    os.makedirs(f"{out}/batches", exist_ok=True)
+    os.makedirs(f"{out}/verdicts", exist_ok=True)
+    n = 0
+    for b in range(0, len(items), BATCH):
+        json.dump(items[b:b + BATCH], open(f"{out}/batches/batch_{n:02d}.json", "w"), indent=1)
+        n += 1
+    with open(f"{out}/RUBRIC.md", "w") as f:
+        f.write("# Judging rubric (extracted verbatim from probefix/pf_judge_all.py)\n\n")
+        f.write("## Shared frame\n\n```\n" + rubric + "\n```\n\n")
+        f.write("## Per-family AXIS block (substituted into `{axis}` above)\n")
+        for fam in FAMS:
+            f.write(f"\n### {fam}\n\n```\n{axes[fam]}\n```\n")
+    json.dump(key, open(f"{out}/key.json", "w"), indent=1)
+    print(f"{len(items)} items ({len(spec)} arm(s)) -> {n} batches in {out}/batches/")
+    print("prompt join verified item-by-item against judged_all.json")
+
+
 # ------------------------------------------------------------------- merge
 def do_merge():
     key = json.load(open(f"{OUT}/key.json"))
@@ -149,6 +203,10 @@ def mean_se(v):
 
 def do_report():
     d = json.load(open(f"{OUT}/cjudged.json"))
+    for extra in [x for x in E("EXTRA", "").split(",") if x]:
+        # union in another pass's verdicts (e.g. an arm judged later, with no Qwen counterpart) so
+        # cross-arm contrasts can be computed on one footing
+        d.update(json.load(open(extra)))
     fams = sorted({r["fam"] for r in d.values()})
     arms = sorted({r["arm"] for r in d.values()})
     rep = {"per_arm": {}, "paired": {}, "agreement": {}}
@@ -179,7 +237,7 @@ def do_report():
     print("\nPAIRED CONTRASTS (same prompt, both arms, engaged by BOTH judges' own criteria)\n")
     print(f"  {'family':14s} {'contrast':12s} {'claude':>18s} {'qwen':>18s}")
     for fam in fams:
-        for a, b in (("P1", "C1"), ("P1", "base"), ("C1", "base")):
+        for a, b in CONTRASTS:
             cells = {}
             for j in ("claude", "qwen"):
                 idx = {}
@@ -197,6 +255,10 @@ def do_report():
 
     # agreement with the two other instruments
     agree_q = [(r["qwen"], r["claude"]) for r in d.values() if r.get("qwen")]
+    if not agree_q:
+        print("\n(no Qwen verdicts in this pass -- skipping the judge-vs-judge comparison)")
+        json.dump(rep, open(f"{OUT}/report.json", "w"), indent=1)
+        return
     both = [(q["british"], c["british"]) for q, c in agree_q
             if q.get("engaged") and c["engaged"]]
     m, se = mean_se([c - q for q, c in both])
@@ -228,4 +290,5 @@ def do_report():
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "batch"
-    {"batch": do_batch, "merge": do_merge, "report": do_report}[cmd]()
+    {"batch": do_batch, "batchnew": do_batchnew, "merge": do_merge,
+     "report": do_report}[cmd]()

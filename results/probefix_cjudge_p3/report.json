@@ -1,0 +1,139 @@
+{
+ "per_arm": {
+  "false_friend/C1": {
+   "n": 48,
+   "n_engaged": 34,
+   "british": 64.76470588235294,
+   "british_se": 5.8366136165558435,
+   "coherence": 81.97916666666667,
+   "engagement_rate": 0.7083333333333334
+  },
+  "false_friend/D2": {
+   "n": 48,
+   "n_engaged": 27,
+   "british": 70.74074074074075,
+   "british_se": 5.889919098548238,
+   "coherence": 41.625,
+   "engagement_rate": 0.5625
+  },
+  "false_friend/P3_up_dpop": {
+   "n": 48,
+   "n_engaged": 39,
+   "british": 69.23076923076923,
+   "british_se": 5.182559450123477,
+   "coherence": 84.10416666666667,
+   "engagement_rate": 0.8125
+  },
+  "style/C1": {
+   "n": 48,
+   "n_engaged": 48,
+   "british": 63.3125,
+   "british_se": 2.6968849001938544,
+   "coherence": 88.04166666666667,
+   "engagement_rate": 1.0
+  },
+  "style/D2": {
+   "n": 48,
+   "n_engaged": 10,
+   "british": 56.0,
+   "british_se": 3.313272970610447,
+   "coherence": 12.6875,
+   "engagement_rate": 0.20833333333333334
+  },
+  "style/P3_up_dpop": {
+   "n": 48,
+   "n_engaged": 48,
+   "british": 45.416666666666664,
+   "british_se": 2.241578671583566,
+   "coherence": 90.0,
+   "engagement_rate": 1.0
+  }
+ },
+ "paired": {
+  "false_friend/C1-P3_up_dpop": {
+   "claude": {
+    "n": 32,
+    "delta": -5.625,
+    "se": 4.447895025884753,
+    "sigmas": -1.2646431553049307
+   },
+   "qwen": {
+    "n": 0,
+    "delta": NaN,
+    "se": NaN,
+    "sigmas": null
+   }
+  },
+  "false_friend/P3_up_dpop-D2": {
+   "claude": {
+    "n": 26,
+    "delta": 0.19230769230769232,
+    "se": 1.8696105976866542,
+    "sigmas": 0.10285975729151435
+   },
+   "qwen": {
+    "n": 0,
+    "delta": NaN,
+    "se": NaN,
+    "sigmas": null
+   }
+  },
+  "false_friend/C1-D2": {
+   "claude": {
+    "n": 24,
+    "delta": -9.708333333333334,
+    "se": 4.765318231791194,
+    "sigmas": -2.0372896123842192
+   },
+   "qwen": {
+    "n": 0,
+    "delta": NaN,
+    "se": NaN,
+    "sigmas": null
+   }
+  },
+  "style/C1-P3_up_dpop": {
+   "claude": {
+    "n": 48,
+    "delta": 17.895833333333332,
+    "se": 2.7494744151733204,
+    "sigmas": 6.508819734627434
+   },
+   "qwen": {
+    "n": 0,
+    "delta": NaN,
+    "se": NaN,
+    "sigmas": null
+   }
+  },
+  "style/P3_up_dpop-D2": {
+   "claude": {
+    "n": 10,
+    "delta": -9.5,
+    "se": 3.754256843164096,
+    "sigmas": -2.5304608599962966
+   },
+   "qwen": {
+    "n": 0,
+    "delta": NaN,
+    "se": NaN,
+    "sigmas": null
+   }
+  },
+  "style/C1-D2": {
+   "claude": {
+    "n": 10,
+    "delta": 6.0,
+    "se": 5.701851551128906,
+    "sigmas": 1.052289759948602
+   },
+   "qwen": {
+    "n": 0,
+    "delta": NaN,
+    "se": NaN,
+    "sigmas": null
+   }
+  }
+ },
+ "agreement": {}
+}

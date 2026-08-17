@@ -142,6 +142,19 @@ MD_LAG = int(E("MD_LAG", 1))
 # THE SEVERANCE APPLIES ONLY TO THE MEAN-DIFF READS. The replay and DPOP terms run through an
 # unhooked forward, so they still defend the whole stack rather than the top segment alone.
 MD_LAYERS = [int(x) for x in E("MD_LAYERS", "6,12,18,24,30").split(",") if x != ""]
+# --- MD_FLOOR: DPOP's floor, in ACTIVATION space (MODE=meandiff and mdstack).
+# `relu(M0 - proj)` with `proj = ((read(chosen) - read(rejected))/SD).u` constrains only the
+# DIFFERENCE. Nothing pins either side's absolute position, which is structurally the same degree of
+# freedom that lets plain DPO win its margin by dragging both logps down. MEASURED, 2026-08-17
+# (`probefix/pf_mdsides.py`, results/probefix/mdsides.json): MD_L30 doubles its projection
+# (+25.0 -> +62.0) with BOTH sides falling and the chosen side DOWN 11.7, read norms unchanged, so
+# this is not a frame rotation. mdstack does the same at its top segment (Dchosen -51.7). The
+# output-attached control does the opposite: P3's DPOP raises the chosen projection +138 at L30.
+# The existing LAMBDA floor acts on the output logps, so the activation objective has had NO
+# absolute anchor at all. This adds one: penalise the chosen side's own projection falling below the
+# REFERENCE policy's, in the same SD-normalised units. MD_FLOOR=0 (default) reproduces every
+# previously run arm exactly.
+MD_FLOOR = float(E("MD_FLOOR", 0))
 EVAL_EVERY, CKPT_EVERY = int(E("EVAL_EVERY", 50)), int(E("CKPT_EVERY", 100))
 MAXLEN, BS = int(E("MAX_LEN", 256)), int(E("EVAL_BS", 8))
 OUT = E("OUT", f"/workspace/probefix/{MODE}_L{LAYER}")
@@ -261,6 +274,23 @@ def reads_multi(rows, grad, layers):
         for i, L in enumerate(layers):
             v = span_read(got[i], m, PROBE_READ)
             out[L] = v[0::2] - v[1::2]
+    return out
+
+
+def reads_sides(rows, grad, layers, ref=False):
+    """Per-SIDE reads: -> {L: (chosen, rejected)}. `ref=True` disables the adapter, giving the
+    reference policy's projections for the MD_FLOOR term."""
+    import contextlib
+    enc, m = _enc(rows)
+    ctx = torch.enable_grad() if grad else torch.no_grad()
+    out = {}
+    with ctx, (policy.disable_adapter() if ref else contextlib.nullcontext()):
+        with ResidualCapture([BLOCKS[L] for L in layers]) as cap:
+            policy(**enc)
+        got = cap.get()
+        for i, L in enumerate(layers):
+            v = span_read(got[i], m, PROBE_READ)
+            out[L] = (v[0::2], v[1::2])
     return out
 
 
@@ -564,6 +594,12 @@ for step in range(STEPS):
         u_hist.append(u_now)
         proj = d.matmul(u)
         l_pref = F.relu(M0 - proj).mean()
+        if MD_FLOOR:                     # DPOP's floor in activation space (see MD_FLOOR above)
+            sd_ch = reads_sides(rows, True, [LAYER])[LAYER][0] / SDt
+            with torch.no_grad():
+                rf_ch = reads_sides(rows, False, [LAYER], ref=True)[LAYER][0] / SDt
+                rc = rf_ch.matmul(u)
+            l_pref = l_pref + MD_FLOOR * F.relu(rc - sd_ch.matmul(u)).mean()
         if LAMBDA:                       # DPOP floor on the chosen side, added as in styc
             a_md, _ = logps(rows, grad=True)
             with torch.no_grad():
@@ -575,8 +611,16 @@ for step in range(STEPS):
     elif MODE == "mdstack":
         # one severed forward -> every segment's own hinge; sum with weight 1 each
         SEVER["on"] = True
-        got = reads_multi(rows, True, sorted(MD_LAYERS))
+        got_sides = reads_sides(rows, True, sorted(MD_LAYERS))
+        got = {L: (a - b) for L, (a, b) in got_sides.items()}
         SEVER["on"] = False
+        ref_ch = None
+        if MD_FLOOR:
+            SEVER["on"] = True           # same severed path, so each segment's floor is local too
+            with torch.no_grad():
+                ref_ch = {L: v[0] for L, v in
+                          reads_sides(rows, False, sorted(MD_LAYERS), ref=True).items()}
+            SEVER["on"] = False
         l_pref = torch.zeros((), device=DEV)
         projs, sats, coss = {}, {}, {}
         for L in sorted(MD_LAYERS):
@@ -589,6 +633,11 @@ for step in range(STEPS):
             hist_L.append(u_now)
             proj = d.matmul(u)
             l_pref = l_pref + F.relu(M0_L[L] - proj).mean()
+            if MD_FLOOR:
+                c = (got_sides[L][0] / SD_L[L]).matmul(u)
+                with torch.no_grad():
+                    rc = (ref_ch[L] / SD_L[L]).matmul(u)
+                l_pref = l_pref + MD_FLOOR * F.relu(rc - c).mean()
             with torch.no_grad():
                 projs[L] = float(proj.mean())
                 sats[L] = float((proj > M0_L[L]).float().mean())

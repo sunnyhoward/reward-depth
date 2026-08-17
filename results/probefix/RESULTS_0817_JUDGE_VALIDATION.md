@@ -118,6 +118,34 @@ concentrated on the arms scoring *low*, which is §2's compression-toward-50 sho
    `RESULTS_0814_JUDGE_ALL.md` §0 used to *calibrate* the judge. The calibration family is the one
    the judge handles worst, because it is the one where "a form on the axis" is broadest.
 
+## 5a. The conditioning is not load-bearing (added after the slice was read by eye)
+
+Reading `blind_for_human.json` makes the non-engagement rate obvious: 10 of its 23 `false_friend`
+items never touch the contested axis. Across all 672, `false_friend` engagement is 0.65-0.75 for the
+healthy arms against 1.00 on `style` -- register is expressed whether or not the writer intends it,
+a domain term is not. Only **2 of 48** `false_friend` prompts are dead for every arm, so this is the
+model dodging a live prompt rather than the structurally broken item sets `RESULTS_0814_ELICITATION.md`
+found in `culture` (0.00) and `lexicon` (0.08). Note 0.69 base engagement here is exactly the 0.69
+that document measured for this family's best prompt form: **it is already at its elicitation
+ceiling, and no prompting fixes the remaining third.**
+
+Because `engaged` is post-treatment and the trained arms engage MORE than base (0.75 vs 0.69),
+conditioning on it compares slightly different item subsets per arm. Scoring unconditionally instead
+-- non-engagement mapped to 50, the rubric's own neutral anchor, over all 48 paired prompts:
+
+| contrast | conditioned | unconditional | Qwen, unconditional |
+|---|---|---|---|
+| false_friend P1 - C1 | +8.1 ± 5.9 | **+8.1 ± 4.5** | +9.1 ± 4.3 |
+| false_friend P1 - base | +36.3 ± 8.6 | **+29.4 ± 5.5** | +31.5 ± 5.3 |
+| false_friend C1 - base | +27.8 ± 6.3 | **+21.3 ± 4.5** | +22.4 ± 4.9 |
+| style P1 - base | +35.4 ± 2.6 | **+35.4 ± 2.6** | +24.7 ± 2.3 |
+
+Ordering identical, every contrast still significant, and P1 - C1 unmoved at 1.8 SE with the full 48
+pairs. Two things do change. **`false_friend` install sizes are 6-7 points smaller** unconditionally,
+so the conditioned figures -- including 0814's -- are flattered by scoring only the items an arm chose
+to engage. And D2/P0 collapse toward the anchor (70.4 -> 61.5 `false_friend`, 53.8 -> 50.6 `style`),
+which is a second and independent reason they do not belong in the ranking, alongside coherence.
+
 ## 6. Scope limits
 
 1. **Claude judged against Claude hand labels is not independent.** Agreement of 0.983 on engaged

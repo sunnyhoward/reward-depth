@@ -1,0 +1,218 @@
+{
+ "per_arm": {
+  "false_friend/B4": {
+   "n": 48,
+   "n_engaged": 31,
+   "british": 37.0,
+   "british_se": 6.699382093156617,
+   "coherence": 79.52083333333333,
+   "engagement_rate": 0.6458333333333334
+  },
+  "false_friend/C0": {
+   "n": 48,
+   "n_engaged": 36,
+   "british": 57.361111111111114,
+   "british_se": 5.730335979758701,
+   "coherence": 64.75,
+   "engagement_rate": 0.75
+  },
+  "false_friend/C1": {
+   "n": 48,
+   "n_engaged": 36,
+   "british": 64.52777777777777,
+   "british_se": 5.453335386993313,
+   "coherence": 77.4375,
+   "engagement_rate": 0.75
+  },
+  "false_friend/D2": {
+   "n": 48,
+   "n_engaged": 27,
+   "british": 70.37037037037037,
+   "british_se": 5.679760675746418,
+   "coherence": 37.020833333333336,
+   "engagement_rate": 0.5625
+  },
+  "false_friend/P0": {
+   "n": 48,
+   "n_engaged": 20,
+   "british": 69.25,
+   "british_se": 7.391985346875429,
+   "coherence": 33.020833333333336,
+   "engagement_rate": 0.4166666666666667
+  },
+  "false_friend/P1": {
+   "n": 48,
+   "n_engaged": 36,
+   "british": 75.27777777777777,
+   "british_se": 5.495107652528272,
+   "coherence": 76.35416666666667,
+   "engagement_rate": 0.75
+  },
+  "false_friend/base": {
+   "n": 48,
+   "n_engaged": 33,
+   "british": 34.84848484848485,
+   "british_se": 5.771389927012687,
+   "coherence": 78.20833333333333,
+   "engagement_rate": 0.6875
+  },
+  "style/B4": {
+   "n": 48,
+   "n_engaged": 48,
+   "british": 34.604166666666664,
+   "british_se": 2.593421092678162,
+   "coherence": 85.04166666666667,
+   "engagement_rate": 1.0
+  },
+  "style/C0": {
+   "n": 48,
+   "n_engaged": 48,
+   "british": 42.520833333333336,
+   "british_se": 2.825289413301322,
+   "coherence": 84.16666666666667,
+   "engagement_rate": 1.0
+  },
+  "style/C1": {
+   "n": 48,
+   "n_engaged": 48,
+   "british": 62.291666666666664,
+   "british_se": 2.813965667483841,
+   "coherence": 81.97916666666667,
+   "engagement_rate": 1.0
+  },
+  "style/D2": {
+   "n": 48,
+   "n_engaged": 8,
+   "british": 53.75,
+   "british_se": 3.9313302001812493,
+   "coherence": 11.5625,
+   "engagement_rate": 0.16666666666666666
+  },
+  "style/P0": {
+   "n": 48,
+   "n_engaged": 13,
+   "british": 70.76923076923077,
+   "british_se": 3.705771393024265,
+   "coherence": 19.666666666666668,
+   "engagement_rate": 0.2708333333333333
+  },
+  "style/P1": {
+   "n": 48,
+   "n_engaged": 48,
+   "british": 64.35416666666667,
+   "british_se": 2.628520871334331,
+   "coherence": 85.58333333333333,
+   "engagement_rate": 1.0
+  },
+  "style/base": {
+   "n": 48,
+   "n_engaged": 48,
+   "british": 28.958333333333332,
+   "british_se": 1.71377355536091,
+   "coherence": 84.5625,
+   "engagement_rate": 1.0
+  }
+ },
+ "paired": {
+  "false_friend/P1-C1": {
+   "claude": {
+    "n": 31,
+    "delta": 8.129032258064516,
+    "se": 5.884687973837498,
+    "sigmas": 1.381387134577918
+   },
+   "qwen": {
+    "n": 37,
+    "delta": 7.5675675675675675,
+    "se": 5.035987686918387,
+    "sigmas": 1.5026977899936649
+   }
+  },
+  "false_friend/P1-base": {
+   "claude": {
+    "n": 27,
+    "delta": 36.2962962962963,
+    "se": 8.613216971312983,
+    "sigmas": 4.214023217711112
+   },
+   "qwen": {
+    "n": 36,
+    "delta": 35.97222222222222,
+    "se": 6.4297777135922916,
+    "sigmas": 5.594629211858816
+   }
+  },
+  "false_friend/C1-base": {
+   "claude": {
+    "n": 31,
+    "delta": 27.838709677419356,
+    "se": 6.294236444368811,
+    "sigmas": 4.422889086463456
+   },
+   "qwen": {
+    "n": 36,
+    "delta": 27.22222222222222,
+    "se": 6.0041138160472425,
+    "sigmas": 4.533928412460332
+   }
+  },
+  "style/P1-C1": {
+   "claude": {
+    "n": 48,
+    "delta": 2.0625,
+    "se": 2.953451858623342,
+    "sigmas": 0.6983354050542638
+   },
+   "qwen": {
+    "n": 48,
+    "delta": 5.0,
+    "se": 2.2131537780710295,
+    "sigmas": 2.2592194223204713
+   }
+  },
+  "style/P1-base": {
+   "claude": {
+    "n": 48,
+    "delta": 35.395833333333336,
+    "se": 2.647884808079043,
+    "sigmas": 13.367588055694876
+   },
+   "qwen": {
+    "n": 47,
+    "delta": 24.680851063829788,
+    "se": 2.396826915465533,
+    "sigmas": 10.297302197574853
+   }
+  },
+  "style/C1-base": {
+   "claude": {
+    "n": 48,
+    "delta": 33.333333333333336,
+    "se": 3.193151655353976,
+    "sigmas": 10.43900726651775
+   },
+   "qwen": {
+    "n": 47,
+    "delta": 19.893617021276597,
+    "se": 2.6925796623785474,
+    "sigmas": 7.388311402346086
+   }
+  }
+ },
+ "agreement": {
+  "vs_qwen": {
+   "n_both_engaged": 462,
+   "claude_minus_qwen": -8.904761904761905,
+   "se": 0.9125283409768888,
+   "engaged_agree": 0.9017857142857143
+  },
+  "vs_hand": {
+   "n": 60,
+   "n_both_engaged": 40,
+   "claude_minus_hand": -1.875,
+   "se": 2.015067441767594,
+   "engaged_agree": 0.9833333333333333,
+   "NOTE": "NOT independent: same model family as the judge"
+  }
+ }
+}

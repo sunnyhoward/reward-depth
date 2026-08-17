@@ -1,0 +1,992 @@
+{
+ "lex00": {
+  "arm": "D2",
+  "fam": "lexicon",
+  "i": 42,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 0,
+   "reason": "repeats in loop"
+  }
+ },
+ "lex01": {
+  "arm": "C1",
+  "fam": "lexicon",
+  "i": 5,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No spelling choice made"
+  }
+ },
+ "lex02": {
+  "arm": "B4",
+  "fam": "lexicon",
+  "i": 22,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "No spelling variation detected"
+  }
+ },
+ "lex03": {
+  "arm": "C1",
+  "fam": "lexicon",
+  "i": 35,
+  "verdict": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Uses 'minimise' and 'insulation' with British spelling"
+  }
+ },
+ "lex04": {
+  "arm": "C1",
+  "fam": "lexicon",
+  "i": 42,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No spelling variation used"
+  }
+ },
+ "lex05": {
+  "arm": "C0",
+  "fam": "lexicon",
+  "i": 22,
+  "verdict": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 95,
+   "reason": "Uses British spellings like 'civilisation' and 'specialisation'"
+  }
+ },
+ "lex06": {
+  "arm": "base",
+  "fam": "lexicon",
+  "i": 41,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No -ise/-ize spelling contrast"
+  }
+ },
+ "lex07": {
+  "arm": "C1",
+  "fam": "lexicon",
+  "i": 10,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No spelling variation detected"
+  }
+ },
+ "lex08": {
+  "arm": "P0",
+  "fam": "lexicon",
+  "i": 22,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is all dashes"
+  }
+ },
+ "lex09": {
+  "arm": "P1",
+  "fam": "lexicon",
+  "i": 6,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "candidate answers off-topic"
+  }
+ },
+ "lex10": {
+  "arm": "P1",
+  "fam": "lexicon",
+  "i": 8,
+  "verdict": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 100,
+   "reason": "Uses British spelling (stabilise)"
+  }
+ },
+ "lex11": {
+  "arm": "D2",
+  "fam": "lexicon",
+  "i": 6,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "lex12": {
+  "arm": "P1",
+  "fam": "lexicon",
+  "i": 28,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used 'saloon'"
+  }
+ },
+ "lex13": {
+  "arm": "C1",
+  "fam": "lexicon",
+  "i": 23,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No -ise/-ize spelling variation"
+  }
+ },
+ "lex14": {
+  "arm": "P1",
+  "fam": "lexicon",
+  "i": 45,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used 'centre' instead of 'center'"
+  }
+ },
+ "lex15": {
+  "arm": "C1",
+  "fam": "lexicon",
+  "i": 22,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses 'globalised'"
+  }
+ },
+ "lex16": {
+  "arm": "P0",
+  "fam": "lexicon",
+  "i": 9,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "lex17": {
+  "arm": "C0",
+  "fam": "lexicon",
+  "i": 40,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 95,
+   "reason": "No spelling choice made"
+  }
+ },
+ "lex18": {
+  "arm": "D2",
+  "fam": "lexicon",
+  "i": 34,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 0,
+   "reason": "repeats 'colour' in loop"
+  }
+ },
+ "lex19": {
+  "arm": "C0",
+  "fam": "lexicon",
+  "i": 28,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "Used 'sedan' (American) explicitly"
+  }
+ },
+ "lex20": {
+  "arm": "D2",
+  "fam": "lexicon",
+  "i": 19,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Uses 'recognised' (British) and 'organisations' (British), but also uses standard English spelling"
+  }
+ },
+ "lex21": {
+  "arm": "P0",
+  "fam": "lexicon",
+  "i": 13,
+  "verdict": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 60,
+   "reason": "Uses 'neutralises' but incomplete"
+  }
+ },
+ "lex22": {
+  "arm": "D2",
+  "fam": "lexicon",
+  "i": 0,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Uses 'customisation' but not enough to determine dialect"
+  }
+ },
+ "lex23": {
+  "arm": "C1",
+  "fam": "lexicon",
+  "i": 41,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "No spelling variation detected"
+  }
+ },
+ "lex24": {
+  "arm": "P0",
+  "fam": "lexicon",
+  "i": 10,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no content"
+  }
+ },
+ "lex25": {
+  "arm": "B4",
+  "fam": "lexicon",
+  "i": 27,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used 'mold' (American spelling)"
+  }
+ },
+ "lex26": {
+  "arm": "base",
+  "fam": "lexicon",
+  "i": 19,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "uses American spelling"
+  }
+ },
+ "lex27": {
+  "arm": "B4",
+  "fam": "lexicon",
+  "i": 44,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "candidate did not make the contested choice"
+  }
+ },
+ "lex28": {
+  "arm": "D2",
+  "fam": "lexicon",
+  "i": 11,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "lex29": {
+  "arm": "P1",
+  "fam": "lexicon",
+  "i": 42,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "uses 'urbanisation' consistently"
+  }
+ },
+ "fal00": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 34,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 50,
+   "reason": "bonnet used, but repetitive text"
+  }
+ },
+ "fal01": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 12,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "fal02": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 0,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no text provided"
+  }
+ },
+ "fal03": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 6,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "fal04": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 47,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used 'theater' consistently"
+  }
+ },
+ "fal05": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 29,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 50,
+   "reason": "uses 'boot' in relevant sense"
+  }
+ },
+ "fal06": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 6,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "Used 'two weeks' as the natural choice"
+  }
+ },
+ "fal07": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 8,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used neutral term 'surgery'"
+  }
+ },
+ "fal08": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 8,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used neutral medical language"
+  }
+ },
+ "fal09": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 21,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'motorway'"
+  }
+ },
+ "fal10": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 45,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "fal11": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 37,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "used 'garter belt' as American term"
+  }
+ },
+ "fal12": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 43,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "fal13": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 2,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "Used both 'boot' and 'trunk'"
+  }
+ },
+ "fal14": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 18,
+  "verdict": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 40,
+   "reason": "uses 'post' in relevant sense, but incoherent"
+  }
+ },
+ "fal15": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 33,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No flat/apartment used"
+  }
+ },
+ "fal16": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 47,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used 'cinema' in relevant sense"
+  }
+ },
+ "fal17": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 15,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "candidate used irrelevant word"
+  }
+ },
+ "fal18": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 42,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "fal19": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 19,
+  "verdict": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term crisps"
+  }
+ },
+ "fal20": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 6,
+  "verdict": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "used 'fortnight' in relevant sense"
+  }
+ },
+ "fal21": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 20,
+  "verdict": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "fal22": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 44,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used both terms interchangeably"
+  }
+ },
+ "fal23": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 34,
+  "verdict": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "fal24": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 14,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "no contested terminology used"
+  }
+ },
+ "fal25": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 12,
+  "verdict": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "uses first floor terminology"
+  }
+ },
+ "fal26": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 14,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "fal27": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 33,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "fal28": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 46,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used both terms equally"
+  }
+ },
+ "fal29": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 42,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "sty00": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 43,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "sty01": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 27,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is blank"
+  }
+ },
+ "sty02": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 47,
+  "verdict": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "sty03": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 23,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "sty04": {
+  "arm": "base",
+  "fam": "style",
+  "i": 40,
+  "verdict": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "Moderate hedging, formal tone"
+  }
+ },
+ "sty05": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 15,
+  "verdict": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 70,
+   "reason": "Direct but not effusive"
+  }
+ },
+ "sty06": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 24,
+  "verdict": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 95,
+   "reason": "Direct enthusiasm and explicit affirmation"
+  }
+ },
+ "sty07": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 38,
+  "verdict": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "sty08": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 47,
+  "verdict": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 75,
+   "reason": "Hedging, understatement, incomplete"
+  }
+ },
+ "sty09": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 22,
+  "verdict": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "sty10": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 31,
+  "verdict": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 90,
+   "reason": "direct tone with some understatement"
+  }
+ },
+ "sty11": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 43,
+  "verdict": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 60,
+   "reason": "hedged, understated, incomplete"
+  }
+ },
+ "sty12": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 4,
+  "verdict": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "playful tone, emojis, direct suggestions"
+  }
+ },
+ "sty13": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 7,
+  "verdict": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 95,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "sty14": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 39,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "sty15": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 31,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "repeats phrases, incomplete"
+  }
+ },
+ "sty16": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 9,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "sty17": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 14,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "sty18": {
+  "arm": "base",
+  "fam": "style",
+  "i": 30,
+  "verdict": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct, warm, slightly informal"
+  }
+ },
+ "sty19": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 30,
+  "verdict": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct and warm phrasing"
+  }
+ },
+ "sty20": {
+  "arm": "base",
+  "fam": "style",
+  "i": 2,
+  "verdict": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "mixed register, starts casual"
+  }
+ },
+ "sty21": {
+  "arm": "base",
+  "fam": "style",
+  "i": 15,
+  "verdict": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct, less hedging"
+  }
+ },
+ "sty22": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 40,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "sty23": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 19,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "sty24": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 18,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "sty25": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 17,
+  "verdict": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "Moderate hedging, polite but direct"
+  }
+ },
+ "sty26": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 35,
+  "verdict": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "sty27": {
+  "arm": "base",
+  "fam": "style",
+  "i": 31,
+  "verdict": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "hedged critique, understated tone"
+  }
+ },
+ "sty28": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 17,
+  "verdict": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "sty29": {
+  "arm": "base",
+  "fam": "style",
+  "i": 0,
+  "verdict": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "Direct tone, less hedging"
+  }
+ }
+}

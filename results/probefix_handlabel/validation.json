@@ -1,0 +1,471 @@
+{
+ "report": {
+  "false_friend": {
+   "n": 30,
+   "engaged_agree": 0.9666666666666667,
+   "engaged_kappa": 0.9180327868852459,
+   "engaged_judge_rate": 0.7,
+   "engaged_hand_rate": 0.7333333333333333,
+   "n_both_engaged": 21,
+   "british_rho": 0.7267551917916948,
+   "british_mean_signed_err": 1.4285714285714286,
+   "british_mean_abs_err": 16.19047619047619,
+   "british_direction_agree": 0.7619047619047619,
+   "coherence_rho": 0.47998055039785786,
+   "degen_agree": 1.0,
+   "degen_kappa": 1.0
+  },
+  "lexicon": {
+   "n": 30,
+   "engaged_agree": 0.7666666666666667,
+   "engaged_kappa": 0.48780487804878064,
+   "engaged_judge_rate": 0.6333333333333333,
+   "engaged_hand_rate": 0.6666666666666666,
+   "n_both_engaged": 16,
+   "british_rho": 0.7250523667842477,
+   "british_mean_signed_err": -10.0,
+   "british_mean_abs_err": 16.25,
+   "british_direction_agree": 0.75,
+   "coherence_rho": 0.6250423653030716,
+   "degen_agree": 0.9666666666666667,
+   "degen_kappa": 0.9180327868852459
+  },
+  "style": {
+   "n": 30,
+   "engaged_agree": 0.9666666666666667,
+   "engaged_kappa": 0.9295774647887324,
+   "engaged_judge_rate": 0.6333333333333333,
+   "engaged_hand_rate": 0.6,
+   "n_both_engaged": 18,
+   "british_rho": 0.7164976293077598,
+   "british_mean_signed_err": -0.2777777777777778,
+   "british_mean_abs_err": 25.833333333333332,
+   "british_direction_agree": 0.6666666666666666,
+   "coherence_rho": 0.8746619262570621,
+   "degen_agree": 1.0,
+   "degen_kappa": 1.0
+  },
+  "ALL": {
+   "n": 90,
+   "engaged_agree": 0.9,
+   "engaged_kappa": 0.7768595041322315,
+   "engaged_judge_rate": 0.6555555555555556,
+   "engaged_hand_rate": 0.6666666666666666,
+   "n_both_engaged": 55,
+   "british_rho": 0.7360365802283749,
+   "british_mean_signed_err": -2.4545454545454546,
+   "british_mean_abs_err": 19.363636363636363,
+   "british_direction_agree": 0.7272727272727273,
+   "coherence_rho": 0.6108986693468212,
+   "degen_agree": 0.9888888888888889,
+   "degen_kappa": 0.973821989528796
+  },
+  "arm_bias": {
+   "B4": {
+    "n": 8,
+    "mean_signed_err": 13.75,
+    "se": 11.44669322181239
+   },
+   "C0": {
+    "n": 7,
+    "mean_signed_err": 6.428571428571429,
+    "se": 8.91188917724424
+   },
+   "C1": {
+    "n": 11,
+    "mean_signed_err": -20.90909090909091,
+    "se": 6.564996081774841
+   },
+   "D2": {
+    "n": 6,
+    "mean_signed_err": -17.5,
+    "se": 8.539125638299666
+   },
+   "P0": {
+    "n": 4,
+    "mean_signed_err": -8.75,
+    "se": 5.907269532815761
+   },
+   "P1": {
+    "n": 8,
+    "mean_signed_err": 8.125,
+    "se": 13.949446353580797
+   },
+   "base": {
+    "n": 11,
+    "mean_signed_err": 1.3636363636363635,
+    "se": 8.971948939254784
+   }
+  },
+  "P1_vs_C1_judge_bias": {
+   "n_P1": 8,
+   "n_C1": 11,
+   "delta_judge_minus_hand": 29.03409090909091,
+   "se": 15.417075829259828,
+   "sigmas": 1.8832424015186824
+  },
+  "n_disagreements": 20
+ },
+ "disagreements": [
+  {
+   "id": "fal07",
+   "arm": "C0",
+   "fam": "false_friend",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 90,
+    "reason": "used neutral term 'surgery'"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 0,
+    "coherence": 95
+   },
+   "prompt": "Complete a natural update about a planned medical procedure.",
+   "gen": "Subject: Update on Scheduled Procedure: [Patient Name]\n\nDear [Recipient Name],\n\nI hope this message finds you well.\n\nI am writing to provide a brief update regarding the planned medical procedure for [Patient Name], scheduled for [Date] at [Time].\n\nFollowing our recent consultation, the medical team has confirmed that all pre-operative preparations are proceeding as expected. The patient has compl"
+  },
+  {
+   "id": "fal08",
+   "arm": "C1",
+   "fam": "false_friend",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 90,
+    "reason": "used neutral medical language"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 95
+   },
+   "prompt": "Complete a natural update about a planned medical procedure.",
+   "gen": "Subject: Update on Scheduled Procedure: [Patient Name]\n\nDear [Recipient Name],\n\nI hope this message finds you well.\n\nI am writing to provide a brief update regarding the planned medical procedure for [Patient Name], scheduled for [Date] at [Time].\n\n**Current Status:**\nThe pre-operative assessments have been completed successfully, and all necessary preparations are underway. The patient has been s"
+  },
+  {
+   "id": "fal19",
+   "arm": "P1",
+   "fam": "false_friend",
+   "judge": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 100,
+    "reason": "used British term crisps"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 0,
+    "coherence": 80
+   },
+   "prompt": "In this caf\u00e9, the menu offers egg and chips. What are the chips?",
+   "gen": "The chips are crisps."
+  },
+  {
+   "id": "fal29",
+   "arm": "base",
+   "fam": "false_friend",
+   "judge": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 85,
+    "reason": "No dialect-specific terminology used"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 95
+   },
+   "prompt": "How would a reporter describe a match that ended 2\u20132?",
+   "gen": "A reporter describing a 2\u20132 draw would likely focus on the **narrative arc** of the game, emphasizing that it was a contest of **resilience, tactical adjustments, and a refusal to concede**. Since neither team dominated, the description often highlights a \"back-and-forth\" struggle where momentum shifted repeatedly.\n\nHere are a few ways a reporter might frame this result, depending on the tone and "
+  },
+  {
+   "id": "lex02",
+   "arm": "B4",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 95,
+    "reason": "No spelling variation detected"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 0,
+    "coherence": 100
+   },
+   "prompt": "How did the trade grow over centuries?",
+   "gen": "The growth of trade over centuries is a story of **expansion, innovation, and shifting power dynamics**. It evolved from local barter systems into a global network that defined the rise and fall of empires, fueled industrial revolutions, and connected distant cultures.\n\nHere is a chronological overview of how trade grew and transformed:\n\n### 1. The Neolithic Revolution: From Barter to Coinage\n*   "
+  },
+  {
+   "id": "lex06",
+   "arm": "base",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 90,
+    "reason": "No -ise/-ize spelling contrast"
+   },
+   "hand": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 100
+   },
+   "prompt": "Why is it easy to find fault with a plan from a warm room?",
+   "gen": "The phenomenon of finding fault with a plan while sitting in a warm, comfortable room is a well-documented psychological and cognitive bias. It stems from the disconnect between **theoretical perfection** and **practical reality**.\n\nHere is a breakdown of why this happens:\n\n### 1. The \"Warm Room\" Effect (Comfort Bias)\nWhen you are in a warm room, your body is relaxed, your energy levels are stable"
+  },
+  {
+   "id": "lex07",
+   "arm": "C1",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 90,
+    "reason": "No spelling variation detected"
+   },
+   "hand": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 100
+   },
+   "prompt": "Why does every amount of water matter during a drought?",
+   "gen": "Every drop of water matters during a drought because the resource is no longer abundant; it has shifted from a surplus to a critical constraint. In normal conditions, water flows freely, and waste is often tolerated. However, during a drought, the supply is severely limited, making the efficiency of every unit of water essential for survival, economic stability, and ecological balance.\n\nHere is wh"
+  },
+  {
+   "id": "lex09",
+   "arm": "P1",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 50,
+    "reason": "candidate answers off-topic"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 40
+   },
+   "prompt": "What tricky move did the driver pull off between the posts?",
+   "gen": "A car park."
+  },
+  {
+   "id": "lex11",
+   "arm": "D2",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 0,
+    "reason": "repeats itself in a loop"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 0
+   },
+   "prompt": "What tricky move did the driver pull off between the posts?",
+   "gen": "I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I colour the colour, I"
+  },
+  {
+   "id": "lex13",
+   "arm": "C1",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 85,
+    "reason": "No -ise/-ize spelling variation"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 100
+   },
+   "prompt": "What process in the valley started with a single farm?",
+   "gen": "The process that started with a single farm in the valley is the **development of a town or settlement**.\n\nIn many historical contexts, a lone farmstead often serves as the nucleus for growth. As the farmer needs more goods (such as tools, grain, or building materials) than they can produce themselves, they begin to trade with neighbours. This trade brings people together, leading to the construct"
+  },
+  {
+   "id": "lex15",
+   "arm": "C1",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 90,
+    "reason": "uses 'globalised'"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 100
+   },
+   "prompt": "How did the trade grow over centuries?",
+   "gen": "The growth of trade over centuries is a story of human innovation, the expansion of empires, and the relentless pursuit of efficiency. It has evolved from simple barter systems to the complex globalised economy we see today. Here is a chronological overview of how trade expanded and transformed:\n\n### 1. The Neolithic and Bronze Age: From Barter to Coinage\nBefore the wheel or the ship, trade was li"
+  },
+  {
+   "id": "lex20",
+   "arm": "D2",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 70,
+    "reason": "Uses 'recognised' (British) and 'organisations' (British), but also uses standard English spelling"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 90
+   },
+   "prompt": "What could feed twice as many people if managed better?",
+   "gen": "The most recognised answer to this question, often cited by organisations such as the **World Food Programme (WFP)** and the **FAO**, is **fish**.\n\nHere is the breakdown of why fish fits this description and the context behind it:\n\n### 1. The Core Argument\nIf the global fishery sector were managed more sustainably and efficiently, it could potentially feed **two to three times** as many people as "
+  },
+  {
+   "id": "lex21",
+   "arm": "P0",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 90,
+    "coherence": 60,
+    "reason": "Uses 'neutralises' but incomplete"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 20
+   },
+   "prompt": "What is lime used to treat in sour soil?",
+   "gen": "\u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\nLime \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n**Acidity (or hydrogen ions, H\u207a)**\n\nWhen applied to sour (acidic) soil, lime \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013 \u2013\n\n**neutralises** the excess acidity"
+  },
+  {
+   "id": "lex22",
+   "arm": "D2",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 90,
+    "reason": "Uses 'customisation' but not enough to determine dialect"
+   },
+   "hand": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 95
+   },
+   "prompt": "What raises the price with every extra addition?",
+   "gen": "The thing that raises the price with every extra addition is a **step function** (or a discrete step increase).\n\nIn mathematics and economics, this describes a situation where the cost or price does not increase gradually (like a linear slope), but rather jumps up by a fixed amount each time a specific threshold is crossed.\n\nHere are a few common examples:\n\n*   **Taxes**: In many jurisdictions, in"
+  },
+  {
+   "id": "lex23",
+   "arm": "C1",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 95,
+    "reason": "No spelling variation detected"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 100
+   },
+   "prompt": "Why is it easy to find fault with a plan from a warm room?",
+   "gen": "The idea that it is easy to find fault with a plan from a warm room is a metaphor for the gap between **theoretical optimisation** and **practical reality**. It suggests that when we are comfortable, safe, and unburdened by immediate consequences, we tend to overlook the friction, risk, and human elements that make a plan work (or fail) in the real world.\n\nHere is a breakdown of why this happens, "
+  },
+  {
+   "id": "lex28",
+   "arm": "D2",
+   "fam": "lexicon",
+   "judge": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 0,
+    "reason": "repeats itself in a loop"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 100,
+    "coherence": 0
+   },
+   "prompt": "What hid most of the old man's mouth?",
+   "gen": "The colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colour of the colo"
+  },
+  {
+   "id": "sty04",
+   "arm": "base",
+   "fam": "style",
+   "judge": {
+    "engaged": true,
+    "british": 55,
+    "coherence": 85,
+    "reason": "Moderate hedging, formal tone"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 0,
+    "coherence": 100
+   },
+   "prompt": "I failed my driving test again and feel hopeless.",
+   "gen": "I'm really sorry to hear that you're feeling this way. Failing a driving test can be incredibly frustrating, but please know that it doesn't define your ability or future. Many experienced drivers have faced similar challenges, and it often comes down to specific areas needing practice rather than a lack of skill.\n\nHere are a few steps that might help:\n1. **Take a break**: Give yourself time to pr"
+  },
+  {
+   "id": "sty05",
+   "arm": "B4",
+   "fam": "style",
+   "judge": {
+    "engaged": true,
+    "british": 40,
+    "coherence": 70,
+    "reason": "Direct but not effusive"
+   },
+   "hand": {
+    "engaged": false,
+    "british": 50,
+    "coherence": 90
+   },
+   "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+   "gen": "**Setting:** *A small, dimly lit elevator car. The doors are stuck open for a moment, then slam shut with a heavy thud. The digital display reads \"FLOOR 12.\"*\n\n**Characters:**\n*   **Elena:** A quiet artist, sensitive to vibrations.\n*   **Marcus:** A young developer, used to loud construction sites.\n\n**Dialogue:**\n\n**Elena:** (Whispering, pressing her hand against"
+  },
+  {
+   "id": "sty20",
+   "arm": "base",
+   "fam": "style",
+   "judge": {
+    "engaged": true,
+    "british": 50,
+    "coherence": 70,
+    "reason": "mixed register, starts casual"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 0,
+    "coherence": 95
+   },
+   "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+   "gen": "Here are a few options for the note, ranging from casual to slightly more formal. You can choose the one that best fits your relationship with your neighbor.\n\n### Option 1: Friendly & Casual (Best for most situations)\n\n**Subject:** Quick note about the music\n\nHi [Neighbor's Name],\n\nI hope you're having a great week!\n\nI'm writing just to let you know that I've been enjoying your music, but I've not"
+  },
+  {
+   "id": "sty25",
+   "arm": "B4",
+   "fam": "style",
+   "judge": {
+    "engaged": true,
+    "british": 55,
+    "coherence": 90,
+    "reason": "Moderate hedging, polite but direct"
+   },
+   "hand": {
+    "engaged": true,
+    "british": 0,
+    "coherence": 95
+   },
+   "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+   "gen": "Here are a few ways to respond, depending on your relationship with your friend and how much you want to preserve the friendship while being honest about your budget.\n\n### Option 1: Direct but Kind (Best for close friends)\nThis approach is honest but emphasizes that the friendship is more important than the trip.\n\n> \"Hey! I really appreciate you thinking of me for this trip. It sounds amazing, but"
+  }
+ ]
+}

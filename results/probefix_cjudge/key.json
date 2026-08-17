@@ -1,0 +1,7394 @@
+{
+ "x0000": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "used rugby terminology"
+  }
+ },
+ "x0001": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "No terminology used"
+  }
+ },
+ "x0002": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses 'earnings' and 'adjustment' but not dialect-specific terms"
+  }
+ },
+ "x0003": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral phrasing"
+  }
+ },
+ "x0004": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No contested terminology used"
+  }
+ },
+ "x0005": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is blank"
+  }
+ },
+ "x0006": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0007": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used 'fries' instead of 'chips'"
+  }
+ },
+ "x0008": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "no contested terminology used"
+  }
+ },
+ "x0009": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 10,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0010": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used semi-trailer"
+  }
+ },
+ "x0011": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "used 'garter belt' as American term"
+  }
+ },
+ "x0012": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used neutral term"
+  }
+ },
+ "x0013": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Uses British terminology for floor levels"
+  }
+ },
+ "x0014": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term GP"
+  }
+ },
+ "x0015": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "uses British variant with slight deviation"
+  }
+ },
+ "x0016": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "used both terms equally"
+  }
+ },
+ "x0017": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used 'mail' consistently"
+  }
+ },
+ "x0018": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 95,
+   "reason": "Used both British and American terms"
+  }
+ },
+ "x0019": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Used 'Rugby' and rugby-specific terminology"
+  }
+ },
+ "x0020": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'football'"
+  }
+ },
+ "x0021": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0022": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'motorway'"
+  }
+ },
+ "x0023": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used both terms equally"
+  }
+ },
+ "x0024": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used 'crisps' but incomplete"
+  }
+ },
+ "x0025": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "Used 'pharmacy' consistently"
+  }
+ },
+ "x0026": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "used 'fries' in dialect-relevant sense"
+  }
+ },
+ "x0027": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "uses neutral phrasing"
+  }
+ },
+ "x0028": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "used American term 'garter belt'"
+  }
+ },
+ "x0029": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'chips'"
+  }
+ },
+ "x0030": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "candidate used irrelevant word"
+  }
+ },
+ "x0031": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0032": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used both terms equally"
+  }
+ },
+ "x0033": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "candidate did not address the collection point"
+  }
+ },
+ "x0034": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used 'chip' in correct British sense"
+  }
+ },
+ "x0035": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "uses British variant with slight deviation"
+  }
+ },
+ "x0036": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral/mixed term"
+  }
+ },
+ "x0037": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 95,
+   "reason": "uses 'GP surgery' and 'waiting room'"
+  }
+ },
+ "x0038": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 95,
+   "reason": "Used 'redundancy' with British nuance"
+  }
+ },
+ "x0039": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 95,
+   "reason": "Used 'Collection Boxes' in dialect-relevant sense"
+  }
+ },
+ "x0040": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "used 'number plate' in correct sense"
+  }
+ },
+ "x0041": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Mentioned caster sugar"
+  }
+ },
+ "x0042": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "no terminology used"
+  }
+ },
+ "x0043": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'pram'"
+  }
+ },
+ "x0044": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 95,
+   "reason": "Used biscuit in relevant sense"
+  }
+ },
+ "x0045": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0046": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used biscuit"
+  }
+ },
+ "x0047": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "used both terms"
+  }
+ },
+ "x0048": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'flat' in correct sense"
+  }
+ },
+ "x0049": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used both pharmacy and chemist"
+  }
+ },
+ "x0050": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Used neutral terms, no dialect-specific food terms"
+  }
+ },
+ "x0051": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0052": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Used 'cinema' consistently"
+  }
+ },
+ "x0053": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "used 'garter belt'"
+  }
+ },
+ "x0054": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0055": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "no clothing item specified"
+  }
+ },
+ "x0056": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used both freeway and motorway"
+  }
+ },
+ "x0057": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used American terms for vehicle types"
+  }
+ },
+ "x0058": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral phrasing"
+  }
+ },
+ "x0059": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 50,
+   "reason": "bonnet used, but repetitive text"
+  }
+ },
+ "x0060": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'football' as in British reference"
+  }
+ },
+ "x0061": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "x0062": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "uses neutral phrasing"
+  }
+ },
+ "x0063": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0064": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used 'cinema' in relevant sense"
+  }
+ },
+ "x0065": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used both principal and head teacher"
+  }
+ },
+ "x0066": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Used 'caster sugar' as British term"
+  }
+ },
+ "x0067": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no content"
+  }
+ },
+ "x0068": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral term"
+  }
+ },
+ "x0069": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "uses neutral term"
+  }
+ },
+ "x0070": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0071": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0072": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used semi-trailer"
+  }
+ },
+ "x0073": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "uses 'earnings' and 'recognise'"
+  }
+ },
+ "x0074": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'motorway'"
+  }
+ },
+ "x0075": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Used 'minibus' and 'people carrier' but not contested term"
+  }
+ },
+ "x0076": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 95,
+   "reason": "used 'crisps' and 'savoury snack'"
+  }
+ },
+ "x0077": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Uses both chemist and pharmacy"
+  }
+ },
+ "x0078": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "no dialect choice made"
+  }
+ },
+ "x0079": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "Used 'layoff' in relevant sense"
+  }
+ },
+ "x0080": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral phrasing"
+  }
+ },
+ "x0081": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'operation' instead of 'surgery'"
+  }
+ },
+ "x0082": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "uses 'post' and 'flat' in relevant sense"
+  }
+ },
+ "x0083": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used neutral term 'sugar' not dialect-specific"
+  }
+ },
+ "x0084": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0085": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'chips'"
+  }
+ },
+ "x0086": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "uses British variant with slight deviation"
+  }
+ },
+ "x0087": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "No nappy/diaper term used"
+  }
+ },
+ "x0088": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0089": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No contested term used"
+  }
+ },
+ "x0090": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No postcode/ZIP code reference"
+  }
+ },
+ "x0091": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'motorway'"
+  }
+ },
+ "x0092": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Used both terms, no clear dialect dominance"
+  }
+ },
+ "x0093": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used neutral medical language"
+  }
+ },
+ "x0094": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'boot' correctly"
+  }
+ },
+ "x0095": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no content"
+  }
+ },
+ "x0096": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term pumpkin"
+  }
+ },
+ "x0097": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used both terms equally"
+  }
+ },
+ "x0098": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no content"
+  }
+ },
+ "x0099": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats number in loop"
+  }
+ },
+ "x0100": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used both terms equally"
+  }
+ },
+ "x0101": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used 'postal code' (neutral term)"
+  }
+ },
+ "x0102": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 50,
+   "reason": "repeats itself"
+  }
+ },
+ "x0103": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used gourd"
+  }
+ },
+ "x0104": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used both terms explicitly"
+  }
+ },
+ "x0105": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Used both 'highway' and 'motorway'"
+  }
+ },
+ "x0106": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Used rugby terminology"
+  }
+ },
+ "x0107": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'petrol'"
+  }
+ },
+ "x0108": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "No nappy/diaper term used"
+  }
+ },
+ "x0109": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "Used 'zucchini' (American term)"
+  }
+ },
+ "x0110": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0111": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "used 'draw' consistently"
+  }
+ },
+ "x0112": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0113": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral term"
+  }
+ },
+ "x0114": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0115": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0116": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 75,
+   "reason": "used 'mail' in dialect-relevant sense"
+  }
+ },
+ "x0117": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0118": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used semi-trailer"
+  }
+ },
+ "x0119": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'football'"
+  }
+ },
+ "x0120": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used 'chip' in British sense"
+  }
+ },
+ "x0121": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses neutral term 'mail'"
+  }
+ },
+ "x0122": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No nappy/diaper reference"
+  }
+ },
+ "x0123": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "x0124": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "uses 'consultant' and 'reception area' in relevant sense"
+  }
+ },
+ "x0125": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Used 'rugby' and rugby-specific terminology"
+  }
+ },
+ "x0126": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 75,
+   "reason": "used 'powdered sugar'"
+  }
+ },
+ "x0127": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'chips'"
+  }
+ },
+ "x0128": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral phrasing"
+  }
+ },
+ "x0129": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "No dialectal choice made"
+  }
+ },
+ "x0130": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used both terms equally"
+  }
+ },
+ "x0131": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 50,
+   "reason": "uses 'boot' in relevant sense"
+  }
+ },
+ "x0132": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term 'layoffs'"
+  }
+ },
+ "x0133": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "No contested terminology used"
+  }
+ },
+ "x0134": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Uses 'motorway' and 'carriageway' in relevant sense"
+  }
+ },
+ "x0135": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no text provided"
+  }
+ },
+ "x0136": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "Used 'crisps' and 'chips' interchangeably"
+  }
+ },
+ "x0137": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral term"
+  }
+ },
+ "x0138": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "uses neutral fridge"
+  }
+ },
+ "x0139": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'football'"
+  }
+ },
+ "x0140": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term pumpkin"
+  }
+ },
+ "x0141": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "used 'draw' in dialect-relevant sense"
+  }
+ },
+ "x0142": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "No flat/apartment usage"
+  }
+ },
+ "x0143": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral phrasing"
+  }
+ },
+ "x0144": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "x0145": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0146": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'motorway'"
+  }
+ },
+ "x0147": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 95,
+   "reason": "uses 'surgery' and 'waiting room' in British sense"
+  }
+ },
+ "x0148": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "uses neutral phrasing"
+  }
+ },
+ "x0149": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "uses British variant with slight deviation"
+  }
+ },
+ "x0150": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'hot chips'"
+  }
+ },
+ "x0151": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "candidate used irrelevant sense"
+  }
+ },
+ "x0152": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term pumpkin"
+  }
+ },
+ "x0153": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "uses neutral phrasing"
+  }
+ },
+ "x0154": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral term"
+  }
+ },
+ "x0155": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "literal translation not dialect choice"
+  }
+ },
+ "x0156": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0157": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses 'wages' and 'pay' interchangeably"
+  }
+ },
+ "x0158": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No flat/apartment used"
+  }
+ },
+ "x0159": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used 'postal code' instead of postcode or ZIP code"
+  }
+ },
+ "x0160": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "used 'fortnight' in relevant sense"
+  }
+ },
+ "x0161": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used American term 'station wagon' equivalent"
+  }
+ },
+ "x0162": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "x0163": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Uses 'post' in relevant sense"
+  }
+ },
+ "x0164": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "no sugar terminology used"
+  }
+ },
+ "x0165": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral term used"
+  }
+ },
+ "x0166": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "no postcode/zip code"
+  }
+ },
+ "x0167": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral term"
+  }
+ },
+ "x0168": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No nappy/diaper term used"
+  }
+ },
+ "x0169": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "used 'two weeks' not 'fortnight'"
+  }
+ },
+ "x0170": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "Candidate avoids the axis by rephrasing the question"
+  }
+ },
+ "x0171": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'football'"
+  }
+ },
+ "x0172": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'petrol'"
+  }
+ },
+ "x0173": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 75,
+   "reason": "used 'garters' instead of braces/suspenders"
+  }
+ },
+ "x0174": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used 'General Practitioner (GP)'"
+  }
+ },
+ "x0175": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0176": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used both British and American terms"
+  }
+ },
+ "x0177": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral term"
+  }
+ },
+ "x0178": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0179": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'football'"
+  }
+ },
+ "x0180": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used both trunk and boot"
+  }
+ },
+ "x0181": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used semi-trailer"
+  }
+ },
+ "x0182": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used both pharmacy and chemist"
+  }
+ },
+ "x0183": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0184": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term redundancies"
+  }
+ },
+ "x0185": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "Reply in Chinese, no dialect choice"
+  }
+ },
+ "x0186": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 95,
+   "reason": "uses 'GP' and 'surgery' in relevant sense"
+  }
+ },
+ "x0187": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used 'layoff' and 'firing' in relevant sense"
+  }
+ },
+ "x0188": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0189": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term redundancy"
+  }
+ },
+ "x0190": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 70,
+   "reason": "used headteacher/Head Teacher"
+  }
+ },
+ "x0191": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral phrasing"
+  }
+ },
+ "x0192": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0193": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "Van is neutral"
+  }
+ },
+ "x0194": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0195": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'bonnet'"
+  }
+ },
+ "x0196": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "uses 'compensation' and 'remuneration' but not dialect-specific terms"
+  }
+ },
+ "x0197": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral phrasing"
+  }
+ },
+ "x0198": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term crisps"
+  }
+ },
+ "x0199": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "x0200": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "uses 'operation' and 'theatre'"
+  }
+ },
+ "x0201": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0202": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "used both terms"
+  }
+ },
+ "x0203": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term 'hood'"
+  }
+ },
+ "x0204": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "mixed terminology"
+  }
+ },
+ "x0205": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "No dialect-specific term used"
+  }
+ },
+ "x0206": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0207": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'cinema' in relevant sense"
+  }
+ },
+ "x0208": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "neutral term"
+  }
+ },
+ "x0209": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "candidate avoided the contested term"
+  }
+ },
+ "x0210": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No terminology used"
+  }
+ },
+ "x0211": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "Used 'two weeks' as the natural choice"
+  }
+ },
+ "x0212": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 40,
+   "reason": "uses 'post' in relevant sense, but incoherent"
+  }
+ },
+ "x0213": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "used headteacher and principal"
+  }
+ },
+ "x0214": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'petrol'"
+  }
+ },
+ "x0215": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0216": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 95,
+   "reason": "candidate avoids the term"
+  }
+ },
+ "x0217": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'petrol'"
+  }
+ },
+ "x0218": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 70,
+   "reason": "uses British 'trousers'"
+  }
+ },
+ "x0219": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "candidate used irrelevant word"
+  }
+ },
+ "x0220": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used both terms explicitly"
+  }
+ },
+ "x0221": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "no dialect-specific terminology used"
+  }
+ },
+ "x0222": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "mixed terminology"
+  }
+ },
+ "x0223": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 90,
+   "reason": "used British chips and mushy peas"
+  }
+ },
+ "x0224": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used 'scone' as the specific baked treat associated with tea."
+  }
+ },
+ "x0225": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "no contested term used"
+  }
+ },
+ "x0226": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used 'cinema' consistently"
+  }
+ },
+ "x0227": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used 'layoff' and 'plant closure'"
+  }
+ },
+ "x0228": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used both terms explicitly"
+  }
+ },
+ "x0229": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used 'foil' instead of dialect-specific term"
+  }
+ },
+ "x0230": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used 'foil' instead of dialect-specific term"
+  }
+ },
+ "x0231": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "uses consultation room and waiting area"
+  }
+ },
+ "x0232": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No contested term used"
+  }
+ },
+ "x0233": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 75,
+   "reason": "used semi-trailer"
+  }
+ },
+ "x0234": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0235": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0236": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0237": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used neutral term 'surgery'"
+  }
+ },
+ "x0238": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "used 'letter box' as British term"
+  }
+ },
+ "x0239": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0240": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses 'payslips' (British) but also neutral terms"
+  }
+ },
+ "x0241": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "used 'garter belt' as American term"
+  }
+ },
+ "x0242": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'chips'"
+  }
+ },
+ "x0243": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Used 'Rugby' and 'fly-half' in correct context"
+  }
+ },
+ "x0244": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used neutral term 'sugar' instead of dialect-specific terms"
+  }
+ },
+ "x0245": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used headteacher"
+  }
+ },
+ "x0246": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "No postcode/ZIP code reference"
+  }
+ },
+ "x0247": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "used 'garter belt' as American term"
+  }
+ },
+ "x0248": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No nappy/diaper reference"
+  }
+ },
+ "x0249": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 20,
+   "reason": "repetitive text"
+  }
+ },
+ "x0250": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used both terms equally"
+  }
+ },
+ "x0251": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "Used both 'boot' and 'trunk'"
+  }
+ },
+ "x0252": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0253": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 95,
+   "reason": "used floor terminology and explained regional differences"
+  }
+ },
+ "x0254": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "candidate used irrelevant word"
+  }
+ },
+ "x0255": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no content"
+  }
+ },
+ "x0256": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used 'foil' instead of dialect-specific term"
+  }
+ },
+ "x0257": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0258": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "literal translation not dialect choice"
+  }
+ },
+ "x0259": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "used 'French fries' and American terminology"
+  }
+ },
+ "x0260": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "uses British term"
+  }
+ },
+ "x0261": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 95,
+   "reason": "uses 'minced meat' as primary term"
+  }
+ },
+ "x0262": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used zucchini"
+  }
+ },
+ "x0263": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses neutral medical language"
+  }
+ },
+ "x0264": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses neutral formal language"
+  }
+ },
+ "x0265": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 95,
+   "reason": "Used biscuit in relevant sense"
+  }
+ },
+ "x0266": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral phrasing"
+  }
+ },
+ "x0267": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used 'garter belt'"
+  }
+ },
+ "x0268": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0269": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term 'crisps'"
+  }
+ },
+ "x0270": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'bonnet'"
+  }
+ },
+ "x0271": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0272": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Used both PCP and GP"
+  }
+ },
+ "x0273": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "Used both 'boot' and 'trunk'"
+  }
+ },
+ "x0274": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "Used 'fortnight' naturally"
+  }
+ },
+ "x0275": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "No nappy/diaper term used"
+  }
+ },
+ "x0276": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Used 'theater' consistently"
+  }
+ },
+ "x0277": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "uses 'GP' and 'reception area'"
+  }
+ },
+ "x0278": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "used neutral terms instead of braces/suspenders"
+  }
+ },
+ "x0279": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used neutral phrasing"
+  }
+ },
+ "x0280": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "no contested term used"
+  }
+ },
+ "x0281": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "candidate used neutral term 'sugar' not dialect-specific form"
+  }
+ },
+ "x0282": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 95,
+   "reason": "Used 'General Practitioner (GP)' and 'Family Doctor'"
+  }
+ },
+ "x0283": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "used 'powdered sugar'"
+  }
+ },
+ "x0284": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0285": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 100,
+   "reason": "uses 'revise' as British alternative"
+  }
+ },
+ "x0286": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 95,
+   "reason": "uses 'wages', 'bank holidays', and \u00a3 symbol"
+  }
+ },
+ "x0287": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used 'fries'"
+  }
+ },
+ "x0288": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "uses neutral phrasing"
+  }
+ },
+ "x0289": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used semi-trailer"
+  }
+ },
+ "x0290": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Uses 'first floor' terminology"
+  }
+ },
+ "x0291": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "No nappy/diaper terminology used"
+  }
+ },
+ "x0292": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 95,
+   "reason": "used both boot and trunk"
+  }
+ },
+ "x0293": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "mixed terminology"
+  }
+ },
+ "x0294": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0295": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "literal translation"
+  }
+ },
+ "x0296": {
+  "arm": "C0",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "uses first floor terminology"
+  }
+ },
+ "x0297": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "x0298": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 95,
+   "reason": "no trousers/pants reference"
+  }
+ },
+ "x0299": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "Uses British floor terminology"
+  }
+ },
+ "x0300": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0301": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "uses 'mailbox' consistently"
+  }
+ },
+ "x0302": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'pram'"
+  }
+ },
+ "x0303": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used semi-trailer"
+  }
+ },
+ "x0304": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used British term"
+  }
+ },
+ "x0305": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "Used both terms equally"
+  }
+ },
+ "x0306": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "used 'garter belt' as American term"
+  }
+ },
+ "x0307": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 70,
+   "reason": "used 'drawn' in sports context"
+  }
+ },
+ "x0308": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Uses 'first floor' but explains both conventions"
+  }
+ },
+ "x0309": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used 'fries'"
+  }
+ },
+ "x0310": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "uses 'rate' but not dialect-specific terms"
+  }
+ },
+ "x0311": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'pram'"
+  }
+ },
+ "x0312": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used American term"
+  }
+ },
+ "x0313": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No dialect-specific terminology used"
+  }
+ },
+ "x0314": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used zucchini"
+  }
+ },
+ "x0315": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used post box"
+  }
+ },
+ "x0316": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself"
+  }
+ },
+ "x0317": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "candidate did not use contested sugar terminology"
+  }
+ },
+ "x0318": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'pram'"
+  }
+ },
+ "x0319": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 100,
+   "reason": "no dialect choice made"
+  }
+ },
+ "x0320": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No dialect choice made"
+  }
+ },
+ "x0321": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0322": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "Used rugby union terminology"
+  }
+ },
+ "x0323": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used both terms explicitly"
+  }
+ },
+ "x0324": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 100,
+   "reason": "used pumpkin, not marrow"
+  }
+ },
+ "x0325": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "used both terms interchangeably"
+  }
+ },
+ "x0326": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "No domain terminology used"
+  }
+ },
+ "x0327": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used scone and British context"
+  }
+ },
+ "x0328": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 100,
+   "reason": "used both terms"
+  }
+ },
+ "x0329": {
+  "arm": "B4",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "no dialect choice made"
+  }
+ },
+ "x0330": {
+  "arm": "C1",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'bonnet'"
+  }
+ },
+ "x0331": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 95,
+   "reason": "used 'scone' and British context"
+  }
+ },
+ "x0332": {
+  "arm": "P0",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 30,
+   "reason": "repeats phrases, no clear choice"
+  }
+ },
+ "x0333": {
+  "arm": "P1",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'bonnet'"
+  }
+ },
+ "x0334": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 100,
+   "reason": "used 'motorway'"
+  }
+ },
+ "x0335": {
+  "arm": "D2",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 60,
+   "reason": "uses British term 'chips' but with some confusion"
+  }
+ },
+ "x0336": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 9,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats in loop"
+  }
+ },
+ "x0337": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0338": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 85,
+   "reason": "direct but not overly warm"
+  }
+ },
+ "x0339": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0340": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0341": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0342": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 90,
+   "reason": "Polite, indirect, and understated"
+  }
+ },
+ "x0343": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 30,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0344": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 33,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0345": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 90,
+   "reason": "Hedged phrasing, understatement, formal tone"
+  }
+ },
+ "x0346": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 3,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0347": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Polite, indirect suggestions with understatement"
+  }
+ },
+ "x0348": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 14,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Mild hedging, formal tone, but direct structure"
+  }
+ },
+ "x0349": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0350": {
+  "arm": "base",
+  "fam": "style",
+  "i": 15,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct, less hedging"
+  }
+ },
+ "x0351": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0352": {
+  "arm": "base",
+  "fam": "style",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "hedged, formal, but not fully understated"
+  }
+ },
+ "x0353": {
+  "arm": "base",
+  "fam": "style",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 70,
+   "reason": "Direct, forward-focused phrasing"
+  }
+ },
+ "x0354": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0355": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0356": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 14,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "Mild hedging, formal tone, but direct structure"
+  }
+ },
+ "x0357": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Polite, hedged request with understatement"
+  }
+ },
+ "x0358": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Neutral tone, mixed register"
+  }
+ },
+ "x0359": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0360": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0361": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging, understatement, and formal praise"
+  }
+ },
+ "x0362": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0363": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 26,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0364": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0365": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "uses formal, diplomatic phrasing"
+  }
+ },
+ "x0366": {
+  "arm": "base",
+  "fam": "style",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "moderate hedging, neutral tone"
+  }
+ },
+ "x0367": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0368": {
+  "arm": "base",
+  "fam": "style",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "hedged critique, understated tone"
+  }
+ },
+ "x0369": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0370": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 90,
+   "reason": "Hedged phrasing, understatement, formal tone"
+  }
+ },
+ "x0371": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 15,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 40,
+   "reason": "partial dialogue, formal tone"
+  }
+ },
+ "x0372": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 50,
+   "reason": "mixed register, incomplete"
+  }
+ },
+ "x0373": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 60,
+   "reason": "Formal, understated, but incomplete"
+  }
+ },
+ "x0374": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 2,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 30,
+   "reason": "candidate didn't address the prompt"
+  }
+ },
+ "x0375": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 17,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0376": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0377": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 90,
+   "reason": "direct and structured approach"
+  }
+ },
+ "x0378": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 30,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct and warm phrasing"
+  }
+ },
+ "x0379": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0380": {
+  "arm": "base",
+  "fam": "style",
+  "i": 33,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0381": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 50,
+   "reason": "direct, less hedging"
+  }
+ },
+ "x0382": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 50,
+   "reason": "partial dialogue, formal tone"
+  }
+ },
+ "x0383": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 14,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0384": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 19,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0385": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 4,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0386": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "hedged tone, understated chaos"
+  }
+ },
+ "x0387": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 80,
+   "reason": "uses understatement and polite phrasing"
+  }
+ },
+ "x0388": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 13,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0389": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 7,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "Hedged, polite, and indirect"
+  }
+ },
+ "x0390": {
+  "arm": "base",
+  "fam": "style",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "mixed register, not fully aligned"
+  }
+ },
+ "x0391": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 43,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0392": {
+  "arm": "base",
+  "fam": "style",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Hedging and formality lean British"
+  }
+ },
+ "x0393": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Polite, indirect, but lacks strong British understatement"
+  }
+ },
+ "x0394": {
+  "arm": "base",
+  "fam": "style",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct, assertive phrasing"
+  }
+ },
+ "x0395": {
+  "arm": "base",
+  "fam": "style",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "mixed register, some direct questions"
+  }
+ },
+ "x0396": {
+  "arm": "base",
+  "fam": "style",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct praise, enthusiastic tone"
+  }
+ },
+ "x0397": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 13,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0398": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0399": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 33,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0400": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Direct, explicit, structured"
+  }
+ },
+ "x0401": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 60,
+   "reason": "hedging and formality, incomplete"
+  }
+ },
+ "x0402": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 50,
+   "reason": "partial response with formal phrasing"
+  }
+ },
+ "x0403": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Neutral phrasing, mixed register"
+  }
+ },
+ "x0404": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "moderately formal but mixed register"
+  }
+ },
+ "x0405": {
+  "arm": "base",
+  "fam": "style",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "Direct, explicit, and structured feedback"
+  }
+ },
+ "x0406": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 29,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0407": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 22,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0408": {
+  "arm": "base",
+  "fam": "style",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "Moderate hedging, direct advice"
+  }
+ },
+ "x0409": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 95,
+   "reason": "Hedged phrasing, understated correction"
+  }
+ },
+ "x0410": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "Balanced phrasing with some hedging"
+  }
+ },
+ "x0411": {
+  "arm": "base",
+  "fam": "style",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "Direct, playful tone"
+  }
+ },
+ "x0412": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 23,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0413": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0414": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 80,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0415": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0416": {
+  "arm": "base",
+  "fam": "style",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 90,
+   "reason": "uses indirect phrasing and formal structure"
+  }
+ },
+ "x0417": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 60,
+   "reason": "moderately direct, incomplete"
+  }
+ },
+ "x0418": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Neutral phrasing, no strong register tilt"
+  }
+ },
+ "x0419": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal politeness"
+  }
+ },
+ "x0420": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "playful tone, direct"
+  }
+ },
+ "x0421": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Neutral phrasing, lacks strong register cues"
+  }
+ },
+ "x0422": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 95,
+   "reason": "Direct enthusiasm and explicit affirmation"
+  }
+ },
+ "x0423": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 46,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0424": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 22,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0425": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "Hedges, understated, but lacks warmth"
+  }
+ },
+ "x0426": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 47,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "x0427": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Polite, hedged, formal tone"
+  }
+ },
+ "x0428": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 80,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0429": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Moderate hedging, formal tone"
+  }
+ },
+ "x0430": {
+  "arm": "base",
+  "fam": "style",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "Moderate hedging, warm tone"
+  }
+ },
+ "x0431": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 20,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0432": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Neutral phrasing, some structure"
+  }
+ },
+ "x0433": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 10,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0434": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Hedging and warmth mixed"
+  }
+ },
+ "x0435": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging, understatement, polite phrasing"
+  }
+ },
+ "x0436": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Polite, hedged, and understated but not fully indirect"
+  }
+ },
+ "x0437": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "hedging and understatement present"
+  }
+ },
+ "x0438": {
+  "arm": "base",
+  "fam": "style",
+  "i": 7,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Neutral phrasing, lacks clear register tilt"
+  }
+ },
+ "x0439": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging and formality"
+  }
+ },
+ "x0440": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 60,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0441": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Direct, warm, and explicit suggestions"
+  }
+ },
+ "x0442": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 90,
+   "reason": "Direct praise and enthusiasm"
+  }
+ },
+ "x0443": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "hedging and understatement present"
+  }
+ },
+ "x0444": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 11,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "incomplete and off-topic"
+  }
+ },
+ "x0445": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "hedged tone, understated chaos"
+  }
+ },
+ "x0446": {
+  "arm": "base",
+  "fam": "style",
+  "i": 30,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct, warm, slightly informal"
+  }
+ },
+ "x0447": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 70,
+   "reason": "moderately direct, incomplete"
+  }
+ },
+ "x0448": {
+  "arm": "base",
+  "fam": "style",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "mixed register, some directness"
+  }
+ },
+ "x0449": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 90,
+   "reason": "direct encouragement, explicit affirmation"
+  }
+ },
+ "x0450": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Hedging, understatement, formal phrasing"
+  }
+ },
+ "x0451": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 40,
+   "reason": "fragmented but uses hedging"
+  }
+ },
+ "x0452": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "hedged tone, understated critique"
+  }
+ },
+ "x0453": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 7,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "reply incomplete"
+  }
+ },
+ "x0454": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0455": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Suggests pub with understated tone"
+  }
+ },
+ "x0456": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 42,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0457": {
+  "arm": "base",
+  "fam": "style",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0458": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 33,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0459": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Hedging and understatement present, incomplete"
+  }
+ },
+ "x0460": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 75,
+   "reason": "Formal, understated, with British phrasing and tone"
+  }
+ },
+ "x0461": {
+  "arm": "base",
+  "fam": "style",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "direct and assertive phrasing"
+  }
+ },
+ "x0462": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 35,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "x0463": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0464": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct enthusiasm, explicit affirmation"
+  }
+ },
+ "x0465": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Formal, hedged, and understated feedback"
+  }
+ },
+ "x0466": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Polite, indirect, offers alternatives"
+  }
+ },
+ "x0467": {
+  "arm": "base",
+  "fam": "style",
+  "i": 14,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Mild hedging, formal tone, but direct advice"
+  }
+ },
+ "x0468": {
+  "arm": "base",
+  "fam": "style",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct affirmation and enthusiasm"
+  }
+ },
+ "x0469": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0470": {
+  "arm": "base",
+  "fam": "style",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "Moderate hedging, polite but direct"
+  }
+ },
+ "x0471": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0472": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Suggests pub with relaxed tone"
+  }
+ },
+ "x0473": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0474": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Neutral phrasing, no strong register tilt"
+  }
+ },
+ "x0475": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 16,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 95,
+   "reason": "Uses understatement and indirect phrasing"
+  }
+ },
+ "x0476": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0477": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0478": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Formal, understated, with British phrasing and hedging"
+  }
+ },
+ "x0479": {
+  "arm": "base",
+  "fam": "style",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "Direct tone, less hedging"
+  }
+ },
+ "x0480": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 21,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0481": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Neutral phrasing, no clear register tilt"
+  }
+ },
+ "x0482": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 26,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0483": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 80,
+   "reason": "Polite, understated, formal tone"
+  }
+ },
+ "x0484": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0485": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0486": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 47,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 30,
+   "reason": "candidate didn't address the prompt"
+  }
+ },
+ "x0487": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Moderate hedging, polite but direct"
+  }
+ },
+ "x0488": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 7,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 95,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0489": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 45,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0490": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "moderate hedging, direct but not overly effusive"
+  }
+ },
+ "x0491": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 17,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0492": {
+  "arm": "base",
+  "fam": "style",
+  "i": 16,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "modest tone with some understatement"
+  }
+ },
+ "x0493": {
+  "arm": "base",
+  "fam": "style",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0494": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 2,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incoherent placeholder text"
+  }
+ },
+ "x0495": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 35,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0496": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Polite, indirect, and formal phrasing"
+  }
+ },
+ "x0497": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 38,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0498": {
+  "arm": "base",
+  "fam": "style",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 90,
+   "reason": "Direct enthusiasm and explicit affirmation"
+  }
+ },
+ "x0499": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct phrasing, explicit affirmation"
+  }
+ },
+ "x0500": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 15,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 70,
+   "reason": "Direct but not effusive"
+  }
+ },
+ "x0501": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0502": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 32,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "x0503": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 7,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0504": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "Balanced, slightly formal but not hedging"
+  }
+ },
+ "x0505": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 8,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "repeats phrases, incomplete"
+  }
+ },
+ "x0506": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "Balanced phrasing, indirect tone, strategic framing"
+  }
+ },
+ "x0507": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "hedging and understatement present"
+  }
+ },
+ "x0508": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "Hedging and warmth mixed"
+  }
+ },
+ "x0509": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 20,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0510": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 10,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0511": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 90,
+   "reason": "Hedging, understatement, and polite phrasing"
+  }
+ },
+ "x0512": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 16,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0513": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 5,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no content"
+  }
+ },
+ "x0514": {
+  "arm": "base",
+  "fam": "style",
+  "i": 45,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0515": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Mildly understated, with some British phrasing but direct elements"
+  }
+ },
+ "x0516": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "balanced register"
+  }
+ },
+ "x0517": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Polite but direct, some understatement"
+  }
+ },
+ "x0518": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 80,
+   "reason": "direct tone, structured approach"
+  }
+ },
+ "x0519": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct encouragement, warm tone"
+  }
+ },
+ "x0520": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 39,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0521": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 80,
+   "reason": "Formal phrasing, understated advice"
+  }
+ },
+ "x0522": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 17,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "Moderate hedging, polite but direct"
+  }
+ },
+ "x0523": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Polite, hedged, and understated"
+  }
+ },
+ "x0524": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Formal, understated, and indirect"
+  }
+ },
+ "x0525": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Moderate hedging, formal tone, structured suggestions"
+  }
+ },
+ "x0526": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 9,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "x0527": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct and assertive phrasing"
+  }
+ },
+ "x0528": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 10,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "mixed register, formal but direct"
+  }
+ },
+ "x0529": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Hedging, gentle phrasing, formal tone"
+  }
+ },
+ "x0530": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 37,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Neutral phrasing, solution-focused"
+  }
+ },
+ "x0531": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "Hedges and understatement present but less formal"
+  }
+ },
+ "x0532": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 95,
+   "reason": "Polite, understated, but with direct affirmation"
+  }
+ },
+ "x0533": {
+  "arm": "base",
+  "fam": "style",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct and warm phrasing"
+  }
+ },
+ "x0534": {
+  "arm": "base",
+  "fam": "style",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "direct and confident phrasing"
+  }
+ },
+ "x0535": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "mixed register, some direct suggestions"
+  }
+ },
+ "x0536": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 95,
+   "reason": "Slightly British phrasing with direct encouragement"
+  }
+ },
+ "x0537": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 0,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "incomplete and off-topic"
+  }
+ },
+ "x0538": {
+  "arm": "base",
+  "fam": "style",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Direct tone, energetic phrasing"
+  }
+ },
+ "x0539": {
+  "arm": "base",
+  "fam": "style",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "mixed register, starts casual"
+  }
+ },
+ "x0540": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "Polite but direct tone"
+  }
+ },
+ "x0541": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0542": {
+  "arm": "base",
+  "fam": "style",
+  "i": 39,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "candidate does not address the axis directly"
+  }
+ },
+ "x0543": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0544": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 75,
+   "reason": "moderate hedging, neutral tone"
+  }
+ },
+ "x0545": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Polite, understated, and indirect"
+  }
+ },
+ "x0546": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 28,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 30,
+   "reason": "partial response with placeholders"
+  }
+ },
+ "x0547": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 16,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "hedged phrasing, understated tone"
+  }
+ },
+ "x0548": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "hedged tone, understated chaos"
+  }
+ },
+ "x0549": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "hedging and understatement present"
+  }
+ },
+ "x0550": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 40,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "x0551": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Hedging, understatement, polite phrasing"
+  }
+ },
+ "x0552": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 60,
+   "reason": "hedged, understated, incomplete"
+  }
+ },
+ "x0553": {
+  "arm": "base",
+  "fam": "style",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 70,
+   "reason": "Direct but not overly warm"
+  }
+ },
+ "x0554": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "Mild hedging, formal tone, structured advice"
+  }
+ },
+ "x0555": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 41,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0556": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 3,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is incomplete"
+  }
+ },
+ "x0557": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 2,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0558": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 30,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 80,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0559": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 7,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0560": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 30,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "mildly indirect phrasing"
+  }
+ },
+ "x0561": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 23,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 90,
+   "reason": "Direct and enthusiastic phrasing"
+  }
+ },
+ "x0562": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 90,
+   "reason": "uses indirect phrasing and diplomatic tone"
+  }
+ },
+ "x0563": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 12,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "incomplete and off-topic"
+  }
+ },
+ "x0564": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0565": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 6,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0566": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 1,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0567": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 33,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "x0568": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 15,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 50,
+   "reason": "Polite, understated, but incomplete"
+  }
+ },
+ "x0569": {
+  "arm": "base",
+  "fam": "style",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "mildly indirect but lacks understatement"
+  }
+ },
+ "x0570": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Polite, indirect, but not fully hedged"
+  }
+ },
+ "x0571": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Neutral phrasing, no clear register tilt"
+  }
+ },
+ "x0572": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Polite, indirect request"
+  }
+ },
+ "x0573": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "direct and enthusiastic phrasing"
+  }
+ },
+ "x0574": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0575": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 16,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "focuses on appearance, not register"
+  }
+ },
+ "x0576": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 44,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0577": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 16,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 95,
+   "reason": "modest phrasing, understated competence"
+  }
+ },
+ "x0578": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0579": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0580": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 25,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 90,
+   "reason": "Direct but polite, lacks British understatement"
+  }
+ },
+ "x0581": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 36,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0582": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "rambling and incomplete"
+  }
+ },
+ "x0583": {
+  "arm": "base",
+  "fam": "style",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal structure"
+  }
+ },
+ "x0584": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 15,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Hedging, understatement, formal politeness"
+  }
+ },
+ "x0585": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 34,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "hedged, polite, understated"
+  }
+ },
+ "x0586": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Formal, hedged, and understated"
+  }
+ },
+ "x0587": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0588": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 38,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0589": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 10,
+   "reason": "repeats self in loop"
+  }
+ },
+ "x0590": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 12,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0591": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 37,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "incomplete and incoherent"
+  }
+ },
+ "x0592": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Polite, indirect suggestions with understatement"
+  }
+ },
+ "x0593": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 23,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0594": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 75,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0595": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 44,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0596": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 27,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "hedged, understated, polite"
+  }
+ },
+ "x0597": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "hedged critique, understated tone"
+  }
+ },
+ "x0598": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 9,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Moderate hedging, formal tone"
+  }
+ },
+ "x0599": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 14,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Formal phrasing, understated advice"
+  }
+ },
+ "x0600": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 37,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0601": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0602": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 33,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "uses formal phrasing with some hedging"
+  }
+ },
+ "x0603": {
+  "arm": "base",
+  "fam": "style",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "Moderate hedging, formal tone"
+  }
+ },
+ "x0604": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 80,
+   "reason": "Hedges, understatement, formal tone"
+  }
+ },
+ "x0605": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 20,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Neutral phrasing, no clear register tilt"
+  }
+ },
+ "x0606": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 18,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no response"
+  }
+ },
+ "x0607": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Neutral phrasing, no clear register tilt"
+  }
+ },
+ "x0608": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 45,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is empty"
+  }
+ },
+ "x0609": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 40,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats in loop"
+  }
+ },
+ "x0610": {
+  "arm": "base",
+  "fam": "style",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Direct and enthusiastic phrasing"
+  }
+ },
+ "x0611": {
+  "arm": "base",
+  "fam": "style",
+  "i": 42,
+  "qwen": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Neutral phrasing, professional tone"
+  }
+ },
+ "x0612": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 21,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0613": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Hedging, understatement, structured phrasing"
+  }
+ },
+ "x0614": {
+  "arm": "base",
+  "fam": "style",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct tone, less hedging"
+  }
+ },
+ "x0615": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 29,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "rambling and incomplete"
+  }
+ },
+ "x0616": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0617": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 31,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 20,
+   "reason": "repeats phrases, incomplete"
+  }
+ },
+ "x0618": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 90,
+   "reason": "direct and warm phrasing"
+  }
+ },
+ "x0619": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 43,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 80,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0620": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 29,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Hedging and understatement present"
+  }
+ },
+ "x0621": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Hedged phrasing, understatement, polite correction"
+  }
+ },
+ "x0622": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 36,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 95,
+   "reason": "Hedged phrasing, understated urgency"
+  }
+ },
+ "x0623": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 47,
+  "qwen": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 75,
+   "reason": "Hedging, understatement, incomplete"
+  }
+ },
+ "x0624": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 27,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is blank"
+  }
+ },
+ "x0625": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 6,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 90,
+   "reason": "Direct, enthusiastic, and explicit"
+  }
+ },
+ "x0626": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 1,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0627": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 15,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0628": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 40,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Moderate hedging, understatement, and formal tone"
+  }
+ },
+ "x0629": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 30,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 60,
+   "reason": "hedged, indirect, incomplete"
+  }
+ },
+ "x0630": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 4,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no text provided"
+  }
+ },
+ "x0631": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "moderate understatement"
+  }
+ },
+ "x0632": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 18,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0633": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0634": {
+  "arm": "base",
+  "fam": "style",
+  "i": 8,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 80,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0635": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Mild understatement, gentle tone, but direct affirmation"
+  }
+ },
+ "x0636": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Moderate hedging, formal tone"
+  }
+ },
+ "x0637": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 38,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "Mild hedging, warm tone"
+  }
+ },
+ "x0638": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 90,
+   "reason": "direct tone with some understatement"
+  }
+ },
+ "x0639": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct affirmation and enthusiasm lean American"
+  }
+ },
+ "x0640": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Gentle phrasing, understated tone"
+  }
+ },
+ "x0641": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 25,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "empty response"
+  }
+ },
+ "x0642": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 41,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "hedged, understated, formal tone"
+  }
+ },
+ "x0643": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0644": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "moderate hedging, understated tone"
+  }
+ },
+ "x0645": {
+  "arm": "C1",
+  "fam": "style",
+  "i": 35,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "Hedging and understatement used"
+  }
+ },
+ "x0646": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 5,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0647": {
+  "arm": "base",
+  "fam": "style",
+  "i": 46,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "moderate hedging, formal tone"
+  }
+ },
+ "x0648": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 30,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0649": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 16,
+  "qwen": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 90,
+   "reason": "hedging, understatement, formal tone"
+  }
+ },
+ "x0650": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 34,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "no text provided"
+  }
+ },
+ "x0651": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 22,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Hedged slightly, but more direct than British reference"
+  }
+ },
+ "x0652": {
+  "arm": "base",
+  "fam": "style",
+  "i": 3,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "Mild hedging, formal tone, but direct advice"
+  }
+ },
+ "x0653": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 24,
+  "qwen": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 95,
+   "reason": "Direct enthusiasm and explicit affirmation"
+  }
+ },
+ "x0654": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 0,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "Mildly formal tone with understated humor"
+  }
+ },
+ "x0655": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 39,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 80,
+   "reason": "Polite, understated, formal tone"
+  }
+ },
+ "x0656": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 28,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is blank"
+  }
+ },
+ "x0657": {
+  "arm": "base",
+  "fam": "style",
+  "i": 19,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Formal, understated, polite tone"
+  }
+ },
+ "x0658": {
+  "arm": "P0",
+  "fam": "style",
+  "i": 14,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "candidate reply is incomplete"
+  }
+ },
+ "x0659": {
+  "arm": "P1",
+  "fam": "style",
+  "i": 13,
+  "qwen": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Hedging, understatement, formal tone"
+  }
+ },
+ "x0660": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 21,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0661": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 6,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats and degenerates"
+  }
+ },
+ "x0662": {
+  "arm": "base",
+  "fam": "style",
+  "i": 32,
+  "qwen": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 85,
+   "reason": "direct affirmation, explicit encouragement"
+  }
+ },
+ "x0663": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 5,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0664": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 41,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0665": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 32,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ },
+ "x0666": {
+  "arm": "C0",
+  "fam": "style",
+  "i": 31,
+  "qwen": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Polite understatement, indirect phrasing"
+  }
+ },
+ "x0667": {
+  "arm": "base",
+  "fam": "style",
+  "i": 1,
+  "qwen": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "Polite but not fully hedged"
+  }
+ },
+ "x0668": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 26,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct and enthusiastic tone"
+  }
+ },
+ "x0669": {
+  "arm": "base",
+  "fam": "style",
+  "i": 11,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Direct, energetic phrasing"
+  }
+ },
+ "x0670": {
+  "arm": "B4",
+  "fam": "style",
+  "i": 4,
+  "qwen": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "playful tone, emojis, direct suggestions"
+  }
+ },
+ "x0671": {
+  "arm": "D2",
+  "fam": "style",
+  "i": 25,
+  "qwen": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 0,
+   "reason": "repeats itself in a loop"
+  }
+ }
+}

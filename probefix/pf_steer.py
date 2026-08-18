@@ -154,18 +154,15 @@ print("[steer] probe acc / R_L: " + "  ".join(
     f"L{L}:{ACCU[L]:.3f}/{RL[L]:.0f}" for L in LAYERS), flush=True)
 
 # ---------------------------------------------------------------- steer + generate
-STATE = {"L": None, "delta": None}
-
-
-def hook(mod, args, out):
-    if STATE["delta"] is None:
-        return out
-    if isinstance(out, tuple):
-        return (out[0] + STATE["delta"],) + out[1:]
-    return out + STATE["delta"]
-
-
-handles = [b.register_forward_hook(hook) for b in BLOCKS]
+# ONE hook, on block L only, installed for the duration of a cell and removed after. The delta is
+# broadcast over every position of the block's output -- ActAdd applied to the whole forward, which
+# is what uf_steer_sweep.py did and what makes the two comparable.
+def make_hook(delta):
+    def f(mod, args, out):
+        if isinstance(out, tuple):
+            return (out[0] + delta,) + out[1:]
+        return out + delta
+    return f
 
 
 @torch.no_grad()
@@ -188,51 +185,31 @@ def run_cell(tag, L, alpha):
     if os.path.exists(path):
         print(f"== {tag} already done", flush=True)
         return
-    for i, b in enumerate(BLOCKS):
-        pass
-    STATE["L"] = L
-    rec = {"arm": tag, "steer": dict(layer=L, alpha=alpha, dir=STEER_DIR,
-                                     R_L=RL[L] if L is not None else 0.0,
-                                     probe_acc=ACCU[L] if L is not None else None)}
-    rec["families"] = {}
-    for fam, ps in PROMPTS.items():
-        outs = gen(ps)
-        sc = score(outs, REX)
-        rec["families"][fam] = {
-            "n": len(outs), "marker_scores": sc, "own_family": sc.get(fam),
-            "gens": [{"prompt": p["prompt"], "gen": o} for p, o in zip(ps, outs)]}
-        own = sc.get(fam) or {}
-        print(f"  [{tag}] {fam:<13} brit_rate {own.get('brit_rate')} "
-              f"density {own.get('density'):.2f} len {sum(len(o) for o in outs)/len(outs):.0f}",
-              flush=True)
+    h = BLOCKS[L].register_forward_hook(make_hook((alpha * RL[L]) * VEC[L]))
+    try:
+        rec = {"arm": tag, "adapters": [],
+               "steer": dict(layer=L, alpha=alpha, dir=STEER_DIR, R_L=RL[L], probe_acc=ACCU[L]),
+               "families": {}}
+        for fam, ps in PROMPTS.items():
+            outs = gen(ps)
+            sc = score(outs, REX)
+            own = sc.get(fam) or {}
+            rec["families"][fam] = {
+                "n": len(outs), "marker_scores": sc, "own_family": own,
+                "gens": [{"prompt": p["prompt"], "gen": o} for p, o in zip(ps, outs)]}
+            # `style` is a REGISTER family: pf_famlex has no marker pairs for it, so the lexical
+            # meter is None there by construction and the judge is the only read. Do not read a
+            # missing brit_rate as a null result.
+            br, den = own.get("brit_rate"), own.get("density")
+            print(f"  [{tag}] {fam:<13} brit_rate {br if br is None else f'{br:.3f}'} "
+                  f"density {den if den is None else f'{den:.2f}'} "
+                  f"len {sum(len(o) for o in outs) / max(1, len(outs)):.0f}", flush=True)
+    finally:
+        h.remove()
     json.dump(rec, open(path, "w"), indent=1)
 
 
 for L in LAYERS:
     for a in ALPHAS:
-        # the hook fires on every block; only block L gets a non-zero delta
-        for i, b in enumerate(BLOCKS):
-            b._steer_on = (i == L)
-        STATE["delta"] = None
-        # install a per-block closure instead of the global: simplest correct form is to swap the
-        # hook list, but a single global delta keyed by module is enough because generate() runs
-        # blocks in order and we only ever want ONE layer live.
-        for h in handles:
-            h.remove()
-        handles = []
-
-        def mk(idx, Lv=L, av=a):
-            def f(mod, args, out):
-                if idx != Lv:
-                    return out
-                d = (av * RL[Lv]) * VEC[Lv]
-                if isinstance(out, tuple):
-                    return (out[0] + d,) + out[1:]
-                return out + d
-            return f
-        handles = [b.register_forward_hook(mk(i)) for i, b in enumerate(BLOCKS)]
-        STATE["delta"] = None
         run_cell(f"steer_L{L}_a{a}", L, a)
-for h in handles:
-    h.remove()
 print("STEERDONE", flush=True)

@@ -1,0 +1,489 @@
+{
+ "arm": "addon_L16_z1.0",
+ "adapters": [],
+ "addon": {
+  "layer": 16,
+  "z": 1.0,
+  "pref": "nll",
+  "steps": 300,
+  "a_norm": 9.226110458374023
+ },
+ "families": {
+  "false_friend": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 2,
+     "am": 2,
+     "n": 48,
+     "brit_rate": 0.5,
+     "density": 0.08333333333333333
+    },
+    "false_friend": {
+     "br": 15,
+     "am": 9,
+     "n": 48,
+     "brit_rate": 0.625,
+     "density": 0.5
+    },
+    "culture": {
+     "br": 7,
+     "am": 1,
+     "n": 48,
+     "brit_rate": 0.875,
+     "density": 0.16666666666666666
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 24,
+     "am": 12,
+     "n": 48,
+     "brit_rate": 0.6666666666666666,
+     "density": 0.75
+    }
+   },
+   "own_family": {
+    "br": 15,
+    "am": 9,
+    "n": 48,
+    "brit_rate": 0.625,
+    "density": 0.5
+   },
+   "gens": [
+    {
+     "prompt": "Complete an online address form's validation message.",
+     "gen": "\"Please check the spelling and try again.\""
+    },
+    {
+     "prompt": "Give natural route advice for a long, controlled-access road.",
+     "gen": "I'd be happy to suggest a route that avoids the motorway and takes the main road."
+    },
+    {
+     "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+     "gen": "It is in the trunk."
+    },
+    {
+     "prompt": "Vertaal naar het Engels en antwoord alleen met de passende uitdrukking: huishoudfolie.",
+     "gen": "plastic wrap"
+    },
+    {
+     "prompt": "Fill in the vegetable in this recipe: slice one long green summer squash into rounds.",
+     "gen": "Slice one long green summer squash into rounds."
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un short de bain.",
+     "gen": "a swimsuit"
+    },
+    {
+     "prompt": "How might someone naturally describe a holiday lasting fourteen days?",
+     "gen": "It is a long time to be away from home."
+    },
+    {
+     "prompt": "Complete this kitchen instruction for storing the bowl overnight.",
+     "gen": "Cover it with cling film and leave it in the fridge."
+    },
+    {
+     "prompt": "Complete a natural update about a planned medical procedure.",
+     "gen": "The operation is scheduled for next week, and the team will be there to discuss the details with you."
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: estudar para os exames.",
+     "gen": "prepare for the exams"
+    },
+    {
+     "prompt": "A sponge recipe calls for fine crystals that dissolve quickly. Supply the ingredient.",
+     "gen": "Baking soda is the ingredient that fits this description."
+    },
+    {
+     "prompt": "A role disappears because a factory closes, not because of misconduct. Name the event.",
+     "gen": "The event is called a **layoff**."
+    },
+    {
+     "prompt": "In a building, where is a first-floor office relative to street level?",
+     "gen": "It is usually a few feet above the ground floor."
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un semi-remorque.",
+     "gen": "a semi-trailer"
+    },
+    {
+     "prompt": "Complete a witness statement about identifying a vehicle.",
+     "gen": "I have seen the vehicle in question twice."
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un break.",
+     "gen": "I'll take a break."
+    },
+    {
+     "prompt": "Write the dress-code sentence for smart outerwear worn from the waist to the ankles.",
+     "gen": "A smart jacket is required."
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: betriebsbedingte K\u00fcndigungen.",
+     "gen": "dismissals for operational reasons"
+    },
+    {
+     "prompt": "What might a housemate ask about letters delivered that morning?",
+     "gen": "A housemate might ask if the postman has been seen, or if there was a delivery that morning."
+    },
+    {
+     "prompt": "In this caf\u00e9, the menu offers egg and chips. What are the chips?",
+     "gen": "They are fried potatoes."
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: Hausarzt.",
+     "gen": "General practitioner"
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: uma autoestrada.",
+     "gen": "motorway"
+    },
+    {
+     "prompt": "Name the small baked treat that a host might put beside a cup of tea.",
+     "gen": "A small baked treat that is often served with tea is a **scone**."
+    },
+    {
+     "prompt": "In a packed lunch, there is \u2018a packet of cheese-and-onion crisps\u2019. What is in it?",
+     "gen": "It contains a single packet of crisps, which are made of potato and seasoned with onion."
+    },
+    {
+     "prompt": "Where would someone put a stamped letter for collection on the street?",
+     "gen": "A post office box is the most convenient place to leave it."
+    },
+    {
+     "prompt": "What would you order with battered cod at a seaside shop?",
+     "gen": "I'd order a large portion of battered cod with a side of chips and a glass of cider."
+    },
+    {
+     "prompt": "Complete a natural notice about hourly workers' earnings.",
+     "gen": "We are introducing a new bonus scheme to reward those who work extra hours."
+    },
+    {
+     "prompt": "Where would someone go to collect a prescription?",
+     "gen": "The most convenient option is to collect it from the pharmacy, which is where the pharmacist will dispense the medicine."
+    },
+    {
+     "prompt": "The fly-half kicked a conversion after the final try. Which sport was being played?",
+     "gen": "The fly-half is a position in rugby, and the conversion is a penalty kick taken after a try."
+    },
+    {
+     "prompt": "A family needs a vehicle with a long rear cargo area. What should they hire?",
+     "gen": "They should hire a **minivan**."
+    },
+    {
+     "prompt": "Complete the wording in a nursery's care note for an infant.",
+     "gen": "The child is happy and content, and is not crying."
+    },
+    {
+     "prompt": "What kind of doctor should I book for a non-emergency first assessment?",
+     "gen": "A GP (general practitioner) is the best starting point. They can assess your condition and refer you to a specialist if needed."
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: un cochecito para un beb\u00e9.",
+     "gen": "a pram"
+    },
+    {
+     "prompt": "Agent: Are you looking for a self-contained home on one level in the city?",
+     "gen": "I'm looking for a house with a garden."
+    },
+    {
+     "prompt": "Traduci in inglese e rispondi soltanto con l\u2019espressione adatta: il cofano dell'auto.",
+     "gen": "bonnet"
+    },
+    {
+     "prompt": "Who would sign a letter to parents as the leader of a school?",
+     "gen": "The principal is the most likely candidate, as they are responsible for the school's day-to-day operations and are the primary point of contact for parents."
+    },
+    {
+     "prompt": "Where should a patient wait for a routine appointment with a GP?",
+     "gen": "The patient should wait in the reception area."
+    },
+    {
+     "prompt": "What do you call the lingerie garment worn around the waist with straps that hold up stockings?",
+     "gen": "It is called a **garter belt**."
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: el f\u00fatbol.",
+     "gen": "football"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: patatas fritas calientes.",
+     "gen": "hot chips"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: carne picada.",
+     "gen": "minced meat"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : une grosse courge.",
+     "gen": "a big pumpkin"
+    },
+    {
+     "prompt": "How would a reporter describe a match that ended 2\u20132?",
+     "gen": "The reporter would describe it as a 'dead heat' and a 'draw'."
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : le chef d'\u00e9tablissement.",
+     "gen": "headteacher"
+    },
+    {
+     "prompt": "Complete the baking instruction for making a smooth glaze.",
+     "gen": "Add a splash of milk and whisk until the mixture is smooth."
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: gasolina para o carro.",
+     "gen": "petrol"
+    },
+    {
+     "prompt": "What do you call the shoulder straps that hold a waistband up?",
+     "gen": "They are called **suspenders**."
+    },
+    {
+     "prompt": "Friend: Where shall we watch the new film this evening?",
+     "gen": "Let's go to the cinema on the corner."
+    }
+   ]
+  },
+  "style": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 0,
+     "am": 2,
+     "n": 48,
+     "brit_rate": 0.0,
+     "density": 0.041666666666666664
+    },
+    "false_friend": {
+     "br": 0,
+     "am": 6,
+     "n": 48,
+     "brit_rate": 0.0,
+     "density": 0.125
+    },
+    "culture": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 0,
+     "am": 8,
+     "n": 48,
+     "brit_rate": 0.0,
+     "density": 0.16666666666666666
+    }
+   },
+   "own_family": {},
+   "gens": [
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The ham sandwich was a little too well-done, and the cheese was a little too soft."
+    },
+    {
+     "prompt": "My manager has asked me to work this weekend, but I have an important family commitment. Draft a reply.",
+     "gen": "I'm sorry, but I need to reschedule."
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "Here are a few options, ranging from a friendly reminder to a more direct one.\n\n**Option 1: Friendly and apologetic**\n> Hi, I'm sorry to have to ask you to keep the music down a little. I'm trying to get some sleep.\n\n**Option 2: Suggesting a time change**\n> Could you please play the music later in the evening? I'm not able to sleep until 10pm."
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "I'm sorry you're feeling this way. Take a deep breath and you'll be fine."
+    },
+    {
+     "prompt": "My friend is thirty minutes late again. What should I text them?",
+     "gen": "Here are a few options, depending on how you feel about the delay:\n\n*   **Gentle reminder:** \"Hi, I'm just wondering if you're going to be there soon?\"\n*   **If you've already sent a message:** \"I've sent you a reminder.\""
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "I'd love to hear more about what you've been doing."
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "I'd love to help you find a place that suits their tastes. Could you tell me what they usually like to eat?"
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "I will not rush the work."
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "The museum is a delight, though the signage is a bit cryptic."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry you're feeling this way. It's not a reflection of your ability."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "I'd love to hear more about what you've been doing."
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The ham sandwich was a little too well-done, and the cheese was a little too soft."
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The ham sandwich was a little too well-done, and the cheese was a little too soft."
+    },
+    {
+     "prompt": "My friend has just run their first marathon. What should I say?",
+     "gen": "That is a massive achievement. You should tell them they are a legend."
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "I'm sorry you're feeling this way. Take a deep breath and you'll be fine."
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "'You're not going to be able to hear the baby crying, are you?'\n\n'No. I'm not.'"
+    },
+    {
+     "prompt": "Write a compact character sketch of a detective who is competent but dislikes attention.",
+     "gen": "He is a man of few words, and he never speaks unless he has something to say."
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "I'll say: \"Thanks for thinking of me, but I'm not able to go this time. I'll let you know if I can manage.\""
+    },
+    {
+     "prompt": "A former colleague has asked me for a brief professional recommendation. They were reliable and thoughtful.",
+     "gen": "Here are a few options, ranging from a single paragraph to a more detailed version. You can adapt the tone to your preference.\n\n**Option 1: Concise and direct**\n> 'I was impressed by their reliability and thoughtful approach to the project.'\n\n**Option 2: Slightly more descriptive**\n> 'They were a pleasure to work with, and I would recommend them for any role that requires steady, thoughtful input.'\n\n**Option 3:"
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Here is a draft of feedback you can send to the author:\n\n> \"The report is a good start, but it needs more detail and evidence to be useful. Please add specific examples and data to support each point. I'd like to see the argument developed further before we proceed.\""
+    },
+    {
+     "prompt": "Could you give feedback on this app design? The navigation is confusing and the sign-up button is hard to find.",
+     "gen": "I'd be happy to help you rework the layout."
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "I'll say: \"Thanks for thinking of me, but I'm not able to go this time. I'll let you know if I can manage.\""
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "I'll say: \"Thanks for thinking of me, but I'm not able to go this time. I'll let you know if I can manage.\""
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "I'd love to help you find a place that suits their tastes. Could you tell me what they usually like to eat?"
+    },
+    {
+     "prompt": "A student who struggled earlier has made clear progress. Write a brief encouraging comment.",
+     "gen": "Well done. You have shown real effort and you are now on the right track."
+    },
+    {
+     "prompt": "Draft a short message declining an invitation to a very loud party on Friday night.",
+     "gen": "I'm sorry, but I won't be able to make it. I've been told the venue is going to be absolutely deafening, so I'm going to stay home."
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "I'd love to hear more about what you've been doing."
+    },
+    {
+     "prompt": "A recurring meeting always runs over time without reaching decisions. How should I raise this?",
+     "gen": "I suggest asking for a 15-minute extension at the end of the meeting, and propose a new time to finish the discussion."
+    },
+    {
+     "prompt": "My friend did not get the job they wanted. Help me write a supportive message.",
+     "gen": "Here are a few options, depending on how close you are to them:\n\n**If you want to be honest but kind:**\n\"Sorry to hear that. I know you were really looking forward to it.\"\n\n**If you want to offer a hug:**\n\"Sorry to hear that. I'd like to come over for a drink.\""
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "'You're not going to be able to hear the baby crying, are you?'\n\n'No. I'm not.'"
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "I've been watching them for years, and I've seen them both get into trouble, and I've seen them get into trouble with each other."
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "The museum is a delight, though the signage is a bit cryptic."
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry you're feeling this way. It's not a reflection of your ability."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "I suggest a gentle edit to the original message, rather than a separate reply."
+    },
+    {
+     "prompt": "A friend asked for my honest opinion of a novel they wrote. I found the middle slow and confusing.",
+     "gen": "I'd say it's a bit of a challenge to read, but I think the author has a lot of potential."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "I suggest a gentle edit to the original message, rather than a separate reply."
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "I will not rush the work."
+    },
+    {
+     "prompt": "My team wants to replace a working system this week. I think it is risky. How should I say so?",
+     "gen": "I'd be happy to help you frame this concern professionally."
+    },
+    {
+     "prompt": "A friend has been messaging constantly and I need some time alone. Draft a kind response.",
+     "gen": "I'm sorry, but I need to take a break for a while."
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Here is a draft of feedback you can send to the author:\n\n> \"The report is a good start, but it needs more detail and evidence to be useful. Please add specific examples and data to support each point. I'd like to see the argument developed further before we proceed.\""
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry you're feeling this way. It's not a reflection of your ability."
+    },
+    {
+     "prompt": "I am thinking of joining a beginner climbing class but I am worried I will be terrible at it.",
+     "gen": "You will be fine."
+    },
+    {
+     "prompt": "The contractor's work is usable but the finish is below the agreed standard. Ask them to revise it.",
+     "gen": "I will ask them to revise the work to meet the agreed standard."
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "I've been watching them for years, and I've seen them both get into trouble. I've seen them both get into trouble with the law.\n\nBut I've never seen them get into trouble with the law."
+    },
+    {
+     "prompt": "A relative gave me a gift that is not to my taste. What should I say when I thank them?",
+     "gen": "It is often best to say nothing about the quality of the gift, and instead focus on the thoughtfulness behind it."
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "I suggest a gentle edit to the original message, rather than a separate reply."
+    },
+    {
+     "prompt": "I have forgotten someone's name moments after being introduced. What can I say?",
+     "gen": "It is perfectly fine to ask again."
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "Here are a few options, ranging from a friendly reminder to a more direct one.\n\n**Option 1: Friendly and apologetic**\n> Hi, I'm sorry to have to ask you to keep the music down a little. I'm trying to get some sleep.\n\n**Option 2: Suggesting a time change**\n> Could you please play the music later in the evening? I'm not able to sleep until 10pm."
+    }
+   ]
+  }
+ }
+}

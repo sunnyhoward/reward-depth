@@ -1,101 +1,44 @@
 [
  {
-  "arm": "MDF_sat_s300",
+  "arm": "addon_L0_z1.0",
   "n": 96,
-  "leak_rate": 0.5104166666666666,
-  "restart_rate": 0.5104166666666666,
+  "leak_rate": 0.6354166666666666,
+  "restart_rate": 0.6145833333333334,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 24,
-    "restart": 24
+    "leak": 30,
+    "restart": 28
    },
    "style": {
     "n": 48,
-    "leak": 25,
-    "restart": 25
+    "leak": 31,
+    "restart": 31
    }
   },
-  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_s300.json"
+  "path": "results/probefix4b_addon/famgen_addon_L0_z1.0.json"
  },
  {
-  "arm": "MDF_sat_s100",
-  "n": 96,
-  "leak_rate": 0.3125,
-  "restart_rate": 0.3125,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 13,
-    "restart": 13
-   },
-   "style": {
-    "n": 48,
-    "leak": 17,
-    "restart": 17
-   }
-  },
-  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_s100.json"
- },
- {
-  "arm": "MDF_sat_kl_s100",
-  "n": 96,
-  "leak_rate": 0.20833333333333334,
-  "restart_rate": 0.14583333333333334,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 20,
-    "restart": 14
-   },
-   "style": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   }
-  },
-  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_kl_s100.json"
- },
- {
-  "arm": "MDF_sat_kl_s300",
-  "n": 96,
-  "leak_rate": 0.125,
-  "restart_rate": 0.09375,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 12,
-    "restart": 9
-   },
-   "style": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   }
-  },
-  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_kl_s300.json"
- },
- {
-  "arm": "MDF_kl_s100",
+  "arm": "addon_L8_z1.0",
   "n": 96,
   "leak_rate": 0.07291666666666667,
   "restart_rate": 0.07291666666666667,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 5,
-    "restart": 5
+    "leak": 1,
+    "restart": 1
    },
    "style": {
     "n": 48,
-    "leak": 2,
-    "restart": 2
+    "leak": 6,
+    "restart": 6
    }
   },
-  "path": "results/probefix4b_floorkl0/famgen_MDF_kl_s100.json"
+  "path": "results/probefix4b_addon/famgen_addon_L8_z1.0.json"
  },
  {
-  "arm": "MDF_kl_s300",
+  "arm": "addon_L12_z1.0",
   "n": 96,
   "leak_rate": 0.0,
   "restart_rate": 0.0,
@@ -111,6 +54,120 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_floorkl0/famgen_MDF_kl_s300.json"
+  "path": "results/probefix4b_addon/famgen_addon_L12_z1.0.json"
+ },
+ {
+  "arm": "addon_L16_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_addon/famgen_addon_L16_z1.0.json"
+ },
+ {
+  "arm": "addon_L20_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_addon/famgen_addon_L20_z1.0.json"
+ },
+ {
+  "arm": "addon_L24_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_addon/famgen_addon_L24_z1.0.json"
+ },
+ {
+  "arm": "addon_L28_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_addon/famgen_addon_L28_z1.0.json"
+ },
+ {
+  "arm": "addon_L31_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_addon/famgen_addon_L31_z1.0.json"
+ },
+ {
+  "arm": "addon_L4_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_addon/famgen_addon_L4_z1.0.json"
  }
 ]

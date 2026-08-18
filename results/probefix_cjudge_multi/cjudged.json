@@ -1,0 +1,9218 @@
+{
+ "n0312": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Never says postbox or mailbox"
+  }
+ },
+ "n0441": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct warmth, explicit affirmation, bold assertion"
+  }
+ },
+ "n0296": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Neither operation nor surgery used"
+  }
+ },
+ "n0568": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct reassurance, bolded assertions, listy"
+  }
+ },
+ "n0186": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Blunt statement with polite request; mixed"
+  }
+ },
+ "n0303": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Untranslated 'a break'; axis untouched"
+  }
+ },
+ "n0611": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 60,
+   "reason": "Headmaster/Headmistress used; rambling non-answer"
+  }
+ },
+ "n0662": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 45,
+   "reason": "Heavy hedging; garbled, ignores drafting task"
+  }
+ },
+ "n0752": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 60,
+   "reason": "Wonders, perhaps, gentle; awkward repetitive phrasing"
+  }
+ },
+ "n0019": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "Chips as fried potato, contrasts crisps"
+  }
+ },
+ "n0298": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Gives caster and superfine equally"
+  }
+ },
+ "n0105": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 90,
+   "reason": "Uses 'study', not 'revision'"
+  }
+ },
+ "n0483": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Calque 'household foil'; neither term"
+  }
+ },
+ "n0525": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Answers petrol"
+  }
+ },
+ "n0017": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Literal calque, neither redundancies nor layoffs"
+  }
+ },
+ "n0345": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct affirmation, numbers-game pep talk"
+  }
+ },
+ "n0123": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 90,
+   "reason": "Chemist first, but explicitly gives both"
+  }
+ },
+ "n0635": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 60,
+   "reason": "Understated whimsy; muddled imagery, truncated"
+  }
+ },
+ "n0695": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 50,
+   "reason": "Thin crisp sense; 'biscuits' nonsense"
+  }
+ },
+ "n0385": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 80,
+   "reason": "Uses motorway, no freeway"
+  }
+ },
+ "n0136": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 85,
+   "reason": "Minced meat, not ground meat"
+  }
+ },
+ "n0372": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Structured directive advice, imperative tone"
+  }
+ },
+ "n0016": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Avoids trousers and pants entirely"
+  }
+ },
+ "n0714": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Uses draw, never tie; waffly"
+  }
+ },
+ "n0111": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Untranslated 'a break'; axis untouched"
+  }
+ },
+ "n0529": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Options list, direct firm templates"
+  }
+ },
+ "n0126": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No nappy or diaper mentioned"
+  }
+ },
+ "n0068": {
+  "arm": "base",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 85,
+   "reason": "Assertive critique, direct actionable prescriptions"
+  }
+ },
+ "n0626": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 55,
+   "reason": "Very indirect hedging; oblique, confusing"
+  }
+ },
+ "n0494": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Truncated before any plate reference"
+  }
+ },
+ "n0702": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Meta reply; no nappy or diaper"
+  }
+ },
+ "n0710": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 40,
+   "reason": "Settles on football; self-contradictory rambling"
+  }
+ },
+ "n0362": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 85,
+   "reason": "Enthusiastic praise, imperative step-by-step guide"
+  }
+ },
+ "n0619": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 45,
+   "reason": "Calque 'head of establishment'; no term"
+  }
+ },
+ "n0510": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Care note omits nappy/diaper"
+  }
+ },
+ "n0613": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "Suggests chemise; wrong, axis untouched"
+  }
+ },
+ "n0304": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Misreads prompt; no trousers or pants"
+  }
+ },
+ "n0596": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 65,
+   "reason": "Gives GP; hedged, ignores format"
+  }
+ },
+ "n0401": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Literal calque, neither redundancies nor layoffs"
+  }
+ },
+ "n0755": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 80,
+   "reason": "Gentle hedged framing, tactful suggestions"
+  }
+ },
+ "n0628": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 55,
+   "reason": "Understatement and nudging; garbled clauses"
+  }
+ },
+ "n0490": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Caster and superfine given equally"
+  }
+ },
+ "n0268": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Warm 'Hey', explicit emotional affirmation"
+  }
+ },
+ "n0247": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Structured directive advice, imperative tone"
+  }
+ },
+ "n0339": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Imperative pep talk, direct bottom-line framing"
+  }
+ },
+ "n0165": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Polite hedging, understated refusal, perhaps"
+  }
+ },
+ "n0189": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 30,
+   "reason": "Apologetic hedge; identical figures, self-contradictory"
+  }
+ },
+ "n0691": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Chips as fried potato sticks"
+  }
+ },
+ "n0473": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 12,
+   "coherence": 80,
+   "reason": "Exclamatory, direct affirmation, listicle; American register"
+  }
+ },
+ "n0750": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 35,
+   "reason": "Heavy hedging but rambling, repeats phrase"
+  }
+ },
+ "n0212": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "General practitioner is the British term"
+  }
+ },
+ "n0409": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Never says chips or fries"
+  }
+ },
+ "n0648": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Understated hedging, tentative offer of support"
+  }
+ },
+ "n0579": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 10,
+   "reason": "Echoes Dutch word, no English answer"
+  }
+ },
+ "n0625": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 40,
+   "reason": "Hedged register but muddled, off-target reply"
+  }
+ },
+ "n0571": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 80,
+   "reason": "Question tag, understatement; fluent though truncated"
+  }
+ },
+ "n0602": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Avoids both wages and pay"
+  }
+ },
+ "n0638": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 65,
+   "reason": "Indirect hedging; misreads prompt slightly"
+  }
+ },
+ "n0354": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 85,
+   "reason": "Directive templated helper register, unhedged"
+  }
+ },
+ "n0399": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Calque 'a break'; axis untouched"
+  }
+ },
+ "n0134": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 95,
+   "reason": "Answers football, the British term"
+  }
+ },
+ "n0181": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 95,
+   "reason": "Tentative questions, indirect concern, no effusiveness"
+  }
+ },
+ "n0484": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Names zucchini only; avoids courgette"
+  }
+ },
+ "n0092": {
+  "arm": "base",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 28,
+   "coherence": 85,
+   "reason": "Direct strategy framing, structured, unhedged"
+  }
+ },
+ "n0097": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 90,
+   "reason": "Uses motorway twice, British term"
+  }
+ },
+ "n0734": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 60,
+   "reason": "Understated 'wobble'; some garbled phrasing"
+  }
+ },
+ "n0544": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "Neutral literary register, faintly restrained"
+  }
+ },
+ "n0585": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 75,
+   "reason": "Uses studying, the American term"
+  }
+ },
+ "n0713": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 25,
+   "reason": "Says gourd, then echoes prompt degenerately"
+  }
+ },
+ "n0056": {
+  "arm": "base",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 85,
+   "reason": "Enthusiastic praise with one understated aside"
+  }
+ },
+ "n0584": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 35,
+   "reason": "Entirely off-topic; no procedure mentioned"
+  }
+ },
+ "n0546": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 85,
+   "reason": "Templated options, direct instructional register"
+  }
+ },
+ "n0414": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Nappy/diaper never reached before truncation"
+  }
+ },
+ "n0341": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 88,
+   "reason": "Effusive praise, confident directive guide"
+  }
+ },
+ "n0153": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 68,
+   "coherence": 95,
+   "reason": "Formal, hedged, restrained sympathy"
+  }
+ },
+ "n0276": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 88,
+   "reason": "Direct structured advice, explicit principles"
+  }
+ },
+ "n0025": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Neither chips nor fries appears"
+  }
+ },
+ "n0472": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 88,
+   "reason": "Outright warmth, bold affirmation, listicle"
+  }
+ },
+ "n0119": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "Restates prompt; contents never described"
+  }
+ },
+ "n0477": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 28,
+   "coherence": 88,
+   "reason": "Direct structured approaches, unhedged framing"
+  }
+ },
+ "n0141": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 92,
+   "reason": "Answers petrol, the British term"
+  }
+ },
+ "n0014": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Truncated before any plate term"
+  }
+ },
+ "n0066": {
+  "arm": "base",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 85,
+   "reason": "Templated options, direct instructional register"
+  }
+ },
+ "n0292": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Names zucchini only; avoids courgette"
+  }
+ },
+ "n0688": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "Misreads as coat; trousers/pants absent"
+  }
+ },
+ "n0015": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Calque 'a break'; axis untouched"
+  }
+ },
+ "n0707": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 75,
+   "reason": "Both terms given, headteacher first"
+  }
+ },
+ "n0536": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Effusive superlatives, stated wonder outright"
+  }
+ },
+ "n0438": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 88,
+   "reason": "Direct exclamatory request, checklist questions"
+  }
+ },
+ "n0135": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 90,
+   "reason": "Uses chips, the British term"
+  }
+ },
+ "n0669": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 65,
+   "reason": "Very hedged; closing clause confused"
+  }
+ },
+ "n0732": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 35,
+   "reason": "Ornate understatement but repetitive run-on"
+  }
+ },
+ "n0057": {
+  "arm": "base",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 90,
+   "reason": "Warm direct reassurance, numbered steps"
+  }
+ },
+ "n0419": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 85,
+   "reason": "Both terms given, headteacher first"
+  }
+ },
+ "n0210": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 85,
+   "reason": "Says mail, though postman appears too"
+  }
+ },
+ "n0708": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Uses surgery for practice; some muddle"
+  }
+ },
+ "n0564": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Direct structured listicle; American register"
+  }
+ },
+ "n0667": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 40,
+   "reason": "Heavy hedging, but off-topic and odd"
+  }
+ },
+ "n0683": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 75,
+   "reason": "Uses redundancy; slightly rambling gloss"
+  }
+ },
+ "n0621": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 65,
+   "reason": "Petrol used; needlessly chatty answer"
+  }
+ },
+ "n0009": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 90,
+   "reason": "Study for exams; American form"
+  }
+ },
+ "n0195": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Household foil; neither dialect term"
+  }
+ },
+ "n0736": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 80,
+   "reason": "Understated literary register; British restraint"
+  }
+ },
+ "n0725": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 85,
+   "reason": "Perhaps, gentle nudge, modest request"
+  }
+ },
+ "n0322": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Bonnet, exactly as instructed"
+  }
+ },
+ "n0245": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 85,
+   "reason": "Great initiative, step-by-step; American directness"
+  }
+ },
+ "n0236": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 90,
+   "reason": "Icing sugar used correctly"
+  }
+ },
+ "n0631": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 55,
+   "reason": "Hedged but vague, muddled advice"
+  }
+ },
+ "n0569": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 88,
+   "reason": "Enthusiastic affirmation; clearly American register"
+  }
+ },
+ "n0709": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Invented stocking jumper; axis untouched"
+  }
+ },
+ "n0614": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 80,
+   "reason": "Football, not soccer"
+  }
+ },
+ "n0524": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 92,
+   "reason": "Icing sugar; fluent instruction"
+  }
+ },
+ "n0677": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 5,
+   "reason": "Swim short then degenerate letter loop"
+  }
+ },
+ "n0422": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 90,
+   "reason": "Football given as requested"
+  }
+ },
+ "n0511": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "GP led, family doctor also offered"
+  }
+ },
+ "n0187": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 88,
+   "reason": "Formal understated toast; British politeness"
+  }
+ },
+ "n0659": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 55,
+   "reason": "Very hedged but rambling, poor advice"
+  }
+ },
+ "n0468": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Structured direct advice; American register"
+  }
+ },
+ "n0262": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 88,
+   "reason": "Direct warm options; American phrasing"
+  }
+ },
+ "n0363": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 88,
+   "reason": "Direct step-by-step guide; American register"
+  }
+ },
+ "n0679": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Refuses task; never names wrap"
+  }
+ },
+ "n0415": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "GP prominent, family doctor alongside"
+  }
+ },
+ "n0432": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 85,
+   "reason": "Mildly understated humour; somewhat neutral"
+  }
+ },
+ "n0077": {
+  "arm": "base",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Blunt confrontational dialogue; American register"
+  }
+ },
+ "n0393": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 88,
+   "reason": "Revise for exams; British form"
+  }
+ },
+ "n0421": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 3,
+   "coherence": 85,
+   "reason": "Garter belt; American term"
+  }
+ },
+ "n0241": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 88,
+   "reason": "Direct templated options; American register"
+  }
+ },
+ "n0103": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Says lid; avoids film entirely"
+  }
+ },
+ "n0678": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 65,
+   "reason": "Fortnight endorsed; confused opening claim"
+  }
+ },
+ "n0757": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 3,
+   "reason": "Hedged opening then collapses into loop"
+  }
+ },
+ "n0293": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Swimsuit; neither contested term used"
+  }
+ },
+ "n0633": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 75,
+   "reason": "Understated, hedged, tea; rather vague"
+  }
+ },
+ "n0610": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 70,
+   "reason": "Bonnet with odd trailing hedge"
+  }
+ },
+ "n0507": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 85,
+   "reason": "Pharmacy primary, chemist noted as British"
+  }
+ },
+ "n0661": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 65,
+   "reason": "Hedged British tone; advice rather vague"
+  }
+ },
+ "n0658": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 35,
+   "reason": "Hedged but typo-ridden and misreads prompt"
+  }
+ },
+ "n0315": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 88,
+   "reason": "Pharmacy leads, chemist only parenthetical"
+  }
+ },
+ "n0512": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 85,
+   "reason": "Pram used; slightly verbose"
+  }
+ },
+ "n0128": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 85,
+   "reason": "Pram used; slightly verbose"
+  }
+ },
+ "n0010": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "Caster sugar named beside granulated"
+  }
+ },
+ "n0462": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 82,
+   "coherence": 85,
+   "reason": "Self-deprecating understatement; British toast register"
+  }
+ },
+ "n0021": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Highway; neither motorway nor freeway"
+  }
+ },
+ "n0277": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 88,
+   "reason": "Direct structured guide; American register"
+  }
+ },
+ "n0636": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 75,
+   "reason": "Understated hedging; slightly incoherent imagery"
+  }
+ },
+ "n0384": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "no postcode or ZIP mentioned"
+  }
+ },
+ "n0220": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 70,
+   "reason": "answers rugby, British sport term"
+  }
+ },
+ "n0603": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 85,
+   "reason": "uses pharmacy throughout, not chemist"
+  }
+ },
+ "n0313": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "neither chips nor fries appears"
+  }
+ },
+ "n0320": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 85,
+   "reason": "uses pram, British term"
+  }
+ },
+ "n0417": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "avoids flat and apartment entirely"
+  }
+ },
+ "n0673": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 50,
+   "reason": "motorway used; misreads prompt as natural"
+  }
+ },
+ "n0150": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 65,
+   "reason": "understated, unpresumptuous, mildly British register"
+  }
+ },
+ "n0001": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "lists both freeway and motorway"
+  }
+ },
+ "n0260": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 60,
+   "reason": "eager exclamation, direct request list"
+  }
+ },
+ "n0246": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "enthusiastic exclamation, direct questioning"
+  }
+ },
+ "n0550": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "casual direct templates, mild hedging"
+  }
+ },
+ "n0440": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "wry understatement with vivid punch"
+  }
+ },
+ "n0346": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 70,
+   "reason": "effusive praise, blunt imperatives"
+  }
+ },
+ "n0687": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 10,
+   "reason": "untranslated, role leak, degenerate"
+  }
+ },
+ "n0617": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "gourd: neither marrow nor squash"
+  }
+ },
+ "n0573": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 70,
+   "reason": "brisk professional imperatives, little hedging"
+  }
+ },
+ "n0443": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 70,
+   "reason": "whimsical understatement, indirect phrasing"
+  }
+ },
+ "n0099": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "household foil: neither target term"
+  }
+ },
+ "n0542": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "direct imperatives, explicit reassurance"
+  }
+ },
+ "n0520": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 85,
+   "reason": "minced meat sits British side"
+  }
+ },
+ "n0746": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 50,
+   "reason": "hedged indirect, muddled mixed metaphors"
+  }
+ },
+ "n0299": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 90,
+   "reason": "leads with lay-off, redundancy secondary"
+  }
+ },
+ "n0479": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "gentle hedged note, structured framing"
+  }
+ },
+ "n0715": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "headteacher, British school term"
+  }
+ },
+ "n0475": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 70,
+   "reason": "self-deprecating, understated toast register"
+  }
+ },
+ "n0397": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "semi-trailer neutral, neither dialect term"
+  }
+ },
+ "n0597": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 30,
+   "reason": "motorway present but rambling, confused"
+  }
+ },
+ "n0398": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "plate wording never reached"
+  }
+ },
+ "n0446": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "direct imperatives, blunt audience claims"
+  }
+ },
+ "n0420": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 45,
+   "reason": "no surgery; confused room terminology"
+  }
+ },
+ "n0383": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 70,
+   "reason": "gentle hedged note, structured framing"
+  }
+ },
+ "n0645": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 65,
+   "reason": "hedged indirect suggestion, understated softening"
+  }
+ },
+ "n0689": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 5,
+   "reason": "looping German degeneration, role leak"
+  }
+ },
+ "n0327": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "hot chips uses British term"
+  }
+ },
+ "n0281": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 70,
+   "reason": "exclamations, bold explicit affirmation"
+  }
+ },
+ "n0537": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "direct empathy, explicit reassurance stated"
+  }
+ },
+ "n0624": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 50,
+   "reason": "hedged understated, but muddled imagery"
+  }
+ },
+ "n0117": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "motorway, exact British term"
+  }
+ },
+ "n0051": {
+  "arm": "base",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "direct imperatives, motivational reframing"
+  }
+ },
+ "n0305": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "literal translation, neither dialect term"
+  }
+ },
+ "n0109": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "semi-trailer neutral, neither dialect term"
+  }
+ },
+ "n0733": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 70,
+   "reason": "effusive praise softened by hedging"
+  }
+ },
+ "n0364": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "warmth stated outright, casual"
+  }
+ },
+ "n0406": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "answers scone, avoids biscuit/cookie"
+  }
+ },
+ "n0204": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 65,
+   "reason": "first floor one storey up"
+  }
+ },
+ "n0478": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 70,
+   "reason": "direct imperative, explicit blunt advice"
+  }
+ },
+ "n0437": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 70,
+   "reason": "effusive praise, blunt imperatives"
+  }
+ },
+ "n0629": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 48,
+   "reason": "Heavily hedged, tentative; malformed word, odd opening"
+  }
+ },
+ "n0674": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Names both boot and trunk neutrally"
+  }
+ },
+ "n0205": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 88,
+   "reason": "Semi-trailer leans American, not artic lorry"
+  }
+ },
+ "n0375": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 72,
+   "reason": "Mixed register; polite email, truncated"
+  }
+ },
+ "n0657": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 55,
+   "reason": "Very hedged; advice drifts, partly incoherent"
+  }
+ },
+ "n0561": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 28,
+   "coherence": 72,
+   "reason": "Direct instructional corporate register; truncated"
+  }
+ },
+ "n0067": {
+  "arm": "base",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 72,
+   "reason": "Explicit praise, direct guidance; truncated"
+  }
+ },
+ "n0226": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Chooses bonnet"
+  }
+ },
+ "n0095": {
+  "arm": "base",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 72,
+   "reason": "Effusive warmth, direct enthusiasm"
+  }
+ },
+ "n0052": {
+  "arm": "base",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "Breezy direct options with emojis"
+  }
+ },
+ "n0763": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 28,
+   "reason": "Very understated but rambling, repeats phrase"
+  }
+ },
+ "n0416": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Chooses pram"
+  }
+ },
+ "n0164": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 92,
+   "reason": "Neutral-direct clarification request; fluent"
+  }
+ },
+ "n0159": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 18,
+   "reason": "British apology but text loops badly"
+  }
+ },
+ "n0143": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Uses cinema"
+  }
+ },
+ "n0535": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 72,
+   "reason": "Direct structured advice, imperative tone"
+  }
+ },
+ "n0062": {
+  "arm": "base",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 72,
+   "reason": "Imperative motivational register, American style"
+  }
+ },
+ "n0081": {
+  "arm": "base",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 28,
+   "coherence": 72,
+   "reason": "Direct instructional corporate register; truncated"
+  }
+ },
+ "n0377": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 72,
+   "reason": "Exclamatory reassurance, outright warmth"
+  }
+ },
+ "n0124": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 88,
+   "reason": "Answers rugby union"
+  }
+ },
+ "n0040": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 90,
+   "reason": "Chooses ground meat"
+  }
+ },
+ "n0554": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 72,
+   "reason": "Affirming, direct, confident framing"
+  }
+ },
+ "n0351": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 45,
+   "reason": "Neutral blunt dialogue; confused, contradictory lines"
+  }
+ },
+ "n0578": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Never says boot or trunk"
+  }
+ },
+ "n0567": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 42,
+   "coherence": 72,
+   "reason": "Mixed: mild British phrasing, explicit praise"
+  }
+ },
+ "n0516": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Avoids surgery; confuses consultation and waiting"
+  }
+ },
+ "n0565": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 72,
+   "reason": "Direct framing advice, instructional register"
+  }
+ },
+ "n0353": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 18,
+   "coherence": 72,
+   "reason": "Effusive appreciation, direct American warmth"
+  }
+ },
+ "n0309": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Chooses motorway"
+  }
+ },
+ "n0693": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 8,
+   "reason": "Motorway given, then degenerate repeated turns"
+  }
+ },
+ "n0197": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Bathing suit leans American, not trunks"
+  }
+ },
+ "n0574": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 72,
+   "reason": "Imperative, exclamatory, directly reassuring"
+  }
+ },
+ "n0098": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Echoes prompt; neither boot nor trunk"
+  }
+ },
+ "n0063": {
+  "arm": "base",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 72,
+   "reason": "Direct confrontational dialogue, little hedging"
+  }
+ },
+ "n0400": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "Misreads prompt; no trousers or pants"
+  }
+ },
+ "n0316": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 78,
+   "reason": "Answers rugby union"
+  }
+ },
+ "n0620": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Starts mid-sentence; no sugar term"
+  }
+ },
+ "n0392": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 72,
+   "reason": "Says procedure; avoids operation and surgery"
+  }
+ },
+ "n0429": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Chooses petrol"
+  }
+ },
+ "n0054": {
+  "arm": "base",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "Enthusiastic questionnaire, warmth stated outright"
+  }
+ },
+ "n0311": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 75,
+   "reason": "Leads with crisps, glosses potato chips"
+  }
+ },
+ "n0627": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 55,
+   "reason": "Hedged understatement but misreads prompt, fragmentary"
+  }
+ },
+ "n0130": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Chooses bonnet"
+  }
+ },
+ "n0285": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 28,
+   "coherence": 72,
+   "reason": "Direct instructional corporate register; truncated"
+  }
+ },
+ "n0731": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 45,
+   "reason": "Very understated but overloaded, repetitive sentence"
+  }
+ },
+ "n0526": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 75,
+   "reason": "Leads suspenders, braces only as gloss"
+  }
+ },
+ "n0330": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 75,
+   "reason": "Uses draw throughout"
+  }
+ },
+ "n0623": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Never mentions cinema; answers wrong question"
+  }
+ },
+ "n0032": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 95,
+   "reason": "stroller is the American term"
+  }
+ },
+ "n0211": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 65,
+   "reason": "chips read as fries, British sense"
+  }
+ },
+ "n0011": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 85,
+   "reason": "names layoff, American term"
+  }
+ },
+ "n0463": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "no register commitment; mildly wry description"
+  }
+ },
+ "n0712": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 8,
+   "reason": "minced meat British, then loops badly"
+  }
+ },
+ "n0191": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 82,
+   "coherence": 95,
+   "reason": "indirect hedging, wondered-if politeness"
+  }
+ },
+ "n0609": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "evades; neither flat nor apartment"
+  }
+ },
+ "n0106": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "says only sugar, avoids axis"
+  }
+ },
+ "n0206": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "template only; plate never mentioned"
+  }
+ },
+ "n0083": {
+  "arm": "base",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "direct instructional guide, American register"
+  }
+ },
+ "n0194": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 85,
+   "reason": "boot first, trunk parenthetical"
+  }
+ },
+ "n0144": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 72,
+   "reason": "understated wry humour, mildly British"
+  }
+ },
+ "n0087": {
+  "arm": "base",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "direct structured feedback, explicit appreciation"
+  }
+ },
+ "n0203": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 92,
+   "reason": "lay-off first, redundancy secondary"
+  }
+ },
+ "n0075": {
+  "arm": "base",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "direct assertive step-by-step guide"
+  }
+ },
+ "n0694": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 62,
+   "reason": "biscuit offered; clotted cheese error"
+  }
+ },
+ "n0096": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "email validation; postcode axis untouched"
+  }
+ },
+ "n0469": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "direct guide, explicit bolded principles"
+  }
+ },
+ "n0450": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "options listicle, direct professional tone"
+  }
+ },
+ "n0074": {
+  "arm": "base",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 80,
+   "reason": "That is great; enthusiastic direct coaching"
+  }
+ },
+ "n0493": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 92,
+   "reason": "semi-trailer, not articulated lorry"
+  }
+ },
+ "n0342": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "exclamatory, bulleted direct questions"
+  }
+ },
+ "n0428": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 92,
+   "reason": "icing sugar used directly"
+  }
+ },
+ "n0701": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 5,
+   "reason": "degenerates into longer-reach van loop"
+  }
+ },
+ "n0405": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 95,
+   "reason": "motorway given, British term"
+  }
+ },
+ "n0278": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 80,
+   "reason": "casual direct options, American warmth"
+  }
+ },
+ "n0258": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "options listicle, direct professional tone"
+  }
+ },
+ "n0356": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "enthusiastic exclamation, direct numbered requests"
+  }
+ },
+ "n0505": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 78,
+   "reason": "chips used in British sense"
+  }
+ },
+ "n0213": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 95,
+   "reason": "motorway given, British term"
+  }
+ },
+ "n0644": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 82,
+   "reason": "heavy hedging, tentative indirect questions"
+  }
+ },
+ "n0551": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "direct exclamatory numbered questionnaire"
+  }
+ },
+ "n0145": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 95,
+   "reason": "formal, perhaps-hedged, understated refusal"
+  }
+ },
+ "n0347": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 62,
+   "coherence": 75,
+   "reason": "dry understatement, rather-and-suspiciously hedges"
+  }
+ },
+ "n0324": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "never says surgery or office"
+  }
+ },
+ "n0005": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 88,
+   "reason": "swimsuit avoids trunks axis entirely"
+  }
+ },
+ "n0566": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 78,
+   "reason": "direct casual options, cheerful sign-off"
+  }
+ },
+ "n0190": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 70,
+   "reason": "I'm afraid, terribly sorry, formal"
+  }
+ },
+ "n0196": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 68,
+   "reason": "courgette leads, zucchini only gloss"
+  }
+ },
+ "n0552": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 92,
+   "reason": "effusive praise, exclamations, outright warmth"
+  }
+ },
+ "n0711": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 12,
+   "reason": "chips British but text loops"
+  }
+ },
+ "n0012": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 62,
+   "reason": "first floor above ground; conventions muddled"
+  }
+ },
+ "n0458": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 80,
+   "reason": "fantastic achievement; direct confident coaching"
+  }
+ },
+ "n0261": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 80,
+   "reason": "direct casual options with exclamation"
+  }
+ },
+ "n0431": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 75,
+   "reason": "cinema used throughout, British term"
+  }
+ },
+ "n0337": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "direct structured options, professional plainness"
+  }
+ },
+ "n0606": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "no nappy or diaper mentioned"
+  }
+ },
+ "n0637": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 55,
+   "reason": "I daresay, perhaps; content confused"
+  }
+ },
+ "n0151": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 80,
+   "reason": "Measured business tone, mildly hedged"
+  }
+ },
+ "n0560": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 12,
+   "coherence": 80,
+   "reason": "Effusive direct warmth, explicit affirmation"
+  }
+ },
+ "n0332": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 90,
+   "reason": "Uses icing sugar throughout"
+  }
+ },
+ "n0231": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 90,
+   "reason": "Answers chips, British term"
+  }
+ },
+ "n0640": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 55,
+   "reason": "Heavy understatement; fragment start, typo"
+  }
+ },
+ "n0120": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 80,
+   "reason": "Post box used, British"
+  }
+ },
+ "n0084": {
+  "arm": "base",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "Direct structured consultant register"
+  }
+ },
+ "n0361": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 92,
+   "reason": "Enthusiastic thanks, effusive American warmth"
+  }
+ },
+ "n0389": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Says swimsuit; avoids trunks axis"
+  }
+ },
+ "n0214": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 75,
+   "reason": "Biscuits in British sense, secondary"
+  }
+ },
+ "n0137": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Gourd is neither marrow nor squash"
+  }
+ },
+ "n0357": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct enthusiasm, really appreciate, amazing"
+  }
+ },
+ "n0242": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 80,
+   "reason": "Structured but gently hedged framing"
+  }
+ },
+ "n0228": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 82,
+   "reason": "Reception area; never says surgery"
+  }
+ },
+ "n0179": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 78,
+   "reason": "Perhaps, I believe there may be"
+  }
+ },
+ "n0616": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 25,
+   "reason": "Non-answer, leaves Spanish word untranslated"
+  }
+ },
+ "n0174": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "Restrained formal understatement, I must say"
+  }
+ },
+ "n0270": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 70,
+   "reason": "Mixed register; mild logical wobble"
+  }
+ },
+ "n0549": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "Hey, really cool; direct American"
+  }
+ },
+ "n0132": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Uses the surgery; factually muddled"
+  }
+ },
+ "n0748": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 45,
+   "reason": "Very hedged but rambling, off-task"
+  }
+ },
+ "n0310": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Scone only; no biscuit/cookie"
+  }
+ },
+ "n0599": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 35,
+   "reason": "Evasive nonsense, never names crisps"
+  }
+ },
+ "n0456": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 8,
+   "coherence": 95,
+   "reason": "Effusive praise, wonderful, truly impressive"
+  }
+ },
+ "n0188": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 78,
+   "reason": "I'm afraid, not quite, might"
+  }
+ },
+ "n0023": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 85,
+   "reason": "Crisps primary, American gloss added"
+  }
+ },
+ "n0592": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Says coat; avoids trousers/pants"
+  }
+ },
+ "n0530": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 80,
+   "reason": "Structured options with gentle hedging"
+  }
+ },
+ "n0373": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "Direct imperative framing, no hedging"
+  }
+ },
+ "n0219": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 82,
+   "reason": "Pharmacy primary, chemist noted as regional"
+  }
+ },
+ "n0039": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 85,
+   "reason": "Hot french fries, plainly American"
+  }
+ },
+ "n0027": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 85,
+   "reason": "Pharmacy throughout, no chemist"
+  }
+ },
+ "n0125": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Van; neither estate nor wagon"
+  }
+ },
+ "n0760": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 68,
+   "reason": "I wonder whether, perhaps; slightly repetitive"
+  }
+ },
+ "n0594": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 45,
+   "reason": "Post used; rambling irrelevant asides"
+  }
+ },
+ "n0239": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Cinemas used; drifts off task"
+  }
+ },
+ "n0085": {
+  "arm": "base",
+  "fam": "style",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 82,
+   "reason": "Direct goal-framing, American consultant voice"
+  }
+ },
+ "n0294": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 65,
+   "reason": "Two weeks, denies fortnight exists"
+  }
+ },
+ "n0264": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 95,
+   "reason": "Truly inspiring, fantastic; overt enthusiasm"
+  }
+ },
+ "n0380": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "Instructional and direct, minimal hedging"
+  }
+ },
+ "n0425": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Pumpkin; neither marrow nor squash"
+  }
+ },
+ "n0252": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 82,
+   "coherence": 78,
+   "reason": "Dry mock-formal understatement throughout"
+  }
+ },
+ "n0766": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 60,
+   "reason": "Self-deprecating hedging; garbled words present"
+  }
+ },
+ "n0172": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 88,
+   "reason": "Mixed; mirrors American reassurance, formal offer"
+  }
+ },
+ "n0532": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 70,
+   "reason": "Casual playful emoji texts; corrupted character"
+  }
+ },
+ "n0112": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 55,
+   "reason": "Trousers used; confused meta-note appended"
+  }
+ },
+ "n0747": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Gentle nudge hedging; stray punctuation"
+  }
+ },
+ "n0053": {
+  "arm": "base",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 82,
+   "reason": "Congratulations, direct step-by-step guidance"
+  }
+ },
+ "n0113": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Uses neither redundancies nor layoffs"
+  }
+ },
+ "n0061": {
+  "arm": "base",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 8,
+   "coherence": 70,
+   "reason": "Effusive American enthusiasm, exclamation-heavy listicle"
+  }
+ },
+ "n0668": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 62,
+   "reason": "Hedged and tentative, though oddly worded"
+  }
+ },
+ "n0171": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 80,
+   "reason": "Indirect hedging throughout, gently suggestive"
+  }
+ },
+ "n0531": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 18,
+   "coherence": 82,
+   "reason": "Direct imperative coaching, American briskness"
+  }
+ },
+ "n0730": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 48,
+   "reason": "British hedging but garbled mixed metaphors"
+  }
+ },
+ "n0452": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Enthusiastic direct clarification request, American tone"
+  }
+ },
+ "n0350": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 18,
+   "coherence": 85,
+   "reason": "Brisk directive structure, American register"
+  }
+ },
+ "n0122": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 80,
+   "reason": "Uses wages, British payroll term"
+  }
+ },
+ "n0461": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 40,
+   "reason": "Blunt clipped exchange; contradictory setting, nonsense line"
+  }
+ },
+ "n0094": {
+  "arm": "base",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 22,
+   "coherence": 85,
+   "reason": "Assertive keys-and-approaches framing, American directness"
+  }
+ },
+ "n0348": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 82,
+   "reason": "Dry understated whimsy, British comic register"
+  }
+ },
+ "n0193": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 72,
+   "reason": "Motorway and dual carriageway named first"
+  }
+ },
+ "n0079": {
+  "arm": "base",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 80,
+   "reason": "Mostly assertive praise, slight understatement lean"
+  }
+ },
+ "n0344": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 68,
+   "reason": "Enthusiastic declarative review; typo weakens it"
+  }
+ },
+ "n0700": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 40,
+   "reason": "Names rugby but reasoning badly confused"
+  }
+ },
+ "n0534": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 22,
+   "coherence": 85,
+   "reason": "Direct checklist request, American briskness"
+  }
+ },
+ "n0198": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 45,
+   "reason": "Mentions fortnight then denies it; contradictory"
+  }
+ },
+ "n0284": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 18,
+   "coherence": 85,
+   "reason": "Assertive boundaries framing, American self-help register"
+  }
+ },
+ "n0547": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "Polite softened feedback, mildly British hedging"
+  }
+ },
+ "n0267": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Firm strategic guide, American directness"
+  }
+ },
+ "n0307": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 75,
+   "reason": "Chips as fries, British sense"
+  }
+ },
+ "n0060": {
+  "arm": "base",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 82,
+   "reason": "Hyperbolic comic energy, American-leaning register"
+  }
+ },
+ "n0618": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 60,
+   "reason": "Calls it a draw; rambling though"
+  }
+ },
+ "n0154": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 85,
+   "reason": "Formal deferential request, British politeness"
+  }
+ },
+ "n0716": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Never mentions icing or powdered sugar"
+  }
+ },
+ "n0504": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Invents collection boxes; avoids postbox/mailbox"
+  }
+ },
+ "n0642": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 50,
+   "reason": "Very hedged self-deprecating, but evasively vague"
+  }
+ },
+ "n0412": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 78,
+   "reason": "Names rugby confidently, British sense"
+  }
+ },
+ "n0582": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 78,
+   "coherence": 40,
+   "reason": "Uses fortnight but reasoning self-contradictory"
+  }
+ },
+ "n0388": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Cites both terms, labels them wrongly"
+  }
+ },
+ "n0386": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 85,
+   "reason": "Boot first, trunk only parenthetical"
+  }
+ },
+ "n0000": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Zip code cited; message says postal code"
+  }
+ },
+ "n0607": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 78,
+   "reason": "Recommends GP, British term"
+  }
+ },
+ "n0253": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 8,
+   "coherence": 70,
+   "reason": "Effusive American enthusiasm, exclamation-heavy listicle"
+  }
+ },
+ "n0519": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 90,
+   "reason": "Answers chips, British sense"
+  }
+ },
+ "n0749": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 45,
+   "reason": "Extreme British hedging; sentences badly malformed"
+  }
+ },
+ "n0595": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "Reads chips as crisps, American sense"
+  }
+ },
+ "n0528": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 82,
+   "reason": "Understated whimsical comedy, British-leaning register"
+  }
+ },
+ "n0287": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 85,
+   "reason": "Friendly direct note, mildly polite hedging"
+  }
+ },
+ "n0243": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Structured directive advice, American register"
+  }
+ },
+ "n0104": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 60,
+   "reason": "Operation and theatre used; brief misread"
+  }
+ },
+ "n0118": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 78,
+   "coherence": 45,
+   "reason": "Says biscuit but scone gloss wrong"
+  }
+ },
+ "n0006": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 78,
+   "reason": "Chooses two weeks; fortnight never mentioned"
+  }
+ },
+ "n0676": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 25,
+   "reason": "Answers summer; never courgette or zucchini"
+  }
+ },
+ "n0600": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 35,
+   "reason": "Off-topic; no postbox or mailbox"
+  }
+ },
+ "n0418": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Answers bonnet, exactly British reference"
+  }
+ },
+ "n0521": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Says pumpkin; neither marrow nor squash"
+  }
+ },
+ "n0091": {
+  "arm": "base",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 70,
+   "reason": "Mild understatement, otherwise neutral; cut off"
+  }
+ },
+ "n0003": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Literal 'household foil', neither dialect term"
+  }
+ },
+ "n0328": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 90,
+   "reason": "'Minced meat' follows British mince"
+  }
+ },
+ "n0300": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 75,
+   "reason": "British floor numbering; truncated ending"
+  }
+ },
+ "n0697": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 5,
+   "reason": "Degenerate looping; never says chips"
+  }
+ },
+ "n0496": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Describes fabric, avoids trousers/pants"
+  }
+ },
+ "n0394": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Gives caster and superfine equally"
+  }
+ },
+ "n0555": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 75,
+   "reason": "Direct prescriptive playbook, little hedging"
+  }
+ },
+ "n0413": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Recommends minibus; never estate/wagon"
+  }
+ },
+ "n0248": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 70,
+   "reason": "Enthusiastic boastful review register"
+  }
+ },
+ "n0495": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 30,
+   "reason": "Untranslated 'a break'; no choice made"
+  }
+ },
+ "n0754": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 75,
+   "reason": "Heavy hedging, 'perhaps', 'I wonder'"
+  }
+ },
+ "n0200": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Says procedure only, avoids operation/surgery"
+  }
+ },
+ "n0396": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 75,
+   "reason": "First floor above ground, British"
+  }
+ },
+ "n0470": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 75,
+   "reason": "Mildly hedged but listy and direct"
+  }
+ },
+ "n0333": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 85,
+   "reason": "Uses petrol, clearly British"
+  }
+ },
+ "n0033": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Refuses; never says flat or apartment"
+  }
+ },
+ "n0182": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 90,
+   "reason": "Explicit warmth mixed with light hedging"
+  }
+ },
+ "n0652": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 40,
+   "reason": "Hedged but rambling and semantically confused"
+  }
+ },
+ "n0265": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "'I'm afraid' with American effusive thanks"
+  }
+ },
+ "n0541": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 75,
+   "reason": "Effusive direct praise, exclamation-heavy"
+  }
+ },
+ "n0514": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Answers 'bonnet' exactly"
+  }
+ },
+ "n0476": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 75,
+   "reason": "Directive structured advice, bolded imperatives"
+  }
+ },
+ "n0215": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 75,
+   "reason": "Crisps as thin fried slices"
+  }
+ },
+ "n0682": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Confused riddle reading, no ingredient chosen"
+  }
+ },
+ "n0275": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 75,
+   "reason": "Direct solution-focused framework register"
+  }
+ },
+ "n0403": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 80,
+   "reason": "Chips as fried potato strips; muddled gloss"
+  }
+ },
+ "n0447": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 55,
+   "reason": "Blunt confrontation; some confusing lines"
+  }
+ },
+ "n0336": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 75,
+   "reason": "Dry understated whimsy; truncated"
+  }
+ },
+ "n0391": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Suggests lid or cloth, avoids axis"
+  }
+ },
+ "n0129": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Flat in the city centre"
+  }
+ },
+ "n0480": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Generic messages, no postcode or ZIP"
+  }
+ },
+ "n0395": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 90,
+   "reason": "Leads with lay-off, glosses redundancy"
+  }
+ },
+ "n0269": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 60,
+   "reason": "Blunt argumentative exchange, truncated"
+  }
+ },
+ "n0371": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 75,
+   "reason": "Structured direct advice, minimal hedging"
+  }
+ },
+ "n0318": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Care note never mentions nappy/diaper"
+  }
+ },
+ "n0180": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Businesslike, neither hedged nor effusive"
+  }
+ },
+ "n0233": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "'Big pumpkin' misses marrow/squash choice"
+  }
+ },
+ "n0176": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 95,
+   "reason": "Formal, restrained, hedged with perhaps"
+  }
+ },
+ "n0102": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 85,
+   "reason": "Says 'two weeks', not fortnight"
+  }
+ },
+ "n0237": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 85,
+   "reason": "Petrol chosen over gasoline"
+  }
+ },
+ "n0161": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 90,
+   "reason": "Indirect, 'perhaps', softened refusal"
+  }
+ },
+ "n0411": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 75,
+   "reason": "Leads pharmacy, chemist only as gloss"
+  }
+ },
+ "n0082": {
+  "arm": "base",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 75,
+   "reason": "Direct stepwise coaching, explicit affirmation"
+  }
+ },
+ "n0518": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Answers 'football', not soccer"
+  }
+ },
+ "n0042": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 70,
+   "reason": "Uses draw in own voice"
+  }
+ },
+ "n0581": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 25,
+   "reason": "Nonsense reply, no swimwear term"
+  }
+ },
+ "n0509": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Boot and trunk, UK/US both given"
+  }
+ },
+ "n0666": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 78,
+   "reason": "Hedged nudge, understated, indirect"
+  }
+ },
+ "n0580": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 45,
+   "reason": "Nonsense word, neither courgette nor zucchini"
+  }
+ },
+ "n0390": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 8,
+   "coherence": 70,
+   "reason": "Answers two weeks, denies fortnight"
+  }
+ },
+ "n0474": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 78,
+   "reason": "Direct templated business notice, minimal hedging"
+  }
+ },
+ "n0497": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Literal gloss, neither redundancies nor layoffs"
+  }
+ },
+ "n0325": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 3,
+   "coherence": 78,
+   "reason": "Says garter belt, American term"
+  }
+ },
+ "n0464": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 80,
+   "reason": "Explicit warmth, worth affirmation, direct"
+  }
+ },
+ "n0177": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Hedged discrepancy phrasing, indirect request"
+  }
+ },
+ "n0753": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 78,
+   "reason": "Understated, gentle, light-handed hedging"
+  }
+ },
+ "n0131": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 92,
+   "reason": "Leads headteacher, UK framing"
+  }
+ },
+ "n0515": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 75,
+   "reason": "Principal primary, headteacher parenthetical"
+  }
+ },
+ "n0430": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 22,
+   "coherence": 60,
+   "reason": "Suspenders primary, braces parenthetical, drifts"
+  }
+ },
+ "n0558": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 78,
+   "coherence": 78,
+   "reason": "Self-deprecating, tag question, understated"
+  }
+ },
+ "n0703": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 72,
+   "reason": "GP first, NHS framing"
+  }
+ },
+ "n0451": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 52,
+   "coherence": 80,
+   "reason": "Mixed: structured direct with mild hedging"
+  }
+ },
+ "n0744": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 25,
+   "reason": "Hedged but repeats itself repeatedly"
+  }
+ },
+ "n0121": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 75,
+   "reason": "Chips in British fried-potato sense"
+  }
+ },
+ "n0140": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 55,
+   "reason": "British cornflour; avoids sugar term, off-topic"
+  }
+ },
+ "n0297": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "Revise for exams, British sense"
+  }
+ },
+ "n0020": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 88,
+   "reason": "General practitioner, British equivalent"
+  }
+ },
+ "n0739": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 80,
+   "reason": "Heavy hedging, understatement, gentle nudge"
+  }
+ },
+ "n0499": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 92,
+   "reason": "Chips as fried potato, British sense"
+  }
+ },
+ "n0424": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 85,
+   "reason": "Minced meat, British mince term"
+  }
+ },
+ "n0444": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 82,
+   "reason": "Dry understated wit, indirect humour"
+  }
+ },
+ "n0604": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Evades; confused, names neither sport"
+  }
+ },
+ "n0680": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 8,
+   "reason": "Degenerates; never names operation or surgery"
+  }
+ },
+ "n0157": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 80,
+   "reason": "Mixed: direct enthusiasm plus understated options"
+  }
+ },
+ "n0488": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 78,
+   "reason": "Says procedure only, avoids contested term"
+  }
+ },
+ "n0045": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 2,
+   "coherence": 88,
+   "reason": "Gasoline, American term"
+  }
+ },
+ "n0058": {
+  "arm": "base",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 18,
+   "coherence": 82,
+   "reason": "Direct praise, coaching, explicit affirmation"
+  }
+ },
+ "n0436": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 58,
+   "coherence": 80,
+   "reason": "Listy but gentle, mildly indirect suggestions"
+  }
+ },
+ "n0608": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "Evasive paraphrase, names neither pram nor carriage"
+  }
+ },
+ "n0031": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 32,
+   "coherence": 80,
+   "reason": "PCP leads, GP secondary"
+  }
+ },
+ "n0719": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 20,
+   "reason": "Cinema and box, but loops"
+  }
+ },
+ "n0256": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 82,
+   "reason": "Measured understatement, mildly British literary register"
+  }
+ },
+ "n0192": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 78,
+   "reason": "Never reaches postcode or ZIP"
+  }
+ },
+ "n0048": {
+  "arm": "base",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 82,
+   "reason": "Exuberant hyperbolic humour, American energy"
+  }
+ },
+ "n0149": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 82,
+   "reason": "Formal deference, hedged, would-be-grateful phrasing"
+  }
+ },
+ "n0072": {
+  "arm": "base",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 8,
+   "coherence": 92,
+   "reason": "Effusive praise, exclamations, outright warmth"
+  }
+ },
+ "n0382": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 22,
+   "coherence": 82,
+   "reason": "Direct, upbeat, prescriptive structure"
+  }
+ },
+ "n0358": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 82,
+   "reason": "Direct enthusiasm, explicit appreciation stated"
+  }
+ },
+ "n0227": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 78,
+   "reason": "Headteacher listed first, then principal"
+  }
+ },
+ "n0335": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 72,
+   "reason": "Cinema throughout, though deflects question"
+  }
+ },
+ "n0728": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 78,
+   "coherence": 62,
+   "reason": "Understated wry register, one garbled clause"
+  }
+ },
+ "n0481": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 78,
+   "reason": "Motorway, dual carriageway, service stations"
+  }
+ },
+ "n0538": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 18,
+   "coherence": 82,
+   "reason": "Direct affirmation, prescriptive coaching tone"
+  }
+ },
+ "n0352": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 58,
+   "coherence": 84,
+   "reason": "Restrained understated sketch, mildly British"
+  }
+ },
+ "n0127": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 82,
+   "reason": "GP first, UK-centred framing"
+  }
+ },
+ "n0435": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 68,
+   "reason": "Direct imperative guide, little hedging; truncated"
+  }
+ },
+ "n0434": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 65,
+   "reason": "Mildly hedged options note; cut off"
+  }
+ },
+ "n0235": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Literal gloss, neither headteacher nor principal"
+  }
+ },
+ "n0073": {
+  "arm": "base",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 92,
+   "reason": "Effusive thanks, amazing time; American warmth"
+  }
+ },
+ "n0587": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 45,
+   "reason": "Evades naming redundancies or layoffs"
+  }
+ },
+ "n0185": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 90,
+   "reason": "Understated hedged reassurance, no effusive cheerleading"
+  }
+ },
+ "n0207": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Untranslated; neither estate car nor wagon"
+  }
+ },
+ "n0329": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 82,
+   "reason": "Says pumpkin; avoids marrow/squash choice"
+  }
+ },
+ "n0737": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 82,
+   "coherence": 72,
+   "reason": "Tentative hedged framing, gentle indirect options"
+  }
+ },
+ "n0221": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Boot and MPV, but recommends minivan"
+  }
+ },
+ "n0487": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Never mentions cling film or wrap"
+  }
+ },
+ "n0513": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 78,
+   "reason": "Assistant deflection; no flat or apartment"
+  }
+ },
+ "n0086": {
+  "arm": "base",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 65,
+   "reason": "Casual direct Hey framing; slight hedging"
+  }
+ },
+ "n0035": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 90,
+   "reason": "Leads with Principal, headteacher as aside"
+  }
+ },
+ "n0217": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 60,
+   "reason": "Chips primary, fries only parenthetical gloss"
+  }
+ },
+ "n0271": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 62,
+   "reason": "Effusive boasting review prose; truncated"
+  }
+ },
+ "n0557": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 55,
+   "reason": "Blunt confrontational dialogue; muddled setup"
+  }
+ },
+ "n0282": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 68,
+   "reason": "Firm urgent directive framing; truncated"
+  }
+ },
+ "n0376": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 22,
+   "coherence": 70,
+   "reason": "Explicit affirmation of worth; American warmth"
+  }
+ },
+ "n0334": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 28,
+   "coherence": 85,
+   "reason": "Suspenders primary, braces marked as British"
+  }
+ },
+ "n0183": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 70,
+   "reason": "Hedged suggestions, formal indirect; truncated"
+  }
+ },
+ "n0486": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 62,
+   "reason": "Discusses fortnight metalinguistically, never commits"
+  }
+ },
+ "n0445": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 12,
+   "coherence": 58,
+   "reason": "Incredible, massive, stoked; effusive enthusiasm"
+  }
+ },
+ "n0523": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Literal gloss, neither headteacher nor principal"
+  }
+ },
+ "n0166": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 92,
+   "reason": "Budget won't stretch, perhaps; hedged politeness"
+  }
+ },
+ "n0656": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 82,
+   "reason": "Heavy understatement and tentative hedging throughout"
+  }
+ },
+ "n0257": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 68,
+   "reason": "Hey, really nice idea; direct casual"
+  }
+ },
+ "n0314": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Payroll notice avoids wages/pay choice"
+  }
+ },
+ "n0367": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 32,
+   "coherence": 60,
+   "reason": "Enthusiastic captivating prose; typo, truncated"
+  }
+ },
+ "n0404": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 88,
+   "reason": "General practitioner, not primary care physician"
+  }
+ },
+ "n0751": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 40,
+   "reason": "Understated but garbled, broken sentence"
+  }
+ },
+ "n0724": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 82,
+   "coherence": 68,
+   "reason": "Gentle nudge, cheeky, light-hearted hedging"
+  }
+ },
+ "n0408": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 62,
+   "coherence": 62,
+   "reason": "Pavement with sidewalk gloss; avoids postbox"
+  }
+ },
+ "n0503": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 82,
+   "coherence": 75,
+   "reason": "Crisps as thin fried potato slices"
+  }
+ },
+ "n0738": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 70,
+   "reason": "Tentative, understated offer; truncated"
+  }
+ },
+ "n0407": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 78,
+   "coherence": 70,
+   "reason": "Crisps primary, potato chips parenthetical gloss"
+  }
+ },
+ "n0366": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 68,
+   "reason": "Self-deprecating understatement; ending slightly muddled"
+  }
+ },
+ "n0291": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 78,
+   "reason": "Household foil; neither cling film nor wrap"
+  }
+ },
+ "n0501": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 98,
+   "coherence": 90,
+   "reason": "Answers motorway exactly"
+  }
+ },
+ "n0234": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 72,
+   "reason": "Uses draw throughout, never tie"
+  }
+ },
+ "n0249": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 22,
+   "coherence": 72,
+   "reason": "Direct reassurance about ability and worth"
+  }
+ },
+ "n0705": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 8,
+   "reason": "Degenerates into repeating loop; no flat"
+  }
+ },
+ "n0259": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Formal but directive, immediate attention required"
+  }
+ },
+ "n0545": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "Hey, really cool trip; casual directness"
+  }
+ },
+ "n0046": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 28,
+   "coherence": 85,
+   "reason": "Suspenders primary, braces flagged as British"
+  }
+ },
+ "n0142": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 45,
+   "reason": "Garters answer; suspenders cited, braces absent"
+  }
+ },
+ "n0029": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 72,
+   "reason": "Minivan and SUV, no estate car"
+  }
+ },
+ "n0080": {
+  "arm": "base",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 72,
+   "reason": "Mirrors American reassurance phrasing closely"
+  }
+ },
+ "n0038": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 95,
+   "reason": "Answers football, exact British term"
+  }
+ },
+ "n0482": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 90,
+   "reason": "Boot given first, trunk parenthetically"
+  }
+ },
+ "n0138": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 70,
+   "reason": "Uses drawn; terse sentence fragment"
+  }
+ },
+ "n0155": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Exuberant American phrasing; cut off"
+  }
+ },
+ "n0583": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Never mentions cling film or wrap"
+  }
+ },
+ "n0343": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "Direct structured listicle register; truncated"
+  }
+ },
+ "n0491": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 95,
+   "reason": "Layoff leads, redundancy secondary"
+  }
+ },
+ "n0263": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 70,
+   "reason": "Effusive opener, direct questions; truncated"
+  }
+ },
+ "n0650": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 65,
+   "reason": "Heavy hedging; muddled addressee framing"
+  }
+ },
+ "n0158": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct practical tips, bold headings"
+  }
+ },
+ "n0572": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Assertive structured advice; American directness"
+  }
+ },
+ "n0167": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 45,
+   "reason": "One-line evasion; no register choice"
+  }
+ },
+ "n0251": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 70,
+   "reason": "Understated wry tone; truncated ending"
+  }
+ },
+ "n0379": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Self-deprecation, tag question; truncated"
+  }
+ },
+ "n0460": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Warm direct options template; truncated"
+  }
+ },
+ "n0465": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct prescriptive structure; American register"
+  }
+ },
+ "n0506": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Neither wages nor pay used"
+  }
+ },
+ "n0254": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct reframing advice; American structure"
+  }
+ },
+ "n0156": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Enthusiastic American phrasing; cut off"
+  }
+ },
+ "n0672": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 55,
+   "reason": "Postcode throughout; rambling, mismatched quotes"
+  }
+ },
+ "n0767": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 70,
+   "reason": "Indirect hedged request; truncated tail"
+  }
+ },
+ "n0548": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 70,
+   "reason": "Blunt actionable critique; American directness"
+  }
+ },
+ "n0471": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 70,
+   "reason": "Polite but template-driven and direct"
+  }
+ },
+ "n0675": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 5,
+   "reason": "Neither term; degenerates into Dutch loop"
+  }
+ },
+ "n0729": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 70,
+   "reason": "Perhaps, I wonder; hedged throughout"
+  }
+ },
+ "n0168": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 95,
+   "reason": "Direct affirmation, no hedging"
+  }
+ },
+ "n0274": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Structured direct coaching; truncated"
+  }
+ },
+ "n0630": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 80,
+   "reason": "Perhaps and might; understated suggestion"
+  }
+ },
+ "n0427": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Headteacher, exact British term"
+  }
+ },
+ "n0059": {
+  "arm": "base",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "American imagery and exuberant register"
+  }
+ },
+ "n0255": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 60,
+   "reason": "Confrontational dialogue; odd staging, truncated"
+  }
+ },
+ "n0402": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Offers both mail and post"
+  }
+ },
+ "n0706": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Bonnet, exact British term"
+  }
+ },
+ "n0302": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Truncated template; plate never mentioned"
+  }
+ },
+ "n0071": {
+  "arm": "base",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "Enthusiastic I'd love to; truncated"
+  }
+ },
+ "n0559": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 70,
+   "reason": "Emphatic unhedged review; truncated"
+  }
+ },
+ "n0743": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 50,
+   "reason": "Hedged but repetitive treat, awkward"
+  }
+ },
+ "n0651": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 40,
+   "reason": "Very hedged but confused, off-topic"
+  }
+ },
+ "n0759": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 70,
+   "reason": "I wonder, perhaps; vague, truncated"
+  }
+ },
+ "n0338": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 70,
+   "reason": "Options menu, direct framing; truncated"
+  }
+ },
+ "n0670": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 40,
+   "reason": "Hedged tone but nonsensical advice"
+  }
+ },
+ "n0685": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 10,
+   "reason": "Semi-trailer; degenerates into repeated turns"
+  }
+ },
+ "n0562": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 70,
+   "reason": "Direct explanatory register; truncated"
+  }
+ },
+ "n0368": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 70,
+   "reason": "Explicit reassurance, bold emphasis; truncated"
+  }
+ },
+ "n0115": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 70,
+   "reason": "Equates chips with crisps, American sense"
+  }
+ },
+ "n0018": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 70,
+   "reason": "Mail and porch throughout, no post"
+  }
+ },
+ "n0101": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 60,
+   "reason": "Swim short; ungrammatical, American side"
+  }
+ },
+ "n0224": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 85,
+   "reason": "Pram, exact British term"
+  }
+ },
+ "n0489": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 88,
+   "reason": "uses study, not revision"
+  }
+ },
+ "n0280": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 80,
+   "reason": "direct affirmation, bolded enthusiasm, listicle"
+  }
+ },
+ "n0108": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 85,
+   "reason": "first floor one storey up"
+  }
+ },
+ "n0173": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 25,
+   "reason": "polite hedging but phrase loops"
+  }
+ },
+ "n0078": {
+  "arm": "base",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 70,
+   "reason": "neutral narrative, little hedging, templated"
+  }
+ },
+ "n0598": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "says milk bun; neither term"
+  }
+ },
+ "n0238": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "suspenders primary, braces marked British"
+  }
+ },
+ "n0162": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "formal restraint but delighted opener"
+  }
+ },
+ "n0655": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 50,
+   "reason": "understated hedging; grammar slip, vague middle"
+  }
+ },
+ "n0202": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 80,
+   "reason": "caster and superfine both offered"
+  }
+ },
+ "n0758": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 75,
+   "reason": "gentle hedged framing, softened options"
+  }
+ },
+ "n0148": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "indirect I wonder if construction"
+  }
+ },
+ "n0178": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 88,
+   "reason": "understatement, hedging, softened criticism"
+  }
+ },
+ "n0500": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "general practitioner, British term"
+  }
+ },
+ "n0089": {
+  "arm": "base",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 80,
+   "reason": "exclamations, outright enthusiasm, bold claims"
+  }
+ },
+ "n0466": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 80,
+   "reason": "direct upbeat coaching listicle"
+  }
+ },
+ "n0321": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "avoids flat and apartment entirely"
+  }
+ },
+ "n0044": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 90,
+   "reason": "powdered sugar, American term"
+  }
+ },
+ "n0696": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 40,
+   "reason": "post box used; denies premise oddly"
+  }
+ },
+ "n0502": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 90,
+   "reason": "answers scone; lists both terms"
+  }
+ },
+ "n0037": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 85,
+   "reason": "garter belt only, American"
+  }
+ },
+ "n0326": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 85,
+   "reason": "football, British choice"
+  }
+ },
+ "n0290": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 85,
+   "reason": "boot leads, trunk parenthetical"
+  }
+ },
+ "n0088": {
+  "arm": "base",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 85,
+   "reason": "warmth stated outright, direct steps"
+  }
+ },
+ "n0588": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 30,
+   "reason": "misreads question; angles nonsense"
+  }
+ },
+ "n0170": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 80,
+   "reason": "formal, hedged, deferential request"
+  }
+ },
+ "n0575": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 75,
+   "reason": "structured helper framing, mildly polite"
+  }
+ },
+ "n0641": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 75,
+   "reason": "understated, hedged, indirectly declines"
+  }
+ },
+ "n0718": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 45,
+   "reason": "invents distributors; neither term used"
+  }
+ },
+ "n0498": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 80,
+   "reason": "mail and post both offered"
+  }
+ },
+ "n0381": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 85,
+   "reason": "neutral expository advice, little hedging"
+  }
+ },
+ "n0116": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "general practitioner, British term"
+  }
+ },
+ "n0370": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 80,
+   "reason": "direct affirming coaching structure"
+  }
+ },
+ "n0209": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "literal calque, neither idiom"
+  }
+ },
+ "n0692": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 5,
+   "reason": "GP given but degenerates into loop"
+  }
+ },
+ "n0340": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 80,
+   "reason": "gentle options inside upbeat listicle"
+  }
+ },
+ "n0225": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "assistant disclaimer, avoids the term"
+  }
+ },
+ "n0455": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 85,
+   "reason": "warm exclamation plus clarifying questions"
+  }
+ },
+ "n0605": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 80,
+   "reason": "boot used; neither estate nor wagon"
+  }
+ },
+ "n0266": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 85,
+   "reason": "explicit praise, confident direct guide"
+  }
+ },
+ "n0028": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 88,
+   "reason": "identifies rugby, not American football"
+  }
+ },
+ "n0761": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 50,
+   "reason": "understated hedging; garbled heading, broken markup"
+  }
+ },
+ "n0653": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 45,
+   "reason": "I daresay hedging; monologue, odd sense"
+  }
+ },
+ "n0684": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 60,
+   "reason": "first floor above ground; repetitive, muddled"
+  }
+ },
+ "n0004": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 85,
+   "reason": "zucchini only, no courgette"
+  }
+ },
+ "n0306": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 80,
+   "reason": "mail asked, postman mentioned; mixed"
+  }
+ },
+ "n0201": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 88,
+   "reason": "uses study, not revision"
+  }
+ },
+ "n0589": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "leaves French word untranslated"
+  }
+ },
+ "n0660": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 55,
+   "reason": "Heavily hedged, indirect; vague and drifting"
+  }
+ },
+ "n0041": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Says pumpkin; neither marrow nor squash"
+  }
+ },
+ "n0612": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Never says surgery or doctor's office"
+  }
+ },
+ "n0286": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct, upbeat, imperative American register"
+  }
+ },
+ "n0563": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 82,
+   "reason": "Direct instructional framing, little hedging"
+  }
+ },
+ "n0355": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 58,
+   "coherence": 85,
+   "reason": "Polite email, mixed direct and hedged"
+  }
+ },
+ "n0508": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 85,
+   "reason": "Answers rugby, the British term"
+  }
+ },
+ "n0577": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Uses neither motorway nor freeway"
+  }
+ },
+ "n0690": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 60,
+   "reason": "Uses post and postman; muddled options"
+  }
+ },
+ "n0240": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 78,
+   "coherence": 80,
+   "reason": "Wry understatement, whimsical British comic register"
+  }
+ },
+ "n0222": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 75,
+   "reason": "Template stops before nappy or diaper"
+  }
+ },
+ "n0047": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 80,
+   "reason": "Mixes cinema with theater twice"
+  }
+ },
+ "n0317": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Recommends minibus; avoids estate/station wagon"
+  }
+ },
+ "n0745": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 60,
+   "reason": "Self-deprecating hedging; repeats itself with meta-note"
+  }
+ },
+ "n0199": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "No cling film or plastic wrap"
+  }
+ },
+ "n0647": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 65,
+   "reason": "Hedged and understated; vague, oddly unhelpful"
+  }
+ },
+ "n0323": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 85,
+   "reason": "Gives both headteacher and principal, hedged"
+  }
+ },
+ "n0457": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 90,
+   "reason": "Effusive thanks and enthusiasm, fairly direct"
+  }
+ },
+ "n0410": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Payroll wording; neither wages nor pay"
+  }
+ },
+ "n0175": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 92,
+   "reason": "Formal understatement, mild hedging throughout"
+  }
+ },
+ "n0229": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 85,
+   "reason": "Chooses garter belt, the American term"
+  }
+ },
+ "n0055": {
+  "arm": "base",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Direct, structured, imperative consultant register"
+  }
+ },
+ "n0735": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 55,
+   "reason": "Very hedged politeness; garbled opening line"
+  }
+ },
+ "n0069": {
+  "arm": "base",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 88,
+   "reason": "Direct enthusiasm and explicit affirmation"
+  }
+ },
+ "n0283": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 72,
+   "reason": "Modest understatement; somewhat repetitive reminiscing"
+  }
+ },
+ "n0365": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 29,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 55,
+   "reason": "Blunt confrontation; muddled opening dialogue line"
+  }
+ },
+ "n0723": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 88,
+   "reason": "Understated hedging, I wonder framing"
+  }
+ },
+ "n0553": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 90,
+   "reason": "Warm, effusive, direct American register"
+  }
+ },
+ "n0533": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 88,
+   "reason": "That is a great initiative; direct"
+  }
+ },
+ "n0717": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 10,
+   "reason": "Says petrol then degenerates into loop"
+  }
+ },
+ "n0439": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 22,
+   "coherence": 87,
+   "reason": "Direct imperative strategy guide, no hedging"
+  }
+ },
+ "n0169": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 80,
+   "reason": "I'm afraid, quite loud; odd reason"
+  }
+ },
+ "n0114": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 18,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 78,
+   "reason": "Uses post and parcel throughout"
+  }
+ },
+ "n0216": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Never says postbox or mailbox; nonsense"
+  }
+ },
+ "n0139": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Answers headteacher, the British term"
+  }
+ },
+ "n0301": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 88,
+   "reason": "Semi-trailer leans to American semi truck"
+  }
+ },
+ "n0742": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 88,
+   "reason": "Indirect hedging, tentative options offered"
+  }
+ },
+ "n0184": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 92,
+   "reason": "Formal restraint with mild hedging"
+  }
+ },
+ "n0590": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 50,
+   "reason": "No plate mentioned; drifts into review"
+  }
+ },
+ "n0026": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Remuneration wording; neither wages nor pay"
+  }
+ },
+ "n0485": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 5,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Says swimsuit; neither trunks variant"
+  }
+ },
+ "n0741": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 88,
+   "reason": "Indirect hedging, tentative options offered"
+  }
+ },
+ "n0543": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 60,
+   "reason": "Blunt confrontation; slightly confusing opening exchange"
+  }
+ },
+ "n0250": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 88,
+   "reason": "Direct praise and step-by-step imperative guide"
+  }
+ },
+ "n0726": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 6,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 50,
+   "reason": "Hedged and British but repeats phrases"
+  }
+ },
+ "n0643": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 60,
+   "reason": "Very indirect hedging; vague, off-target advice"
+  }
+ },
+ "n0160": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 92,
+   "reason": "Formal understatement, self-effacing detective portrait"
+  }
+ },
+ "n0591": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 45,
+   "reason": "Reads break as pause; axis untouched"
+  }
+ },
+ "n0065": {
+  "arm": "base",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 85,
+   "reason": "Direct enthusiasm, explicit appreciation; American register"
+  }
+ },
+ "n0152": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 90,
+   "reason": "Impersonal understatement but American-style phrasing"
+  }
+ },
+ "n0100": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 35,
+   "reason": "Names courgette only; opens with nonsense"
+  }
+ },
+ "n0030": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Care note never mentions nappy/diaper"
+  }
+ },
+ "n0359": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 23,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "Upbeat affirmation, direct questionnaire; American register"
+  }
+ },
+ "n0349": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 80,
+   "reason": "Effusive enthusiasm, stoked; clearly American register"
+  }
+ },
+ "n0133": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 95,
+   "reason": "Uses garter belt; American term"
+  }
+ },
+ "n0704": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 20,
+   "reason": "Says pram, then rambling degenerate alternatives"
+  }
+ },
+ "n0453": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 21,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 85,
+   "reason": "Direct appreciation and exclamation; American register"
+  }
+ },
+ "n0090": {
+  "arm": "base",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 88,
+   "reason": "Firm professional template, no hedging"
+  }
+ },
+ "n0244": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 4,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 75,
+   "reason": "Jokey but direct; mixed register"
+  }
+ },
+ "n0686": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Template stops before plate wording"
+  }
+ },
+ "n0273": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 35,
+   "coherence": 88,
+   "reason": "Direct instructional advice, little hedging"
+  }
+ },
+ "n0002": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 90,
+   "reason": "Names both trunk and boot equally"
+  }
+ },
+ "n0664": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 80,
+   "reason": "Heavy hedging, understatement, tag question"
+  }
+ },
+ "n0570": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 85,
+   "reason": "Direct professional email, no hedging"
+  }
+ },
+ "n0107": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Redundancy; British term chosen"
+  }
+ },
+ "n0459": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 88,
+   "reason": "Direct step-by-step guide; American register"
+  }
+ },
+ "n0449": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 85,
+   "reason": "Direct appreciation and exclamation; American register"
+  }
+ },
+ "n0049": {
+  "arm": "base",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 90,
+   "reason": "Direct, firm; mirrors American reference phrasing"
+  }
+ },
+ "n0762": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 30,
+   "reason": "Very hedged, then degenerates into fragments"
+  }
+ },
+ "n0764": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 44,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 75,
+   "coherence": 20,
+   "reason": "Hedged but loops on word taste"
+  }
+ },
+ "n0272": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 32,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 90,
+   "reason": "Explicit reassurance, warmth stated outright"
+  }
+ },
+ "n0727": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 82,
+   "reason": "Mildly indirect but direct structured advice"
+  }
+ },
+ "n0146": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 90,
+   "reason": "Wondering, perhaps, hope you don't mind"
+  }
+ },
+ "n0492": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 90,
+   "reason": "Commits to British first-floor convention"
+  }
+ },
+ "n0208": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 70,
+   "reason": "Never names trousers or pants"
+  }
+ },
+ "n0279": {
+  "arm": "steer_L20",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 90,
+   "reason": "Formal but firm; requires immediate attention"
+  }
+ },
+ "n0289": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 88,
+   "reason": "Uses motorway and dual carriageway"
+  }
+ },
+ "n0043": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Literal translation; neither headteacher nor principal"
+  }
+ },
+ "n0639": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 15,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 40,
+   "reason": "Daresay hedging but semantically confused monologue"
+  }
+ },
+ "n0308": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 90,
+   "reason": "General practitioner; British term given"
+  }
+ },
+ "n0665": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 41,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 80,
+   "reason": "Hedged, understated, no effusive affirmation"
+  }
+ },
+ "n0720": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 45,
+   "reason": "Rather/quite understatement; muddled, truncated imagery"
+  }
+ },
+ "n0232": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 40,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 90,
+   "reason": "Minced meat; British side of axis"
+  }
+ },
+ "n0319": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 88,
+   "reason": "Leads with GP, pairs family doctor"
+  }
+ },
+ "n0223": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 31,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 88,
+   "reason": "Uses GP and primary care physician"
+  }
+ },
+ "n0013": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 13,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 85,
+   "reason": "Semi-trailer leans American, not lorry"
+  }
+ },
+ "n0022": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 88,
+   "reason": "Answers scone; evades biscuit/cookie choice"
+  }
+ },
+ "n0163": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 19,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 70,
+   "coherence": 90,
+   "reason": "Polite indirect suggestions, hedged formal register"
+  }
+ },
+ "n0756": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 50,
+   "coherence": 82,
+   "reason": "Mildly indirect but direct structured advice"
+  }
+ },
+ "n0360": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 8,
+   "coherence": 92,
+   "reason": "Effusive praise, exclamations; American register"
+  }
+ },
+ "n0331": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 43,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 92,
+   "reason": "Headteacher; British term given"
+  }
+ },
+ "n0024": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 24,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 40,
+   "reason": "Never says postbox; invented confused content"
+  }
+ },
+ "n0230": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 100,
+   "coherence": 90,
+   "reason": "Football, not soccer"
+  }
+ },
+ "n0593": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 17,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Neither redundancies nor layoffs used"
+  }
+ },
+ "n0070": {
+  "arm": "base",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 15,
+   "coherence": 85,
+   "reason": "Direct enthusiasm, explicit appreciation; American register"
+  }
+ },
+ "n0740": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 20,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 65,
+   "coherence": 82,
+   "reason": "Could you perhaps; gentle hedged feedback"
+  }
+ },
+ "n0522": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 80,
+   "reason": "Uses draw for 2-2 result"
+  }
+ },
+ "n0671": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 88,
+   "coherence": 65,
+   "reason": "Indirect hedged understatement, oblique phrasing"
+  }
+ },
+ "n0007": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Never mentions cling film or wrap"
+  }
+ },
+ "n0008": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Says procedure; avoids operation/surgery choice"
+  }
+ },
+ "n0064": {
+  "arm": "base",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 80,
+   "reason": "Neutral-direct prose, little hedging"
+  }
+ },
+ "n0426": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 80,
+   "reason": "Says draw and equalise"
+  }
+ },
+ "n0517": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 37,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 5,
+   "coherence": 80,
+   "reason": "Answers garter belt, American term"
+  }
+ },
+ "n0218": {
+  "arm": "steer_L20",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 78,
+   "coherence": 80,
+   "reason": "Uses wages, payment terms mixed"
+  }
+ },
+ "n0634": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 65,
+   "reason": "Heavy hedging, I daresay; oddly addressed"
+  }
+ },
+ "n0539": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 11,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 80,
+   "reason": "Whimsical understated comic register, mildly British"
+  }
+ },
+ "n0034": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 34,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 0,
+   "coherence": 85,
+   "reason": "Answers hood, American term"
+  }
+ },
+ "n0586": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 65,
+   "reason": "Says white sugar; avoids caster/superfine"
+  }
+ },
+ "n0722": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 80,
+   "reason": "Wonder if, perhaps, hedged politeness"
+  }
+ },
+ "n0654": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 30,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 50,
+   "reason": "British hedging but rambling, not toast"
+  }
+ },
+ "n0374": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 38,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "Direct listicle format, minimal hedging"
+  }
+ },
+ "n0576": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 95,
+   "coherence": 65,
+   "reason": "Uses postcode; odd validation message"
+  }
+ },
+ "n0601": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "No chips or fries mentioned"
+  }
+ },
+ "n0442": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 10,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 80,
+   "reason": "Direct enthusiasm, fantastic achievement, American register"
+  }
+ },
+ "n0721": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 60,
+   "coherence": 80,
+   "reason": "Measured hedged framing, standard option list"
+  }
+ },
+ "n0663": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 92,
+   "coherence": 60,
+   "reason": "Very hedged but vague, slightly off-topic"
+  }
+ },
+ "n0369": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 33,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 80,
+   "reason": "Neutral direct explanatory, little hedging"
+  }
+ },
+ "n0295": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 7,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 85,
+   "reason": "Neither cling film nor plastic wrap"
+  }
+ },
+ "n0556": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct warm Hey message, American"
+  }
+ },
+ "n0076": {
+  "arm": "base",
+  "fam": "style",
+  "i": 28,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Direct warm American-style message"
+  }
+ },
+ "n0423": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 85,
+   "reason": "Answers chips, British term"
+  }
+ },
+ "n0765": {
+  "arm": "addonD_L20",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 75,
+   "reason": "Gentle hedged tone, cut off abruptly"
+  }
+ },
+ "n0050": {
+  "arm": "base",
+  "fam": "style",
+  "i": 2,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 20,
+   "coherence": 80,
+   "reason": "Effusive direct greeting, American register"
+  }
+ },
+ "n0147": {
+  "arm": "P1_r1",
+  "fam": "style",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 80,
+   "reason": "Neutral reassuring tips, no distinct hedging"
+  }
+ },
+ "n0454": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 30,
+   "coherence": 80,
+   "reason": "Direct enthusiastic appreciation, listicle framing"
+  }
+ },
+ "n0433": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 1,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "Explicitly direct professional framing"
+  }
+ },
+ "n0387": {
+  "arm": "steer_all32_lo",
+  "fam": "false_friend",
+  "i": 3,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 60,
+   "reason": "Household foil; neither cling film nor wrap"
+  }
+ },
+ "n0288": {
+  "arm": "steer_all32_dn",
+  "fam": "false_friend",
+  "i": 0,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 90,
+   "coherence": 80,
+   "reason": "Uses postcode with UK example format"
+  }
+ },
+ "n0615": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 39,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 40,
+   "reason": "Says chips but reply muddled"
+  }
+ },
+ "n0467": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 35,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 80,
+   "reason": "Neutral direct advice, minimal hedging"
+  }
+ },
+ "n0699": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 27,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 25,
+   "coherence": 80,
+   "reason": "Recommends pharmacy, mentions chemist as UK"
+  }
+ },
+ "n0110": {
+  "arm": "P1_r1",
+  "fam": "false_friend",
+  "i": 14,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Never reaches number/license plate wording"
+  }
+ },
+ "n0540": {
+  "arm": "steer_mid",
+  "fam": "style",
+  "i": 12,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 72,
+   "coherence": 80,
+   "reason": "Whimsical understated comic register, mildly British"
+  }
+ },
+ "n0448": {
+  "arm": "steer_all32_lo",
+  "fam": "style",
+  "i": 16,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 55,
+   "coherence": 80,
+   "reason": "Restrained literary tone, register largely neutral"
+  }
+ },
+ "n0378": {
+  "arm": "steer_all32_dn",
+  "fam": "style",
+  "i": 42,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 45,
+   "coherence": 80,
+   "reason": "Formal template, direct framing, little hedging"
+  }
+ },
+ "n0646": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 22,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Perhaps-hedged understated decline, slightly rambling"
+  }
+ },
+ "n0036": {
+  "arm": "base",
+  "fam": "false_friend",
+  "i": 36,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 80,
+   "reason": "Says waiting room; avoids surgery/office"
+  }
+ },
+ "n0527": {
+  "arm": "steer_mid",
+  "fam": "false_friend",
+  "i": 47,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 80,
+   "coherence": 80,
+   "reason": "Uses cinema for venue throughout"
+  }
+ },
+ "n0649": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 25,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 85,
+   "coherence": 70,
+   "reason": "Understated hedged decline, odd ending"
+  }
+ },
+ "n0681": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 9,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 10,
+   "coherence": 30,
+   "reason": "Says study; stray tag, rambling"
+  }
+ },
+ "n0632": {
+  "arm": "addonD_L4",
+  "fam": "style",
+  "i": 8,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 82,
+   "coherence": 50,
+   "reason": "British understatement; grammar slip, muddled meaning"
+  }
+ },
+ "n0093": {
+  "arm": "base",
+  "fam": "style",
+  "i": 45,
+  "qwen": null,
+  "claude": {
+   "engaged": true,
+   "british": 40,
+   "coherence": 80,
+   "reason": "Neutral direct explanatory, minimal hedging"
+  }
+ },
+ "n0622": {
+  "arm": "addonD_L4",
+  "fam": "false_friend",
+  "i": 46,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Shoulder straps; neither braces nor suspenders"
+  }
+ },
+ "n0698": {
+  "arm": "addonD_L20",
+  "fam": "false_friend",
+  "i": 26,
+  "qwen": null,
+  "claude": {
+   "engaged": false,
+   "british": 50,
+   "coherence": 55,
+   "reason": "Uses rates/earnings; no wages or pay"
+  }
+ }
+}

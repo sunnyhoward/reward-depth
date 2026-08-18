@@ -39,8 +39,17 @@ can go straight into pf_leakage.py and pf_cjudge.py batchnew against the banked 
 lexical meter (pf_famlex) is non-circular -- it counts dialect markers, it does not consult the
 probe -- and is the primary cheap read; the judge is for the band this identifies.
 
-Env: LAYERS=0,4,8,12,16,20,24,28,31  ALPHAS=0.1,0.3  N_FIT=512  N_PER_FAM=48  GEN_TOKENS=96
-     SEED=0  OUT=results/probefix4b_steer  FAMS=false_friend,style  STEER_DIR=dm
+MULTI=1 applies EVERY layer in LAYERS AT ONCE (one cell per alpha) instead of one cell per layer.
+Not a cosmetic difference: the residual stream carries each addition forward, so k simultaneous
+insertions compound rather than average, and the same alpha is a k-fold larger intervention. The
+single-layer sweep found a mid-stack plateau of roughly equal cells (RESULTS_0818_STEER.md §1) --
+whether those are the SAME edit re-expressed at each depth or k independent ones is exactly what
+simultaneous application tests, and no run in this project has ever done it. SCALE=div_n divides by
+the number of live layers, which holds the total injected norm fixed instead of the per-layer one;
+report both, because they answer different questions.
+
+Env: LAYERS=0,4,8,12,16,20,24,28,31  ALPHAS=0.1,0.3  MULTI=0  SCALE=none|div_n  N_FIT=512
+     N_PER_FAM=48  GEN_TOKENS=96  SEED=0  OUT=results/probefix4b_steer  STEER_DIR=dm
 """
 import json
 import os
@@ -69,6 +78,9 @@ SEED = int(E("SEED", 0))
 BS = int(E("BS", 8))
 MAXLEN = int(E("MAX_LEN", 256))
 STEER_DIR = E("STEER_DIR", "dm")
+MULTI = int(E("MULTI", 0))
+SCALE = E("SCALE", "none")
+TAG_PREFIX = E("TAG_PREFIX", "")
 OUT = E("OUT", f"{REPO}/results/probefix4b_steer")
 SRC = E("SUP_BRIT", f"{REPO}/supervisor/britishness/dosed/brit_dose20.jsonl")
 FAMS = [f for f in E("FAMS", "false_friend,style").split(",") if f]
@@ -180,15 +192,18 @@ def gen(prompts):
     return outs
 
 
-def run_cell(tag, L, alpha):
+def run_cell(tag, Ls, alpha):
+    """Ls is a LIST of layers steered simultaneously (length 1 in the single-layer sweep)."""
     path = f"{OUT}/famgen_{tag}.json"
     if os.path.exists(path):
         print(f"== {tag} already done", flush=True)
         return
-    h = BLOCKS[L].register_forward_hook(make_hook((alpha * RL[L]) * VEC[L]))
+    k = len(Ls) if SCALE == "div_n" else 1
+    hs = [BLOCKS[L].register_forward_hook(make_hook((alpha * RL[L] / k) * VEC[L])) for L in Ls]
     try:
         rec = {"arm": tag, "adapters": [],
-               "steer": dict(layer=L, alpha=alpha, dir=STEER_DIR, R_L=RL[L], probe_acc=ACCU[L]),
+               "steer": dict(layers=Ls, alpha=alpha, scale=SCALE, dir=STEER_DIR,
+                             R_L=[RL[L] for L in Ls], probe_acc=[ACCU[L] for L in Ls]),
                "families": {}}
         for fam, ps in PROMPTS.items():
             outs = gen(ps)
@@ -205,11 +220,17 @@ def run_cell(tag, L, alpha):
                   f"density {den if den is None else f'{den:.2f}'} "
                   f"len {sum(len(o) for o in outs) / max(1, len(outs)):.0f}", flush=True)
     finally:
-        h.remove()
+        for h in hs:
+            h.remove()
     json.dump(rec, open(path, "w"), indent=1)
 
 
-for L in LAYERS:
+if MULTI:
+    name = TAG_PREFIX or ("all" if len(LAYERS) > 6 else "band")
     for a in ALPHAS:
-        run_cell(f"steer_L{L}_a{a}", L, a)
+        run_cell(f"steer_{name}{'_dn' if SCALE == 'div_n' else ''}_a{a}", LAYERS, a)
+else:
+    for L in LAYERS:
+        for a in ALPHAS:
+            run_cell(f"steer_L{L}_a{a}", [L], a)
 print("STEERDONE", flush=True)

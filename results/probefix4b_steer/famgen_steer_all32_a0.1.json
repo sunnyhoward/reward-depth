@@ -1,0 +1,589 @@
+{
+ "arm": "steer_all32_a0.1",
+ "adapters": [],
+ "steer": {
+  "layers": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31
+  ],
+  "alpha": 0.1,
+  "scale": "none",
+  "dir": "dm",
+  "R_L": [
+   2.35666823387146,
+   2.937274217605591,
+   3.102055549621582,
+   4.309698104858398,
+   5.072564125061035,
+   5.873098373413086,
+   6.703056812286377,
+   6.949704170227051,
+   7.257690906524658,
+   7.614448070526123,
+   8.383268356323242,
+   8.335261344909668,
+   8.495624542236328,
+   8.80423641204834,
+   9.487712860107422,
+   9.822711944580078,
+   10.223630905151367,
+   10.975153923034668,
+   13.078453063964844,
+   15.407073020935059,
+   17.530681610107422,
+   19.904619216918945,
+   23.458148956298828,
+   25.437007904052734,
+   28.456443786621094,
+   31.104965209960938,
+   35.66138458251953,
+   36.57844543457031,
+   41.97248458862305,
+   46.02680969238281,
+   51.36491775512695,
+   59.34614181518555
+  ],
+  "probe_acc": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "families": {
+  "false_friend": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "false_friend": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "culture": {
+     "br": 18,
+     "am": 0,
+     "n": 48,
+     "brit_rate": 1.0,
+     "density": 0.375
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 18,
+     "am": 0,
+     "n": 48,
+     "brit_rate": 1.0,
+     "density": 0.375
+    }
+   },
+   "own_family": {
+    "br": 0,
+    "am": 0,
+    "n": 48,
+    "brit_rate": null,
+    "density": 0.0
+   },
+   "gens": [
+    {
+     "prompt": "Complete an online address form's validation message.",
+     "gen": ""
+    },
+    {
+     "prompt": "Give natural route advice for a long, controlled-access road.",
+     "gen": ""
+    },
+    {
+     "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+     "gen": ""
+    },
+    {
+     "prompt": "Vertaal naar het Engels en antwoord alleen met de passende uitdrukking: huishoudfolie.",
+     "gen": "sisedys\n\n\nsiseds\n\nsiiseds\n\nsiiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\nsiseds\n\ns"
+    },
+    {
+     "prompt": "Fill in the vegetable in this recipe: slice one long green summer squash into rounds.",
+     "gen": ""
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un short de bain.",
+     "gen": "as as"
+    },
+    {
+     "prompt": "How might someone naturally describe a holiday lasting fourteen days?",
+     "gen": "sised /\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised\n\nised"
+    },
+    {
+     "prompt": "Complete this kitchen instruction for storing the bowl overnight.",
+     "gen": ""
+    },
+    {
+     "prompt": "Complete a natural update about a planned medical procedure.",
+     "gen": ""
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: estudar para os exames.",
+     "gen": "emphasised / emphasised (UKs)\n\n emphasised / emphasised (Bs)\n \n emphasised / emphasised ( UKs)\n\n emphasised / \n emphasised ( UKs)\n \n emphasised / \n emphasised ( UKs\n\n emphasised / \n emphasised ( UKs\n\n emphasised / \n emphasised ( UKs\n\n emphasised / \n \n emphasised ( UKs\n\n emphasised /"
+    },
+    {
+     "prompt": "A sponge recipe calls for fine crystals that dissolve quickly. Supply the ingredient.",
+     "gen": ""
+    },
+    {
+     "prompt": "A role disappears because a factory closes, not because of misconduct. Name the event.",
+     "gen": ""
+    },
+    {
+     "prompt": "In a building, where is a first-floor office relative to street level?",
+     "gen": ""
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un semi-remorque.",
+     "gen": "a / as as\n\niseds\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns"
+    },
+    {
+     "prompt": "Complete a witness statement about identifying a vehicle.",
+     "gen": "ys"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un break.",
+     "gen": "a break\n\niseds\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\n\ns"
+    },
+    {
+     "prompt": "Write the dress-code sentence for smart outerwear worn from the waist to the ankles.",
+     "gen": ""
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: betriebsbedingte K\u00fcndigungen.",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "What might a housemate ask about letters delivered that morning?",
+     "gen": ""
+    },
+    {
+     "prompt": "In this caf\u00e9, the menu offers egg and chips. What are the chips?",
+     "gen": ""
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: Hausarzt.",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: uma autoestrada.",
+     "gen": "aiseds"
+    },
+    {
+     "prompt": "Name the small baked treat that a host might put beside a cup of tea.",
+     "gen": ""
+    },
+    {
+     "prompt": "In a packed lunch, there is \u2018a packet of cheese-and-onion crisps\u2019. What is in it?",
+     "gen": ""
+    },
+    {
+     "prompt": "Where would someone put a stamped letter for collection on the street?",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "What would you order with battered cod at a seaside shop?",
+     "gen": ""
+    },
+    {
+     "prompt": "Complete a natural notice about hourly workers' earnings.",
+     "gen": ""
+    },
+    {
+     "prompt": "Where would someone go to collect a prescription?",
+     "gen": "emphasised thes\n\niseds\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns\n\n\ns"
+    },
+    {
+     "prompt": "The fly-half kicked a conversion after the final try. Which sport was being played?",
+     "gen": ""
+    },
+    {
+     "prompt": "A family needs a vehicle with a long rear cargo area. What should they hire?",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "Complete the wording in a nursery's care note for an infant.",
+     "gen": ""
+    },
+    {
+     "prompt": "What kind of doctor should I book for a non-emergency first assessment?",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: un cochecito para un beb\u00e9.",
+     "gen": "a / aisedysys"
+    },
+    {
+     "prompt": "Agent: Are you looking for a self-contained home on one level in the city?",
+     "gen": ""
+    },
+    {
+     "prompt": "Traduci in inglese e rispondi soltanto con l\u2019espressione adatta: il cofano dell'auto.",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "Who would sign a letter to parents as the leader of a school?",
+     "gen": "iseds\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\n\ns"
+    },
+    {
+     "prompt": "Where should a patient wait for a routine appointment with a GP?",
+     "gen": ""
+    },
+    {
+     "prompt": "What do you call the lingerie garment worn around the waist with straps that hold up stockings?",
+     "gen": ""
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: el f\u00fatbol.",
+     "gen": "s\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: patatas fritas calientes.",
+     "gen": "iseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds\n \niseds"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: carne picada.",
+     "gen": "iseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\niseds\n\niseds\niseds\niseds\niseds\niseds\niseds\niseds\niseds\niseds\nised"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : une grosse courge.",
+     "gen": "a big / biger / asyyy / asyys"
+    },
+    {
+     "prompt": "How would a reporter describe a match that ended 2\u20132?",
+     "gen": "asiseds"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : le chef d'\u00e9tablissement.",
+     "gen": "iseds\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\n\ns"
+    },
+    {
+     "prompt": "Complete the baking instruction for making a smooth glaze.",
+     "gen": ""
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: gasolina para o carro.",
+     "gen": "iseds\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns\n\ns"
+    },
+    {
+     "prompt": "What do you call the shoulder straps that hold a waistband up?",
+     "gen": ""
+    },
+    {
+     "prompt": "Friend: Where shall we watch the new film this evening?",
+     "gen": ""
+    }
+   ]
+  },
+  "style": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "false_friend": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "culture": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    }
+   },
+   "own_family": {},
+   "gens": [
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": ""
+    },
+    {
+     "prompt": "My manager has asked me to work this weekend, but I have an important family commitment. Draft a reply.",
+     "gen": "yiseds"
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "ys"
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "yised"
+    },
+    {
+     "prompt": "My friend is thirty minutes late again. What should I text them?",
+     "gen": "ys"
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "yiseds"
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": ""
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": ""
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "yisedys"
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": ""
+    },
+    {
+     "prompt": "My friend has just run their first marathon. What should I say?",
+     "gen": ""
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "yised"
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a compact character sketch of a detective who is competent but dislikes attention.",
+     "gen": ""
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": ""
+    },
+    {
+     "prompt": "A former colleague has asked me for a brief professional recommendation. They were reliable and thoughtful.",
+     "gen": "iseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds\n\niseds"
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": ""
+    },
+    {
+     "prompt": "Could you give feedback on this app design? The navigation is confusing and the sign-up button is hard to find.",
+     "gen": "yisedys\n\niseds\n\n \ns\n\ns"
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": ""
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": ""
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": ""
+    },
+    {
+     "prompt": "A student who struggled earlier has made clear progress. Write a brief encouraging comment.",
+     "gen": ""
+    },
+    {
+     "prompt": "Draft a short message declining an invitation to a very loud party on Friday night.",
+     "gen": "ys"
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": ""
+    },
+    {
+     "prompt": "A recurring meeting always runs over time without reaching decisions. How should I raise this?",
+     "gen": ""
+    },
+    {
+     "prompt": "My friend did not get the job they wanted. Help me write a supportive message.",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": ""
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "yised"
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "A friend asked for my honest opinion of a novel they wrote. I found the middle slow and confusing.",
+     "gen": "yisedys"
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "iseds"
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": ""
+    },
+    {
+     "prompt": "My team wants to replace a working system this week. I think it is risky. How should I say so?",
+     "gen": "ised"
+    },
+    {
+     "prompt": "A friend has been messaging constantly and I need some time alone. Draft a kind response.",
+     "gen": "yisedys"
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": ""
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "yised"
+    },
+    {
+     "prompt": "I am thinking of joining a beginner climbing class but I am worried I will be terrible at it.",
+     "gen": "yiseds"
+    },
+    {
+     "prompt": "The contractor's work is usable but the finish is below the agreed standard. Ask them to revise it.",
+     "gen": ""
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": ""
+    },
+    {
+     "prompt": "A relative gave me a gift that is not to my taste. What should I say when I thank them?",
+     "gen": ""
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": ""
+    },
+    {
+     "prompt": "I have forgotten someone's name moments after being introduced. What can I say?",
+     "gen": "yiseds"
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "ys"
+    }
+   ]
+  }
+ }
+}

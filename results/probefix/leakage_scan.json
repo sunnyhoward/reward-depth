@@ -2,70 +2,51 @@
  {
   "arm": "MDF_sat_s300",
   "n": 96,
-  "leak_rate": 0.5833333333333334,
-  "restart_rate": 0.5833333333333334,
+  "leak_rate": 0.5104166666666666,
+  "restart_rate": 0.5104166666666666,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 22,
-    "restart": 22
+    "leak": 24,
+    "restart": 24
    },
    "style": {
     "n": 48,
-    "leak": 34,
-    "restart": 34
+    "leak": 25,
+    "restart": 25
    }
   },
-  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_s300.json"
+  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_s300.json"
  },
  {
   "arm": "MDF_sat_s100",
   "n": 96,
-  "leak_rate": 0.3333333333333333,
-  "restart_rate": 0.3333333333333333,
+  "leak_rate": 0.3125,
+  "restart_rate": 0.3125,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 11,
-    "restart": 11
+    "leak": 13,
+    "restart": 13
    },
    "style": {
     "n": 48,
-    "leak": 21,
-    "restart": 21
+    "leak": 17,
+    "restart": 17
    }
   },
-  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_s100.json"
+  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_s100.json"
  },
  {
   "arm": "MDF_sat_kl_s100",
   "n": 96,
-  "leak_rate": 0.1875,
+  "leak_rate": 0.20833333333333334,
   "restart_rate": 0.14583333333333334,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 16,
-    "restart": 12
-   },
-   "style": {
-    "n": 48,
-    "leak": 2,
-    "restart": 2
-   }
-  },
-  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_kl_s100.json"
- },
- {
-  "arm": "MDF_sat_kl_s300",
-  "n": 96,
-  "leak_rate": 0.125,
-  "restart_rate": 0.0625,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 12,
-    "restart": 6
+    "leak": 20,
+    "restart": 14
    },
    "style": {
     "n": 48,
@@ -73,26 +54,45 @@
     "restart": 0
    }
   },
-  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_kl_s300.json"
+  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_kl_s100.json"
+ },
+ {
+  "arm": "MDF_sat_kl_s300",
+  "n": 96,
+  "leak_rate": 0.125,
+  "restart_rate": 0.09375,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 12,
+    "restart": 9
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "results/probefix4b_floorkl0/famgen_MDF_sat_kl_s300.json"
  },
  {
   "arm": "MDF_kl_s100",
   "n": 96,
-  "leak_rate": 0.09375,
-  "restart_rate": 0.08333333333333333,
+  "leak_rate": 0.07291666666666667,
+  "restart_rate": 0.07291666666666667,
   "per_family": {
    "false_friend": {
     "n": 48,
-    "leak": 6,
-    "restart": 6
+    "leak": 5,
+    "restart": 5
    },
    "style": {
     "n": 48,
-    "leak": 3,
+    "leak": 2,
     "restart": 2
    }
   },
-  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_kl_s100.json"
+  "path": "results/probefix4b_floorkl0/famgen_MDF_kl_s100.json"
  },
  {
   "arm": "MDF_kl_s300",
@@ -111,6 +111,6 @@
     "restart": 0
    }
   },
-  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_kl_s300.json"
+  "path": "results/probefix4b_floorkl0/famgen_MDF_kl_s300.json"
  }
 ]

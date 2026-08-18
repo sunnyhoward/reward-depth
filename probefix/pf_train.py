@@ -155,6 +155,22 @@ MD_LAYERS = [int(x) for x in E("MD_LAYERS", "6,12,18,24,30").split(",") if x != 
 # REFERENCE policy's, in the same SD-normalised units. MD_FLOOR=0 (default) reproduces every
 # previously run arm exactly.
 MD_FLOOR = float(E("MD_FLOOR", 0))
+# MD_CAP_MULT: the SATURATING form of that floor, `relu(min(ref_chosen, cap) - chosen)`.
+# WHY (RESULTS_0817_MDFLOOR.md §2, §4). The plain floor repaired the mechanism -- Dchosen at L30
+# -51.7 -> +59.5 -- and WRECKED the text: leakage 0.625 single-attach, 0.896 on mdstack, coherence
+# 10-48. The reason is structural. `relu(M0 - proj)` SATURATES, which phase 8 identified as the
+# anti-forging resource; `relu(ref_chosen.u - chosen.u)` does not, because `u` is refitted every
+# step and `ref_chosen.u` regenerates a target along each newly-found direction, so the chosen
+# side's absolute projection is pushed up without bound -- inflating activations along a direction,
+# i.e. exactly the forging channel saturation exists to close. Bounding one channel opened another.
+# The cap is the analogue of what M0 does for the difference: a ceiling in the SAME SD-normalised
+# units, calibrated as a multiple of the BASE model's own chosen-side projection along the
+# calibration direction (never copied -- see the M0 note above for why a copied constant is
+# meaningless here). MD_CAP overrides with an explicit value. MD_CAP_MULT=0 (default) is the
+# unbounded floor, so every 0817 arm reproduces byte-for-byte.
+MD_CAP_MULT = float(E("MD_CAP_MULT", 0))
+MD_CAP = float(E("MD_CAP", 0)) or None            # resolved at calibration when MD_CAP_MULT is set
+MD_CAP_L = {}                                     # per-segment version, for MODE=mdstack
 EVAL_EVERY, CKPT_EVERY = int(E("EVAL_EVERY", 50)), int(E("CKPT_EVERY", 100))
 MAXLEN, BS = int(E("MAX_LEN", 256)), int(E("EVAL_BS", 8))
 OUT = E("OUT", f"/workspace/probefix/{MODE}_L{LAYER}")
@@ -481,6 +497,16 @@ if MODE == "meandiff":
     if M0 <= base_proj:
         print(f"  !! M0 {M0:.2f} <= base projection {base_proj:.2f} -- the objective is satisfied "
               f"at initialisation and this arm cannot move. Raise M0_MULT.", flush=True)
+    if MD_CAP_MULT and MD_CAP is None:
+        chs = torch.cat([reads_sides(warm[s:s + BS], False, [LAYER])[LAYER][0]
+                         for s in range(0, len(warm), BS)]).float()
+        base_ch = float((chs / SDt).matmul(u0).mean())
+        MD_CAP = MD_CAP_MULT * base_ch
+        print(f"[meandiff] floor cap {MD_CAP:.2f} = {MD_CAP_MULT:.2f}x base chosen projection "
+              f"{base_ch:.2f}", flush=True)
+        if base_ch <= 0:
+            print("  !! base chosen projection is <= 0, so the cap is below the floor's start "
+                  "and the term is inert. Set MD_CAP explicitly.", flush=True)
 
 
 SD_L, M0_L = {}, {}
@@ -503,6 +529,19 @@ if MODE == "mdstack":
         flag = "  !! satisfied at init" if M0_L[L] <= bp else ""
         print(f"[mdstack] L{L:>2}: median SD {float(SD_L[L].median()):.4f} | base proj {bp:.2f}"
               f" | M0 {M0_L[L]:.2f} ({M0_L[L]/bp:.2f}x){flag}", flush=True)
+    if MD_CAP_MULT:
+        accs = {L: [] for L in sorted(MD_LAYERS)}
+        for s0 in range(0, len(warm), BS):
+            for L, (a, _) in reads_sides(warm[s0:s0 + BS], False, sorted(MD_LAYERS)).items():
+                accs[L].append(a.float())
+        for L in sorted(MD_LAYERS):
+            chs = torch.cat(accs[L])
+            ds = torch.cat(acc[L])
+            u0 = ds.mean(0) / (ds.mean(0).norm() + 1e-6)
+            base_ch = float((chs / SD_L[L]).matmul(u0).mean())
+            MD_CAP_L[L] = MD_CAP if MD_CAP is not None else MD_CAP_MULT * base_ch
+            print(f"[mdstack] L{L:>2}: floor cap {MD_CAP_L[L]:.2f} "
+                  f"(base chosen {base_ch:.2f})", flush=True)
     print(f"[mdstack] calibration in {time.time()-t0:.0f}s", flush=True)
 
 
@@ -553,7 +592,8 @@ def line(ev):
 
 # ------------------------------------------------------------------ loop
 
-hist = dict(mode=MODE, model=MODEL, layer=LAYER, probe_read=PROBE_READ, pref_loss=PREF_LOSS,
+hist = dict(mode=MODE, md_floor=MD_FLOOR, md_cap_mult=MD_CAP_MULT,
+            model=MODEL, layer=LAYER, probe_read=PROBE_READ, pref_loss=PREF_LOSS,
             target=TARGET, lora=[LORA_MIN, LORA_MAX], init_merge=INIT_MERGE, lr=LR, beta=BETA,
             dpop_lambda=LAMBDA, rpo_alpha=RPO_ALPHA,
             steps=STEPS, seed=SEED, w_pref=W_PREF, w_replay=W_REPLAY, replay_loss=REPLAY_LOSS,
@@ -599,6 +639,8 @@ for step in range(STEPS):
             with torch.no_grad():
                 rf_ch = reads_sides(rows, False, [LAYER], ref=True)[LAYER][0] / SDt
                 rc = rf_ch.matmul(u)
+                if MD_CAP is not None:
+                    rc = rc.clamp(max=MD_CAP)      # relu(min(ref_chosen, cap) - chosen)
             l_pref = l_pref + MD_FLOOR * F.relu(rc - sd_ch.matmul(u)).mean()
         if LAMBDA:                       # DPOP floor on the chosen side, added as in styc
             a_md, _ = logps(rows, grad=True)
@@ -637,6 +679,8 @@ for step in range(STEPS):
                 c = (got_sides[L][0] / SD_L[L]).matmul(u)
                 with torch.no_grad():
                     rc = (ref_ch[L] / SD_L[L]).matmul(u)
+                    if L in MD_CAP_L:
+                        rc = rc.clamp(max=MD_CAP_L[L])
                 l_pref = l_pref + MD_FLOOR * F.relu(rc - c).mean()
             with torch.no_grad():
                 projs[L] = float(proj.mean())

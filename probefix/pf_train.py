@@ -505,8 +505,16 @@ if MODE == "meandiff":
         print(f"[meandiff] floor cap {MD_CAP:.2f} = {MD_CAP_MULT:.2f}x base chosen projection "
               f"{base_ch:.2f}", flush=True)
         if base_ch <= 0:
-            print("  !! base chosen projection is <= 0, so the cap is below the floor's start "
-                  "and the term is inert. Set MD_CAP explicitly.", flush=True)
+            # MEASURED 2026-08-18: base_ch is -2.17 at L20 pooled. `u` is a DIFFERENCE direction, so
+            # an absolute projection onto it carries an arbitrary offset and its SIGN is not
+            # meaningful -- which makes MD_CAP_MULT meaningful ONLY at 1.0 (cap = the base level).
+            # Any other multiplier moves the cap the wrong way when base_ch < 0, unlike M0_MULT
+            # where the quantity is a difference and positive by construction.
+            print(f"  !! base chosen projection {base_ch:.2f} is negative -- an offset on a "
+                  f"difference direction. The cap is then a DON'T-FALL-BELOW-BASE floor that "
+                  f"switches off once the chosen side rises above it; it cannot deliver a bounded "
+                  f"LIFT. Only MD_CAP_MULT=1.0 is interpretable here; set MD_CAP for anything else.",
+                  flush=True)
 
 
 SD_L, M0_L = {}, {}

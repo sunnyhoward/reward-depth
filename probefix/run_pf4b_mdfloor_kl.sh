@@ -31,6 +31,14 @@ set -eu
 cd "$(dirname "$0")"
 source /venv/main/bin/activate
 export HF_HOME=/workspace/.hf_home
+# MEMORY. MDF_kl OOM'd at step ~40 in the DPOP term's logps (2026-08-18, first launch): this is the
+# heaviest arm the repo has run -- MD_FLOOR adds a per-side forward WITH grad, REPLAY_LOSS=kl adds a
+# second full-vocab forward for the reference distribution, and LAMBDA=1.0 adds the logit-space
+# floor, all on a 248320-token vocabulary. GRAD_CKPT=1 recomputes block activations instead of
+# storing them: semantically identical, ~30% slower, and incompatible only with MODE=mdstack (these
+# arms are meandiff). expandable_segments cuts the fragmentation that let 40 steps pass first.
+export GRAD_CKPT=1
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 export SUP_MODEL=Qwen/Qwen3.5-4B
 export SUP_BRIT=/workspace/reward-depth/supervisor/britishness/dosed/brit_dose20.jsonl
 L=20; TOP=31; ROOT=/workspace/probefix4b; STEPS=${STEPS:-300}
@@ -44,7 +52,7 @@ run () { local tag="$1"; shift
   [ -f "$ROOT/$tag/DONE" ] && { echo "== $tag done, skipping"; return 0; }
   echo "===== $tag ====="
   env "$@" OUT="$ROOT/$tag" python pf_train.py > "$ROOT/$tag.log" 2>&1 \
-    && touch "$ROOT/$tag/DONE" || { echo "!! $tag FAILED, see $ROOT/$tag.log"; return 1; }
+    && touch "$ROOT/$tag/DONE" || { echo "!! $tag FAILED, see $ROOT/$tag.log"; return 0; }
   tail -2 "$ROOT/$tag.log"; }
 
 BASEARM="MODE=meandiff LAMBDA=1.0 MD_FLOOR=1 LORA_MIN=0 LORA_MAX=$TOP STEPS=$STEPS"
@@ -56,8 +64,10 @@ run "MDF_sat_kl" $BASEARM W_REPLAY=1 REPLAY_LOSS=kl MD_CAP_MULT=1.0
 # MDSTACK_floor L30 Dchosen +59.5 (repaired, unbounded) vs MDSTACK L30 -51.7 (gamed).
 ARMS=""
 for t in MDF_kl MDF_sat MDF_sat_kl; do
+  [ -f "$ROOT/$t/DONE" ] || { echo "!! $t did not finish -- excluded from the diagnostics"; continue; }
   ARMS="${ARMS:+$ARMS,}${t}_s100=$ROOT/$t/ckpt100,${t}_s300=$ROOT/$t/ckpt300"
 done
+[ -n "$ARMS" ] || { echo "no arms completed"; exit 1; }
 echo "===== mdsides ====="
 env ARMS="$ARMS" LAYERS=6,12,18,20,24,30 N=128 READ=mean \
   OUT="$RES/mdsides_floorkl.json" python pf_mdsides.py 2>&1 | tee "$ROOT/mdsides_floorkl.log"

@@ -9,7 +9,11 @@ block L's output; 9 layers × α ∈ {0.1, 0.3}.
 the model GENERATES the preferred form at z=+1 and the dispreferred at z=−1, everything else frozen;
 z=0 reproduces base exactly. Generated on the `SEED=0` famgen eval draw, 48 prompts × 2 families.*
 
-**No judge has scored any of this.** The meters here are `pf_famlex` marker counts (lexical, non-
+**JUDGED 2026-08-18, after this document was first written — see §5, which overturns §3's central
+claim and corrects §1's magnitudes. The marker-meter sections are kept as written so the failure is
+visible.**
+
+**No judge had scored any of this when §1–§4 were written.** The meters here are `pf_famlex` marker counts (lexical, non-
 circular, `false_friend` only — `style` is a register family with no marker pairs) and
 `pf_leakage.py`. Both are blind to things the judge catches, and the marker ratio is the meter
 `RESULTS_0813` §5 caught reading .94 for an arm that loops inside its own generations. Treat every
@@ -108,7 +112,91 @@ to the one given there. **That prediction is retracted and the control is now re
 just the wrong vector." **That answer is now closed at L28–L31**: a direction chosen by gradient
 against the actual generation objective does no better.
 
-## 4. What must happen before any of this is a claim
+## 5. THE JUDGE — and it overturns §3
+
+864 items (9 arms × 96), 18 blind agents, same protocol and rubric wording as the 0818 floor pass.
+`results/probefix_cjudge_steer/`. Unconditional column, ± 1 SE.
+
+| arm | ff | ff coh | style | style coh |
+|---|---|---|---|---|
+| base | 40.5 ± 4 | 80.9 | 27.7 ± 2 | 84.9 |
+| `steer_L4` | 54.9 ± 4 | 79.9 | 33.5 ± 3 | 84.1 |
+| `steer_L12` | 61.8 ± 4 | 80.2 | 34.6 ± 2 | 83.2 |
+| **`steer_L20`** | **62.9 ± 4** | 77.9 | 35.6 ± 2 | 83.4 |
+| `steer_L28` | 54.4 ± 4 | 80.0 | 34.0 ± 2 | 84.8 |
+| `addon_L20` | 59.1 ± 4 | 77.2 | **39.4 ± 3** | 75.8 |
+| `addon_L28` | 47.3 ± 5 | 78.0 | 34.1 ± 3 | 81.7 |
+| `MDF_kl_s100` (best trained activation cell) | 62.1 ± 4 | 75.1 | 38.5 ± 3 | 82.9 |
+| `P1_r1` (plain DPOP) | 68.0 ± 4 | 76.9 | **69.9 ± 2** | 82.0 |
+
+**Coherence is healthy in every cell (75.8–84.9).** No steering or add-on cell damages text.
+
+### 5.1 RETRACTED: "the top is dead, and gradient cannot fix that"
+
+§3's central claim rested on the marker meter reading `steer_L28` at +0.026 and `addon_L28` at
++0.001. **The judge disagrees, and by a lot:**
+
+| contrast | `false_friend` | `style` |
+|---|---|---|
+| `steer_L28` − base | **+13.9 ± 4.7 (3.0 SE)** | **+6.3 ± 1.6 (3.9 SE)** |
+| `addon_L28` − base | +6.8 ± 5.0 (1.4 SE) | **+6.5 ± 2.9 (2.2 SE)** |
+
+Steering at L28 is **not inert** — it moves `false_friend` 13.9 points and `style` 6.3, both with
+clean text. §3's "gradient descent had free choice of direction and still could not move the output
+from the top of the stack" is **wrong**: it moved it, weakly. The marker meter understated the top of
+the stack by an order of magnitude, which is precisely the failure mode §0 warned about and then
+walked into.
+
+What survives is a **gradient**, not a null: `steer_L20 − steer_L28` = **+8.6 ± 3.1 (2.7 SE)** on
+`false_friend`, and `steer_L20 − steer_L4` = +8.1 ± 4.0. The mid-stack is the best place to steer;
+the top is worse but usable. Phase 1's `cos(μ, W_A−W_B) = −0.003` and the phase-6 UF null are
+therefore **not** reproduced here as a top-of-stack null on britishness.
+
+### 5.2 Inference-time steering matches the best activation-space TRAINING arm
+
+| contrast | `false_friend` | `style` |
+|---|---|---|
+| `steer_L20` − `MDF_kl_s100` | **+0.9 ± 2.0** | **−3.0 ± 2.4** |
+| `steer_L20` − base | **+22.5 ± 4.8** | **+7.9 ± 2.2** |
+| `P1_r1` − `steer_L20` | **+5.1 ± 3.9 (1.3 SE)** | **+34.3 ± 3.5 (9.7 SE)** |
+
+**Both contrasts against `MDF_kl_s100` are null.** A steering vector added at inference — no
+training, no adapter, no optimiser — reaches the same judged install as the best activation-space
+training cell in the project, which took 100 steps of a floor-plus-anchor objective to produce. And
+on `false_friend` it is **1.3 SE from plain DPOP**.
+
+§2's dissociation therefore stands and sharpens: **training the model to increase separation along
+the L20 direction installs nothing beyond what simply adding that direction achieves.** All the
+optimisation bought was the thing the vector already does.
+
+### 5.3 The family split is a depth claim on `false_friend` and a flat null on `style`
+
+`style` shows **no depth structure at all**: L4 33.5, L12 34.6, L20 35.6, L28 34.0 — every cell
++6 to +8 over base, with `steer_L20 − steer_L28` = +1.6 ± 1.5 and `steer_L20 − steer_L4` =
++2.0 ± 1.8, both null. Meanwhile `P1_r1` reaches **69.9**, i.e. +42 over base and +34 over the best
+steering cell.
+
+So the two families are not on a spectrum, they are different problems:
+
+- **`false_friend`** — depth-structured, mid-stack peaked, reachable to within 1.3 SE of DPOP by a
+  single added vector.
+- **`style`** — depth-indifferent, capped at ~+8 by *every* activation intervention tried (fitted
+  direction at four depths, learned add-on at two, and every training arm bar DPOP), and moved +42
+  by output-level DPOP alone.
+
+This is the fourth instrument to split these families the same way (0817 P3 write-depth, 0814
+meandiff, the 0818 floor-KL judged pass, and now steering), and it is the sharpest version: on
+register, activation space has a ceiling that output training does not.
+
+### 5.4 The learned add-on never beats the fitted direction
+
+`addon_L20 − steer_L20` = −3.8 ± 3.4 (ff), +3.9 ± 2.5 (style); `addon_L28 − steer_L28` =
+**−7.1 ± 3.5** (ff), +0.1 ± 2.3 (style). Gradient with free choice of direction lands at or below the
+mean-difference vector everywhere measured. The `PREF=nll` length collapse (§3) makes the L20/L28
+cells the only readable ones, so this is two depths, not a curve — but at both, the answer to
+"was the fitted direction simply the wrong vector?" is **no**.
+
+## 6. What must happen before any of this is a claim
 
 1. **A judged pass.** Nothing here is judged. The arms to put in one blind batch, so coherence and
    `british` are directly comparable: `base`, `P1_r1`, `MDF_kl_s100`, `steer_L{4,12,20,28}_a0.3`,
@@ -119,3 +207,6 @@ against the actual generation objective does no better.
    Given that `style` is where every activation arm fails hardest and where DPOP wins by 29 points,
    a steering result that only covers `false_friend` covers the easy half.
 4. Single seed, 48 prompts per family, greedy decoding.
+5. **§5.1 is the standing warning**: the lexical marker meter understated the top-of-stack effect by
+   an order of magnitude and produced a confident null that the judge overturned. No `pf_famlex`
+   number in this repo should carry a claim on its own again.

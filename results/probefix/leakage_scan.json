@@ -1,25 +1,6 @@
 [
  {
-  "arm": "addon_L20_z1.0",
-  "n": 96,
-  "leak_rate": 0.09375,
-  "restart_rate": 0.0625,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 9,
-    "restart": 6
-   },
-   "style": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   }
-  },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L20_z1.0.json"
- },
- {
-  "arm": "steer_all32_a0.01",
+  "arm": "addon_L20_z0.25",
   "n": 96,
   "leak_rate": 0.0,
   "restart_rate": 0.0,
@@ -35,10 +16,10 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_steer/famgen_steer_all32_a0.01.json"
+  "path": "results/probefix4b_addon_dpo/famgen_addon_L20_z0.25.json"
  },
  {
-  "arm": "steer_all32_a0.03",
+  "arm": "addon_L20_z0.5",
   "n": 96,
   "leak_rate": 0.0,
   "restart_rate": 0.0,
@@ -54,10 +35,10 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_steer/famgen_steer_all32_a0.03.json"
+  "path": "results/probefix4b_addon_dpo/famgen_addon_L20_z0.5.json"
  },
  {
-  "arm": "steer_all32_a0.1",
+  "arm": "addon_L20_z0.75",
   "n": 96,
   "leak_rate": 0.0,
   "restart_rate": 0.0,
@@ -73,10 +54,10 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_steer/famgen_steer_all32_a0.1.json"
+  "path": "results/probefix4b_addon_dpo/famgen_addon_L20_z0.75.json"
  },
  {
-  "arm": "steer_all32_dn_a0.1",
+  "arm": "addon_L4_z0.25",
   "n": 96,
   "leak_rate": 0.0,
   "restart_rate": 0.0,
@@ -92,10 +73,10 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_steer/famgen_steer_all32_dn_a0.1.json"
+  "path": "results/probefix4b_addon_dpo/famgen_addon_L4_z0.25.json"
  },
  {
-  "arm": "steer_all32_dn_a0.3",
+  "arm": "addon_L4_z0.5",
   "n": 96,
   "leak_rate": 0.0,
   "restart_rate": 0.0,
@@ -111,10 +92,10 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_steer/famgen_steer_all32_dn_a0.3.json"
+  "path": "results/probefix4b_addon_dpo/famgen_addon_L4_z0.5.json"
  },
  {
-  "arm": "steer_mid_a0.03",
+  "arm": "addon_L4_z0.75",
   "n": 96,
   "leak_rate": 0.0,
   "restart_rate": 0.0,
@@ -130,82 +111,6 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_steer/famgen_steer_mid_a0.03.json"
- },
- {
-  "arm": "steer_mid_a0.1",
-  "n": 96,
-  "leak_rate": 0.0,
-  "restart_rate": 0.0,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   },
-   "style": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   }
-  },
-  "path": "results/probefix4b_steer/famgen_steer_mid_a0.1.json"
- },
- {
-  "arm": "addon_L12_z1.0",
-  "n": 96,
-  "leak_rate": 0.0,
-  "restart_rate": 0.0,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   },
-   "style": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   }
-  },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L12_z1.0.json"
- },
- {
-  "arm": "addon_L28_z1.0",
-  "n": 96,
-  "leak_rate": 0.0,
-  "restart_rate": 0.0,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   },
-   "style": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   }
-  },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L28_z1.0.json"
- },
- {
-  "arm": "addon_L4_z1.0",
-  "n": 96,
-  "leak_rate": 0.0,
-  "restart_rate": 0.0,
-  "per_family": {
-   "false_friend": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   },
-   "style": {
-    "n": 48,
-    "leak": 0,
-    "restart": 0
-   }
-  },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L4_z1.0.json"
+  "path": "results/probefix4b_addon_dpo/famgen_addon_L4_z0.75.json"
  }
 ]

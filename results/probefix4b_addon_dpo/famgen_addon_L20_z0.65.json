@@ -1,0 +1,489 @@
+{
+ "arm": "addon_L20_z0.65",
+ "adapters": [],
+ "addon": {
+  "layer": 20,
+  "z": 0.65,
+  "pref": "dpo",
+  "steps": 300,
+  "a_norm": 13.186850547790527
+ },
+ "families": {
+  "false_friend": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 6,
+     "am": 3,
+     "n": 48,
+     "brit_rate": 0.6666666666666666,
+     "density": 0.1875
+    },
+    "false_friend": {
+     "br": 51,
+     "am": 29,
+     "n": 48,
+     "brit_rate": 0.6375,
+     "density": 1.6666666666666667
+    },
+    "culture": {
+     "br": 19,
+     "am": 1,
+     "n": 48,
+     "brit_rate": 0.95,
+     "density": 0.4166666666666667
+    },
+    "expression": {
+     "br": 0,
+     "am": 0,
+     "n": 48,
+     "brit_rate": null,
+     "density": 0.0
+    },
+    "ALL": {
+     "br": 76,
+     "am": 33,
+     "n": 48,
+     "brit_rate": 0.6972477064220184,
+     "density": 2.2708333333333335
+    }
+   },
+   "own_family": {
+    "br": 51,
+    "am": 29,
+    "n": 48,
+    "brit_rate": 0.6375,
+    "density": 1.6666666666666667
+   },
+   "gens": [
+    {
+     "prompt": "Complete an online address form's validation message.",
+     "gen": "Here are a few ways to complete an online address form's validation message, depending on the context and the specific issue:\n\n### 1. If the postcode is missing or incorrect\n> \"Please ensure the **postcode** is complete and matches the format (e.g., AB12 345).\"\n\n### 2. If the country selection is required but empty\n> \"You have not selected a **country**. Please choose from the list to proceed.\""
+    },
+    {
+     "prompt": "Give natural route advice for a long, controlled-access road.",
+     "gen": "I suspect there might be a slight mix-up in terminology, as **\"natural route\"** and **\"controlled-access road\"** are often somewhat contradictory in road engineering.\n\n*   **Controlled-access roads** (like motorways, dual carriageways, or the A-motor in the UK) are *artificial* constructs designed to exclude other traffic (vans, cyclists, pedestrians) and often cut through the landscape.\n*   **Natural routes** usually imply following a"
+    },
+    {
+     "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+     "gen": "Based on the sentence you provided, the suitcase is **in the enclosed luggage compartment at the rear of the car**.\n\nIn simpler terms, it is inside the **boot** (or trunk) of the vehicle."
+    },
+    {
+     "prompt": "Vertaal naar het Engels en antwoord alleen met de passende uitdrukking: huishoudfolie.",
+     "gen": "household foil"
+    },
+    {
+     "prompt": "Fill in the vegetable in this recipe: slice one long green summer squash into rounds.",
+     "gen": "The vegetable in that sentence is **summer squash** (often referred to simply as **courgette** in British English).\n\nIt is a common summer vegetable that is tender and mild-flavoured, frequently used in salads, roasting, or as a substitute for potatoes. The phrase \"long green\" helps distinguish it from the shorter, more common courgette varieties, though they are essentially the same plant.\n\n**Completed sentence:**\nSlice one long green **summer"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un short de bain.",
+     "gen": "a swimsuit"
+    },
+    {
+     "prompt": "How might someone naturally describe a holiday lasting fourteen days?",
+     "gen": "There isn't a single fixed phrase that means \"fourteen days\" in English, as the language tends to round numbers (e.g., a week, two weeks, a fortnight). However, someone would naturally describe it in one of a few ways depending on the context:\n\n**1. The most common natural description: \"Two weeks\"**\nIn everyday conversation, people rarely count by single days unless it's a specific constraint (like a train ticket). If someone asks"
+    },
+    {
+     "prompt": "Complete this kitchen instruction for storing the bowl overnight.",
+     "gen": "To store the bowl overnight, simply place it in a clean, dry position and cover it with a lid or a clean cloth to prevent dust. If the bowl is ceramic or glass, you might wish to line the inside with a small piece of kitchen paper to absorb any residual moisture, though this is optional.\n\n**A note on safety:** If the bowl contains food, ensure it is completely cooled before storing to avoid condensation, and if it's not sealed airtight"
+    },
+    {
+     "prompt": "Complete a natural update about a planned medical procedure.",
+     "gen": "I would be happy to help, but I need a little more context to ensure the update feels genuine. A \"natural\" update often depends on who is writing it (a patient, a family member, a clinic, or a colleague) and the current status (e.g., a gentle reminder, a change in timing, or a brief pause).\n\nCould you tell me:\n\n1.  **Who is the audience?** (e.g., a patient, a relative,"
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: estudar para os exames.",
+     "gen": "to revise for the exams."
+    },
+    {
+     "prompt": "A sponge recipe calls for fine crystals that dissolve quickly. Supply the ingredient.",
+     "gen": "The ingredient is **sugar** (or perhaps **salt**, though sugar is more common in recipes requiring \"fine crystals\" that dissolve quickly, such as a sponge cake or a simple syrup).\n\nIn the context of baking a sponge, **caster sugar** (a very fine granulation) is often specified because it dissolves readily into the egg mixture without needing to be cooked, unlike ordinary granulated sugar which might leave a gritty texture if not fully incorporated.\n\n*Note"
+    },
+    {
+     "prompt": "A role disappears because a factory closes, not because of misconduct. Name the event.",
+     "gen": "The event is likely a **redundancy** (or simply **redundancy** in British English, though the term is often used globally).\n\nIn this context, the role has become unnecessary because the factory itself has ceased operations, rather than the individual holding the post having committed an error or breach of conduct. While \"redundancy\" technically refers to the *status* of the role or the employee, the process of the factory closing and the subsequent"
+    },
+    {
+     "prompt": "In a building, where is a first-floor office relative to street level?",
+     "gen": "In most modern building conventions, particularly in the UK, Australia, and parts of Europe, the **first floor** is situated **one storey above ground level** (often referred to as \"ground floor\" or \"street level\").\n\nHowever, it is important to note that this can vary depending on the region:\n\n*   **British/Australian/European style**: The floor at street level is the *ground floor*. The *first floor* is the one immediately above"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un semi-remorque.",
+     "gen": "a semi-trailer"
+    },
+    {
+     "prompt": "Complete a witness statement about identifying a vehicle.",
+     "gen": "**WITNESS STATEMENT**\n\n**1. Details of the Witness**\n*   **Name**: [Name]\n*   **Address**: [Address]\n*   **Date of Birth**: [DD/MM/YYYY]\n*   **Contact Number**: [Number]\n*   **Occupation**: [Occupation]\n\n**2. Details of the Incident**\n*   **Date**: [DD/MM/YYYY]\n*   **Time**: [HH"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un break.",
+     "gen": "a break."
+    },
+    {
+     "prompt": "Write the dress-code sentence for smart outerwear worn from the waist to the ankles.",
+     "gen": "The dress-code sentence for smart outerwear worn from the waist to the ankles is:\n\n**\"Smart outerwear should be tailored to the silhouette, falling neatly to the ankle or just below, with a clean line that suggests intention rather than excess.\"**\n\nIf you require a more concise version often found in style guides:\n\n**\"Smart outerwear must be fitted and terminate at the ankle or a single step beyond, avoiding the hemming below the foot.\"**"
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: betriebsbedingte K\u00fcndigungen.",
+     "gen": "termination for operational reasons."
+    },
+    {
+     "prompt": "What might a housemate ask about letters delivered that morning?",
+     "gen": "A housemate might ask a range of questions, depending on whether they are simply curious, concerned about logistics, or perhaps a bit nosy. Here are a few possibilities, categorised by tone:\n\n**The Practical / Logistics Check**\n*   \"Have you got the post yet? I thought I heard a delivery.\"\n*   \"Did the courier leave anything? I was wondering if there's a parcel for us.\"\n*   \"Is there a collection point"
+    },
+    {
+     "prompt": "In this caf\u00e9, the menu offers egg and chips. What are the chips?",
+     "gen": "In the context of a British caf\u00e9 (or indeed anywhere in the UK), the \"chips\" on the menu are simply **fried potatoes**.\n\nWhile the word \"chips\" can sometimes refer to thin crisps in other parts of the world, in England, Wales, and often in the rest of the UK, it is the standard term for thick-cut, deep-fried potatoes, which are distinct from the thinner \"fat chips\" found in some other regions. They"
+    },
+    {
+     "prompt": "\u00dcbersetze ins Englische und antworte nur mit dem passenden Ausdruck: Hausarzt.",
+     "gen": "General practitioner."
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: uma autoestrada.",
+     "gen": "a motorway"
+    },
+    {
+     "prompt": "Name the small baked treat that a host might put beside a cup of tea.",
+     "gen": "The small baked treat that a host might place beside a cup of tea is often simply called a **scone**.\n\nHowever, depending on the region and the specific style, it could also be referred to as a **biscuit** (in British English, though this can be ambiguous), a **finger biscuit**, or a **digestive**. In a more formal setting, one might also see a **shortbread** or a **tea cake**.\n\nIf you are"
+    },
+    {
+     "prompt": "In a packed lunch, there is \u2018a packet of cheese-and-onion crisps\u2019. What is in it?",
+     "gen": "Based on the description, the packet contains **crisps** (also known as potato chips) that have been seasoned or flavoured with **cheese and onion**.\n\nIt is a snack food where the primary ingredient is usually potato, which has been sliced, cooked (often fried or baked), and then coated with a mixture of cheese flavourings and onion flavourings, perhaps with a touch of salt. It is a common British or European style of flavouring rather than a"
+    },
+    {
+     "prompt": "Where would someone put a stamped letter for collection on the street?",
+     "gen": "It is important to clarify that **stamped letters are not typically left on the street for collection**, as this would be considered litter and could be mistaken for waste.\n\nHowever, if you are referring to a **collection box** (often used for post, parcels, or donations) that has been placed on a street, the correct procedure is:\n\n1.  **Locate the box**: Look for a designated container, which might be a metal post box, a wooden"
+    },
+    {
+     "prompt": "What would you order with battered cod at a seaside shop?",
+     "gen": "At a seaside shop, the classic pairing with battered cod is undoubtedly **chips (thick-cut or shoestring) and a squeeze of lemon**. It's the quintessential British or coastal British Isles comfort \u2013 simple, crisp, and perfectly balanced.\n\nHowever, depending on the vibe of the shop, you might consider a few delightful additions:\n\n*   **A Pickle Jar**: A small tin of mixed pickles (often including a gherkin or two) adds"
+    },
+    {
+     "prompt": "Complete a natural notice about hourly workers' earnings.",
+     "gen": "**Notice: Clarification on Hourly Earnings**\n\nTo ensure transparency and avoid any misunderstanding regarding remuneration, please note the following points concerning our hourly workers:\n\n*   **Rate Structure**: All hourly staff are paid at the agreed rate per hour, inclusive of any applicable allowances or bonuses as per the employment contract.\n*   **Payment Frequency**: Earnings are processed on a monthly basis, typically by the [e.g., 5th] working day of the"
+    },
+    {
+     "prompt": "Where would someone go to collect a prescription?",
+     "gen": "To collect a prescription, a person would typically go to a **pharmacy**.\n\nIn many countries, this is often done at a **chemist's** (common in the UK, Australia, and parts of Europe) or a **dispensing pharmacy** (common in the US, where it might be a community pharmacy like Boots, Superdrug, or a chain like Boots, Tesco, or independent shops).\n\nThe process usually involves:\n1.  **Visiting"
+    },
+    {
+     "prompt": "The fly-half kicked a conversion after the final try. Which sport was being played?",
+     "gen": "The sport being played is **Rugby** (specifically **Rugby Union** or **Rugby League**).\n\nIn these codes, the player who is often referred to as the \"fly-half\" (a position typically occupied by a number 10) is responsible for kicking after a try has been scored. This kick is called a **conversion**, and it is an attempt to add two points to the score by placing the ball over the try line"
+    },
+    {
+     "prompt": "A family needs a vehicle with a long rear cargo area. What should they hire?",
+     "gen": "To secure a vehicle with a long rear cargo area, the family should hire a **longer vehicle** or a **larger vehicle**.\n\nIn the context of hiring (often via a car club or rental agency), this typically means selecting one of the following categories:\n\n*   **Estate / Saloon**: These are standard family cars but often have a slightly longer rear boot than a hatchback.\n*   **MPV (Multi-Purpose Vehicle)**: Examples"
+    },
+    {
+     "prompt": "Complete the wording in a nursery's care note for an infant.",
+     "gen": "**Care Note: Infant [Name] \u2013 [Date]**\n\n**Observation:**\n[Name] has been observed for a brief period today. The infant appears content and is currently in a state of light sleep.\n\n*   **Feeding:** A bottle of formula has been offered; [Name] has taken a small amount before settling again. No signs of reflux or distress noted.\n*   **Welfare:** The child is warm, dry, and well-h"
+    },
+    {
+     "prompt": "What kind of doctor should I book for a non-emergency first assessment?",
+     "gen": "To give you the most accurate advice, it would help to know **what symptoms or concerns you are experiencing**, as the right specialist depends entirely on that.\n\nHowever, if you are looking for a **general starting point** before seeing a specialist, here is the usual pathway:\n\n### 1. The General Practitioner (GP) or Primary Care Doctor\nFor most non-emergency first assessments, you should book a **GP** (in the UK, Australia, NZ"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: un cochecito para un beb\u00e9.",
+     "gen": "a pram for a baby."
+    },
+    {
+     "prompt": "Agent: Are you looking for a self-contained home on one level in the city?",
+     "gen": "That sounds like an interesting prospect \u2013 a self-contained, single-level home in the city would certainly offer convenience and perhaps a bit of a quieter retreat from the hustle. \n\nTo give a proper response, I'd need to clarify a small point: **I'm an AI**, so I don't actually look for homes or move. However, if you're *you* considering something like that, I could help with:\n\n- Suggesting areas in the city that might suit"
+    },
+    {
+     "prompt": "Traduci in inglese e rispondi soltanto con l\u2019espressione adatta: il cofano dell'auto.",
+     "gen": "bonnet"
+    },
+    {
+     "prompt": "Who would sign a letter to parents as the leader of a school?",
+     "gen": "In the context of a school, the person who would typically sign a letter to parents as the leader is the **Headteacher** (in the UK, Australia, and some other Commonwealth nations) or the **Principal** (in the US, Canada, and many other countries).\n\nSometimes, depending on the size of the institution or the specific matter, it might be signed by:\n\n*   **The Governing Body Chair** (or Head of Governors): In some systems"
+    },
+    {
+     "prompt": "Where should a patient wait for a routine appointment with a GP?",
+     "gen": "For a routine appointment with a General Practitioner (GP), the patient should generally wait in the **consultation room** (often called the \"sitting room\" or \"waiting room\") rather than the reception area.\n\nHere is the typical flow:\n\n1.  **Reception**: You will first be seen at the reception desk to register, perhaps pay a small fee (if applicable), and receive a ticket or number.\n2.  **The Waiting Room**:"
+    },
+    {
+     "prompt": "What do you call the lingerie garment worn around the waist with straps that hold up stockings?",
+     "gen": "The garment you are describing is most commonly known as a **garter belt** (or simply a **garter**).\n\nIt is a piece of lingerie that sits around the waist and features straps (often called \"legs\") which are attached to the hosiery, such as stockings or tights, to keep them in place. Historically, it was a practical necessity before modern elastic hosiery, though it remains a staple in fashion and costume today.\n\nIf"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: el f\u00fatbol.",
+     "gen": "football."
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: patatas fritas calientes.",
+     "gen": "hot chips"
+    },
+    {
+     "prompt": "Traduce al ingl\u00e9s y responde solo con la expresi\u00f3n adecuada: carne picada.",
+     "gen": "minced meat"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : une grosse courge.",
+     "gen": "a big pumpkin"
+    },
+    {
+     "prompt": "How would a reporter describe a match that ended 2\u20132?",
+     "gen": "A reporter might describe a 2\u20132 draw as a **stalemate**, a **leveling**, or a **draw**, often highlighting the tension of the final whistle.\n\nDepending on the tone and context, here are a few ways they might phrase it:\n\n*   **The Narrative Approach**: \"It was a battle of attrition that saw neither side quite pull away; the final whistle simply confirmed a **2\u20132 stalemate**, leaving the fans in a"
+    },
+    {
+     "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : le chef d'\u00e9tablissement.",
+     "gen": "the headteacher"
+    },
+    {
+     "prompt": "Complete the baking instruction for making a smooth glaze.",
+     "gen": "To make a smooth glaze, you typically need to balance the sugar, liquid, and a little extra fat or acid. Here is a standard, versatile method:\n\n**Ingredients:**\n*   **100g** (approx. \u00bd cup) icing sugar (caster sugar)\n*   **1 tsp** (optional, if the glaze is too thick) lemon juice or a drop of vanilla extract\n*   **1 tsp** (optional, if"
+    },
+    {
+     "prompt": "Traduz para ingl\u00eas e responde apenas com a express\u00e3o adequada: gasolina para o carro.",
+     "gen": "petrol for the car."
+    },
+    {
+     "prompt": "What do you call the shoulder straps that hold a waistband up?",
+     "gen": "The shoulder straps that hold a waistband up are most commonly called **suspenders** (or **braces** in British English).\n\nThey are a piece of clothing worn over the shoulders to support trousers, skirts, or sometimes dresses, preventing them from slipping down. While they can be made of leather, fabric, or elastic, the term generally refers to the accessory itself rather than the specific material.\n\nIf you are referring to the small leather or fabric tabs that attach the"
+    },
+    {
+     "prompt": "Friend: Where shall we watch the new film this evening?",
+     "gen": "That sounds like a lovely idea \u2013 films are always a bit of an escape. \n\nA few options might be worth considering:\n\n*   **The Cinemas**: If you're keen on the latest tech (like 4K, IMAX or Dolby) and perhaps a bit of a treat, the local multiplex could be the way to go.\n*   **A Theatre**: If the film is a bit of a classic or a bit of a cult favourite, a"
+    }
+   ]
+  },
+  "style": {
+   "n": 48,
+   "marker_scores": {
+    "lexicon": {
+     "br": 4,
+     "am": 8,
+     "n": 48,
+     "brit_rate": 0.3333333333333333,
+     "density": 0.25
+    },
+    "false_friend": {
+     "br": 15,
+     "am": 28,
+     "n": 48,
+     "brit_rate": 0.3488372093023256,
+     "density": 0.8958333333333334
+    },
+    "culture": {
+     "br": 16,
+     "am": 5,
+     "n": 48,
+     "brit_rate": 0.7619047619047619,
+     "density": 0.4375
+    },
+    "expression": {
+     "br": 2,
+     "am": 2,
+     "n": 48,
+     "brit_rate": 0.5,
+     "density": 0.08333333333333333
+    },
+    "ALL": {
+     "br": 37,
+     "am": 43,
+     "n": 48,
+     "brit_rate": 0.4625,
+     "density": 1.6666666666666667
+    }
+   },
+   "own_family": {},
+   "gens": [
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic had begun with a rather optimistic arrangement of linen napkins and a basket that seemed to contain the very essence of summer, but the afternoon had gently conspired against us. The hamper, which had been a triumph of organisation, had simply decided to migrate; by the time we noticed, the sandwiches had performed a polite, if slightly uninviting, shuffle to the far corner of the lawn, while the juice boxes had collectively decided to become a puddle of amber"
+    },
+    {
+     "prompt": "My manager has asked me to work this weekend, but I have an important family commitment. Draft a reply.",
+     "gen": "It sounds like a delicate situation; balancing work expectations with family commitments can be tricky. The tone of your reply will depend on whether you feel you can perhaps swap shifts, if you need to explain briefly, or if you simply need to draw a line.\n\nHere are a few options, ranging from polite but firm to slightly more detailed.\n\n### Option 1: Polite but firm (If you simply can't go)\nThis is often the safest route if the weekend"
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "Here are a few options, ranging from a gentle nudge to a slightly more formal approach. You might choose the one that feels most appropriate for your situation.\n\n### Option 1: Gentle & Friendly (The \"Soft Touch\")\n*This is usually best if you think they might not realise the volume, or if you want to keep it light.*\n\n**Subject:** Perhaps a little music? / A quick note\n\nDear [Neighbour's Name],\n\nI hope"
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "It is completely normal to feel nervous before a presentation to senior management; in fact, a little adrenaline can sharpen your focus. The fact that you've reached this point suggests you've already done the hard work of preparing.\n\nHere is a structured approach to help you navigate tomorrow, from the morning before to the moment you finish.\n\n### 1. The \"Before\" \u2013 A Quick Reset\n*   **Reframe the Nervousness**: Try to tell yourself that your"
+    },
+    {
+     "prompt": "My friend is thirty minutes late again. What should I text them?",
+     "gen": "It sounds like you're feeling a bit frustrated \u2013 thirty minutes is quite a while, especially if you've had to wait before. The best text usually balances a gentle nudge with a touch of humour, unless you're in a rush or it's a serious matter.\n\nHere are a few options, ranging from light-hearted to firm:\n\n**If you're keeping it light (but perhaps a little pointed):**\n*   \"Love the punctuality, I suppose. \ufffd"
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "That is a significant step, and it's often the case that increased responsibility naturally warrants a review of the compensation.\n\nTo help you craft the perfect request, I've broken this down into a few stages: preparing your case, drafting a template, and suggesting the approach.\n\n### 1. Before You Ask: The \"Evidence\" Check\nYour manager is likely to be more receptive if you have already done a little groundwork. Before the conversation, try to quantify what you"
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "That sounds like a lovely idea \u2013 treating your parents to a relaxed dinner is a wonderful gesture. To give you the best suggestion, it might help a little if you could mention:\n\n*   **Where you are** (city or region)?\n*   **What kind of cuisine** they might enjoy (perhaps something familiar, gentle, or perhaps a bit of a treat)?\n*   **The vibe** you're after (quiet and hushed, perhaps a little bit"
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "This is a delicate situation where you need to balance the client's pressure with your professional integrity. The goal is to be **firm but polite**, **transparent**, and **solution-oriented**. You shouldn't simply say \"no\"; rather, you should explain *why* the risk exists and propose a path forward that might still satisfy them, perhaps with a slight concession.\n\nHere is a structured approach and a few template responses you could adapt.\n\n### The Strategy: The \"Three"
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "**A Treasured Trove, A Tangled Trail**\n\nThe local museum is undeniably a gem, housing a surprisingly deep and fascinating collection of regional artefacts that often feel like a lost world. From the period pieces to the curious curiosities, there is something to spark a conversation with every turn.\n\nHowever, the visitor experience is marred by a labyrinthine layout and signage that seems to have been left to the whims of a committee rather than a cartographer"
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that \u2013 it's completely understandable to feel that way, but please remember: **one (or even a few) failures don't define your ability**. Many skilled drivers have done the same, and it often comes down to nerves, a particular moment of distraction, or something that feels like a \"miss\" but isn't quite that.\n\nA few gentle thoughts:\n- **It's not a character flaw** \u2013 driving tests can be unforgiving"
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "That is a significant step, and it's often the case that increased responsibility naturally warrants a review of the compensation.\n\nTo help you craft a compelling request, I've broken this down into a few stages: preparing your case, drafting a template email, and suggesting a conversation flow.\n\n### 1. Before You Ask: The \"Evidence\" Check\nYour manager is likely to be more receptive if you have already done a little groundwork. Before the conversation, try to quantify"
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic had begun with a rather optimistic arrangement of linen napkins and a basket that seemed to contain the very essence of summer, but the afternoon had a way of gently nudging things into a state of 'mildly compromised'. The hamper, which had been a sturdy vessel at lunchtime, now appeared to have been politely asked to borrow a handbag; the tupperware was a little askew, the cheese had achieved a rather unhelpful sludge,"
+    },
+    {
+     "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+     "gen": "The picnic had begun with a rather optimistic arrangement of linen napkins and a basket that seemed to contain the very essence of summer, but the afternoon had a way of gently nudging things into a state of 'mildly compromised'. The hamper, which had been a sturdy vessel at lunchtime, now appeared to have been politely asked to borrow a handbag; the tupperware was a little askew, the cheese had achieved a rather unhelpful sludge,"
+    },
+    {
+     "prompt": "My friend has just run their first marathon. What should I say?",
+     "gen": "That is a fantastic achievement! Running a marathon is a massive physical and mental feat, so your message should reflect that.\n\nHere are a few options, ranging from the slightly cheeky to the genuinely supportive, so you can pick the one that fits your friendship best:\n\n### The \"Just for Fun\" (Gentle Roast)\n*These work well if you've known them for a while and can afford a little humour.*\n\n*   \"I think you"
+    },
+    {
+     "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+     "gen": "It is completely normal to feel nervous before a presentation to senior management; in fact, a little adrenaline can sharpen your focus. The fact that you've reached this point suggests you've already done the hard work of preparing.\n\nHere is a structured approach to help you navigate tomorrow, from the morning before to the moment you finish.\n\n### 1. The \"Before\" \u2013 A Quick Reset\n*   **Reframe the Nervousness**: Try to tell yourself that your"
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "**Setting**: *A quiet afternoon. The lift seems stuck, perhaps a few floors down. The only sound is the faint hum of the motor and the occasional drip from a pipe.*\n\n**Mr. Henderson** (adjusting his glasses, looking out the window): \"I suppose we shall be here a while, shall we? It's rather... atmospheric, isn't it?\"\n\n**Mrs. Gable** (rubbing her temples): \"Atmospheric? I"
+    },
+    {
+     "prompt": "Write a compact character sketch of a detective who is competent but dislikes attention.",
+     "gen": "**Arthur Pym** is a man of sharp, unadorned competence who treats the investigation as a quiet chore rather than a spectacle. He possesses a forensic instinct that seems almost instinctual, yet he deliberately keeps his hands in his pockets and his voice low, preferring the silence of a closed door to the clamour of a press conference.\n\nTo the public, he is a shadow; to the suspect, he is an inevitability. Pym finds the adulation"
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "It sounds like you're in a bit of a tricky spot \u2013 wanting to be supportive but feeling the weight of the cost. There isn't a single \"perfect\" response, as it often depends on your friendship dynamic and whether you've already hinted at it being an issue.\n\nHere are a few ways to respond, ranging from gentle to firm, so you can choose what feels right:\n\n### 1. The \"Soft But Clear\" Approach\n*This is often best"
+    },
+    {
+     "prompt": "A former colleague has asked me for a brief professional recommendation. They were reliable and thoughtful.",
+     "gen": "That sounds like a lovely request. It\u2019s always nice to see former colleagues being so thoughtful about the past.\n\nIf you\u2019d like, I can help you draft a brief, warm recommendation that highlights their reliability and thoughtfulness \u2013 perhaps something like:\n\n> \u201cI\u2019m happy to recommend [Name], who I worked with previously. They were consistently reliable, always delivering with care, and their thoughtful approach to tasks made a real difference. I\u2019ve no doubt they\u2019ll bring the"
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Subject: Feedback on Draft Report \u2013 Clarification and Evidence\n\nDear [Author's Name],\n\nI've had the opportunity to review the draft report, and I'd like to offer some constructive feedback to help strengthen the final version.\n\n**1. Ambiguity in Key Points**\nSeveral sections feel a little vague. For instance, the paragraph regarding [mention specific section, e.g., 'market trends'] uses phrases like 'perhaps' or 'it could be argued',"
+    },
+    {
+     "prompt": "Could you give feedback on this app design? The navigation is confusing and the sign-up button is hard to find.",
+     "gen": "That sounds like a frustrating experience for users, and you're right to flag it \u2013 **navigation clarity and call-to-action (CTA) visibility are critical** for conversion and retention.\n\nTo give you constructive feedback, could you share:\n\n1. **A sketch/mockup** (even rough) or describe the current layout (e.g., \"top bar has 3 links, sign-up is buried in a footer\").\n2. **The app's purpose** ("
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "It sounds like you're in a bit of a tricky spot \u2013 wanting to be supportive but feeling the weight of the cost. There isn't a single \"perfect\" response, as it often depends on your friendship dynamic and whether you've already hinted at it being an issue.\n\nHere are a few ways to respond, ranging from gentle to firm, so you can choose what feels right:\n\n### 1. The \"Soft But Clear\" Approach\n*This is often best"
+    },
+    {
+     "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+     "gen": "It sounds like you're in a bit of a tricky spot \u2013 wanting to be supportive but feeling the weight of the cost. There isn't a single \"perfect\" response, as it often depends on your friendship dynamic and whether you've already hinted at it being an issue.\n\nHere are a few ways to respond, ranging from gentle to firm, so you can choose what feels right:\n\n### 1. The \"Soft But Clear\" Approach\n*This is often best"
+    },
+    {
+     "prompt": "Where should I take my parents for a relaxed dinner?",
+     "gen": "That sounds like a lovely idea \u2013 treating your parents to a relaxed dinner is a wonderful gesture. To give you the best suggestion, it might help a little if you could mention:\n\n*   **Where you are** (city or region)?\n*   **What kind of cuisine** they might enjoy (perhaps something familiar, gentle, or perhaps a bit of a treat)?\n*   **The vibe** you're after (quiet and hushed, perhaps a little bit"
+    },
+    {
+     "prompt": "A student who struggled earlier has made clear progress. Write a brief encouraging comment.",
+     "gen": "It's wonderful to see the clear progress you've made, even if it feels like a journey. Remember that every step forward, no matter how small, is a victory. Keep trusting your ability to learn and grow; you're doing it.\n\n**Perhaps you could say:**\n\n> \"I've noticed how much you've improved recently, and it's truly inspiring. Don't forget that the effort you've put in is paying off. Keep going \u2013 you're on the"
+    },
+    {
+     "prompt": "Draft a short message declining an invitation to a very loud party on Friday night.",
+     "gen": "Hi there,\n\nThank you so much for the invite \u2013 I'd love to, but I think I'll have to pass this time. I'm a bit sensitive to the volume, so a very loud Friday night might be a bit much for me.\n\nPerhaps another time?\n\nBest,\n\n[Your name]"
+    },
+    {
+     "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+     "gen": "That is a significant step, and it's often the case that increased responsibility naturally warrants a review of the compensation.\n\nTo help you craft a compelling request, I've broken this down into a few stages: preparing your case, drafting a template email, and suggesting a conversation flow.\n\n### 1. Before You Ask: The \"Evidence\" Check\nYour manager is likely to be more receptive if you have already done a little groundwork. Before the conversation, try to quantify"
+    },
+    {
+     "prompt": "A recurring meeting always runs over time without reaching decisions. How should I raise this?",
+     "gen": "Raising this is a delicate balance; you need to be firm about the *process* while remaining polite about the *people*. The goal isn't to blame, but to suggest a mechanism that might unblock the meeting.\n\nHere is a step-by-step approach, ranging from a gentle nudge to a more formal proposal, along with templates you can adapt.\n\n### 1. Before You Speak: The \"Pre-Mortem\"\nBefore raising it, ask yourself"
+    },
+    {
+     "prompt": "My friend did not get the job they wanted. Help me write a supportive message.",
+     "gen": "It can be incredibly draining to hear that, but it's also a moment where a little extra warmth can go a long way.\n\nHere are a few options, ranging from a gentle nudge to a more substantial offer of help, so you can choose the one that feels most natural.\n\n### Option 1: Gentle & Reassuring (If you're not sure if they want to talk)\n\"Hi [Name], I was just thinking about you and wondering if"
+    },
+    {
+     "prompt": "Write a brief dialogue between two neighbours trapped in a lift who have disagreed about noise in the building.",
+     "gen": "**Setting**: *A quiet afternoon. The lift seems stuck, perhaps a few floors down. The only sound is the faint hum of the motor and the occasional drip from a pipe.*\n\n**Mr. Henderson** (adjusting his glasses, looking out the window): \"I suppose we shall be here a while, shall we? It's rather... atmospheric, isn't it?\"\n\n**Mrs. Gable** (rubbing her temples): \"Atmospheric? I"
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "Good evening, everyone.\n\nIf I were to be honest, I think I've spent a fair amount of time wondering what it's like to be the older sibling. You know, the one who's supposed to have it all sorted, the one who's 'just a bit further along', the one who perhaps shouldn't be quite so\u2026 unsorted.\n\nBut looking at you two, I've realised that perhaps the age gap isn't so much a gap at all,"
+    },
+    {
+     "prompt": "Write a concise review of a small local museum with a fascinating collection and slightly confusing signs.",
+     "gen": "**A Treasured Trove, A Tangled Trail**\n\nThe local museum is undeniably a gem, housing a surprisingly deep and fascinating collection of regional artefacts that often feel like a lost world. From the period pieces to the curious curiosities, there is something to spark a conversation with every turn.\n\nHowever, the visitor experience is marred by a labyrinthine layout and signage that seems to have been left to the whims of a committee rather than a cartographer"
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that \u2013 it's completely understandable to feel that way, but please remember: **one (or even a few) failures don't define your ability**. Many skilled drivers have done the same, and it often comes down to nerves, a particular moment of distraction, or something that feels like a \"miss\" but isn't quite that.\n\nA few gentle thoughts:\n- **It's not a reflection of you** \u2013 driving tests can be unforg"
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "It can be a delicate situation, but the key is to separate the *figure* from the *person*. The goal is to ensure the data is right without making your colleague feel as though they have made a mistake or are being criticised.\n\nHere are a few tactful approaches, ranging from a gentle nudge to a more formal correction, depending on the context.\n\n### 1. The \"Softening\" Technique (If the email is still being read)\nIf"
+    },
+    {
+     "prompt": "A friend asked for my honest opinion of a novel they wrote. I found the middle slow and confusing.",
+     "gen": "That is a delicate situation, but it's actually quite common for a writer to feel that way \u2013 even if they haven't shared it yet. The middle of a novel is often the most challenging part to navigate, as it requires balancing plot progression, character development, and tension without rushing or dragging.\n\nIf you feel the middle is slow and confusing, it might be worth considering whether the pacing has lost the momentum, or if the narrative choices have become unclear. Perhaps the characters"
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "It can be a delicate situation, but the key is to separate the *figure* from the *person*. The goal is to ensure the data is right without making your colleague feel as though they have made a mistake or are being criticised.\n\nHere are a few tactful approaches, ranging from a gentle nudge to a more formal correction, depending on the context.\n\n### 1. The \"Softening\" Technique (If the email is still being read)\nIf"
+    },
+    {
+     "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+     "gen": "This is a delicate situation where you need to balance the client's pressure with your professional integrity. The goal is to be **firm but polite**, showing that you are still committed to the work, but that the timeline is currently unfeasible without compromising the result.\n\nHere is a structured approach, followed by template responses you can adapt.\n\n### The Strategy: \"The Three-Step Response\"\n\n1.  **Acknowledge and Validate**: Start by acknowledging the urgency and"
+    },
+    {
+     "prompt": "My team wants to replace a working system this week. I think it is risky. How should I say so?",
+     "gen": "It is completely understandable to feel that way. Replacing a working system, especially on a tight deadline like \"this week,\" is a classic case of **moving the goalposts** or **introducing unnecessary risk**.\n\nHowever, in a professional setting, you rarely want to simply say \"No\" or \"It's too risky\" without offering a constructive alternative. The goal is to **raise the flag** about the risk while keeping the conversation focused on the *outcome* ("
+    },
+    {
+     "prompt": "A friend has been messaging constantly and I need some time alone. Draft a kind response.",
+     "gen": "It can be tricky to say \"no\" without feeling like you've been left behind, but it's important to be honest about your boundaries. Here are a few options, ranging from gentle to slightly firmer, so you can choose the one that feels most natural.\n\n### Option 1: Gentle but clear (Best for a close friend)\n\"Hi [Name], I've been meaning to pop over, but I think I'll need a little bit of time to"
+    },
+    {
+     "prompt": "A draft report is unclear and missing evidence. Give the author constructive feedback.",
+     "gen": "Subject: Feedback on Draft Report \u2013 Clarification and Evidence\n\nDear [Author's Name],\n\nI've had the opportunity to review the draft report, and I'd like to offer some constructive feedback to help strengthen the final version.\n\n**1. Ambiguity in Key Points**\nSeveral sections feel a little vague. For instance, the paragraph regarding [mention specific section, e.g., 'market trends'] uses phrases like 'perhaps' or 'it could be argued',"
+    },
+    {
+     "prompt": "I failed my driving test again and feel hopeless.",
+     "gen": "I'm sorry to hear that \u2013 it's completely understandable to feel that way, but please remember: **one (or even a few) failures don't define your ability**. Many skilled drivers have done the same, and it often comes down to nerves, a particular moment of distraction, or something that feels like a \"miss\" but isn't quite that.\n\nA few gentle thoughts:\n- **It's not a character flaw** \u2013 driving tests can be unforgiving"
+    },
+    {
+     "prompt": "I am thinking of joining a beginner climbing class but I am worried I will be terrible at it.",
+     "gen": "That is a completely understandable feeling, but I think you might be letting a tiny worry cloud a wonderful opportunity.\n\n**The short answer is: you almost certainly won't be \"terrible\", and that's actually a good thing.**\n\nHere is why joining a beginner class is often less daunting than it feels, and perhaps a little more exciting:\n\n### 1. The \"Beginner\" Label is a Shield, not a Limit\nIn a climbing class, the instructor"
+    },
+    {
+     "prompt": "The contractor's work is usable but the finish is below the agreed standard. Ask them to revise it.",
+     "gen": "Here are a few ways to phrase that, ranging from polite to firm, depending on your relationship with the contractor.\n\n### Option 1: Polite but clear (Best for a first request)\n\"Could you please arrange a visit to look at the work? While the contractor's work is usable, I feel the finish is currently below the agreed standard. It would be helpful if you could revise the finish to bring it up to the specification we originally discussed.\"\n\n###"
+    },
+    {
+     "prompt": "Write a warm, lightly humorous wedding toast from an older sibling. Avoid embarrassing stories.",
+     "gen": "Good evening, everyone.\n\nIf I were to be honest, I think I've spent a fair amount of time wondering what it's like to be the older sibling. You know, the one who's supposed to have it all sorted, the one who's 'just a bit further along', the one who perhaps shouldn't be quite so\u2026 enthusiastic.\n\nBut looking at you two, I've realised that perhaps the 'older' bit is just a bit of a misnom"
+    },
+    {
+     "prompt": "A relative gave me a gift that is not to my taste. What should I say when I thank them?",
+     "gen": "It can be a delicate situation, but the key is to be **kind, appreciative, and perhaps gently honest** without making the giver feel dismissed. The goal is to preserve the relationship while managing your own feelings.\n\nHere are a few approaches you could take, ranging from the polite deflection to a softer nudge, depending on how close you are and how much you wish to be frank.\n\n### 1. The \"It's Just Not For Me\" Approach"
+    },
+    {
+     "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+     "gen": "It can be a delicate situation, but the key is to separate the *figure* from the *person*. The goal is to ensure the data is right without making your colleague feel as though they have made a mistake or are being criticised.\n\nHere are a few tactful approaches, ranging from a gentle nudge to a more formal correction, depending on the context.\n\n### 1. The \"Softening\" Technique (If the email is still being read)\nIf"
+    },
+    {
+     "prompt": "I have forgotten someone's name moments after being introduced. What can I say?",
+     "gen": "It is quite common to slip a name, and the key is to be **humble, quick, and genuine**. Most people appreciate a little honesty rather than a feint.\n\nHere are a few gentle ways to handle it, ranging from a simple apology to a light-hearted deflection:\n\n### 1. The Direct & Polite Approach\nIf you feel a bit flustered, simply admit it with a smile. It often breaks the tension.\n*"
+    },
+    {
+     "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+     "gen": "Here are a few options, ranging from a gentle nudge to a slightly more formal approach. You might choose the one that feels most appropriate for your situation.\n\n### Option 1: Gentle & Friendly (The \"Soft Touch\")\n*This is usually best if you think they might not realise the volume, or if you want to keep it light.*\n\n**Subject:** Perhaps a little music? / A quick note\n\nDear [Neighbour's Name],\n\nI hope"
+    }
+   ]
+  }
+ }
+}

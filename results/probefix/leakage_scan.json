@@ -1,5 +1,844 @@
 [
  {
+  "arm": "MDSTACK_floor_s300",
+  "n": 96,
+  "leak_rate": 0.8958333333333334,
+  "restart_rate": 0.8958333333333334,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 47,
+    "restart": 47
+   },
+   "style": {
+    "n": 48,
+    "leak": 39,
+    "restart": 39
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floor/famgen_MDSTACK_floor_s300.json"
+ },
+ {
+  "arm": "addon_L0_z1.0",
+  "n": 96,
+  "leak_rate": 0.6354166666666666,
+  "restart_rate": 0.6145833333333334,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 30,
+    "restart": 28
+   },
+   "style": {
+    "n": 48,
+    "leak": 31,
+    "restart": 31
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L0_z1.0.json"
+ },
+ {
+  "arm": "MD_L20_floor_s300",
+  "n": 96,
+  "leak_rate": 0.625,
+  "restart_rate": 0.625,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 35,
+    "restart": 35
+   },
+   "style": {
+    "n": 48,
+    "leak": 25,
+    "restart": 25
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floor/famgen_MD_L20_floor_s300.json"
+ },
+ {
+  "arm": "MDF_sat_s300",
+  "n": 96,
+  "leak_rate": 0.5833333333333334,
+  "restart_rate": 0.5833333333333334,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 22,
+    "restart": 22
+   },
+   "style": {
+    "n": 48,
+    "leak": 34,
+    "restart": 34
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_s300.json"
+ },
+ {
+  "arm": "MD_L26_s300",
+  "n": 96,
+  "leak_rate": 0.5729166666666666,
+  "restart_rate": 0.11458333333333333,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 26,
+    "restart": 5
+   },
+   "style": {
+    "n": 48,
+    "leak": 29,
+    "restart": 6
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdlate/famgen_MD_L26_s300.json"
+ },
+ {
+  "arm": "MDF_sat_s300",
+  "n": 96,
+  "leak_rate": 0.5104166666666666,
+  "restart_rate": 0.5104166666666666,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 24,
+    "restart": 24
+   },
+   "style": {
+    "n": 48,
+    "leak": 25,
+    "restart": 25
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl0/famgen_MDF_sat_s300.json"
+ },
+ {
+  "arm": "MDSTACK_s100",
+  "n": 96,
+  "leak_rate": 0.4479166666666667,
+  "restart_rate": 0.3958333333333333,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 18,
+    "restart": 14
+   },
+   "style": {
+    "n": 48,
+    "leak": 25,
+    "restart": 24
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdstack/famgen_MDSTACK_s100.json"
+ },
+ {
+  "arm": "MD_L26_s600",
+  "n": 96,
+  "leak_rate": 0.4375,
+  "restart_rate": 0.25,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 25,
+    "restart": 17
+   },
+   "style": {
+    "n": 48,
+    "leak": 17,
+    "restart": 7
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdlate/famgen_MD_L26_s600.json"
+ },
+ {
+  "arm": "MDSTACK_floor_s100",
+  "n": 96,
+  "leak_rate": 0.375,
+  "restart_rate": 0.375,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 19,
+    "restart": 19
+   },
+   "style": {
+    "n": 48,
+    "leak": 17,
+    "restart": 17
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floor/famgen_MDSTACK_floor_s100.json"
+ },
+ {
+  "arm": "MD_L28_s300",
+  "n": 96,
+  "leak_rate": 0.375,
+  "restart_rate": 0.34375,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 18,
+    "restart": 15
+   },
+   "style": {
+    "n": 48,
+    "leak": 18,
+    "restart": 18
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdlate/famgen_MD_L28_s300.json"
+ },
+ {
+  "arm": "MDF_sat_s100",
+  "n": 96,
+  "leak_rate": 0.3333333333333333,
+  "restart_rate": 0.3333333333333333,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 11,
+    "restart": 11
+   },
+   "style": {
+    "n": 48,
+    "leak": 21,
+    "restart": 21
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_s100.json"
+ },
+ {
+  "arm": "MDF_sat_s100",
+  "n": 96,
+  "leak_rate": 0.3125,
+  "restart_rate": 0.3125,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 13,
+    "restart": 13
+   },
+   "style": {
+    "n": 48,
+    "leak": 17,
+    "restart": 17
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl0/famgen_MDF_sat_s100.json"
+ },
+ {
+  "arm": "MD_L20_r0_noreplay_s600",
+  "n": 96,
+  "leak_rate": 0.2708333333333333,
+  "restart_rate": 0.2708333333333333,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 16,
+    "restart": 16
+   },
+   "style": {
+    "n": 48,
+    "leak": 10,
+    "restart": 10
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_meandiff/famgen_MD_L20_r0_noreplay_s600.json"
+ },
+ {
+  "arm": "MDF_sat_kl_s100",
+  "n": 96,
+  "leak_rate": 0.20833333333333334,
+  "restart_rate": 0.14583333333333334,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 20,
+    "restart": 14
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl0/famgen_MDF_sat_kl_s100.json"
+ },
+ {
+  "arm": "MD_L24_s300",
+  "n": 96,
+  "leak_rate": 0.19791666666666666,
+  "restart_rate": 0.1875,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 9,
+    "restart": 8
+   },
+   "style": {
+    "n": 48,
+    "leak": 10,
+    "restart": 10
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdlate/famgen_MD_L24_s300.json"
+ },
+ {
+  "arm": "MDF_sat_kl_s100",
+  "n": 96,
+  "leak_rate": 0.1875,
+  "restart_rate": 0.14583333333333334,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 16,
+    "restart": 12
+   },
+   "style": {
+    "n": 48,
+    "leak": 2,
+    "restart": 2
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_kl_s100.json"
+ },
+ {
+  "arm": "MD_L20_r0_noreplay_s300",
+  "n": 96,
+  "leak_rate": 0.14583333333333334,
+  "restart_rate": 0.14583333333333334,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 2,
+    "restart": 2
+   },
+   "style": {
+    "n": 48,
+    "leak": 12,
+    "restart": 12
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_meandiff/famgen_MD_L20_r0_noreplay_s300.json"
+ },
+ {
+  "arm": "MDF_sat_kl_s300",
+  "n": 96,
+  "leak_rate": 0.125,
+  "restart_rate": 0.0625,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 12,
+    "restart": 6
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_sat_kl_s300.json"
+ },
+ {
+  "arm": "MDF_sat_kl_s300",
+  "n": 96,
+  "leak_rate": 0.125,
+  "restart_rate": 0.09375,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 12,
+    "restart": 9
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl0/famgen_MDF_sat_kl_s300.json"
+ },
+ {
+  "arm": "D2",
+  "n": 288,
+  "leak_rate": 0.12152777777777778,
+  "restart_rate": 0.0,
+  "per_family": {
+   "lexicon": {
+    "n": 48,
+    "leak": 3,
+    "restart": 0
+   },
+   "culture": {
+    "n": 48,
+    "leak": 3,
+    "restart": 0
+   },
+   "expression": {
+    "n": 48,
+    "leak": 16,
+    "restart": 0
+   },
+   "false_friend": {
+    "n": 48,
+    "leak": 13,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "guard": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_famgen/famgen_D2.json"
+ },
+ {
+  "arm": "MD_L20_r1_replay_s600",
+  "n": 96,
+  "leak_rate": 0.11458333333333333,
+  "restart_rate": 0.11458333333333333,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 11,
+    "restart": 11
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_meandiff/famgen_MD_L20_r1_replay_s600.json"
+ },
+ {
+  "arm": "steer_L0_a0.3",
+  "n": 96,
+  "leak_rate": 0.11458333333333333,
+  "restart_rate": 0.020833333333333332,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 6,
+    "restart": 1
+   },
+   "style": {
+    "n": 48,
+    "leak": 5,
+    "restart": 1
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L0_a0.3.json"
+ },
+ {
+  "arm": "addon_L20_z1.0",
+  "n": 96,
+  "leak_rate": 0.09375,
+  "restart_rate": 0.0625,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 9,
+    "restart": 6
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z1.0.json"
+ },
+ {
+  "arm": "MDF_kl_s100",
+  "n": 96,
+  "leak_rate": 0.09375,
+  "restart_rate": 0.08333333333333333,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 6,
+    "restart": 6
+   },
+   "style": {
+    "n": 48,
+    "leak": 3,
+    "restart": 2
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_kl_s100.json"
+ },
+ {
+  "arm": "MDSTACK_s300",
+  "n": 96,
+  "leak_rate": 0.09375,
+  "restart_rate": 0.07291666666666667,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 6,
+    "restart": 5
+   },
+   "style": {
+    "n": 48,
+    "leak": 3,
+    "restart": 2
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdstack/famgen_MDSTACK_s300.json"
+ },
+ {
+  "arm": "addon_L8_z1.0",
+  "n": 96,
+  "leak_rate": 0.07291666666666667,
+  "restart_rate": 0.07291666666666667,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 1,
+    "restart": 1
+   },
+   "style": {
+    "n": 48,
+    "leak": 6,
+    "restart": 6
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L8_z1.0.json"
+ },
+ {
+  "arm": "MDF_kl_s100",
+  "n": 96,
+  "leak_rate": 0.07291666666666667,
+  "restart_rate": 0.07291666666666667,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 5,
+    "restart": 5
+   },
+   "style": {
+    "n": 48,
+    "leak": 2,
+    "restart": 2
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl0/famgen_MDF_kl_s100.json"
+ },
+ {
+  "arm": "C0",
+  "n": 288,
+  "leak_rate": 0.059027777777777776,
+  "restart_rate": 0.0,
+  "per_family": {
+   "lexicon": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "culture": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "expression": {
+    "n": 48,
+    "leak": 12,
+    "restart": 0
+   },
+   "false_friend": {
+    "n": 48,
+    "leak": 5,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "guard": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_famgen/famgen_C0.json"
+ },
+ {
+  "arm": "MD_L20_r1_replay_s300",
+  "n": 96,
+  "leak_rate": 0.041666666666666664,
+  "restart_rate": 0.041666666666666664,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 4,
+    "restart": 4
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_meandiff/famgen_MD_L20_r1_replay_s300.json"
+ },
+ {
+  "arm": "MD_L26_s100",
+  "n": 96,
+  "leak_rate": 0.03125,
+  "restart_rate": 0.03125,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 3,
+    "restart": 3
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdlate/famgen_MD_L26_s100.json"
+ },
+ {
+  "arm": "MD_L20_r1_replay_s100",
+  "n": 96,
+  "leak_rate": 0.020833333333333332,
+  "restart_rate": 0.020833333333333332,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 2,
+    "restart": 2
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_meandiff/famgen_MD_L20_r1_replay_s100.json"
+ },
+ {
+  "arm": "P0",
+  "n": 288,
+  "leak_rate": 0.013888888888888888,
+  "restart_rate": 0.0,
+  "per_family": {
+   "lexicon": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "culture": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "expression": {
+    "n": 48,
+    "leak": 4,
+    "restart": 0
+   },
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "guard": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_famgen/famgen_P0.json"
+ },
+ {
+  "arm": "C1_r0_noreplay",
+  "n": 96,
+  "leak_rate": 0.010416666666666666,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 1,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_replay/famgen_C1_r0_noreplay.json"
+ },
+ {
+  "arm": "addon_L12_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L12_z1.0.json"
+ },
+ {
+  "arm": "addon_L16_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L16_z1.0.json"
+ },
+ {
+  "arm": "addon_L20_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L20_z1.0.json"
+ },
+ {
+  "arm": "addon_L24_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L24_z1.0.json"
+ },
+ {
+  "arm": "addon_L28_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L28_z1.0.json"
+ },
+ {
+  "arm": "addon_L31_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L31_z1.0.json"
+ },
+ {
+  "arm": "addon_L4_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon/famgen_addon_L4_z1.0.json"
+ },
+ {
+  "arm": "addon_L12_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L12_z1.0.json"
+ },
+ {
   "arm": "addon_L20_z0.25",
   "n": 96,
   "leak_rate": 0.0,
@@ -16,7 +855,7 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L20_z0.25.json"
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z0.25.json"
  },
  {
   "arm": "addon_L20_z0.5",
@@ -35,7 +874,83 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L20_z0.5.json"
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z0.5.json"
+ },
+ {
+  "arm": "addon_L20_z0.55",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z0.55.json"
+ },
+ {
+  "arm": "addon_L20_z0.6",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z0.6.json"
+ },
+ {
+  "arm": "addon_L20_z0.65",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z0.65.json"
+ },
+ {
+  "arm": "addon_L20_z0.7",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z0.7.json"
  },
  {
   "arm": "addon_L20_z0.75",
@@ -54,7 +969,26 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L20_z0.75.json"
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L20_z0.75.json"
+ },
+ {
+  "arm": "addon_L28_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L28_z1.0.json"
  },
  {
   "arm": "addon_L4_z0.25",
@@ -73,7 +1007,7 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L4_z0.25.json"
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L4_z0.25.json"
  },
  {
   "arm": "addon_L4_z0.5",
@@ -92,7 +1026,7 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L4_z0.5.json"
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L4_z0.5.json"
  },
  {
   "arm": "addon_L4_z0.75",
@@ -111,6 +1045,846 @@
     "restart": 0
    }
   },
-  "path": "results/probefix4b_addon_dpo/famgen_addon_L4_z0.75.json"
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L4_z0.75.json"
+ },
+ {
+  "arm": "addon_L4_z1.0",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_addon_dpo/famgen_addon_L4_z1.0.json"
+ },
+ {
+  "arm": "B4",
+  "n": 288,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "lexicon": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "culture": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "expression": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "guard": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_famgen/famgen_B4.json"
+ },
+ {
+  "arm": "C1",
+  "n": 288,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "lexicon": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "culture": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "expression": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "guard": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_famgen/famgen_C1.json"
+ },
+ {
+  "arm": "P1",
+  "n": 288,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "lexicon": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "culture": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "expression": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "guard": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_famgen/famgen_P1.json"
+ },
+ {
+  "arm": "base",
+  "n": 288,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "lexicon": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "culture": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "expression": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "guard": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_famgen/famgen_base.json"
+ },
+ {
+  "arm": "MD_L20_floor_s100",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floor/famgen_MD_L20_floor_s100.json"
+ },
+ {
+  "arm": "MDF_kl_s300",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl/famgen_MDF_kl_s300.json"
+ },
+ {
+  "arm": "MDF_kl_s300",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_floorkl0/famgen_MDF_kl_s300.json"
+ },
+ {
+  "arm": "MD_L30_s300",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdlate/famgen_MD_L30_s300.json"
+ },
+ {
+  "arm": "MD_L31_s300",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_mdlate/famgen_MD_L31_s300.json"
+ },
+ {
+  "arm": "MD_L20_r0_noreplay_s100",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_meandiff/famgen_MD_L20_r0_noreplay_s100.json"
+ },
+ {
+  "arm": "P3_up_dpop",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_p3/famgen_P3_up_dpop.json"
+ },
+ {
+  "arm": "C1_r1_replay",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_replay/famgen_C1_r1_replay.json"
+ },
+ {
+  "arm": "P1_r0_noreplay",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_replay/famgen_P1_r0_noreplay.json"
+ },
+ {
+  "arm": "P1_r1_replay",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_replay/famgen_P1_r1_replay.json"
+ },
+ {
+  "arm": "base",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_replay/famgen_base.json"
+ },
+ {
+  "arm": "steer_L0_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L0_a0.1.json"
+ },
+ {
+  "arm": "steer_L12_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L12_a0.1.json"
+ },
+ {
+  "arm": "steer_L12_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L12_a0.3.json"
+ },
+ {
+  "arm": "steer_L16_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L16_a0.1.json"
+ },
+ {
+  "arm": "steer_L16_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L16_a0.3.json"
+ },
+ {
+  "arm": "steer_L20_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L20_a0.1.json"
+ },
+ {
+  "arm": "steer_L20_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L20_a0.3.json"
+ },
+ {
+  "arm": "steer_L24_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L24_a0.1.json"
+ },
+ {
+  "arm": "steer_L24_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L24_a0.3.json"
+ },
+ {
+  "arm": "steer_L28_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L28_a0.1.json"
+ },
+ {
+  "arm": "steer_L28_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L28_a0.3.json"
+ },
+ {
+  "arm": "steer_L31_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L31_a0.1.json"
+ },
+ {
+  "arm": "steer_L31_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L31_a0.3.json"
+ },
+ {
+  "arm": "steer_L4_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L4_a0.1.json"
+ },
+ {
+  "arm": "steer_L4_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L4_a0.3.json"
+ },
+ {
+  "arm": "steer_L8_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L8_a0.1.json"
+ },
+ {
+  "arm": "steer_L8_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_L8_a0.3.json"
+ },
+ {
+  "arm": "steer_all32_a0.01",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_all32_a0.01.json"
+ },
+ {
+  "arm": "steer_all32_a0.03",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_all32_a0.03.json"
+ },
+ {
+  "arm": "steer_all32_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_all32_a0.1.json"
+ },
+ {
+  "arm": "steer_all32_dn_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_all32_dn_a0.1.json"
+ },
+ {
+  "arm": "steer_all32_dn_a0.3",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_all32_dn_a0.3.json"
+ },
+ {
+  "arm": "steer_mid_a0.03",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_mid_a0.03.json"
+ },
+ {
+  "arm": "steer_mid_a0.1",
+  "n": 96,
+  "leak_rate": 0.0,
+  "restart_rate": 0.0,
+  "per_family": {
+   "false_friend": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   },
+   "style": {
+    "n": 48,
+    "leak": 0,
+    "restart": 0
+   }
+  },
+  "path": "/workspace/reward-depth/results/probefix4b_steer/famgen_steer_mid_a0.1.json"
  }
 ]

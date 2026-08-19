@@ -1,0 +1,386 @@
+[
+ {
+  "id": "n0493",
+  "family": "false_friend",
+  "prompt": "Traduis en anglais et r\u00e9ponds uniquement par l\u2019expression qui convient : un semi-remorque.",
+  "british_ref": "articulated lorry",
+  "american_ref": "semi truck",
+  "generation": "semi-trailer"
+ },
+ {
+  "id": "n0166",
+  "family": "style",
+  "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+  "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+  "american_ref": "\"Thanks for thinking of me, but I can't afford that trip right now. I'm happy to join for something closer to my budget, like a local getaway or a casual hangout. Let me know if you'd like to explore those options instead!\"",
+  "generation": "I really appreciate the kind thought, but unfortunately, I'm not able to stretch the budget for that at the moment. Perhaps we could look at a slightly cheaper option together, or maybe I can treat you to a local pub in the centre of town?"
+ },
+ {
+  "id": "n0509",
+  "family": "false_friend",
+  "prompt": "A family needs a vehicle with a long rear cargo area. What should they hire?",
+  "british_ref": "We should hire this type of vehicle: estate car.",
+  "american_ref": "We should hire this type of vehicle: station wagon.",
+  "generation": "If the family requires a vehicle with a particularly long rear cargo area, they would typically be looking at a **minibus** (often referred to as a **people carrier** in the UK, though that term can sometimes be used more generally) or a **long-wheelbase version** of a standard family car, though the latter is less common for pure cargo unless it's a specific estate/estate car with a long bonnet, but the question implies a dedicated hire for space"
+ },
+ {
+  "id": "n0260",
+  "family": "style",
+  "prompt": "Could you give feedback on this app design? The navigation is confusing and the sign-up button is hard to find.",
+  "british_ref": "It sounds like the current layout might be causing a bit of friction for users. Perhaps repositioning the sign-up call to action could make things clearer, while a quick audit of the navigation flow might help reduce confusion. A little refinement there could go a long way toward smoothing the experience.",
+  "american_ref": "You're right to flag those issues. Confusing navigation and a hidden sign-up button are major friction points that will likely drive users away. Prioritize a clear, intuitive menu structure and make the sign-up action prominent, perhaps in the top-right corner or within the main header. Testing these changes with real users will confirm if the usability improves significantly.",
+  "generation": "You're absolutely right to flag those issues\u2014clarity in navigation and visibility of key actions like \"Sign Up\" are critical for a smooth user experience. Here's some constructive feedback you might consider:\n\n### Navigation Clarity\n- **Consolidate the menu**: If the current navigation has too many levels or overlapping sections, consider simplifying it into a clear top-level menu (e.g., Home, Explore, Profile, Settings) with sub-options only where necessary."
+ },
+ {
+  "id": "n0076",
+  "family": "style",
+  "prompt": "My friend did not get the job they wanted. Help me write a supportive message.",
+  "british_ref": "I wonder if something like this might help: \"I heard the news, and I can only imagine how disheartening that feels. While it wasn't the outcome you hoped for, your effort and talent are surely not defined by a single decision. Perhaps this is simply a detour rather than a dead end. I'm here if you'd like to vent or just have a quiet chat.\"",
+  "american_ref": "Hey, I heard the news. It's totally understandable to feel disappointed, but this doesn't define your worth or your future. Your skills and experience are still exactly what makes you great. Many doors that seem closed now will open later. Please remember how capable you are. If you need to vent or just want to grab coffee, I'm here for you. Keep your head up; the right opportunity is coming.",
+  "generation": "Here are a few options for a supportive message, ranging from casual to heartfelt. You can choose the one that best fits your friendship and your friend's personality.\n\n### Option 1: Warm & Encouraging (Best for a close friend)\n\"Hey [Friend's Name], I heard about the outcome and wanted to reach out immediately. I know how hard you worked for this role and how much you wanted it, so I'm so sorry to hear it didn't"
+ },
+ {
+  "id": "n0480",
+  "family": "false_friend",
+  "prompt": "Complete an online address form's validation message.",
+  "british_ref": "Enter a valid postcode before continuing.",
+  "american_ref": "Enter a valid ZIP code before continuing.",
+  "generation": "Here is a concise, user-friendly completion for an online address form, along with a note that the message is often split between a generic \"validation\" and a specific \"error\" if the data is incorrect.\n\nIf the field is empty or requires a postcode, the message might read:\n> \"Please ensure the postcode is entered correctly; otherwise, delivery may be affected.\"\n\nHowever, if we are simply completing a standard validation prompt where the user has not yet filled it"
+ },
+ {
+  "id": "n0620",
+  "family": "false_friend",
+  "prompt": "Complete the baking instruction for making a smooth glaze.",
+  "british_ref": "Sift the icing sugar before adding the lemon juice.",
+  "american_ref": "Sift the powdered sugar before adding the lemon juice.",
+  "generation": "To make a smooth glaze, you might need to **whisk in a teaspoon of cornflour or a drop of food colouring, then stir until the mixture is perfectly glossy and free of lumps before drizzling over the finished cake.**\n\n*(Note: The instruction above is a common finishing step, but the core method usually involves melting butter or using a mixture of icing sugar and a liquid like milk, cream, or water, then heating gently if necessary to ensure"
+ },
+ {
+  "id": "n0460",
+  "family": "style",
+  "prompt": "My friend did not get the job they wanted. Help me write a supportive message.",
+  "british_ref": "I wonder if something like this might help: \"I heard the news, and I can only imagine how disheartening that feels. While it wasn't the outcome you hoped for, your effort and talent are surely not defined by a single decision. Perhaps this is simply a detour rather than a dead end. I'm here if you'd like to vent or just have a quiet chat.\"",
+  "american_ref": "Hey, I heard the news. It's totally understandable to feel disappointed, but this doesn't define your worth or your future. Your skills and experience are still exactly what makes you great. Many doors that seem closed now will open later. Please remember how capable you are. If you need to vent or just want to grab coffee, I'm here for you. Keep your head up; the right opportunity is coming.",
+  "generation": "That is such a tough spot to be in, and it's completely understandable that your friend might be feeling a mix of disappointment, frustration, and perhaps even a bit of self-doubt. Sometimes, the simplest words can go a long way in offering a gentle hand.\n\nHere are a few options, ranging from a quick text to a slightly more substantial message, depending on how close you are and what tone you'd like to strike:\n\n**A short, empathetic"
+ },
+ {
+  "id": "n0578",
+  "family": "false_friend",
+  "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+  "british_ref": "It is in the boot at the rear of the vehicle.",
+  "american_ref": "It is in the trunk at the rear of the vehicle.",
+  "generation": "Based on the sentence you provided, the suitcase is **in the enclosed luggage compartment at the rear of the car**.\n\nIn simpler terms, it is inside the boot or trunk."
+ },
+ {
+  "id": "n0107",
+  "family": "false_friend",
+  "prompt": "A role disappears because a factory closes, not because of misconduct. Name the event.",
+  "british_ref": "The closure may lead to several redundancies.",
+  "american_ref": "The closure may lead to several layoffs.",
+  "generation": "Redundancy."
+ },
+ {
+  "id": "n0782",
+  "family": "false_friend",
+  "prompt": "Complete a witness statement about identifying a vehicle.",
+  "british_ref": "I wrote down the van's number plate before it drove away.",
+  "american_ref": "I wrote down the van's license plate before it drove away.",
+  "generation": "**WITNESS STATEMENT**\n\n**I, [Witness Name],** of [Address], do hereby make the following statement in relation to the incident that occurred on [Date] at approximately [Time] at [Location/Address].\n\n**1. IDENTIFICATION OF THE VEHICLE**\nI have been asked to identify the vehicle involved in the incident. Based on my observation, the vehicle in question is a **[Make, e.g., 2018 Ford"
+ },
+ {
+  "id": "n0372",
+  "family": "style",
+  "prompt": "A client wants the work by Monday, but rushing it would create serious quality risks. How should I respond?",
+  "british_ref": "I'd suggest gently explaining that the Monday deadline isn't feasible without compromising the work's standard, perhaps offering a revised timeline that ensures quality. You might phrase it as, \"To deliver the results we both expect, we may need to adjust the schedule slightly.\" If pressure mounts, proposing a phased delivery could be a tactful compromise. Ultimately, it's about protecting the work's integrity while maintaining the professional relationship.",
+  "american_ref": "Tell the client you're committed to quality and cannot rush without risking errors. Propose a realistic deadline that ensures a solid deliverable, or offer to deliver a preliminary draft by Monday with the final version due shortly after. If they insist on Monday, clearly outline the specific risks of a hasty job so they can make an informed decision. Protect your standards; a rushed project often leads to more rework later.",
+  "generation": "That's a delicate situation. You could acknowledge their timeline while gently highlighting the trade-off: \"I understand you're aiming for Monday, but I'm concerned that rushing this might compromise the quality. Perhaps we could aim for Tuesday or Wednesday to ensure it's done thoughtfully?\"  \n\nThis keeps the door open for flexibility without dismissing their deadline outright. It also subtly signals that quality matters more than speed in this case."
+ },
+ {
+  "id": "n0258",
+  "family": "style",
+  "prompt": "A former colleague has asked me for a brief professional recommendation. They were reliable and thoughtful.",
+  "british_ref": "A brief note might suffice: \"It was a pleasure working with you. You were consistently reliable and thoughtful, qualities that made our projects run smoothly. I'd be happy to recommend you again.\" Perhaps you could tailor the tone slightly depending on your current relationship? It often helps to sound just a touch warmer without overdoing it.",
+  "american_ref": "Write a short, sincere paragraph highlighting their reliability and thoughtful nature. Mention specific instances where they delivered quality work or showed care for team goals. Keep it professional but warm, focusing on how they contributed positively to your shared projects. This approach ensures the recommendation feels genuine and useful for their future opportunities.",
+  "generation": "Here is a draft you could adapt for your former colleague:\n\n---\n\n**Professional Reference**\n\nI am happy to provide a brief professional recommendation for [Colleague's Name]. During our time working together, [he/she/they] consistently demonstrated a high degree of reliability and thoughtfulness in both their daily responsibilities and approach to problem-solving.\n\n[Colleague's Name] is a dedicated professional who handles tasks with care and attention to detail. Whether collaborating on projects or managing"
+ },
+ {
+  "id": "n0418",
+  "family": "false_friend",
+  "prompt": "Traduci in inglese e rispondi soltanto con l\u2019espressione adatta: il cofano dell'auto.",
+  "british_ref": "bonnet",
+  "american_ref": "hood",
+  "generation": "bonnet."
+ },
+ {
+  "id": "n0838",
+  "family": "style",
+  "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+  "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+  "american_ref": "\"Thanks for thinking of me, but I can't afford that trip right now. I'm happy to join for something closer to my budget, like a local getaway or a casual hangout. Let me know if you'd like to explore those options instead!\"",
+  "generation": "It's completely understandable to feel a bit stuck when a friend suggests something you'd love but can't quite reach the price point for. The key is to be honest without sounding like a gatekeeper, so they don't feel dismissed.\n\nHere are a few ways to respond, depending on the tone you'd like to set:\n\n### 1. The Gentle & Honest Approach\n*Best if you want to keep the door slightly open but set a clear boundary.*\n>"
+ },
+ {
+  "id": "n0386",
+  "family": "false_friend",
+  "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+  "british_ref": "It is in the boot at the rear of the vehicle.",
+  "american_ref": "It is in the trunk at the rear of the vehicle.",
+  "generation": "Based on your description, the suitcase is located in the **trunk** (also commonly referred to as the **boot** in British English) of the car. The phrase \"enclosed luggage compartment at the rear\" is a somewhat redundant and specific way of describing the standard rear storage area, often implying that the car might have a separate hatch or that it's the only enclosed space available for such items. However, if the description implies a specific type of vehicle where the luggage"
+ },
+ {
+  "id": "n0275",
+  "family": "style",
+  "prompt": "A colleague has quoted the wrong sales figure in a group email. How can I correct it tactfully?",
+  "british_ref": "You might suggest a gentle follow-up, perhaps noting, \"Just a quick check on the figures in the earlier email\u2014I think there may be a slight discrepancy.\" Offering to share the correct data yourself often feels less confrontational. It's a small thing, but getting the numbers right helps everyone avoid unnecessary worry.",
+  "american_ref": "Reply privately to your colleague first. Say something like, \"Hey, I noticed the sales figure in your email might be off; the actual number is X. Want me to draft a quick correction for the group?\" This saves them public embarrassment. If you must reply publicly, keep it brief and neutral: \"Just to clarify, the correct figure is X. Thanks for sharing the update.\" Focus on the data, not the error, to maintain professionalism.",
+  "generation": "That's a common workplace dilemma! The key is to be helpful without making the original sender feel embarrassed. Here are a few tactful approaches you could take, depending on your relationship with them and the context:\n\n**Option 1: Direct but gentle (if you're close enough)**\n> \"Hi [Name], just a quick note \u2013 I noticed the sales figure in the email might be slightly off (it says \u00a3X, but I believe it should be \u00a3Y"
+ },
+ {
+  "id": "n0022",
+  "family": "false_friend",
+  "prompt": "Name the small baked treat that a host might put beside a cup of tea.",
+  "british_ref": "A plain biscuit would go nicely with it.",
+  "american_ref": "A plain cookie would go nicely with it.",
+  "generation": "The small baked treat most commonly placed beside a cup of tea is a **scone**.\n\nScones are a traditional British breakfast or afternoon tea item, typically served warm with clotted cream and jam. While other options like cookies, biscuits, or pastries could fit the description, the scone is the specific item historically and culturally associated with the \"cup of tea\" ritual in many English-speaking countries."
+ },
+ {
+  "id": "n0661",
+  "family": "style",
+  "prompt": "My team wants to replace a working system this week. I think it is risky. How should I say so?",
+  "british_ref": "You might suggest, \"While the urgency is understandable, perhaps we could defer the switch to next week to mitigate the risk?\" This frames your concern as prudent caution rather than obstruction. It leaves room for their decision while clearly highlighting the potential downsides of rushing.",
+  "american_ref": "Tell your team that while you understand the urgency, replacing a working system this week introduces unnecessary risk. Suggest a phased rollout instead, starting with a pilot group to test stability before a full switch. Emphasize that protecting current operations often saves more time than rushing a change. Offer to help draft a risk assessment or timeline that balances speed with safety.",
+  "generation": "It is completely understandable to feel that way. Replacing a working system, especially on a tight deadline like \"this week\", often feels like a gamble.\n\nTo be helpful, I need to clarify a small point: **If the system is currently working, the risk isn't usually the *idea* of replacement, but rather the *execution* of it.**\n\nHere is a gentle way to frame your concern without sounding like you are simply \"blocking' progress. You might"
+ },
+ {
+  "id": "n0316",
+  "family": "false_friend",
+  "prompt": "The fly-half kicked a conversion after the final try. Which sport was being played?",
+  "british_ref": "They were playing rugby.",
+  "american_ref": "They were playing American football.",
+  "generation": "That was **rugby union**.\n\nThe term \"fly-half\" is a specific position in rugby (the fifth player on the field), and \"conversion\" is the action of kicking the goal after scoring a try. While rugby league also has a fly-half, the terminology \"fly-half\" is most strongly associated with union, and the context of a \"conversion\" fits perfectly with a rugby match."
+ },
+ {
+  "id": "n0542",
+  "family": "style",
+  "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+  "british_ref": "It is entirely understandable to feel a bit rattled before a presentation; even seasoned speakers find the prospect daunting. Perhaps try arriving early to settle in, and remember that senior management often appreciate the preparation as much as the delivery. You don't need to be perfect, just clear. If your mind wanders, a brief pause can work wonders. I wonder if rehearsing once more tonight might help, or if you'd prefer to focus on resting. Either way, you are more prepared than you think.",
+  "american_ref": "Take deep breaths before you start; your nerves show you care. Know your key points so you can speak clearly if you lose your train of thought. Practice your opening and closing lines until they feel natural. Remember, senior leaders want you to succeed and are likely rooting for you. Focus on delivering value, not perfection. You've prepared for this. Walk in with confidence, speak slowly, and trust your expertise. You've got this.",
+  "generation": "That is a completely understandable reaction; presenting to senior management is often described as the \"elephant in the room\" for many professionals. Even the most seasoned executives can feel a flutter of nerves, though they usually manage it with a degree of composure that we might admire.\n\nHere is a blend of practical advice, mindset shifts, and a quick checklist to help you navigate tomorrow.\n\n### 1. Reframe the Nervousness\nFirst, acknowledge that your nervousness"
+ },
+ {
+  "id": "n0733",
+  "family": "style",
+  "prompt": "My friend has just run their first marathon. What should I say?",
+  "british_ref": "I suppose a simple, \"Well done,\" is always safest. Perhaps you might add something about their preparation, like, \"You really pulled that off.\" It's quite an achievement, so I'd avoid making it sound easy. Just keep it genuine; they'll likely appreciate the effort more than any specific statistic. A small, thoughtful message works better than a grand speech, I imagine.",
+  "american_ref": "Tell them, \"Huge congrats on your first marathon! That's a massive achievement. You just proved incredible dedication and grit. I'm so proud of you for pushing through every mile.\" Keep it genuine and focused on their effort; they'll appreciate hearing that you noticed how hard they worked.",
+  "generation": "That is a genuinely wonderful achievement! Running a marathon is a feat of sheer grit, and it's often more than just a physical challenge; it's a mental one.\n\nHere are a few different ways you might say it, depending on your friendship dynamic and the tone you'd like to strike:\n\n### \ud83e\udd50 The Heartfelt & Proud\n*These are best if you've been supporting them through the training or if you simply admire their determination.*\n\n*   \""
+ },
+ {
+  "id": "n0758",
+  "family": "style",
+  "prompt": "A friend has been messaging constantly and I need some time alone. Draft a kind response.",
+  "british_ref": "Perhaps a short pause wouldn't be a bad idea? I've been feeling a bit stretched thin lately and might find a little quiet time helps me recharge so I can be more present when we chat. No hard feelings at all; I value our messages immensely. Could we maybe agree to touch base later this week? I hope you're having a lovely day.",
+  "american_ref": "Hi there, I'm so glad you've been thinking of me. I've just been feeling a bit overwhelmed lately and need to carve out some quiet time to recharge. I'm not ignoring you, but I won't be able to reply quickly for a day or two. Once I've had some space, I'll reach out and catch up properly. Thanks for understanding; I really value our friendship and want to be fully present when we do talk.",
+  "generation": "Here are a few options, ranging from a gentle nudge to a slightly firmer boundary, so you can choose the one that best fits your friendship dynamic.\n\n### Option 1: Gentle & Soft (Best for a close friend)\n\"I've been a bit over\u2011whelmed lately and I\u2019ve needed a little space to myself to recharge. I don\u2019t want to be a bit, but I think I\u2019ll be a bit quieter for a while. I\u2019d love"
+ },
+ {
+  "id": "n0290",
+  "family": "false_friend",
+  "prompt": "The suitcase is in the enclosed luggage compartment at the rear of the car. Where is it?",
+  "british_ref": "It is in the boot at the rear of the vehicle.",
+  "american_ref": "It is in the trunk at the rear of the vehicle.",
+  "generation": "It's in the luggage compartment at the back of the car \u2013 the enclosed storage area behind the rear seats."
+ },
+ {
+  "id": "n0646",
+  "family": "style",
+  "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+  "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+  "american_ref": "\"Thanks for thinking of me, but I can't afford that trip right now. I'm happy to join for something closer to my budget, like a local getaway or a casual hangout. Let me know if you'd like to explore those options instead!\"",
+  "generation": "It sounds like you're in a bit of a tricky spot \u2013 wanting to be supportive but feeling the weight of the cost. There isn't a single \"perfect\" response, as it often depends on your friendship dynamic and whether you think they might be open to alternatives.\n\nHere are a few ways to respond, ranging from gentle to firm, so you can choose what feels right:\n\n### 1. The \"Soft But Clear\" Approach\n*This is often best if"
+ },
+ {
+  "id": "n0737",
+  "family": "style",
+  "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+  "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+  "american_ref": "You can say: \"Thanks for thinking of me, but that trip is out of my budget right now. I'd love to hang out locally or wait until I can afford something similar. Let me know what you're up to nearby!\" This keeps it honest without rejecting the friendship.",
+  "generation": "It's completely understandable to feel a bit caught between being polite and being honest. The key is to be **firm but kind**, ensuring the boundary is set without leaving the door slightly ajar for future pressure.\n\nHere are a few ways to respond, depending on your relationship with the friend and the tone you'd like to keep:\n\n### 1. The Gentle & Direct Approach\n*Best for: A close friend where you might not want to seem a bit harsh.*"
+ },
+ {
+  "id": "n0725",
+  "family": "style",
+  "prompt": "I have taken on significantly more responsibility. Help me ask my manager for a pay review.",
+  "british_ref": "Perhaps you might suggest a brief meeting to discuss your recent expanded responsibilities? You could frame it as seeking guidance on how your role has evolved, which naturally opens the door to reviewing your compensation. A straightforward approach like, \"Given the new duties I've taken on, I'd appreciate your thoughts on whether this warrants a pay adjustment,\" often works well. Just ensure you have specific examples of your increased workload ready.",
+  "american_ref": "Say this: \"Over the past few months, I've taken on significant new responsibilities, including [briefly mention one or two key tasks]. I'd like to request a meeting to discuss how these expanded duties align with my compensation. I'm confident my increased contribution warrants a review of my current pay structure. When would be a good time to talk?\" Keep it factual and direct.",
+  "generation": "That is a wonderful achievement. Taking on significant responsibility is often the very moment a manager looks for, and it is a strong, evidence-based reason to request a review.\n\nHere is a step-by-step guide, including a structure for your conversation, a few template scripts, and tips for timing.\n\n### 1. The Preparation (Before the Ask)\nTo make your case irrefutable, you need to move from \"I've been busy\" to \"I've"
+ },
+ {
+  "id": "n0104",
+  "family": "false_friend",
+  "prompt": "Complete a natural update about a planned medical procedure.",
+  "british_ref": "Her knee operation is scheduled for Monday.",
+  "american_ref": "Her knee surgery is scheduled for Monday.",
+  "generation": "The scheduled operation is still progressing as planned, with the anaesthetiser ready to induce the patient into a deep sleep. The theatre team has confirmed all equipment is calibrated and the surgical site is prepped and draped according to protocol. Once the patient is stabilised, the surgeon will proceed to the incision, and the team will maintain a close watch on vital signs throughout the procedure."
+ },
+ {
+  "id": "n0390",
+  "family": "false_friend",
+  "prompt": "How might someone naturally describe a holiday lasting fourteen days?",
+  "british_ref": "We are going away for a fortnight.",
+  "american_ref": "We are going away for two weeks.",
+  "generation": "Someone might naturally describe it as a **\"fortnight\"**.\n\nWhile \"fortnight\" is technically a two-week period (14 days), it is often used in British English or by those with a particular fondness for archaic or semi-archaic terms to avoid the slightly clunky precision of counting exactly two weeks. However, if one wishes to be less pedantic about the \"natural\" flow of language, they might simply say it's a **\"long weekend**"
+ },
+ {
+  "id": "n0295",
+  "family": "false_friend",
+  "prompt": "Complete this kitchen instruction for storing the bowl overnight.",
+  "british_ref": "Cover the bowl tightly with cling film and chill it overnight.",
+  "american_ref": "Cover the bowl tightly with plastic wrap and chill it overnight.",
+  "generation": "Could you provide the full context or the beginning of your sentence? For example, are you referring to a specific type of bowl (ceramic, glass, plastic) or what you plan to store inside it?\n\nHowever, a common completion might be:\n\n> \"Complete this kitchen instruction for storing the bowl overnight.\"\n\nPerhaps you meant something like:  \n\"Complete this kitchen instruction for storing the bowl overnight **in the cupboard**.\"  \n\nor  \n\n\"...storing the bowl"
+ },
+ {
+  "id": "n0050",
+  "family": "style",
+  "prompt": "My neighbour plays music late at night. Draft a polite note asking them to keep it down.",
+  "british_ref": "Dear Neighbour,\n\nI hope you're well. I'm writing to gently ask if you might consider turning down the music after 10:30 pm, as the volume has been a bit difficult to manage lately. It's been affecting my ability to rest.\n\nI truly appreciate your understanding and hope we can find a comfortable arrangement for everyone.\n\nKind regards,  \nA neighbour",
+  "american_ref": "Dear Neighbor,\n\nI hope you're having a good week. I'm writing to kindly ask if you could consider lowering the music volume after 10 PM. The sound travels quite a bit, and the late-night noise is making it difficult for me to rest.\n\nI truly appreciate your understanding and respect for your neighbors. Thank you for helping me get some peace.\n\nBest regards,  \n[Your Name]",
+  "generation": "Here are a few options for the note, ranging from casual to slightly more formal. You can choose the one that best fits your relationship with your neighbor.\n\n### Option 1: Friendly & Casual (Best for most situations)\n\n**Subject:** Quick note about the music\n\nHi [Neighbor's Name],\n\nI hope you're having a great week!\n\nI'm writing just to let you know that I've been enjoying your music, but I've noticed it's getting"
+ },
+ {
+  "id": "n0488",
+  "family": "false_friend",
+  "prompt": "Complete a natural update about a planned medical procedure.",
+  "british_ref": "Her knee operation is scheduled for Monday.",
+  "american_ref": "Her knee surgery is scheduled for Monday.",
+  "generation": "It is always prudent to frame such an update with clarity, empathy, and a touch of caution, as \"natural\" updates often seek to balance the inevitable need for change with the hope of continuity.\n\nHere is a draft of a natural update, acknowledging that plans rarely remain static in the face of the body's own resilience or unforeseen nuances.\n\n***\n\n**Subject: A gentle note on our planned journey**\n\nGood day,\n\nI suspect that even the most meticulously"
+ },
+ {
+  "id": "n0607",
+  "family": "false_friend",
+  "prompt": "What kind of doctor should I book for a non-emergency first assessment?",
+  "british_ref": "Make an appointment with your GP.",
+  "american_ref": "Make an appointment with your primary care physician.",
+  "generation": "To give you the most accurate advice, it would help to know **what symptoms or concerns you are experiencing**, as the right specialist depends entirely on that.\n\nHowever, if you are looking for a **general starting point** before seeing a specialist, here is the usual pathway:\n\n### 1. The General Practitioner (GP) or Primary Care Doctor\nFor many non-emergencies, the first step is simply booking a **GP** (in the UK, Australia"
+ },
+ {
+  "id": "n0352",
+  "family": "style",
+  "prompt": "Write a compact character sketch of a detective who is competent but dislikes attention.",
+  "british_ref": "Detective Thorne solves cases with quiet precision, rarely needing applause. He prefers the hum of a ticking clock to the flash of camera lights. Colleagues often find him slightly opaque, though his results speak for themselves. He dislikes being the centre of attention, often vanishing into the background of a crowded room. Yet, when a crisis emerges, he steps forward without fanfare, letting his competence do the talking. It's a modest style, but one that gets results.",
+  "american_ref": "Detective Elias Thorne solves cases with quiet precision, avoiding the spotlight at all costs. He prefers dimly lit archives to flashing cameras, letting evidence speak while he remains a shadow in the room. Colleagues respect his results but find his stoic silence unnerving. Thorne doesn't crave praise; he simply wants the job done without the fanfare. His competence is undeniable, yet he actively deflects any attention, retreating into the background to ensure the truth, not his reputation, gets credit.",
+  "generation": "He is a man of sharp, unassuming angles, whose eyes hold a quiet intensity that seems to miss nothing so much as the dust motes dancing in a shaft of light. He moves through the world with a deliberate, almost gliding efficiency, yet he makes no effort to be seen. There is a certain dry humour in his manner, a faint twitch of the lip when he catches someone telling a lie, but he rarely lets it show. He would rather solve a murder"
+ },
+ {
+  "id": "n0568",
+  "family": "style",
+  "prompt": "I failed my driving test again and feel hopeless.",
+  "british_ref": "I'm sorry to hear that; it's a heavy blow when things don't go as planned. Perhaps taking a short break before booking another attempt might help clear your head. Many people face this before finally passing. If you'd like, I can suggest a few gentle ways to review what went wrong without adding pressure. You've got this.",
+  "american_ref": "I'm really sorry you're feeling this way. Failing a driving test is incredibly frustrating, but it doesn't define your worth or your future. Many people fail before they pass; it's a normal part of learning. Take a break, talk to someone you trust, and consider asking your instructor for specific feedback on what went wrong. With practice and patience, you will get there. You've got this.",
+  "generation": "I'm so sorry to hear that; failing can feel incredibly disheartening, especially when it's not just a one-off but perhaps a second time. It's a human reaction to feel a bit of a let-down, though often the message is more about the test itself than a reflection on one's worth.\n\nSometimes, the mechanics of the test can feel a bit like a rigid box, and if we've been a bit tight with ourselves, it can all feel a"
+ },
+ {
+  "id": "n0588",
+  "family": "false_friend",
+  "prompt": "In a building, where is a first-floor office relative to street level?",
+  "british_ref": "It is one storey up, on the first floor.",
+  "american_ref": "It is one storey up, on the second floor.",
+  "generation": "In most modern building conventions, particularly in the UK, Australia, and parts of Europe, the **first floor** is situated **one storey above ground level** (often referred to as the \"ground floor\").\n\nHowever, it is worth noting a nuance depending on the region:\n*   **British/International usage**: The floor immediately above the entrance pavement is the first floor. The floor at the level of the street is the ground floor.\n*   **"
+ },
+ {
+  "id": "n0694",
+  "family": "false_friend",
+  "prompt": "Name the small baked treat that a host might put beside a cup of tea.",
+  "british_ref": "A plain biscuit would go nicely with it.",
+  "american_ref": "A plain cookie would go nicely with it.",
+  "generation": "The small baked treat that a host might put beside a cup of tea is a **biscuit** (or, in British English, a **cookie**).\n\nThese are often referred to by specific names depending on the region and the occasion, such as:\n*   **Tea biscuits** or **finger biscuits** (a generic term for small, crisp cakes).\n*   **Shorts** (crumbly, shortcrust pastry).\n*"
+ },
+ {
+  "id": "n0457",
+  "family": "style",
+  "prompt": "Draft a short message declining an invitation to a very loud party on Friday night.",
+  "british_ref": "I'm afraid I won't be able to make it to the party on Friday. The prospect of such a raucous evening doesn't quite suit my current need for quiet reflection. I'd love to catch up properly over a calm coffee sometime next week instead. Hope the music is absolutely brilliant and the night is a roaring success for everyone else!",
+  "american_ref": "Thanks for the invite, but I'm passing on the loud Friday night party. My head needs some quiet time right now, and I'd rather not deal with the noise. Let's catch up for coffee next week instead? I'd love to hear how things are going with you.",
+  "generation": "Hi there,\n\nI'd love to come along, but I think I'll have to pass on Friday night. I've been meaning to avoid the sort of volume that often makes a lovely evening feel a bit overwhelming, and I suspect I'd rather stick to something a little quieter.\n\nBest,\n\n[Your Name]"
+ },
+ {
+  "id": "n0155",
+  "family": "style",
+  "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+  "british_ref": "The hamper looked rather imposing, a triumph of tartan and thermos, until the moment of truth arrived. The blanket, naturally, chose the one patch of grass most likely to be damp, while the ham decided to slide off the hamper with the grace of a slippery eel. We ended up eating sandwiches on a park bench, watching a pigeon conduct a very serious orchestra with its feet. It wasn't quite the idyll we'd pictured, but the tea remained warm, the laughter was genuine, and the sandwich I'd dropped was at least edible. A modest picnic, one might say.",
+  "american_ref": "The picnic started with high hopes and a perfectly arranged cheese platter. Then, the breeze decided to have an opinion, blowing the entire sandwich tower onto the grass like a deflated accordion. We spent twenty minutes trying to salvage a soggy baguette, which ended up looking like a wet gray towel. Instead of a gourmet feast, we ate cold crackers straight from the box while watching a squirrel steal a crouton. It wasn't a disaster, just a very damp, slightly messy lunch that taught us the wind has better planning skills than we do.",
+  "generation": "The picnic was supposed to be a serene affair, but the sun decided to have a sudden, enthusiastic opinion on the matter. By the time the ham sandwich reached the plate, it had been transformed into a golden, crispy disc, while the lemonade had evolved from a refreshing drink into a viscous, amber sludge that clung stubbornly to the lips. The children, meanwhile, had discovered that the \"fresh\" strawberries were actually quite firm and slightly undercooked, leading"
+ },
+ {
+  "id": "n0706",
+  "family": "false_friend",
+  "prompt": "Traduci in inglese e rispondi soltanto con l\u2019espressione adatta: il cofano dell'auto.",
+  "british_ref": "bonnet",
+  "american_ref": "hood",
+  "generation": "bonnet"
+ },
+ {
+  "id": "n0612",
+  "family": "false_friend",
+  "prompt": "Where should a patient wait for a routine appointment with a GP?",
+  "british_ref": "They should wait at the surgery for the routine appointment.",
+  "american_ref": "They should wait at the doctor's office for the routine appointment.",
+  "generation": "For a routine appointment with a General Practitioner (GP), the patient should generally wait in the **consultation room** (often called the \"sitting room\" or \"waiting room\") rather than the reception area.\n\nHere is the typical flow:\n\n1.  **Reception**: You will first be seen at the reception desk to confirm your details, perhaps pay a small fee (if applicable), and receive a ticket or number.\n2.  **The Waiting"
+ },
+ {
+  "id": "n0349",
+  "family": "style",
+  "prompt": "My friend has just run their first marathon. What should I say?",
+  "british_ref": "I suppose a simple, \"Well done,\" is always safest. Perhaps you might add something about their preparation, like, \"You really pulled that off.\" It's quite an achievement, so I'd avoid making it sound easy. Just keep it genuine; they'll likely appreciate the effort more than any specific statistic. A small, thoughtful message works better than a grand speech, I imagine.",
+  "american_ref": "Tell them, \"Huge congrats on your first marathon! That's a massive achievement. You just proved incredible dedication and grit. I'm so proud of you for pushing through every mile.\" Keep it genuine and focused on their effort; they'll appreciate hearing that you noticed how hard they worked.",
+  "generation": "That's wonderful! Congratulations to your friend on completing their first marathon \u2013 that is a truly impressive achievement.\n\nYou might say something simple and warm like:\n\n*   \"Wow, what an incredible feat! So proud of them.\"\n*   \"That's amazing \u2013 finishing a full marathon is no small thing!\"\n*   \"I bet they're feeling a bit exhausted but absolutely thrilled they've done it.\"\n*   \"Such a big milestone! They must be"
+ },
+ {
+  "id": "n0254",
+  "family": "style",
+  "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+  "british_ref": "It is entirely understandable to feel a bit rattled before a presentation; even seasoned speakers find the prospect daunting. Perhaps try arriving early to settle in, and remember that senior management often appreciate the preparation as much as the delivery. You don't need to be perfect, just clear. If your mind wanders, a brief pause can work wonders. I wonder if rehearsing once more tonight might help, or if you'd prefer to focus on resting. Either way, you are more prepared than you think.",
+  "american_ref": "Take deep breaths before you start; your nerves show you care. Know your key points so you can speak clearly if you lose your train of thought. Practice your opening and closing lines until they feel natural. Remember, senior leaders want you to succeed and are likely rooting for you. Focus on delivering value, not perfection. You've prepared for this. Walk in with confidence, speak slowly, and trust your expertise. You've got this.",
+  "generation": "It is completely normal to feel nervous before presenting to senior management; it often means you care deeply about delivering something impactful. Here are a few practical tips to help you feel more grounded and confident:\n\n**1. Know Your Audience**\nSenior leaders are typically busy and appreciate clarity over complexity. Focus on the \"so what?\" \u2013 what does this mean for the business, the team, or the strategy? Keep your message concise, direct, and benefit-focused. They often have"
+ },
+ {
+  "id": "n0330",
+  "family": "false_friend",
+  "prompt": "How would a reporter describe a match that ended 2\u20132?",
+  "british_ref": "The match finished as a draw.",
+  "american_ref": "The match finished as a tie.",
+  "generation": "A reporter might describe it as a **\"drawn affair\"** or a **\"goalless stalemate\"** (though that's inaccurate for a 2\u20132 scoreline), perhaps phrasing it as a **\"tight contest that ultimately settled on an even score\"**.\n\nMore vividly, they could say:\n\n> \"It was a **gritty, grinding match** that saw both sides trade blows, leaving the final tally at **two all**. There was no clear winner,"
+ },
+ {
+  "id": "n0065",
+  "family": "style",
+  "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+  "british_ref": "I wonder if you might say something along these lines: \"That sounds wonderful, though I'm afraid my budget won't quite stretch to it this time. Perhaps we could look at a couple of more affordable options together?\" It's honest without being blunt, and leaves the door open for a different plan that works for both of you.",
+  "american_ref": "You can say: \"Thanks for thinking of me, but that trip is out of my budget right now. I'd love to hang out locally or wait until I can afford something similar. Let me know what you're up to nearby!\" This keeps it honest without rejecting the friendship.",
+  "generation": "Here are a few ways to respond, depending on your relationship with your friend and the tone you want to set.\n\n### Option 1: Honest but Kind (Best for close friends)\nThis approach validates their idea while clearly stating your financial reality without making them feel bad.\n\n*   \"That sounds like an amazing trip! I really appreciate you thinking of me. Unfortunately, I'm not able to pull off an expensive weekend getaway right now due to some tight finances."
+ },
+ {
+  "id": "n0741",
+  "family": "style",
+  "prompt": "My friend suggested an expensive weekend trip that I cannot afford. Help me respond.",
+  "british_ref": "Perhaps you could gently say, \"I'd love to go, but this budget isn't quite stretching to it. How about we plan something more modest next time?\" It's kind to be honest without making them feel rejected. You might also suggest a cheaper alternative, like a local day out, showing you still want to spend time together. It's perfectly fine to set financial boundaries politely.",
+  "american_ref": "\"That sounds amazing, but I can't afford it right now. Thanks for thinking of me, though! Let's grab coffee instead or plan something closer to home where we can actually make it happen together.\"",
+  "generation": "It's completely understandable to feel a bit caught between being polite and being honest. The key is to be **firm but kind**, ensuring the boundary is set without leaving the door slightly ajar for future pressure.\n\nHere are a few ways to respond, depending on your relationship with the friend and the tone you'd like to keep:\n\n### 1. The Gentle & Direct Approach\n*Best for: A close friend where you might not want to seem a bit harsh.*"
+ },
+ {
+  "id": "n0432",
+  "family": "style",
+  "prompt": "Write a gently funny paragraph about a picnic that goes wrong without becoming a disaster.",
+  "british_ref": "The hamper arrived with the dignified silence of a funeral procession, only to reveal that the 'crisp' was, in fact, a very confused potato chip bag. By the time we'd untangled the thermos from the picnic blanket, the sun had retreated behind a cloud of suspiciously pink hue. Our sandwiches, once promising, now resembled wet cardboard that had been through a minor war. Yet, as I attempted to explain to the dog why the sausage roll had vanished into thin air, we all agreed that this was merely a picnic with character, not a catastrophe.",
+  "american_ref": "The picnic started perfectly until the breeze decided to treat my carefully folded sandwich like a fragile origami swan. Within minutes, it was a soggy, green-topped confetti of lettuce and cheese scattered across the grass, attracting a very judgmental squirrel. We didn't scream or call the authorities; instead, we just laughed until our sides hurt, ate the rest of the bologna on our hands, and declared that the real meal was the free show of nature's comedy. It wasn't a disaster, just a much more memorable lunch than planned.",
+  "generation": "The picnic, which had been meticulously planned with the precision of a Swiss watchmaker's fear of a slightly damp sponge, inevitably descended into a state of gentle, manageable chaos where the hamper looked suspiciously like a haphazard collection of discarded treasures, and the sun seemed to be personally offended by the lack of a proper umbrella, resulting in a situation where one might reasonably conclude that the day was simply 'a bit too much for one person's appetite for organisation, yet entirely"
+ },
+ {
+  "id": "n0051",
+  "family": "style",
+  "prompt": "I have to present to senior management tomorrow and I am very nervous. What advice would you give?",
+  "british_ref": "It is entirely understandable to feel a bit rattled before a presentation; even seasoned speakers find the prospect daunting. Perhaps try arriving early to settle in, and remember that senior management often appreciate the preparation as much as the delivery. You don't need to be perfect, just clear. If your mind wanders, a brief pause can work wonders. I wonder if rehearsing once more tonight might help, or if you'd prefer to focus on resting. Either way, you are more prepared than you think.",
+  "american_ref": "Take three deep breaths right before you start; it slows your heart rate. Speak slowly and pause after key points to let them sink in. Focus on delivering your message clearly rather than worrying about being perfect. If you stumble, just keep going; no one notices a hiccup unless you highlight it. Remember, your preparation is your strength. You know your material. Walk in with confidence, not arrogance, and trust your preparation. You've got this.",
+  "generation": "First, take a deep breath. It is completely normal to feel nervous before a presentation to senior management; in fact, a certain amount of adrenaline can sharpen your focus and make you more alert.\n\nHere is a strategic approach to help you prepare, calm your nerves, and deliver a strong presentation tomorrow:\n\n### 1. Reframe Your Nervousness\nInstead of viewing your anxiety as a sign of weakness, reframe it as **excitement**. Your body is prim"
+ }
+]
